@@ -23,7 +23,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/rootlyhq/pulumi-rootly/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/rootlyhq/terraform-provider-rootly/rootly"
+	rootly "github.com/rootlyhq/terraform-provider-rootly/provider"
 )
 
 // all of the token components used below.
@@ -46,64 +46,81 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(rootly.Provider())
+	p := shimv2.NewProvider(rootly.New("pulumi")())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:    p,
 		Name: "rootly",
-		// DisplayName is a way to be able to change the casing of the provider
-		// name when being displayed on the Pulumi registry
-		DisplayName: "",
-		// The default publisher for all packages is Pulumi.
-		// Change this to your personal name (or a company name) that you
-		// would like to be shown in the Pulumi Registry if this package is published
-		// there.
+		DisplayName: "Rootly",
 		Publisher: "Rootly",
-		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
-		// if this package is published there.
-		//
-		// You may host a logo on a domain you control or add an SVG logo for your package
-		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "",
-		// PluginDownloadURL is an optional URL used to download the Provider
-		// for use in Pulumi programs
-		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "",
-		Description:       "A Pulumi package for creating and managing rootly cloud resources.",
-		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
-		// For all available categories, see `Keywords` in
-		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
+		LogoURL: "https://assets.rootly.com/assets/logo/rootly-7d4aa42752841c6da862630427150431a13aadee3d9e528b92bd0fded5dbca1e.svg",
+		PluginDownloadURL: "https://github.com/rootlyhq/pulumi-rootly/releases/${VERSION}",
+		Description:       "A Pulumi package for creating and managing Rootly cloud resources.",
 		Keywords:   []string{"pulumi", "rootly", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://rootly.com",
 		Repository: "https://github.com/rootlyhq/pulumi-rootly",
-		// The GitHub Org for the provider - defaults to `terraform-providers`
-		GitHubOrg: "",
-		Config:    map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: tfbridge.MakeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
-		},
+		GitHubOrg: "rootlyhq",
+		Config:    map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		Resources:            map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
-			// "aws_iam_role": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IamRole")}
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: tfbridge.MakeResource(mainPkg, mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
-			// 	},
-			// },
+			"rootly_cause": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Cause"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"cause": {
+						CSharpName: "rootly_cause",
+					},
+				},
+			},
+			"rootly_functionality": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Functionality"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"functionality": {
+						CSharpName: "rootly_functionality",
+					},
+				},
+			},
+			"rootly_incident_role": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "IncidentRole"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"incident_role": {
+						CSharpName: "rootly_incident_role",
+					},
+				},
+			},
+			"rootly_incident_type": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "IncidentType"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"incident_type": {
+						CSharpName: "rootly_incident_type",
+					},
+				},
+			},
+			"rootly_service": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Service"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"service": {
+						CSharpName: "rootly_service",
+					},
+				},
+			},
+			"rootly_severity": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Severity"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"severity": {
+						CSharpName: "rootly_severity",
+					},
+				},
+			},
+			"rootly_team": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Team"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"team": {
+						CSharpName: "rootly_team",
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
@@ -119,10 +136,6 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges

@@ -1,0 +1,536 @@
+{
+    "name": "rootly",
+    "displayName": "Rootly",
+    "description": "A Pulumi package for creating and managing Rootly cloud resources.",
+    "keywords": [
+        "pulumi",
+        "rootly",
+        "category/cloud"
+    ],
+    "homepage": "https://rootly.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`rootly` Terraform Provider](https://github.com/rootlyhq/terraform-provider-rootly).",
+    "repository": "https://github.com/rootlyhq/pulumi-rootly",
+    "logoUrl": "https://assets.rootly.com/assets/logo/rootly-7d4aa42752841c6da862630427150431a13aadee3d9e528b92bd0fded5dbca1e.svg",
+    "pluginDownloadURL": "https://github.com/rootlyhq/pulumi-rootly/releases/${VERSION}",
+    "publisher": "Rootly",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "config": {
+        "variables": {
+            "apiHost": {
+                "type": "string",
+                "description": "The Rootly API host. Defaults to https://api.rootly.com\n"
+            },
+            "apiToken": {
+                "type": "string",
+                "description": "The Rootly API Token. Generate it from your account at https://rootly.com/account\n"
+            }
+        }
+    },
+    "provider": {
+        "description": "The provider type for the rootly package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "apiHost": {
+                "type": "string",
+                "description": "The Rootly API host. Defaults to https://api.rootly.com\n"
+            },
+            "apiToken": {
+                "type": "string",
+                "description": "The Rootly API Token. Generate it from your account at https://rootly.com/account\n"
+            }
+        },
+        "inputProperties": {
+            "apiHost": {
+                "type": "string",
+                "description": "The Rootly API host. Defaults to https://api.rootly.com\n"
+            },
+            "apiToken": {
+                "type": "string",
+                "description": "The Rootly API Token. Generate it from your account at https://rootly.com/account\n"
+            }
+        }
+    },
+    "resources": {
+        "rootly:index/cause:Cause": {
+            "description": "Manages incident causes (e.g Bug, Load, Human Error, 3rd party Outage, Configuration Change).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst foo = new rootly.Cause(\"foo\", {});\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nfoo = rootly.Cause(\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Rootly.Cause(\"foo\", new Rootly.CauseArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.NewCause(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import rootly:index/cause:Cause foo 11111111-2222-3333-4444-555555555555\n```\n\n ",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the cause\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the cause\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the cause\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the cause\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Cause resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the cause\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the cause\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/functionality:Functionality": {
+            "description": "Manages functionalities (e.g Logging In, Search, Adds items to Cart).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst foo = new rootly.Functionality(\"foo\", {});\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nfoo = rootly.Functionality(\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Rootly.Functionality(\"foo\", new Rootly.FunctionalityArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.NewFunctionality(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import rootly:index/functionality:Functionality foo 11111111-2222-3333-4444-555555555555\n```\n\n ",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color of the severity\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the functionality\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the functionality\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the severity\n"
+                }
+            },
+            "required": [
+                "name",
+                "slug"
+            ],
+            "inputProperties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color of the severity\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the functionality\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the functionality\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the severity\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Functionality resources.\n",
+                "properties": {
+                    "color": {
+                        "type": "string",
+                        "description": "The color of the severity\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the functionality\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the functionality\n"
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "The slug of the severity\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/incidentRole:IncidentRole": {
+            "description": "Manages Incident Roles (e.g Commander, Ops Lead, Communication).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst foo = new rootly.IncidentRole(\"foo\", {});\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nfoo = rootly.IncidentRole(\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Rootly.IncidentRole(\"foo\", new Rootly.IncidentRoleArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.NewIncidentRole(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import rootly:index/incidentRole:IncidentRole foo 11111111-2222-3333-4444-555555555555\n```\n\n ",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the incident role\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the incident role is enabled or not\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the incident role\n"
+                },
+                "summary": {
+                    "type": "string",
+                    "description": "The summary of the incident role\n"
+                }
+            },
+            "required": [
+                "enabled",
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the incident role\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the incident role is enabled or not\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the incident role\n"
+                },
+                "summary": {
+                    "type": "string",
+                    "description": "The summary of the incident role\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IncidentRole resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the incident role\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the incident role is enabled or not\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the incident role\n"
+                    },
+                    "summary": {
+                        "type": "string",
+                        "description": "The summary of the incident role\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/incidentType:IncidentType": {
+            "description": "Manages incident types (e.g Cloud, Customer Facing, Security, Training).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst foo = new rootly.IncidentType(\"foo\", {});\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nfoo = rootly.IncidentType(\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Rootly.IncidentType(\"foo\", new Rootly.IncidentTypeArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.NewIncidentType(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import rootly:index/incidentType:IncidentType foo 11111111-2222-3333-4444-555555555555\n```\n\n ",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "description": "The cikir of the incident type\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the incident type\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the incident type\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "color": {
+                    "type": "string",
+                    "description": "The cikir of the incident type\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the incident type\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the incident type\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IncidentType resources.\n",
+                "properties": {
+                    "color": {
+                        "type": "string",
+                        "description": "The cikir of the incident type\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the incident type\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the incident type\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/service:Service": {
+            "description": "Manages Services (e.g elasticsearch-prod, redis-preprod, customer-postgresql-prod).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst foo = new rootly.Service(\"foo\", {});\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nfoo = rootly.Service(\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Rootly.Service(\"foo\", new Rootly.ServiceArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.NewService(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import rootly:index/service:Service foo 11111111-2222-3333-4444-555555555555\n```\n\n ",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color chosen for the service\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "For internal use only\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the service\n"
+                },
+                "publicDescription": {
+                    "type": "string",
+                    "description": "This will be displayed on your status pages to explain to your customer the use of this service.\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the service\n"
+                }
+            },
+            "required": [
+                "name",
+                "slug"
+            ],
+            "inputProperties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color chosen for the service\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "For internal use only\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the service\n"
+                },
+                "publicDescription": {
+                    "type": "string",
+                    "description": "This will be displayed on your status pages to explain to your customer the use of this service.\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the service\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Service resources.\n",
+                "properties": {
+                    "color": {
+                        "type": "string",
+                        "description": "The color chosen for the service\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "For internal use only\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the service\n"
+                    },
+                    "publicDescription": {
+                        "type": "string",
+                        "description": "This will be displayed on your status pages to explain to your customer the use of this service.\n"
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "The slug of the service\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/severity:Severity": {
+            "description": "Manages Severities (e.g SEV0, SEV1, SEV2, SEV3).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst foo = new rootly.Severity(\"foo\", {});\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nfoo = rootly.Severity(\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Rootly.Severity(\"foo\", new Rootly.SeverityArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.NewSeverity(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import rootly:index/severity:Severity foo 11111111-2222-3333-4444-555555555555\n```\n\n ",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color of the severity\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the severity\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the severity\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "The description of the severity\n",
+                    "language": {
+                        "csharp": {
+                            "name": "rootly_severity"
+                        }
+                    }
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the severity\n"
+                }
+            },
+            "required": [
+                "name",
+                "slug"
+            ],
+            "inputProperties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color of the severity\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the severity\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the severity\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "The description of the severity\n",
+                    "language": {
+                        "csharp": {
+                            "name": "rootly_severity"
+                        }
+                    }
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the severity\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Severity resources.\n",
+                "properties": {
+                    "color": {
+                        "type": "string",
+                        "description": "The color of the severity\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the severity\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the severity\n"
+                    },
+                    "severity": {
+                        "type": "string",
+                        "description": "The description of the severity\n",
+                        "language": {
+                            "csharp": {
+                                "name": "rootly_severity"
+                            }
+                        }
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "The slug of the severity\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/team:Team": {
+            "description": "Manages Teams (e.g Infrastructure, Security, Search).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst foo = new rootly.Team(\"foo\", {});\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nfoo = rootly.Team(\"foo\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Rootly.Team(\"foo\", new Rootly.TeamArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.NewTeam(ctx, \"foo\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import rootly:index/team:Team foo 11111111-2222-3333-4444-555555555555\n```\n\n ",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color chosen for the team\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the team\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the team\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "color": {
+                    "type": "string",
+                    "description": "The color chosen for the team\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the team\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the team\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Team resources.\n",
+                "properties": {
+                    "color": {
+                        "type": "string",
+                        "description": "The color chosen for the team\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the team\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the team\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-rootly/sdk/go/rootly"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing Rootly cloud resources.",
+            "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/rootlyhq/terraform-provider-rootly)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-rootly` repo](https://github.com/pulumi/pulumi-rootly/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`rootlyhq/terraform-provider-rootly` repo](https://github.com/rootlyhq/terraform-provider-rootly/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/rootlyhq/terraform-provider-rootly)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-rootly` repo](https://github.com/pulumi/pulumi-rootly/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`rootlyhq/terraform-provider-rootly` repo](https://github.com/rootlyhq/terraform-provider-rootly/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    }
+}
