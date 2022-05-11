@@ -30,6 +30,31 @@ The following configuration points are available for the `rootly` provider:
 
 - `rootly:apiKey` (environment: `ROOTLY_API_KEY`) - the API key for `rootly`
 
+## Creating resources
+
+```javascript
+const rootly = require("@rootly/pulumi")
+
+new rootly.Severity("sev0", {
+  name: "SEV0",
+  color: "#FF0000"
+})
+
+new rootly.Service("elasticsearch_prod", {
+  name: "elasticsearch-prod",
+  color: "#800080"
+})
+
+new rootly.Functionality("add_items_to_card", {
+  name: "Add items to card",
+  color: "#FFFFFF"
+})
+```
+
+## Syncing resources
+
+Run the regular `pulumi up` command.
+
 ## Reference
 
 For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/rootly/api-docs/)
