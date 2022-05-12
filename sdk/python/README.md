@@ -11,44 +11,49 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @pulumi/rootly
+npm install @rootly/pulumi
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @pulumi/rootly
+yarn add @rootly/pulumi
 ```
 
-### Python
+### Python, Go, & .NET
 
-To use from Python, install using `pip`:
-
-```bash
-pip install pulumi_rootly
-```
-
-### Go
-
-To use from Go, use `go get` to grab the latest version of the library:
-
-```bash
-go get github.com/rootlyhq/pulumi-rootly/sdk/go/...
-```
-
-### .NET
-
-To use from .NET, install using `dotnet add package`:
-
-```bash
-dotnet add package Pulumi.Rootly
-```
+*TBA*
 
 ## Configuration
 
 The following configuration points are available for the `rootly` provider:
 
-- `rootly:apiKey` (environment: `ROOTLY_API_KEY`) - the API key for `rootly`
+- `rootly:apiKey` (environment: `ROOTLY_API_TOKEN`) - the API key for `rootly`
+
+## Creating resources
+
+```javascript
+const rootly = require("@rootly/pulumi")
+
+new rootly.Severity("sev0", {
+  name: "SEV0",
+  color: "#FF0000"
+})
+
+new rootly.Service("elasticsearch_prod", {
+  name: "elasticsearch-prod",
+  color: "#800080"
+})
+
+new rootly.Functionality("add_items_to_card", {
+  name: "Add items to card",
+  color: "#FFFFFF"
+})
+```
+
+## Syncing resources
+
+Run the regular `pulumi up` command.
 
 ## Reference
 

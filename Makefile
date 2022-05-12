@@ -4,14 +4,14 @@ SHELL            := /bin/bash
 PACK             := rootly
 ORG              := rootlyhq
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
-NODE_MODULE_NAME := @rootlyhq/${PACK}
+NODE_MODULE_NAME := @rootlyhq/pulumi-rootly
 TF_NAME          := ${PACK}
 PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
-VERSION         := $(shell pulumictl get version)
+VERSION         := 0.0.1
 
 TESTPARALLELISM := 4
 

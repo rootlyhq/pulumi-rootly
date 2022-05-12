@@ -23,15 +23,21 @@ or `yarn`:
 yarn add @rootly/pulumi
 ```
 
+2. Install the provider binary plugin. This is only needed due to an outstanding bug in with Pulumi registry
+
+```bash
+pulumi plugin install resource rootly v0.0.1 --server https://github.com/rootlyhq/pulumi-rootly/releases/download/v0.0.1
+```
+
 ## Authentication
 
 The Pulumi Rootly Provider needs to be configured with a Rootly `API Key`.
 
 Once you generated the `API Key` there are two ways to communicate your authorization token to Pulumi:
 
-1. Set the environment variables `ROOTLY_API_KEY`:
+1. Set the environment variables `ROOTLY_API_TOKEN`:
     ```bash
-    $ export ROOTLY_API_KEY=cu_xxx
+    $ export ROOTLY_API_TOKEN=cu_xxx
     ```
 
 2. Set them using `pulumi config` command, if you prefer that they be stored alongside your Pulumi stack for easy multi-user access:
