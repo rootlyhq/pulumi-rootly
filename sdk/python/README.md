@@ -28,7 +28,7 @@ yarn add @rootly/pulumi
 
 The following configuration points are available for the `rootly` provider:
 
-- `rootly:apiKey` (environment: `ROOTLY_API_TOKEN`) - the API key for `rootly`
+- `rootly:apiToken` (environment: `ROOTLY_API_TOKEN`) - the API token for `rootly`
 
 ## Creating resources
 

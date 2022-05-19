@@ -5,7 +5,7 @@ layout: overview
 ---
 
 The Rootly provider for Pulumi can be used to provision resources available in [Rootly](https://rootly.com/).
-The Rootly provider must be configured with the an `API Key`.
+The Rootly provider must be configured with the an API token.
 
 ## Example
 
