@@ -53,7 +53,7 @@ namespace Pulumi.Rootly
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/rootlyhq/pulumi-rootly/releases/${VERSION}";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/rootlyhq/pulumi-rootly/releases/v${VERSION}";
             return dst;
         }
 

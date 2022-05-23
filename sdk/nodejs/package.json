@@ -24,6 +24,6 @@
     },
     "pulumi": {
         "resource": true,
-        "pluginDownloadURL": "https://github.com/rootlyhq/pulumi-rootly/releases/${VERSION}"
+        "pluginDownloadURL": "https://github.com/rootlyhq/pulumi-rootly/releases/v${VERSION}"
     }
 }

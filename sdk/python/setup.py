@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'rootly', PLUGIN_VERSION, '--server', 'https://github.com/rootlyhq/pulumi-rootly/releases/${VERSION}'])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'rootly', PLUGIN_VERSION, '--server', 'https://github.com/rootlyhq/pulumi-rootly/releases/v${VERSION}'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""

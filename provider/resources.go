@@ -19,10 +19,8 @@ import (
 	"path/filepath"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/rootlyhq/pulumi-rootly/provider/pkg/version"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	rootly "github.com/rootlyhq/terraform-provider-rootly/provider"
 )
 
@@ -35,14 +33,6 @@ const (
 	mainMod = "index" // the rootly module
 )
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
-}
-
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
@@ -50,21 +40,20 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:    p,
-		Name: "rootly",
-		DisplayName: "Rootly",
-		Publisher: "Rootly",
-		LogoURL: "https://assets.rootly.com/assets/logo/rootly-7d4aa42752841c6da862630427150431a13aadee3d9e528b92bd0fded5dbca1e.svg",
-		PluginDownloadURL: "https://github.com/rootlyhq/pulumi-rootly/releases/${VERSION}",
+		P:                 p,
+		Name:              "rootly",
+		DisplayName:       "Rootly",
+		Publisher:         "Rootly",
+		LogoURL:           "https://assets.rootly.com/assets/logo/rootly-7d4aa42752841c6da862630427150431a13aadee3d9e528b92bd0fded5dbca1e.svg",
+		PluginDownloadURL: "https://github.com/rootlyhq/pulumi-rootly/releases/v${VERSION}",
 		Description:       "A Pulumi package for creating and managing Rootly cloud resources.",
-		Keywords:   []string{"pulumi", "rootly", "category/cloud"},
-		License:    "Apache-2.0",
-		Homepage:   "https://rootly.com",
-		Repository: "https://github.com/rootlyhq/pulumi-rootly",
-		GitHubOrg: "rootlyhq",
-		Config:    map[string]*tfbridge.SchemaInfo{},
-		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Keywords:          []string{"pulumi", "rootly", "category/cloud"},
+		License:           "Apache-2.0",
+		Homepage:          "https://rootly.com",
+		Repository:        "https://github.com/rootlyhq/pulumi-rootly",
+		GitHubOrg:         "rootlyhq",
+		Config:            map[string]*tfbridge.SchemaInfo{},
+		Resources: map[string]*tfbridge.ResourceInfo{
 			"rootly_cause": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Cause"),
 				Fields: map[string]*tfbridge.SchemaInfo{

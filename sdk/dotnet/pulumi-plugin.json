@@ -1,5 +1,5 @@
 {
   "resource": true,
   "name": "rootly",
-  "server": "https://github.com/rootlyhq/pulumi-rootly/releases/${VERSION}"
+  "server": "https://github.com/rootlyhq/pulumi-rootly/releases/v${VERSION}"
 }
