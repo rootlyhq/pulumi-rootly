@@ -44,7 +44,7 @@ func Provider() tfbridge.ProviderInfo {
 		Name:              "rootly",
 		DisplayName:       "Rootly",
 		Publisher:         "Rootly",
-		LogoURL:           "https://assets.rootly.com/assets/logo/rootly-7d4aa42752841c6da862630427150431a13aadee3d9e528b92bd0fded5dbca1e.svg",
+		LogoURL:           "https://raw.githubusercontent.com/rootlyhq/pulumi-rootly/v0.0.3/rootly.svg",
 		PluginDownloadURL: "https://github.com/rootlyhq/pulumi-rootly/releases/v${VERSION}",
 		Description:       "A Pulumi package for creating and managing Rootly cloud resources.",
 		Keywords:          []string{"pulumi", "rootly", "category/cloud"},
