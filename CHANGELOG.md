@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+## v0.0.5
+
+Add workflow and task resources
+
 ## v0.0.4
 
 Add additional resources
