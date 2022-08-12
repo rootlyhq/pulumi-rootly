@@ -6,21 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages incident causes (e.g Bug, Load, Human Error, 3rd party Outage, Configuration Change).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.Cause("foo", {});
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/cause:Cause foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class Cause extends pulumi.CustomResource {
     /**

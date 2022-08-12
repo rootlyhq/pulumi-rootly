@@ -78,6 +78,22 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"rootly_dashboard": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Dashboard"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"dashboard": {
+						CSharpName: "rootly_dashboard",
+					},
+				},
+			},
+			"rootly_dashboard_panel": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "DashboardPanel"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"dashboard_panel": {
+						CSharpName: "rootly_dashboard_panel",
+					},
+				},
+			},
 			"rootly_environment": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Environment"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -762,7 +778,16 @@ func Provider() tfbridge.ProviderInfo {
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
-			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
+			"rootly_causes": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCauses")},
+			"rootly_custom_fields": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCustomFields")},
+			"rootly_custom_field_options": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getCustomFieldOptions")},
+			"rootly_environments": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnvironments")},
+			"rootly_functionalities": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFunctionalities")},
+			"rootly_incident_types": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getIncidentTypes")},
+			"rootly_incident_roles": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getIncidentRoles")},
+			"rootly_services": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getServices")},
+			"rootly_severities": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSeverities")},
+			"rootly_teams": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTeams")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

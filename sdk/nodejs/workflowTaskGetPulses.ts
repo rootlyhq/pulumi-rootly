@@ -7,23 +7,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow getPulses task.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.WorkflowTaskGetPulses("foo", {
- *     name: "bar",
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/workflowTaskGetPulses:WorkflowTaskGetPulses foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class WorkflowTaskGetPulses extends pulumi.CustomResource {
     /**
@@ -54,6 +37,10 @@ export class WorkflowTaskGetPulses extends pulumi.CustomResource {
     }
 
     /**
+     * The position of the workflow task (1 being top of list)
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
      * The parameters for this workflow task.
      */
     public readonly taskParams!: pulumi.Output<outputs.WorkflowTaskGetPulsesTaskParams>;
@@ -75,6 +62,7 @@ export class WorkflowTaskGetPulses extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTaskGetPulsesState | undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
@@ -85,6 +73,7 @@ export class WorkflowTaskGetPulses extends pulumi.CustomResource {
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
@@ -97,6 +86,10 @@ export class WorkflowTaskGetPulses extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkflowTaskGetPulses resources.
  */
 export interface WorkflowTaskGetPulsesState {
+    /**
+     * The position of the workflow task (1 being top of list)
+     */
+    position?: pulumi.Input<number>;
     /**
      * The parameters for this workflow task.
      */
@@ -111,6 +104,10 @@ export interface WorkflowTaskGetPulsesState {
  * The set of arguments for constructing a WorkflowTaskGetPulses resource.
  */
 export interface WorkflowTaskGetPulsesArgs {
+    /**
+     * The position of the workflow task (1 being top of list)
+     */
+    position?: pulumi.Input<number>;
     /**
      * The parameters for this workflow task.
      */

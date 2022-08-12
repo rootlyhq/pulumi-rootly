@@ -7,23 +7,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow sendSms task.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.WorkflowTaskSendSms("foo", {
- *     name: "bar",
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/workflowTaskSendSms:WorkflowTaskSendSms foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class WorkflowTaskSendSms extends pulumi.CustomResource {
     /**
@@ -54,6 +37,10 @@ export class WorkflowTaskSendSms extends pulumi.CustomResource {
     }
 
     /**
+     * The position of the workflow task (1 being top of list)
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
      * The parameters for this workflow task.
      */
     public readonly taskParams!: pulumi.Output<outputs.WorkflowTaskSendSmsTaskParams>;
@@ -75,6 +62,7 @@ export class WorkflowTaskSendSms extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTaskSendSmsState | undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
@@ -85,6 +73,7 @@ export class WorkflowTaskSendSms extends pulumi.CustomResource {
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
@@ -97,6 +86,10 @@ export class WorkflowTaskSendSms extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkflowTaskSendSms resources.
  */
 export interface WorkflowTaskSendSmsState {
+    /**
+     * The position of the workflow task (1 being top of list)
+     */
+    position?: pulumi.Input<number>;
     /**
      * The parameters for this workflow task.
      */
@@ -111,6 +104,10 @@ export interface WorkflowTaskSendSmsState {
  * The set of arguments for constructing a WorkflowTaskSendSms resource.
  */
 export interface WorkflowTaskSendSmsArgs {
+    /**
+     * The position of the workflow task (1 being top of list)
+     */
+    position?: pulumi.Input<number>;
     /**
      * The parameters for this workflow task.
      */

@@ -7,23 +7,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow inviteToSlackChannelOpsgenie task.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.WorkflowTaskInviteToSlackChannelOpsgenie("foo", {
- *     name: "bar",
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/workflowTaskInviteToSlackChannelOpsgenie:WorkflowTaskInviteToSlackChannelOpsgenie foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class WorkflowTaskInviteToSlackChannelOpsgenie extends pulumi.CustomResource {
     /**
@@ -54,6 +37,10 @@ export class WorkflowTaskInviteToSlackChannelOpsgenie extends pulumi.CustomResou
     }
 
     /**
+     * The position of the workflow task (1 being top of list)
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
      * The parameters for this workflow task.
      */
     public readonly taskParams!: pulumi.Output<outputs.WorkflowTaskInviteToSlackChannelOpsgenieTaskParams>;
@@ -75,6 +62,7 @@ export class WorkflowTaskInviteToSlackChannelOpsgenie extends pulumi.CustomResou
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTaskInviteToSlackChannelOpsgenieState | undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
@@ -85,6 +73,7 @@ export class WorkflowTaskInviteToSlackChannelOpsgenie extends pulumi.CustomResou
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
@@ -97,6 +86,10 @@ export class WorkflowTaskInviteToSlackChannelOpsgenie extends pulumi.CustomResou
  * Input properties used for looking up and filtering WorkflowTaskInviteToSlackChannelOpsgenie resources.
  */
 export interface WorkflowTaskInviteToSlackChannelOpsgenieState {
+    /**
+     * The position of the workflow task (1 being top of list)
+     */
+    position?: pulumi.Input<number>;
     /**
      * The parameters for this workflow task.
      */
@@ -111,6 +104,10 @@ export interface WorkflowTaskInviteToSlackChannelOpsgenieState {
  * The set of arguments for constructing a WorkflowTaskInviteToSlackChannelOpsgenie resource.
  */
 export interface WorkflowTaskInviteToSlackChannelOpsgenieArgs {
+    /**
+     * The position of the workflow task (1 being top of list)
+     */
+    position?: pulumi.Input<number>;
     /**
      * The parameters for this workflow task.
      */

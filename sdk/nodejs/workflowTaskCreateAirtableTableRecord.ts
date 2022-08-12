@@ -7,23 +7,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow createAirtableTableRecord task.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.WorkflowTaskCreateAirtableTableRecord("foo", {
- *     name: "bar",
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/workflowTaskCreateAirtableTableRecord:WorkflowTaskCreateAirtableTableRecord foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class WorkflowTaskCreateAirtableTableRecord extends pulumi.CustomResource {
     /**
@@ -54,6 +37,10 @@ export class WorkflowTaskCreateAirtableTableRecord extends pulumi.CustomResource
     }
 
     /**
+     * The position of the workflow task (1 being top of list)
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
      * The parameters for this workflow task.
      */
     public readonly taskParams!: pulumi.Output<outputs.WorkflowTaskCreateAirtableTableRecordTaskParams>;
@@ -75,6 +62,7 @@ export class WorkflowTaskCreateAirtableTableRecord extends pulumi.CustomResource
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTaskCreateAirtableTableRecordState | undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
@@ -85,6 +73,7 @@ export class WorkflowTaskCreateAirtableTableRecord extends pulumi.CustomResource
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
@@ -97,6 +86,10 @@ export class WorkflowTaskCreateAirtableTableRecord extends pulumi.CustomResource
  * Input properties used for looking up and filtering WorkflowTaskCreateAirtableTableRecord resources.
  */
 export interface WorkflowTaskCreateAirtableTableRecordState {
+    /**
+     * The position of the workflow task (1 being top of list)
+     */
+    position?: pulumi.Input<number>;
     /**
      * The parameters for this workflow task.
      */
@@ -111,6 +104,10 @@ export interface WorkflowTaskCreateAirtableTableRecordState {
  * The set of arguments for constructing a WorkflowTaskCreateAirtableTableRecord resource.
  */
 export interface WorkflowTaskCreateAirtableTableRecordArgs {
+    /**
+     * The position of the workflow task (1 being top of list)
+     */
+    position?: pulumi.Input<number>;
     /**
      * The parameters for this workflow task.
      */

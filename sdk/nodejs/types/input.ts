@@ -4,15 +4,46 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface DashboardPanelParams {
+    datasets?: pulumi.Input<pulumi.Input<inputs.DashboardPanelParamsDataset>[]>;
+    display: pulumi.Input<string>;
+}
+
+export interface DashboardPanelParamsDataset {
+    aggregate?: pulumi.Input<inputs.DashboardPanelParamsDatasetAggregate>;
+    collection: pulumi.Input<string>;
+    filters?: pulumi.Input<pulumi.Input<inputs.DashboardPanelParamsDatasetFilter>[]>;
+    groupBy?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
+export interface DashboardPanelParamsDatasetAggregate {
+    cumulative: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    operation: pulumi.Input<string>;
+}
+
+export interface DashboardPanelParamsDatasetFilter {
+    operation: pulumi.Input<string>;
+    rules?: pulumi.Input<pulumi.Input<inputs.DashboardPanelParamsDatasetFilterRule>[]>;
+}
+
+export interface DashboardPanelParamsDatasetFilterRule {
+    condition: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+    operation: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
 export interface WorkflowActionItemTriggerParams {
     incidentActionItemCondition?: pulumi.Input<string>;
     incidentActionItemConditionGroup?: pulumi.Input<string>;
     incidentActionItemConditionKind?: pulumi.Input<string>;
     incidentActionItemConditionPriority?: pulumi.Input<string>;
     incidentActionItemConditionStatus?: pulumi.Input<string>;
-    incidentActionItemKinds?: pulumi.Input<pulumi.Input<boolean>[]>;
-    incidentActionItemPriorities?: pulumi.Input<pulumi.Input<boolean>[]>;
-    incidentActionItemStatuses?: pulumi.Input<pulumi.Input<boolean>[]>;
+    incidentActionItemKinds?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentActionItemPriorities?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentActionItemStatuses?: pulumi.Input<pulumi.Input<string>[]>;
     incidentCondition?: pulumi.Input<string>;
     incidentConditionAcknowledgedAt?: pulumi.Input<string>;
     incidentConditionDetectedAt?: pulumi.Input<string>;
@@ -220,7 +251,9 @@ export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
 }
 
 export interface WorkflowTaskCreateAsanaSubtaskTaskParams {
+    assignUserEmail?: pulumi.Input<string>;
     completion: pulumi.Input<{[key: string]: any}>;
+    customFieldsMapping?: pulumi.Input<string>;
     notes?: pulumi.Input<string>;
     parentTaskId: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
@@ -228,7 +261,9 @@ export interface WorkflowTaskCreateAsanaSubtaskTaskParams {
 }
 
 export interface WorkflowTaskCreateAsanaTaskTaskParams {
+    assignUserEmail?: pulumi.Input<string>;
     completion: pulumi.Input<{[key: string]: any}>;
+    customFieldsMapping?: pulumi.Input<string>;
     projects: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateAsanaTaskTaskParamsProject>[]>;
     taskType?: pulumi.Input<string>;
     title: pulumi.Input<string>;
@@ -241,17 +276,12 @@ export interface WorkflowTaskCreateAsanaTaskTaskParamsProject {
 }
 
 export interface WorkflowTaskCreateConfluencePageTaskParams {
-    ancestors?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateConfluencePageTaskParamsAncestor>[]>;
+    ancestor?: pulumi.Input<{[key: string]: any}>;
     content?: pulumi.Input<string>;
     postMortemTemplateId?: pulumi.Input<string>;
     space: pulumi.Input<{[key: string]: any}>;
     taskType?: pulumi.Input<string>;
     title: pulumi.Input<string>;
-}
-
-export interface WorkflowTaskCreateConfluencePageTaskParamsAncestor {
-    id: pulumi.Input<string>;
-    name: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskCreateDatadogNotebookTaskParams {
@@ -639,7 +669,7 @@ export interface WorkflowTaskPublishIncidentTaskParams {
     incident: pulumi.Input<{[key: string]: any}>;
     publicTitle: pulumi.Input<string>;
     status: pulumi.Input<string>;
-    statusPageIds: pulumi.Input<pulumi.Input<string>[]>;
+    statusPageId: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -686,6 +716,7 @@ export interface WorkflowTaskSendEmailTaskParams {
 
 export interface WorkflowTaskSendSlackMessageTaskParams {
     channels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsChannel>[]>;
+    sendAsEphemeral?: pulumi.Input<boolean>;
     slackUserGroups?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup>[]>;
     slackUsers?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsSlackUser>[]>;
     taskType?: pulumi.Input<string>;
@@ -715,7 +746,7 @@ export interface WorkflowTaskSendSmsTaskParams {
 }
 
 export interface WorkflowTaskSnapshotDatadogGraphTaskParams {
-    dashboards: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSnapshotDatadogGraphTaskParamsDashboard>[]>;
+    dashboards?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSnapshotDatadogGraphTaskParamsDashboard>[]>;
     metricQueries?: pulumi.Input<pulumi.Input<string>[]>;
     pastDuration: pulumi.Input<string>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSnapshotDatadogGraphTaskParamsPostToSlackChannel>[]>;
@@ -790,7 +821,9 @@ export interface WorkflowTaskUpdateAirtableTableRecordTaskParams {
 }
 
 export interface WorkflowTaskUpdateAsanaTaskTaskParams {
+    assignUserEmail?: pulumi.Input<string>;
     completion: pulumi.Input<{[key: string]: any}>;
+    customFieldsMapping?: pulumi.Input<string>;
     taskId: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
@@ -929,4 +962,3 @@ export interface WorkflowTaskUpdateZendeskTicketTaskParams {
     taskType?: pulumi.Input<string>;
     ticketId: pulumi.Input<string>;
 }
-

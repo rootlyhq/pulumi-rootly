@@ -7,21 +7,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflows.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.WorkflowPostMortem("foo", {});
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/workflowPostMortem:WorkflowPostMortem foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class WorkflowPostMortem extends pulumi.CustomResource {
     /**
@@ -80,6 +65,10 @@ export class WorkflowPostMortem extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The position of the workflow (1 being top of list)
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
      * Repeat workflow every duration.
      */
     public readonly repeatEveryDuration!: pulumi.Output<string | undefined>;
@@ -103,6 +92,10 @@ export class WorkflowPostMortem extends pulumi.CustomResource {
      * Wait before running workflow.
      */
     public readonly wait!: pulumi.Output<string | undefined>;
+    /**
+     * The workflow group this workflow belongs to.
+     */
+    public readonly workflowGroupId!: pulumi.Output<string>;
 
     /**
      * Create a WorkflowPostMortem resource with the given unique name, arguments, and options.
@@ -124,12 +117,14 @@ export class WorkflowPostMortem extends pulumi.CustomResource {
             resourceInputs["groupIds"] = state ? state.groupIds : undefined;
             resourceInputs["incidentTypeIds"] = state ? state.incidentTypeIds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["repeatEveryDuration"] = state ? state.repeatEveryDuration : undefined;
             resourceInputs["repeatOns"] = state ? state.repeatOns : undefined;
             resourceInputs["serviceIds"] = state ? state.serviceIds : undefined;
             resourceInputs["severityIds"] = state ? state.severityIds : undefined;
             resourceInputs["triggerParams"] = state ? state.triggerParams : undefined;
             resourceInputs["wait"] = state ? state.wait : undefined;
+            resourceInputs["workflowGroupId"] = state ? state.workflowGroupId : undefined;
         } else {
             const args = argsOrState as WorkflowPostMortemArgs | undefined;
             resourceInputs["command"] = args ? args.command : undefined;
@@ -139,12 +134,14 @@ export class WorkflowPostMortem extends pulumi.CustomResource {
             resourceInputs["groupIds"] = args ? args.groupIds : undefined;
             resourceInputs["incidentTypeIds"] = args ? args.incidentTypeIds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["repeatEveryDuration"] = args ? args.repeatEveryDuration : undefined;
             resourceInputs["repeatOns"] = args ? args.repeatOns : undefined;
             resourceInputs["serviceIds"] = args ? args.serviceIds : undefined;
             resourceInputs["severityIds"] = args ? args.severityIds : undefined;
             resourceInputs["triggerParams"] = args ? args.triggerParams : undefined;
             resourceInputs["wait"] = args ? args.wait : undefined;
+            resourceInputs["workflowGroupId"] = args ? args.workflowGroupId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkflowPostMortem.__pulumiType, name, resourceInputs, opts);
@@ -184,6 +181,10 @@ export interface WorkflowPostMortemState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The position of the workflow (1 being top of list)
+     */
+    position?: pulumi.Input<number>;
+    /**
      * Repeat workflow every duration.
      */
     repeatEveryDuration?: pulumi.Input<string>;
@@ -207,6 +208,10 @@ export interface WorkflowPostMortemState {
      * Wait before running workflow.
      */
     wait?: pulumi.Input<string>;
+    /**
+     * The workflow group this workflow belongs to.
+     */
+    workflowGroupId?: pulumi.Input<string>;
 }
 
 /**
@@ -242,6 +247,10 @@ export interface WorkflowPostMortemArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * The position of the workflow (1 being top of list)
+     */
+    position?: pulumi.Input<number>;
+    /**
      * Repeat workflow every duration.
      */
     repeatEveryDuration?: pulumi.Input<string>;
@@ -265,4 +274,8 @@ export interface WorkflowPostMortemArgs {
      * Wait before running workflow.
      */
     wait?: pulumi.Input<string>;
+    /**
+     * The workflow group this workflow belongs to.
+     */
+    workflowGroupId?: pulumi.Input<string>;
 }

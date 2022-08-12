@@ -6,21 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages incident environments (e.g production, development).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.Environment("foo", {});
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/environment:Environment foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class Environment extends pulumi.CustomResource {
     /**

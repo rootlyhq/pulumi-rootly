@@ -6,21 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages Teams (e.g Infrastructure, Security, Search).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.Team("foo", {});
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/team:Team foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class Team extends pulumi.CustomResource {
     /**
@@ -53,7 +38,7 @@ export class Team extends pulumi.CustomResource {
     /**
      * The color chosen for the team
      */
-    public readonly color!: pulumi.Output<string | undefined>;
+    public readonly color!: pulumi.Output<string>;
     /**
      * The description of the team
      */

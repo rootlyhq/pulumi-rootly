@@ -8,8 +8,20 @@ import * as utilities from "./utilities";
 export * from "./cause";
 export * from "./customField";
 export * from "./customFieldOption";
+export * from "./dashboard";
+export * from "./dashboardPanel";
 export * from "./environment";
 export * from "./functionality";
+export * from "./getCauses";
+export * from "./getCustomFieldOptions";
+export * from "./getCustomFields";
+export * from "./getEnvironments";
+export * from "./getFunctionalities";
+export * from "./getIncidentRoles";
+export * from "./getIncidentTypes";
+export * from "./getServices";
+export * from "./getSeverities";
+export * from "./getTeams";
 export * from "./incidentRole";
 export * from "./incidentType";
 export * from "./provider";
@@ -108,6 +120,8 @@ export {
 import { Cause } from "./cause";
 import { CustomField } from "./customField";
 import { CustomFieldOption } from "./customFieldOption";
+import { Dashboard } from "./dashboard";
+import { DashboardPanel } from "./dashboardPanel";
 import { Environment } from "./environment";
 import { Functionality } from "./functionality";
 import { IncidentRole } from "./incidentRole";
@@ -204,6 +218,10 @@ const _module = {
                 return new CustomField(name, <any>undefined, { urn })
             case "rootly:index/customFieldOption:CustomFieldOption":
                 return new CustomFieldOption(name, <any>undefined, { urn })
+            case "rootly:index/dashboard:Dashboard":
+                return new Dashboard(name, <any>undefined, { urn })
+            case "rootly:index/dashboardPanel:DashboardPanel":
+                return new DashboardPanel(name, <any>undefined, { urn })
             case "rootly:index/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
             case "rootly:index/functionality:Functionality":
@@ -382,6 +400,8 @@ const _module = {
 pulumi.runtime.registerResourceModule("rootly", "index/cause", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/customField", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/customFieldOption", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/dashboard", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/dashboardPanel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/environment", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/functionality", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/incidentRole", _module)

@@ -6,21 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages incident types (e.g Cloud, Customer Facing, Security, Training).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.IncidentType("foo", {});
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/incidentType:IncidentType foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class IncidentType extends pulumi.CustomResource {
     /**

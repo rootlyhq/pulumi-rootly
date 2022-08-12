@@ -6,23 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages custom fields.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.CustomField("foo", {
- *     name: "bar",
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/customField:CustomField foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class CustomField extends pulumi.CustomResource {
     /**

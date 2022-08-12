@@ -4,15 +4,130 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface DashboardPanelParams {
+    datasets?: outputs.DashboardPanelParamsDataset[];
+    display: string;
+}
+
+export interface DashboardPanelParamsDataset {
+    aggregate?: outputs.DashboardPanelParamsDatasetAggregate;
+    collection: string;
+    filters?: outputs.DashboardPanelParamsDatasetFilter[];
+    groupBy: string;
+    name: string;
+}
+
+export interface DashboardPanelParamsDatasetAggregate {
+    cumulative: boolean;
+    key: string;
+    operation: string;
+}
+
+export interface DashboardPanelParamsDatasetFilter {
+    operation: string;
+    rules?: outputs.DashboardPanelParamsDatasetFilterRule[];
+}
+
+export interface DashboardPanelParamsDatasetFilterRule {
+    condition: string;
+    key: string;
+    operation: string;
+    value: string;
+}
+
+export interface GetCausesCause {
+    description: string;
+    id: string;
+    name: string;
+    slug: string;
+}
+
+export interface GetCustomFieldOptionsCustomFieldOption {
+    color: string;
+    customFieldId: number;
+    id: string;
+    position: number;
+    value: string;
+}
+
+export interface GetCustomFieldsCustomField {
+    description: string;
+    enabled: boolean;
+    id: string;
+    kind: string;
+    label: string;
+    requireds: string[];
+    showns: string[];
+    slug: string;
+}
+
+export interface GetEnvironmentsEnvironment {
+    color: string;
+    description: string;
+    id: string;
+    name: string;
+    slug: string;
+}
+
+export interface GetFunctionalitiesFunctionality {
+    color: string;
+    description: string;
+    id: string;
+    name: string;
+    slug: string;
+}
+
+export interface GetIncidentRolesIncidentRole {
+    description: string;
+    enabled: boolean;
+    id: string;
+    name: string;
+    slug: string;
+    summary: string;
+}
+
+export interface GetIncidentTypesIncidentType {
+    description: string;
+    id: string;
+    name: string;
+    slug: string;
+}
+
+export interface GetServicesService {
+    color: string;
+    description: string;
+    id: string;
+    name: string;
+    publicDescription: string;
+    slug: string;
+}
+
+export interface GetSeveritiesSeverity {
+    color: string;
+    description: string;
+    id: string;
+    name: string;
+    severity: string;
+    slug: string;
+}
+
+export interface GetTeamsTeam {
+    color: string;
+    description: string;
+    id: string;
+    name: string;
+    slug: string;
+}
+
 export interface WorkflowActionItemTriggerParams {
     incidentActionItemCondition?: string;
     incidentActionItemConditionGroup?: string;
     incidentActionItemConditionKind?: string;
     incidentActionItemConditionPriority?: string;
     incidentActionItemConditionStatus?: string;
-    incidentActionItemKinds?: boolean[];
-    incidentActionItemPriorities?: boolean[];
-    incidentActionItemStatuses?: boolean[];
+    incidentActionItemKinds?: string[];
+    incidentActionItemPriorities?: string[];
+    incidentActionItemStatuses?: string[];
     incidentCondition?: string;
     incidentConditionAcknowledgedAt?: string;
     incidentConditionDetectedAt?: string;
@@ -220,7 +335,9 @@ export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
 }
 
 export interface WorkflowTaskCreateAsanaSubtaskTaskParams {
+    assignUserEmail?: string;
     completion: {[key: string]: any};
+    customFieldsMapping?: string;
     notes?: string;
     parentTaskId: string;
     taskType?: string;
@@ -228,7 +345,9 @@ export interface WorkflowTaskCreateAsanaSubtaskTaskParams {
 }
 
 export interface WorkflowTaskCreateAsanaTaskTaskParams {
+    assignUserEmail?: string;
     completion: {[key: string]: any};
+    customFieldsMapping?: string;
     projects: outputs.WorkflowTaskCreateAsanaTaskTaskParamsProject[];
     taskType?: string;
     title: string;
@@ -241,17 +360,12 @@ export interface WorkflowTaskCreateAsanaTaskTaskParamsProject {
 }
 
 export interface WorkflowTaskCreateConfluencePageTaskParams {
-    ancestors?: outputs.WorkflowTaskCreateConfluencePageTaskParamsAncestor[];
+    ancestor?: {[key: string]: any};
     content?: string;
     postMortemTemplateId?: string;
     space: {[key: string]: any};
     taskType?: string;
     title: string;
-}
-
-export interface WorkflowTaskCreateConfluencePageTaskParamsAncestor {
-    id: string;
-    name: string;
 }
 
 export interface WorkflowTaskCreateDatadogNotebookTaskParams {
@@ -639,7 +753,7 @@ export interface WorkflowTaskPublishIncidentTaskParams {
     incident: {[key: string]: any};
     publicTitle: string;
     status: string;
-    statusPageIds: string[];
+    statusPageId: string;
     taskType?: string;
 }
 
@@ -686,6 +800,7 @@ export interface WorkflowTaskSendEmailTaskParams {
 
 export interface WorkflowTaskSendSlackMessageTaskParams {
     channels?: outputs.WorkflowTaskSendSlackMessageTaskParamsChannel[];
+    sendAsEphemeral?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup[];
     slackUsers?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUser[];
     taskType?: string;
@@ -715,7 +830,7 @@ export interface WorkflowTaskSendSmsTaskParams {
 }
 
 export interface WorkflowTaskSnapshotDatadogGraphTaskParams {
-    dashboards: outputs.WorkflowTaskSnapshotDatadogGraphTaskParamsDashboard[];
+    dashboards?: outputs.WorkflowTaskSnapshotDatadogGraphTaskParamsDashboard[];
     metricQueries?: string[];
     pastDuration: string;
     postToSlackChannels?: outputs.WorkflowTaskSnapshotDatadogGraphTaskParamsPostToSlackChannel[];
@@ -790,7 +905,9 @@ export interface WorkflowTaskUpdateAirtableTableRecordTaskParams {
 }
 
 export interface WorkflowTaskUpdateAsanaTaskTaskParams {
+    assignUserEmail?: string;
     completion: {[key: string]: any};
+    customFieldsMapping?: string;
     taskId: string;
     taskType?: string;
     title?: string;

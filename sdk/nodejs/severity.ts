@@ -6,21 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages Severities (e.g SEV0, SEV1, SEV2, SEV3).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.Severity("foo", {});
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/severity:Severity foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class Severity extends pulumi.CustomResource {
     /**

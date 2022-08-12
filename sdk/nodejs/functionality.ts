@@ -6,21 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manages functionalities (e.g Logging In, Search, Adds items to Cart).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const foo = new rootly.Functionality("foo", {});
- * ```
- *
- * ## Import
- *
- * ```sh
- *  $ pulumi import rootly:index/functionality:Functionality foo 11111111-2222-3333-4444-555555555555
- * ```
  */
 export class Functionality extends pulumi.CustomResource {
     /**
