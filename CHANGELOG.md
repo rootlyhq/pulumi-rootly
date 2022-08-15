@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+## v0.0.6
+
+Add data sources and dashboard resources.
+
 ## v0.0.5
 
 Add workflow and task resources
