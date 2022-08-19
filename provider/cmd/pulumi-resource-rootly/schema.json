@@ -513,6 +513,14 @@
                         }
                     }
                 },
+                "alertConditionLabelUseRegexp": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "alertConditionPayload": {
                     "type": "string",
                     "language": {
@@ -521,8 +529,24 @@
                         }
                     }
                 },
+                "alertConditionPayloadUseRegexp": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "alertConditionSource": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "alertConditionSourceUseRegexp": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -972,6 +996,14 @@
                         }
                     }
                 },
+                "pulseConditionLabelUseRegexp": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "pulseConditionPayload": {
                     "type": "string",
                     "language": {
@@ -980,8 +1012,24 @@
                         }
                     }
                 },
+                "pulseConditionPayloadUseRegexp": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "pulseConditionSource": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pulseConditionSourceUseRegexp": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2113,6 +2161,14 @@
                         }
                     }
                 },
+                "conferenceSolutionKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "daysUntilMeeting": {
                     "type": "integer",
                     "language": {
@@ -2353,6 +2409,14 @@
         },
         "rootly:index/WorkflowTaskCreateIncidentTaskParams:WorkflowTaskCreateIncidentTaskParams": {
             "properties": {
+                "customFieldsMapping": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "environmentIds": {
                     "type": "array",
                     "items": {
@@ -5499,6 +5563,14 @@
                         }
                     }
                 },
+                "conferenceSolutionKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "description": {
                     "type": "string",
                     "language": {
@@ -5580,6 +5652,14 @@
         "rootly:index/WorkflowTaskUpdateIncidentTaskParams:WorkflowTaskUpdateIncidentTaskParams": {
             "properties": {
                 "acknowledgedAt": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customFieldsMapping": {
                     "type": "string",
                     "language": {
                         "python": {

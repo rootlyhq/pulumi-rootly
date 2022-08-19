@@ -156,8 +156,11 @@ export interface WorkflowActionItemTriggerParams {
 export interface WorkflowAlertTriggerParams {
     alertCondition?: string;
     alertConditionLabel?: string;
+    alertConditionLabelUseRegexp?: boolean;
     alertConditionPayload?: string;
+    alertConditionPayloadUseRegexp?: boolean;
     alertConditionSource?: string;
+    alertConditionSourceUseRegexp?: boolean;
     alertLabels?: string[];
     alertPayloads?: string[];
     alertQueryPayload?: string;
@@ -216,8 +219,11 @@ export interface WorkflowPostMortemTriggerParams {
 export interface WorkflowPulseTriggerParams {
     pulseCondition?: string;
     pulseConditionLabel?: string;
+    pulseConditionLabelUseRegexp?: boolean;
     pulseConditionPayload?: string;
+    pulseConditionPayloadUseRegexp?: boolean;
     pulseConditionSource?: string;
+    pulseConditionSourceUseRegexp?: boolean;
     pulseLabels?: string[];
     pulsePayloads?: string[];
     pulseQueryPayload?: string;
@@ -397,6 +403,7 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParams {
     canGuestsInviteOthers?: boolean;
     canGuestsModifyEvent?: boolean;
     canGuestsSeeOtherGuests?: boolean;
+    conferenceSolutionKey?: string;
     daysUntilMeeting: number;
     description: string;
     excludeWeekends?: boolean;
@@ -433,6 +440,7 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskCreateIncidentTaskParams {
+    customFieldsMapping?: string;
     environmentIds?: string[];
     functionalityIds?: string[];
     groupIds?: string[];
@@ -927,6 +935,7 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
     canGuestsInviteOthers?: boolean;
     canGuestsModifyEvent?: boolean;
     canGuestsSeeOtherGuests?: boolean;
+    conferenceSolutionKey?: string;
     description?: string;
     eventId: string;
     meetingDuration?: string;
@@ -940,6 +949,7 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
 
 export interface WorkflowTaskUpdateIncidentTaskParams {
     acknowledgedAt?: string;
+    customFieldsMapping?: string;
     detectedAt?: string;
     environmentIds?: string[];
     functionalityIds?: string[];

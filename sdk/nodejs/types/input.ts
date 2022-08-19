@@ -72,8 +72,11 @@ export interface WorkflowActionItemTriggerParams {
 export interface WorkflowAlertTriggerParams {
     alertCondition?: pulumi.Input<string>;
     alertConditionLabel?: pulumi.Input<string>;
+    alertConditionLabelUseRegexp?: pulumi.Input<boolean>;
     alertConditionPayload?: pulumi.Input<string>;
+    alertConditionPayloadUseRegexp?: pulumi.Input<boolean>;
     alertConditionSource?: pulumi.Input<string>;
+    alertConditionSourceUseRegexp?: pulumi.Input<boolean>;
     alertLabels?: pulumi.Input<pulumi.Input<string>[]>;
     alertPayloads?: pulumi.Input<pulumi.Input<string>[]>;
     alertQueryPayload?: pulumi.Input<string>;
@@ -132,8 +135,11 @@ export interface WorkflowPostMortemTriggerParams {
 export interface WorkflowPulseTriggerParams {
     pulseCondition?: pulumi.Input<string>;
     pulseConditionLabel?: pulumi.Input<string>;
+    pulseConditionLabelUseRegexp?: pulumi.Input<boolean>;
     pulseConditionPayload?: pulumi.Input<string>;
+    pulseConditionPayloadUseRegexp?: pulumi.Input<boolean>;
     pulseConditionSource?: pulumi.Input<string>;
+    pulseConditionSourceUseRegexp?: pulumi.Input<boolean>;
     pulseLabels?: pulumi.Input<pulumi.Input<string>[]>;
     pulsePayloads?: pulumi.Input<pulumi.Input<string>[]>;
     pulseQueryPayload?: pulumi.Input<string>;
@@ -313,6 +319,7 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParams {
     canGuestsInviteOthers?: pulumi.Input<boolean>;
     canGuestsModifyEvent?: pulumi.Input<boolean>;
     canGuestsSeeOtherGuests?: pulumi.Input<boolean>;
+    conferenceSolutionKey?: pulumi.Input<string>;
     daysUntilMeeting: pulumi.Input<number>;
     description: pulumi.Input<string>;
     excludeWeekends?: pulumi.Input<boolean>;
@@ -349,6 +356,7 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskCreateIncidentTaskParams {
+    customFieldsMapping?: pulumi.Input<string>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
     functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
     groupIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -843,6 +851,7 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
     canGuestsInviteOthers?: pulumi.Input<boolean>;
     canGuestsModifyEvent?: pulumi.Input<boolean>;
     canGuestsSeeOtherGuests?: pulumi.Input<boolean>;
+    conferenceSolutionKey?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     eventId: pulumi.Input<string>;
     meetingDuration?: pulumi.Input<string>;
@@ -856,6 +865,7 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
 
 export interface WorkflowTaskUpdateIncidentTaskParams {
     acknowledgedAt?: pulumi.Input<string>;
+    customFieldsMapping?: pulumi.Input<string>;
     detectedAt?: pulumi.Input<string>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
     functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
