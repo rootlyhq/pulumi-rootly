@@ -58,3 +58,7 @@ Run the regular `pulumi up` command.
 ## Reference
 
 For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/rootly/api-docs/)
+
+## Development
+
+New resources/data sources have to be added in the terraform bridge in `provider/resources.go`.
