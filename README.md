@@ -61,4 +61,8 @@ For detailed reference documentation, please visit [the Pulumi registry](https:/
 
 ## Development
 
-New resources/data sources have to be added in the terraform bridge in `provider/resources.go`.
+New resources/data sources must be added in the terraform bridge in `provider/resources.go`.
+
+Update the SDKs with `make build_sdks` or just the NodeJS SDK with `make build_nodejs`.
+
+Packages are automatically published on new version tags via GitHub Actions.
