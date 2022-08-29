@@ -4752,6 +4752,14 @@
                         }
                     }
                 },
+                "from": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "preheader": {
                     "type": "string",
                     "language": {
@@ -8367,6 +8375,107 @@
                     "workflowGroupId": {
                         "type": "string",
                         "description": "The workflow group this workflow belongs to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowCustomFieldSelection:WorkflowCustomFieldSelection": {
+            "description": "Manages workflow custom field selections (triggers).\n",
+            "properties": {
+                "customFieldId": {
+                    "type": "integer",
+                    "description": "The ID of the custom field\n"
+                },
+                "incidentCondition": {
+                    "type": "string",
+                    "description": "The trigger condition\n"
+                },
+                "selectedOptionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Custom field options to associate with this custom field trigger\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Custom field values to associate with this custom field trigger\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the workflow\n"
+                }
+            },
+            "required": [
+                "customFieldId",
+                "selectedOptionIds",
+                "values",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "customFieldId": {
+                    "type": "integer",
+                    "description": "The ID of the custom field\n"
+                },
+                "incidentCondition": {
+                    "type": "string",
+                    "description": "The trigger condition\n"
+                },
+                "selectedOptionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Custom field options to associate with this custom field trigger\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Custom field values to associate with this custom field trigger\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the workflow\n"
+                }
+            },
+            "requiredInputs": [
+                "customFieldId",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowCustomFieldSelection resources.\n",
+                "properties": {
+                    "customFieldId": {
+                        "type": "integer",
+                        "description": "The ID of the custom field\n"
+                    },
+                    "incidentCondition": {
+                        "type": "string",
+                        "description": "The trigger condition\n"
+                    },
+                    "selectedOptionIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "Custom field options to associate with this custom field trigger\n"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Custom field values to associate with this custom field trigger\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the workflow\n"
                     }
                 },
                 "type": "object"
@@ -13635,6 +13744,12 @@
                     "name": {
                         "type": "string"
                     },
+                    "opsgenieId": {
+                        "type": "string"
+                    },
+                    "pagerdutyId": {
+                        "type": "string"
+                    },
                     "slug": {
                         "type": "string"
                     }
@@ -13655,6 +13770,12 @@
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
                     "name": {
+                        "type": "string"
+                    },
+                    "opsgenieId": {
+                        "type": "string"
+                    },
+                    "pagerdutyId": {
                         "type": "string"
                     },
                     "slug": {
@@ -13758,7 +13879,16 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getServices.\n",
                 "properties": {
+                    "backstageId": {
+                        "type": "string"
+                    },
                     "name": {
+                        "type": "string"
+                    },
+                    "opsgenieId": {
+                        "type": "string"
+                    },
+                    "pagerdutyId": {
                         "type": "string"
                     },
                     "slug": {
@@ -13770,11 +13900,20 @@
             "outputs": {
                 "description": "A collection of values returned by getServices.\n",
                 "properties": {
+                    "backstageId": {
+                        "type": "string"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
                     "name": {
+                        "type": "string"
+                    },
+                    "opsgenieId": {
+                        "type": "string"
+                    },
+                    "pagerdutyId": {
                         "type": "string"
                     },
                     "services": {

@@ -13,7 +13,10 @@ export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions)
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rootly:index/getServices:getServices", {
+        "backstageId": args.backstageId,
         "name": args.name,
+        "opsgenieId": args.opsgenieId,
+        "pagerdutyId": args.pagerdutyId,
         "slug": args.slug,
     }, opts);
 }
@@ -22,7 +25,10 @@ export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getServices.
  */
 export interface GetServicesArgs {
+    backstageId?: string;
     name?: string;
+    opsgenieId?: string;
+    pagerdutyId?: string;
     slug?: string;
 }
 
@@ -30,11 +36,14 @@ export interface GetServicesArgs {
  * A collection of values returned by getServices.
  */
 export interface GetServicesResult {
+    readonly backstageId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly name?: string;
+    readonly opsgenieId?: string;
+    readonly pagerdutyId?: string;
     readonly services: outputs.GetServicesService[];
     readonly slug?: string;
 }
@@ -47,6 +56,9 @@ export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getServices.
  */
 export interface GetServicesOutputArgs {
+    backstageId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    opsgenieId?: pulumi.Input<string>;
+    pagerdutyId?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;
 }

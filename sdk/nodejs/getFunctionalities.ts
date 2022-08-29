@@ -14,6 +14,8 @@ export function getFunctionalities(args?: GetFunctionalitiesArgs, opts?: pulumi.
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rootly:index/getFunctionalities:getFunctionalities", {
         "name": args.name,
+        "opsgenieId": args.opsgenieId,
+        "pagerdutyId": args.pagerdutyId,
         "slug": args.slug,
     }, opts);
 }
@@ -23,6 +25,8 @@ export function getFunctionalities(args?: GetFunctionalitiesArgs, opts?: pulumi.
  */
 export interface GetFunctionalitiesArgs {
     name?: string;
+    opsgenieId?: string;
+    pagerdutyId?: string;
     slug?: string;
 }
 
@@ -36,6 +40,8 @@ export interface GetFunctionalitiesResult {
      */
     readonly id: string;
     readonly name?: string;
+    readonly opsgenieId?: string;
+    readonly pagerdutyId?: string;
     readonly slug?: string;
 }
 
@@ -48,5 +54,7 @@ export function getFunctionalitiesOutput(args?: GetFunctionalitiesOutputArgs, op
  */
 export interface GetFunctionalitiesOutputArgs {
     name?: pulumi.Input<string>;
+    opsgenieId?: pulumi.Input<string>;
+    pagerdutyId?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;
 }

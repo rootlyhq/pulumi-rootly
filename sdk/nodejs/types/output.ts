@@ -646,19 +646,19 @@ export interface WorkflowTaskGetPulsesTaskParamsPostToSlackChannel {
     name: string;
 }
 
-export interface WorkflowTaskHttpClientTaskParams {
+export interface WorkflowTaskHTTPClientTaskParams {
     body?: string;
     eventUrl?: string;
     headers?: string;
     method?: string;
     params?: string;
-    postToSlackChannels?: outputs.WorkflowTaskHttpClientTaskParamsPostToSlackChannel[];
+    postToSlackChannels?: outputs.WorkflowTaskHTTPClientTaskParamsPostToSlackChannel[];
     succeedOnStatus: string;
     taskType?: string;
     url?: string;
 }
 
-export interface WorkflowTaskHttpClientTaskParamsPostToSlackChannel {
+export interface WorkflowTaskHTTPClientTaskParamsPostToSlackChannel {
     id: string;
     name: string;
 }
@@ -800,6 +800,7 @@ export interface WorkflowTaskRunCommandHerokuTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskSendEmailTaskParams {
     body: string;
+    from?: string;
     preheader?: string;
     subject: string;
     taskType?: string;

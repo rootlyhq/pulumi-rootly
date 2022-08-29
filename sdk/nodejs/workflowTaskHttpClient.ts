@@ -8,9 +8,9 @@ import * as utilities from "./utilities";
 /**
  * Manages workflow httpClient task.
  */
-export class WorkflowTaskHttpClient extends pulumi.CustomResource {
+export class WorkflowTaskHTTPClient extends pulumi.CustomResource {
     /**
-     * Get an existing WorkflowTaskHttpClient resource's state with the given name, ID, and optional extra
+     * Get an existing WorkflowTaskHTTPClient resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -18,22 +18,22 @@ export class WorkflowTaskHttpClient extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkflowTaskHttpClientState, opts?: pulumi.CustomResourceOptions): WorkflowTaskHttpClient {
-        return new WorkflowTaskHttpClient(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkflowTaskHTTPClientState, opts?: pulumi.CustomResourceOptions): WorkflowTaskHTTPClient {
+        return new WorkflowTaskHTTPClient(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'rootly:index/workflowTaskHttpClient:WorkflowTaskHttpClient';
+    public static readonly __pulumiType = 'rootly:index/workflowTaskHTTPClient:WorkflowTaskHTTPClient';
 
     /**
-     * Returns true if the given object is an instance of WorkflowTaskHttpClient.  This is designed to work even
+     * Returns true if the given object is an instance of WorkflowTaskHTTPClient.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is WorkflowTaskHttpClient {
+    public static isInstance(obj: any): obj is WorkflowTaskHTTPClient {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === WorkflowTaskHttpClient.__pulumiType;
+        return obj['__pulumiType'] === WorkflowTaskHTTPClient.__pulumiType;
     }
 
     /**
@@ -43,30 +43,30 @@ export class WorkflowTaskHttpClient extends pulumi.CustomResource {
     /**
      * The parameters for this workflow task.
      */
-    public readonly taskParams!: pulumi.Output<outputs.WorkflowTaskHttpClientTaskParams>;
+    public readonly taskParams!: pulumi.Output<outputs.WorkflowTaskHTTPClientTaskParams>;
     /**
      * The ID of the parent workflow
      */
     public readonly workflowId!: pulumi.Output<string>;
 
     /**
-     * Create a WorkflowTaskHttpClient resource with the given unique name, arguments, and options.
+     * Create a WorkflowTaskHTTPClient resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: WorkflowTaskHttpClientArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: WorkflowTaskHttpClientArgs | WorkflowTaskHttpClientState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: WorkflowTaskHTTPClientArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: WorkflowTaskHTTPClientArgs | WorkflowTaskHTTPClientState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as WorkflowTaskHttpClientState | undefined;
+            const state = argsOrState as WorkflowTaskHTTPClientState | undefined;
             resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
-            const args = argsOrState as WorkflowTaskHttpClientArgs | undefined;
+            const args = argsOrState as WorkflowTaskHTTPClientArgs | undefined;
             if ((!args || args.taskParams === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'taskParams'");
             }
@@ -78,14 +78,14 @@ export class WorkflowTaskHttpClient extends pulumi.CustomResource {
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(WorkflowTaskHttpClient.__pulumiType, name, resourceInputs, opts);
+        super(WorkflowTaskHTTPClient.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering WorkflowTaskHttpClient resources.
+ * Input properties used for looking up and filtering WorkflowTaskHTTPClient resources.
  */
-export interface WorkflowTaskHttpClientState {
+export interface WorkflowTaskHTTPClientState {
     /**
      * The position of the workflow task (1 being top of list)
      */
@@ -93,7 +93,7 @@ export interface WorkflowTaskHttpClientState {
     /**
      * The parameters for this workflow task.
      */
-    taskParams?: pulumi.Input<inputs.WorkflowTaskHttpClientTaskParams>;
+    taskParams?: pulumi.Input<inputs.WorkflowTaskHTTPClientTaskParams>;
     /**
      * The ID of the parent workflow
      */
@@ -101,9 +101,9 @@ export interface WorkflowTaskHttpClientState {
 }
 
 /**
- * The set of arguments for constructing a WorkflowTaskHttpClient resource.
+ * The set of arguments for constructing a WorkflowTaskHTTPClient resource.
  */
-export interface WorkflowTaskHttpClientArgs {
+export interface WorkflowTaskHTTPClientArgs {
     /**
      * The position of the workflow task (1 being top of list)
      */
@@ -111,7 +111,7 @@ export interface WorkflowTaskHttpClientArgs {
     /**
      * The parameters for this workflow task.
      */
-    taskParams: pulumi.Input<inputs.WorkflowTaskHttpClientTaskParams>;
+    taskParams: pulumi.Input<inputs.WorkflowTaskHTTPClientTaskParams>;
     /**
      * The ID of the parent workflow
      */

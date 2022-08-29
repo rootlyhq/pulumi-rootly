@@ -562,19 +562,19 @@ export interface WorkflowTaskGetPulsesTaskParamsPostToSlackChannel {
     name: pulumi.Input<string>;
 }
 
-export interface WorkflowTaskHttpClientTaskParams {
+export interface WorkflowTaskHTTPClientTaskParams {
     body?: pulumi.Input<string>;
     eventUrl?: pulumi.Input<string>;
     headers?: pulumi.Input<string>;
     method?: pulumi.Input<string>;
     params?: pulumi.Input<string>;
-    postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskHttpClientTaskParamsPostToSlackChannel>[]>;
+    postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskHTTPClientTaskParamsPostToSlackChannel>[]>;
     succeedOnStatus: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
     url?: pulumi.Input<string>;
 }
 
-export interface WorkflowTaskHttpClientTaskParamsPostToSlackChannel {
+export interface WorkflowTaskHTTPClientTaskParamsPostToSlackChannel {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
 }
@@ -716,6 +716,7 @@ export interface WorkflowTaskRunCommandHerokuTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskSendEmailTaskParams {
     body: pulumi.Input<string>;
+    from?: pulumi.Input<string>;
     preheader?: pulumi.Input<string>;
     subject: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;

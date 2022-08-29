@@ -30,6 +30,8 @@ export * from "./severity";
 export * from "./team";
 export * from "./workflowActionItem";
 export * from "./workflowAlert";
+export * from "./workflowCustomFieldSelection";
+export * from "./workflowGroup";
 export * from "./workflowIncident";
 export * from "./workflowPostMortem";
 export * from "./workflowPulse";
@@ -71,7 +73,7 @@ export * from "./workflowTaskCreateZoomMeeting";
 export * from "./workflowTaskGetGithubCommits";
 export * from "./workflowTaskGetGitlabCommits";
 export * from "./workflowTaskGetPulses";
-export * from "./workflowTaskHttpClient";
+export * from "./workflowTaskHTTPClient";
 export * from "./workflowTaskInviteToSlackChannel";
 export * from "./workflowTaskInviteToSlackChannelOpsgenie";
 export * from "./workflowTaskInviteToSlackChannelPagerduty";
@@ -131,6 +133,8 @@ import { Severity } from "./severity";
 import { Team } from "./team";
 import { WorkflowActionItem } from "./workflowActionItem";
 import { WorkflowAlert } from "./workflowAlert";
+import { WorkflowCustomFieldSelection } from "./workflowCustomFieldSelection";
+import { WorkflowGroup } from "./workflowGroup";
 import { WorkflowIncident } from "./workflowIncident";
 import { WorkflowPostMortem } from "./workflowPostMortem";
 import { WorkflowPulse } from "./workflowPulse";
@@ -172,7 +176,7 @@ import { WorkflowTaskCreateZoomMeeting } from "./workflowTaskCreateZoomMeeting";
 import { WorkflowTaskGetGithubCommits } from "./workflowTaskGetGithubCommits";
 import { WorkflowTaskGetGitlabCommits } from "./workflowTaskGetGitlabCommits";
 import { WorkflowTaskGetPulses } from "./workflowTaskGetPulses";
-import { WorkflowTaskHttpClient } from "./workflowTaskHttpClient";
+import { WorkflowTaskHTTPClient } from "./workflowTaskHTTPClient";
 import { WorkflowTaskInviteToSlackChannel } from "./workflowTaskInviteToSlackChannel";
 import { WorkflowTaskInviteToSlackChannelOpsgenie } from "./workflowTaskInviteToSlackChannelOpsgenie";
 import { WorkflowTaskInviteToSlackChannelPagerduty } from "./workflowTaskInviteToSlackChannelPagerduty";
@@ -240,6 +244,10 @@ const _module = {
                 return new WorkflowActionItem(name, <any>undefined, { urn })
             case "rootly:index/workflowAlert:WorkflowAlert":
                 return new WorkflowAlert(name, <any>undefined, { urn })
+            case "rootly:index/workflowCustomFieldSelection:WorkflowCustomFieldSelection":
+                return new WorkflowCustomFieldSelection(name, <any>undefined, { urn })
+            case "rootly:index/workflowGroup:WorkflowGroup":
+                return new WorkflowGroup(name, <any>undefined, { urn })
             case "rootly:index/workflowIncident:WorkflowIncident":
                 return new WorkflowIncident(name, <any>undefined, { urn })
             case "rootly:index/workflowPostMortem:WorkflowPostMortem":
@@ -322,8 +330,8 @@ const _module = {
                 return new WorkflowTaskGetGitlabCommits(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskGetPulses:WorkflowTaskGetPulses":
                 return new WorkflowTaskGetPulses(name, <any>undefined, { urn })
-            case "rootly:index/workflowTaskHttpClient:WorkflowTaskHttpClient":
-                return new WorkflowTaskHttpClient(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskHTTPClient:WorkflowTaskHTTPClient":
+                return new WorkflowTaskHTTPClient(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskInviteToSlackChannel:WorkflowTaskInviteToSlackChannel":
                 return new WorkflowTaskInviteToSlackChannel(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskInviteToSlackChannelOpsgenie:WorkflowTaskInviteToSlackChannelOpsgenie":
@@ -411,6 +419,8 @@ pulumi.runtime.registerResourceModule("rootly", "index/severity", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/team", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowActionItem", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowAlert", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowCustomFieldSelection", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowGroup", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowPostMortem", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowPulse", _module)
@@ -452,7 +462,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateZoomMee
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetGithubCommits", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetGitlabCommits", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetPulses", _module)
-pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskHttpClient", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskHTTPClient", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannelOpsgenie", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannelPagerduty", _module)
