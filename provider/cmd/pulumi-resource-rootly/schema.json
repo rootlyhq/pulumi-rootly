@@ -3835,7 +3835,7 @@
                 "name"
             ]
         },
-        "rootly:index/WorkflowTaskHttpClientTaskParams:WorkflowTaskHttpClientTaskParams": {
+        "rootly:index/WorkflowTaskHTTPClientTaskParams:WorkflowTaskHTTPClientTaskParams": {
             "properties": {
                 "body": {
                     "type": "string",
@@ -3880,7 +3880,7 @@
                 "postToSlackChannels": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/rootly:index/WorkflowTaskHttpClientTaskParamsPostToSlackChannel:WorkflowTaskHttpClientTaskParamsPostToSlackChannel"
+                        "$ref": "#/types/rootly:index/WorkflowTaskHTTPClientTaskParamsPostToSlackChannel:WorkflowTaskHTTPClientTaskParamsPostToSlackChannel"
                     },
                     "language": {
                         "python": {
@@ -3918,7 +3918,7 @@
                 "succeedOnStatus"
             ]
         },
-        "rootly:index/WorkflowTaskHttpClientTaskParamsPostToSlackChannel:WorkflowTaskHttpClientTaskParamsPostToSlackChannel": {
+        "rootly:index/WorkflowTaskHTTPClientTaskParamsPostToSlackChannel:WorkflowTaskHTTPClientTaskParamsPostToSlackChannel": {
             "properties": {
                 "id": {
                     "type": "string",
@@ -8372,6 +8372,76 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowGroup:WorkflowGroup": {
+            "description": "Manages workflow groups.\n",
+            "properties": {
+                "expanded": {
+                    "type": "boolean",
+                    "description": "Whether the workflow group is expanded or not\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of the workflow group\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the workflow group\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow group (1 being top of list)\n"
+                }
+            },
+            "required": [
+                "expanded",
+                "kind",
+                "name",
+                "position"
+            ],
+            "inputProperties": {
+                "expanded": {
+                    "type": "boolean",
+                    "description": "Whether the workflow group is expanded or not\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of the workflow group\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the workflow group\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow group (1 being top of list)\n"
+                }
+            },
+            "requiredInputs": [
+                "kind"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowGroup resources.\n",
+                "properties": {
+                    "expanded": {
+                        "type": "boolean",
+                        "description": "Whether the workflow group is expanded or not\n"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "The kind of the workflow group\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the workflow group\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow group (1 being top of list)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowIncident:WorkflowIncident": {
             "description": "Manages workflows.\n",
             "properties": {
@@ -11344,7 +11414,7 @@
                 "type": "object"
             }
         },
-        "rootly:index/workflowTaskHttpClient:WorkflowTaskHttpClient": {
+        "rootly:index/workflowTaskHTTPClient:WorkflowTaskHTTPClient": {
             "description": "Manages workflow http_client task.\n",
             "properties": {
                 "position": {
@@ -11352,7 +11422,7 @@
                     "description": "The position of the workflow task (1 being top of list)\n"
                 },
                 "taskParams": {
-                    "$ref": "#/types/rootly:index/WorkflowTaskHttpClientTaskParams:WorkflowTaskHttpClientTaskParams",
+                    "$ref": "#/types/rootly:index/WorkflowTaskHTTPClientTaskParams:WorkflowTaskHTTPClientTaskParams",
                     "description": "The parameters for this workflow task.\n"
                 },
                 "workflowId": {
@@ -11371,7 +11441,7 @@
                     "description": "The position of the workflow task (1 being top of list)\n"
                 },
                 "taskParams": {
-                    "$ref": "#/types/rootly:index/WorkflowTaskHttpClientTaskParams:WorkflowTaskHttpClientTaskParams",
+                    "$ref": "#/types/rootly:index/WorkflowTaskHTTPClientTaskParams:WorkflowTaskHTTPClientTaskParams",
                     "description": "The parameters for this workflow task.\n"
                 },
                 "workflowId": {
@@ -11384,14 +11454,14 @@
                 "workflowId"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering WorkflowTaskHttpClient resources.\n",
+                "description": "Input properties used for looking up and filtering WorkflowTaskHTTPClient resources.\n",
                 "properties": {
                     "position": {
                         "type": "integer",
                         "description": "The position of the workflow task (1 being top of list)\n"
                     },
                     "taskParams": {
-                        "$ref": "#/types/rootly:index/WorkflowTaskHttpClientTaskParams:WorkflowTaskHttpClientTaskParams",
+                        "$ref": "#/types/rootly:index/WorkflowTaskHTTPClientTaskParams:WorkflowTaskHTTPClientTaskParams",
                         "description": "The parameters for this workflow task.\n"
                     },
                     "workflowId": {
