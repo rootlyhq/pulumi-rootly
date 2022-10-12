@@ -61,6 +61,4 @@ For detailed reference documentation, please visit [the Pulumi registry](https:/
 
 ## Development
 
-Update the SDKs with `make build_sdks` or just the NodeJS SDK with `make build_nodejs`.
-
-Packages are automatically published on new version tags via GitHub Actions.
+Run `make update_provider` to update the Terraform provider, then `make build_nodejs` to build the SDK. Commit and tag to release. Packages are automatically published on new version tags via GitHub Actions.

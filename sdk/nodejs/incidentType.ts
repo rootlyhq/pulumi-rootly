@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages incident types (e.g Cloud, Customer Facing, Security, Training).
- */
 export class IncidentType extends pulumi.CustomResource {
     /**
      * Get an existing IncidentType resource's state with the given name, ID, and optional extra
@@ -35,18 +32,19 @@ export class IncidentType extends pulumi.CustomResource {
         return obj['__pulumiType'] === IncidentType.__pulumiType;
     }
 
-    /**
-     * The cikir of the incident type
-     */
-    public readonly color!: pulumi.Output<string | undefined>;
+    public readonly color!: pulumi.Output<string>;
     /**
      * The description of the incident type
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The name of the incident type
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The slug of the incident type
+     */
+    public readonly slug!: pulumi.Output<string>;
 
     /**
      * Create a IncidentType resource with the given unique name, arguments, and options.
@@ -64,11 +62,13 @@ export class IncidentType extends pulumi.CustomResource {
             resourceInputs["color"] = state ? state.color : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["slug"] = state ? state.slug : undefined;
         } else {
             const args = argsOrState as IncidentTypeArgs | undefined;
             resourceInputs["color"] = args ? args.color : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["slug"] = args ? args.slug : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IncidentType.__pulumiType, name, resourceInputs, opts);
@@ -79,9 +79,6 @@ export class IncidentType extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IncidentType resources.
  */
 export interface IncidentTypeState {
-    /**
-     * The cikir of the incident type
-     */
     color?: pulumi.Input<string>;
     /**
      * The description of the incident type
@@ -91,15 +88,16 @@ export interface IncidentTypeState {
      * The name of the incident type
      */
     name?: pulumi.Input<string>;
+    /**
+     * The slug of the incident type
+     */
+    slug?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a IncidentType resource.
  */
 export interface IncidentTypeArgs {
-    /**
-     * The cikir of the incident type
-     */
     color?: pulumi.Input<string>;
     /**
      * The description of the incident type
@@ -109,4 +107,8 @@ export interface IncidentTypeArgs {
      * The name of the incident type
      */
     name?: pulumi.Input<string>;
+    /**
+     * The slug of the incident type
+     */
+    slug?: pulumi.Input<string>;
 }

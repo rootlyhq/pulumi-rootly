@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages workflow custom field selections (triggers).
- */
 export class WorkflowCustomFieldSelection extends pulumi.CustomResource {
     /**
      * Get an existing WorkflowCustomFieldSelection resource's state with the given name, ID, and optional extra
@@ -36,23 +33,17 @@ export class WorkflowCustomFieldSelection extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the custom field
+     * The custom field for this selection
      */
     public readonly customFieldId!: pulumi.Output<number>;
     /**
-     * The trigger condition
+     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.
      */
     public readonly incidentCondition!: pulumi.Output<string | undefined>;
-    /**
-     * Custom field options to associate with this custom field trigger
-     */
     public readonly selectedOptionIds!: pulumi.Output<number[]>;
-    /**
-     * Custom field values to associate with this custom field trigger
-     */
     public readonly values!: pulumi.Output<string[]>;
     /**
-     * The ID of the workflow
+     * The workflow for this selection
      */
     public readonly workflowId!: pulumi.Output<string>;
 
@@ -79,9 +70,6 @@ export class WorkflowCustomFieldSelection extends pulumi.CustomResource {
             if ((!args || args.customFieldId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'customFieldId'");
             }
-            if ((!args || args.workflowId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workflowId'");
-            }
             resourceInputs["customFieldId"] = args ? args.customFieldId : undefined;
             resourceInputs["incidentCondition"] = args ? args.incidentCondition : undefined;
             resourceInputs["selectedOptionIds"] = args ? args.selectedOptionIds : undefined;
@@ -98,23 +86,17 @@ export class WorkflowCustomFieldSelection extends pulumi.CustomResource {
  */
 export interface WorkflowCustomFieldSelectionState {
     /**
-     * The ID of the custom field
+     * The custom field for this selection
      */
     customFieldId?: pulumi.Input<number>;
     /**
-     * The trigger condition
+     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.
      */
     incidentCondition?: pulumi.Input<string>;
-    /**
-     * Custom field options to associate with this custom field trigger
-     */
     selectedOptionIds?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * Custom field values to associate with this custom field trigger
-     */
     values?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the workflow
+     * The workflow for this selection
      */
     workflowId?: pulumi.Input<string>;
 }
@@ -124,23 +106,17 @@ export interface WorkflowCustomFieldSelectionState {
  */
 export interface WorkflowCustomFieldSelectionArgs {
     /**
-     * The ID of the custom field
+     * The custom field for this selection
      */
     customFieldId: pulumi.Input<number>;
     /**
-     * The trigger condition
+     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.
      */
     incidentCondition?: pulumi.Input<string>;
-    /**
-     * Custom field options to associate with this custom field trigger
-     */
     selectedOptionIds?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * Custom field values to associate with this custom field trigger
-     */
     values?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the workflow
+     * The workflow for this selection
      */
-    workflowId: pulumi.Input<string>;
+    workflowId?: pulumi.Input<string>;
 }

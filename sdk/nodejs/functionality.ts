@@ -2,11 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-/**
- * Manages functionalities (e.g Logging In, Search, Adds items to Cart).
- */
 export class Functionality extends pulumi.CustomResource {
     /**
      * Get an existing Functionality resource's state with the given name, ID, and optional extra
@@ -35,20 +33,45 @@ export class Functionality extends pulumi.CustomResource {
         return obj['__pulumiType'] === Functionality.__pulumiType;
     }
 
-    /**
-     * The color of the severity
-     */
-    public readonly color!: pulumi.Output<string | undefined>;
+    public readonly color!: pulumi.Output<string>;
     /**
      * The description of the functionality
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Environments associated with this functionality
+     */
+    public readonly environmentIds!: pulumi.Output<string[]>;
     /**
      * The name of the functionality
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The slug of the severity
+     * Emails attached to the functionality
+     */
+    public readonly notifyEmails!: pulumi.Output<string[]>;
+    /**
+     * Owner Teams associated with this functionality
+     */
+    public readonly ownersGroupIds!: pulumi.Output<string[]>;
+    /**
+     * The public description of the functionality
+     */
+    public readonly publicDescription!: pulumi.Output<string>;
+    /**
+     * Services associated with this functionality
+     */
+    public readonly serviceIds!: pulumi.Output<string[]>;
+    /**
+     * Slack Aliases associated with this service
+     */
+    public readonly slackAliases!: pulumi.Output<outputs.FunctionalitySlackAlias[]>;
+    /**
+     * Slack Channels associated with this service
+     */
+    public readonly slackChannels!: pulumi.Output<outputs.FunctionalitySlackChannel[]>;
+    /**
+     * The slug of the functionality
      */
     public readonly slug!: pulumi.Output<string>;
 
@@ -67,13 +90,27 @@ export class Functionality extends pulumi.CustomResource {
             const state = argsOrState as FunctionalityState | undefined;
             resourceInputs["color"] = state ? state.color : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environmentIds"] = state ? state.environmentIds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notifyEmails"] = state ? state.notifyEmails : undefined;
+            resourceInputs["ownersGroupIds"] = state ? state.ownersGroupIds : undefined;
+            resourceInputs["publicDescription"] = state ? state.publicDescription : undefined;
+            resourceInputs["serviceIds"] = state ? state.serviceIds : undefined;
+            resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
+            resourceInputs["slackChannels"] = state ? state.slackChannels : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
         } else {
             const args = argsOrState as FunctionalityArgs | undefined;
             resourceInputs["color"] = args ? args.color : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environmentIds"] = args ? args.environmentIds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notifyEmails"] = args ? args.notifyEmails : undefined;
+            resourceInputs["ownersGroupIds"] = args ? args.ownersGroupIds : undefined;
+            resourceInputs["publicDescription"] = args ? args.publicDescription : undefined;
+            resourceInputs["serviceIds"] = args ? args.serviceIds : undefined;
+            resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
+            resourceInputs["slackChannels"] = args ? args.slackChannels : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -85,20 +122,45 @@ export class Functionality extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Functionality resources.
  */
 export interface FunctionalityState {
-    /**
-     * The color of the severity
-     */
     color?: pulumi.Input<string>;
     /**
      * The description of the functionality
      */
     description?: pulumi.Input<string>;
     /**
+     * Environments associated with this functionality
+     */
+    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The name of the functionality
      */
     name?: pulumi.Input<string>;
     /**
-     * The slug of the severity
+     * Emails attached to the functionality
+     */
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Owner Teams associated with this functionality
+     */
+    ownersGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The public description of the functionality
+     */
+    publicDescription?: pulumi.Input<string>;
+    /**
+     * Services associated with this functionality
+     */
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Slack Aliases associated with this service
+     */
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackAlias>[]>;
+    /**
+     * Slack Channels associated with this service
+     */
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackChannel>[]>;
+    /**
+     * The slug of the functionality
      */
     slug?: pulumi.Input<string>;
 }
@@ -107,20 +169,45 @@ export interface FunctionalityState {
  * The set of arguments for constructing a Functionality resource.
  */
 export interface FunctionalityArgs {
-    /**
-     * The color of the severity
-     */
     color?: pulumi.Input<string>;
     /**
      * The description of the functionality
      */
     description?: pulumi.Input<string>;
     /**
+     * Environments associated with this functionality
+     */
+    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The name of the functionality
      */
     name?: pulumi.Input<string>;
     /**
-     * The slug of the severity
+     * Emails attached to the functionality
+     */
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Owner Teams associated with this functionality
+     */
+    ownersGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The public description of the functionality
+     */
+    publicDescription?: pulumi.Input<string>;
+    /**
+     * Services associated with this functionality
+     */
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Slack Aliases associated with this service
+     */
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackAlias>[]>;
+    /**
+     * Slack Channels associated with this service
+     */
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackChannel>[]>;
+    /**
+     * The slug of the functionality
      */
     slug?: pulumi.Input<string>;
 }

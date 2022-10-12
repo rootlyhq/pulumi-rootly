@@ -2,11 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-/**
- * Manages Teams (e.g Infrastructure, Security, Search).
- */
 export class Team extends pulumi.CustomResource {
     /**
      * Get an existing Team resource's state with the given name, ID, and optional extra
@@ -35,18 +33,28 @@ export class Team extends pulumi.CustomResource {
         return obj['__pulumiType'] === Team.__pulumiType;
     }
 
-    /**
-     * The color chosen for the team
-     */
     public readonly color!: pulumi.Output<string>;
     /**
      * The description of the team
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The name of the team
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Emails to attach to the team
+     */
+    public readonly notifyEmails!: pulumi.Output<string[]>;
+    /**
+     * Slack Aliases associated with this service
+     */
+    public readonly slackAliases!: pulumi.Output<outputs.TeamSlackAlias[]>;
+    /**
+     * Slack Channels associated with this service
+     */
+    public readonly slackChannels!: pulumi.Output<outputs.TeamSlackChannel[]>;
+    public readonly slug!: pulumi.Output<string>;
 
     /**
      * Create a Team resource with the given unique name, arguments, and options.
@@ -64,11 +72,19 @@ export class Team extends pulumi.CustomResource {
             resourceInputs["color"] = state ? state.color : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notifyEmails"] = state ? state.notifyEmails : undefined;
+            resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
+            resourceInputs["slackChannels"] = state ? state.slackChannels : undefined;
+            resourceInputs["slug"] = state ? state.slug : undefined;
         } else {
             const args = argsOrState as TeamArgs | undefined;
             resourceInputs["color"] = args ? args.color : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notifyEmails"] = args ? args.notifyEmails : undefined;
+            resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
+            resourceInputs["slackChannels"] = args ? args.slackChannels : undefined;
+            resourceInputs["slug"] = args ? args.slug : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Team.__pulumiType, name, resourceInputs, opts);
@@ -79,9 +95,6 @@ export class Team extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Team resources.
  */
 export interface TeamState {
-    /**
-     * The color chosen for the team
-     */
     color?: pulumi.Input<string>;
     /**
      * The description of the team
@@ -91,15 +104,25 @@ export interface TeamState {
      * The name of the team
      */
     name?: pulumi.Input<string>;
+    /**
+     * Emails to attach to the team
+     */
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Slack Aliases associated with this service
+     */
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.TeamSlackAlias>[]>;
+    /**
+     * Slack Channels associated with this service
+     */
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[]>;
+    slug?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Team resource.
  */
 export interface TeamArgs {
-    /**
-     * The color chosen for the team
-     */
     color?: pulumi.Input<string>;
     /**
      * The description of the team
@@ -109,4 +132,17 @@ export interface TeamArgs {
      * The name of the team
      */
     name?: pulumi.Input<string>;
+    /**
+     * Emails to attach to the team
+     */
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Slack Aliases associated with this service
+     */
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.TeamSlackAlias>[]>;
+    /**
+     * Slack Channels associated with this service
+     */
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[]>;
+    slug?: pulumi.Input<string>;
 }

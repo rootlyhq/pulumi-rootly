@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages incident causes (e.g Bug, Load, Human Error, 3rd party Outage, Configuration Change).
- */
 export class Cause extends pulumi.CustomResource {
     /**
      * Get an existing Cause resource's state with the given name, ID, and optional extra
@@ -38,11 +35,15 @@ export class Cause extends pulumi.CustomResource {
     /**
      * The description of the cause
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The name of the cause
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The slug of the cause
+     */
+    public readonly slug!: pulumi.Output<string>;
 
     /**
      * Create a Cause resource with the given unique name, arguments, and options.
@@ -59,10 +60,12 @@ export class Cause extends pulumi.CustomResource {
             const state = argsOrState as CauseState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["slug"] = state ? state.slug : undefined;
         } else {
             const args = argsOrState as CauseArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["slug"] = args ? args.slug : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cause.__pulumiType, name, resourceInputs, opts);
@@ -81,6 +84,10 @@ export interface CauseState {
      * The name of the cause
      */
     name?: pulumi.Input<string>;
+    /**
+     * The slug of the cause
+     */
+    slug?: pulumi.Input<string>;
 }
 
 /**
@@ -95,4 +102,8 @@ export interface CauseArgs {
      * The name of the cause
      */
     name?: pulumi.Input<string>;
+    /**
+     * The slug of the cause
+     */
+    slug?: pulumi.Input<string>;
 }

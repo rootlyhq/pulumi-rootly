@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages custom fields.
- */
 export class CustomField extends pulumi.CustomResource {
     /**
      * Get an existing CustomField resource's state with the given name, ID, and optional extra
@@ -36,29 +33,32 @@ export class CustomField extends pulumi.CustomResource {
     }
 
     /**
-     * The description of the custom field
+     * The default value for text field kinds.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly default!: pulumi.Output<string>;
     /**
-     * Whether the custom field is enabled or not
+     * The description of the custom_field
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    public readonly description!: pulumi.Output<string>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The kind of the custom field
+     * The kind of the custom_field
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * The name of the custom field
+     * The name of the custom_field
      */
     public readonly label!: pulumi.Output<string>;
     /**
-     * Where the custom field is required.
+     * The position of the custom_field
      */
-    public readonly requireds!: pulumi.Output<string[] | undefined>;
+    public readonly position!: pulumi.Output<number>;
+    public readonly requireds!: pulumi.Output<string[]>;
+    public readonly showns!: pulumi.Output<string[]>;
     /**
-     * Where the custom field is shown.
+     * The slug of the custom_field
      */
-    public readonly showns!: pulumi.Output<string[] | undefined>;
+    public readonly slug!: pulumi.Output<string>;
 
     /**
      * Create a CustomField resource with the given unique name, arguments, and options.
@@ -73,26 +73,29 @@ export class CustomField extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomFieldState | undefined;
+            resourceInputs["default"] = state ? state.default : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["label"] = state ? state.label : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["requireds"] = state ? state.requireds : undefined;
             resourceInputs["showns"] = state ? state.showns : undefined;
+            resourceInputs["slug"] = state ? state.slug : undefined;
         } else {
             const args = argsOrState as CustomFieldArgs | undefined;
-            if ((!args || args.kind === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'kind'");
-            }
             if ((!args || args.label === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
+            resourceInputs["default"] = args ? args.default : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["requireds"] = args ? args.requireds : undefined;
             resourceInputs["showns"] = args ? args.showns : undefined;
+            resourceInputs["slug"] = args ? args.slug : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomField.__pulumiType, name, resourceInputs, opts);
@@ -104,29 +107,32 @@ export class CustomField extends pulumi.CustomResource {
  */
 export interface CustomFieldState {
     /**
-     * The description of the custom field
+     * The default value for text field kinds.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * The description of the custom_field
      */
     description?: pulumi.Input<string>;
-    /**
-     * Whether the custom field is enabled or not
-     */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The kind of the custom field
+     * The kind of the custom_field
      */
     kind?: pulumi.Input<string>;
     /**
-     * The name of the custom field
+     * The name of the custom_field
      */
     label?: pulumi.Input<string>;
     /**
-     * Where the custom field is required.
+     * The position of the custom_field
      */
+    position?: pulumi.Input<number>;
     requireds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Where the custom field is shown.
-     */
     showns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The slug of the custom_field
+     */
+    slug?: pulumi.Input<string>;
 }
 
 /**
@@ -134,27 +140,30 @@ export interface CustomFieldState {
  */
 export interface CustomFieldArgs {
     /**
-     * The description of the custom field
+     * The default value for text field kinds.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * The description of the custom_field
      */
     description?: pulumi.Input<string>;
-    /**
-     * Whether the custom field is enabled or not
-     */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The kind of the custom field
+     * The kind of the custom_field
      */
-    kind: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
-     * The name of the custom field
+     * The name of the custom_field
      */
     label: pulumi.Input<string>;
     /**
-     * Where the custom field is required.
+     * The position of the custom_field
      */
+    position?: pulumi.Input<number>;
     requireds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Where the custom field is shown.
-     */
     showns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The slug of the custom_field
+     */
+    slug?: pulumi.Input<string>;
 }

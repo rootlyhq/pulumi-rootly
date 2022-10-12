@@ -2,11 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-/**
- * Manages Services (e.g elasticsearch-prod, redis-preprod, customer-postgresql-prod).
- */
 export class Service extends pulumi.CustomResource {
     /**
      * Get an existing Service resource's state with the given name, ID, and optional extra
@@ -36,21 +34,70 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
-     * The color chosen for the service
+     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
      */
-    public readonly color!: pulumi.Output<string | undefined>;
+    public readonly backstageId!: pulumi.Output<string>;
+    public readonly color!: pulumi.Output<string>;
     /**
-     * For internal use only
+     * The description of the service
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Environments associated with this service
+     */
+    public readonly environmentIds!: pulumi.Output<string[]>;
+    /**
+     * The GitHub repository branch associated to this service. eg: main
+     */
+    public readonly githubRepositoryBranch!: pulumi.Output<string>;
+    /**
+     * The GitHub repository name associated to this service. eg: rootlyhq/my-service
+     */
+    public readonly githubRepositoryName!: pulumi.Output<string>;
+    /**
+     * The Gitlab repository branch associated to this service. eg: main
+     */
+    public readonly gitlabRepositoryBranch!: pulumi.Output<string>;
+    /**
+     * The Gitlab repository name associated to this service. eg: rootlyhq/my-service
+     */
+    public readonly gitlabRepositoryName!: pulumi.Output<string>;
     /**
      * The name of the service
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * This will be displayed on your status pages to explain to your customer the use of this service.
+     * Emails attached to the service
      */
-    public readonly publicDescription!: pulumi.Output<string | undefined>;
+    public readonly notifyEmails!: pulumi.Output<string[]>;
+    /**
+     * The Opsgenie service id associated to this service
+     */
+    public readonly opsgenieId!: pulumi.Output<string>;
+    /**
+     * Owner Teams associated with this service
+     */
+    public readonly ownersGroupIds!: pulumi.Output<string[]>;
+    /**
+     * The PagerDuty service id associated to this service
+     */
+    public readonly pagerdutyId!: pulumi.Output<string>;
+    /**
+     * The public description of the service
+     */
+    public readonly publicDescription!: pulumi.Output<string>;
+    /**
+     * Services dependent on this service
+     */
+    public readonly serviceIds!: pulumi.Output<string[]>;
+    /**
+     * Slack Aliases associated with this service
+     */
+    public readonly slackAliases!: pulumi.Output<outputs.ServiceSlackAlias[]>;
+    /**
+     * Slack Channels associated with this service
+     */
+    public readonly slackChannels!: pulumi.Output<outputs.ServiceSlackChannel[]>;
     /**
      * The slug of the service
      */
@@ -69,17 +116,43 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
+            resourceInputs["backstageId"] = state ? state.backstageId : undefined;
             resourceInputs["color"] = state ? state.color : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environmentIds"] = state ? state.environmentIds : undefined;
+            resourceInputs["githubRepositoryBranch"] = state ? state.githubRepositoryBranch : undefined;
+            resourceInputs["githubRepositoryName"] = state ? state.githubRepositoryName : undefined;
+            resourceInputs["gitlabRepositoryBranch"] = state ? state.gitlabRepositoryBranch : undefined;
+            resourceInputs["gitlabRepositoryName"] = state ? state.gitlabRepositoryName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notifyEmails"] = state ? state.notifyEmails : undefined;
+            resourceInputs["opsgenieId"] = state ? state.opsgenieId : undefined;
+            resourceInputs["ownersGroupIds"] = state ? state.ownersGroupIds : undefined;
+            resourceInputs["pagerdutyId"] = state ? state.pagerdutyId : undefined;
             resourceInputs["publicDescription"] = state ? state.publicDescription : undefined;
+            resourceInputs["serviceIds"] = state ? state.serviceIds : undefined;
+            resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
+            resourceInputs["slackChannels"] = state ? state.slackChannels : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
+            resourceInputs["backstageId"] = args ? args.backstageId : undefined;
             resourceInputs["color"] = args ? args.color : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environmentIds"] = args ? args.environmentIds : undefined;
+            resourceInputs["githubRepositoryBranch"] = args ? args.githubRepositoryBranch : undefined;
+            resourceInputs["githubRepositoryName"] = args ? args.githubRepositoryName : undefined;
+            resourceInputs["gitlabRepositoryBranch"] = args ? args.gitlabRepositoryBranch : undefined;
+            resourceInputs["gitlabRepositoryName"] = args ? args.gitlabRepositoryName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notifyEmails"] = args ? args.notifyEmails : undefined;
+            resourceInputs["opsgenieId"] = args ? args.opsgenieId : undefined;
+            resourceInputs["ownersGroupIds"] = args ? args.ownersGroupIds : undefined;
+            resourceInputs["pagerdutyId"] = args ? args.pagerdutyId : undefined;
             resourceInputs["publicDescription"] = args ? args.publicDescription : undefined;
+            resourceInputs["serviceIds"] = args ? args.serviceIds : undefined;
+            resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
+            resourceInputs["slackChannels"] = args ? args.slackChannels : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -92,21 +165,70 @@ export class Service extends pulumi.CustomResource {
  */
 export interface ServiceState {
     /**
-     * The color chosen for the service
+     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
      */
+    backstageId?: pulumi.Input<string>;
     color?: pulumi.Input<string>;
     /**
-     * For internal use only
+     * The description of the service
      */
     description?: pulumi.Input<string>;
+    /**
+     * Environments associated with this service
+     */
+    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The GitHub repository branch associated to this service. eg: main
+     */
+    githubRepositoryBranch?: pulumi.Input<string>;
+    /**
+     * The GitHub repository name associated to this service. eg: rootlyhq/my-service
+     */
+    githubRepositoryName?: pulumi.Input<string>;
+    /**
+     * The Gitlab repository branch associated to this service. eg: main
+     */
+    gitlabRepositoryBranch?: pulumi.Input<string>;
+    /**
+     * The Gitlab repository name associated to this service. eg: rootlyhq/my-service
+     */
+    gitlabRepositoryName?: pulumi.Input<string>;
     /**
      * The name of the service
      */
     name?: pulumi.Input<string>;
     /**
-     * This will be displayed on your status pages to explain to your customer the use of this service.
+     * Emails attached to the service
+     */
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Opsgenie service id associated to this service
+     */
+    opsgenieId?: pulumi.Input<string>;
+    /**
+     * Owner Teams associated with this service
+     */
+    ownersGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The PagerDuty service id associated to this service
+     */
+    pagerdutyId?: pulumi.Input<string>;
+    /**
+     * The public description of the service
      */
     publicDescription?: pulumi.Input<string>;
+    /**
+     * Services dependent on this service
+     */
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Slack Aliases associated with this service
+     */
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.ServiceSlackAlias>[]>;
+    /**
+     * Slack Channels associated with this service
+     */
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.ServiceSlackChannel>[]>;
     /**
      * The slug of the service
      */
@@ -118,21 +240,70 @@ export interface ServiceState {
  */
 export interface ServiceArgs {
     /**
-     * The color chosen for the service
+     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
      */
+    backstageId?: pulumi.Input<string>;
     color?: pulumi.Input<string>;
     /**
-     * For internal use only
+     * The description of the service
      */
     description?: pulumi.Input<string>;
+    /**
+     * Environments associated with this service
+     */
+    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The GitHub repository branch associated to this service. eg: main
+     */
+    githubRepositoryBranch?: pulumi.Input<string>;
+    /**
+     * The GitHub repository name associated to this service. eg: rootlyhq/my-service
+     */
+    githubRepositoryName?: pulumi.Input<string>;
+    /**
+     * The Gitlab repository branch associated to this service. eg: main
+     */
+    gitlabRepositoryBranch?: pulumi.Input<string>;
+    /**
+     * The Gitlab repository name associated to this service. eg: rootlyhq/my-service
+     */
+    gitlabRepositoryName?: pulumi.Input<string>;
     /**
      * The name of the service
      */
     name?: pulumi.Input<string>;
     /**
-     * This will be displayed on your status pages to explain to your customer the use of this service.
+     * Emails attached to the service
+     */
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Opsgenie service id associated to this service
+     */
+    opsgenieId?: pulumi.Input<string>;
+    /**
+     * Owner Teams associated with this service
+     */
+    ownersGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The PagerDuty service id associated to this service
+     */
+    pagerdutyId?: pulumi.Input<string>;
+    /**
+     * The public description of the service
      */
     publicDescription?: pulumi.Input<string>;
+    /**
+     * Services dependent on this service
+     */
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Slack Aliases associated with this service
+     */
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.ServiceSlackAlias>[]>;
+    /**
+     * Slack Channels associated with this service
+     */
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.ServiceSlackChannel>[]>;
     /**
      * The slug of the service
      */

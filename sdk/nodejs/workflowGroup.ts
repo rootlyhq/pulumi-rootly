@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages workflow groups.
- */
 export class WorkflowGroup extends pulumi.CustomResource {
     /**
      * Get an existing WorkflowGroup resource's state with the given name, ID, and optional extra
@@ -36,19 +33,20 @@ export class WorkflowGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the workflow group is expanded or not
+     * Whether the group is expanded or collapsed.
      */
     public readonly expanded!: pulumi.Output<boolean>;
     /**
-     * The kind of the workflow group
+     * The kind of the workflow group.. Value must be one of `simple`, `incident`, `post_mortem`, `action_item`, `pulse`,
+     * `alert`.
      */
-    public readonly kind!: pulumi.Output<string>;
+    public readonly kind!: pulumi.Output<string | undefined>;
     /**
-     * The name of the workflow group
+     * The name of the workflow group.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The position of the workflow group (1 being top of list)
+     * The position of the workflow group
      */
     public readonly position!: pulumi.Output<number>;
 
@@ -59,7 +57,7 @@ export class WorkflowGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: WorkflowGroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: WorkflowGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkflowGroupArgs | WorkflowGroupState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -71,9 +69,6 @@ export class WorkflowGroup extends pulumi.CustomResource {
             resourceInputs["position"] = state ? state.position : undefined;
         } else {
             const args = argsOrState as WorkflowGroupArgs | undefined;
-            if ((!args || args.kind === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'kind'");
-            }
             resourceInputs["expanded"] = args ? args.expanded : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -89,19 +84,20 @@ export class WorkflowGroup extends pulumi.CustomResource {
  */
 export interface WorkflowGroupState {
     /**
-     * Whether the workflow group is expanded or not
+     * Whether the group is expanded or collapsed.
      */
     expanded?: pulumi.Input<boolean>;
     /**
-     * The kind of the workflow group
+     * The kind of the workflow group.. Value must be one of `simple`, `incident`, `post_mortem`, `action_item`, `pulse`,
+     * `alert`.
      */
     kind?: pulumi.Input<string>;
     /**
-     * The name of the workflow group
+     * The name of the workflow group.
      */
     name?: pulumi.Input<string>;
     /**
-     * The position of the workflow group (1 being top of list)
+     * The position of the workflow group
      */
     position?: pulumi.Input<number>;
 }
@@ -111,19 +107,20 @@ export interface WorkflowGroupState {
  */
 export interface WorkflowGroupArgs {
     /**
-     * Whether the workflow group is expanded or not
+     * Whether the group is expanded or collapsed.
      */
     expanded?: pulumi.Input<boolean>;
     /**
-     * The kind of the workflow group
+     * The kind of the workflow group.. Value must be one of `simple`, `incident`, `post_mortem`, `action_item`, `pulse`,
+     * `alert`.
      */
-    kind: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
-     * The name of the workflow group
+     * The name of the workflow group.
      */
     name?: pulumi.Input<string>;
     /**
-     * The position of the workflow group (1 being top of list)
+     * The position of the workflow group
      */
     position?: pulumi.Input<number>;
 }

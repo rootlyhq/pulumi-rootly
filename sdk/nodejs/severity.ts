@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages Severities (e.g SEV0, SEV1, SEV2, SEV3).
- */
 export class Severity extends pulumi.CustomResource {
     /**
      * Get an existing Severity resource's state with the given name, ID, and optional extra
@@ -35,20 +32,17 @@ export class Severity extends pulumi.CustomResource {
         return obj['__pulumiType'] === Severity.__pulumiType;
     }
 
-    /**
-     * The color of the severity
-     */
-    public readonly color!: pulumi.Output<string | undefined>;
+    public readonly color!: pulumi.Output<string>;
     /**
      * The description of the severity
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The name of the severity
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The description of the severity
+     * The severity of the severity. Value must be one of `critical`, `high`, `medium`, `low`.
      */
     public readonly severity!: pulumi.Output<string | undefined>;
     /**
@@ -91,9 +85,6 @@ export class Severity extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Severity resources.
  */
 export interface SeverityState {
-    /**
-     * The color of the severity
-     */
     color?: pulumi.Input<string>;
     /**
      * The description of the severity
@@ -104,7 +95,7 @@ export interface SeverityState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The description of the severity
+     * The severity of the severity. Value must be one of `critical`, `high`, `medium`, `low`.
      */
     severity?: pulumi.Input<string>;
     /**
@@ -117,9 +108,6 @@ export interface SeverityState {
  * The set of arguments for constructing a Severity resource.
  */
 export interface SeverityArgs {
-    /**
-     * The color of the severity
-     */
     color?: pulumi.Input<string>;
     /**
      * The description of the severity
@@ -130,7 +118,7 @@ export interface SeverityArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The description of the severity
+     * The severity of the severity. Value must be one of `critical`, `high`, `medium`, `low`.
      */
     severity?: pulumi.Input<string>;
     /**

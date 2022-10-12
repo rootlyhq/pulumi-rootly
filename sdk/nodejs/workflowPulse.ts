@@ -5,9 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-/**
- * Manages workflows.
- */
 export class WorkflowPulse extends pulumi.CustomResource {
     /**
      * Get an existing WorkflowPulse resource's state with the given name, ID, and optional extra
@@ -37,63 +34,43 @@ export class WorkflowPulse extends pulumi.CustomResource {
     }
 
     /**
-     * The workflow command.
+     * Workflow command.
      */
     public readonly command!: pulumi.Output<string>;
     /**
      * The description of the workflow
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly environmentIds!: pulumi.Output<string[]>;
+    public readonly groupIds!: pulumi.Output<string[]>;
+    public readonly incidentTypeIds!: pulumi.Output<string[]>;
     /**
-     * Whether the workflow is enabled or not
-     */
-    public readonly enabled!: pulumi.Output<boolean>;
-    /**
-     * Environment IDs required to trigger workflow.
-     */
-    public readonly environmentIds!: pulumi.Output<string[] | undefined>;
-    /**
-     * Group IDs required to trigger workflow.
-     */
-    public readonly groupIds!: pulumi.Output<string[] | undefined>;
-    /**
-     * Incident type IDs required to trigger workflow.
-     */
-    public readonly incidentTypeIds!: pulumi.Output<string[] | undefined>;
-    /**
-     * The name of the workflow
+     * The title of the workflow
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The position of the workflow (1 being top of list)
+     * The order which the workflow should run with other workflows.
      */
     public readonly position!: pulumi.Output<number>;
     /**
      * Repeat workflow every duration.
      */
-    public readonly repeatEveryDuration!: pulumi.Output<string | undefined>;
-    /**
-     * Repeat workflow on days.
-     */
+    public readonly repeatEveryDuration!: pulumi.Output<string>;
     public readonly repeatOns!: pulumi.Output<string[]>;
+    public readonly serviceIds!: pulumi.Output<string[]>;
+    public readonly severityIds!: pulumi.Output<string[]>;
     /**
-     * Service IDs required to trigger workflow.
+     * The slug of the workflow
      */
-    public readonly serviceIds!: pulumi.Output<string[] | undefined>;
-    /**
-     * Severity IDs required to trigger workflow.
-     */
-    public readonly severityIds!: pulumi.Output<string[] | undefined>;
-    /**
-     * The conditions for triggering this workflow.
-     */
+    public readonly slug!: pulumi.Output<string>;
     public readonly triggerParams!: pulumi.Output<outputs.WorkflowPulseTriggerParams>;
     /**
-     * Wait before running workflow.
+     * Wait this duration before executing.
      */
-    public readonly wait!: pulumi.Output<string | undefined>;
+    public readonly wait!: pulumi.Output<string>;
     /**
-     * The workflow group this workflow belongs to.
+     * The group this workflow belongs to.
      */
     public readonly workflowGroupId!: pulumi.Output<string>;
 
@@ -122,6 +99,7 @@ export class WorkflowPulse extends pulumi.CustomResource {
             resourceInputs["repeatOns"] = state ? state.repeatOns : undefined;
             resourceInputs["serviceIds"] = state ? state.serviceIds : undefined;
             resourceInputs["severityIds"] = state ? state.severityIds : undefined;
+            resourceInputs["slug"] = state ? state.slug : undefined;
             resourceInputs["triggerParams"] = state ? state.triggerParams : undefined;
             resourceInputs["wait"] = state ? state.wait : undefined;
             resourceInputs["workflowGroupId"] = state ? state.workflowGroupId : undefined;
@@ -139,6 +117,7 @@ export class WorkflowPulse extends pulumi.CustomResource {
             resourceInputs["repeatOns"] = args ? args.repeatOns : undefined;
             resourceInputs["serviceIds"] = args ? args.serviceIds : undefined;
             resourceInputs["severityIds"] = args ? args.severityIds : undefined;
+            resourceInputs["slug"] = args ? args.slug : undefined;
             resourceInputs["triggerParams"] = args ? args.triggerParams : undefined;
             resourceInputs["wait"] = args ? args.wait : undefined;
             resourceInputs["workflowGroupId"] = args ? args.workflowGroupId : undefined;
@@ -153,63 +132,43 @@ export class WorkflowPulse extends pulumi.CustomResource {
  */
 export interface WorkflowPulseState {
     /**
-     * The workflow command.
+     * Workflow command.
      */
     command?: pulumi.Input<string>;
     /**
      * The description of the workflow
      */
     description?: pulumi.Input<string>;
-    /**
-     * Whether the workflow is enabled or not
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Environment IDs required to trigger workflow.
-     */
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Group IDs required to trigger workflow.
-     */
     groupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Incident type IDs required to trigger workflow.
-     */
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the workflow
+     * The title of the workflow
      */
     name?: pulumi.Input<string>;
     /**
-     * The position of the workflow (1 being top of list)
+     * The order which the workflow should run with other workflows.
      */
     position?: pulumi.Input<number>;
     /**
      * Repeat workflow every duration.
      */
     repeatEveryDuration?: pulumi.Input<string>;
-    /**
-     * Repeat workflow on days.
-     */
     repeatOns?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Service IDs required to trigger workflow.
-     */
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Severity IDs required to trigger workflow.
-     */
     severityIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The conditions for triggering this workflow.
+     * The slug of the workflow
      */
+    slug?: pulumi.Input<string>;
     triggerParams?: pulumi.Input<inputs.WorkflowPulseTriggerParams>;
     /**
-     * Wait before running workflow.
+     * Wait this duration before executing.
      */
     wait?: pulumi.Input<string>;
     /**
-     * The workflow group this workflow belongs to.
+     * The group this workflow belongs to.
      */
     workflowGroupId?: pulumi.Input<string>;
 }
@@ -219,63 +178,43 @@ export interface WorkflowPulseState {
  */
 export interface WorkflowPulseArgs {
     /**
-     * The workflow command.
+     * Workflow command.
      */
     command?: pulumi.Input<string>;
     /**
      * The description of the workflow
      */
     description?: pulumi.Input<string>;
-    /**
-     * Whether the workflow is enabled or not
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Environment IDs required to trigger workflow.
-     */
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Group IDs required to trigger workflow.
-     */
     groupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Incident type IDs required to trigger workflow.
-     */
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the workflow
+     * The title of the workflow
      */
     name?: pulumi.Input<string>;
     /**
-     * The position of the workflow (1 being top of list)
+     * The order which the workflow should run with other workflows.
      */
     position?: pulumi.Input<number>;
     /**
      * Repeat workflow every duration.
      */
     repeatEveryDuration?: pulumi.Input<string>;
-    /**
-     * Repeat workflow on days.
-     */
     repeatOns?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Service IDs required to trigger workflow.
-     */
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Severity IDs required to trigger workflow.
-     */
     severityIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The conditions for triggering this workflow.
+     * The slug of the workflow
      */
+    slug?: pulumi.Input<string>;
     triggerParams?: pulumi.Input<inputs.WorkflowPulseTriggerParams>;
     /**
-     * Wait before running workflow.
+     * Wait this duration before executing.
      */
     wait?: pulumi.Input<string>;
     /**
-     * The workflow group this workflow belongs to.
+     * The group this workflow belongs to.
      */
     workflowGroupId?: pulumi.Input<string>;
 }

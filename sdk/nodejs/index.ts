@@ -12,21 +12,37 @@ export * from "./dashboard";
 export * from "./dashboardPanel";
 export * from "./environment";
 export * from "./functionality";
+export * from "./getCause";
 export * from "./getCauses";
+export * from "./getCustomField";
+export * from "./getCustomFieldOption";
 export * from "./getCustomFieldOptions";
 export * from "./getCustomFields";
+export * from "./getEnvironment";
 export * from "./getEnvironments";
 export * from "./getFunctionalities";
+export * from "./getFunctionality";
+export * from "./getIncidentRole";
 export * from "./getIncidentRoles";
+export * from "./getIncidentType";
 export * from "./getIncidentTypes";
+export * from "./getService";
 export * from "./getServices";
 export * from "./getSeverities";
+export * from "./getSeverity";
+export * from "./getTeam";
 export * from "./getTeams";
+export * from "./getWorkflowGroup";
 export * from "./incidentRole";
+export * from "./incidentRoleTask";
 export * from "./incidentType";
+export * from "./playbook";
+export * from "./postmortemTemplate";
 export * from "./provider";
 export * from "./service";
 export * from "./severity";
+export * from "./statusPage";
+export * from "./statusPageTemplate";
 export * from "./team";
 export * from "./workflowActionItem";
 export * from "./workflowAlert";
@@ -53,6 +69,7 @@ export * from "./workflowTaskCreateConfluencePage";
 export * from "./workflowTaskCreateDatadogNotebook";
 export * from "./workflowTaskCreateDropboxPaperPage";
 export * from "./workflowTaskCreateGithubIssue";
+export * from "./workflowTaskCreateGoToMeeting";
 export * from "./workflowTaskCreateGoogleCalendarEvent";
 export * from "./workflowTaskCreateGoogleDocsPage";
 export * from "./workflowTaskCreateGoogleMeeting";
@@ -60,16 +77,20 @@ export * from "./workflowTaskCreateIncident";
 export * from "./workflowTaskCreateJiraIssue";
 export * from "./workflowTaskCreateJiraSubtask";
 export * from "./workflowTaskCreateLinearIssue";
+export * from "./workflowTaskCreateLinearIssueComment";
 export * from "./workflowTaskCreateLinearSubtaskIssue";
 export * from "./workflowTaskCreateMicrosoftTeamsMeeting";
 export * from "./workflowTaskCreateNotionPage";
+export * from "./workflowTaskCreateOpsgenieAlert";
 export * from "./workflowTaskCreateServiceNowIncident";
 export * from "./workflowTaskCreateShortcutStory";
 export * from "./workflowTaskCreateShortcutTask";
+export * from "./workflowTaskCreateSlackChannel";
 export * from "./workflowTaskCreateTrelloCard";
 export * from "./workflowTaskCreateWebexMeeting";
 export * from "./workflowTaskCreateZendeskTicket";
 export * from "./workflowTaskCreateZoomMeeting";
+export * from "./workflowTaskGetAlerts";
 export * from "./workflowTaskGetGithubCommits";
 export * from "./workflowTaskGetGitlabCommits";
 export * from "./workflowTaskGetPulses";
@@ -86,21 +107,27 @@ export * from "./workflowTaskPublishIncident";
 export * from "./workflowTaskRedisClient";
 export * from "./workflowTaskRenameSlackChannel";
 export * from "./workflowTaskRunCommandHeroku";
+export * from "./workflowTaskSendDashboardReport";
 export * from "./workflowTaskSendEmail";
+export * from "./workflowTaskSendSlackBlocks";
 export * from "./workflowTaskSendSlackMessage";
 export * from "./workflowTaskSendSms";
 export * from "./workflowTaskSnapshotDatadogGraph";
 export * from "./workflowTaskSnapshotGrafanaDashboard";
 export * from "./workflowTaskSnapshotLookerLook";
 export * from "./workflowTaskSnapshotNewRelicGraph";
+export * from "./workflowTaskTriggerWorkflow";
 export * from "./workflowTaskTweetTwitterMessage";
 export * from "./workflowTaskUpdateAirtableTableRecord";
 export * from "./workflowTaskUpdateAsanaTask";
 export * from "./workflowTaskUpdateGithubIssue";
 export * from "./workflowTaskUpdateGoogleCalendarEvent";
 export * from "./workflowTaskUpdateIncident";
+export * from "./workflowTaskUpdateIncidentPostmortem";
 export * from "./workflowTaskUpdateJiraIssue";
 export * from "./workflowTaskUpdateLinearIssue";
+export * from "./workflowTaskUpdateOpsgenieAlert";
+export * from "./workflowTaskUpdatePagerdutyIncident";
 export * from "./workflowTaskUpdateServiceNowIncident";
 export * from "./workflowTaskUpdateShortcutStory";
 export * from "./workflowTaskUpdateShortcutTask";
@@ -127,9 +154,14 @@ import { DashboardPanel } from "./dashboardPanel";
 import { Environment } from "./environment";
 import { Functionality } from "./functionality";
 import { IncidentRole } from "./incidentRole";
+import { IncidentRoleTask } from "./incidentRoleTask";
 import { IncidentType } from "./incidentType";
+import { Playbook } from "./playbook";
+import { PostmortemTemplate } from "./postmortemTemplate";
 import { Service } from "./service";
 import { Severity } from "./severity";
+import { StatusPage } from "./statusPage";
+import { StatusPageTemplate } from "./statusPageTemplate";
 import { Team } from "./team";
 import { WorkflowActionItem } from "./workflowActionItem";
 import { WorkflowAlert } from "./workflowAlert";
@@ -156,6 +188,7 @@ import { WorkflowTaskCreateConfluencePage } from "./workflowTaskCreateConfluence
 import { WorkflowTaskCreateDatadogNotebook } from "./workflowTaskCreateDatadogNotebook";
 import { WorkflowTaskCreateDropboxPaperPage } from "./workflowTaskCreateDropboxPaperPage";
 import { WorkflowTaskCreateGithubIssue } from "./workflowTaskCreateGithubIssue";
+import { WorkflowTaskCreateGoToMeeting } from "./workflowTaskCreateGoToMeeting";
 import { WorkflowTaskCreateGoogleCalendarEvent } from "./workflowTaskCreateGoogleCalendarEvent";
 import { WorkflowTaskCreateGoogleDocsPage } from "./workflowTaskCreateGoogleDocsPage";
 import { WorkflowTaskCreateGoogleMeeting } from "./workflowTaskCreateGoogleMeeting";
@@ -163,16 +196,20 @@ import { WorkflowTaskCreateIncident } from "./workflowTaskCreateIncident";
 import { WorkflowTaskCreateJiraIssue } from "./workflowTaskCreateJiraIssue";
 import { WorkflowTaskCreateJiraSubtask } from "./workflowTaskCreateJiraSubtask";
 import { WorkflowTaskCreateLinearIssue } from "./workflowTaskCreateLinearIssue";
+import { WorkflowTaskCreateLinearIssueComment } from "./workflowTaskCreateLinearIssueComment";
 import { WorkflowTaskCreateLinearSubtaskIssue } from "./workflowTaskCreateLinearSubtaskIssue";
 import { WorkflowTaskCreateMicrosoftTeamsMeeting } from "./workflowTaskCreateMicrosoftTeamsMeeting";
 import { WorkflowTaskCreateNotionPage } from "./workflowTaskCreateNotionPage";
+import { WorkflowTaskCreateOpsgenieAlert } from "./workflowTaskCreateOpsgenieAlert";
 import { WorkflowTaskCreateServiceNowIncident } from "./workflowTaskCreateServiceNowIncident";
 import { WorkflowTaskCreateShortcutStory } from "./workflowTaskCreateShortcutStory";
 import { WorkflowTaskCreateShortcutTask } from "./workflowTaskCreateShortcutTask";
+import { WorkflowTaskCreateSlackChannel } from "./workflowTaskCreateSlackChannel";
 import { WorkflowTaskCreateTrelloCard } from "./workflowTaskCreateTrelloCard";
 import { WorkflowTaskCreateWebexMeeting } from "./workflowTaskCreateWebexMeeting";
 import { WorkflowTaskCreateZendeskTicket } from "./workflowTaskCreateZendeskTicket";
 import { WorkflowTaskCreateZoomMeeting } from "./workflowTaskCreateZoomMeeting";
+import { WorkflowTaskGetAlerts } from "./workflowTaskGetAlerts";
 import { WorkflowTaskGetGithubCommits } from "./workflowTaskGetGithubCommits";
 import { WorkflowTaskGetGitlabCommits } from "./workflowTaskGetGitlabCommits";
 import { WorkflowTaskGetPulses } from "./workflowTaskGetPulses";
@@ -189,21 +226,27 @@ import { WorkflowTaskPublishIncident } from "./workflowTaskPublishIncident";
 import { WorkflowTaskRedisClient } from "./workflowTaskRedisClient";
 import { WorkflowTaskRenameSlackChannel } from "./workflowTaskRenameSlackChannel";
 import { WorkflowTaskRunCommandHeroku } from "./workflowTaskRunCommandHeroku";
+import { WorkflowTaskSendDashboardReport } from "./workflowTaskSendDashboardReport";
 import { WorkflowTaskSendEmail } from "./workflowTaskSendEmail";
+import { WorkflowTaskSendSlackBlocks } from "./workflowTaskSendSlackBlocks";
 import { WorkflowTaskSendSlackMessage } from "./workflowTaskSendSlackMessage";
 import { WorkflowTaskSendSms } from "./workflowTaskSendSms";
 import { WorkflowTaskSnapshotDatadogGraph } from "./workflowTaskSnapshotDatadogGraph";
 import { WorkflowTaskSnapshotGrafanaDashboard } from "./workflowTaskSnapshotGrafanaDashboard";
 import { WorkflowTaskSnapshotLookerLook } from "./workflowTaskSnapshotLookerLook";
 import { WorkflowTaskSnapshotNewRelicGraph } from "./workflowTaskSnapshotNewRelicGraph";
+import { WorkflowTaskTriggerWorkflow } from "./workflowTaskTriggerWorkflow";
 import { WorkflowTaskTweetTwitterMessage } from "./workflowTaskTweetTwitterMessage";
 import { WorkflowTaskUpdateAirtableTableRecord } from "./workflowTaskUpdateAirtableTableRecord";
 import { WorkflowTaskUpdateAsanaTask } from "./workflowTaskUpdateAsanaTask";
 import { WorkflowTaskUpdateGithubIssue } from "./workflowTaskUpdateGithubIssue";
 import { WorkflowTaskUpdateGoogleCalendarEvent } from "./workflowTaskUpdateGoogleCalendarEvent";
 import { WorkflowTaskUpdateIncident } from "./workflowTaskUpdateIncident";
+import { WorkflowTaskUpdateIncidentPostmortem } from "./workflowTaskUpdateIncidentPostmortem";
 import { WorkflowTaskUpdateJiraIssue } from "./workflowTaskUpdateJiraIssue";
 import { WorkflowTaskUpdateLinearIssue } from "./workflowTaskUpdateLinearIssue";
+import { WorkflowTaskUpdateOpsgenieAlert } from "./workflowTaskUpdateOpsgenieAlert";
+import { WorkflowTaskUpdatePagerdutyIncident } from "./workflowTaskUpdatePagerdutyIncident";
 import { WorkflowTaskUpdateServiceNowIncident } from "./workflowTaskUpdateServiceNowIncident";
 import { WorkflowTaskUpdateShortcutStory } from "./workflowTaskUpdateShortcutStory";
 import { WorkflowTaskUpdateShortcutTask } from "./workflowTaskUpdateShortcutTask";
@@ -232,12 +275,22 @@ const _module = {
                 return new Functionality(name, <any>undefined, { urn })
             case "rootly:index/incidentRole:IncidentRole":
                 return new IncidentRole(name, <any>undefined, { urn })
+            case "rootly:index/incidentRoleTask:IncidentRoleTask":
+                return new IncidentRoleTask(name, <any>undefined, { urn })
             case "rootly:index/incidentType:IncidentType":
                 return new IncidentType(name, <any>undefined, { urn })
+            case "rootly:index/playbook:Playbook":
+                return new Playbook(name, <any>undefined, { urn })
+            case "rootly:index/postmortemTemplate:PostmortemTemplate":
+                return new PostmortemTemplate(name, <any>undefined, { urn })
             case "rootly:index/service:Service":
                 return new Service(name, <any>undefined, { urn })
             case "rootly:index/severity:Severity":
                 return new Severity(name, <any>undefined, { urn })
+            case "rootly:index/statusPage:StatusPage":
+                return new StatusPage(name, <any>undefined, { urn })
+            case "rootly:index/statusPageTemplate:StatusPageTemplate":
+                return new StatusPageTemplate(name, <any>undefined, { urn })
             case "rootly:index/team:Team":
                 return new Team(name, <any>undefined, { urn })
             case "rootly:index/workflowActionItem:WorkflowActionItem":
@@ -290,6 +343,8 @@ const _module = {
                 return new WorkflowTaskCreateDropboxPaperPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateGithubIssue:WorkflowTaskCreateGithubIssue":
                 return new WorkflowTaskCreateGithubIssue(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateGoToMeeting:WorkflowTaskCreateGoToMeeting":
+                return new WorkflowTaskCreateGoToMeeting(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateGoogleCalendarEvent:WorkflowTaskCreateGoogleCalendarEvent":
                 return new WorkflowTaskCreateGoogleCalendarEvent(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateGoogleDocsPage:WorkflowTaskCreateGoogleDocsPage":
@@ -304,18 +359,24 @@ const _module = {
                 return new WorkflowTaskCreateJiraSubtask(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateLinearIssue:WorkflowTaskCreateLinearIssue":
                 return new WorkflowTaskCreateLinearIssue(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateLinearIssueComment:WorkflowTaskCreateLinearIssueComment":
+                return new WorkflowTaskCreateLinearIssueComment(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateLinearSubtaskIssue:WorkflowTaskCreateLinearSubtaskIssue":
                 return new WorkflowTaskCreateLinearSubtaskIssue(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateMicrosoftTeamsMeeting:WorkflowTaskCreateMicrosoftTeamsMeeting":
                 return new WorkflowTaskCreateMicrosoftTeamsMeeting(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateNotionPage:WorkflowTaskCreateNotionPage":
                 return new WorkflowTaskCreateNotionPage(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateOpsgenieAlert:WorkflowTaskCreateOpsgenieAlert":
+                return new WorkflowTaskCreateOpsgenieAlert(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateServiceNowIncident:WorkflowTaskCreateServiceNowIncident":
                 return new WorkflowTaskCreateServiceNowIncident(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateShortcutStory:WorkflowTaskCreateShortcutStory":
                 return new WorkflowTaskCreateShortcutStory(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateShortcutTask:WorkflowTaskCreateShortcutTask":
                 return new WorkflowTaskCreateShortcutTask(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateSlackChannel:WorkflowTaskCreateSlackChannel":
+                return new WorkflowTaskCreateSlackChannel(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateTrelloCard:WorkflowTaskCreateTrelloCard":
                 return new WorkflowTaskCreateTrelloCard(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateWebexMeeting:WorkflowTaskCreateWebexMeeting":
@@ -324,6 +385,8 @@ const _module = {
                 return new WorkflowTaskCreateZendeskTicket(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateZoomMeeting:WorkflowTaskCreateZoomMeeting":
                 return new WorkflowTaskCreateZoomMeeting(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskGetAlerts:WorkflowTaskGetAlerts":
+                return new WorkflowTaskGetAlerts(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskGetGithubCommits:WorkflowTaskGetGithubCommits":
                 return new WorkflowTaskGetGithubCommits(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskGetGitlabCommits:WorkflowTaskGetGitlabCommits":
@@ -356,8 +419,12 @@ const _module = {
                 return new WorkflowTaskRenameSlackChannel(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskRunCommandHeroku:WorkflowTaskRunCommandHeroku":
                 return new WorkflowTaskRunCommandHeroku(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskSendDashboardReport:WorkflowTaskSendDashboardReport":
+                return new WorkflowTaskSendDashboardReport(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskSendEmail:WorkflowTaskSendEmail":
                 return new WorkflowTaskSendEmail(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskSendSlackBlocks:WorkflowTaskSendSlackBlocks":
+                return new WorkflowTaskSendSlackBlocks(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskSendSlackMessage:WorkflowTaskSendSlackMessage":
                 return new WorkflowTaskSendSlackMessage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskSendSms:WorkflowTaskSendSms":
@@ -370,6 +437,8 @@ const _module = {
                 return new WorkflowTaskSnapshotLookerLook(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskSnapshotNewRelicGraph:WorkflowTaskSnapshotNewRelicGraph":
                 return new WorkflowTaskSnapshotNewRelicGraph(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskTriggerWorkflow:WorkflowTaskTriggerWorkflow":
+                return new WorkflowTaskTriggerWorkflow(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskTweetTwitterMessage:WorkflowTaskTweetTwitterMessage":
                 return new WorkflowTaskTweetTwitterMessage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateAirtableTableRecord:WorkflowTaskUpdateAirtableTableRecord":
@@ -382,10 +451,16 @@ const _module = {
                 return new WorkflowTaskUpdateGoogleCalendarEvent(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateIncident:WorkflowTaskUpdateIncident":
                 return new WorkflowTaskUpdateIncident(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdateIncidentPostmortem:WorkflowTaskUpdateIncidentPostmortem":
+                return new WorkflowTaskUpdateIncidentPostmortem(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateJiraIssue:WorkflowTaskUpdateJiraIssue":
                 return new WorkflowTaskUpdateJiraIssue(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateLinearIssue:WorkflowTaskUpdateLinearIssue":
                 return new WorkflowTaskUpdateLinearIssue(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdateOpsgenieAlert:WorkflowTaskUpdateOpsgenieAlert":
+                return new WorkflowTaskUpdateOpsgenieAlert(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdatePagerdutyIncident:WorkflowTaskUpdatePagerdutyIncident":
+                return new WorkflowTaskUpdatePagerdutyIncident(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateServiceNowIncident:WorkflowTaskUpdateServiceNowIncident":
                 return new WorkflowTaskUpdateServiceNowIncident(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateShortcutStory:WorkflowTaskUpdateShortcutStory":
@@ -413,9 +488,14 @@ pulumi.runtime.registerResourceModule("rootly", "index/dashboardPanel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/environment", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/functionality", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/incidentRole", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/incidentRoleTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/incidentType", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/playbook", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/postmortemTemplate", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/service", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/severity", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/statusPage", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/statusPageTemplate", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/team", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowActionItem", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowAlert", _module)
@@ -442,6 +522,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateConflue
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateDatadogNotebook", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateDropboxPaperPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGithubIssue", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoToMeeting", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleCalendarEvent", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleDocsPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleMeeting", _module)
@@ -449,16 +530,20 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateInciden
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateJiraIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateJiraSubtask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateLinearIssue", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateLinearIssueComment", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateLinearSubtaskIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateMicrosoftTeamsMeeting", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateNotionPage", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateOpsgenieAlert", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateServiceNowIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateShortcutStory", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateShortcutTask", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateSlackChannel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateTrelloCard", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateWebexMeeting", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateZendeskTicket", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateZoomMeeting", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetAlerts", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetGithubCommits", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetGitlabCommits", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetPulses", _module)
@@ -475,21 +560,27 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPublishIncide
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskRedisClient", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskRenameSlackChannel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskRunCommandHeroku", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendDashboardReport", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendEmail", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendSlackBlocks", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendSlackMessage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendSms", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSnapshotDatadogGraph", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSnapshotGrafanaDashboard", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSnapshotLookerLook", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSnapshotNewRelicGraph", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskTriggerWorkflow", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskTweetTwitterMessage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateAirtableTableRecord", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateAsanaTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGithubIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGoogleCalendarEvent", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateIncident", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateIncidentPostmortem", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateJiraIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateLinearIssue", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateOpsgenieAlert", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdatePagerdutyIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateServiceNowIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateShortcutStory", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateShortcutTask", _module)

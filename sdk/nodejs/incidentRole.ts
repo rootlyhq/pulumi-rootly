@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages Incident Roles (e.g Commander, Ops Lead, Communication).
- */
 export class IncidentRole extends pulumi.CustomResource {
     /**
      * Get an existing IncidentRole resource's state with the given name, ID, and optional extra
@@ -38,19 +35,19 @@ export class IncidentRole extends pulumi.CustomResource {
     /**
      * The description of the incident role
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Whether the incident role is enabled or not
-     */
-    public readonly enabled!: pulumi.Output<boolean>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The name of the incident role
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The slug of the incident role
+     */
+    public readonly slug!: pulumi.Output<string>;
+    /**
      * The summary of the incident role
      */
-    public readonly summary!: pulumi.Output<string | undefined>;
+    public readonly summary!: pulumi.Output<string>;
 
     /**
      * Create a IncidentRole resource with the given unique name, arguments, and options.
@@ -66,14 +63,14 @@ export class IncidentRole extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IncidentRoleState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["slug"] = state ? state.slug : undefined;
             resourceInputs["summary"] = state ? state.summary : undefined;
         } else {
             const args = argsOrState as IncidentRoleArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["slug"] = args ? args.slug : undefined;
             resourceInputs["summary"] = args ? args.summary : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -90,13 +87,13 @@ export interface IncidentRoleState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the incident role is enabled or not
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
      * The name of the incident role
      */
     name?: pulumi.Input<string>;
+    /**
+     * The slug of the incident role
+     */
+    slug?: pulumi.Input<string>;
     /**
      * The summary of the incident role
      */
@@ -112,13 +109,13 @@ export interface IncidentRoleArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the incident role is enabled or not
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
      * The name of the incident role
      */
     name?: pulumi.Input<string>;
+    /**
+     * The slug of the incident role
+     */
+    slug?: pulumi.Input<string>;
     /**
      * The summary of the incident role
      */

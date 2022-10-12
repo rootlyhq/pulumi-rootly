@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages custom field options.
- */
 export class CustomFieldOption extends pulumi.CustomResource {
     /**
      * Get an existing CustomFieldOption resource's state with the given name, ID, and optional extra
@@ -36,15 +33,20 @@ export class CustomFieldOption extends pulumi.CustomResource {
     }
 
     /**
-     * The color of the custom field option
+     * The hex color of the custom_field_option
      */
-    public readonly color!: pulumi.Output<string | undefined>;
+    public readonly color!: pulumi.Output<string>;
     /**
      * The ID of the parent custom field
      */
     public readonly customFieldId!: pulumi.Output<number>;
+    public readonly default!: pulumi.Output<boolean>;
     /**
-     * The value of the custom field option
+     * The position of the custom_field_option
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
+     * The value of the custom_field_option
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -63,17 +65,18 @@ export class CustomFieldOption extends pulumi.CustomResource {
             const state = argsOrState as CustomFieldOptionState | undefined;
             resourceInputs["color"] = state ? state.color : undefined;
             resourceInputs["customFieldId"] = state ? state.customFieldId : undefined;
+            resourceInputs["default"] = state ? state.default : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as CustomFieldOptionArgs | undefined;
-            if ((!args || args.customFieldId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'customFieldId'");
-            }
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             resourceInputs["color"] = args ? args.color : undefined;
             resourceInputs["customFieldId"] = args ? args.customFieldId : undefined;
+            resourceInputs["default"] = args ? args.default : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -86,15 +89,20 @@ export class CustomFieldOption extends pulumi.CustomResource {
  */
 export interface CustomFieldOptionState {
     /**
-     * The color of the custom field option
+     * The hex color of the custom_field_option
      */
     color?: pulumi.Input<string>;
     /**
      * The ID of the parent custom field
      */
     customFieldId?: pulumi.Input<number>;
+    default?: pulumi.Input<boolean>;
     /**
-     * The value of the custom field option
+     * The position of the custom_field_option
+     */
+    position?: pulumi.Input<number>;
+    /**
+     * The value of the custom_field_option
      */
     value?: pulumi.Input<string>;
 }
@@ -104,15 +112,20 @@ export interface CustomFieldOptionState {
  */
 export interface CustomFieldOptionArgs {
     /**
-     * The color of the custom field option
+     * The hex color of the custom_field_option
      */
     color?: pulumi.Input<string>;
     /**
      * The ID of the parent custom field
      */
-    customFieldId: pulumi.Input<number>;
+    customFieldId?: pulumi.Input<number>;
+    default?: pulumi.Input<boolean>;
     /**
-     * The value of the custom field option
+     * The position of the custom_field_option
+     */
+    position?: pulumi.Input<number>;
+    /**
+     * The value of the custom_field_option
      */
     value: pulumi.Input<string>;
 }
