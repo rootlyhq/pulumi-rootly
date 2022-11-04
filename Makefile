@@ -31,7 +31,7 @@ tfgen:: install_plugins
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
 
 update_provider::
-	(cd provider && go get -u github.com/rootlyhq/terraform-provider-rootly)
+	(cd provider && go get github.com/rootlyhq/terraform-provider-rootly)
 	(cd provider && go mod tidy -compat=1.17)
 
 provider:: tfgen install_plugins # build the provider binary

@@ -2746,6 +2746,14 @@
                         }
                     }
                 },
+                "templateId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "title": {
                     "type": "string",
                     "language": {
@@ -5955,6 +5963,17 @@
         },
         "rootly:index/WorkflowTaskSendSlackMessageTaskParams:WorkflowTaskSendSlackMessageTaskParams": {
             "properties": {
+                "actionables": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "channels": {
                     "type": "array",
                     "items": {
@@ -6900,6 +6919,14 @@
                         }
                     }
                 },
+                "attributeToQueryBy": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "customFieldsMapping": {
                     "type": "string",
                     "language": {
@@ -7277,6 +7304,62 @@
             "required": [
                 "completion",
                 "priority"
+            ]
+        },
+        "rootly:index/WorkflowTaskUpdateOpsgenieIncidentTaskParams:WorkflowTaskUpdateOpsgenieIncidentTaskParams": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "message": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "opsgenieIncidentId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "priority": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "taskType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "opsgenieIncidentId"
             ]
         },
         "rootly:index/WorkflowTaskUpdatePagerdutyIncidentTaskParams:WorkflowTaskUpdatePagerdutyIncidentTaskParams": {
@@ -7718,6 +7801,47 @@
             "required": [
                 "id",
                 "name"
+            ]
+        },
+        "rootly:index/WorkflowTaskUpdateVictorOpsIncidentTaskParams:WorkflowTaskUpdateVictorOpsIncidentTaskParams": {
+            "properties": {
+                "resolutionMessage": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "taskType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "victorOpsIncidentId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "status",
+                "victorOpsIncidentId"
             ]
         },
         "rootly:index/WorkflowTaskUpdateZendeskTicketTaskParams:WorkflowTaskUpdateZendeskTicketTaskParams": {
@@ -8473,6 +8597,7 @@
             }
         },
         "rootly:index/customField:CustomField": {
+            "description": "DEPRECATED: Please use `rootly.FormField` resource instead.\n",
             "properties": {
                 "default": {
                     "type": "string",
@@ -8615,6 +8740,7 @@
             }
         },
         "rootly:index/customFieldOption:CustomFieldOption": {
+            "description": "DEPRECATED: Please use `rootly.FormField` and `rootly.FormFieldOption` resources instead.\n",
             "properties": {
                 "color": {
                     "type": "string",
@@ -8879,6 +9005,285 @@
                     "slug": {
                         "type": "string",
                         "description": "The slug of the environment\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/formField:FormField": {
+            "properties": {
+                "defaultValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the form field\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "inputKind": {
+                    "type": "string",
+                    "description": "The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`,\n`users`, `number`, `checkbox`, `tags`.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of the form field. Value must be one of `custom`, `title`, `summary`, `severity`, `environments`, `types`,\n`services`, `functionalities`, `teams`, `visibility`, `mark_as_test`, `mark_as_backfilled`, `labels`, `notify_emails`,\n`trigger_manual_workflows`, `show_ongoing_incidents`, `attach_alerts`, `manual_starting_datetime_field`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the form field\n"
+                },
+                "requireds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "showns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the form field\n"
+                }
+            },
+            "required": [
+                "defaultValues",
+                "description",
+                "name",
+                "requireds",
+                "showns",
+                "slug"
+            ],
+            "inputProperties": {
+                "defaultValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the form field\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "inputKind": {
+                    "type": "string",
+                    "description": "The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`,\n`users`, `number`, `checkbox`, `tags`.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of the form field. Value must be one of `custom`, `title`, `summary`, `severity`, `environments`, `types`,\n`services`, `functionalities`, `teams`, `visibility`, `mark_as_test`, `mark_as_backfilled`, `labels`, `notify_emails`,\n`trigger_manual_workflows`, `show_ongoing_incidents`, `attach_alerts`, `manual_starting_datetime_field`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the form field\n"
+                },
+                "requireds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "showns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the form field\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FormField resources.\n",
+                "properties": {
+                    "defaultValues": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the form field\n"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "inputKind": {
+                        "type": "string",
+                        "description": "The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`,\n`users`, `number`, `checkbox`, `tags`.\n"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "The kind of the form field. Value must be one of `custom`, `title`, `summary`, `severity`, `environments`, `types`,\n`services`, `functionalities`, `teams`, `visibility`, `mark_as_test`, `mark_as_backfilled`, `labels`, `notify_emails`,\n`trigger_manual_workflows`, `show_ongoing_incidents`, `attach_alerts`, `manual_starting_datetime_field`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the form field\n"
+                    },
+                    "requireds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "showns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "The slug of the form field\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/formFieldOption:FormFieldOption": {
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "description": "The hex color of the form_field_option\n"
+                },
+                "default": {
+                    "type": "boolean"
+                },
+                "formFieldId": {
+                    "type": "string",
+                    "description": "The ID of the parent custom field\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the form_field_option\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the form_field_option\n"
+                }
+            },
+            "required": [
+                "color",
+                "default",
+                "formFieldId",
+                "position",
+                "value"
+            ],
+            "inputProperties": {
+                "color": {
+                    "type": "string",
+                    "description": "The hex color of the form_field_option\n"
+                },
+                "default": {
+                    "type": "boolean"
+                },
+                "formFieldId": {
+                    "type": "string",
+                    "description": "The ID of the parent custom field\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the form_field_option\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the form_field_option\n"
+                }
+            },
+            "requiredInputs": [
+                "formFieldId",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FormFieldOption resources.\n",
+                "properties": {
+                    "color": {
+                        "type": "string",
+                        "description": "The hex color of the form_field_option\n"
+                    },
+                    "default": {
+                        "type": "boolean"
+                    },
+                    "formFieldId": {
+                        "type": "string",
+                        "description": "The ID of the parent custom field\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the form_field_option\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value of the form_field_option\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/formFieldPosition:FormFieldPosition": {
+            "properties": {
+                "form": {
+                    "type": "string",
+                    "description": "The form for the position. Value must be one of `web_new_incident_form`, `web_update_incident_form`,\n`web_incident_post_mortem_form`, `web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`,\n`slack_new_incident_form`, `slack_update_incident_form`, `slack_update_incident_status_form`,\n`slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
+                },
+                "formFieldId": {
+                    "type": "string",
+                    "description": "The ID of the form field.\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the form_field_position\n"
+                }
+            },
+            "required": [
+                "formFieldId",
+                "position"
+            ],
+            "inputProperties": {
+                "form": {
+                    "type": "string",
+                    "description": "The form for the position. Value must be one of `web_new_incident_form`, `web_update_incident_form`,\n`web_incident_post_mortem_form`, `web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`,\n`slack_new_incident_form`, `slack_update_incident_form`, `slack_update_incident_status_form`,\n`slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
+                },
+                "formFieldId": {
+                    "type": "string",
+                    "description": "The ID of the form field.\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the form_field_position\n"
+                }
+            },
+            "requiredInputs": [
+                "formFieldId",
+                "position"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FormFieldPosition resources.\n",
+                "properties": {
+                    "form": {
+                        "type": "string",
+                        "description": "The form for the position. Value must be one of `web_new_incident_form`, `web_update_incident_form`,\n`web_incident_post_mortem_form`, `web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`,\n`slack_new_incident_form`, `slack_update_incident_form`, `slack_update_incident_status_form`,\n`slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
+                    },
+                    "formFieldId": {
+                        "type": "string",
+                        "description": "The ID of the form field.\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the form_field_position\n"
                     }
                 },
                 "type": "object"
@@ -10737,6 +11142,118 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowFormFieldCondition:WorkflowFormFieldCondition": {
+            "properties": {
+                "formFieldId": {
+                    "type": "string",
+                    "description": "The custom field for this condition\n"
+                },
+                "incidentCondition": {
+                    "type": "string",
+                    "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.\n"
+                },
+                "selectedOptionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedUserIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The workflow for this condition\n"
+                }
+            },
+            "required": [
+                "formFieldId",
+                "selectedOptionIds",
+                "selectedUserIds",
+                "values",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "formFieldId": {
+                    "type": "string",
+                    "description": "The custom field for this condition\n"
+                },
+                "incidentCondition": {
+                    "type": "string",
+                    "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.\n"
+                },
+                "selectedOptionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedUserIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The workflow for this condition\n"
+                }
+            },
+            "requiredInputs": [
+                "formFieldId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowFormFieldCondition resources.\n",
+                "properties": {
+                    "formFieldId": {
+                        "type": "string",
+                        "description": "The custom field for this condition\n"
+                    },
+                    "incidentCondition": {
+                        "type": "string",
+                        "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.\n"
+                    },
+                    "selectedOptionIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "selectedUserIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The workflow for this condition\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowGroup:WorkflowGroup": {
             "properties": {
                 "expanded": {
@@ -10754,12 +11271,17 @@
                 "position": {
                     "type": "integer",
                     "description": "The position of the workflow group\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the workflow group.\n"
                 }
             },
             "required": [
                 "expanded",
                 "name",
-                "position"
+                "position",
+                "slug"
             ],
             "inputProperties": {
                 "expanded": {
@@ -10777,6 +11299,10 @@
                 "position": {
                     "type": "integer",
                     "description": "The position of the workflow group\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the workflow group.\n"
                 }
             },
             "stateInputs": {
@@ -10797,6 +11323,10 @@
                     "position": {
                         "type": "integer",
                         "description": "The position of the workflow group\n"
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "The slug of the workflow group.\n"
                     }
                 },
                 "type": "object"
@@ -15963,6 +16493,64 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowTaskUpdateOpsgenieIncident:WorkflowTaskUpdateOpsgenieIncident": {
+            "description": "Manages workflow update_opsgenie_incident task.\n",
+            "properties": {
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskUpdateOpsgenieIncidentTaskParams:WorkflowTaskUpdateOpsgenieIncidentTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskUpdateOpsgenieIncidentTaskParams:WorkflowTaskUpdateOpsgenieIncidentTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskUpdateOpsgenieIncident resources.\n",
+                "properties": {
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskUpdateOpsgenieIncidentTaskParams:WorkflowTaskUpdateOpsgenieIncidentTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowTaskUpdatePagerdutyIncident:WorkflowTaskUpdatePagerdutyIncident": {
             "description": "Manages workflow update_pagerduty_incident task.\n",
             "properties": {
@@ -16369,6 +16957,64 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowTaskUpdateVictorOpsIncident:WorkflowTaskUpdateVictorOpsIncident": {
+            "description": "Manages workflow update_victor_ops_incident task.\n",
+            "properties": {
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskUpdateVictorOpsIncidentTaskParams:WorkflowTaskUpdateVictorOpsIncidentTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskUpdateVictorOpsIncidentTaskParams:WorkflowTaskUpdateVictorOpsIncidentTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskUpdateVictorOpsIncident resources.\n",
+                "properties": {
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskUpdateVictorOpsIncidentTaskParams:WorkflowTaskUpdateVictorOpsIncidentTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowTaskUpdateZendeskTicket:WorkflowTaskUpdateZendeskTicket": {
             "description": "Manages workflow update_zendesk_ticket task.\n",
             "properties": {
@@ -16516,6 +17162,7 @@
             }
         },
         "rootly:index/getCustomField:getCustomField": {
+            "description": "DEPRECATED: Please use `form_field` data source instead.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getCustomField.\n",
                 "properties": {
@@ -16575,6 +17222,7 @@
             }
         },
         "rootly:index/getCustomFieldOption:getCustomFieldOption": {
+            "description": "DEPRECATED: Please use `form_field` and `form_field_option` data sources instead.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getCustomFieldOption.\n",
                 "properties": {
@@ -16799,6 +17447,126 @@
                 "type": "object",
                 "required": [
                     "environments",
+                    "id"
+                ]
+            }
+        },
+        "rootly:index/getFormField:getFormField": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getFormField.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFormField.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "kind",
+                    "name",
+                    "slug"
+                ]
+            }
+        },
+        "rootly:index/getFormFieldOption:getFormFieldOption": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getFormFieldOption.\n",
+                "properties": {
+                    "color": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFormFieldOption.\n",
+                "properties": {
+                    "color": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "color",
+                    "id",
+                    "value"
+                ]
+            }
+        },
+        "rootly:index/getFormFieldPosition:getFormFieldPosition": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getFormFieldPosition.\n",
+                "properties": {
+                    "form": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFormFieldPosition.\n",
+                "properties": {
+                    "form": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "form",
                     "id"
                 ]
             }
@@ -17397,11 +18165,17 @@
                     "expanded": {
                         "type": "boolean"
                     },
+                    "kind": {
+                        "type": "string"
+                    },
                     "name": {
                         "type": "string"
                     },
                     "position": {
                         "type": "integer"
+                    },
+                    "slug": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -17415,19 +18189,27 @@
                     "id": {
                         "type": "string"
                     },
+                    "kind": {
+                        "type": "string"
+                    },
                     "name": {
                         "type": "string"
                     },
                     "position": {
                         "type": "integer"
+                    },
+                    "slug": {
+                        "type": "string"
                     }
                 },
                 "type": "object",
                 "required": [
                     "expanded",
                     "id",
+                    "kind",
                     "name",
-                    "position"
+                    "position",
+                    "slug"
                 ]
             }
         }

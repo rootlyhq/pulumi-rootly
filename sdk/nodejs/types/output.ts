@@ -479,6 +479,7 @@ export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
     permissions?: string;
     postMortemTemplateId?: string;
     taskType?: string;
+    templateId?: string;
     title: string;
 }
 
@@ -980,6 +981,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup {
 }
 
 export interface WorkflowTaskSendSlackMessageTaskParams {
+    actionables?: string[];
     channels?: outputs.WorkflowTaskSendSlackMessageTaskParamsChannel[];
     sendAsEphemeral?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup[];
@@ -1136,6 +1138,7 @@ export interface WorkflowTaskUpdateIncidentPostmortemTaskParams {
 
 export interface WorkflowTaskUpdateIncidentTaskParams {
     acknowledgedAt?: string;
+    attributeToQueryBy?: string;
     customFieldsMapping?: string;
     detectedAt?: string;
     environmentIds?: string[];
@@ -1184,6 +1187,15 @@ export interface WorkflowTaskUpdateOpsgenieAlertTaskParams {
     description?: string;
     message?: string;
     priority: string;
+    taskType?: string;
+}
+
+export interface WorkflowTaskUpdateOpsgenieIncidentTaskParams {
+    description?: string;
+    message?: string;
+    opsgenieIncidentId: string;
+    priority?: string;
+    status?: string;
     taskType?: string;
 }
 
@@ -1252,6 +1264,13 @@ export interface WorkflowTaskUpdateTrelloCardTaskParams {
 export interface WorkflowTaskUpdateTrelloCardTaskParamsLabel {
     id: string;
     name: string;
+}
+
+export interface WorkflowTaskUpdateVictorOpsIncidentTaskParams {
+    resolutionMessage?: string;
+    status: string;
+    taskType?: string;
+    victorOpsIncidentId: string;
 }
 
 export interface WorkflowTaskUpdateZendeskTicketTaskParams {

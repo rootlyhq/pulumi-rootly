@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * DEPRECATED: Please use `rootly.FormField` resource instead.
+ */
 export class CustomField extends pulumi.CustomResource {
     /**
      * Get an existing CustomField resource's state with the given name, ID, and optional extra
