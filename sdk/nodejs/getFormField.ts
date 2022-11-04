@@ -4,59 +4,56 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * DEPRECATED: Please use `formField` data source instead.
- */
-export function getCustomField(args?: GetCustomFieldArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomFieldResult> {
+export function getFormField(args?: GetFormFieldArgs, opts?: pulumi.InvokeOptions): Promise<GetFormFieldResult> {
     args = args || {};
     if (!opts) {
         opts = {}
     }
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-    return pulumi.runtime.invoke("rootly:index/getCustomField:getCustomField", {
+    return pulumi.runtime.invoke("rootly:index/getFormField:getFormField", {
         "createdAt": args.createdAt,
         "enabled": args.enabled,
         "kind": args.kind,
-        "label": args.label,
+        "name": args.name,
         "slug": args.slug,
     }, opts);
 }
 
 /**
- * A collection of arguments for invoking getCustomField.
+ * A collection of arguments for invoking getFormField.
  */
-export interface GetCustomFieldArgs {
+export interface GetFormFieldArgs {
     createdAt?: {[key: string]: any};
     enabled?: boolean;
     kind?: string;
-    label?: string;
+    name?: string;
     slug?: string;
 }
 
 /**
- * A collection of values returned by getCustomField.
+ * A collection of values returned by getFormField.
  */
-export interface GetCustomFieldResult {
+export interface GetFormFieldResult {
     readonly createdAt?: {[key: string]: any};
     readonly enabled?: boolean;
     readonly id: string;
     readonly kind: string;
-    readonly label: string;
+    readonly name: string;
     readonly slug: string;
 }
 
-export function getCustomFieldOutput(args?: GetCustomFieldOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomFieldResult> {
-    return pulumi.output(args).apply(a => getCustomField(a, opts))
+export function getFormFieldOutput(args?: GetFormFieldOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFormFieldResult> {
+    return pulumi.output(args).apply(a => getFormField(a, opts))
 }
 
 /**
- * A collection of arguments for invoking getCustomField.
+ * A collection of arguments for invoking getFormField.
  */
-export interface GetCustomFieldOutputArgs {
+export interface GetFormFieldOutputArgs {
     createdAt?: pulumi.Input<{[key: string]: any}>;
     enabled?: pulumi.Input<boolean>;
     kind?: pulumi.Input<string>;
-    label?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;
 }

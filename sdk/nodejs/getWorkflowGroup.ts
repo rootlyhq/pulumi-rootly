@@ -13,8 +13,10 @@ export function getWorkflowGroup(args?: GetWorkflowGroupArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rootly:index/getWorkflowGroup:getWorkflowGroup", {
         "expanded": args.expanded,
+        "kind": args.kind,
         "name": args.name,
         "position": args.position,
+        "slug": args.slug,
     }, opts);
 }
 
@@ -23,8 +25,10 @@ export function getWorkflowGroup(args?: GetWorkflowGroupArgs, opts?: pulumi.Invo
  */
 export interface GetWorkflowGroupArgs {
     expanded?: boolean;
+    kind?: string;
     name?: string;
     position?: number;
+    slug?: string;
 }
 
 /**
@@ -33,8 +37,10 @@ export interface GetWorkflowGroupArgs {
 export interface GetWorkflowGroupResult {
     readonly expanded: boolean;
     readonly id: string;
+    readonly kind: string;
     readonly name: string;
     readonly position: number;
+    readonly slug: string;
 }
 
 export function getWorkflowGroupOutput(args?: GetWorkflowGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowGroupResult> {
@@ -46,6 +52,8 @@ export function getWorkflowGroupOutput(args?: GetWorkflowGroupOutputArgs, opts?:
  */
 export interface GetWorkflowGroupOutputArgs {
     expanded?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     position?: pulumi.Input<number>;
+    slug?: pulumi.Input<string>;
 }

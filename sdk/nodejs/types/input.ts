@@ -395,6 +395,7 @@ export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
     permissions?: pulumi.Input<string>;
     postMortemTemplateId?: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string>;
     title: pulumi.Input<string>;
 }
 
@@ -896,6 +897,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup {
 }
 
 export interface WorkflowTaskSendSlackMessageTaskParams {
+    actionables?: pulumi.Input<pulumi.Input<string>[]>;
     channels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsChannel>[]>;
     sendAsEphemeral?: pulumi.Input<boolean>;
     slackUserGroups?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup>[]>;
@@ -1052,6 +1054,7 @@ export interface WorkflowTaskUpdateIncidentPostmortemTaskParams {
 
 export interface WorkflowTaskUpdateIncidentTaskParams {
     acknowledgedAt?: pulumi.Input<string>;
+    attributeToQueryBy?: pulumi.Input<string>;
     customFieldsMapping?: pulumi.Input<string>;
     detectedAt?: pulumi.Input<string>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1100,6 +1103,15 @@ export interface WorkflowTaskUpdateOpsgenieAlertTaskParams {
     description?: pulumi.Input<string>;
     message?: pulumi.Input<string>;
     priority: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskUpdateOpsgenieIncidentTaskParams {
+    description?: pulumi.Input<string>;
+    message?: pulumi.Input<string>;
+    opsgenieIncidentId: pulumi.Input<string>;
+    priority?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -1170,6 +1182,13 @@ export interface WorkflowTaskUpdateTrelloCardTaskParamsLabel {
     name: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskUpdateVictorOpsIncidentTaskParams {
+    resolutionMessage?: pulumi.Input<string>;
+    status: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+    victorOpsIncidentId: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskUpdateZendeskTicketTaskParams {
     completion?: pulumi.Input<{[key: string]: any}>;
     priority?: pulumi.Input<{[key: string]: any}>;
@@ -1178,4 +1197,3 @@ export interface WorkflowTaskUpdateZendeskTicketTaskParams {
     taskType?: pulumi.Input<string>;
     ticketId: pulumi.Input<string>;
 }
-
