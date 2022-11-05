@@ -53,7 +53,18 @@ export class FormField extends pulumi.CustomResource {
      * The name of the form field
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * . Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
+     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `slack_new_incident_form`, `slack_update_incident_form`,
+     * `slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`.
+     */
     public readonly requireds!: pulumi.Output<string[]>;
+    /**
+     * . Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
+     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`, `slack_new_incident_form`,
+     * `slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,
+     * `slack_incident_resolution_form`.
+     */
     public readonly showns!: pulumi.Output<string[]>;
     /**
      * The slug of the form field
@@ -124,7 +135,18 @@ export interface FormFieldState {
      * The name of the form field
      */
     name?: pulumi.Input<string>;
+    /**
+     * . Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
+     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `slack_new_incident_form`, `slack_update_incident_form`,
+     * `slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`.
+     */
     requireds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * . Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
+     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`, `slack_new_incident_form`,
+     * `slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,
+     * `slack_incident_resolution_form`.
+     */
     showns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The slug of the form field
@@ -157,7 +179,18 @@ export interface FormFieldArgs {
      * The name of the form field
      */
     name?: pulumi.Input<string>;
+    /**
+     * . Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
+     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `slack_new_incident_form`, `slack_update_incident_form`,
+     * `slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`.
+     */
     requireds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * . Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
+     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`, `slack_new_incident_form`,
+     * `slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,
+     * `slack_incident_resolution_form`.
+     */
     showns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The slug of the form field

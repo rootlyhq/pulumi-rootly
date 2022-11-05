@@ -89,6 +89,7 @@ export * from "./workflowTaskCreateLinearSubtaskIssue";
 export * from "./workflowTaskCreateMicrosoftTeamsMeeting";
 export * from "./workflowTaskCreateNotionPage";
 export * from "./workflowTaskCreateOpsgenieAlert";
+export * from "./workflowTaskCreateQuipPage";
 export * from "./workflowTaskCreateServiceNowIncident";
 export * from "./workflowTaskCreateShortcutStory";
 export * from "./workflowTaskCreateShortcutTask";
@@ -214,6 +215,7 @@ import { WorkflowTaskCreateLinearSubtaskIssue } from "./workflowTaskCreateLinear
 import { WorkflowTaskCreateMicrosoftTeamsMeeting } from "./workflowTaskCreateMicrosoftTeamsMeeting";
 import { WorkflowTaskCreateNotionPage } from "./workflowTaskCreateNotionPage";
 import { WorkflowTaskCreateOpsgenieAlert } from "./workflowTaskCreateOpsgenieAlert";
+import { WorkflowTaskCreateQuipPage } from "./workflowTaskCreateQuipPage";
 import { WorkflowTaskCreateServiceNowIncident } from "./workflowTaskCreateServiceNowIncident";
 import { WorkflowTaskCreateShortcutStory } from "./workflowTaskCreateShortcutStory";
 import { WorkflowTaskCreateShortcutTask } from "./workflowTaskCreateShortcutTask";
@@ -392,6 +394,8 @@ const _module = {
                 return new WorkflowTaskCreateNotionPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateOpsgenieAlert:WorkflowTaskCreateOpsgenieAlert":
                 return new WorkflowTaskCreateOpsgenieAlert(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateQuipPage:WorkflowTaskCreateQuipPage":
+                return new WorkflowTaskCreateQuipPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateServiceNowIncident:WorkflowTaskCreateServiceNowIncident":
                 return new WorkflowTaskCreateServiceNowIncident(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateShortcutStory:WorkflowTaskCreateShortcutStory":
@@ -566,6 +570,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateLinearS
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateMicrosoftTeamsMeeting", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateNotionPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateOpsgenieAlert", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateQuipPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateServiceNowIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateShortcutStory", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateShortcutTask", _module)

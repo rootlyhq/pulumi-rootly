@@ -3679,6 +3679,62 @@
                 "name"
             ]
         },
+        "rootly:index/WorkflowTaskCreateQuipPageTaskParams:WorkflowTaskCreateQuipPageTaskParams": {
+            "properties": {
+                "content": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parentFolderId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "postMortemTemplateId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "taskType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "templateId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "title": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "title"
+            ]
+        },
         "rootly:index/WorkflowTaskCreateServiceNowIncidentTaskParams:WorkflowTaskCreateServiceNowIncidentTaskParams": {
             "properties": {
                 "completion": {
@@ -5842,6 +5898,17 @@
                         }
                     }
                 },
+                "parentMessageThreadTask": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "sendAsEphemeral": {
                     "type": "boolean",
                     "language": {
@@ -5978,6 +6045,17 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/rootly:index/WorkflowTaskSendSlackMessageTaskParamsChannel:WorkflowTaskSendSlackMessageTaskParamsChannel"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parentMessageThreadTask": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
                     },
                     "language": {
                         "python": {
@@ -9041,13 +9119,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
                 },
                 "showns": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`, `slack_new_incident_form`,\n`slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,\n`slack_incident_resolution_form`.\n"
                 },
                 "slug": {
                     "type": "string",
@@ -9092,13 +9172,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
                 },
                 "showns": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`, `slack_new_incident_form`,\n`slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,\n`slack_incident_resolution_form`.\n"
                 },
                 "slug": {
                     "type": "string",
@@ -9137,13 +9219,15 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
                     },
                     "showns": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`, `slack_new_incident_form`,\n`slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,\n`slack_incident_resolution_form`.\n"
                     },
                     "slug": {
                         "type": "string",
@@ -13873,6 +13957,64 @@
                     },
                     "taskParams": {
                         "$ref": "#/types/rootly:index/WorkflowTaskCreateOpsgenieAlertTaskParams:WorkflowTaskCreateOpsgenieAlertTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowTaskCreateQuipPage:WorkflowTaskCreateQuipPage": {
+            "description": "Manages workflow create_quip_page task.\n",
+            "properties": {
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreateQuipPageTaskParams:WorkflowTaskCreateQuipPageTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreateQuipPageTaskParams:WorkflowTaskCreateQuipPageTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskCreateQuipPage resources.\n",
+                "properties": {
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskCreateQuipPageTaskParams:WorkflowTaskCreateQuipPageTaskParams",
                         "description": "The parameters for this workflow task.\n"
                     },
                     "workflowId": {

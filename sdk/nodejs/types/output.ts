@@ -618,6 +618,15 @@ export interface WorkflowTaskCreateOpsgenieAlertTaskParamsUser {
     name: string;
 }
 
+export interface WorkflowTaskCreateQuipPageTaskParams {
+    content?: string;
+    parentFolderId?: string;
+    postMortemTemplateId?: string;
+    taskType?: string;
+    templateId?: string;
+    title: string;
+}
+
 export interface WorkflowTaskCreateServiceNowIncidentTaskParams {
     completion?: {[key: string]: any};
     customFieldsMapping?: string;
@@ -959,6 +968,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParams {
     blocks: string;
     channels?: outputs.WorkflowTaskSendSlackBlocksTaskParamsChannel[];
     message?: string;
+    parentMessageThreadTask?: {[key: string]: any};
     sendAsEphemeral?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup[];
     slackUsers?: outputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUser[];
@@ -983,6 +993,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup {
 export interface WorkflowTaskSendSlackMessageTaskParams {
     actionables?: string[];
     channels?: outputs.WorkflowTaskSendSlackMessageTaskParamsChannel[];
+    parentMessageThreadTask?: {[key: string]: any};
     sendAsEphemeral?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup[];
     slackUsers?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUser[];

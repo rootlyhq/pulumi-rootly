@@ -534,6 +534,15 @@ export interface WorkflowTaskCreateOpsgenieAlertTaskParamsUser {
     name: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskCreateQuipPageTaskParams {
+    content?: pulumi.Input<string>;
+    parentFolderId?: pulumi.Input<string>;
+    postMortemTemplateId?: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string>;
+    title: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskCreateServiceNowIncidentTaskParams {
     completion?: pulumi.Input<{[key: string]: any}>;
     customFieldsMapping?: pulumi.Input<string>;
@@ -875,6 +884,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParams {
     blocks: pulumi.Input<string>;
     channels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackBlocksTaskParamsChannel>[]>;
     message?: pulumi.Input<string>;
+    parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
     sendAsEphemeral?: pulumi.Input<boolean>;
     slackUserGroups?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup>[]>;
     slackUsers?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUser>[]>;
@@ -899,6 +909,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup {
 export interface WorkflowTaskSendSlackMessageTaskParams {
     actionables?: pulumi.Input<pulumi.Input<string>[]>;
     channels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsChannel>[]>;
+    parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
     sendAsEphemeral?: pulumi.Input<boolean>;
     slackUserGroups?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup>[]>;
     slackUsers?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsSlackUser>[]>;

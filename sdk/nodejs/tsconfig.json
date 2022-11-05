@@ -104,6 +104,7 @@
         "workflowTaskCreateMicrosoftTeamsMeeting.ts",
         "workflowTaskCreateNotionPage.ts",
         "workflowTaskCreateOpsgenieAlert.ts",
+        "workflowTaskCreateQuipPage.ts",
         "workflowTaskCreateServiceNowIncident.ts",
         "workflowTaskCreateShortcutStory.ts",
         "workflowTaskCreateShortcutTask.ts",
