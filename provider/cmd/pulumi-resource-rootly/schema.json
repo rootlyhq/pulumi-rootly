@@ -18300,6 +18300,40 @@
                 ]
             }
         },
+        "rootly:index/getWorkflow:getWorkflow": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getWorkflow.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getWorkflow.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "slug"
+                ]
+            }
+        },
         "rootly:index/getWorkflowGroup:getWorkflowGroup": {
             "inputs": {
                 "description": "A collection of arguments for invoking getWorkflowGroup.\n",
@@ -18352,6 +18386,50 @@
                     "name",
                     "position",
                     "slug"
+                ]
+            }
+        },
+        "rootly:index/getWorkflowTask:getWorkflowTask": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getWorkflowTask.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "workflowId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "workflowId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getWorkflowTask.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "workflowId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "slug",
+                    "workflowId"
                 ]
             }
         }
