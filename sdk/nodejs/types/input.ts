@@ -189,6 +189,11 @@ export interface WorkflowPulseTriggerParams {
     triggers?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface WorkflowSimpleTriggerParams {
+    triggerType?: pulumi.Input<string>;
+    triggers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface WorkflowTaskAddActionItemTaskParams {
     assignedToUserId?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
@@ -274,6 +279,7 @@ export interface WorkflowTaskAutoAssignRolePagerdutyTaskParams {
     escalationPolicy?: pulumi.Input<{[key: string]: any}>;
     incidentRoleId: pulumi.Input<string>;
     schedule?: pulumi.Input<{[key: string]: any}>;
+    service?: pulumi.Input<{[key: string]: any}>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -881,7 +887,9 @@ export interface WorkflowTaskSendEmailTaskParams {
 }
 
 export interface WorkflowTaskSendSlackBlocksTaskParams {
+    attachments?: pulumi.Input<string>;
     blocks: pulumi.Input<string>;
+    broadcastThreadReplyToChannel?: pulumi.Input<boolean>;
     channels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackBlocksTaskParamsChannel>[]>;
     message?: pulumi.Input<string>;
     parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
@@ -908,6 +916,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup {
 
 export interface WorkflowTaskSendSlackMessageTaskParams {
     actionables?: pulumi.Input<pulumi.Input<string>[]>;
+    broadcastThreadReplyToChannel?: pulumi.Input<boolean>;
     channels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsChannel>[]>;
     parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
     sendAsEphemeral?: pulumi.Input<boolean>;

@@ -273,6 +273,11 @@ export interface WorkflowPulseTriggerParams {
     triggers: string[];
 }
 
+export interface WorkflowSimpleTriggerParams {
+    triggerType?: string;
+    triggers: string[];
+}
+
 export interface WorkflowTaskAddActionItemTaskParams {
     assignedToUserId?: string;
     description?: string;
@@ -358,6 +363,7 @@ export interface WorkflowTaskAutoAssignRolePagerdutyTaskParams {
     escalationPolicy?: {[key: string]: any};
     incidentRoleId: string;
     schedule?: {[key: string]: any};
+    service?: {[key: string]: any};
     taskType?: string;
 }
 
@@ -965,7 +971,9 @@ export interface WorkflowTaskSendEmailTaskParams {
 }
 
 export interface WorkflowTaskSendSlackBlocksTaskParams {
+    attachments?: string;
     blocks: string;
+    broadcastThreadReplyToChannel?: boolean;
     channels?: outputs.WorkflowTaskSendSlackBlocksTaskParamsChannel[];
     message?: string;
     parentMessageThreadTask?: {[key: string]: any};
@@ -992,6 +1000,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup {
 
 export interface WorkflowTaskSendSlackMessageTaskParams {
     actionables?: string[];
+    broadcastThreadReplyToChannel?: boolean;
     channels?: outputs.WorkflowTaskSendSlackMessageTaskParamsChannel[];
     parentMessageThreadTask?: {[key: string]: any};
     sendAsEphemeral?: boolean;

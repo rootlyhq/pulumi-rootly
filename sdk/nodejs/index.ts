@@ -38,6 +38,7 @@ export * from "./getSeverities";
 export * from "./getSeverity";
 export * from "./getTeam";
 export * from "./getTeams";
+export * from "./getWebhooksEndpoint";
 export * from "./getWorkflow";
 export * from "./getWorkflowGroup";
 export * from "./getWorkflowTask";
@@ -52,6 +53,7 @@ export * from "./severity";
 export * from "./statusPage";
 export * from "./statusPageTemplate";
 export * from "./team";
+export * from "./webhooksEndpoint";
 export * from "./workflowActionItem";
 export * from "./workflowAlert";
 export * from "./workflowCustomFieldSelection";
@@ -60,6 +62,7 @@ export * from "./workflowGroup";
 export * from "./workflowIncident";
 export * from "./workflowPostMortem";
 export * from "./workflowPulse";
+export * from "./workflowSimple";
 export * from "./workflowTaskAddActionItem";
 export * from "./workflowTaskAddRole";
 export * from "./workflowTaskAddSlackBookmark";
@@ -178,6 +181,7 @@ import { Severity } from "./severity";
 import { StatusPage } from "./statusPage";
 import { StatusPageTemplate } from "./statusPageTemplate";
 import { Team } from "./team";
+import { WebhooksEndpoint } from "./webhooksEndpoint";
 import { WorkflowActionItem } from "./workflowActionItem";
 import { WorkflowAlert } from "./workflowAlert";
 import { WorkflowCustomFieldSelection } from "./workflowCustomFieldSelection";
@@ -186,6 +190,7 @@ import { WorkflowGroup } from "./workflowGroup";
 import { WorkflowIncident } from "./workflowIncident";
 import { WorkflowPostMortem } from "./workflowPostMortem";
 import { WorkflowPulse } from "./workflowPulse";
+import { WorkflowSimple } from "./workflowSimple";
 import { WorkflowTaskAddActionItem } from "./workflowTaskAddActionItem";
 import { WorkflowTaskAddRole } from "./workflowTaskAddRole";
 import { WorkflowTaskAddSlackBookmark } from "./workflowTaskAddSlackBookmark";
@@ -318,6 +323,8 @@ const _module = {
                 return new StatusPageTemplate(name, <any>undefined, { urn })
             case "rootly:index/team:Team":
                 return new Team(name, <any>undefined, { urn })
+            case "rootly:index/webhooksEndpoint:WebhooksEndpoint":
+                return new WebhooksEndpoint(name, <any>undefined, { urn })
             case "rootly:index/workflowActionItem:WorkflowActionItem":
                 return new WorkflowActionItem(name, <any>undefined, { urn })
             case "rootly:index/workflowAlert:WorkflowAlert":
@@ -334,6 +341,8 @@ const _module = {
                 return new WorkflowPostMortem(name, <any>undefined, { urn })
             case "rootly:index/workflowPulse:WorkflowPulse":
                 return new WorkflowPulse(name, <any>undefined, { urn })
+            case "rootly:index/workflowSimple:WorkflowSimple":
+                return new WorkflowSimple(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskAddActionItem:WorkflowTaskAddActionItem":
                 return new WorkflowTaskAddActionItem(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskAddRole:WorkflowTaskAddRole":
@@ -533,6 +542,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/severity", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/statusPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/statusPageTemplate", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/team", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/webhooksEndpoint", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowActionItem", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowAlert", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowCustomFieldSelection", _module)
@@ -541,6 +551,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowGroup", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowPostMortem", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowPulse", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowSimple", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddActionItem", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddRole", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddSlackBookmark", _module)

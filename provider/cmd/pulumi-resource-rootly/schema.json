@@ -1434,6 +1434,37 @@
                 }
             }
         },
+        "rootly:index/WorkflowSimpleTriggerParams:WorkflowSimpleTriggerParams": {
+            "properties": {
+                "triggerType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "triggers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "triggers"
+                    ]
+                }
+            }
+        },
         "rootly:index/WorkflowTaskAddActionItemTaskParams:WorkflowTaskAddActionItemTaskParams": {
             "properties": {
                 "assignedToUserId": {
@@ -1925,6 +1956,17 @@
                     }
                 },
                 "schedule": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "service": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
@@ -5871,8 +5913,24 @@
         },
         "rootly:index/WorkflowTaskSendSlackBlocksTaskParams:WorkflowTaskSendSlackBlocksTaskParams": {
             "properties": {
+                "attachments": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "blocks": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "broadcastThreadReplyToChannel": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6035,6 +6093,14 @@
                     "items": {
                         "type": "string"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "broadcastThreadReplyToChannel": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9120,14 +9186,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
+                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                 },
                 "showns": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`, `slack_new_incident_form`,\n`slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,\n`slack_incident_resolution_form`.\n"
+                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                 },
                 "slug": {
                     "type": "string",
@@ -9173,14 +9239,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
+                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                 },
                 "showns": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`, `slack_new_incident_form`,\n`slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,\n`slack_incident_resolution_form`.\n"
+                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                 },
                 "slug": {
                     "type": "string",
@@ -9220,14 +9286,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
+                        "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                     },
                     "showns": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`, `slack_new_incident_form`,\n`slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,\n`slack_incident_resolution_form`.\n"
+                        "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                     },
                     "slug": {
                         "type": "string",
@@ -9321,7 +9387,7 @@
             "properties": {
                 "form": {
                     "type": "string",
-                    "description": "The form for the position. Value must be one of `web_new_incident_form`, `web_update_incident_form`,\n`web_incident_post_mortem_form`, `web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`,\n`slack_new_incident_form`, `slack_update_incident_form`, `slack_update_incident_status_form`,\n`slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
+                    "description": "The form for the position. Value must be one of `web_new_incident_form`, `web_update_incident_form`,\n`web_incident_post_mortem_form`, `web_incident_mitigation_form`, `web_incident_resolution_form`,\n`web_scheduled_incident_form`, `web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`,\n`slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,\n`slack_incident_resolution_form`, `slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                 },
                 "formFieldId": {
                     "type": "string",
@@ -9339,7 +9405,7 @@
             "inputProperties": {
                 "form": {
                     "type": "string",
-                    "description": "The form for the position. Value must be one of `web_new_incident_form`, `web_update_incident_form`,\n`web_incident_post_mortem_form`, `web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`,\n`slack_new_incident_form`, `slack_update_incident_form`, `slack_update_incident_status_form`,\n`slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
+                    "description": "The form for the position. Value must be one of `web_new_incident_form`, `web_update_incident_form`,\n`web_incident_post_mortem_form`, `web_incident_mitigation_form`, `web_incident_resolution_form`,\n`web_scheduled_incident_form`, `web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`,\n`slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,\n`slack_incident_resolution_form`, `slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                 },
                 "formFieldId": {
                     "type": "string",
@@ -9359,7 +9425,7 @@
                 "properties": {
                     "form": {
                         "type": "string",
-                        "description": "The form for the position. Value must be one of `web_new_incident_form`, `web_update_incident_form`,\n`web_incident_post_mortem_form`, `web_incident_mitigation_form`, `web_incident_resolution_form`, `incident_post_mortem`,\n`slack_new_incident_form`, `slack_update_incident_form`, `slack_update_incident_status_form`,\n`slack_incident_mitigation_form`, `slack_incident_resolution_form`.\n"
+                        "description": "The form for the position. Value must be one of `web_new_incident_form`, `web_update_incident_form`,\n`web_incident_post_mortem_form`, `web_incident_mitigation_form`, `web_incident_resolution_form`,\n`web_scheduled_incident_form`, `web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`,\n`slack_update_incident_form`, `slack_update_incident_status_form`, `slack_incident_mitigation_form`,\n`slack_incident_resolution_form`, `slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                     },
                     "formFieldId": {
                         "type": "string",
@@ -10626,6 +10692,106 @@
                     },
                     "slug": {
                         "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/webhooksEndpoint:WebhooksEndpoint": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "eventTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": ". Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the endpoint\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "The webhook signing secret used to verify webhook requests.\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the endpoint\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the endpoint.\n"
+                }
+            },
+            "required": [
+                "eventTypes",
+                "name",
+                "secret",
+                "slug",
+                "url"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "eventTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": ". Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the endpoint\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "The webhook signing secret used to verify webhook requests.\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the endpoint\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the endpoint.\n"
+                }
+            },
+            "requiredInputs": [
+                "url"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WebhooksEndpoint resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "eventTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": ". Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the endpoint\n"
+                    },
+                    "secret": {
+                        "type": "string",
+                        "description": "The webhook signing secret used to verify webhook requests.\n"
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "The slug of the endpoint\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The URL of the endpoint.\n"
                     }
                 },
                 "type": "object"
@@ -12156,6 +12322,257 @@
                     },
                     "triggerParams": {
                         "$ref": "#/types/rootly:index/WorkflowPulseTriggerParams:WorkflowPulseTriggerParams"
+                    },
+                    "wait": {
+                        "type": "string",
+                        "description": "Wait this duration before executing.\n"
+                    },
+                    "workflowGroupId": {
+                        "type": "string",
+                        "description": "The group this workflow belongs to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowSimple:WorkflowSimple": {
+            "properties": {
+                "command": {
+                    "type": "string",
+                    "description": "Workflow command.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the workflow\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "environmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "incidentTypeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The title of the workflow\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The order which the workflow should run with other workflows.\n"
+                },
+                "repeatEveryDuration": {
+                    "type": "string",
+                    "description": "Repeat workflow every duration.\n"
+                },
+                "repeatOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "serviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "severityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the workflow\n"
+                },
+                "triggerParams": {
+                    "$ref": "#/types/rootly:index/WorkflowSimpleTriggerParams:WorkflowSimpleTriggerParams"
+                },
+                "wait": {
+                    "type": "string",
+                    "description": "Wait this duration before executing.\n"
+                },
+                "workflowGroupId": {
+                    "type": "string",
+                    "description": "The group this workflow belongs to.\n"
+                }
+            },
+            "required": [
+                "command",
+                "description",
+                "environmentIds",
+                "groupIds",
+                "incidentTypeIds",
+                "name",
+                "position",
+                "repeatEveryDuration",
+                "repeatOns",
+                "serviceIds",
+                "severityIds",
+                "slug",
+                "triggerParams",
+                "wait",
+                "workflowGroupId"
+            ],
+            "inputProperties": {
+                "command": {
+                    "type": "string",
+                    "description": "Workflow command.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the workflow\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "environmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "incidentTypeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The title of the workflow\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The order which the workflow should run with other workflows.\n"
+                },
+                "repeatEveryDuration": {
+                    "type": "string",
+                    "description": "Repeat workflow every duration.\n"
+                },
+                "repeatOns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "serviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "severityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug of the workflow\n"
+                },
+                "triggerParams": {
+                    "$ref": "#/types/rootly:index/WorkflowSimpleTriggerParams:WorkflowSimpleTriggerParams"
+                },
+                "wait": {
+                    "type": "string",
+                    "description": "Wait this duration before executing.\n"
+                },
+                "workflowGroupId": {
+                    "type": "string",
+                    "description": "The group this workflow belongs to.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowSimple resources.\n",
+                "properties": {
+                    "command": {
+                        "type": "string",
+                        "description": "Workflow command.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the workflow\n"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "environmentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "groupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "incidentTypeIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The title of the workflow\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The order which the workflow should run with other workflows.\n"
+                    },
+                    "repeatEveryDuration": {
+                        "type": "string",
+                        "description": "Repeat workflow every duration.\n"
+                    },
+                    "repeatOns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "serviceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "severityIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "The slug of the workflow\n"
+                    },
+                    "triggerParams": {
+                        "$ref": "#/types/rootly:index/WorkflowSimpleTriggerParams:WorkflowSimpleTriggerParams"
                     },
                     "wait": {
                         "type": "string",
@@ -18297,6 +18714,40 @@
                 "required": [
                     "teams",
                     "id"
+                ]
+            }
+        },
+        "rootly:index/getWebhooksEndpoint:getWebhooksEndpoint": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getWebhooksEndpoint.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getWebhooksEndpoint.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "slug"
                 ]
             }
         },
