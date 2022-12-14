@@ -57,6 +57,9 @@ export class WorkflowActionItem extends pulumi.CustomResource {
      * Repeat workflow every duration.
      */
     public readonly repeatEveryDuration!: pulumi.Output<string>;
+    /**
+     * Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
+     */
     public readonly repeatOns!: pulumi.Output<string[]>;
     public readonly serviceIds!: pulumi.Output<string[]>;
     public readonly severityIds!: pulumi.Output<string[]>;
@@ -155,6 +158,9 @@ export interface WorkflowActionItemState {
      * Repeat workflow every duration.
      */
     repeatEveryDuration?: pulumi.Input<string>;
+    /**
+     * Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
+     */
     repeatOns?: pulumi.Input<pulumi.Input<string>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     severityIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -201,6 +207,9 @@ export interface WorkflowActionItemArgs {
      * Repeat workflow every duration.
      */
     repeatEveryDuration?: pulumi.Input<string>;
+    /**
+     * Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
+     */
     repeatOns?: pulumi.Input<pulumi.Input<string>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     severityIds?: pulumi.Input<pulumi.Input<string>[]>;

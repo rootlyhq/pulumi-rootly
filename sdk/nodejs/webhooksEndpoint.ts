@@ -34,7 +34,7 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
 
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * . Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,
+     * Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,
      * `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,
      * `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,
      * `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,
@@ -100,7 +100,7 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
 export interface WebhooksEndpointState {
     enabled?: pulumi.Input<boolean>;
     /**
-     * . Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,
+     * Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,
      * `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,
      * `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,
      * `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,
@@ -131,7 +131,7 @@ export interface WebhooksEndpointState {
 export interface WebhooksEndpointArgs {
     enabled?: pulumi.Input<boolean>;
     /**
-     * . Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,
+     * Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,
      * `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,
      * `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,
      * `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,

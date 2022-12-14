@@ -9186,14 +9186,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
+                    "description": "Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                 },
                 "showns": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
+                    "description": "Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                 },
                 "slug": {
                     "type": "string",
@@ -9239,14 +9239,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
+                    "description": "Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                 },
                 "showns": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
+                    "description": "Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                 },
                 "slug": {
                     "type": "string",
@@ -9286,14 +9286,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
+                        "description": "Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                     },
                     "showns": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": ". Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
+                        "description": "Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,\n`web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,\n`web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,\n`slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,\n`slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.\n"
                     },
                     "slug": {
                         "type": "string",
@@ -10707,7 +10707,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": ". Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
+                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -10742,7 +10742,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": ". Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
+                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -10775,7 +10775,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": ". Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
+                        "description": "Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
                     },
                     "name": {
                         "type": "string",
@@ -10844,7 +10844,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -10937,7 +10938,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -11015,7 +11017,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                     },
                     "serviceIds": {
                         "type": "array",
@@ -11095,7 +11098,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -11188,7 +11192,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -11266,7 +11271,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                     },
                     "serviceIds": {
                         "type": "array",
@@ -11629,7 +11635,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -11722,7 +11729,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -11800,7 +11808,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                     },
                     "serviceIds": {
                         "type": "array",
@@ -11880,7 +11889,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -11973,7 +11983,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -12051,7 +12062,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                     },
                     "serviceIds": {
                         "type": "array",
@@ -12131,7 +12143,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -12224,7 +12237,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -12302,7 +12316,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                     },
                     "serviceIds": {
                         "type": "array",
@@ -12382,7 +12397,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -12475,7 +12491,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -12553,7 +12570,8 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                     },
                     "serviceIds": {
                         "type": "array",
