@@ -46,8 +46,10 @@ export * from "./incidentRole";
 export * from "./incidentRoleTask";
 export * from "./incidentType";
 export * from "./playbook";
-export * from "./postmortemTemplate";
+export * from "./playbookTask";
+export * from "./postMortemTemplate";
 export * from "./provider";
+export * from "./secret";
 export * from "./service";
 export * from "./severity";
 export * from "./statusPage";
@@ -94,6 +96,7 @@ export * from "./workflowTaskCreateLinearSubtaskIssue";
 export * from "./workflowTaskCreateMicrosoftTeamsMeeting";
 export * from "./workflowTaskCreateNotionPage";
 export * from "./workflowTaskCreateOpsgenieAlert";
+export * from "./workflowTaskCreatePagertreeAlert";
 export * from "./workflowTaskCreateQuipPage";
 export * from "./workflowTaskCreateServiceNowIncident";
 export * from "./workflowTaskCreateShortcutStory";
@@ -142,6 +145,7 @@ export * from "./workflowTaskUpdateLinearIssue";
 export * from "./workflowTaskUpdateOpsgenieAlert";
 export * from "./workflowTaskUpdateOpsgenieIncident";
 export * from "./workflowTaskUpdatePagerdutyIncident";
+export * from "./workflowTaskUpdatePagertreeAlert";
 export * from "./workflowTaskUpdateServiceNowIncident";
 export * from "./workflowTaskUpdateShortcutStory";
 export * from "./workflowTaskUpdateShortcutTask";
@@ -175,7 +179,9 @@ import { IncidentRole } from "./incidentRole";
 import { IncidentRoleTask } from "./incidentRoleTask";
 import { IncidentType } from "./incidentType";
 import { Playbook } from "./playbook";
-import { PostmortemTemplate } from "./postmortemTemplate";
+import { PlaybookTask } from "./playbookTask";
+import { PostMortemTemplate } from "./postMortemTemplate";
+import { Secret } from "./secret";
 import { Service } from "./service";
 import { Severity } from "./severity";
 import { StatusPage } from "./statusPage";
@@ -222,6 +228,7 @@ import { WorkflowTaskCreateLinearSubtaskIssue } from "./workflowTaskCreateLinear
 import { WorkflowTaskCreateMicrosoftTeamsMeeting } from "./workflowTaskCreateMicrosoftTeamsMeeting";
 import { WorkflowTaskCreateNotionPage } from "./workflowTaskCreateNotionPage";
 import { WorkflowTaskCreateOpsgenieAlert } from "./workflowTaskCreateOpsgenieAlert";
+import { WorkflowTaskCreatePagertreeAlert } from "./workflowTaskCreatePagertreeAlert";
 import { WorkflowTaskCreateQuipPage } from "./workflowTaskCreateQuipPage";
 import { WorkflowTaskCreateServiceNowIncident } from "./workflowTaskCreateServiceNowIncident";
 import { WorkflowTaskCreateShortcutStory } from "./workflowTaskCreateShortcutStory";
@@ -270,6 +277,7 @@ import { WorkflowTaskUpdateLinearIssue } from "./workflowTaskUpdateLinearIssue";
 import { WorkflowTaskUpdateOpsgenieAlert } from "./workflowTaskUpdateOpsgenieAlert";
 import { WorkflowTaskUpdateOpsgenieIncident } from "./workflowTaskUpdateOpsgenieIncident";
 import { WorkflowTaskUpdatePagerdutyIncident } from "./workflowTaskUpdatePagerdutyIncident";
+import { WorkflowTaskUpdatePagertreeAlert } from "./workflowTaskUpdatePagertreeAlert";
 import { WorkflowTaskUpdateServiceNowIncident } from "./workflowTaskUpdateServiceNowIncident";
 import { WorkflowTaskUpdateShortcutStory } from "./workflowTaskUpdateShortcutStory";
 import { WorkflowTaskUpdateShortcutTask } from "./workflowTaskUpdateShortcutTask";
@@ -311,8 +319,12 @@ const _module = {
                 return new IncidentType(name, <any>undefined, { urn })
             case "rootly:index/playbook:Playbook":
                 return new Playbook(name, <any>undefined, { urn })
-            case "rootly:index/postmortemTemplate:PostmortemTemplate":
-                return new PostmortemTemplate(name, <any>undefined, { urn })
+            case "rootly:index/playbookTask:PlaybookTask":
+                return new PlaybookTask(name, <any>undefined, { urn })
+            case "rootly:index/postMortemTemplate:PostMortemTemplate":
+                return new PostMortemTemplate(name, <any>undefined, { urn })
+            case "rootly:index/secret:Secret":
+                return new Secret(name, <any>undefined, { urn })
             case "rootly:index/service:Service":
                 return new Service(name, <any>undefined, { urn })
             case "rootly:index/severity:Severity":
@@ -405,6 +417,8 @@ const _module = {
                 return new WorkflowTaskCreateNotionPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateOpsgenieAlert:WorkflowTaskCreateOpsgenieAlert":
                 return new WorkflowTaskCreateOpsgenieAlert(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreatePagertreeAlert:WorkflowTaskCreatePagertreeAlert":
+                return new WorkflowTaskCreatePagertreeAlert(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateQuipPage:WorkflowTaskCreateQuipPage":
                 return new WorkflowTaskCreateQuipPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateServiceNowIncident:WorkflowTaskCreateServiceNowIncident":
@@ -501,6 +515,8 @@ const _module = {
                 return new WorkflowTaskUpdateOpsgenieIncident(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdatePagerdutyIncident:WorkflowTaskUpdatePagerdutyIncident":
                 return new WorkflowTaskUpdatePagerdutyIncident(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdatePagertreeAlert:WorkflowTaskUpdatePagertreeAlert":
+                return new WorkflowTaskUpdatePagertreeAlert(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateServiceNowIncident:WorkflowTaskUpdateServiceNowIncident":
                 return new WorkflowTaskUpdateServiceNowIncident(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateShortcutStory:WorkflowTaskUpdateShortcutStory":
@@ -536,7 +552,9 @@ pulumi.runtime.registerResourceModule("rootly", "index/incidentRole", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/incidentRoleTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/incidentType", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/playbook", _module)
-pulumi.runtime.registerResourceModule("rootly", "index/postmortemTemplate", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/playbookTask", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/postMortemTemplate", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/secret", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/service", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/severity", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/statusPage", _module)
@@ -583,6 +601,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateLinearS
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateMicrosoftTeamsMeeting", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateNotionPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateOpsgenieAlert", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreatePagertreeAlert", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateQuipPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateServiceNowIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateShortcutStory", _module)
@@ -631,6 +650,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateLinearI
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateOpsgenieAlert", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateOpsgenieIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdatePagerdutyIncident", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdatePagertreeAlert", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateServiceNowIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateShortcutStory", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateShortcutTask", _module)

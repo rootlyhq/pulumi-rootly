@@ -255,6 +255,7 @@ export interface WorkflowTaskArchiveSlackChannelsTaskParamsChannel {
 
 export interface WorkflowTaskAttachDatadogDashboardsTaskParams {
     dashboards: pulumi.Input<pulumi.Input<inputs.WorkflowTaskAttachDatadogDashboardsTaskParamsDashboard>[]>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannel>[]>;
     taskType?: pulumi.Input<string>;
 }
@@ -297,9 +298,9 @@ export interface WorkflowTaskCallPeopleTaskParams {
 }
 
 export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
-    baseKey: pulumi.Input<string>;
+    base: pulumi.Input<{[key: string]: any}>;
     customFieldsMapping?: pulumi.Input<string>;
-    tableName: pulumi.Input<string>;
+    table: pulumi.Input<{[key: string]: any}>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -387,11 +388,17 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParams {
     excludeWeekends?: pulumi.Input<boolean>;
     meetingDuration: pulumi.Input<string>;
     postToIncidentTimeline?: pulumi.Input<boolean>;
+    postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannel>[]>;
     sendUpdates?: pulumi.Input<boolean>;
     summary: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
     timeOfMeeting: pulumi.Input<string>;
     timeZone?: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
@@ -506,6 +513,8 @@ export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackCha
 export interface WorkflowTaskCreateNotionPageTaskParams {
     parentPage: pulumi.Input<{[key: string]: any}>;
     postMortemTemplateId?: pulumi.Input<string>;
+    showActionItemsAsTable?: pulumi.Input<boolean>;
+    showTimelineAsTable?: pulumi.Input<boolean>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -536,6 +545,27 @@ export interface WorkflowTaskCreateOpsgenieAlertTaskParamsTeam {
 }
 
 export interface WorkflowTaskCreateOpsgenieAlertTaskParamsUser {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreatePagertreeAlertTaskParams {
+    description?: pulumi.Input<string>;
+    incident?: pulumi.Input<boolean>;
+    severity?: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+    teams?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreatePagertreeAlertTaskParamsTeam>[]>;
+    title?: pulumi.Input<string>;
+    urgency?: pulumi.Input<string>;
+    users?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreatePagertreeAlertTaskParamsUser>[]>;
+}
+
+export interface WorkflowTaskCreatePagertreeAlertTaskParamsTeam {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreatePagertreeAlertTaskParamsUser {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
 }
@@ -642,6 +672,7 @@ export interface WorkflowTaskGetAlertsTaskParams {
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
     labels?: pulumi.Input<pulumi.Input<string>[]>;
     pastDuration: pulumi.Input<string>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskGetAlertsTaskParamsPostToSlackChannel>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     sources?: pulumi.Input<pulumi.Input<string>[]>;
@@ -657,6 +688,7 @@ export interface WorkflowTaskGetGithubCommitsTaskParams {
     branch: pulumi.Input<string>;
     githubRepositoryNames?: pulumi.Input<pulumi.Input<string>[]>;
     pastDuration: pulumi.Input<string>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskGetGithubCommitsTaskParamsPostToSlackChannel>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     taskType?: pulumi.Input<string>;
@@ -671,6 +703,7 @@ export interface WorkflowTaskGetGitlabCommitsTaskParams {
     branch: pulumi.Input<string>;
     gitlabRepositoryNames?: pulumi.Input<pulumi.Input<string>[]>;
     pastDuration: pulumi.Input<string>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskGetGitlabCommitsTaskParamsPostToSlackChannel>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     taskType?: pulumi.Input<string>;
@@ -685,6 +718,7 @@ export interface WorkflowTaskGetPulsesTaskParams {
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
     labels?: pulumi.Input<pulumi.Input<string>[]>;
     pastDuration: pulumi.Input<string>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskGetPulsesTaskParamsPostToSlackChannel>[]>;
     refs?: pulumi.Input<pulumi.Input<string>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -699,10 +733,12 @@ export interface WorkflowTaskGetPulsesTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskHTTPClientTaskParams {
     body?: pulumi.Input<string>;
+    eventMessage?: pulumi.Input<string>;
     eventUrl?: pulumi.Input<string>;
     headers?: pulumi.Input<string>;
     method?: pulumi.Input<string>;
     params?: pulumi.Input<string>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskHTTPClientTaskParamsPostToSlackChannel>[]>;
     succeedOnStatus: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
@@ -835,6 +871,7 @@ export interface WorkflowTaskRedisClientTaskParams {
     commands: pulumi.Input<string>;
     eventMessage?: pulumi.Input<string>;
     eventUrl?: pulumi.Input<string>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskRedisClientTaskParamsPostToSlackChannel>[]>;
     taskType?: pulumi.Input<string>;
     url: pulumi.Input<string>;
@@ -854,6 +891,7 @@ export interface WorkflowTaskRenameSlackChannelTaskParams {
 export interface WorkflowTaskRunCommandHerokuTaskParams {
     appName: pulumi.Input<string>;
     command: pulumi.Input<string>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskRunCommandHerokuTaskParamsPostToSlackChannel>[]>;
     size: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
@@ -952,6 +990,7 @@ export interface WorkflowTaskSnapshotDatadogGraphTaskParams {
     dashboards?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSnapshotDatadogGraphTaskParamsDashboard>[]>;
     metricQueries?: pulumi.Input<pulumi.Input<string>[]>;
     pastDuration: pulumi.Input<string>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSnapshotDatadogGraphTaskParamsPostToSlackChannel>[]>;
     taskType?: pulumi.Input<string>;
 }
@@ -968,6 +1007,7 @@ export interface WorkflowTaskSnapshotDatadogGraphTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskSnapshotGrafanaDashboardTaskParams {
     dashboards: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSnapshotGrafanaDashboardTaskParamsDashboard>[]>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSnapshotGrafanaDashboardTaskParamsPostToSlackChannel>[]>;
     taskType?: pulumi.Input<string>;
 }
@@ -984,6 +1024,7 @@ export interface WorkflowTaskSnapshotGrafanaDashboardTaskParamsPostToSlackChanne
 
 export interface WorkflowTaskSnapshotLookerLookTaskParams {
     dashboards: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSnapshotLookerLookTaskParamsDashboard>[]>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSnapshotLookerLookTaskParamsPostToSlackChannel>[]>;
     taskType?: pulumi.Input<string>;
 }
@@ -1001,6 +1042,7 @@ export interface WorkflowTaskSnapshotLookerLookTaskParamsPostToSlackChannel {
 export interface WorkflowTaskSnapshotNewRelicGraphTaskParams {
     metricQuery: pulumi.Input<string>;
     metricType: pulumi.Input<string>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSnapshotNewRelicGraphTaskParamsPostToSlackChannel>[]>;
     taskType?: pulumi.Input<string>;
 }
@@ -1058,11 +1100,17 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
     eventId: pulumi.Input<string>;
     meetingDuration?: pulumi.Input<string>;
     postToIncidentTimeline?: pulumi.Input<boolean>;
+    postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannel>[]>;
     replaceAttendees?: pulumi.Input<boolean>;
     sendUpdates?: pulumi.Input<boolean>;
     summary?: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
     timeOfMeeting?: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskUpdateIncidentPostmortemTaskParams {
@@ -1143,6 +1191,28 @@ export interface WorkflowTaskUpdatePagerdutyIncidentTaskParams {
     taskType?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
     urgency?: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskUpdatePagertreeAlertTaskParams {
+    description?: pulumi.Input<string>;
+    incident?: pulumi.Input<boolean>;
+    pagertreeAlertId?: pulumi.Input<string>;
+    severity?: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+    teams?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskUpdatePagertreeAlertTaskParamsTeam>[]>;
+    title?: pulumi.Input<string>;
+    urgency?: pulumi.Input<string>;
+    users?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskUpdatePagertreeAlertTaskParamsUser>[]>;
+}
+
+export interface WorkflowTaskUpdatePagertreeAlertTaskParamsTeam {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskUpdatePagertreeAlertTaskParamsUser {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskUpdateServiceNowIncidentTaskParams {

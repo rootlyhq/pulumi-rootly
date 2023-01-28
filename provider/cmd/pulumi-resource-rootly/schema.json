@@ -1823,6 +1823,14 @@
                         }
                     }
                 },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "postToSlackChannels": {
                     "type": "array",
                     "items": {
@@ -2074,8 +2082,11 @@
         },
         "rootly:index/WorkflowTaskCreateAirtableTableRecordTaskParams:WorkflowTaskCreateAirtableTableRecordTaskParams": {
             "properties": {
-                "baseKey": {
-                    "type": "string",
+                "base": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2090,8 +2101,11 @@
                         }
                     }
                 },
-                "tableName": {
-                    "type": "string",
+                "table": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2109,8 +2123,8 @@
             },
             "type": "object",
             "required": [
-                "baseKey",
-                "tableName"
+                "base",
+                "table"
             ]
         },
         "rootly:index/WorkflowTaskCreateAsanaSubtaskTaskParams:WorkflowTaskCreateAsanaSubtaskTaskParams": {
@@ -2681,6 +2695,17 @@
                         }
                     }
                 },
+                "postToSlackChannels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannel:WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannel"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "sendUpdates": {
                     "type": "boolean",
                     "language": {
@@ -2730,6 +2755,31 @@
                 "meetingDuration",
                 "summary",
                 "timeOfMeeting"
+            ]
+        },
+        "rootly:index/WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannel:WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannel": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
             ]
         },
         "rootly:index/WorkflowTaskCreateGoogleDocsPageTaskParams:WorkflowTaskCreateGoogleDocsPageTaskParams": {
@@ -3523,6 +3573,22 @@
                         }
                     }
                 },
+                "showActionItemsAsTable": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "showTimelineAsTable": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "taskType": {
                     "type": "string",
                     "language": {
@@ -3697,6 +3763,131 @@
             ]
         },
         "rootly:index/WorkflowTaskCreateOpsgenieAlertTaskParamsUser:WorkflowTaskCreateOpsgenieAlertTaskParamsUser": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "rootly:index/WorkflowTaskCreatePagertreeAlertTaskParams:WorkflowTaskCreatePagertreeAlertTaskParams": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "incident": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "severity": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "taskType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskCreatePagertreeAlertTaskParamsTeam:WorkflowTaskCreatePagertreeAlertTaskParamsTeam"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "title": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "urgency": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskCreatePagertreeAlertTaskParamsUser:WorkflowTaskCreatePagertreeAlertTaskParamsUser"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rootly:index/WorkflowTaskCreatePagertreeAlertTaskParamsTeam:WorkflowTaskCreatePagertreeAlertTaskParamsTeam": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "rootly:index/WorkflowTaskCreatePagertreeAlertTaskParamsUser:WorkflowTaskCreatePagertreeAlertTaskParamsUser": {
             "properties": {
                 "id": {
                     "type": "string",
@@ -4402,6 +4593,14 @@
                         }
                     }
                 },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "postToSlackChannels": {
                     "type": "array",
                     "items": {
@@ -4503,6 +4702,14 @@
                         }
                     }
                 },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "postToSlackChannels": {
                     "type": "array",
                     "items": {
@@ -4588,6 +4795,14 @@
                 },
                 "pastDuration": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4688,6 +4903,14 @@
                         }
                     }
                 },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "postToSlackChannels": {
                     "type": "array",
                     "items": {
@@ -4781,6 +5004,14 @@
                         }
                     }
                 },
+                "eventMessage": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "eventUrl": {
                     "type": "string",
                     "language": {
@@ -4807,6 +5038,14 @@
                 },
                 "params": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5581,6 +5820,14 @@
                         }
                     }
                 },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "postToSlackChannels": {
                     "type": "array",
                     "items": {
@@ -5687,6 +5934,14 @@
                 },
                 "command": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6333,6 +6588,14 @@
                         }
                     }
                 },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "postToSlackChannels": {
                     "type": "array",
                     "items": {
@@ -6415,6 +6678,14 @@
                     "items": {
                         "$ref": "#/types/rootly:index/WorkflowTaskSnapshotGrafanaDashboardTaskParamsDashboard:WorkflowTaskSnapshotGrafanaDashboardTaskParamsDashboard"
                     },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6509,6 +6780,14 @@
                         }
                     }
                 },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "postToSlackChannels": {
                     "type": "array",
                     "items": {
@@ -6596,6 +6875,14 @@
                 },
                 "metricType": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6970,6 +7257,17 @@
                         }
                     }
                 },
+                "postToSlackChannels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannel:WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannel"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "replaceAttendees": {
                     "type": "boolean",
                     "language": {
@@ -7014,6 +7312,31 @@
             "type": "object",
             "required": [
                 "eventId"
+            ]
+        },
+        "rootly:index/WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannel:WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannel": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
             ]
         },
         "rootly:index/WorkflowTaskUpdateIncidentPostmortemTaskParams:WorkflowTaskUpdateIncidentPostmortemTaskParams": {
@@ -7568,6 +7891,139 @@
             "type": "object",
             "required": [
                 "pagerdutyIncidentId"
+            ]
+        },
+        "rootly:index/WorkflowTaskUpdatePagertreeAlertTaskParams:WorkflowTaskUpdatePagertreeAlertTaskParams": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "incident": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pagertreeAlertId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "severity": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "taskType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskUpdatePagertreeAlertTaskParamsTeam:WorkflowTaskUpdatePagertreeAlertTaskParamsTeam"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "title": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "urgency": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskUpdatePagertreeAlertTaskParamsUser:WorkflowTaskUpdatePagertreeAlertTaskParamsUser"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "rootly:index/WorkflowTaskUpdatePagertreeAlertTaskParamsTeam:WorkflowTaskUpdatePagertreeAlertTaskParamsTeam": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "rootly:index/WorkflowTaskUpdatePagertreeAlertTaskParamsUser:WorkflowTaskUpdatePagertreeAlertTaskParamsUser": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
             ]
         },
         "rootly:index/WorkflowTaskUpdateServiceNowIncidentTaskParams:WorkflowTaskUpdateServiceNowIncidentTaskParams": {
@@ -9473,6 +9929,13 @@
                     },
                     "description": "Owner Teams associated with this functionality\n"
                 },
+                "ownersUserIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Owner Users associated with this service\n"
+                },
                 "publicDescription": {
                     "type": "string",
                     "description": "The public description of the functionality\n"
@@ -9510,6 +9973,7 @@
                 "name",
                 "notifyEmails",
                 "ownersGroupIds",
+                "ownersUserIds",
                 "publicDescription",
                 "serviceIds",
                 "slackAliases",
@@ -9548,6 +10012,13 @@
                         "type": "string"
                     },
                     "description": "Owner Teams associated with this functionality\n"
+                },
+                "ownersUserIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Owner Users associated with this service\n"
                 },
                 "publicDescription": {
                     "type": "string",
@@ -9613,6 +10084,13 @@
                             "type": "string"
                         },
                         "description": "Owner Teams associated with this functionality\n"
+                    },
+                    "ownersUserIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "Owner Users associated with this service\n"
                     },
                     "publicDescription": {
                         "type": "string",
@@ -9843,9 +10321,44 @@
         },
         "rootly:index/playbook:Playbook": {
             "properties": {
+                "environmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Environment ID's to attach to the incident\n"
+                },
                 "externalUrl": {
                     "type": "string",
                     "description": "The external url of the playbook\n"
+                },
+                "functionalityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Functionality ID's to attach to the incident\n"
+                },
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Team ID's to attach to the incident\n"
+                },
+                "incidentTypeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Incident Type ID's to attach to the incident\n"
+                },
+                "severityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Severity ID's to attach to the incident\n"
                 },
                 "summary": {
                     "type": "string",
@@ -9857,14 +10370,54 @@
                 }
             },
             "required": [
+                "environmentIds",
                 "externalUrl",
+                "functionalityIds",
+                "groupIds",
+                "incidentTypeIds",
+                "severityIds",
                 "summary",
                 "title"
             ],
             "inputProperties": {
+                "environmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Environment ID's to attach to the incident\n"
+                },
                 "externalUrl": {
                     "type": "string",
                     "description": "The external url of the playbook\n"
+                },
+                "functionalityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Functionality ID's to attach to the incident\n"
+                },
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Team ID's to attach to the incident\n"
+                },
+                "incidentTypeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Incident Type ID's to attach to the incident\n"
+                },
+                "severityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Severity ID's to attach to the incident\n"
                 },
                 "summary": {
                     "type": "string",
@@ -9881,9 +10434,44 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Playbook resources.\n",
                 "properties": {
+                    "environmentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Environment ID's to attach to the incident\n"
+                    },
                     "externalUrl": {
                         "type": "string",
                         "description": "The external url of the playbook\n"
+                    },
+                    "functionalityIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Functionality ID's to attach to the incident\n"
+                    },
+                    "groupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Team ID's to attach to the incident\n"
+                    },
+                    "incidentTypeIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Incident Type ID's to attach to the incident\n"
+                    },
+                    "severityIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Severity ID's to attach to the incident\n"
                     },
                     "summary": {
                         "type": "string",
@@ -9897,7 +10485,60 @@
                 "type": "object"
             }
         },
-        "rootly:index/postmortemTemplate:PostmortemTemplate": {
+        "rootly:index/playbookTask:PlaybookTask": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of incident task\n"
+                },
+                "playbookId": {
+                    "type": "string"
+                },
+                "task": {
+                    "type": "string",
+                    "description": "The task of the incident task\n"
+                }
+            },
+            "required": [
+                "description",
+                "playbookId",
+                "task"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of incident task\n"
+                },
+                "playbookId": {
+                    "type": "string"
+                },
+                "task": {
+                    "type": "string",
+                    "description": "The task of the incident task\n"
+                }
+            },
+            "requiredInputs": [
+                "task"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PlaybookTask resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of incident task\n"
+                    },
+                    "playbookId": {
+                        "type": "string"
+                    },
+                    "task": {
+                        "type": "string",
+                        "description": "The task of the incident task\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/postMortemTemplate:PostMortemTemplate": {
             "properties": {
                 "content": {
                     "type": "string",
@@ -9931,8 +10572,11 @@
                     "description": "The name of the postmortem template\n"
                 }
             },
+            "requiredInputs": [
+                "content"
+            ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering PostmortemTemplate resources.\n",
+                "description": "Input properties used for looking up and filtering PostMortemTemplate resources.\n",
                 "properties": {
                     "content": {
                         "type": "string",
@@ -9945,6 +10589,64 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the postmortem template\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/secret:Secret": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the secret\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "The redacted secret\n",
+                    "language": {
+                        "csharp": {
+                            "name": "rootly_secret"
+                        }
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "secret"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the secret\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "The redacted secret\n",
+                    "language": {
+                        "csharp": {
+                            "name": "rootly_secret"
+                        }
+                    }
+                }
+            },
+            "requiredInputs": [
+                "secret"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Secret resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the secret\n"
+                    },
+                    "secret": {
+                        "type": "string",
+                        "description": "The redacted secret\n",
+                        "language": {
+                            "csharp": {
+                                "name": "rootly_secret"
+                            }
+                        }
                     }
                 },
                 "type": "object"
@@ -10008,6 +10710,13 @@
                     },
                     "description": "Owner Teams associated with this service\n"
                 },
+                "ownersUserIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Owner Users associated with this service\n"
+                },
                 "pagerdutyId": {
                     "type": "string",
                     "description": "The PagerDuty service id associated to this service\n"
@@ -10055,6 +10764,7 @@
                 "notifyEmails",
                 "opsgenieId",
                 "ownersGroupIds",
+                "ownersUserIds",
                 "pagerdutyId",
                 "publicDescription",
                 "serviceIds",
@@ -10118,6 +10828,13 @@
                         "type": "string"
                     },
                     "description": "Owner Teams associated with this service\n"
+                },
+                "ownersUserIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Owner Users associated with this service\n"
                 },
                 "pagerdutyId": {
                     "type": "string",
@@ -10211,6 +10928,13 @@
                             "type": "string"
                         },
                         "description": "Owner Teams associated with this service\n"
+                    },
+                    "ownersUserIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "Owner Users associated with this service\n"
                     },
                     "pagerdutyId": {
                         "type": "string",
@@ -10707,7 +11431,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
+                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`,\n`genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`,\n`genius_workflow_run.canceled`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -10742,7 +11466,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
+                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`,\n`genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`,\n`genius_workflow_run.canceled`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -10775,7 +11499,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`.\n"
+                        "description": "Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,\n`incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,\n`incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,\n`incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,\n`incident_post_mortem.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`,\n`genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`,\n`genius_workflow_run.canceled`.\n"
                     },
                     "name": {
                         "type": "string",
@@ -14402,6 +15126,64 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowTaskCreatePagertreeAlert:WorkflowTaskCreatePagertreeAlert": {
+            "description": "Manages workflow create_pagertree_alert task.\n",
+            "properties": {
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreatePagertreeAlertTaskParams:WorkflowTaskCreatePagertreeAlertTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreatePagertreeAlertTaskParams:WorkflowTaskCreatePagertreeAlertTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskCreatePagertreeAlert resources.\n",
+                "properties": {
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskCreatePagertreeAlertTaskParams:WorkflowTaskCreatePagertreeAlertTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowTaskCreateQuipPage:WorkflowTaskCreateQuipPage": {
             "description": "Manages workflow create_quip_page task.\n",
             "properties": {
@@ -17176,6 +17958,64 @@
                     },
                     "taskParams": {
                         "$ref": "#/types/rootly:index/WorkflowTaskUpdatePagerdutyIncidentTaskParams:WorkflowTaskUpdatePagerdutyIncidentTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowTaskUpdatePagertreeAlert:WorkflowTaskUpdatePagertreeAlert": {
+            "description": "Manages workflow update_pagertree_alert task.\n",
+            "properties": {
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskUpdatePagertreeAlertTaskParams:WorkflowTaskUpdatePagertreeAlertTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskUpdatePagertreeAlertTaskParams:WorkflowTaskUpdatePagertreeAlertTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskUpdatePagertreeAlert resources.\n",
+                "properties": {
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskUpdatePagertreeAlertTaskParams:WorkflowTaskUpdatePagertreeAlertTaskParams",
                         "description": "The parameters for this workflow task.\n"
                     },
                     "workflowId": {

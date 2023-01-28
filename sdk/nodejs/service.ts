@@ -79,6 +79,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly ownersGroupIds!: pulumi.Output<string[]>;
     /**
+     * Owner Users associated with this service
+     */
+    public readonly ownersUserIds!: pulumi.Output<number[]>;
+    /**
      * The PagerDuty service id associated to this service
      */
     public readonly pagerdutyId!: pulumi.Output<string>;
@@ -128,6 +132,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["notifyEmails"] = state ? state.notifyEmails : undefined;
             resourceInputs["opsgenieId"] = state ? state.opsgenieId : undefined;
             resourceInputs["ownersGroupIds"] = state ? state.ownersGroupIds : undefined;
+            resourceInputs["ownersUserIds"] = state ? state.ownersUserIds : undefined;
             resourceInputs["pagerdutyId"] = state ? state.pagerdutyId : undefined;
             resourceInputs["publicDescription"] = state ? state.publicDescription : undefined;
             resourceInputs["serviceIds"] = state ? state.serviceIds : undefined;
@@ -148,6 +153,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["notifyEmails"] = args ? args.notifyEmails : undefined;
             resourceInputs["opsgenieId"] = args ? args.opsgenieId : undefined;
             resourceInputs["ownersGroupIds"] = args ? args.ownersGroupIds : undefined;
+            resourceInputs["ownersUserIds"] = args ? args.ownersUserIds : undefined;
             resourceInputs["pagerdutyId"] = args ? args.pagerdutyId : undefined;
             resourceInputs["publicDescription"] = args ? args.publicDescription : undefined;
             resourceInputs["serviceIds"] = args ? args.serviceIds : undefined;
@@ -209,6 +215,10 @@ export interface ServiceState {
      * Owner Teams associated with this service
      */
     ownersGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Owner Users associated with this service
+     */
+    ownersUserIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The PagerDuty service id associated to this service
      */
@@ -284,6 +294,10 @@ export interface ServiceArgs {
      * Owner Teams associated with this service
      */
     ownersGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Owner Users associated with this service
+     */
+    ownersUserIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The PagerDuty service id associated to this service
      */

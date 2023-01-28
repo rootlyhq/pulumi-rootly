@@ -339,6 +339,7 @@ export interface WorkflowTaskArchiveSlackChannelsTaskParamsChannel {
 
 export interface WorkflowTaskAttachDatadogDashboardsTaskParams {
     dashboards: outputs.WorkflowTaskAttachDatadogDashboardsTaskParamsDashboard[];
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannel[];
     taskType?: string;
 }
@@ -381,9 +382,9 @@ export interface WorkflowTaskCallPeopleTaskParams {
 }
 
 export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
-    baseKey: string;
+    base: {[key: string]: any};
     customFieldsMapping?: string;
-    tableName: string;
+    table: {[key: string]: any};
     taskType?: string;
 }
 
@@ -471,11 +472,17 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParams {
     excludeWeekends?: boolean;
     meetingDuration: string;
     postToIncidentTimeline?: boolean;
+    postToSlackChannels?: outputs.WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannel[];
     sendUpdates?: boolean;
     summary: string;
     taskType?: string;
     timeOfMeeting: string;
     timeZone?: string;
+}
+
+export interface WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannel {
+    id: string;
+    name: string;
 }
 
 export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
@@ -590,6 +597,8 @@ export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackCha
 export interface WorkflowTaskCreateNotionPageTaskParams {
     parentPage: {[key: string]: any};
     postMortemTemplateId?: string;
+    showActionItemsAsTable?: boolean;
+    showTimelineAsTable?: boolean;
     taskType?: string;
 }
 
@@ -620,6 +629,27 @@ export interface WorkflowTaskCreateOpsgenieAlertTaskParamsTeam {
 }
 
 export interface WorkflowTaskCreateOpsgenieAlertTaskParamsUser {
+    id: string;
+    name: string;
+}
+
+export interface WorkflowTaskCreatePagertreeAlertTaskParams {
+    description?: string;
+    incident?: boolean;
+    severity?: string;
+    taskType?: string;
+    teams?: outputs.WorkflowTaskCreatePagertreeAlertTaskParamsTeam[];
+    title?: string;
+    urgency?: string;
+    users?: outputs.WorkflowTaskCreatePagertreeAlertTaskParamsUser[];
+}
+
+export interface WorkflowTaskCreatePagertreeAlertTaskParamsTeam {
+    id: string;
+    name: string;
+}
+
+export interface WorkflowTaskCreatePagertreeAlertTaskParamsUser {
     id: string;
     name: string;
 }
@@ -726,6 +756,7 @@ export interface WorkflowTaskGetAlertsTaskParams {
     environmentIds?: string[];
     labels?: string[];
     pastDuration: string;
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskGetAlertsTaskParamsPostToSlackChannel[];
     serviceIds?: string[];
     sources?: string[];
@@ -741,6 +772,7 @@ export interface WorkflowTaskGetGithubCommitsTaskParams {
     branch: string;
     githubRepositoryNames?: string[];
     pastDuration: string;
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskGetGithubCommitsTaskParamsPostToSlackChannel[];
     serviceIds?: string[];
     taskType?: string;
@@ -755,6 +787,7 @@ export interface WorkflowTaskGetGitlabCommitsTaskParams {
     branch: string;
     gitlabRepositoryNames?: string[];
     pastDuration: string;
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskGetGitlabCommitsTaskParamsPostToSlackChannel[];
     serviceIds?: string[];
     taskType?: string;
@@ -769,6 +802,7 @@ export interface WorkflowTaskGetPulsesTaskParams {
     environmentIds?: string[];
     labels?: string[];
     pastDuration: string;
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskGetPulsesTaskParamsPostToSlackChannel[];
     refs?: string[];
     serviceIds?: string[];
@@ -783,10 +817,12 @@ export interface WorkflowTaskGetPulsesTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskHTTPClientTaskParams {
     body?: string;
+    eventMessage?: string;
     eventUrl?: string;
     headers?: string;
     method?: string;
     params?: string;
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskHTTPClientTaskParamsPostToSlackChannel[];
     succeedOnStatus: string;
     taskType?: string;
@@ -919,6 +955,7 @@ export interface WorkflowTaskRedisClientTaskParams {
     commands: string;
     eventMessage?: string;
     eventUrl?: string;
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskRedisClientTaskParamsPostToSlackChannel[];
     taskType?: string;
     url: string;
@@ -938,6 +975,7 @@ export interface WorkflowTaskRenameSlackChannelTaskParams {
 export interface WorkflowTaskRunCommandHerokuTaskParams {
     appName: string;
     command: string;
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskRunCommandHerokuTaskParamsPostToSlackChannel[];
     size: string;
     taskType?: string;
@@ -1036,6 +1074,7 @@ export interface WorkflowTaskSnapshotDatadogGraphTaskParams {
     dashboards?: outputs.WorkflowTaskSnapshotDatadogGraphTaskParamsDashboard[];
     metricQueries?: string[];
     pastDuration: string;
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskSnapshotDatadogGraphTaskParamsPostToSlackChannel[];
     taskType?: string;
 }
@@ -1052,6 +1091,7 @@ export interface WorkflowTaskSnapshotDatadogGraphTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskSnapshotGrafanaDashboardTaskParams {
     dashboards: outputs.WorkflowTaskSnapshotGrafanaDashboardTaskParamsDashboard[];
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskSnapshotGrafanaDashboardTaskParamsPostToSlackChannel[];
     taskType?: string;
 }
@@ -1068,6 +1108,7 @@ export interface WorkflowTaskSnapshotGrafanaDashboardTaskParamsPostToSlackChanne
 
 export interface WorkflowTaskSnapshotLookerLookTaskParams {
     dashboards: outputs.WorkflowTaskSnapshotLookerLookTaskParamsDashboard[];
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskSnapshotLookerLookTaskParamsPostToSlackChannel[];
     taskType?: string;
 }
@@ -1085,6 +1126,7 @@ export interface WorkflowTaskSnapshotLookerLookTaskParamsPostToSlackChannel {
 export interface WorkflowTaskSnapshotNewRelicGraphTaskParams {
     metricQuery: string;
     metricType: string;
+    postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskSnapshotNewRelicGraphTaskParamsPostToSlackChannel[];
     taskType?: string;
 }
@@ -1142,11 +1184,17 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
     eventId: string;
     meetingDuration?: string;
     postToIncidentTimeline?: boolean;
+    postToSlackChannels?: outputs.WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannel[];
     replaceAttendees?: boolean;
     sendUpdates?: boolean;
     summary?: string;
     taskType?: string;
     timeOfMeeting?: string;
+}
+
+export interface WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannel {
+    id: string;
+    name: string;
 }
 
 export interface WorkflowTaskUpdateIncidentPostmortemTaskParams {
@@ -1227,6 +1275,28 @@ export interface WorkflowTaskUpdatePagerdutyIncidentTaskParams {
     taskType?: string;
     title?: string;
     urgency?: string;
+}
+
+export interface WorkflowTaskUpdatePagertreeAlertTaskParams {
+    description?: string;
+    incident?: boolean;
+    pagertreeAlertId?: string;
+    severity?: string;
+    taskType?: string;
+    teams?: outputs.WorkflowTaskUpdatePagertreeAlertTaskParamsTeam[];
+    title?: string;
+    urgency?: string;
+    users?: outputs.WorkflowTaskUpdatePagertreeAlertTaskParamsUser[];
+}
+
+export interface WorkflowTaskUpdatePagertreeAlertTaskParamsTeam {
+    id: string;
+    name: string;
+}
+
+export interface WorkflowTaskUpdatePagertreeAlertTaskParamsUser {
+    id: string;
+    name: string;
 }
 
 export interface WorkflowTaskUpdateServiceNowIncidentTaskParams {

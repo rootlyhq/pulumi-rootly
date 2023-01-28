@@ -55,6 +55,10 @@ export class Functionality extends pulumi.CustomResource {
      */
     public readonly ownersGroupIds!: pulumi.Output<string[]>;
     /**
+     * Owner Users associated with this service
+     */
+    public readonly ownersUserIds!: pulumi.Output<number[]>;
+    /**
      * The public description of the functionality
      */
     public readonly publicDescription!: pulumi.Output<string>;
@@ -94,6 +98,7 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notifyEmails"] = state ? state.notifyEmails : undefined;
             resourceInputs["ownersGroupIds"] = state ? state.ownersGroupIds : undefined;
+            resourceInputs["ownersUserIds"] = state ? state.ownersUserIds : undefined;
             resourceInputs["publicDescription"] = state ? state.publicDescription : undefined;
             resourceInputs["serviceIds"] = state ? state.serviceIds : undefined;
             resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
@@ -107,6 +112,7 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifyEmails"] = args ? args.notifyEmails : undefined;
             resourceInputs["ownersGroupIds"] = args ? args.ownersGroupIds : undefined;
+            resourceInputs["ownersUserIds"] = args ? args.ownersUserIds : undefined;
             resourceInputs["publicDescription"] = args ? args.publicDescription : undefined;
             resourceInputs["serviceIds"] = args ? args.serviceIds : undefined;
             resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
@@ -143,6 +149,10 @@ export interface FunctionalityState {
      * Owner Teams associated with this functionality
      */
     ownersGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Owner Users associated with this service
+     */
+    ownersUserIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The public description of the functionality
      */
@@ -190,6 +200,10 @@ export interface FunctionalityArgs {
      * Owner Teams associated with this functionality
      */
     ownersGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Owner Users associated with this service
+     */
+    ownersUserIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The public description of the functionality
      */

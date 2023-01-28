@@ -33,9 +33,29 @@ export class Playbook extends pulumi.CustomResource {
     }
 
     /**
+     * The Environment ID's to attach to the incident
+     */
+    public readonly environmentIds!: pulumi.Output<string[]>;
+    /**
      * The external url of the playbook
      */
     public readonly externalUrl!: pulumi.Output<string>;
+    /**
+     * The Functionality ID's to attach to the incident
+     */
+    public readonly functionalityIds!: pulumi.Output<string[]>;
+    /**
+     * The Team ID's to attach to the incident
+     */
+    public readonly groupIds!: pulumi.Output<string[]>;
+    /**
+     * The Incident Type ID's to attach to the incident
+     */
+    public readonly incidentTypeIds!: pulumi.Output<string[]>;
+    /**
+     * The Severity ID's to attach to the incident
+     */
+    public readonly severityIds!: pulumi.Output<string[]>;
     /**
      * The summary of the playbook
      */
@@ -58,7 +78,12 @@ export class Playbook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PlaybookState | undefined;
+            resourceInputs["environmentIds"] = state ? state.environmentIds : undefined;
             resourceInputs["externalUrl"] = state ? state.externalUrl : undefined;
+            resourceInputs["functionalityIds"] = state ? state.functionalityIds : undefined;
+            resourceInputs["groupIds"] = state ? state.groupIds : undefined;
+            resourceInputs["incidentTypeIds"] = state ? state.incidentTypeIds : undefined;
+            resourceInputs["severityIds"] = state ? state.severityIds : undefined;
             resourceInputs["summary"] = state ? state.summary : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
         } else {
@@ -66,7 +91,12 @@ export class Playbook extends pulumi.CustomResource {
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
+            resourceInputs["environmentIds"] = args ? args.environmentIds : undefined;
             resourceInputs["externalUrl"] = args ? args.externalUrl : undefined;
+            resourceInputs["functionalityIds"] = args ? args.functionalityIds : undefined;
+            resourceInputs["groupIds"] = args ? args.groupIds : undefined;
+            resourceInputs["incidentTypeIds"] = args ? args.incidentTypeIds : undefined;
+            resourceInputs["severityIds"] = args ? args.severityIds : undefined;
             resourceInputs["summary"] = args ? args.summary : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
         }
@@ -80,9 +110,29 @@ export class Playbook extends pulumi.CustomResource {
  */
 export interface PlaybookState {
     /**
+     * The Environment ID's to attach to the incident
+     */
+    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The external url of the playbook
      */
     externalUrl?: pulumi.Input<string>;
+    /**
+     * The Functionality ID's to attach to the incident
+     */
+    functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Team ID's to attach to the incident
+     */
+    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Incident Type ID's to attach to the incident
+     */
+    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Severity ID's to attach to the incident
+     */
+    severityIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The summary of the playbook
      */
@@ -98,9 +148,29 @@ export interface PlaybookState {
  */
 export interface PlaybookArgs {
     /**
+     * The Environment ID's to attach to the incident
+     */
+    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The external url of the playbook
      */
     externalUrl?: pulumi.Input<string>;
+    /**
+     * The Functionality ID's to attach to the incident
+     */
+    functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Team ID's to attach to the incident
+     */
+    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Incident Type ID's to attach to the incident
+     */
+    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Severity ID's to attach to the incident
+     */
+    severityIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The summary of the playbook
      */
