@@ -7,6 +7,40 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow sendSlackBlocks task.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const sendAlertsToSlack = new rootly.WorkflowAlert("sendAlertsToSlack", {
+ *     description: "Sends a customizable message block to Slack with details of your alerts",
+ *     triggerParams: {
+ *         triggers: ["alert_created"],
+ *     },
+ *     enabled: true,
+ * });
+ * const sendSlackBlocks = new rootly.WorkflowTaskSendSlackBlocks("sendSlackBlocks", {
+ *     workflowId: sendAlertsToSlack.id,
+ *     skipOnFailure: false,
+ *     enabled: true,
+ *     taskParams: {
+ *         name: "Send alert block",
+ *         message: ":boom: New alert!",
+ *         blocks: [
+ *             {
+ *                 id: "undefined",
+ *                 name: "undefined",
+ *             },
+ *             {
+ *                 id: "undefined",
+ *                 name: "undefined",
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
  */
 export class WorkflowTaskSendSlackBlocks extends pulumi.CustomResource {
     /**
@@ -37,9 +71,17 @@ export class WorkflowTaskSendSlackBlocks extends pulumi.CustomResource {
     }
 
     /**
+     * Enable/disable this workflow task
+     */
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     public readonly position!: pulumi.Output<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    public readonly skipOnFailure!: pulumi.Output<boolean | undefined>;
     /**
      * The parameters for this workflow task.
      */
@@ -62,7 +104,9 @@ export class WorkflowTaskSendSlackBlocks extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTaskSendSlackBlocksState | undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["skipOnFailure"] = state ? state.skipOnFailure : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
@@ -73,7 +117,9 @@ export class WorkflowTaskSendSlackBlocks extends pulumi.CustomResource {
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["skipOnFailure"] = args ? args.skipOnFailure : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
@@ -87,9 +133,17 @@ export class WorkflowTaskSendSlackBlocks extends pulumi.CustomResource {
  */
 export interface WorkflowTaskSendSlackBlocksState {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */
@@ -105,9 +159,17 @@ export interface WorkflowTaskSendSlackBlocksState {
  */
 export interface WorkflowTaskSendSlackBlocksArgs {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */

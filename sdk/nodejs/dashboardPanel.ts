@@ -7,6 +7,39 @@ import * as utilities from "./utilities";
 
 /**
  * Manages dashboard_panels.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const overview = new rootly.Dashboard("overview", {});
+ * const incidentsBySeverity = new rootly.DashboardPanel("incidentsBySeverity", {
+ *     dashboardId: rootly_dashboard.foo.id,
+ *     params: {
+ *         display: "line_chart",
+ *         datasets: [{
+ *             collection: "incidents",
+ *             filters: [{
+ *                 operation: "and",
+ *                 rules: [{
+ *                     operation: "and",
+ *                     condition: "=",
+ *                     key: "status",
+ *                     value: "started",
+ *                 }],
+ *             }],
+ *             groupBy: "severity",
+ *             aggregate: {
+ *                 cumulative: false,
+ *                 key: "results",
+ *                 operation: "count",
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
  */
 export class DashboardPanel extends pulumi.CustomResource {
     /**

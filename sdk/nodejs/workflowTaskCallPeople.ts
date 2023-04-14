@@ -7,6 +7,33 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow callPeople task.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const callPeopleWorkflowIncident = new rootly.WorkflowIncident("callPeopleWorkflowIncident", {
+ *     description: "Automatically call a specific teammate.",
+ *     triggerParams: {
+ *         triggers: ["incident_created"],
+ *         incidentStatuses: ["started"],
+ *         incidentConditionStatus: "IS",
+ *     },
+ *     enabled: true,
+ * });
+ * const callPeopleWorkflowTaskCallPeople = new rootly.WorkflowTaskCallPeople("callPeopleWorkflowTaskCallPeople", {
+ *     workflowId: callPeopleWorkflowIncident.id,
+ *     skipOnFailure: false,
+ *     enabled: true,
+ *     taskParams: {
+ *         name: "Call people",
+ *         content: "We have an ongoing incident {{ incident.title }} of severity {{ incident.severity }} and your assistance is required.",
+ *     },
+ * });
+ * // TODO
+ * ```
  */
 export class WorkflowTaskCallPeople extends pulumi.CustomResource {
     /**
@@ -37,9 +64,17 @@ export class WorkflowTaskCallPeople extends pulumi.CustomResource {
     }
 
     /**
+     * Enable/disable this workflow task
+     */
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     public readonly position!: pulumi.Output<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    public readonly skipOnFailure!: pulumi.Output<boolean | undefined>;
     /**
      * The parameters for this workflow task.
      */
@@ -62,7 +97,9 @@ export class WorkflowTaskCallPeople extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTaskCallPeopleState | undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["skipOnFailure"] = state ? state.skipOnFailure : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
@@ -73,7 +110,9 @@ export class WorkflowTaskCallPeople extends pulumi.CustomResource {
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["skipOnFailure"] = args ? args.skipOnFailure : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
@@ -87,9 +126,17 @@ export class WorkflowTaskCallPeople extends pulumi.CustomResource {
  */
 export interface WorkflowTaskCallPeopleState {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */
@@ -105,9 +152,17 @@ export interface WorkflowTaskCallPeopleState {
  */
 export interface WorkflowTaskCallPeopleArgs {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */

@@ -33,6 +33,18 @@ export class Secret extends pulumi.CustomResource {
     }
 
     /**
+     * The HashiCorp Vault secret mount path
+     */
+    public readonly hashicorpVaultMount!: pulumi.Output<string>;
+    /**
+     * The HashiCorp Vault secret path
+     */
+    public readonly hashicorpVaultPath!: pulumi.Output<string>;
+    /**
+     * The HashiCorp Vault secret version
+     */
+    public readonly hashicorpVaultVersion!: pulumi.Output<number>;
+    /**
      * The name of the secret
      */
     public readonly name!: pulumi.Output<string>;
@@ -54,6 +66,9 @@ export class Secret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
+            resourceInputs["hashicorpVaultMount"] = state ? state.hashicorpVaultMount : undefined;
+            resourceInputs["hashicorpVaultPath"] = state ? state.hashicorpVaultPath : undefined;
+            resourceInputs["hashicorpVaultVersion"] = state ? state.hashicorpVaultVersion : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
         } else {
@@ -61,6 +76,9 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.secret === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secret'");
             }
+            resourceInputs["hashicorpVaultMount"] = args ? args.hashicorpVaultMount : undefined;
+            resourceInputs["hashicorpVaultPath"] = args ? args.hashicorpVaultPath : undefined;
+            resourceInputs["hashicorpVaultVersion"] = args ? args.hashicorpVaultVersion : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["secret"] = args ? args.secret : undefined;
         }
@@ -73,6 +91,18 @@ export class Secret extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Secret resources.
  */
 export interface SecretState {
+    /**
+     * The HashiCorp Vault secret mount path
+     */
+    hashicorpVaultMount?: pulumi.Input<string>;
+    /**
+     * The HashiCorp Vault secret path
+     */
+    hashicorpVaultPath?: pulumi.Input<string>;
+    /**
+     * The HashiCorp Vault secret version
+     */
+    hashicorpVaultVersion?: pulumi.Input<number>;
     /**
      * The name of the secret
      */
@@ -87,6 +117,18 @@ export interface SecretState {
  * The set of arguments for constructing a Secret resource.
  */
 export interface SecretArgs {
+    /**
+     * The HashiCorp Vault secret mount path
+     */
+    hashicorpVaultMount?: pulumi.Input<string>;
+    /**
+     * The HashiCorp Vault secret path
+     */
+    hashicorpVaultPath?: pulumi.Input<string>;
+    /**
+     * The HashiCorp Vault secret version
+     */
+    hashicorpVaultVersion?: pulumi.Input<number>;
     /**
      * The name of the secret
      */

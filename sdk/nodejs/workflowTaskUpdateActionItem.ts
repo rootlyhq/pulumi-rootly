@@ -6,11 +6,11 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Manages workflow autoAssignRoleVictorOps task.
+ * Manages workflow updateActionItem task.
  */
-export class WorkflowTaskAutoAssignRoleVictorOps extends pulumi.CustomResource {
+export class WorkflowTaskUpdateActionItem extends pulumi.CustomResource {
     /**
-     * Get an existing WorkflowTaskAutoAssignRoleVictorOps resource's state with the given name, ID, and optional extra
+     * Get an existing WorkflowTaskUpdateActionItem resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -18,22 +18,22 @@ export class WorkflowTaskAutoAssignRoleVictorOps extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkflowTaskAutoAssignRoleVictorOpsState, opts?: pulumi.CustomResourceOptions): WorkflowTaskAutoAssignRoleVictorOps {
-        return new WorkflowTaskAutoAssignRoleVictorOps(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkflowTaskUpdateActionItemState, opts?: pulumi.CustomResourceOptions): WorkflowTaskUpdateActionItem {
+        return new WorkflowTaskUpdateActionItem(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'rootly:index/workflowTaskAutoAssignRoleVictorOps:WorkflowTaskAutoAssignRoleVictorOps';
+    public static readonly __pulumiType = 'rootly:index/workflowTaskUpdateActionItem:WorkflowTaskUpdateActionItem';
 
     /**
-     * Returns true if the given object is an instance of WorkflowTaskAutoAssignRoleVictorOps.  This is designed to work even
+     * Returns true if the given object is an instance of WorkflowTaskUpdateActionItem.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is WorkflowTaskAutoAssignRoleVictorOps {
+    public static isInstance(obj: any): obj is WorkflowTaskUpdateActionItem {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === WorkflowTaskAutoAssignRoleVictorOps.__pulumiType;
+        return obj['__pulumiType'] === WorkflowTaskUpdateActionItem.__pulumiType;
     }
 
     /**
@@ -51,32 +51,32 @@ export class WorkflowTaskAutoAssignRoleVictorOps extends pulumi.CustomResource {
     /**
      * The parameters for this workflow task.
      */
-    public readonly taskParams!: pulumi.Output<outputs.WorkflowTaskAutoAssignRoleVictorOpsTaskParams>;
+    public readonly taskParams!: pulumi.Output<outputs.WorkflowTaskUpdateActionItemTaskParams>;
     /**
      * The ID of the parent workflow
      */
     public readonly workflowId!: pulumi.Output<string>;
 
     /**
-     * Create a WorkflowTaskAutoAssignRoleVictorOps resource with the given unique name, arguments, and options.
+     * Create a WorkflowTaskUpdateActionItem resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: WorkflowTaskAutoAssignRoleVictorOpsArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: WorkflowTaskAutoAssignRoleVictorOpsArgs | WorkflowTaskAutoAssignRoleVictorOpsState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: WorkflowTaskUpdateActionItemArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: WorkflowTaskUpdateActionItemArgs | WorkflowTaskUpdateActionItemState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as WorkflowTaskAutoAssignRoleVictorOpsState | undefined;
+            const state = argsOrState as WorkflowTaskUpdateActionItemState | undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["skipOnFailure"] = state ? state.skipOnFailure : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
-            const args = argsOrState as WorkflowTaskAutoAssignRoleVictorOpsArgs | undefined;
+            const args = argsOrState as WorkflowTaskUpdateActionItemArgs | undefined;
             if ((!args || args.taskParams === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'taskParams'");
             }
@@ -90,14 +90,14 @@ export class WorkflowTaskAutoAssignRoleVictorOps extends pulumi.CustomResource {
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(WorkflowTaskAutoAssignRoleVictorOps.__pulumiType, name, resourceInputs, opts);
+        super(WorkflowTaskUpdateActionItem.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering WorkflowTaskAutoAssignRoleVictorOps resources.
+ * Input properties used for looking up and filtering WorkflowTaskUpdateActionItem resources.
  */
-export interface WorkflowTaskAutoAssignRoleVictorOpsState {
+export interface WorkflowTaskUpdateActionItemState {
     /**
      * Enable/disable this workflow task
      */
@@ -113,7 +113,7 @@ export interface WorkflowTaskAutoAssignRoleVictorOpsState {
     /**
      * The parameters for this workflow task.
      */
-    taskParams?: pulumi.Input<inputs.WorkflowTaskAutoAssignRoleVictorOpsTaskParams>;
+    taskParams?: pulumi.Input<inputs.WorkflowTaskUpdateActionItemTaskParams>;
     /**
      * The ID of the parent workflow
      */
@@ -121,9 +121,9 @@ export interface WorkflowTaskAutoAssignRoleVictorOpsState {
 }
 
 /**
- * The set of arguments for constructing a WorkflowTaskAutoAssignRoleVictorOps resource.
+ * The set of arguments for constructing a WorkflowTaskUpdateActionItem resource.
  */
-export interface WorkflowTaskAutoAssignRoleVictorOpsArgs {
+export interface WorkflowTaskUpdateActionItemArgs {
     /**
      * Enable/disable this workflow task
      */
@@ -139,7 +139,7 @@ export interface WorkflowTaskAutoAssignRoleVictorOpsArgs {
     /**
      * The parameters for this workflow task.
      */
-    taskParams: pulumi.Input<inputs.WorkflowTaskAutoAssignRoleVictorOpsTaskParams>;
+    taskParams: pulumi.Input<inputs.WorkflowTaskUpdateActionItemTaskParams>;
     /**
      * The ID of the parent workflow
      */

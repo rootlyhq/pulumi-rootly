@@ -7,6 +7,34 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow createGoogleCalendarEvent task.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const schedulePostmortemReviewMeeting = new rootly.WorkflowIncident("schedulePostmortemReviewMeeting", {
+ *     description: "Automatically schedule a Google Calendar meeting to review the postmortem.",
+ *     triggerParams: {
+ *         triggers: ["status_updated"],
+ *         incidentStatuses: ["resolved"],
+ *         incidentConditionStatus: "IS",
+ *     },
+ *     enabled: true,
+ * });
+ * const createGoogleCalendarEvent = new rootly.WorkflowTaskCreateGoogleCalendarEvent("createGoogleCalendarEvent", {
+ *     workflowId: schedulePostmortemReviewMeeting.id,
+ *     skipOnFailure: false,
+ *     enabled: true,
+ *     taskParams: {
+ *         name: "Schedule Postmortem Review Meeting",
+ *         daysUntilMeeting: 7,
+ *         meetingDuration: "60min",
+ *         summary: "#{{ incident.sequential_id }} {{ incident.title }} Postmortem Review",
+ *     },
+ * });
+ * ```
  */
 export class WorkflowTaskCreateGoogleCalendarEvent extends pulumi.CustomResource {
     /**
@@ -37,9 +65,17 @@ export class WorkflowTaskCreateGoogleCalendarEvent extends pulumi.CustomResource
     }
 
     /**
+     * Enable/disable this workflow task
+     */
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     public readonly position!: pulumi.Output<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    public readonly skipOnFailure!: pulumi.Output<boolean | undefined>;
     /**
      * The parameters for this workflow task.
      */
@@ -62,7 +98,9 @@ export class WorkflowTaskCreateGoogleCalendarEvent extends pulumi.CustomResource
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTaskCreateGoogleCalendarEventState | undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["skipOnFailure"] = state ? state.skipOnFailure : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
@@ -73,7 +111,9 @@ export class WorkflowTaskCreateGoogleCalendarEvent extends pulumi.CustomResource
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["skipOnFailure"] = args ? args.skipOnFailure : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
@@ -87,9 +127,17 @@ export class WorkflowTaskCreateGoogleCalendarEvent extends pulumi.CustomResource
  */
 export interface WorkflowTaskCreateGoogleCalendarEventState {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */
@@ -105,9 +153,17 @@ export interface WorkflowTaskCreateGoogleCalendarEventState {
  */
 export interface WorkflowTaskCreateGoogleCalendarEventArgs {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */

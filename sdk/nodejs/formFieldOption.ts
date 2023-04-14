@@ -4,6 +4,39 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const regionsAffected = new rootly.FormField("regionsAffected", {
+ *     kind: "custom",
+ *     inputKind: "multi_select",
+ *     showns: [
+ *         "web_new_incident_form",
+ *         "web_update_incident_form",
+ *     ],
+ *     requireds: [
+ *         "web_new_incident_form",
+ *         "web_update_incident_form",
+ *     ],
+ * });
+ * const asia = new rootly.FormFieldOption("asia", {
+ *     formFieldId: regionsAffected.id,
+ *     value: "Asia",
+ * });
+ * const europe = new rootly.FormFieldOption("europe", {
+ *     formFieldId: regionsAffected.id,
+ *     value: "Europe",
+ * });
+ * const northAmerica = new rootly.FormFieldOption("northAmerica", {
+ *     formFieldId: regionsAffected.id,
+ *     value: "North America",
+ * });
+ * ```
+ */
 export class FormFieldOption extends pulumi.CustomResource {
     /**
      * Get an existing FormFieldOption resource's state with the given name, ID, and optional extra

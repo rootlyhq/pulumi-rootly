@@ -5,6 +5,57 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const elasticsearchProd = new rootly.Service("elasticsearch_prod", {
+ *     color: "#800080",
+ *     notifyEmails: [
+ *         "foo@acme.com",
+ *         "bar@acme.com",
+ *     ],
+ *     slackAliases: [{
+ *         id: "S0614TZR7",
+ *         name: "Alias 1", // Any string really
+ *     }],
+ *     slackChannels: [
+ *         {
+ *             id: "C06A4RZR9",
+ *             name: "Channel 1", // Any string really
+ *         },
+ *         {
+ *             id: "C02T4RYR2",
+ *             name: "Channel 2", // Any string really
+ *         },
+ *     ],
+ * });
+ * const customerPostgresqlProd = new rootly.Service("customer_postgresql_prod", {
+ *     color: "#800080",
+ *     notifyEmails: [
+ *         "foo@acme.com",
+ *         "bar@acme.com",
+ *     ],
+ *     slackAliases: [{
+ *         id: "S0614TZR7",
+ *         name: "Alias 1", // Any string really
+ *     }],
+ *     slackChannels: [
+ *         {
+ *             id: "C06A4RZR9",
+ *             name: "Channel 1", // Any string really
+ *         },
+ *         {
+ *             id: "C02T4RYR2",
+ *             name: "Channel 2", // Any string really
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class Service extends pulumi.CustomResource {
     /**
      * Get an existing Service resource's state with the given name, ID, and optional extra
@@ -87,6 +138,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly pagerdutyId!: pulumi.Output<string>;
     /**
+     * Position of the service
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
      * The public description of the service
      */
     public readonly publicDescription!: pulumi.Output<string>;
@@ -106,6 +161,10 @@ export class Service extends pulumi.CustomResource {
      * The slug of the service
      */
     public readonly slug!: pulumi.Output<string>;
+    /**
+     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.
+     */
+    public readonly status!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -134,11 +193,13 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["ownersGroupIds"] = state ? state.ownersGroupIds : undefined;
             resourceInputs["ownersUserIds"] = state ? state.ownersUserIds : undefined;
             resourceInputs["pagerdutyId"] = state ? state.pagerdutyId : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["publicDescription"] = state ? state.publicDescription : undefined;
             resourceInputs["serviceIds"] = state ? state.serviceIds : undefined;
             resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
             resourceInputs["slackChannels"] = state ? state.slackChannels : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             resourceInputs["backstageId"] = args ? args.backstageId : undefined;
@@ -155,11 +216,13 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["ownersGroupIds"] = args ? args.ownersGroupIds : undefined;
             resourceInputs["ownersUserIds"] = args ? args.ownersUserIds : undefined;
             resourceInputs["pagerdutyId"] = args ? args.pagerdutyId : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["publicDescription"] = args ? args.publicDescription : undefined;
             resourceInputs["serviceIds"] = args ? args.serviceIds : undefined;
             resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
             resourceInputs["slackChannels"] = args ? args.slackChannels : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);
@@ -224,6 +287,10 @@ export interface ServiceState {
      */
     pagerdutyId?: pulumi.Input<string>;
     /**
+     * Position of the service
+     */
+    position?: pulumi.Input<number>;
+    /**
      * The public description of the service
      */
     publicDescription?: pulumi.Input<string>;
@@ -243,6 +310,10 @@ export interface ServiceState {
      * The slug of the service
      */
     slug?: pulumi.Input<string>;
+    /**
+     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.
+     */
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -303,6 +374,10 @@ export interface ServiceArgs {
      */
     pagerdutyId?: pulumi.Input<string>;
     /**
+     * Position of the service
+     */
+    position?: pulumi.Input<number>;
+    /**
      * The public description of the service
      */
     publicDescription?: pulumi.Input<string>;
@@ -322,4 +397,8 @@ export interface ServiceArgs {
      * The slug of the service
      */
     slug?: pulumi.Input<string>;
+    /**
+     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.
+     */
+    status?: pulumi.Input<string>;
 }

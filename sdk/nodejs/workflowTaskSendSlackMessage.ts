@@ -7,6 +7,36 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow sendSlackMessage task.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const notifySlackChannels = new rootly.WorkflowIncident("notifySlackChannels", {
+ *     description: "Send a message to specific teams on Slack regarding the incident.",
+ *     triggerParams: {
+ *         triggers: ["incident_created"],
+ *         incidentStatuses: ["started"],
+ *         incidentConditionStatus: "IS",
+ *     },
+ *     enabled: true,
+ * });
+ * const sendSlackMessage = new rootly.WorkflowTaskSendSlackMessage("sendSlackMessage", {
+ *     workflowId: notifySlackChannels.id,
+ *     skipOnFailure: false,
+ *     enabled: true,
+ *     taskParams: {
+ *         name: "Notify team about incident",
+ *         channels: [{
+ *             id: "{{ incident.slack_channel_id }}",
+ *             name: "{{ incident.slack_channel_id }}",
+ *         }],
+ *         text: "Heads up - wanted to let your team know we have an active incident.",
+ *     },
+ * });
+ * ```
  */
 export class WorkflowTaskSendSlackMessage extends pulumi.CustomResource {
     /**
@@ -37,9 +67,17 @@ export class WorkflowTaskSendSlackMessage extends pulumi.CustomResource {
     }
 
     /**
+     * Enable/disable this workflow task
+     */
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     public readonly position!: pulumi.Output<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    public readonly skipOnFailure!: pulumi.Output<boolean | undefined>;
     /**
      * The parameters for this workflow task.
      */
@@ -62,7 +100,9 @@ export class WorkflowTaskSendSlackMessage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTaskSendSlackMessageState | undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["skipOnFailure"] = state ? state.skipOnFailure : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
@@ -73,7 +113,9 @@ export class WorkflowTaskSendSlackMessage extends pulumi.CustomResource {
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["skipOnFailure"] = args ? args.skipOnFailure : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
@@ -87,9 +129,17 @@ export class WorkflowTaskSendSlackMessage extends pulumi.CustomResource {
  */
 export interface WorkflowTaskSendSlackMessageState {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */
@@ -105,9 +155,17 @@ export interface WorkflowTaskSendSlackMessageState {
  */
 export interface WorkflowTaskSendSlackMessageArgs {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */

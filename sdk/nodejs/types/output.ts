@@ -35,6 +35,16 @@ export interface DashboardPanelParamsDatasetFilterRule {
     value: string;
 }
 
+export interface EnvironmentSlackAlias {
+    id: string;
+    name: string;
+}
+
+export interface EnvironmentSlackChannel {
+    id: string;
+    name: string;
+}
+
 export interface FunctionalitySlackAlias {
     id: string;
     name: string;
@@ -129,12 +139,32 @@ export interface GetTeamsTeam {
     slug: string;
 }
 
+export interface IncidentTypeSlackAlias {
+    id: string;
+    name: string;
+}
+
+export interface IncidentTypeSlackChannel {
+    id: string;
+    name: string;
+}
+
 export interface ServiceSlackAlias {
     id: string;
     name: string;
 }
 
 export interface ServiceSlackChannel {
+    id: string;
+    name: string;
+}
+
+export interface SeveritySlackAlias {
+    id: string;
+    name: string;
+}
+
+export interface SeveritySlackChannel {
     id: string;
     name: string;
 }
@@ -165,7 +195,7 @@ export interface WorkflowActionItemTriggerParams {
     incidentConditionEnvironment?: string;
     incidentConditionFunctionality?: string;
     incidentConditionGroup?: string;
-    incidentConditionIncidentRoles: string;
+    incidentConditionIncidentRoles?: string;
     incidentConditionIncidentType?: string;
     incidentConditionKind?: string;
     incidentConditionMitigatedAt: string;
@@ -207,7 +237,7 @@ export interface WorkflowIncidentTriggerParams {
     incidentConditionEnvironment?: string;
     incidentConditionFunctionality?: string;
     incidentConditionGroup?: string;
-    incidentConditionIncidentRoles: string;
+    incidentConditionIncidentRoles?: string;
     incidentConditionIncidentType?: string;
     incidentConditionKind?: string;
     incidentConditionMitigatedAt: string;
@@ -233,7 +263,7 @@ export interface WorkflowPostMortemTriggerParams {
     incidentConditionEnvironment?: string;
     incidentConditionFunctionality?: string;
     incidentConditionGroup?: string;
-    incidentConditionIncidentRoles: string;
+    incidentConditionIncidentRoles?: string;
     incidentConditionIncidentType?: string;
     incidentConditionKind?: string;
     incidentConditionMitigatedAt: string;
@@ -281,6 +311,7 @@ export interface WorkflowSimpleTriggerParams {
 export interface WorkflowTaskAddActionItemTaskParams {
     assignedToUserId?: string;
     description?: string;
+    incidentRoleId?: string;
     kind?: string;
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskAddActionItemTaskParamsPostToSlackChannel[];
@@ -392,6 +423,8 @@ export interface WorkflowTaskCreateAsanaSubtaskTaskParams {
     assignUserEmail?: string;
     completion: {[key: string]: any};
     customFieldsMapping?: string;
+    dependencyDirection?: string;
+    dependentTaskIds?: string[];
     notes?: string;
     parentTaskId: string;
     taskType?: string;
@@ -402,6 +435,9 @@ export interface WorkflowTaskCreateAsanaTaskTaskParams {
     assignUserEmail?: string;
     completion: {[key: string]: any};
     customFieldsMapping?: string;
+    dependencyDirection?: string;
+    dependentTaskIds?: string[];
+    notes?: string;
     projects: outputs.WorkflowTaskCreateAsanaTaskTaskParamsProject[];
     taskType?: string;
     title: string;
@@ -416,6 +452,7 @@ export interface WorkflowTaskCreateAsanaTaskTaskParamsProject {
 export interface WorkflowTaskCreateConfluencePageTaskParams {
     ancestor?: {[key: string]: any};
     content?: string;
+    markPostMortemAsPublished?: boolean;
     postMortemTemplateId?: string;
     space: {[key: string]: any};
     taskType?: string;
@@ -426,13 +463,16 @@ export interface WorkflowTaskCreateConfluencePageTaskParams {
 export interface WorkflowTaskCreateDatadogNotebookTaskParams {
     content?: string;
     kind: string;
+    markPostMortemAsPublished?: boolean;
     postMortemTemplateId?: string;
     taskType?: string;
+    template?: {[key: string]: any};
     title: string;
 }
 
 export interface WorkflowTaskCreateDropboxPaperPageTaskParams {
     content?: string;
+    markPostMortemAsPublished?: boolean;
     namespace?: {[key: string]: any};
     parentFolder?: {[key: string]: any};
     postMortemTemplateId?: string;
@@ -488,12 +528,21 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChann
 export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
     content?: string;
     drive?: {[key: string]: any};
+    markPostMortemAsPublished?: boolean;
     parentFolder?: {[key: string]: any};
     permissions?: string;
     postMortemTemplateId?: string;
     taskType?: string;
     templateId?: string;
     title: string;
+}
+
+export interface WorkflowTaskCreateGoogleDocsPermissionsTaskParams {
+    emailMessage?: string;
+    fileId: string;
+    permissions: string;
+    sendNotificationEmail?: boolean;
+    taskType?: string;
 }
 
 export interface WorkflowTaskCreateGoogleMeetingTaskParams {
@@ -565,11 +614,18 @@ export interface WorkflowTaskCreateLinearIssueCommentTaskParams {
 
 export interface WorkflowTaskCreateLinearIssueTaskParams {
     description?: string;
+    labels?: outputs.WorkflowTaskCreateLinearIssueTaskParamsLabel[];
     priority?: {[key: string]: any};
+    project?: {[key: string]: any};
     state: {[key: string]: any};
     taskType?: string;
     team: {[key: string]: any};
     title: string;
+}
+
+export interface WorkflowTaskCreateLinearIssueTaskParamsLabel {
+    id: string;
+    name: string;
 }
 
 export interface WorkflowTaskCreateLinearSubtaskIssueTaskParams {
@@ -595,6 +651,7 @@ export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackCha
 }
 
 export interface WorkflowTaskCreateNotionPageTaskParams {
+    markPostMortemAsPublished?: boolean;
     parentPage: {[key: string]: any};
     postMortemTemplateId?: string;
     showActionItemsAsTable?: boolean;
@@ -729,6 +786,7 @@ export interface WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannel {
 export interface WorkflowTaskCreateZendeskTicketTaskParams {
     comment?: string;
     completion?: {[key: string]: any};
+    customFieldsMapping?: string;
     kind: string;
     priority?: {[key: string]: any};
     subject: string;
@@ -849,6 +907,7 @@ export interface WorkflowTaskInviteToSlackChannelPagerdutyTaskParams {
     channels?: outputs.WorkflowTaskInviteToSlackChannelPagerdutyTaskParamsChannel[];
     escalationPolicy?: {[key: string]: any};
     schedule?: {[key: string]: any};
+    service?: {[key: string]: any};
     taskType?: string;
 }
 
@@ -943,11 +1002,12 @@ export interface WorkflowTaskPrintTaskParams {
 }
 
 export interface WorkflowTaskPublishIncidentTaskParams {
-    event: string;
+    event?: string;
     incident: {[key: string]: any};
     publicTitle: string;
-    status: string;
+    status?: string;
     statusPageId: string;
+    statusPageTemplate?: {[key: string]: any};
     taskType?: string;
 }
 
@@ -964,6 +1024,13 @@ export interface WorkflowTaskRedisClientTaskParams {
 export interface WorkflowTaskRedisClientTaskParamsPostToSlackChannel {
     id: string;
     name: string;
+}
+
+export interface WorkflowTaskRemoveGoogleDocsPermissionsTaskParams {
+    attributeToQueryBy: string;
+    fileId: string;
+    taskType?: string;
+    value: string;
 }
 
 export interface WorkflowTaskRenameSlackChannelTaskParams {
@@ -1015,6 +1082,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParams {
     channels?: outputs.WorkflowTaskSendSlackBlocksTaskParamsChannel[];
     message?: string;
     parentMessageThreadTask?: {[key: string]: any};
+    pinToChannel?: boolean;
     sendAsEphemeral?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup[];
     slackUsers?: outputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUser[];
@@ -1040,7 +1108,9 @@ export interface WorkflowTaskSendSlackMessageTaskParams {
     actionables?: string[];
     broadcastThreadReplyToChannel?: boolean;
     channels?: outputs.WorkflowTaskSendSlackMessageTaskParamsChannel[];
+    color?: string;
     parentMessageThreadTask?: {[key: string]: any};
+    pinToChannel?: boolean;
     sendAsEphemeral?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup[];
     slackUsers?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUser[];
@@ -1137,6 +1207,7 @@ export interface WorkflowTaskSnapshotNewRelicGraphTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskTriggerWorkflowTaskParams {
+    checkWorkflowConditions?: boolean;
     kind?: string;
     resource?: {[key: string]: any};
     taskType?: string;
@@ -1145,6 +1216,18 @@ export interface WorkflowTaskTriggerWorkflowTaskParams {
 
 export interface WorkflowTaskTweetTwitterMessageTaskParams {
     message: string;
+    taskType?: string;
+}
+
+export interface WorkflowTaskUpdateActionItemTaskParams {
+    assignedToUserId?: string;
+    attributeToQueryBy: string;
+    description?: string;
+    groupIds?: string[];
+    postToIncidentTimeline?: boolean;
+    queryValue: string;
+    status?: string;
+    summary?: string;
     taskType?: string;
 }
 
@@ -1160,6 +1243,8 @@ export interface WorkflowTaskUpdateAsanaTaskTaskParams {
     assignUserEmail?: string;
     completion: {[key: string]: any};
     customFieldsMapping?: string;
+    dependencyDirection?: string;
+    dependentTaskIds?: string[];
     taskId: string;
     taskType?: string;
     title?: string;
@@ -1195,6 +1280,15 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
 export interface WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannel {
     id: string;
     name: string;
+}
+
+export interface WorkflowTaskUpdateGoogleDocsPageTaskParams {
+    content?: string;
+    emailMessage?: string;
+    fileId: string;
+    postMortemTemplateId?: string;
+    taskType?: string;
+    title?: string;
 }
 
 export interface WorkflowTaskUpdateIncidentPostmortemTaskParams {
@@ -1244,10 +1338,17 @@ export interface WorkflowTaskUpdateJiraIssueTaskParams {
 export interface WorkflowTaskUpdateLinearIssueTaskParams {
     description?: string;
     issueId: string;
+    labels?: outputs.WorkflowTaskUpdateLinearIssueTaskParamsLabel[];
     priority?: {[key: string]: any};
+    project?: {[key: string]: any};
     state?: {[key: string]: any};
     taskType?: string;
     title?: string;
+}
+
+export interface WorkflowTaskUpdateLinearIssueTaskParamsLabel {
+    id: string;
+    name: string;
 }
 
 export interface WorkflowTaskUpdateOpsgenieAlertTaskParams {
@@ -1365,6 +1466,7 @@ export interface WorkflowTaskUpdateVictorOpsIncidentTaskParams {
 
 export interface WorkflowTaskUpdateZendeskTicketTaskParams {
     completion?: {[key: string]: any};
+    customFieldsMapping?: string;
     priority?: {[key: string]: any};
     subject?: string;
     tags?: string;

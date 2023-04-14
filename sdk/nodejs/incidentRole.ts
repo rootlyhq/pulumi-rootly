@@ -36,10 +36,16 @@ export class IncidentRole extends pulumi.CustomResource {
      * The description of the incident role
      */
     public readonly description!: pulumi.Output<string>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the incident role
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly optional!: pulumi.Output<boolean>;
+    /**
+     * Position of the incident role
+     */
+    public readonly position!: pulumi.Output<number>;
     /**
      * The slug of the incident role
      */
@@ -63,13 +69,19 @@ export class IncidentRole extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IncidentRoleState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["optional"] = state ? state.optional : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
             resourceInputs["summary"] = state ? state.summary : undefined;
         } else {
             const args = argsOrState as IncidentRoleArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["optional"] = args ? args.optional : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
             resourceInputs["summary"] = args ? args.summary : undefined;
         }
@@ -86,10 +98,16 @@ export interface IncidentRoleState {
      * The description of the incident role
      */
     description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The name of the incident role
      */
     name?: pulumi.Input<string>;
+    optional?: pulumi.Input<boolean>;
+    /**
+     * Position of the incident role
+     */
+    position?: pulumi.Input<number>;
     /**
      * The slug of the incident role
      */
@@ -108,10 +126,16 @@ export interface IncidentRoleArgs {
      * The description of the incident role
      */
     description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The name of the incident role
      */
     name?: pulumi.Input<string>;
+    optional?: pulumi.Input<boolean>;
+    /**
+     * Position of the incident role
+     */
+    position?: pulumi.Input<number>;
     /**
      * The slug of the incident role
      */

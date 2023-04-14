@@ -13,6 +13,7 @@ export function getIncidentRole(args?: GetIncidentRoleArgs, opts?: pulumi.Invoke
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rootly:index/getIncidentRole:getIncidentRole", {
         "createdAt": args.createdAt,
+        "enabled": args.enabled,
         "name": args.name,
         "slug": args.slug,
     }, opts);
@@ -23,6 +24,7 @@ export function getIncidentRole(args?: GetIncidentRoleArgs, opts?: pulumi.Invoke
  */
 export interface GetIncidentRoleArgs {
     createdAt?: {[key: string]: any};
+    enabled?: boolean;
     name?: string;
     slug?: string;
 }
@@ -32,6 +34,7 @@ export interface GetIncidentRoleArgs {
  */
 export interface GetIncidentRoleResult {
     readonly createdAt?: {[key: string]: any};
+    readonly enabled?: boolean;
     readonly id: string;
     readonly name: string;
     readonly slug: string;
@@ -46,6 +49,7 @@ export function getIncidentRoleOutput(args?: GetIncidentRoleOutputArgs, opts?: p
  */
 export interface GetIncidentRoleOutputArgs {
     createdAt?: pulumi.Input<{[key: string]: any}>;
+    enabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;
 }

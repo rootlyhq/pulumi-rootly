@@ -42,6 +42,10 @@ export class StatusPage extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Message showing when at least one component is not operational
+     */
+    public readonly failureMessage!: pulumi.Output<string>;
+    /**
      * The color of the footer. Eg. "#1F2F41"
      */
     public readonly footerColor!: pulumi.Output<string>;
@@ -61,6 +65,10 @@ export class StatusPage extends pulumi.CustomResource {
      * Show uptime over x days. Value must be one of `30`, `60`, `90`.
      */
     public readonly showUptimeLastDays!: pulumi.Output<number>;
+    /**
+     * Message showing when all components are operational
+     */
+    public readonly successMessage!: pulumi.Output<string>;
     /**
      * The title of the status page
      */
@@ -82,11 +90,13 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["allowSearchEngineIndex"] = state ? state.allowSearchEngineIndex : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["failureMessage"] = state ? state.failureMessage : undefined;
             resourceInputs["footerColor"] = state ? state.footerColor : undefined;
             resourceInputs["headerColor"] = state ? state.headerColor : undefined;
             resourceInputs["public"] = state ? state.public : undefined;
             resourceInputs["showUptime"] = state ? state.showUptime : undefined;
             resourceInputs["showUptimeLastDays"] = state ? state.showUptimeLastDays : undefined;
+            resourceInputs["successMessage"] = state ? state.successMessage : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as StatusPageArgs | undefined;
@@ -96,11 +106,13 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["allowSearchEngineIndex"] = args ? args.allowSearchEngineIndex : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["failureMessage"] = args ? args.failureMessage : undefined;
             resourceInputs["footerColor"] = args ? args.footerColor : undefined;
             resourceInputs["headerColor"] = args ? args.headerColor : undefined;
             resourceInputs["public"] = args ? args.public : undefined;
             resourceInputs["showUptime"] = args ? args.showUptime : undefined;
             resourceInputs["showUptimeLastDays"] = args ? args.showUptimeLastDays : undefined;
+            resourceInputs["successMessage"] = args ? args.successMessage : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -122,6 +134,10 @@ export interface StatusPageState {
     description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     /**
+     * Message showing when at least one component is not operational
+     */
+    failureMessage?: pulumi.Input<string>;
+    /**
      * The color of the footer. Eg. "#1F2F41"
      */
     footerColor?: pulumi.Input<string>;
@@ -141,6 +157,10 @@ export interface StatusPageState {
      * Show uptime over x days. Value must be one of `30`, `60`, `90`.
      */
     showUptimeLastDays?: pulumi.Input<number>;
+    /**
+     * Message showing when all components are operational
+     */
+    successMessage?: pulumi.Input<string>;
     /**
      * The title of the status page
      */
@@ -161,6 +181,10 @@ export interface StatusPageArgs {
     description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     /**
+     * Message showing when at least one component is not operational
+     */
+    failureMessage?: pulumi.Input<string>;
+    /**
      * The color of the footer. Eg. "#1F2F41"
      */
     footerColor?: pulumi.Input<string>;
@@ -180,6 +204,10 @@ export interface StatusPageArgs {
      * Show uptime over x days. Value must be one of `30`, `60`, `90`.
      */
     showUptimeLastDays?: pulumi.Input<number>;
+    /**
+     * Message showing when all components are operational
+     */
+    successMessage?: pulumi.Input<string>;
     /**
      * The title of the status page
      */

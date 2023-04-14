@@ -35,6 +35,16 @@ export interface DashboardPanelParamsDatasetFilterRule {
     value: pulumi.Input<string>;
 }
 
+export interface EnvironmentSlackAlias {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface EnvironmentSlackChannel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
 export interface FunctionalitySlackAlias {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
@@ -45,12 +55,32 @@ export interface FunctionalitySlackChannel {
     name: pulumi.Input<string>;
 }
 
+export interface IncidentTypeSlackAlias {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface IncidentTypeSlackChannel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
 export interface ServiceSlackAlias {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
 }
 
 export interface ServiceSlackChannel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface SeveritySlackAlias {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface SeveritySlackChannel {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
 }
@@ -197,6 +227,7 @@ export interface WorkflowSimpleTriggerParams {
 export interface WorkflowTaskAddActionItemTaskParams {
     assignedToUserId?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
+    incidentRoleId?: pulumi.Input<string>;
     kind?: pulumi.Input<string>;
     postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskAddActionItemTaskParamsPostToSlackChannel>[]>;
@@ -308,6 +339,8 @@ export interface WorkflowTaskCreateAsanaSubtaskTaskParams {
     assignUserEmail?: pulumi.Input<string>;
     completion: pulumi.Input<{[key: string]: any}>;
     customFieldsMapping?: pulumi.Input<string>;
+    dependencyDirection?: pulumi.Input<string>;
+    dependentTaskIds?: pulumi.Input<pulumi.Input<string>[]>;
     notes?: pulumi.Input<string>;
     parentTaskId: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
@@ -318,6 +351,9 @@ export interface WorkflowTaskCreateAsanaTaskTaskParams {
     assignUserEmail?: pulumi.Input<string>;
     completion: pulumi.Input<{[key: string]: any}>;
     customFieldsMapping?: pulumi.Input<string>;
+    dependencyDirection?: pulumi.Input<string>;
+    dependentTaskIds?: pulumi.Input<pulumi.Input<string>[]>;
+    notes?: pulumi.Input<string>;
     projects: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateAsanaTaskTaskParamsProject>[]>;
     taskType?: pulumi.Input<string>;
     title: pulumi.Input<string>;
@@ -332,6 +368,7 @@ export interface WorkflowTaskCreateAsanaTaskTaskParamsProject {
 export interface WorkflowTaskCreateConfluencePageTaskParams {
     ancestor?: pulumi.Input<{[key: string]: any}>;
     content?: pulumi.Input<string>;
+    markPostMortemAsPublished?: pulumi.Input<boolean>;
     postMortemTemplateId?: pulumi.Input<string>;
     space: pulumi.Input<{[key: string]: any}>;
     taskType?: pulumi.Input<string>;
@@ -342,13 +379,16 @@ export interface WorkflowTaskCreateConfluencePageTaskParams {
 export interface WorkflowTaskCreateDatadogNotebookTaskParams {
     content?: pulumi.Input<string>;
     kind: pulumi.Input<string>;
+    markPostMortemAsPublished?: pulumi.Input<boolean>;
     postMortemTemplateId?: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
+    template?: pulumi.Input<{[key: string]: any}>;
     title: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskCreateDropboxPaperPageTaskParams {
     content?: pulumi.Input<string>;
+    markPostMortemAsPublished?: pulumi.Input<boolean>;
     namespace?: pulumi.Input<{[key: string]: any}>;
     parentFolder?: pulumi.Input<{[key: string]: any}>;
     postMortemTemplateId?: pulumi.Input<string>;
@@ -404,12 +444,21 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChann
 export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
     content?: pulumi.Input<string>;
     drive?: pulumi.Input<{[key: string]: any}>;
+    markPostMortemAsPublished?: pulumi.Input<boolean>;
     parentFolder?: pulumi.Input<{[key: string]: any}>;
     permissions?: pulumi.Input<string>;
     postMortemTemplateId?: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
     templateId?: pulumi.Input<string>;
     title: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateGoogleDocsPermissionsTaskParams {
+    emailMessage?: pulumi.Input<string>;
+    fileId: pulumi.Input<string>;
+    permissions: pulumi.Input<string>;
+    sendNotificationEmail?: pulumi.Input<boolean>;
+    taskType?: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskCreateGoogleMeetingTaskParams {
@@ -481,11 +530,18 @@ export interface WorkflowTaskCreateLinearIssueCommentTaskParams {
 
 export interface WorkflowTaskCreateLinearIssueTaskParams {
     description?: pulumi.Input<string>;
+    labels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateLinearIssueTaskParamsLabel>[]>;
     priority?: pulumi.Input<{[key: string]: any}>;
+    project?: pulumi.Input<{[key: string]: any}>;
     state: pulumi.Input<{[key: string]: any}>;
     taskType?: pulumi.Input<string>;
     team: pulumi.Input<{[key: string]: any}>;
     title: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateLinearIssueTaskParamsLabel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskCreateLinearSubtaskIssueTaskParams {
@@ -511,6 +567,7 @@ export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackCha
 }
 
 export interface WorkflowTaskCreateNotionPageTaskParams {
+    markPostMortemAsPublished?: pulumi.Input<boolean>;
     parentPage: pulumi.Input<{[key: string]: any}>;
     postMortemTemplateId?: pulumi.Input<string>;
     showActionItemsAsTable?: pulumi.Input<boolean>;
@@ -645,6 +702,7 @@ export interface WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannel {
 export interface WorkflowTaskCreateZendeskTicketTaskParams {
     comment?: pulumi.Input<string>;
     completion?: pulumi.Input<{[key: string]: any}>;
+    customFieldsMapping?: pulumi.Input<string>;
     kind: pulumi.Input<string>;
     priority?: pulumi.Input<{[key: string]: any}>;
     subject: pulumi.Input<string>;
@@ -765,6 +823,7 @@ export interface WorkflowTaskInviteToSlackChannelPagerdutyTaskParams {
     channels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskInviteToSlackChannelPagerdutyTaskParamsChannel>[]>;
     escalationPolicy?: pulumi.Input<{[key: string]: any}>;
     schedule?: pulumi.Input<{[key: string]: any}>;
+    service?: pulumi.Input<{[key: string]: any}>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -859,11 +918,12 @@ export interface WorkflowTaskPrintTaskParams {
 }
 
 export interface WorkflowTaskPublishIncidentTaskParams {
-    event: pulumi.Input<string>;
+    event?: pulumi.Input<string>;
     incident: pulumi.Input<{[key: string]: any}>;
     publicTitle: pulumi.Input<string>;
-    status: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     statusPageId: pulumi.Input<string>;
+    statusPageTemplate?: pulumi.Input<{[key: string]: any}>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -880,6 +940,13 @@ export interface WorkflowTaskRedisClientTaskParams {
 export interface WorkflowTaskRedisClientTaskParamsPostToSlackChannel {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskRemoveGoogleDocsPermissionsTaskParams {
+    attributeToQueryBy: pulumi.Input<string>;
+    fileId: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskRenameSlackChannelTaskParams {
@@ -931,6 +998,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParams {
     channels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackBlocksTaskParamsChannel>[]>;
     message?: pulumi.Input<string>;
     parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
+    pinToChannel?: pulumi.Input<boolean>;
     sendAsEphemeral?: pulumi.Input<boolean>;
     slackUserGroups?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup>[]>;
     slackUsers?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUser>[]>;
@@ -956,7 +1024,9 @@ export interface WorkflowTaskSendSlackMessageTaskParams {
     actionables?: pulumi.Input<pulumi.Input<string>[]>;
     broadcastThreadReplyToChannel?: pulumi.Input<boolean>;
     channels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsChannel>[]>;
+    color?: pulumi.Input<string>;
     parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
+    pinToChannel?: pulumi.Input<boolean>;
     sendAsEphemeral?: pulumi.Input<boolean>;
     slackUserGroups?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup>[]>;
     slackUsers?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsSlackUser>[]>;
@@ -1053,6 +1123,7 @@ export interface WorkflowTaskSnapshotNewRelicGraphTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskTriggerWorkflowTaskParams {
+    checkWorkflowConditions?: pulumi.Input<boolean>;
     kind?: pulumi.Input<string>;
     resource?: pulumi.Input<{[key: string]: any}>;
     taskType?: pulumi.Input<string>;
@@ -1061,6 +1132,18 @@ export interface WorkflowTaskTriggerWorkflowTaskParams {
 
 export interface WorkflowTaskTweetTwitterMessageTaskParams {
     message: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskUpdateActionItemTaskParams {
+    assignedToUserId?: pulumi.Input<string>;
+    attributeToQueryBy: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    postToIncidentTimeline?: pulumi.Input<boolean>;
+    queryValue: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    summary?: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -1076,6 +1159,8 @@ export interface WorkflowTaskUpdateAsanaTaskTaskParams {
     assignUserEmail?: pulumi.Input<string>;
     completion: pulumi.Input<{[key: string]: any}>;
     customFieldsMapping?: pulumi.Input<string>;
+    dependencyDirection?: pulumi.Input<string>;
+    dependentTaskIds?: pulumi.Input<pulumi.Input<string>[]>;
     taskId: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
@@ -1111,6 +1196,15 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
 export interface WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannel {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskUpdateGoogleDocsPageTaskParams {
+    content?: pulumi.Input<string>;
+    emailMessage?: pulumi.Input<string>;
+    fileId: pulumi.Input<string>;
+    postMortemTemplateId?: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskUpdateIncidentPostmortemTaskParams {
@@ -1160,10 +1254,17 @@ export interface WorkflowTaskUpdateJiraIssueTaskParams {
 export interface WorkflowTaskUpdateLinearIssueTaskParams {
     description?: pulumi.Input<string>;
     issueId: pulumi.Input<string>;
+    labels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskUpdateLinearIssueTaskParamsLabel>[]>;
     priority?: pulumi.Input<{[key: string]: any}>;
+    project?: pulumi.Input<{[key: string]: any}>;
     state?: pulumi.Input<{[key: string]: any}>;
     taskType?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskUpdateLinearIssueTaskParamsLabel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskUpdateOpsgenieAlertTaskParams {
@@ -1281,6 +1382,7 @@ export interface WorkflowTaskUpdateVictorOpsIncidentTaskParams {
 
 export interface WorkflowTaskUpdateZendeskTicketTaskParams {
     completion?: pulumi.Input<{[key: string]: any}>;
+    customFieldsMapping?: pulumi.Input<string>;
     priority?: pulumi.Input<{[key: string]: any}>;
     subject?: pulumi.Input<string>;
     tags?: pulumi.Input<string>;

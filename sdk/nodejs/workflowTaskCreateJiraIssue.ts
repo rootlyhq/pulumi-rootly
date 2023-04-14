@@ -7,6 +7,44 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow createJiraIssue task.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const jiraWorkflowIncident = new rootly.WorkflowIncident("jiraWorkflowIncident", {
+ *     description: "Open Jira ticket whenever incident starts",
+ *     triggerParams: {
+ *         triggers: ["incident_created"],
+ *         incidentConditionKind: "IS",
+ *         incidentKinds: ["normal"],
+ *         incidentConditionStatus: "IS",
+ *         incidentStatuses: ["started"],
+ *     },
+ *     enabled: true,
+ * });
+ * const jiraWorkflowTaskCreateJiraIssue = new rootly.WorkflowTaskCreateJiraIssue("jiraWorkflowTaskCreateJiraIssue", {
+ *     workflowId: jiraWorkflowIncident.id,
+ *     skipOnFailure: false,
+ *     enabled: true,
+ *     taskParams: {
+ *         title: "{{ incident.title }}",
+ *         description: "{{ incident.summary }}",
+ *         projectKey: "ROOT",
+ *         issueType: {
+ *             id: "10001",
+ *             name: "Task",
+ *         },
+ *         status: {
+ *             id: "10000",
+ *             name: "To Do",
+ *         },
+ *         labels: "{{ incident.environment_slugs | concat: incident.service_slugs | concat: incident.functionality_slugs | concat: incident.group_slugs | join: \",\" }}",
+ *     },
+ * });
+ * ```
  */
 export class WorkflowTaskCreateJiraIssue extends pulumi.CustomResource {
     /**
@@ -37,9 +75,17 @@ export class WorkflowTaskCreateJiraIssue extends pulumi.CustomResource {
     }
 
     /**
+     * Enable/disable this workflow task
+     */
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     public readonly position!: pulumi.Output<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    public readonly skipOnFailure!: pulumi.Output<boolean | undefined>;
     /**
      * The parameters for this workflow task.
      */
@@ -62,7 +108,9 @@ export class WorkflowTaskCreateJiraIssue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTaskCreateJiraIssueState | undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["skipOnFailure"] = state ? state.skipOnFailure : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
@@ -73,7 +121,9 @@ export class WorkflowTaskCreateJiraIssue extends pulumi.CustomResource {
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["skipOnFailure"] = args ? args.skipOnFailure : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
@@ -87,9 +137,17 @@ export class WorkflowTaskCreateJiraIssue extends pulumi.CustomResource {
  */
 export interface WorkflowTaskCreateJiraIssueState {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */
@@ -105,9 +163,17 @@ export interface WorkflowTaskCreateJiraIssueState {
  */
 export interface WorkflowTaskCreateJiraIssueArgs {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */

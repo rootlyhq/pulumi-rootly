@@ -47,6 +47,10 @@ export class Team extends pulumi.CustomResource {
      */
     public readonly notifyEmails!: pulumi.Output<string[]>;
     /**
+     * Position of the team
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
      * Slack Aliases associated with this service
      */
     public readonly slackAliases!: pulumi.Output<outputs.TeamSlackAlias[]>;
@@ -73,6 +77,7 @@ export class Team extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notifyEmails"] = state ? state.notifyEmails : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
             resourceInputs["slackChannels"] = state ? state.slackChannels : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
@@ -82,6 +87,7 @@ export class Team extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifyEmails"] = args ? args.notifyEmails : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
             resourceInputs["slackChannels"] = args ? args.slackChannels : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
@@ -108,6 +114,10 @@ export interface TeamState {
      * Emails to attach to the team
      */
     notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Position of the team
+     */
+    position?: pulumi.Input<number>;
     /**
      * Slack Aliases associated with this service
      */
@@ -136,6 +146,10 @@ export interface TeamArgs {
      * Emails to attach to the team
      */
     notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Position of the team
+     */
+    position?: pulumi.Input<number>;
     /**
      * Slack Aliases associated with this service
      */

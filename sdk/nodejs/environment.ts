@@ -2,8 +2,81 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const development = new rootly.Environment("development", {
+ *     color: "#FF0000",
+ *     notifyEmails: [
+ *         "foo@acme.com",
+ *         "bar@acme.com",
+ *     ],
+ *     slackAliases: [{
+ *         id: "S0614TZR7",
+ *         name: "Alias 1", // Any string really
+ *     }],
+ *     slackChannels: [
+ *         {
+ *             id: "C06A4RZR9",
+ *             name: "Channel 1", // Any string really
+ *         },
+ *         {
+ *             id: "C02T4RYR2",
+ *             name: "Channel 2", // Any string really
+ *         },
+ *     ],
+ * });
+ * const staging = new rootly.Environment("staging", {
+ *     color: "#FFA500",
+ *     notifyEmails: [
+ *         "foo@acme.com",
+ *         "bar@acme.com",
+ *     ],
+ *     slackAliases: [{
+ *         id: "S0614TZR7",
+ *         name: "Alias 1", // Any string really
+ *     }],
+ *     slackChannels: [
+ *         {
+ *             id: "C06A4RZR9",
+ *             name: "Channel 1", // Any string really
+ *         },
+ *         {
+ *             id: "C02T4RYR2",
+ *             name: "Channel 2", // Any string really
+ *         },
+ *     ],
+ * });
+ * const production = new rootly.Environment("production", {
+ *     color: "#FFA500",
+ *     notifyEmails: [
+ *         "foo@acme.com",
+ *         "bar@acme.com",
+ *     ],
+ *     slackAliases: [{
+ *         id: "S0614TZR7",
+ *         name: "Alias 1", // Any string really
+ *     }],
+ *     slackChannels: [
+ *         {
+ *             id: "C06A4RZR9",
+ *             name: "Channel 1", // Any string really
+ *         },
+ *         {
+ *             id: "C02T4RYR2",
+ *             name: "Channel 2", // Any string really
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class Environment extends pulumi.CustomResource {
     /**
      * Get an existing Environment resource's state with the given name, ID, and optional extra
@@ -42,6 +115,22 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Emails attached to the environment
+     */
+    public readonly notifyEmails!: pulumi.Output<string[]>;
+    /**
+     * Position of the environment
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
+     * Slack Aliases associated with this environment
+     */
+    public readonly slackAliases!: pulumi.Output<outputs.EnvironmentSlackAlias[]>;
+    /**
+     * Slack Channels associated with this environment
+     */
+    public readonly slackChannels!: pulumi.Output<outputs.EnvironmentSlackChannel[]>;
+    /**
      * The slug of the environment
      */
     public readonly slug!: pulumi.Output<string>;
@@ -62,12 +151,20 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["color"] = state ? state.color : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notifyEmails"] = state ? state.notifyEmails : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
+            resourceInputs["slackChannels"] = state ? state.slackChannels : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
             resourceInputs["color"] = args ? args.color : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notifyEmails"] = args ? args.notifyEmails : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
+            resourceInputs["slackChannels"] = args ? args.slackChannels : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -89,6 +186,22 @@ export interface EnvironmentState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Emails attached to the environment
+     */
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Position of the environment
+     */
+    position?: pulumi.Input<number>;
+    /**
+     * Slack Aliases associated with this environment
+     */
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[]>;
+    /**
+     * Slack Channels associated with this environment
+     */
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[]>;
+    /**
      * The slug of the environment
      */
     slug?: pulumi.Input<string>;
@@ -107,6 +220,22 @@ export interface EnvironmentArgs {
      * The name of the environment
      */
     name?: pulumi.Input<string>;
+    /**
+     * Emails attached to the environment
+     */
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Position of the environment
+     */
+    position?: pulumi.Input<number>;
+    /**
+     * Slack Aliases associated with this environment
+     */
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[]>;
+    /**
+     * Slack Channels associated with this environment
+     */
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[]>;
     /**
      * The slug of the environment
      */

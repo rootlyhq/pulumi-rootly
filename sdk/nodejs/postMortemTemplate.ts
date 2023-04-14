@@ -41,6 +41,10 @@ export class PostMortemTemplate extends pulumi.CustomResource {
      */
     public readonly default!: pulumi.Output<boolean>;
     /**
+     * The format of the input.. Value must be one of `html`, `markdown`.
+     */
+    public readonly format!: pulumi.Output<string | undefined>;
+    /**
      * The name of the postmortem template
      */
     public readonly name!: pulumi.Output<string>;
@@ -60,6 +64,7 @@ export class PostMortemTemplate extends pulumi.CustomResource {
             const state = argsOrState as PostMortemTemplateState | undefined;
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["default"] = state ? state.default : undefined;
+            resourceInputs["format"] = state ? state.format : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as PostMortemTemplateArgs | undefined;
@@ -68,6 +73,7 @@ export class PostMortemTemplate extends pulumi.CustomResource {
             }
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["default"] = args ? args.default : undefined;
+            resourceInputs["format"] = args ? args.format : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -88,6 +94,10 @@ export interface PostMortemTemplateState {
      */
     default?: pulumi.Input<boolean>;
     /**
+     * The format of the input.. Value must be one of `html`, `markdown`.
+     */
+    format?: pulumi.Input<string>;
+    /**
      * The name of the postmortem template
      */
     name?: pulumi.Input<string>;
@@ -105,6 +115,10 @@ export interface PostMortemTemplateArgs {
      * Default selected template when editing a postmortem
      */
     default?: pulumi.Input<boolean>;
+    /**
+     * The format of the input.. Value must be one of `html`, `markdown`.
+     */
+    format?: pulumi.Input<string>;
     /**
      * The name of the postmortem template
      */

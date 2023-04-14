@@ -41,6 +41,10 @@ export class Cause extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Position of the cause
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
      * The slug of the cause
      */
     public readonly slug!: pulumi.Output<string>;
@@ -60,11 +64,13 @@ export class Cause extends pulumi.CustomResource {
             const state = argsOrState as CauseState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
         } else {
             const args = argsOrState as CauseArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -85,6 +91,10 @@ export interface CauseState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Position of the cause
+     */
+    position?: pulumi.Input<number>;
+    /**
      * The slug of the cause
      */
     slug?: pulumi.Input<string>;
@@ -102,6 +112,10 @@ export interface CauseArgs {
      * The name of the cause
      */
     name?: pulumi.Input<string>;
+    /**
+     * Position of the cause
+     */
+    position?: pulumi.Input<number>;
     /**
      * The slug of the cause
      */

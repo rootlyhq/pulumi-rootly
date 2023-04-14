@@ -7,6 +7,37 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow renameSlackChannel task.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const renamingSlackChannelToJiraTicketNumber = new rootly.WorkflowIncident("renamingSlackChannelToJiraTicketNumber", {
+ *     description: "Automatically renames Slack channel to attached Jira ticket number.",
+ *     triggerParams: {
+ *         triggers: ["incident_created"],
+ *         incidentStatuses: ["started"],
+ *         wait: "30 seconds",
+ *         incidentConditionStatus: "IS",
+ *     },
+ *     enabled: true,
+ * });
+ * const renameSlackChannel = new rootly.WorkflowTaskRenameSlackChannel("renameSlackChannel", {
+ *     workflowId: renamingSlackChannelToJiraTicketNumber.id,
+ *     skipOnFailure: false,
+ *     enabled: true,
+ *     taskParams: {
+ *         name: "Rename a Slack channel to Jira ticket slug",
+ *         channel: {
+ *             id: "{{ incident.slack_channel_id }}",
+ *             name: "{{ incident.slack_channel_id }}",
+ *         },
+ *         title: "incident-{{ incident.jira_issue_key }}",
+ *     },
+ * });
+ * ```
  */
 export class WorkflowTaskRenameSlackChannel extends pulumi.CustomResource {
     /**
@@ -37,9 +68,17 @@ export class WorkflowTaskRenameSlackChannel extends pulumi.CustomResource {
     }
 
     /**
+     * Enable/disable this workflow task
+     */
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     public readonly position!: pulumi.Output<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    public readonly skipOnFailure!: pulumi.Output<boolean | undefined>;
     /**
      * The parameters for this workflow task.
      */
@@ -62,7 +101,9 @@ export class WorkflowTaskRenameSlackChannel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTaskRenameSlackChannelState | undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["skipOnFailure"] = state ? state.skipOnFailure : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
@@ -73,7 +114,9 @@ export class WorkflowTaskRenameSlackChannel extends pulumi.CustomResource {
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["skipOnFailure"] = args ? args.skipOnFailure : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
@@ -87,9 +130,17 @@ export class WorkflowTaskRenameSlackChannel extends pulumi.CustomResource {
  */
 export interface WorkflowTaskRenameSlackChannelState {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */
@@ -105,9 +156,17 @@ export interface WorkflowTaskRenameSlackChannelState {
  */
 export interface WorkflowTaskRenameSlackChannelArgs {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */

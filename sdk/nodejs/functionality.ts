@@ -5,6 +5,57 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const addItemsToCard = new rootly.Functionality("add_items_to_card", {
+ *     color: "#800080",
+ *     notifyEmails: [
+ *         "foo@acme.com",
+ *         "bar@acme.com",
+ *     ],
+ *     slackAliases: [{
+ *         id: "S0614TZR7",
+ *         name: "Alias 1", // Any string really
+ *     }],
+ *     slackChannels: [
+ *         {
+ *             id: "C06A4RZR9",
+ *             name: "Channel 1", // Any string really
+ *         },
+ *         {
+ *             id: "C02T4RYR2",
+ *             name: "Channel 2", // Any string really
+ *         },
+ *     ],
+ * });
+ * const loggingIn = new rootly.Functionality("logging_in", {
+ *     color: "#800080",
+ *     notifyEmails: [
+ *         "foo@acme.com",
+ *         "bar@acme.com",
+ *     ],
+ *     slackAliases: [{
+ *         id: "S0614TZR7",
+ *         name: "Alias 1", // Any string really
+ *     }],
+ *     slackChannels: [
+ *         {
+ *             id: "C06A4RZR9",
+ *             name: "Channel 1", // Any string really
+ *         },
+ *         {
+ *             id: "C02T4RYR2",
+ *             name: "Channel 2", // Any string really
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class Functionality extends pulumi.CustomResource {
     /**
      * Get an existing Functionality resource's state with the given name, ID, and optional extra
@@ -59,6 +110,10 @@ export class Functionality extends pulumi.CustomResource {
      */
     public readonly ownersUserIds!: pulumi.Output<number[]>;
     /**
+     * Position of the functionality
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
      * The public description of the functionality
      */
     public readonly publicDescription!: pulumi.Output<string>;
@@ -78,6 +133,11 @@ export class Functionality extends pulumi.CustomResource {
      * The slug of the functionality
      */
     public readonly slug!: pulumi.Output<string>;
+    /**
+     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`,
+     * `major_outage`.
+     */
+    public readonly status!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Functionality resource with the given unique name, arguments, and options.
@@ -99,11 +159,13 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["notifyEmails"] = state ? state.notifyEmails : undefined;
             resourceInputs["ownersGroupIds"] = state ? state.ownersGroupIds : undefined;
             resourceInputs["ownersUserIds"] = state ? state.ownersUserIds : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["publicDescription"] = state ? state.publicDescription : undefined;
             resourceInputs["serviceIds"] = state ? state.serviceIds : undefined;
             resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
             resourceInputs["slackChannels"] = state ? state.slackChannels : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as FunctionalityArgs | undefined;
             resourceInputs["color"] = args ? args.color : undefined;
@@ -113,11 +175,13 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["notifyEmails"] = args ? args.notifyEmails : undefined;
             resourceInputs["ownersGroupIds"] = args ? args.ownersGroupIds : undefined;
             resourceInputs["ownersUserIds"] = args ? args.ownersUserIds : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["publicDescription"] = args ? args.publicDescription : undefined;
             resourceInputs["serviceIds"] = args ? args.serviceIds : undefined;
             resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
             resourceInputs["slackChannels"] = args ? args.slackChannels : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Functionality.__pulumiType, name, resourceInputs, opts);
@@ -154,6 +218,10 @@ export interface FunctionalityState {
      */
     ownersUserIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
+     * Position of the functionality
+     */
+    position?: pulumi.Input<number>;
+    /**
      * The public description of the functionality
      */
     publicDescription?: pulumi.Input<string>;
@@ -173,6 +241,11 @@ export interface FunctionalityState {
      * The slug of the functionality
      */
     slug?: pulumi.Input<string>;
+    /**
+     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`,
+     * `major_outage`.
+     */
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -205,6 +278,10 @@ export interface FunctionalityArgs {
      */
     ownersUserIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
+     * Position of the functionality
+     */
+    position?: pulumi.Input<number>;
+    /**
      * The public description of the functionality
      */
     publicDescription?: pulumi.Input<string>;
@@ -224,4 +301,9 @@ export interface FunctionalityArgs {
      * The slug of the functionality
      */
     slug?: pulumi.Input<string>;
+    /**
+     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`,
+     * `major_outage`.
+     */
+    status?: pulumi.Input<string>;
 }

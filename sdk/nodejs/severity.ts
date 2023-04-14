@@ -2,8 +2,81 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const sev0 = new rootly.Severity("sev0", {
+ *     color: "#FF0000",
+ *     notifyEmails: [
+ *         "foo@acme.com",
+ *         "bar@acme.com",
+ *     ],
+ *     slackAliases: [{
+ *         id: "S0614TZR7",
+ *         name: "Alias 1", // Any string really
+ *     }],
+ *     slackChannels: [
+ *         {
+ *             id: "C06A4RZR9",
+ *             name: "Channel 1", // Any string really
+ *         },
+ *         {
+ *             id: "C02T4RYR2",
+ *             name: "Channel 2", // Any string really
+ *         },
+ *     ],
+ * });
+ * const sev1 = new rootly.Severity("sev1", {
+ *     color: "#FFA500",
+ *     notifyEmails: [
+ *         "foo@acme.com",
+ *         "bar@acme.com",
+ *     ],
+ *     slackAliases: [{
+ *         id: "S0614TZR7",
+ *         name: "Alias 1", // Any string really
+ *     }],
+ *     slackChannels: [
+ *         {
+ *             id: "C06A4RZR9",
+ *             name: "Channel 1", // Any string really
+ *         },
+ *         {
+ *             id: "C02T4RYR2",
+ *             name: "Channel 2", // Any string really
+ *         },
+ *     ],
+ * });
+ * const sev2 = new rootly.Severity("sev2", {
+ *     color: "#FFA500",
+ *     notifyEmails: [
+ *         "foo@acme.com",
+ *         "bar@acme.com",
+ *     ],
+ *     slackAliases: [{
+ *         id: "S0614TZR7",
+ *         name: "Alias 1", // Any string really
+ *     }],
+ *     slackChannels: [
+ *         {
+ *             id: "C06A4RZR9",
+ *             name: "Channel 1", // Any string really
+ *         },
+ *         {
+ *             id: "C02T4RYR2",
+ *             name: "Channel 2", // Any string really
+ *         },
+ *     ],
+ * });
+ * ```
+ */
 export class Severity extends pulumi.CustomResource {
     /**
      * Get an existing Severity resource's state with the given name, ID, and optional extra
@@ -42,9 +115,25 @@ export class Severity extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Emails to attach to the severity
+     */
+    public readonly notifyEmails!: pulumi.Output<string[]>;
+    /**
+     * Position of the severity
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
      * The severity of the severity. Value must be one of `critical`, `high`, `medium`, `low`.
      */
     public readonly severity!: pulumi.Output<string | undefined>;
+    /**
+     * Slack Aliases associated with this severity
+     */
+    public readonly slackAliases!: pulumi.Output<outputs.SeveritySlackAlias[]>;
+    /**
+     * Slack Channels associated with this severity
+     */
+    public readonly slackChannels!: pulumi.Output<outputs.SeveritySlackChannel[]>;
     /**
      * The slug of the severity
      */
@@ -66,14 +155,22 @@ export class Severity extends pulumi.CustomResource {
             resourceInputs["color"] = state ? state.color : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notifyEmails"] = state ? state.notifyEmails : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["severity"] = state ? state.severity : undefined;
+            resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
+            resourceInputs["slackChannels"] = state ? state.slackChannels : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
         } else {
             const args = argsOrState as SeverityArgs | undefined;
             resourceInputs["color"] = args ? args.color : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notifyEmails"] = args ? args.notifyEmails : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
+            resourceInputs["slackChannels"] = args ? args.slackChannels : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -95,9 +192,25 @@ export interface SeverityState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Emails to attach to the severity
+     */
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Position of the severity
+     */
+    position?: pulumi.Input<number>;
+    /**
      * The severity of the severity. Value must be one of `critical`, `high`, `medium`, `low`.
      */
     severity?: pulumi.Input<string>;
+    /**
+     * Slack Aliases associated with this severity
+     */
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.SeveritySlackAlias>[]>;
+    /**
+     * Slack Channels associated with this severity
+     */
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[]>;
     /**
      * The slug of the severity
      */
@@ -118,9 +231,25 @@ export interface SeverityArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * Emails to attach to the severity
+     */
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Position of the severity
+     */
+    position?: pulumi.Input<number>;
+    /**
      * The severity of the severity. Value must be one of `critical`, `high`, `medium`, `low`.
      */
     severity?: pulumi.Input<string>;
+    /**
+     * Slack Aliases associated with this severity
+     */
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.SeveritySlackAlias>[]>;
+    /**
+     * Slack Channels associated with this severity
+     */
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[]>;
     /**
      * The slug of the severity
      */

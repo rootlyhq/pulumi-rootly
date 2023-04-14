@@ -7,6 +7,36 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow sendSms task.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const sendSmsWorkflowIncident = new rootly.WorkflowIncident("sendSmsWorkflowIncident", {
+ *     description: "Automatically send SMS to a specific teammate.",
+ *     triggerParams: {
+ *         triggers: ["incident_created"],
+ *         incidentStatuses: ["started"],
+ *         incidentConditionStatus: "IS",
+ *     },
+ *     enabled: true,
+ * });
+ * const sendSmsWorkflowTaskSendSms = new rootly.WorkflowTaskSendSms("sendSmsWorkflowTaskSendSms", {
+ *     workflowId: sendSmsWorkflowIncident.id,
+ *     skipOnFailure: false,
+ *     enabled: true,
+ *     taskParams: {
+ *         name: "Send SMS",
+ *         content: "We have an ongoing incident {{ incident.title }} of severity {{ incident.severity }} and your assistance is required.",
+ *         phoneNumbers: [
+ *             "+11231231231",
+ *             "+11231231232",
+ *         ],
+ *     },
+ * });
+ * ```
  */
 export class WorkflowTaskSendSms extends pulumi.CustomResource {
     /**
@@ -37,9 +67,17 @@ export class WorkflowTaskSendSms extends pulumi.CustomResource {
     }
 
     /**
+     * Enable/disable this workflow task
+     */
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     public readonly position!: pulumi.Output<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    public readonly skipOnFailure!: pulumi.Output<boolean | undefined>;
     /**
      * The parameters for this workflow task.
      */
@@ -62,7 +100,9 @@ export class WorkflowTaskSendSms extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowTaskSendSmsState | undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["skipOnFailure"] = state ? state.skipOnFailure : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
@@ -73,7 +113,9 @@ export class WorkflowTaskSendSms extends pulumi.CustomResource {
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["skipOnFailure"] = args ? args.skipOnFailure : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
@@ -87,9 +129,17 @@ export class WorkflowTaskSendSms extends pulumi.CustomResource {
  */
 export interface WorkflowTaskSendSmsState {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */
@@ -105,9 +155,17 @@ export interface WorkflowTaskSendSmsState {
  */
 export interface WorkflowTaskSendSmsArgs {
     /**
+     * Enable/disable this workflow task
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     position?: pulumi.Input<number>;
+    /**
+     * Skip workflow task if any failures
+     */
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */
