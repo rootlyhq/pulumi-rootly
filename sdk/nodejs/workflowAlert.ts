@@ -60,7 +60,7 @@ export class WorkflowAlert extends pulumi.CustomResource {
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly environmentIds!: pulumi.Output<string[]>;
     public readonly groupIds!: pulumi.Output<string[]>;
-    public readonly incidentRolesIds!: pulumi.Output<string[]>;
+    public readonly incidentRoleIds!: pulumi.Output<string[]>;
     public readonly incidentTypeIds!: pulumi.Output<string[]>;
     /**
      * The title of the workflow
@@ -112,7 +112,7 @@ export class WorkflowAlert extends pulumi.CustomResource {
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["environmentIds"] = state ? state.environmentIds : undefined;
             resourceInputs["groupIds"] = state ? state.groupIds : undefined;
-            resourceInputs["incidentRolesIds"] = state ? state.incidentRolesIds : undefined;
+            resourceInputs["incidentRoleIds"] = state ? state.incidentRoleIds : undefined;
             resourceInputs["incidentTypeIds"] = state ? state.incidentTypeIds : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
@@ -131,7 +131,7 @@ export class WorkflowAlert extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["environmentIds"] = args ? args.environmentIds : undefined;
             resourceInputs["groupIds"] = args ? args.groupIds : undefined;
-            resourceInputs["incidentRolesIds"] = args ? args.incidentRolesIds : undefined;
+            resourceInputs["incidentRoleIds"] = args ? args.incidentRoleIds : undefined;
             resourceInputs["incidentTypeIds"] = args ? args.incidentTypeIds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
@@ -164,7 +164,7 @@ export interface WorkflowAlertState {
     enabled?: pulumi.Input<boolean>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
     groupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    incidentRolesIds?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentRoleIds?: pulumi.Input<pulumi.Input<string>[]>;
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The title of the workflow
@@ -214,7 +214,7 @@ export interface WorkflowAlertArgs {
     enabled?: pulumi.Input<boolean>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
     groupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    incidentRolesIds?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentRoleIds?: pulumi.Input<pulumi.Input<string>[]>;
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The title of the workflow

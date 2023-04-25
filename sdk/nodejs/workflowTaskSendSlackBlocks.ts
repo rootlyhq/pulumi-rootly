@@ -14,30 +14,34 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const sendAlertsToSlack = new rootly.WorkflowAlert("sendAlertsToSlack", {
- *     description: "Sends a customizable message block to Slack with details of your alerts",
+ * const sendMessageInIncidentChannel = new rootly.WorkflowIncident("sendMessageInIncidentChannel", {
+ *     description: "Send a message in the incident channel",
  *     triggerParams: {
- *         triggers: ["alert_created"],
+ *         triggers: ["incident_created"],
+ *         incidentStatuses: ["started"],
+ *         incidentConditionStatus: "IS",
  *     },
  *     enabled: true,
  * });
  * const sendSlackBlocks = new rootly.WorkflowTaskSendSlackBlocks("sendSlackBlocks", {
- *     workflowId: sendAlertsToSlack.id,
+ *     workflowId: sendMessageInIncidentChannel.id,
  *     skipOnFailure: false,
  *     enabled: true,
  *     taskParams: {
- *         name: "Send alert block",
- *         message: ":boom: New alert!",
- *         blocks: [
- *             {
- *                 id: "undefined",
- *                 name: "undefined",
+ *         name: "Send Slack message",
+ *         message: ":boom: New incident!",
+ *         channels: [{
+ *             name: "{{ incident.slack_channel_id }}",
+ *             id: "{{ incident.slack_channel_id }}",
+ *         }],
+ *         blocks: JSON.stringify([{
+ *             text: {
+ *                 emoji: true,
+ *                 text: "This is the incident title: {{ incident.title }}",
+ *                 type: "plain_text",
  *             },
- *             {
- *                 id: "undefined",
- *                 name: "undefined",
- *             },
- *         ],
+ *             type: "header",
+ *         }]),
  *     },
  * });
  * ```

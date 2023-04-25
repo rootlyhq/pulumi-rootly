@@ -7433,6 +7433,8 @@
             },
             "type": "object",
             "required": [
+                "kind",
+                "resource",
                 "workflow"
             ]
         },
@@ -12638,7 +12640,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -12702,7 +12704,7 @@
                 "description",
                 "environmentIds",
                 "groupIds",
-                "incidentRolesIds",
+                "incidentRoleIds",
                 "incidentTypeIds",
                 "name",
                 "position",
@@ -12739,7 +12741,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -12824,7 +12826,7 @@
                             "type": "string"
                         }
                     },
-                    "incidentRolesIds": {
+                    "incidentRoleIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
@@ -12912,7 +12914,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -12976,7 +12978,7 @@
                 "description",
                 "environmentIds",
                 "groupIds",
-                "incidentRolesIds",
+                "incidentRoleIds",
                 "incidentTypeIds",
                 "name",
                 "position",
@@ -13013,7 +13015,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -13098,7 +13100,7 @@
                             "type": "string"
                         }
                     },
-                    "incidentRolesIds": {
+                    "incidentRoleIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
@@ -13469,7 +13471,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -13533,7 +13535,7 @@
                 "description",
                 "environmentIds",
                 "groupIds",
-                "incidentRolesIds",
+                "incidentRoleIds",
                 "incidentTypeIds",
                 "name",
                 "position",
@@ -13570,7 +13572,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -13655,7 +13657,7 @@
                             "type": "string"
                         }
                     },
-                    "incidentRolesIds": {
+                    "incidentRoleIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
@@ -13742,7 +13744,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -13806,7 +13808,7 @@
                 "description",
                 "environmentIds",
                 "groupIds",
-                "incidentRolesIds",
+                "incidentRoleIds",
                 "incidentTypeIds",
                 "name",
                 "position",
@@ -13843,7 +13845,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -13928,7 +13930,7 @@
                             "type": "string"
                         }
                     },
-                    "incidentRolesIds": {
+                    "incidentRoleIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
@@ -13991,6 +13993,7 @@
             }
         },
         "rootly:index/workflowPulse:WorkflowPulse": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_workflow = new rootly.WorkflowPulse(\"my-workflow\", {\n    description: \"This workflow will trigger when a pulse is created\",\n    enabled: true,\n    triggerParams: {\n        triggers: [\"pulse_created\"],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_workflow = rootly.WorkflowPulse(\"my-workflow\",\n    description=\"This workflow will trigger when a pulse is created\",\n    enabled=True,\n    trigger_params=rootly.WorkflowPulseTriggerParamsArgs(\n        triggers=[\"pulse_created\"],\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_workflow = new Rootly.WorkflowPulse(\"my-workflow\", new Rootly.WorkflowPulseArgs\n        {\n            Description = \"This workflow will trigger when a pulse is created\",\n            Enabled = true,\n            TriggerParams = new Rootly.Inputs.WorkflowPulseTriggerParamsArgs\n            {\n                Triggers = \n                {\n                    \"pulse_created\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.NewWorkflowPulse(ctx, \"my-workflow\", \u0026rootly.WorkflowPulseArgs{\n\t\t\tDescription: pulumi.String(\"This workflow will trigger when a pulse is created\"),\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tTriggerParams: \u0026WorkflowPulseTriggerParamsArgs{\n\t\t\t\tTriggers: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"pulse_created\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "command": {
                     "type": "string",
@@ -14015,7 +14018,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -14079,7 +14082,7 @@
                 "description",
                 "environmentIds",
                 "groupIds",
-                "incidentRolesIds",
+                "incidentRoleIds",
                 "incidentTypeIds",
                 "name",
                 "position",
@@ -14116,7 +14119,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -14201,7 +14204,7 @@
                             "type": "string"
                         }
                     },
-                    "incidentRolesIds": {
+                    "incidentRoleIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
@@ -14288,7 +14291,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -14352,7 +14355,7 @@
                 "description",
                 "environmentIds",
                 "groupIds",
-                "incidentRolesIds",
+                "incidentRoleIds",
                 "incidentTypeIds",
                 "name",
                 "position",
@@ -14389,7 +14392,7 @@
                         "type": "string"
                     }
                 },
-                "incidentRolesIds": {
+                "incidentRoleIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -14474,7 +14477,7 @@
                             "type": "string"
                         }
                     },
-                    "incidentRolesIds": {
+                    "incidentRoleIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
@@ -19621,7 +19624,7 @@
             }
         },
         "rootly:index/workflowTaskSendSlackBlocks:WorkflowTaskSendSlackBlocks": {
-            "description": "Manages workflow send_slack_blocks task.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst sendAlertsToSlack = new rootly.WorkflowAlert(\"sendAlertsToSlack\", {\n    description: \"Sends a customizable message block to Slack with details of your alerts\",\n    triggerParams: {\n        triggers: [\"alert_created\"],\n    },\n    enabled: true,\n});\nconst sendSlackBlocks = new rootly.WorkflowTaskSendSlackBlocks(\"sendSlackBlocks\", {\n    workflowId: sendAlertsToSlack.id,\n    skipOnFailure: false,\n    enabled: true,\n    taskParams: {\n        name: \"Send alert block\",\n        message: \":boom: New alert!\",\n        blocks: [\n            {\n                id: \"undefined\",\n                name: \"undefined\",\n            },\n            {\n                id: \"undefined\",\n                name: \"undefined\",\n            },\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nsend_alerts_to_slack = rootly.WorkflowAlert(\"sendAlertsToSlack\",\n    description=\"Sends a customizable message block to Slack with details of your alerts\",\n    trigger_params=rootly.WorkflowAlertTriggerParamsArgs(\n        triggers=[\"alert_created\"],\n    ),\n    enabled=True)\nsend_slack_blocks = rootly.WorkflowTaskSendSlackBlocks(\"sendSlackBlocks\",\n    workflow_id=send_alerts_to_slack.id,\n    skip_on_failure=False,\n    enabled=True,\n    task_params=rootly.WorkflowTaskSendSlackBlocksTaskParamsArgs(\n        name=\"Send alert block\",\n        message=\":boom: New alert!\",\n        blocks=[\n            {\n                \"id\": \"undefined\",\n                \"name\": \"undefined\",\n            },\n            {\n                \"id\": \"undefined\",\n                \"name\": \"undefined\",\n            },\n        ],\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var sendAlertsToSlack = new Rootly.WorkflowAlert(\"sendAlertsToSlack\", new Rootly.WorkflowAlertArgs\n        {\n            Description = \"Sends a customizable message block to Slack with details of your alerts\",\n            TriggerParams = new Rootly.Inputs.WorkflowAlertTriggerParamsArgs\n            {\n                Triggers = \n                {\n                    \"alert_created\",\n                },\n            },\n            Enabled = true,\n        });\n        var sendSlackBlocks = new Rootly.WorkflowTaskSendSlackBlocks(\"sendSlackBlocks\", new Rootly.WorkflowTaskSendSlackBlocksArgs\n        {\n            WorkflowId = sendAlertsToSlack.Id,\n            SkipOnFailure = false,\n            Enabled = true,\n            TaskParams = new Rootly.Inputs.WorkflowTaskSendSlackBlocksTaskParamsArgs\n            {\n                Name = \"Send alert block\",\n                Message = \":boom: New alert!\",\n                Blocks = \n                {\n                    \n                    {\n                        { \"id\", \"undefined\" },\n                        { \"name\", \"undefined\" },\n                    },\n                    \n                    {\n                        { \"id\", \"undefined\" },\n                        { \"name\", \"undefined\" },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsendAlertsToSlack, err := rootly.NewWorkflowAlert(ctx, \"sendAlertsToSlack\", \u0026rootly.WorkflowAlertArgs{\n\t\t\tDescription: pulumi.String(\"Sends a customizable message block to Slack with details of your alerts\"),\n\t\t\tTriggerParams: \u0026WorkflowAlertTriggerParamsArgs{\n\t\t\t\tTriggers: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"alert_created\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rootly.NewWorkflowTaskSendSlackBlocks(ctx, \"sendSlackBlocks\", \u0026rootly.WorkflowTaskSendSlackBlocksArgs{\n\t\t\tWorkflowId:    sendAlertsToSlack.ID(),\n\t\t\tSkipOnFailure: pulumi.Bool(false),\n\t\t\tEnabled:       pulumi.Bool(true),\n\t\t\tTaskParams: \u0026WorkflowTaskSendSlackBlocksTaskParamsArgs{\n\t\t\t\tName:    \"Send alert block\",\n\t\t\t\tMessage: pulumi.String(\":boom: New alert!\"),\n\t\t\t\tBlocks: pulumi.String{\n\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\"id\":   \"undefined\",\n\t\t\t\t\t\t\"name\": \"undefined\",\n\t\t\t\t\t},\n\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\"id\":   \"undefined\",\n\t\t\t\t\t\t\"name\": \"undefined\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Manages workflow send_slack_blocks task.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst sendMessageInIncidentChannel = new rootly.WorkflowIncident(\"sendMessageInIncidentChannel\", {\n    description: \"Send a message in the incident channel\",\n    triggerParams: {\n        triggers: [\"incident_created\"],\n        incidentStatuses: [\"started\"],\n        incidentConditionStatus: \"IS\",\n    },\n    enabled: true,\n});\nconst sendSlackBlocks = new rootly.WorkflowTaskSendSlackBlocks(\"sendSlackBlocks\", {\n    workflowId: sendMessageInIncidentChannel.id,\n    skipOnFailure: false,\n    enabled: true,\n    taskParams: {\n        name: \"Send Slack message\",\n        message: \":boom: New incident!\",\n        channels: [{\n            name: \"{{ incident.slack_channel_id }}\",\n            id: \"{{ incident.slack_channel_id }}\",\n        }],\n        blocks: JSON.stringify([{\n            text: {\n                emoji: true,\n                text: \"This is the incident title: {{ incident.title }}\",\n                type: \"plain_text\",\n            },\n            type: \"header\",\n        }]),\n    },\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_rootly as rootly\n\nsend_message_in_incident_channel = rootly.WorkflowIncident(\"sendMessageInIncidentChannel\",\n    description=\"Send a message in the incident channel\",\n    trigger_params=rootly.WorkflowIncidentTriggerParamsArgs(\n        triggers=[\"incident_created\"],\n        incident_statuses=[\"started\"],\n        incident_condition_status=\"IS\",\n    ),\n    enabled=True)\nsend_slack_blocks = rootly.WorkflowTaskSendSlackBlocks(\"sendSlackBlocks\",\n    workflow_id=send_message_in_incident_channel.id,\n    skip_on_failure=False,\n    enabled=True,\n    task_params=rootly.WorkflowTaskSendSlackBlocksTaskParamsArgs(\n        name=\"Send Slack message\",\n        message=\":boom: New incident!\",\n        channels=[rootly.WorkflowTaskSendSlackBlocksTaskParamsChannelArgs(\n            name=\"{{ incident.slack_channel_id }}\",\n            id=\"{{ incident.slack_channel_id }}\",\n        )],\n        blocks=json.dumps([{\n            \"text\": {\n                \"emoji\": True,\n                \"text\": \"This is the incident title: {{ incident.title }}\",\n                \"type\": \"plain_text\",\n            },\n            \"type\": \"header\",\n        }]),\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var sendMessageInIncidentChannel = new Rootly.WorkflowIncident(\"sendMessageInIncidentChannel\", new Rootly.WorkflowIncidentArgs\n        {\n            Description = \"Send a message in the incident channel\",\n            TriggerParams = new Rootly.Inputs.WorkflowIncidentTriggerParamsArgs\n            {\n                Triggers = \n                {\n                    \"incident_created\",\n                },\n                IncidentStatuses = \n                {\n                    \"started\",\n                },\n                IncidentConditionStatus = \"IS\",\n            },\n            Enabled = true,\n        });\n        var sendSlackBlocks = new Rootly.WorkflowTaskSendSlackBlocks(\"sendSlackBlocks\", new Rootly.WorkflowTaskSendSlackBlocksArgs\n        {\n            WorkflowId = sendMessageInIncidentChannel.Id,\n            SkipOnFailure = false,\n            Enabled = true,\n            TaskParams = new Rootly.Inputs.WorkflowTaskSendSlackBlocksTaskParamsArgs\n            {\n                Name = \"Send Slack message\",\n                Message = \":boom: New incident!\",\n                Channels = \n                {\n                    new Rootly.Inputs.WorkflowTaskSendSlackBlocksTaskParamsChannelArgs\n                    {\n                        Name = \"{{ incident.slack_channel_id }}\",\n                        Id = \"{{ incident.slack_channel_id }}\",\n                    },\n                },\n                Blocks = JsonSerializer.Serialize(new[]\n                    {\n                        new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"text\", new Dictionary\u003cstring, object?\u003e\n                            {\n                                { \"emoji\", true },\n                                { \"text\", \"This is the incident title: {{ incident.title }}\" },\n                                { \"type\", \"plain_text\" },\n                            } },\n                            { \"type\", \"header\" },\n                        },\n                    }\n                ),\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsendMessageInIncidentChannel, err := rootly.NewWorkflowIncident(ctx, \"sendMessageInIncidentChannel\", \u0026rootly.WorkflowIncidentArgs{\n\t\t\tDescription: pulumi.String(\"Send a message in the incident channel\"),\n\t\t\tTriggerParams: \u0026WorkflowIncidentTriggerParamsArgs{\n\t\t\t\tTriggers: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"incident_created\"),\n\t\t\t\t},\n\t\t\t\tIncidentStatuses: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"started\"),\n\t\t\t\t},\n\t\t\t\tIncidentConditionStatus: pulumi.String(\"IS\"),\n\t\t\t},\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"text\": map[string]interface{}{\n\t\t\t\t\t\"emoji\": true,\n\t\t\t\t\t\"text\":  \"This is the incident title: {{ incident.title }}\",\n\t\t\t\t\t\"type\":  \"plain_text\",\n\t\t\t\t},\n\t\t\t\t\"type\": \"header\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = rootly.NewWorkflowTaskSendSlackBlocks(ctx, \"sendSlackBlocks\", \u0026rootly.WorkflowTaskSendSlackBlocksArgs{\n\t\t\tWorkflowId:    sendMessageInIncidentChannel.ID(),\n\t\t\tSkipOnFailure: pulumi.Bool(false),\n\t\t\tEnabled:       pulumi.Bool(true),\n\t\t\tTaskParams: \u0026WorkflowTaskSendSlackBlocksTaskParamsArgs{\n\t\t\t\tName:    \"Send Slack message\",\n\t\t\t\tMessage: pulumi.String(\":boom: New incident!\"),\n\t\t\t\tChannels: WorkflowTaskSendSlackBlocksTaskParamsChannelArray{\n\t\t\t\t\t\u0026WorkflowTaskSendSlackBlocksTaskParamsChannelArgs{\n\t\t\t\t\t\tName: pulumi.String(\"{{ incident.slack_channel_id }}\"),\n\t\t\t\t\t\tId:   pulumi.String(\"{{ incident.slack_channel_id }}\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tBlocks: pulumi.String(json0),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -20195,7 +20198,7 @@
             }
         },
         "rootly:index/workflowTaskTriggerWorkflow:WorkflowTaskTriggerWorkflow": {
-            "description": "Manages workflow trigger_workflow task.\n",
+            "description": "Manages workflow trigger_workflow task.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst triggerAnotherWorkflow = new rootly.WorkflowIncident(\"triggerAnotherWorkflow\", {\n    description: \"Trigger another workflow\",\n    triggerParams: {\n        triggers: [\"incident_created\"],\n        incidentStatuses: [\"started\"],\n        incidentConditionStatus: \"IS\",\n    },\n    enabled: true,\n});\nconst triggerAnotherWorkflowTask = new rootly.WorkflowTaskTriggerWorkflow(\"triggerAnotherWorkflowTask\", {\n    position: 1,\n    workflowId: triggerAnotherWorkflow.id,\n    taskParams: {\n        kind: \"incident\",\n        workflow: {\n            id: rootly_workflow_incident.another_workflow.id,\n            name: \"Trigger another workflow\",\n        },\n        resource: {\n            id: \"{{ incident.id }}\",\n            name: \"{{ incident.id }}\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\ntrigger_another_workflow = rootly.WorkflowIncident(\"triggerAnotherWorkflow\",\n    description=\"Trigger another workflow\",\n    trigger_params=rootly.WorkflowIncidentTriggerParamsArgs(\n        triggers=[\"incident_created\"],\n        incident_statuses=[\"started\"],\n        incident_condition_status=\"IS\",\n    ),\n    enabled=True)\ntrigger_another_workflow_task = rootly.WorkflowTaskTriggerWorkflow(\"triggerAnotherWorkflowTask\",\n    position=1,\n    workflow_id=trigger_another_workflow.id,\n    task_params=rootly.WorkflowTaskTriggerWorkflowTaskParamsArgs(\n        kind=\"incident\",\n        workflow={\n            \"id\": rootly_workflow_incident[\"another_workflow\"][\"id\"],\n            \"name\": \"Trigger another workflow\",\n        },\n        resource={\n            \"id\": \"{{ incident.id }}\",\n            \"name\": \"{{ incident.id }}\",\n        },\n    ))\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var triggerAnotherWorkflow = new Rootly.WorkflowIncident(\"triggerAnotherWorkflow\", new Rootly.WorkflowIncidentArgs\n        {\n            Description = \"Trigger another workflow\",\n            TriggerParams = new Rootly.Inputs.WorkflowIncidentTriggerParamsArgs\n            {\n                Triggers = \n                {\n                    \"incident_created\",\n                },\n                IncidentStatuses = \n                {\n                    \"started\",\n                },\n                IncidentConditionStatus = \"IS\",\n            },\n            Enabled = true,\n        });\n        var triggerAnotherWorkflowTask = new Rootly.WorkflowTaskTriggerWorkflow(\"triggerAnotherWorkflowTask\", new Rootly.WorkflowTaskTriggerWorkflowArgs\n        {\n            Position = 1,\n            WorkflowId = triggerAnotherWorkflow.Id,\n            TaskParams = new Rootly.Inputs.WorkflowTaskTriggerWorkflowTaskParamsArgs\n            {\n                Kind = \"incident\",\n                Workflow = \n                {\n                    { \"id\", rootly_workflow_incident.Another_workflow.Id },\n                    { \"name\", \"Trigger another workflow\" },\n                },\n                Resource = \n                {\n                    { \"id\", \"{{ incident.id }}\" },\n                    { \"name\", \"{{ incident.id }}\" },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttriggerAnotherWorkflow, err := rootly.NewWorkflowIncident(ctx, \"triggerAnotherWorkflow\", \u0026rootly.WorkflowIncidentArgs{\n\t\t\tDescription: pulumi.String(\"Trigger another workflow\"),\n\t\t\tTriggerParams: \u0026WorkflowIncidentTriggerParamsArgs{\n\t\t\t\tTriggers: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"incident_created\"),\n\t\t\t\t},\n\t\t\t\tIncidentStatuses: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"started\"),\n\t\t\t\t},\n\t\t\t\tIncidentConditionStatus: pulumi.String(\"IS\"),\n\t\t\t},\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rootly.NewWorkflowTaskTriggerWorkflow(ctx, \"triggerAnotherWorkflowTask\", \u0026rootly.WorkflowTaskTriggerWorkflowArgs{\n\t\t\tPosition:   pulumi.Int(1),\n\t\t\tWorkflowId: triggerAnotherWorkflow.ID(),\n\t\t\tTaskParams: \u0026WorkflowTaskTriggerWorkflowTaskParamsArgs{\n\t\t\t\tKind: pulumi.String(\"incident\"),\n\t\t\t\tWorkflow: pulumi.AnyMap{\n\t\t\t\t\t\"id\":   pulumi.Any(rootly_workflow_incident.Another_workflow.Id),\n\t\t\t\t\t\"name\": pulumi.Any(\"Trigger another workflow\"),\n\t\t\t\t},\n\t\t\t\tResource: pulumi.AnyMap{\n\t\t\t\t\t\"id\":   pulumi.Any(\"{{ incident.id }}\"),\n\t\t\t\t\t\"name\": pulumi.Any(\"{{ incident.id }}\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "enabled": {
                     "type": "boolean",

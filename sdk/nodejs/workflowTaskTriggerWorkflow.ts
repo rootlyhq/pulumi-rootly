@@ -7,6 +7,38 @@ import * as utilities from "./utilities";
 
 /**
  * Manages workflow triggerWorkflow task.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const triggerAnotherWorkflow = new rootly.WorkflowIncident("triggerAnotherWorkflow", {
+ *     description: "Trigger another workflow",
+ *     triggerParams: {
+ *         triggers: ["incident_created"],
+ *         incidentStatuses: ["started"],
+ *         incidentConditionStatus: "IS",
+ *     },
+ *     enabled: true,
+ * });
+ * const triggerAnotherWorkflowTask = new rootly.WorkflowTaskTriggerWorkflow("triggerAnotherWorkflowTask", {
+ *     position: 1,
+ *     workflowId: triggerAnotherWorkflow.id,
+ *     taskParams: {
+ *         kind: "incident",
+ *         workflow: {
+ *             id: rootly_workflow_incident.another_workflow.id,
+ *             name: "Trigger another workflow",
+ *         },
+ *         resource: {
+ *             id: "{{ incident.id }}",
+ *             name: "{{ incident.id }}",
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class WorkflowTaskTriggerWorkflow extends pulumi.CustomResource {
     /**

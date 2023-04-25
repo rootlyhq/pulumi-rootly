@@ -1208,8 +1208,8 @@ export interface WorkflowTaskSnapshotNewRelicGraphTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskTriggerWorkflowTaskParams {
     checkWorkflowConditions?: boolean;
-    kind?: string;
-    resource?: {[key: string]: any};
+    kind: string;
+    resource: {[key: string]: any};
     taskType?: string;
     workflow: {[key: string]: any};
 }

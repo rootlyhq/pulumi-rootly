@@ -1124,8 +1124,8 @@ export interface WorkflowTaskSnapshotNewRelicGraphTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskTriggerWorkflowTaskParams {
     checkWorkflowConditions?: pulumi.Input<boolean>;
-    kind?: pulumi.Input<string>;
-    resource?: pulumi.Input<{[key: string]: any}>;
+    kind: pulumi.Input<string>;
+    resource: pulumi.Input<{[key: string]: any}>;
     taskType?: pulumi.Input<string>;
     workflow: pulumi.Input<{[key: string]: any}>;
 }
