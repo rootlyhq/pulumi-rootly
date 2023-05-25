@@ -8,7 +8,8 @@ declare var exports: any;
 const __config = new pulumi.Config("rootly");
 
 /**
- * The Rootly API host. Defaults to https://api.rootly.com
+ * The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment
+ * variable.
  */
 export declare const apiHost: string | undefined;
 Object.defineProperty(exports, "apiHost", {
@@ -19,7 +20,8 @@ Object.defineProperty(exports, "apiHost", {
 });
 
 /**
- * The Rootly API Token. Generate it from your account at https://rootly.com/account
+ * The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be
+ * sourced from the ROOTLY_API_TOKEN environment variable.
  */
 export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {

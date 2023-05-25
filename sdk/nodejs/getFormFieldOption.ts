@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my_form_field_option = pulumi.output(rootly.getFormFieldOption({
+ *     slug: "my-form-field-option",
+ * }));
+ * ```
+ */
 export function getFormFieldOption(args?: GetFormFieldOptionArgs, opts?: pulumi.InvokeOptions): Promise<GetFormFieldOptionResult> {
     args = args || {};
     if (!opts) {

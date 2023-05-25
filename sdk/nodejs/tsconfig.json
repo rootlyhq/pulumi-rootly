@@ -46,6 +46,7 @@
         "getServices.ts",
         "getSeverities.ts",
         "getSeverity.ts",
+        "getStatusPage.ts",
         "getTeam.ts",
         "getTeams.ts",
         "getWebhooksEndpoint.ts",

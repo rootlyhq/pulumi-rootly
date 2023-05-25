@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my_workflow_group = pulumi.output(rootly.getWorkflowGroup({
+ *     slug: "my-workflow-group",
+ * }));
+ * ```
+ */
 export function getWorkflowGroup(args?: GetWorkflowGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowGroupResult> {
     args = args || {};
     if (!opts) {

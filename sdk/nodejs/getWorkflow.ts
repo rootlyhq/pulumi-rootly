@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my_workflow = pulumi.output(rootly.getWorkflow({
+ *     slug: "my-workflow",
+ * }));
+ * ```
+ */
 export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
     args = args || {};
     if (!opts) {
@@ -12,6 +24,7 @@ export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions)
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("rootly:index/getWorkflow:getWorkflow", {
+        "createdAt": args.createdAt,
         "name": args.name,
         "slug": args.slug,
     }, opts);
@@ -21,6 +34,7 @@ export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getWorkflow.
  */
 export interface GetWorkflowArgs {
+    createdAt?: {[key: string]: any};
     name?: string;
     slug?: string;
 }
@@ -29,6 +43,7 @@ export interface GetWorkflowArgs {
  * A collection of values returned by getWorkflow.
  */
 export interface GetWorkflowResult {
+    readonly createdAt?: {[key: string]: any};
     readonly id: string;
     readonly name: string;
     readonly slug: string;
@@ -42,6 +57,7 @@ export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getWorkflow.
  */
 export interface GetWorkflowOutputArgs {
+    createdAt?: pulumi.Input<{[key: string]: any}>;
     name?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;
 }

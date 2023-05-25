@@ -21,11 +21,11 @@
         "variables": {
             "apiHost": {
                 "type": "string",
-                "description": "The Rootly API host. Defaults to https://api.rootly.com\n"
+                "description": "The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment\nvariable.\n"
             },
             "apiToken": {
                 "type": "string",
-                "description": "The Rootly API Token. Generate it from your account at https://rootly.com/account\n"
+                "description": "The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be\nsourced from the ROOTLY_API_TOKEN environment variable.\n"
             }
         }
     },
@@ -751,6 +751,14 @@
                         }
                     }
                 },
+                "incidentInactivityDuration": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "incidentKinds": {
                     "type": "array",
                     "items": {
@@ -819,6 +827,7 @@
                         "incidentConditionStartedAt",
                         "incidentConditionSummary",
                         "incidentConditionalInactivity",
+                        "incidentInactivityDuration",
                         "incidentKinds",
                         "incidentStatuses",
                         "incidentVisibilities",
@@ -1108,6 +1117,14 @@
                         }
                     }
                 },
+                "incidentInactivityDuration": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "incidentKinds": {
                     "type": "array",
                     "items": {
@@ -1172,6 +1189,7 @@
                         "incidentConditionStartedAt",
                         "incidentConditionSummary",
                         "incidentConditionalInactivity",
+                        "incidentInactivityDuration",
                         "incidentKinds",
                         "incidentStatuses",
                         "incidentVisibilities",
@@ -1326,6 +1344,14 @@
                         }
                     }
                 },
+                "incidentInactivityDuration": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "incidentKinds": {
                     "type": "array",
                     "items": {
@@ -1436,6 +1462,7 @@
                         "incidentConditionStartedAt",
                         "incidentConditionSummary",
                         "incidentConditionalInactivity",
+                        "incidentInactivityDuration",
                         "incidentKinds",
                         "incidentPostMortemCauseIds",
                         "incidentPostMortemStatuses",
@@ -4270,6 +4297,14 @@
                         }
                     }
                 },
+                "markPostMortemAsPublished": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "parentFolderId": {
                     "type": "string",
                     "language": {
@@ -6119,8 +6154,24 @@
                         }
                     }
                 },
+                "notifySubscribers": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "publicTitle": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "shouldTweet": {
+                    "type": "boolean",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9790,21 +9841,21 @@
         "properties": {
             "apiHost": {
                 "type": "string",
-                "description": "The Rootly API host. Defaults to https://api.rootly.com\n"
+                "description": "The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment\nvariable.\n"
             },
             "apiToken": {
                 "type": "string",
-                "description": "The Rootly API Token. Generate it from your account at https://rootly.com/account\n"
+                "description": "The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be\nsourced from the ROOTLY_API_TOKEN environment variable.\n"
             }
         },
         "inputProperties": {
             "apiHost": {
                 "type": "string",
-                "description": "The Rootly API host. Defaults to https://api.rootly.com\n"
+                "description": "The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment\nvariable.\n"
             },
             "apiToken": {
                 "type": "string",
-                "description": "The Rootly API Token. Generate it from your account at https://rootly.com/account\n"
+                "description": "The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be\nsourced from the ROOTLY_API_TOKEN environment variable.\n"
             }
         }
     },
@@ -12124,6 +12175,14 @@
                     "type": "boolean",
                     "description": "Allow search engines to include your public status page in search results.\n"
                 },
+                "authenticationEnabled": {
+                    "type": "boolean",
+                    "description": "Enable authentication\n"
+                },
+                "authenticationPassword": {
+                    "type": "string",
+                    "description": "Authentication password\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the status page\n"
@@ -12139,6 +12198,17 @@
                     "type": "string",
                     "description": "The color of the footer. Eg. \"#1F2F41\"\n"
                 },
+                "functionalityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Functionalities attached to the status page\n"
+                },
+                "gaTrackingId": {
+                    "type": "string",
+                    "description": "Google Analytics tracking ID\n"
+                },
                 "headerColor": {
                     "type": "string",
                     "description": "The color of the header. Eg. \"#0061F2\"\n"
@@ -12146,6 +12216,13 @@
                 "public": {
                     "type": "boolean",
                     "description": "Make the status page accessible to the public\n"
+                },
+                "serviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Services attached to the status page\n"
                 },
                 "showUptime": {
                     "type": "boolean",
@@ -12159,28 +12236,60 @@
                     "type": "string",
                     "description": "Message showing when all components are operational\n"
                 },
+                "timeZone": {
+                    "type": "string",
+                    "description": "Status Page Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`,\n`Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central\nAmerica`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`,\n`Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`,\n`Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Greenland`,\n`Montevideo`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`,\n`Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`,\n`Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central\nAfrica`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`,\n`Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`,\n`Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`,\n`Kabul`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri\nJayawardenepura`, `Kathmandu`, `Almaty`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`,\n`Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`,\n`Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`,\n`Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`,\n`Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`,\n`Tokelau Is.`.\n"
+                },
                 "title": {
                     "type": "string",
                     "description": "The title of the status page\n"
+                },
+                "websitePrivacyUrl": {
+                    "type": "string",
+                    "description": "Website Privacy URL\n"
+                },
+                "websiteSupportUrl": {
+                    "type": "string",
+                    "description": "Website Support URL\n"
+                },
+                "websiteUrl": {
+                    "type": "string",
+                    "description": "Website URL\n"
                 }
             },
             "required": [
                 "allowSearchEngineIndex",
+                "authenticationEnabled",
+                "authenticationPassword",
                 "description",
                 "failureMessage",
                 "footerColor",
+                "functionalityIds",
+                "gaTrackingId",
                 "headerColor",
                 "public",
+                "serviceIds",
                 "showUptime",
                 "showUptimeLastDays",
                 "successMessage",
-                "title"
+                "title",
+                "websitePrivacyUrl",
+                "websiteSupportUrl",
+                "websiteUrl"
             ],
             "inputProperties": {
                 "allowSearchEngineIndex": {
                     "type": "boolean",
                     "description": "Allow search engines to include your public status page in search results.\n"
                 },
+                "authenticationEnabled": {
+                    "type": "boolean",
+                    "description": "Enable authentication\n"
+                },
+                "authenticationPassword": {
+                    "type": "string",
+                    "description": "Authentication password\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the status page\n"
@@ -12196,6 +12305,17 @@
                     "type": "string",
                     "description": "The color of the footer. Eg. \"#1F2F41\"\n"
                 },
+                "functionalityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Functionalities attached to the status page\n"
+                },
+                "gaTrackingId": {
+                    "type": "string",
+                    "description": "Google Analytics tracking ID\n"
+                },
                 "headerColor": {
                     "type": "string",
                     "description": "The color of the header. Eg. \"#0061F2\"\n"
@@ -12203,6 +12323,13 @@
                 "public": {
                     "type": "boolean",
                     "description": "Make the status page accessible to the public\n"
+                },
+                "serviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Services attached to the status page\n"
                 },
                 "showUptime": {
                     "type": "boolean",
@@ -12216,9 +12343,25 @@
                     "type": "string",
                     "description": "Message showing when all components are operational\n"
                 },
+                "timeZone": {
+                    "type": "string",
+                    "description": "Status Page Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`,\n`Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central\nAmerica`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`,\n`Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`,\n`Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Greenland`,\n`Montevideo`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`,\n`Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`,\n`Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central\nAfrica`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`,\n`Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`,\n`Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`,\n`Kabul`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri\nJayawardenepura`, `Kathmandu`, `Almaty`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`,\n`Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`,\n`Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`,\n`Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`,\n`Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`,\n`Tokelau Is.`.\n"
+                },
                 "title": {
                     "type": "string",
                     "description": "The title of the status page\n"
+                },
+                "websitePrivacyUrl": {
+                    "type": "string",
+                    "description": "Website Privacy URL\n"
+                },
+                "websiteSupportUrl": {
+                    "type": "string",
+                    "description": "Website Support URL\n"
+                },
+                "websiteUrl": {
+                    "type": "string",
+                    "description": "Website URL\n"
                 }
             },
             "requiredInputs": [
@@ -12230,6 +12373,14 @@
                     "allowSearchEngineIndex": {
                         "type": "boolean",
                         "description": "Allow search engines to include your public status page in search results.\n"
+                    },
+                    "authenticationEnabled": {
+                        "type": "boolean",
+                        "description": "Enable authentication\n"
+                    },
+                    "authenticationPassword": {
+                        "type": "string",
+                        "description": "Authentication password\n"
                     },
                     "description": {
                         "type": "string",
@@ -12246,6 +12397,17 @@
                         "type": "string",
                         "description": "The color of the footer. Eg. \"#1F2F41\"\n"
                     },
+                    "functionalityIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Functionalities attached to the status page\n"
+                    },
+                    "gaTrackingId": {
+                        "type": "string",
+                        "description": "Google Analytics tracking ID\n"
+                    },
                     "headerColor": {
                         "type": "string",
                         "description": "The color of the header. Eg. \"#0061F2\"\n"
@@ -12253,6 +12415,13 @@
                     "public": {
                         "type": "boolean",
                         "description": "Make the status page accessible to the public\n"
+                    },
+                    "serviceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Services attached to the status page\n"
                     },
                     "showUptime": {
                         "type": "boolean",
@@ -12266,9 +12435,25 @@
                         "type": "string",
                         "description": "Message showing when all components are operational\n"
                     },
+                    "timeZone": {
+                        "type": "string",
+                        "description": "Status Page Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`,\n`Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central\nAmerica`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`,\n`Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`,\n`Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Greenland`,\n`Montevideo`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`,\n`Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`,\n`Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central\nAfrica`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`,\n`Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`,\n`Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`,\n`Kabul`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri\nJayawardenepura`, `Kathmandu`, `Almaty`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`,\n`Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`,\n`Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`,\n`Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`,\n`Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`,\n`Tokelau Is.`.\n"
+                    },
                     "title": {
                         "type": "string",
                         "description": "The title of the status page\n"
+                    },
+                    "websitePrivacyUrl": {
+                        "type": "string",
+                        "description": "Website Privacy URL\n"
+                    },
+                    "websiteSupportUrl": {
+                        "type": "string",
+                        "description": "Website Support URL\n"
+                    },
+                    "websiteUrl": {
+                        "type": "string",
+                        "description": "Website URL\n"
                     }
                 },
                 "type": "object"
@@ -13170,7 +13355,7 @@
                 },
                 "incidentCondition": {
                     "type": "string",
-                    "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`,\n`UNSET`.\n"
                 },
                 "selectedOptionIds": {
                     "type": "array",
@@ -13202,7 +13387,7 @@
                 },
                 "incidentCondition": {
                     "type": "string",
-                    "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`,\n`UNSET`.\n"
                 },
                 "selectedOptionIds": {
                     "type": "array",
@@ -13233,7 +13418,7 @@
                     },
                     "incidentCondition": {
                         "type": "string",
-                        "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.\n"
+                        "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`,\n`UNSET`.\n"
                     },
                     "selectedOptionIds": {
                         "type": "array",
@@ -13263,7 +13448,7 @@
                 },
                 "incidentCondition": {
                     "type": "string",
-                    "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`,\n`UNSET`.\n"
                 },
                 "selectedOptionIds": {
                     "type": "array",
@@ -13302,7 +13487,7 @@
                 },
                 "incidentCondition": {
                     "type": "string",
-                    "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`,\n`UNSET`.\n"
                 },
                 "selectedOptionIds": {
                     "type": "array",
@@ -13339,7 +13524,7 @@
                     },
                     "incidentCondition": {
                         "type": "string",
-                        "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `NONE`, `SET`, `UNSET`.\n"
+                        "description": "The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`,\n`UNSET`.\n"
                     },
                     "selectedOptionIds": {
                         "type": "array",
@@ -22168,6 +22353,7 @@
     },
     "functions": {
         "rootly:index/getCause:getCause": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_cause = pulumi.output(rootly.getCause({\n    slug: \"my-cause\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_cause = rootly.get_cause(slug=\"my-cause\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_cause = Output.Create(Rootly.GetCause.InvokeAsync(new Rootly.GetCauseArgs\n        {\n            Slug = \"my-cause\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupCause(ctx, \u0026GetCauseArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-cause\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getCause.\n",
                 "properties": {
@@ -22254,7 +22440,7 @@
             }
         },
         "rootly:index/getCustomField:getCustomField": {
-            "description": "DEPRECATED: Please use `form_field` data source instead.\n",
+            "description": "DEPRECATED: Please use `form_field` data source instead.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_custom_field = pulumi.output(rootly.getCustomField({\n    slug: \"my-custom-field\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_custom_field = rootly.get_custom_field(slug=\"my-custom-field\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_custom_field = Output.Create(Rootly.GetCustomField.InvokeAsync(new Rootly.GetCustomFieldArgs\n        {\n            Slug = \"my-custom-field\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupCustomField(ctx, \u0026GetCustomFieldArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-custom-field\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getCustomField.\n",
                 "properties": {
@@ -22314,7 +22500,7 @@
             }
         },
         "rootly:index/getCustomFieldOption:getCustomFieldOption": {
-            "description": "DEPRECATED: Please use `form_field` and `form_field_option` data sources instead.\n",
+            "description": "DEPRECATED: Please use `form_field` and `form_field_option` data sources instead.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_custom_field_option = pulumi.output(rootly.getCustomFieldOption({\n    slug: \"my-custom-field-option\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_custom_field_option = rootly.get_custom_field_option(slug=\"my-custom-field-option\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_custom_field_option = Output.Create(Rootly.GetCustomFieldOption.InvokeAsync(new Rootly.GetCustomFieldOptionArgs\n        {\n            Slug = \"my-custom-field-option\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupCustomFieldOption(ctx, \u0026GetCustomFieldOptionArgs{\n\t\t\tSlug: \"my-custom-field-option\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getCustomFieldOption.\n",
                 "properties": {
@@ -22451,6 +22637,7 @@
             }
         },
         "rootly:index/getEnvironment:getEnvironment": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_environment = pulumi.output(rootly.getEnvironment({\n    slug: \"my-environment\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_environment = rootly.get_environment(slug=\"my-environment\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_environment = Output.Create(Rootly.GetEnvironment.InvokeAsync(new Rootly.GetEnvironmentArgs\n        {\n            Slug = \"my-environment\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupEnvironment(ctx, \u0026GetEnvironmentArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-environment\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getEnvironment.\n",
                 "properties": {
@@ -22544,6 +22731,7 @@
             }
         },
         "rootly:index/getFormField:getFormField": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_form_field = pulumi.output(rootly.getFormField({\n    slug: \"my-form-field\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_form_field = rootly.get_form_field(slug=\"my-form-field\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_form_field = Output.Create(Rootly.GetFormField.InvokeAsync(new Rootly.GetFormFieldArgs\n        {\n            Slug = \"my-form-field\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupFormField(ctx, \u0026GetFormFieldArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-form-field\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getFormField.\n",
                 "properties": {
@@ -22603,6 +22791,7 @@
             }
         },
         "rootly:index/getFormFieldOption:getFormFieldOption": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_form_field_option = pulumi.output(rootly.getFormFieldOption({\n    slug: \"my-form-field-option\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_form_field_option = rootly.get_form_field_option(slug=\"my-form-field-option\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_form_field_option = Output.Create(Rootly.GetFormFieldOption.InvokeAsync(new Rootly.GetFormFieldOptionArgs\n        {\n            Slug = \"my-form-field-option\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupFormFieldOption(ctx, \u0026GetFormFieldOptionArgs{\n\t\t\tSlug: \"my-form-field-option\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getFormFieldOption.\n",
                 "properties": {
@@ -22716,6 +22905,7 @@
             }
         },
         "rootly:index/getFunctionality:getFunctionality": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_functionality = pulumi.output(rootly.getFunctionality({\n    slug: \"my-functionality\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_functionality = rootly.get_functionality(slug=\"my-functionality\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_functionality = Output.Create(Rootly.GetFunctionality.InvokeAsync(new Rootly.GetFunctionalityArgs\n        {\n            Slug = \"my-functionality\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupFunctionality(ctx, \u0026GetFunctionalityArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-functionality\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getFunctionality.\n",
                 "properties": {
@@ -22762,6 +22952,7 @@
             }
         },
         "rootly:index/getIncidentRole:getIncidentRole": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_incident_role = pulumi.output(rootly.getIncidentRole({\n    slug: \"my-incident-role\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_incident_role = rootly.get_incident_role(slug=\"my-incident-role\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_incident_role = Output.Create(Rootly.GetIncidentRole.InvokeAsync(new Rootly.GetIncidentRoleArgs\n        {\n            Slug = \"my-incident-role\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupIncidentRole(ctx, \u0026GetIncidentRoleArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-incident-role\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getIncidentRole.\n",
                 "properties": {
@@ -22860,6 +23051,7 @@
             }
         },
         "rootly:index/getIncidentType:getIncidentType": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_incident_type = pulumi.output(rootly.getIncidentType({\n    slug: \"my-incident-type\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_incident_type = rootly.get_incident_type(slug=\"my-incident-type\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_incident_type = Output.Create(Rootly.GetIncidentType.InvokeAsync(new Rootly.GetIncidentTypeArgs\n        {\n            Slug = \"my-incident-type\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupIncidentType(ctx, \u0026GetIncidentTypeArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-incident-type\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getIncidentType.\n",
                 "properties": {
@@ -22953,6 +23145,7 @@
             }
         },
         "rootly:index/getService:getService": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_service = pulumi.output(rootly.getService({\n    slug: \"my-service\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_service = rootly.get_service(slug=\"my-service\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_service = Output.Create(Rootly.GetService.InvokeAsync(new Rootly.GetServiceArgs\n        {\n            Slug = \"my-service\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupService(ctx, \u0026GetServiceArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-service\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getService.\n",
                 "properties": {
@@ -23104,6 +23297,7 @@
             }
         },
         "rootly:index/getSeverity:getSeverity": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst critical = pulumi.output(rootly.getSeverity({\n    slug: \"sev0\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\ncritical = rootly.get_severity(slug=\"sev0\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var critical = Output.Create(Rootly.GetSeverity.InvokeAsync(new Rootly.GetSeverityArgs\n        {\n            Slug = \"sev0\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupSeverity(ctx, \u0026GetSeverityArgs{\n\t\t\tSlug: pulumi.StringRef(\"sev0\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getSeverity.\n",
                 "properties": {
@@ -23163,7 +23357,41 @@
                 ]
             }
         },
+        "rootly:index/getStatusPage:getStatusPage": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_status_page = pulumi.output(rootly.getStatusPage({\n    slug: \"my-status-page\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_status_page = rootly.get_status_page(slug=\"my-status-page\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_status_page = Output.Create(Rootly.GetStatusPage.InvokeAsync(new Rootly.GetStatusPageArgs\n        {\n            Slug = \"my-status-page\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupStatusPage(ctx, \u0026GetStatusPageArgs{\n\t\t\tSlug: \"my-status-page\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getStatusPage.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getStatusPage.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            }
+        },
         "rootly:index/getTeam:getTeam": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_team = pulumi.output(rootly.getTeam({\n    slug: \"my-team\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_team = rootly.get_team(slug=\"my-team\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_team = Output.Create(Rootly.GetTeam.InvokeAsync(new Rootly.GetTeamArgs\n        {\n            Slug = \"my-team\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupTeam(ctx, \u0026GetTeamArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-team\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getTeam.\n",
                 "properties": {
@@ -23257,6 +23485,7 @@
             }
         },
         "rootly:index/getWebhooksEndpoint:getWebhooksEndpoint": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_webhook_endpoint = pulumi.output(rootly.getWebhooksEndpoint({\n    slug: \"my-webhookd-endpoint\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_webhook_endpoint = rootly.get_webhooks_endpoint(slug=\"my-webhookd-endpoint\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_webhook_endpoint = Output.Create(Rootly.GetWebhooksEndpoint.InvokeAsync(new Rootly.GetWebhooksEndpointArgs\n        {\n            Slug = \"my-webhookd-endpoint\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupWebhooksEndpoint(ctx, \u0026GetWebhooksEndpointArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-webhookd-endpoint\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getWebhooksEndpoint.\n",
                 "properties": {
@@ -23291,9 +23520,16 @@
             }
         },
         "rootly:index/getWorkflow:getWorkflow": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_workflow = pulumi.output(rootly.getWorkflow({\n    slug: \"my-workflow\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_workflow = rootly.get_workflow(slug=\"my-workflow\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_workflow = Output.Create(Rootly.GetWorkflow.InvokeAsync(new Rootly.GetWorkflowArgs\n        {\n            Slug = \"my-workflow\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.GetWorkflow(ctx, \u0026GetWorkflowArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-workflow\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getWorkflow.\n",
                 "properties": {
+                    "createdAt": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -23306,6 +23542,12 @@
             "outputs": {
                 "description": "A collection of values returned by getWorkflow.\n",
                 "properties": {
+                    "createdAt": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
                     "id": {
                         "type": "string"
                     },
@@ -23325,6 +23567,7 @@
             }
         },
         "rootly:index/getWorkflowGroup:getWorkflowGroup": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_workflow_group = pulumi.output(rootly.getWorkflowGroup({\n    slug: \"my-workflow-group\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_workflow_group = rootly.get_workflow_group(slug=\"my-workflow-group\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_workflow_group = Output.Create(Rootly.GetWorkflowGroup.InvokeAsync(new Rootly.GetWorkflowGroupArgs\n        {\n            Slug = \"my-workflow-group\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.LookupWorkflowGroup(ctx, \u0026GetWorkflowGroupArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-workflow-group\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getWorkflowGroup.\n",
                 "properties": {
@@ -23380,6 +23623,7 @@
             }
         },
         "rootly:index/getWorkflowTask:getWorkflowTask": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst my_workflow_task = pulumi.output(rootly.getWorkflowTask({\n    slug: \"my-workflow-task\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nmy_workflow_task = rootly.get_workflow_task(slug=\"my-workflow-task\")\n```\n```csharp\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var my_workflow_task = Output.Create(Rootly.GetWorkflowTask.InvokeAsync(new Rootly.GetWorkflowTaskArgs\n        {\n            Slug = \"my-workflow-task\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := rootly.GetWorkflowTask(ctx, \u0026GetWorkflowTaskArgs{\n\t\t\tSlug: pulumi.StringRef(\"my-workflow-task\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getWorkflowTask.\n",
                 "properties": {

@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my_incident_type = pulumi.output(rootly.getIncidentType({
+ *     slug: "my-incident-type",
+ * }));
+ * ```
+ */
 export function getIncidentType(args?: GetIncidentTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentTypeResult> {
     args = args || {};
     if (!opts) {

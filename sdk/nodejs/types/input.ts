@@ -123,6 +123,7 @@ export interface WorkflowActionItemTriggerParams {
     incidentConditionSummary?: pulumi.Input<string>;
     incidentConditionVisibility?: pulumi.Input<string>;
     incidentConditionalInactivity?: pulumi.Input<string>;
+    incidentInactivityDuration?: pulumi.Input<string>;
     incidentKinds?: pulumi.Input<pulumi.Input<string>[]>;
     incidentStatuses?: pulumi.Input<pulumi.Input<string>[]>;
     incidentVisibilities?: pulumi.Input<pulumi.Input<string>[]>;
@@ -165,6 +166,7 @@ export interface WorkflowIncidentTriggerParams {
     incidentConditionSummary?: pulumi.Input<string>;
     incidentConditionVisibility?: pulumi.Input<string>;
     incidentConditionalInactivity?: pulumi.Input<string>;
+    incidentInactivityDuration?: pulumi.Input<string>;
     incidentKinds?: pulumi.Input<pulumi.Input<string>[]>;
     incidentStatuses?: pulumi.Input<pulumi.Input<string>[]>;
     incidentVisibilities?: pulumi.Input<pulumi.Input<string>[]>;
@@ -191,6 +193,7 @@ export interface WorkflowPostMortemTriggerParams {
     incidentConditionSummary?: pulumi.Input<string>;
     incidentConditionVisibility?: pulumi.Input<string>;
     incidentConditionalInactivity?: pulumi.Input<string>;
+    incidentInactivityDuration?: pulumi.Input<string>;
     incidentKinds?: pulumi.Input<pulumi.Input<string>[]>;
     incidentPostMortemCauseIds?: pulumi.Input<pulumi.Input<string>[]>;
     incidentPostMortemCondition?: pulumi.Input<string>;
@@ -629,6 +632,7 @@ export interface WorkflowTaskCreatePagertreeAlertTaskParamsUser {
 
 export interface WorkflowTaskCreateQuipPageTaskParams {
     content?: pulumi.Input<string>;
+    markPostMortemAsPublished?: pulumi.Input<boolean>;
     parentFolderId?: pulumi.Input<string>;
     postMortemTemplateId?: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
@@ -920,7 +924,9 @@ export interface WorkflowTaskPrintTaskParams {
 export interface WorkflowTaskPublishIncidentTaskParams {
     event?: pulumi.Input<string>;
     incident: pulumi.Input<{[key: string]: any}>;
+    notifySubscribers?: pulumi.Input<boolean>;
     publicTitle: pulumi.Input<string>;
+    shouldTweet?: pulumi.Input<boolean>;
     status?: pulumi.Input<string>;
     statusPageId: pulumi.Input<string>;
     statusPageTemplate?: pulumi.Input<{[key: string]: any}>;

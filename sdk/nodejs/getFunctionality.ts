@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my_functionality = pulumi.output(rootly.getFunctionality({
+ *     slug: "my-functionality",
+ * }));
+ * ```
+ */
 export function getFunctionality(args?: GetFunctionalityArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionalityResult> {
     args = args || {};
     if (!opts) {

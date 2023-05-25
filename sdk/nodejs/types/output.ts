@@ -207,6 +207,7 @@ export interface WorkflowActionItemTriggerParams {
     incidentConditionSummary: string;
     incidentConditionVisibility?: string;
     incidentConditionalInactivity: string;
+    incidentInactivityDuration: string;
     incidentKinds: string[];
     incidentStatuses: string[];
     incidentVisibilities: string[];
@@ -249,6 +250,7 @@ export interface WorkflowIncidentTriggerParams {
     incidentConditionSummary: string;
     incidentConditionVisibility?: string;
     incidentConditionalInactivity: string;
+    incidentInactivityDuration: string;
     incidentKinds: string[];
     incidentStatuses: string[];
     incidentVisibilities: string[];
@@ -275,6 +277,7 @@ export interface WorkflowPostMortemTriggerParams {
     incidentConditionSummary: string;
     incidentConditionVisibility?: string;
     incidentConditionalInactivity: string;
+    incidentInactivityDuration: string;
     incidentKinds: string[];
     incidentPostMortemCauseIds: string[];
     incidentPostMortemCondition?: string;
@@ -713,6 +716,7 @@ export interface WorkflowTaskCreatePagertreeAlertTaskParamsUser {
 
 export interface WorkflowTaskCreateQuipPageTaskParams {
     content?: string;
+    markPostMortemAsPublished?: boolean;
     parentFolderId?: string;
     postMortemTemplateId?: string;
     taskType?: string;
@@ -1004,7 +1008,9 @@ export interface WorkflowTaskPrintTaskParams {
 export interface WorkflowTaskPublishIncidentTaskParams {
     event?: string;
     incident: {[key: string]: any};
+    notifySubscribers?: boolean;
     publicTitle: string;
+    shouldTweet?: boolean;
     status?: string;
     statusPageId: string;
     statusPageTemplate?: {[key: string]: any};

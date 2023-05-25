@@ -36,6 +36,7 @@ export * from "./getService";
 export * from "./getServices";
 export * from "./getSeverities";
 export * from "./getSeverity";
+export * from "./getStatusPage";
 export * from "./getTeam";
 export * from "./getTeams";
 export * from "./getWebhooksEndpoint";

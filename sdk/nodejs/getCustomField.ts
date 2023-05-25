@@ -6,6 +6,17 @@ import * as utilities from "./utilities";
 
 /**
  * DEPRECATED: Please use `formField` data source instead.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my_custom_field = pulumi.output(rootly.getCustomField({
+ *     slug: "my-custom-field",
+ * }));
+ * ```
  */
 export function getCustomField(args?: GetCustomFieldArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomFieldResult> {
     args = args || {};

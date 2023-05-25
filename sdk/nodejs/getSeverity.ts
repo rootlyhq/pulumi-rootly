@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const critical = pulumi.output(rootly.getSeverity({
+ *     slug: "sev0",
+ * }));
+ * ```
+ */
 export function getSeverity(args?: GetSeverityArgs, opts?: pulumi.InvokeOptions): Promise<GetSeverityResult> {
     args = args || {};
     if (!opts) {

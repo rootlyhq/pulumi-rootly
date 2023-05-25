@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my_cause = pulumi.output(rootly.getCause({
+ *     slug: "my-cause",
+ * }));
+ * ```
+ */
 export function getCause(args?: GetCauseArgs, opts?: pulumi.InvokeOptions): Promise<GetCauseResult> {
     args = args || {};
     if (!opts) {

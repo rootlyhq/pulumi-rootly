@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my_incident_role = pulumi.output(rootly.getIncidentRole({
+ *     slug: "my-incident-role",
+ * }));
+ * ```
+ */
 export function getIncidentRole(args?: GetIncidentRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentRoleResult> {
     args = args || {};
     if (!opts) {

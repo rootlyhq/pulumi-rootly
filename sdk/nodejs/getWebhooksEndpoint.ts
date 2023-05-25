@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my_webhook_endpoint = pulumi.output(rootly.getWebhooksEndpoint({
+ *     slug: "my-webhookd-endpoint",
+ * }));
+ * ```
+ */
 export function getWebhooksEndpoint(args?: GetWebhooksEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhooksEndpointResult> {
     args = args || {};
     if (!opts) {
