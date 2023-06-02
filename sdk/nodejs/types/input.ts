@@ -712,6 +712,7 @@ export interface WorkflowTaskCreateZendeskTicketTaskParams {
     subject: pulumi.Input<string>;
     tags?: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
+    ticketPayload?: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskCreateZoomMeetingTaskParams {
@@ -986,7 +987,9 @@ export interface WorkflowTaskSendDashboardReportTaskParams {
 }
 
 export interface WorkflowTaskSendEmailTaskParams {
+    bccs?: pulumi.Input<pulumi.Input<string>[]>;
     body: pulumi.Input<string>;
+    ccs?: pulumi.Input<pulumi.Input<string>[]>;
     customLogoUrl?: pulumi.Input<string>;
     from?: pulumi.Input<string>;
     includeFooter?: pulumi.Input<boolean>;
@@ -1394,4 +1397,5 @@ export interface WorkflowTaskUpdateZendeskTicketTaskParams {
     tags?: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
     ticketId: pulumi.Input<string>;
+    ticketPayload?: pulumi.Input<string>;
 }

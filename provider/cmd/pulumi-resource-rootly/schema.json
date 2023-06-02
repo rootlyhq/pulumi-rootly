@@ -4841,6 +4841,14 @@
                             "mapCase": false
                         }
                     }
+                },
+                "ticketPayload": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
@@ -6552,8 +6560,30 @@
         },
         "rootly:index/WorkflowTaskSendEmailTaskParams:WorkflowTaskSendEmailTaskParams": {
             "properties": {
+                "bccs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "body": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ccs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9210,6 +9240,14 @@
                     }
                 },
                 "ticketId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ticketPayload": {
                     "type": "string",
                     "language": {
                         "python": {

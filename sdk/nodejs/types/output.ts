@@ -796,6 +796,7 @@ export interface WorkflowTaskCreateZendeskTicketTaskParams {
     subject: string;
     tags?: string;
     taskType?: string;
+    ticketPayload?: string;
 }
 
 export interface WorkflowTaskCreateZoomMeetingTaskParams {
@@ -1070,7 +1071,9 @@ export interface WorkflowTaskSendDashboardReportTaskParams {
 }
 
 export interface WorkflowTaskSendEmailTaskParams {
+    bccs?: string[];
     body: string;
+    ccs?: string[];
     customLogoUrl?: string;
     from?: string;
     includeFooter?: boolean;
@@ -1478,5 +1481,6 @@ export interface WorkflowTaskUpdateZendeskTicketTaskParams {
     tags?: string;
     taskType?: string;
     ticketId: string;
+    ticketPayload?: string;
 }
 
