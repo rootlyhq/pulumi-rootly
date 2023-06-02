@@ -1254,6 +1254,7 @@ export interface WorkflowTaskUpdateAsanaTaskTaskParams {
     customFieldsMapping?: string;
     dependencyDirection?: string;
     dependentTaskIds?: string[];
+    notes?: string;
     taskId: string;
     taskType?: string;
     title?: string;

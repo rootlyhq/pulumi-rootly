@@ -10,7 +10,7 @@ replace (
 require (
 	github.com/gobuffalo/flect v0.2.5
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.21.0
-	github.com/rootlyhq/terraform-provider-rootly v1.0.0
+	github.com/rootlyhq/terraform-provider-rootly v1.0.1
 )
 
 require (

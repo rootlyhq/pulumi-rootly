@@ -7725,6 +7725,14 @@
                         }
                     }
                 },
+                "notes": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "taskId": {
                     "type": "string",
                     "language": {

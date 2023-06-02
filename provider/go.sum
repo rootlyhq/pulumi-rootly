@@ -788,8 +788,8 @@ github.com/rogpeppe/go-internal v1.6.1/go.mod h1:xXDCJY+GAPziupqXw64V24skbSoqbTE
 github.com/rogpeppe/go-internal v1.8.0/go.mod h1:WmiCO8CzOY8rg0OYDC4/i/2WRWAB6poM+XZ2dLUbcbE=
 github.com/rogpeppe/go-internal v1.8.1 h1:geMPLpDpQOgVyCg5z5GoRwLHepNdb71NXb67XFkP+Eg=
 github.com/rogpeppe/go-internal v1.8.1/go.mod h1:JeRgkft04UBgHMgCIwADu4Pn6Mtm5d4nPKWu0nJ5d+o=
-github.com/rootlyhq/terraform-provider-rootly v1.0.0 h1:Eo0OHCsJ1Hb0ohYVkOPCda8+a8HV/HhqzaJ7IUc38qE=
-github.com/rootlyhq/terraform-provider-rootly v1.0.0/go.mod h1:E3K2zKUQ403jSax7Lv4JRgx7dQdFJa1v7SjmqiPd0NE=
+github.com/rootlyhq/terraform-provider-rootly v1.0.1 h1:57L4kYQ2hd54w0kAxb41DZ8YP2kY5seTuErIryIP2zM=
+github.com/rootlyhq/terraform-provider-rootly v1.0.1/go.mod h1:E3K2zKUQ403jSax7Lv4JRgx7dQdFJa1v7SjmqiPd0NE=
 github.com/russross/blackfriday v1.6.0 h1:KqfZb0pUVN2lYqZUYRddxF4OR8ZMURnJIG5Y3VRLtww=
 github.com/russross/blackfriday v1.6.0/go.mod h1:ti0ldHuxg49ri4ksnFxlkCfN+hvslNlmVHqNRXXJNAY=
 github.com/russross/blackfriday/v2 v2.1.0 h1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf35Ld67mk=

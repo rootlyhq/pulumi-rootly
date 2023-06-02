@@ -1170,6 +1170,7 @@ export interface WorkflowTaskUpdateAsanaTaskTaskParams {
     customFieldsMapping?: pulumi.Input<string>;
     dependencyDirection?: pulumi.Input<string>;
     dependentTaskIds?: pulumi.Input<pulumi.Input<string>[]>;
+    notes?: pulumi.Input<string>;
     taskId: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
     title?: pulumi.Input<string>;
