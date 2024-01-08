@@ -2,16 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getCauses(args?: GetCausesArgs, opts?: pulumi.InvokeOptions): Promise<GetCausesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getCauses:getCauses", {
         "name": args.name,
         "slug": args.slug,
@@ -38,9 +36,8 @@ export interface GetCausesResult {
     readonly name?: string;
     readonly slug?: string;
 }
-
 export function getCausesOutput(args?: GetCausesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCausesResult> {
-    return pulumi.output(args).apply(a => getCauses(a, opts))
+    return pulumi.output(args).apply((a: any) => getCauses(a, opts))
 }
 
 /**

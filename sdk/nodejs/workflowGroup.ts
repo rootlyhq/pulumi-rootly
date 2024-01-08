@@ -33,12 +33,19 @@ export class WorkflowGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the group is expanded or collapsed.
+     * A description of the workflow group.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
+     * Whether the group is expanded or collapsed.. Value must be one of true or false
      */
     public readonly expanded!: pulumi.Output<boolean>;
     /**
-     * The kind of the workflow group.. Value must be one of `simple`, `incident`, `post_mortem`, `action_item`, `pulse`,
-     * `alert`.
+     * An emoji icon displayed next to the workflow group.
+     */
+    public readonly icon!: pulumi.Output<string>;
+    /**
+     * The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
      */
     public readonly kind!: pulumi.Output<string | undefined>;
     /**
@@ -67,14 +74,18 @@ export class WorkflowGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowGroupState | undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["expanded"] = state ? state.expanded : undefined;
+            resourceInputs["icon"] = state ? state.icon : undefined;
             resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
         } else {
             const args = argsOrState as WorkflowGroupArgs | undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["expanded"] = args ? args.expanded : undefined;
+            resourceInputs["icon"] = args ? args.icon : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
@@ -90,12 +101,19 @@ export class WorkflowGroup extends pulumi.CustomResource {
  */
 export interface WorkflowGroupState {
     /**
-     * Whether the group is expanded or collapsed.
+     * A description of the workflow group.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Whether the group is expanded or collapsed.. Value must be one of true or false
      */
     expanded?: pulumi.Input<boolean>;
     /**
-     * The kind of the workflow group.. Value must be one of `simple`, `incident`, `post_mortem`, `action_item`, `pulse`,
-     * `alert`.
+     * An emoji icon displayed next to the workflow group.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
      */
     kind?: pulumi.Input<string>;
     /**
@@ -117,12 +135,19 @@ export interface WorkflowGroupState {
  */
 export interface WorkflowGroupArgs {
     /**
-     * Whether the group is expanded or collapsed.
+     * A description of the workflow group.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Whether the group is expanded or collapsed.. Value must be one of true or false
      */
     expanded?: pulumi.Input<boolean>;
     /**
-     * The kind of the workflow group.. Value must be one of `simple`, `incident`, `post_mortem`, `action_item`, `pulse`,
-     * `alert`.
+     * An emoji icon displayed next to the workflow group.
+     */
+    icon?: pulumi.Input<string>;
+    /**
+     * The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
      */
     kind?: pulumi.Input<string>;
     /**

@@ -72,35 +72,22 @@ export class FormField extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`,
-     * `users`, `number`, `checkbox`, `tags`.
+     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `users`, `number`, `checkbox`, `tags`, `richText`.
      */
     public readonly inputKind!: pulumi.Output<string | undefined>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `severity`, `environments`, `types`,
-     * `services`, `functionalities`, `teams`, `visibility`, `mark_as_test`, `mark_as_backfilled`, `labels`, `notify_emails`,
-     * `trigger_manual_workflows`, `show_ongoing_incidents`, `attach_alerts`, `manual_starting_datetime_field`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `manualStartingDatetimeField`.
      */
     public readonly kind!: pulumi.Output<string | undefined>;
     /**
      * The name of the form field
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
-     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,
-     * `web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,
-     * `slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,
-     * `slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.
-     */
     public readonly requireds!: pulumi.Output<string[]>;
     /**
-     * Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
-     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,
-     * `web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,
-     * `slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,
-     * `slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.
+     * Whether the form field is shown on the incident details panel. Value must be one of true or false
      */
+    public readonly showOnIncidentDetails!: pulumi.Output<boolean>;
     public readonly showns!: pulumi.Output<string[]>;
     /**
      * The slug of the form field
@@ -127,6 +114,7 @@ export class FormField extends pulumi.CustomResource {
             resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["requireds"] = state ? state.requireds : undefined;
+            resourceInputs["showOnIncidentDetails"] = state ? state.showOnIncidentDetails : undefined;
             resourceInputs["showns"] = state ? state.showns : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
         } else {
@@ -138,6 +126,7 @@ export class FormField extends pulumi.CustomResource {
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["requireds"] = args ? args.requireds : undefined;
+            resourceInputs["showOnIncidentDetails"] = args ? args.showOnIncidentDetails : undefined;
             resourceInputs["showns"] = args ? args.showns : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
         }
@@ -157,35 +146,22 @@ export interface FormFieldState {
     description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     /**
-     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`,
-     * `users`, `number`, `checkbox`, `tags`.
+     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `users`, `number`, `checkbox`, `tags`, `richText`.
      */
     inputKind?: pulumi.Input<string>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `severity`, `environments`, `types`,
-     * `services`, `functionalities`, `teams`, `visibility`, `mark_as_test`, `mark_as_backfilled`, `labels`, `notify_emails`,
-     * `trigger_manual_workflows`, `show_ongoing_incidents`, `attach_alerts`, `manual_starting_datetime_field`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `manualStartingDatetimeField`.
      */
     kind?: pulumi.Input<string>;
     /**
      * The name of the form field
      */
     name?: pulumi.Input<string>;
-    /**
-     * Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
-     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,
-     * `web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,
-     * `slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,
-     * `slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.
-     */
     requireds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
-     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,
-     * `web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,
-     * `slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,
-     * `slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.
+     * Whether the form field is shown on the incident details panel. Value must be one of true or false
      */
+    showOnIncidentDetails?: pulumi.Input<boolean>;
     showns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The slug of the form field
@@ -204,35 +180,22 @@ export interface FormFieldArgs {
     description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     /**
-     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`,
-     * `users`, `number`, `checkbox`, `tags`.
+     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `users`, `number`, `checkbox`, `tags`, `richText`.
      */
     inputKind?: pulumi.Input<string>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `severity`, `environments`, `types`,
-     * `services`, `functionalities`, `teams`, `visibility`, `mark_as_test`, `mark_as_backfilled`, `labels`, `notify_emails`,
-     * `trigger_manual_workflows`, `show_ongoing_incidents`, `attach_alerts`, `manual_starting_datetime_field`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `manualStartingDatetimeField`.
      */
     kind?: pulumi.Input<string>;
     /**
      * The name of the form field
      */
     name?: pulumi.Input<string>;
-    /**
-     * Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
-     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,
-     * `web_update_scheduled_incident_form`, `slack_new_incident_form`, `slack_update_incident_form`,
-     * `slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,
-     * `slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.
-     */
     requireds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Value must be one of `web_new_incident_form`, `web_update_incident_form`, `web_incident_post_mortem_form`,
-     * `web_incident_mitigation_form`, `web_incident_resolution_form`, `web_scheduled_incident_form`,
-     * `web_update_scheduled_incident_form`, `incident_post_mortem`, `slack_new_incident_form`, `slack_update_incident_form`,
-     * `slack_update_incident_status_form`, `slack_incident_mitigation_form`, `slack_incident_resolution_form`,
-     * `slack_scheduled_incident_form`, `slack_update_scheduled_incident_form`.
+     * Whether the form field is shown on the incident details panel. Value must be one of true or false
      */
+    showOnIncidentDetails?: pulumi.Input<boolean>;
     showns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The slug of the form field

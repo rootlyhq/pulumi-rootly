@@ -85,7 +85,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public /*out*/ readonly slug!: pulumi.Output<string>;
     /**
-     * The user_id of the dashboard, for dashboards with owner == user
+     * The userId of the dashboard, for dashboards with owner == user
      */
     public /*out*/ readonly userId!: pulumi.Output<number>;
 
@@ -141,7 +141,7 @@ export interface DashboardState {
      */
     slug?: pulumi.Input<string>;
     /**
-     * The user_id of the dashboard, for dashboards with owner == user
+     * The userId of the dashboard, for dashboards with owner == user
      */
     userId?: pulumi.Input<number>;
 }

@@ -33,12 +33,16 @@ export class PlaybookTask extends pulumi.CustomResource {
     }
 
     /**
-     * The description of incident task
+     * The description of task
      */
     public readonly description!: pulumi.Output<string>;
     public readonly playbookId!: pulumi.Output<string>;
     /**
-     * The task of the incident task
+     * The position of the task
+     */
+    public readonly position!: pulumi.Output<number>;
+    /**
+     * The task of the task
      */
     public readonly task!: pulumi.Output<string>;
 
@@ -57,6 +61,7 @@ export class PlaybookTask extends pulumi.CustomResource {
             const state = argsOrState as PlaybookTaskState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["playbookId"] = state ? state.playbookId : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["task"] = state ? state.task : undefined;
         } else {
             const args = argsOrState as PlaybookTaskArgs | undefined;
@@ -65,6 +70,7 @@ export class PlaybookTask extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["playbookId"] = args ? args.playbookId : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["task"] = args ? args.task : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -77,12 +83,16 @@ export class PlaybookTask extends pulumi.CustomResource {
  */
 export interface PlaybookTaskState {
     /**
-     * The description of incident task
+     * The description of task
      */
     description?: pulumi.Input<string>;
     playbookId?: pulumi.Input<string>;
     /**
-     * The task of the incident task
+     * The position of the task
+     */
+    position?: pulumi.Input<number>;
+    /**
+     * The task of the task
      */
     task?: pulumi.Input<string>;
 }
@@ -92,12 +102,16 @@ export interface PlaybookTaskState {
  */
 export interface PlaybookTaskArgs {
     /**
-     * The description of incident task
+     * The description of task
      */
     description?: pulumi.Input<string>;
     playbookId?: pulumi.Input<string>;
     /**
-     * The task of the incident task
+     * The position of the task
+     */
+    position?: pulumi.Input<number>;
+    /**
+     * The task of the task
      */
     task: pulumi.Input<string>;
 }

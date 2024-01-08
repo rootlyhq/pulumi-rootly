@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const my_webhook_endpoint = pulumi.output(rootly.getWebhooksEndpoint({
+ * const my-webhook-endpoint = rootly.getWebhooksEndpoint({
  *     slug: "my-webhookd-endpoint",
- * }));
+ * });
  * ```
  */
 export function getWebhooksEndpoint(args?: GetWebhooksEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhooksEndpointResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getWebhooksEndpoint:getWebhooksEndpoint", {
         "name": args.name,
         "slug": args.slug,
@@ -41,13 +38,27 @@ export interface GetWebhooksEndpointArgs {
  * A collection of values returned by getWebhooksEndpoint.
  */
 export interface GetWebhooksEndpointResult {
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly slug: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my-webhook-endpoint = rootly.getWebhooksEndpoint({
+ *     slug: "my-webhookd-endpoint",
+ * });
+ * ```
+ */
 export function getWebhooksEndpointOutput(args?: GetWebhooksEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhooksEndpointResult> {
-    return pulumi.output(args).apply(a => getWebhooksEndpoint(a, opts))
+    return pulumi.output(args).apply((a: any) => getWebhooksEndpoint(a, opts))
 }
 
 /**

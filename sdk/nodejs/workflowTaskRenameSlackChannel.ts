@@ -2,42 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Manages workflow renameSlackChannel task.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const renamingSlackChannelToJiraTicketNumber = new rootly.WorkflowIncident("renamingSlackChannelToJiraTicketNumber", {
- *     description: "Automatically renames Slack channel to attached Jira ticket number.",
- *     triggerParams: {
- *         triggers: ["incident_created"],
- *         incidentStatuses: ["started"],
- *         wait: "30 seconds",
- *         incidentConditionStatus: "IS",
- *     },
- *     enabled: true,
- * });
- * const renameSlackChannel = new rootly.WorkflowTaskRenameSlackChannel("renameSlackChannel", {
- *     workflowId: renamingSlackChannelToJiraTicketNumber.id,
- *     skipOnFailure: false,
- *     enabled: true,
- *     taskParams: {
- *         name: "Rename a Slack channel to Jira ticket slug",
- *         channel: {
- *             id: "{{ incident.slack_channel_id }}",
- *             name: "{{ incident.slack_channel_id }}",
- *         },
- *         title: "incident-{{ incident.jira_issue_key }}",
- *     },
- * });
- * ```
  */
 export class WorkflowTaskRenameSlackChannel extends pulumi.CustomResource {
     /**
@@ -72,6 +42,10 @@ export class WorkflowTaskRenameSlackChannel extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Name of the workflow task
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     public readonly position!: pulumi.Output<number>;
@@ -102,6 +76,7 @@ export class WorkflowTaskRenameSlackChannel extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkflowTaskRenameSlackChannelState | undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["skipOnFailure"] = state ? state.skipOnFailure : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
@@ -115,6 +90,7 @@ export class WorkflowTaskRenameSlackChannel extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workflowId'");
             }
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["skipOnFailure"] = args ? args.skipOnFailure : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
@@ -133,6 +109,10 @@ export interface WorkflowTaskRenameSlackChannelState {
      * Enable/disable this workflow task
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Name of the workflow task
+     */
+    name?: pulumi.Input<string>;
     /**
      * The position of the workflow task (1 being top of list)
      */
@@ -159,6 +139,10 @@ export interface WorkflowTaskRenameSlackChannelArgs {
      * Enable/disable this workflow task
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Name of the workflow task
+     */
+    name?: pulumi.Input<string>;
     /**
      * The position of the workflow task (1 being top of list)
      */

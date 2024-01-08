@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const my_incident_role = pulumi.output(rootly.getIncidentRole({
+ * const my-incident-role = rootly.getIncidentRole({
  *     slug: "my-incident-role",
- * }));
+ * });
  * ```
  */
 export function getIncidentRole(args?: GetIncidentRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentRoleResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getIncidentRole:getIncidentRole", {
         "createdAt": args.createdAt,
         "enabled": args.enabled,
@@ -35,6 +32,9 @@ export function getIncidentRole(args?: GetIncidentRoleArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getIncidentRole.
  */
 export interface GetIncidentRoleArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: {[key: string]: any};
     enabled?: boolean;
     name?: string;
@@ -45,21 +45,41 @@ export interface GetIncidentRoleArgs {
  * A collection of values returned by getIncidentRole.
  */
 export interface GetIncidentRoleResult {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     readonly createdAt?: {[key: string]: any};
     readonly enabled?: boolean;
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly slug: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my-incident-role = rootly.getIncidentRole({
+ *     slug: "my-incident-role",
+ * });
+ * ```
+ */
 export function getIncidentRoleOutput(args?: GetIncidentRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIncidentRoleResult> {
-    return pulumi.output(args).apply(a => getIncidentRole(a, opts))
+    return pulumi.output(args).apply((a: any) => getIncidentRole(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getIncidentRole.
  */
 export interface GetIncidentRoleOutputArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: pulumi.Input<{[key: string]: any}>;
     enabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;

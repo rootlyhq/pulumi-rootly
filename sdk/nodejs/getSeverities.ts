@@ -2,16 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getSeverities(args?: GetSeveritiesArgs, opts?: pulumi.InvokeOptions): Promise<GetSeveritiesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getSeverities:getSeverities", {
         "name": args.name,
         "slug": args.slug,
@@ -38,9 +36,8 @@ export interface GetSeveritiesResult {
     readonly severities: outputs.GetSeveritiesSeverity[];
     readonly slug?: string;
 }
-
 export function getSeveritiesOutput(args?: GetSeveritiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSeveritiesResult> {
-    return pulumi.output(args).apply(a => getSeverities(a, opts))
+    return pulumi.output(args).apply((a: any) => getSeverities(a, opts))
 }
 
 /**

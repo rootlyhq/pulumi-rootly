@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class Team extends pulumi.CustomResource {
@@ -33,6 +34,9 @@ export class Team extends pulumi.CustomResource {
         return obj['__pulumiType'] === Team.__pulumiType;
     }
 
+    /**
+     * The hex color of the team
+     */
     public readonly color!: pulumi.Output<string>;
     /**
      * The description of the team
@@ -47,6 +51,18 @@ export class Team extends pulumi.CustomResource {
      */
     public readonly notifyEmails!: pulumi.Output<string[]>;
     /**
+     * The Opsgenie group id associated to this team
+     */
+    public readonly opsgenieId!: pulumi.Output<string>;
+    /**
+     * The PagerDuty group id associated to this team
+     */
+    public readonly pagerdutyId!: pulumi.Output<string>;
+    /**
+     * The PagerTree group id associated to this team
+     */
+    public readonly pagertreeId!: pulumi.Output<string>;
+    /**
      * Position of the team
      */
     public readonly position!: pulumi.Output<number>;
@@ -59,6 +75,14 @@ export class Team extends pulumi.CustomResource {
      */
     public readonly slackChannels!: pulumi.Output<outputs.TeamSlackChannel[]>;
     public readonly slug!: pulumi.Output<string>;
+    /**
+     * The User ID's members of this team
+     */
+    public readonly userIds!: pulumi.Output<number[]>;
+    /**
+     * The VictorOps group id associated to this team
+     */
+    public readonly victorOpsId!: pulumi.Output<string>;
 
     /**
      * Create a Team resource with the given unique name, arguments, and options.
@@ -77,20 +101,30 @@ export class Team extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notifyEmails"] = state ? state.notifyEmails : undefined;
+            resourceInputs["opsgenieId"] = state ? state.opsgenieId : undefined;
+            resourceInputs["pagerdutyId"] = state ? state.pagerdutyId : undefined;
+            resourceInputs["pagertreeId"] = state ? state.pagertreeId : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
             resourceInputs["slackChannels"] = state ? state.slackChannels : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["userIds"] = state ? state.userIds : undefined;
+            resourceInputs["victorOpsId"] = state ? state.victorOpsId : undefined;
         } else {
             const args = argsOrState as TeamArgs | undefined;
             resourceInputs["color"] = args ? args.color : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notifyEmails"] = args ? args.notifyEmails : undefined;
+            resourceInputs["opsgenieId"] = args ? args.opsgenieId : undefined;
+            resourceInputs["pagerdutyId"] = args ? args.pagerdutyId : undefined;
+            resourceInputs["pagertreeId"] = args ? args.pagertreeId : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
             resourceInputs["slackChannels"] = args ? args.slackChannels : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
+            resourceInputs["userIds"] = args ? args.userIds : undefined;
+            resourceInputs["victorOpsId"] = args ? args.victorOpsId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Team.__pulumiType, name, resourceInputs, opts);
@@ -101,6 +135,9 @@ export class Team extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Team resources.
  */
 export interface TeamState {
+    /**
+     * The hex color of the team
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the team
@@ -115,6 +152,18 @@ export interface TeamState {
      */
     notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The Opsgenie group id associated to this team
+     */
+    opsgenieId?: pulumi.Input<string>;
+    /**
+     * The PagerDuty group id associated to this team
+     */
+    pagerdutyId?: pulumi.Input<string>;
+    /**
+     * The PagerTree group id associated to this team
+     */
+    pagertreeId?: pulumi.Input<string>;
+    /**
      * Position of the team
      */
     position?: pulumi.Input<number>;
@@ -127,12 +176,23 @@ export interface TeamState {
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[]>;
     slug?: pulumi.Input<string>;
+    /**
+     * The User ID's members of this team
+     */
+    userIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The VictorOps group id associated to this team
+     */
+    victorOpsId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Team resource.
  */
 export interface TeamArgs {
+    /**
+     * The hex color of the team
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the team
@@ -147,6 +207,18 @@ export interface TeamArgs {
      */
     notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The Opsgenie group id associated to this team
+     */
+    opsgenieId?: pulumi.Input<string>;
+    /**
+     * The PagerDuty group id associated to this team
+     */
+    pagerdutyId?: pulumi.Input<string>;
+    /**
+     * The PagerTree group id associated to this team
+     */
+    pagertreeId?: pulumi.Input<string>;
+    /**
      * Position of the team
      */
     position?: pulumi.Input<number>;
@@ -159,4 +231,12 @@ export interface TeamArgs {
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[]>;
     slug?: pulumi.Input<string>;
+    /**
+     * The User ID's members of this team
+     */
+    userIds?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The VictorOps group id associated to this team
+     */
+    victorOpsId?: pulumi.Input<string>;
 }

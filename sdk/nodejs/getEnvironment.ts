@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const my_environment = pulumi.output(rootly.getEnvironment({
+ * const my-environment = rootly.getEnvironment({
  *     slug: "my-environment",
- * }));
+ * });
  * ```
  */
 export function getEnvironment(args?: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getEnvironment:getEnvironment", {
         "color": args.color,
         "createdAt": args.createdAt,
@@ -36,6 +33,9 @@ export function getEnvironment(args?: GetEnvironmentArgs, opts?: pulumi.InvokeOp
  */
 export interface GetEnvironmentArgs {
     color?: string;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: {[key: string]: any};
     name?: string;
     slug?: string;
@@ -46,14 +46,31 @@ export interface GetEnvironmentArgs {
  */
 export interface GetEnvironmentResult {
     readonly color: string;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     readonly createdAt?: {[key: string]: any};
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly slug: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my-environment = rootly.getEnvironment({
+ *     slug: "my-environment",
+ * });
+ * ```
+ */
 export function getEnvironmentOutput(args?: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
-    return pulumi.output(args).apply(a => getEnvironment(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnvironment(a, opts))
 }
 
 /**
@@ -61,6 +78,9 @@ export function getEnvironmentOutput(args?: GetEnvironmentOutputArgs, opts?: pul
  */
 export interface GetEnvironmentOutputArgs {
     color?: pulumi.Input<string>;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: pulumi.Input<{[key: string]: any}>;
     name?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;

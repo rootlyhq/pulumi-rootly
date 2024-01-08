@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -12,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const addItemsToCard = new rootly.Functionality("add_items_to_card", {
+ * const addItemsToCard = new rootly.Functionality("addItemsToCard", {
  *     color: "#800080",
  *     notifyEmails: [
  *         "foo@acme.com",
@@ -20,20 +21,20 @@ import * as utilities from "./utilities";
  *     ],
  *     slackAliases: [{
  *         id: "S0614TZR7",
- *         name: "Alias 1", // Any string really
+ *         name: "Alias 1",
  *     }],
  *     slackChannels: [
  *         {
  *             id: "C06A4RZR9",
- *             name: "Channel 1", // Any string really
+ *             name: "Channel 1",
  *         },
  *         {
  *             id: "C02T4RYR2",
- *             name: "Channel 2", // Any string really
+ *             name: "Channel 2",
  *         },
  *     ],
  * });
- * const loggingIn = new rootly.Functionality("logging_in", {
+ * const loggingIn = new rootly.Functionality("loggingIn", {
  *     color: "#800080",
  *     notifyEmails: [
  *         "foo@acme.com",
@@ -41,16 +42,16 @@ import * as utilities from "./utilities";
  *     ],
  *     slackAliases: [{
  *         id: "S0614TZR7",
- *         name: "Alias 1", // Any string really
+ *         name: "Alias 1",
  *     }],
  *     slackChannels: [
  *         {
  *             id: "C06A4RZR9",
- *             name: "Channel 1", // Any string really
+ *             name: "Channel 1",
  *         },
  *         {
  *             id: "C02T4RYR2",
- *             name: "Channel 2", // Any string really
+ *             name: "Channel 2",
  *         },
  *     ],
  * });
@@ -84,6 +85,9 @@ export class Functionality extends pulumi.CustomResource {
         return obj['__pulumiType'] === Functionality.__pulumiType;
     }
 
+    /**
+     * The hex color of the functionality
+     */
     public readonly color!: pulumi.Output<string>;
     /**
      * The description of the functionality
@@ -134,8 +138,7 @@ export class Functionality extends pulumi.CustomResource {
      */
     public readonly slug!: pulumi.Output<string>;
     /**
-     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`,
-     * `major_outage`.
+     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
      */
     public readonly status!: pulumi.Output<string | undefined>;
 
@@ -192,6 +195,9 @@ export class Functionality extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Functionality resources.
  */
 export interface FunctionalityState {
+    /**
+     * The hex color of the functionality
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the functionality
@@ -242,8 +248,7 @@ export interface FunctionalityState {
      */
     slug?: pulumi.Input<string>;
     /**
-     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`,
-     * `major_outage`.
+     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
      */
     status?: pulumi.Input<string>;
 }
@@ -252,6 +257,9 @@ export interface FunctionalityState {
  * The set of arguments for constructing a Functionality resource.
  */
 export interface FunctionalityArgs {
+    /**
+     * The hex color of the functionality
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the functionality
@@ -302,8 +310,7 @@ export interface FunctionalityArgs {
      */
     slug?: pulumi.Input<string>;
     /**
-     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`,
-     * `major_outage`.
+     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
      */
     status?: pulumi.Input<string>;
 }

@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const my_workflow = pulumi.output(rootly.getWorkflow({
+ * const my-workflow = rootly.getWorkflow({
  *     slug: "my-workflow",
- * }));
+ * });
  * ```
  */
 export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getWorkflow:getWorkflow", {
         "createdAt": args.createdAt,
         "name": args.name,
@@ -34,6 +31,9 @@ export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getWorkflow.
  */
 export interface GetWorkflowArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: {[key: string]: any};
     name?: string;
     slug?: string;
@@ -43,20 +43,40 @@ export interface GetWorkflowArgs {
  * A collection of values returned by getWorkflow.
  */
 export interface GetWorkflowResult {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     readonly createdAt?: {[key: string]: any};
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly slug: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my-workflow = rootly.getWorkflow({
+ *     slug: "my-workflow",
+ * });
+ * ```
+ */
 export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowResult> {
-    return pulumi.output(args).apply(a => getWorkflow(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkflow(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getWorkflow.
  */
 export interface GetWorkflowOutputArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: pulumi.Input<{[key: string]: any}>;
     name?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;

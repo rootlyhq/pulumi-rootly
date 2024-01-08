@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class IncidentType extends pulumi.CustomResource {
@@ -33,6 +34,9 @@ export class IncidentType extends pulumi.CustomResource {
         return obj['__pulumiType'] === IncidentType.__pulumiType;
     }
 
+    /**
+     * The hex color of the incident type
+     */
     public readonly color!: pulumi.Output<string>;
     /**
      * The description of the incident type
@@ -104,6 +108,9 @@ export class IncidentType extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IncidentType resources.
  */
 export interface IncidentTypeState {
+    /**
+     * The hex color of the incident type
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the incident type
@@ -139,6 +146,9 @@ export interface IncidentTypeState {
  * The set of arguments for constructing a IncidentType resource.
  */
 export interface IncidentTypeArgs {
+    /**
+     * The hex color of the incident type
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the incident type

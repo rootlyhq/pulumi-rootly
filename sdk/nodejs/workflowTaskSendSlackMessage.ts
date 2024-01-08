@@ -2,41 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Manages workflow sendSlackMessage task.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const notifySlackChannels = new rootly.WorkflowIncident("notifySlackChannels", {
- *     description: "Send a message to specific teams on Slack regarding the incident.",
- *     triggerParams: {
- *         triggers: ["incident_created"],
- *         incidentStatuses: ["started"],
- *         incidentConditionStatus: "IS",
- *     },
- *     enabled: true,
- * });
- * const sendSlackMessage = new rootly.WorkflowTaskSendSlackMessage("sendSlackMessage", {
- *     workflowId: notifySlackChannels.id,
- *     skipOnFailure: false,
- *     enabled: true,
- *     taskParams: {
- *         name: "Notify team about incident",
- *         channels: [{
- *             id: "{{ incident.slack_channel_id }}",
- *             name: "{{ incident.slack_channel_id }}",
- *         }],
- *         text: "Heads up - wanted to let your team know we have an active incident.",
- *     },
- * });
- * ```
  */
 export class WorkflowTaskSendSlackMessage extends pulumi.CustomResource {
     /**
@@ -71,6 +42,10 @@ export class WorkflowTaskSendSlackMessage extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Name of the workflow task
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     public readonly position!: pulumi.Output<number>;
@@ -101,6 +76,7 @@ export class WorkflowTaskSendSlackMessage extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkflowTaskSendSlackMessageState | undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["skipOnFailure"] = state ? state.skipOnFailure : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
@@ -114,6 +90,7 @@ export class WorkflowTaskSendSlackMessage extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workflowId'");
             }
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["skipOnFailure"] = args ? args.skipOnFailure : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
@@ -132,6 +109,10 @@ export interface WorkflowTaskSendSlackMessageState {
      * Enable/disable this workflow task
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Name of the workflow task
+     */
+    name?: pulumi.Input<string>;
     /**
      * The position of the workflow task (1 being top of list)
      */
@@ -158,6 +139,10 @@ export interface WorkflowTaskSendSlackMessageArgs {
      * Enable/disable this workflow task
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Name of the workflow task
+     */
+    name?: pulumi.Input<string>;
     /**
      * The position of the workflow task (1 being top of list)
      */

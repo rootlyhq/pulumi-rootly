@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const my_functionality = pulumi.output(rootly.getFunctionality({
+ * const my-functionality = rootly.getFunctionality({
  *     slug: "my-functionality",
- * }));
+ * });
  * ```
  */
 export function getFunctionality(args?: GetFunctionalityArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionalityResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getFunctionality:getFunctionality", {
         "createdAt": args.createdAt,
         "name": args.name,
@@ -34,6 +31,9 @@ export function getFunctionality(args?: GetFunctionalityArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getFunctionality.
  */
 export interface GetFunctionalityArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: {[key: string]: any};
     name?: string;
     slug?: string;
@@ -43,20 +43,40 @@ export interface GetFunctionalityArgs {
  * A collection of values returned by getFunctionality.
  */
 export interface GetFunctionalityResult {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     readonly createdAt?: {[key: string]: any};
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly slug: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my-functionality = rootly.getFunctionality({
+ *     slug: "my-functionality",
+ * });
+ * ```
+ */
 export function getFunctionalityOutput(args?: GetFunctionalityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionalityResult> {
-    return pulumi.output(args).apply(a => getFunctionality(a, opts))
+    return pulumi.output(args).apply((a: any) => getFunctionality(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getFunctionality.
  */
 export interface GetFunctionalityOutputArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: pulumi.Input<{[key: string]: any}>;
     name?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;

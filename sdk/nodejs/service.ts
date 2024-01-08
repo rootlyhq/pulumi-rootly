@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -12,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const elasticsearchProd = new rootly.Service("elasticsearch_prod", {
+ * const elasticsearchProd = new rootly.Service("elasticsearchProd", {
  *     color: "#800080",
  *     notifyEmails: [
  *         "foo@acme.com",
@@ -20,20 +21,20 @@ import * as utilities from "./utilities";
  *     ],
  *     slackAliases: [{
  *         id: "S0614TZR7",
- *         name: "Alias 1", // Any string really
+ *         name: "Alias 1",
  *     }],
  *     slackChannels: [
  *         {
  *             id: "C06A4RZR9",
- *             name: "Channel 1", // Any string really
+ *             name: "Channel 1",
  *         },
  *         {
  *             id: "C02T4RYR2",
- *             name: "Channel 2", // Any string really
+ *             name: "Channel 2",
  *         },
  *     ],
  * });
- * const customerPostgresqlProd = new rootly.Service("customer_postgresql_prod", {
+ * const customerPostgresqlProd = new rootly.Service("customerPostgresqlProd", {
  *     color: "#800080",
  *     notifyEmails: [
  *         "foo@acme.com",
@@ -41,16 +42,16 @@ import * as utilities from "./utilities";
  *     ],
  *     slackAliases: [{
  *         id: "S0614TZR7",
- *         name: "Alias 1", // Any string really
+ *         name: "Alias 1",
  *     }],
  *     slackChannels: [
  *         {
  *             id: "C06A4RZR9",
- *             name: "Channel 1", // Any string really
+ *             name: "Channel 1",
  *         },
  *         {
  *             id: "C02T4RYR2",
- *             name: "Channel 2", // Any string really
+ *             name: "Channel 2",
  *         },
  *     ],
  * });
@@ -88,6 +89,9 @@ export class Service extends pulumi.CustomResource {
      * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
      */
     public readonly backstageId!: pulumi.Output<string>;
+    /**
+     * The hex color of the service
+     */
     public readonly color!: pulumi.Output<string>;
     /**
      * The description of the service
@@ -162,7 +166,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly slug!: pulumi.Output<string>;
     /**
-     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.
+     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
      */
     public readonly status!: pulumi.Output<string | undefined>;
 
@@ -237,6 +241,9 @@ export interface ServiceState {
      * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
      */
     backstageId?: pulumi.Input<string>;
+    /**
+     * The hex color of the service
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the service
@@ -311,7 +318,7 @@ export interface ServiceState {
      */
     slug?: pulumi.Input<string>;
     /**
-     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.
+     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
      */
     status?: pulumi.Input<string>;
 }
@@ -324,6 +331,9 @@ export interface ServiceArgs {
      * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
      */
     backstageId?: pulumi.Input<string>;
+    /**
+     * The hex color of the service
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the service
@@ -398,7 +408,7 @@ export interface ServiceArgs {
      */
     slug?: pulumi.Input<string>;
     /**
-     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.
+     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
      */
     status?: pulumi.Input<string>;
 }

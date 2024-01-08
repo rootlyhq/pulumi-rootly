@@ -4,25 +4,10 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const my_form_field_option = pulumi.output(rootly.getFormFieldOption({
- *     slug: "my-form-field-option",
- * }));
- * ```
- */
 export function getFormFieldOption(args?: GetFormFieldOptionArgs, opts?: pulumi.InvokeOptions): Promise<GetFormFieldOptionResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getFormFieldOption:getFormFieldOption", {
         "color": args.color,
         "value": args.value,
@@ -42,12 +27,14 @@ export interface GetFormFieldOptionArgs {
  */
 export interface GetFormFieldOptionResult {
     readonly color: string;
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly value: string;
 }
-
 export function getFormFieldOptionOutput(args?: GetFormFieldOptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFormFieldOptionResult> {
-    return pulumi.output(args).apply(a => getFormFieldOption(a, opts))
+    return pulumi.output(args).apply((a: any) => getFormFieldOption(a, opts))
 }
 
 /**

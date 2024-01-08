@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const my_incident_type = pulumi.output(rootly.getIncidentType({
+ * const my-incident-type = rootly.getIncidentType({
  *     slug: "my-incident-type",
- * }));
+ * });
  * ```
  */
 export function getIncidentType(args?: GetIncidentTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentTypeResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getIncidentType:getIncidentType", {
         "color": args.color,
         "createdAt": args.createdAt,
@@ -36,6 +33,9 @@ export function getIncidentType(args?: GetIncidentTypeArgs, opts?: pulumi.Invoke
  */
 export interface GetIncidentTypeArgs {
     color?: string;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: {[key: string]: any};
     name?: string;
     slug?: string;
@@ -46,14 +46,31 @@ export interface GetIncidentTypeArgs {
  */
 export interface GetIncidentTypeResult {
     readonly color: string;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     readonly createdAt?: {[key: string]: any};
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly slug: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my-incident-type = rootly.getIncidentType({
+ *     slug: "my-incident-type",
+ * });
+ * ```
+ */
 export function getIncidentTypeOutput(args?: GetIncidentTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIncidentTypeResult> {
-    return pulumi.output(args).apply(a => getIncidentType(a, opts))
+    return pulumi.output(args).apply((a: any) => getIncidentType(a, opts))
 }
 
 /**
@@ -61,6 +78,9 @@ export function getIncidentTypeOutput(args?: GetIncidentTypeOutputArgs, opts?: p
  */
 export interface GetIncidentTypeOutputArgs {
     color?: pulumi.Input<string>;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: pulumi.Input<{[key: string]: any}>;
     name?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;

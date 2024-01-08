@@ -36,7 +36,7 @@ export class CustomFieldOption extends pulumi.CustomResource {
     }
 
     /**
-     * The hex color of the custom_field_option
+     * The hex color of the custom*field*option
      */
     public readonly color!: pulumi.Output<string>;
     /**
@@ -45,11 +45,11 @@ export class CustomFieldOption extends pulumi.CustomResource {
     public readonly customFieldId!: pulumi.Output<number>;
     public readonly default!: pulumi.Output<boolean>;
     /**
-     * The position of the custom_field_option
+     * The position of the custom*field*option
      */
     public readonly position!: pulumi.Output<number>;
     /**
-     * The value of the custom_field_option
+     * The value of the custom*field*option
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -92,7 +92,7 @@ export class CustomFieldOption extends pulumi.CustomResource {
  */
 export interface CustomFieldOptionState {
     /**
-     * The hex color of the custom_field_option
+     * The hex color of the custom*field*option
      */
     color?: pulumi.Input<string>;
     /**
@@ -101,11 +101,11 @@ export interface CustomFieldOptionState {
     customFieldId?: pulumi.Input<number>;
     default?: pulumi.Input<boolean>;
     /**
-     * The position of the custom_field_option
+     * The position of the custom*field*option
      */
     position?: pulumi.Input<number>;
     /**
-     * The value of the custom_field_option
+     * The value of the custom*field*option
      */
     value?: pulumi.Input<string>;
 }
@@ -115,7 +115,7 @@ export interface CustomFieldOptionState {
  */
 export interface CustomFieldOptionArgs {
     /**
-     * The hex color of the custom_field_option
+     * The hex color of the custom*field*option
      */
     color?: pulumi.Input<string>;
     /**
@@ -124,11 +124,11 @@ export interface CustomFieldOptionArgs {
     customFieldId?: pulumi.Input<number>;
     default?: pulumi.Input<boolean>;
     /**
-     * The position of the custom_field_option
+     * The position of the custom*field*option
      */
     position?: pulumi.Input<number>;
     /**
-     * The value of the custom_field_option
+     * The value of the custom*field*option
      */
     value: pulumi.Input<string>;
 }

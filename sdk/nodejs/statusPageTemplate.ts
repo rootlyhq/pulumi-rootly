@@ -38,11 +38,15 @@ export class StatusPageTemplate extends pulumi.CustomResource {
     public readonly body!: pulumi.Output<string>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * The kind of the status page template. Value must be one of `normal`, `scheduled`.
+     */
+    public readonly kind!: pulumi.Output<string | undefined>;
+    /**
      * Position of the workflow task
      */
     public readonly position!: pulumi.Output<number>;
     /**
-     * Controls if incident subscribers should be notified
+     * Controls if incident subscribers should be notified. Value must be one of true or false
      */
     public readonly shouldNotifySubscribers!: pulumi.Output<boolean>;
     public readonly statusPageId!: pulumi.Output<string>;
@@ -70,6 +74,7 @@ export class StatusPageTemplate extends pulumi.CustomResource {
             const state = argsOrState as StatusPageTemplateState | undefined;
             resourceInputs["body"] = state ? state.body : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["shouldNotifySubscribers"] = state ? state.shouldNotifySubscribers : undefined;
             resourceInputs["statusPageId"] = state ? state.statusPageId : undefined;
@@ -85,6 +90,7 @@ export class StatusPageTemplate extends pulumi.CustomResource {
             }
             resourceInputs["body"] = args ? args.body : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["shouldNotifySubscribers"] = args ? args.shouldNotifySubscribers : undefined;
             resourceInputs["statusPageId"] = args ? args.statusPageId : undefined;
@@ -106,11 +112,15 @@ export interface StatusPageTemplateState {
     body?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     /**
+     * The kind of the status page template. Value must be one of `normal`, `scheduled`.
+     */
+    kind?: pulumi.Input<string>;
+    /**
      * Position of the workflow task
      */
     position?: pulumi.Input<number>;
     /**
-     * Controls if incident subscribers should be notified
+     * Controls if incident subscribers should be notified. Value must be one of true or false
      */
     shouldNotifySubscribers?: pulumi.Input<boolean>;
     statusPageId?: pulumi.Input<string>;
@@ -134,11 +144,15 @@ export interface StatusPageTemplateArgs {
     body: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     /**
+     * The kind of the status page template. Value must be one of `normal`, `scheduled`.
+     */
+    kind?: pulumi.Input<string>;
+    /**
      * Position of the workflow task
      */
     position?: pulumi.Input<number>;
     /**
-     * Controls if incident subscribers should be notified
+     * Controls if incident subscribers should be notified. Value must be one of true or false
      */
     shouldNotifySubscribers?: pulumi.Input<boolean>;
     statusPageId?: pulumi.Input<string>;

@@ -60,7 +60,7 @@ export class Secret extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SecretArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: SecretArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretArgs | SecretState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -73,9 +73,6 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["secret"] = state ? state.secret : undefined;
         } else {
             const args = argsOrState as SecretArgs | undefined;
-            if ((!args || args.secret === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'secret'");
-            }
             resourceInputs["hashicorpVaultMount"] = args ? args.hashicorpVaultMount : undefined;
             resourceInputs["hashicorpVaultPath"] = args ? args.hashicorpVaultPath : undefined;
             resourceInputs["hashicorpVaultVersion"] = args ? args.hashicorpVaultVersion : undefined;
@@ -136,5 +133,5 @@ export interface SecretArgs {
     /**
      * The redacted secret
      */
-    secret: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
 }

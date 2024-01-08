@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const critical = pulumi.output(rootly.getSeverity({
+ * const critical = rootly.getSeverity({
  *     slug: "sev0",
- * }));
+ * });
  * ```
  */
 export function getSeverity(args?: GetSeverityArgs, opts?: pulumi.InvokeOptions): Promise<GetSeverityResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getSeverity:getSeverity", {
         "color": args.color,
         "createdAt": args.createdAt,
@@ -37,6 +34,9 @@ export function getSeverity(args?: GetSeverityArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetSeverityArgs {
     color?: string;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: {[key: string]: any};
     name?: string;
     severity?: string;
@@ -48,15 +48,32 @@ export interface GetSeverityArgs {
  */
 export interface GetSeverityResult {
     readonly color: string;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     readonly createdAt?: {[key: string]: any};
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly severity: string;
     readonly slug: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const critical = rootly.getSeverity({
+ *     slug: "sev0",
+ * });
+ * ```
+ */
 export function getSeverityOutput(args?: GetSeverityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSeverityResult> {
-    return pulumi.output(args).apply(a => getSeverity(a, opts))
+    return pulumi.output(args).apply((a: any) => getSeverity(a, opts))
 }
 
 /**
@@ -64,6 +81,9 @@ export function getSeverityOutput(args?: GetSeverityOutputArgs, opts?: pulumi.In
  */
 export interface GetSeverityOutputArgs {
     color?: pulumi.Input<string>;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: pulumi.Input<{[key: string]: any}>;
     name?: pulumi.Input<string>;
     severity?: pulumi.Input<string>;

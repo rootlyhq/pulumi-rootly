@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -20,16 +21,16 @@ import * as utilities from "./utilities";
  *     ],
  *     slackAliases: [{
  *         id: "S0614TZR7",
- *         name: "Alias 1", // Any string really
+ *         name: "Alias 1",
  *     }],
  *     slackChannels: [
  *         {
  *             id: "C06A4RZR9",
- *             name: "Channel 1", // Any string really
+ *             name: "Channel 1",
  *         },
  *         {
  *             id: "C02T4RYR2",
- *             name: "Channel 2", // Any string really
+ *             name: "Channel 2",
  *         },
  *     ],
  * });
@@ -41,16 +42,16 @@ import * as utilities from "./utilities";
  *     ],
  *     slackAliases: [{
  *         id: "S0614TZR7",
- *         name: "Alias 1", // Any string really
+ *         name: "Alias 1",
  *     }],
  *     slackChannels: [
  *         {
  *             id: "C06A4RZR9",
- *             name: "Channel 1", // Any string really
+ *             name: "Channel 1",
  *         },
  *         {
  *             id: "C02T4RYR2",
- *             name: "Channel 2", // Any string really
+ *             name: "Channel 2",
  *         },
  *     ],
  * });
@@ -62,16 +63,16 @@ import * as utilities from "./utilities";
  *     ],
  *     slackAliases: [{
  *         id: "S0614TZR7",
- *         name: "Alias 1", // Any string really
+ *         name: "Alias 1",
  *     }],
  *     slackChannels: [
  *         {
  *             id: "C06A4RZR9",
- *             name: "Channel 1", // Any string really
+ *             name: "Channel 1",
  *         },
  *         {
  *             id: "C02T4RYR2",
- *             name: "Channel 2", // Any string really
+ *             name: "Channel 2",
  *         },
  *     ],
  * });
@@ -105,6 +106,9 @@ export class Environment extends pulumi.CustomResource {
         return obj['__pulumiType'] === Environment.__pulumiType;
     }
 
+    /**
+     * The hex color of the environment
+     */
     public readonly color!: pulumi.Output<string>;
     /**
      * The description of the environment
@@ -176,6 +180,9 @@ export class Environment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Environment resources.
  */
 export interface EnvironmentState {
+    /**
+     * The hex color of the environment
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the environment
@@ -211,6 +218,9 @@ export interface EnvironmentState {
  * The set of arguments for constructing a Environment resource.
  */
 export interface EnvironmentArgs {
+    /**
+     * The hex color of the environment
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the environment

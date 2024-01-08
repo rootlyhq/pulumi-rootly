@@ -11,17 +11,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const my_workflow_task = pulumi.output(rootly.getWorkflowTask({
+ * const my-workflow-task = rootly.getWorkflowTask({
  *     slug: "my-workflow-task",
- * }));
+ * });
  * ```
  */
 export function getWorkflowTask(args: GetWorkflowTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowTaskResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getWorkflowTask:getWorkflowTask", {
         "name": args.name,
         "slug": args.slug,
@@ -42,14 +39,28 @@ export interface GetWorkflowTaskArgs {
  * A collection of values returned by getWorkflowTask.
  */
 export interface GetWorkflowTaskResult {
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly slug: string;
     readonly workflowId: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my-workflow-task = rootly.getWorkflowTask({
+ *     slug: "my-workflow-task",
+ * });
+ * ```
+ */
 export function getWorkflowTaskOutput(args: GetWorkflowTaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowTaskResult> {
-    return pulumi.output(args).apply(a => getWorkflowTask(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkflowTask(a, opts))
 }
 
 /**

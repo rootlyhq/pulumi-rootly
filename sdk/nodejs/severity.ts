@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -20,16 +21,16 @@ import * as utilities from "./utilities";
  *     ],
  *     slackAliases: [{
  *         id: "S0614TZR7",
- *         name: "Alias 1", // Any string really
+ *         name: "Alias 1",
  *     }],
  *     slackChannels: [
  *         {
  *             id: "C06A4RZR9",
- *             name: "Channel 1", // Any string really
+ *             name: "Channel 1",
  *         },
  *         {
  *             id: "C02T4RYR2",
- *             name: "Channel 2", // Any string really
+ *             name: "Channel 2",
  *         },
  *     ],
  * });
@@ -41,16 +42,16 @@ import * as utilities from "./utilities";
  *     ],
  *     slackAliases: [{
  *         id: "S0614TZR7",
- *         name: "Alias 1", // Any string really
+ *         name: "Alias 1",
  *     }],
  *     slackChannels: [
  *         {
  *             id: "C06A4RZR9",
- *             name: "Channel 1", // Any string really
+ *             name: "Channel 1",
  *         },
  *         {
  *             id: "C02T4RYR2",
- *             name: "Channel 2", // Any string really
+ *             name: "Channel 2",
  *         },
  *     ],
  * });
@@ -62,16 +63,16 @@ import * as utilities from "./utilities";
  *     ],
  *     slackAliases: [{
  *         id: "S0614TZR7",
- *         name: "Alias 1", // Any string really
+ *         name: "Alias 1",
  *     }],
  *     slackChannels: [
  *         {
  *             id: "C06A4RZR9",
- *             name: "Channel 1", // Any string really
+ *             name: "Channel 1",
  *         },
  *         {
  *             id: "C02T4RYR2",
- *             name: "Channel 2", // Any string really
+ *             name: "Channel 2",
  *         },
  *     ],
  * });
@@ -105,6 +106,9 @@ export class Severity extends pulumi.CustomResource {
         return obj['__pulumiType'] === Severity.__pulumiType;
     }
 
+    /**
+     * The hex color of the severity
+     */
     public readonly color!: pulumi.Output<string>;
     /**
      * The description of the severity
@@ -182,6 +186,9 @@ export class Severity extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Severity resources.
  */
 export interface SeverityState {
+    /**
+     * The hex color of the severity
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the severity
@@ -221,6 +228,9 @@ export interface SeverityState {
  * The set of arguments for constructing a Severity resource.
  */
 export interface SeverityArgs {
+    /**
+     * The hex color of the severity
+     */
     color?: pulumi.Input<string>;
     /**
      * The description of the severity

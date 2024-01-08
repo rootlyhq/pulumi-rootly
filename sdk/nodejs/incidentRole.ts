@@ -33,6 +33,10 @@ export class IncidentRole extends pulumi.CustomResource {
     }
 
     /**
+     * Value must be one of true or false
+     */
+    public readonly allowMultiUserAssignment!: pulumi.Output<boolean>;
+    /**
      * The description of the incident role
      */
     public readonly description!: pulumi.Output<string>;
@@ -41,6 +45,9 @@ export class IncidentRole extends pulumi.CustomResource {
      * The name of the incident role
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Value must be one of true or false
+     */
     public readonly optional!: pulumi.Output<boolean>;
     /**
      * Position of the incident role
@@ -68,6 +75,7 @@ export class IncidentRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IncidentRoleState | undefined;
+            resourceInputs["allowMultiUserAssignment"] = state ? state.allowMultiUserAssignment : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -77,6 +85,7 @@ export class IncidentRole extends pulumi.CustomResource {
             resourceInputs["summary"] = state ? state.summary : undefined;
         } else {
             const args = argsOrState as IncidentRoleArgs | undefined;
+            resourceInputs["allowMultiUserAssignment"] = args ? args.allowMultiUserAssignment : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -95,6 +104,10 @@ export class IncidentRole extends pulumi.CustomResource {
  */
 export interface IncidentRoleState {
     /**
+     * Value must be one of true or false
+     */
+    allowMultiUserAssignment?: pulumi.Input<boolean>;
+    /**
      * The description of the incident role
      */
     description?: pulumi.Input<string>;
@@ -103,6 +116,9 @@ export interface IncidentRoleState {
      * The name of the incident role
      */
     name?: pulumi.Input<string>;
+    /**
+     * Value must be one of true or false
+     */
     optional?: pulumi.Input<boolean>;
     /**
      * Position of the incident role
@@ -123,6 +139,10 @@ export interface IncidentRoleState {
  */
 export interface IncidentRoleArgs {
     /**
+     * Value must be one of true or false
+     */
+    allowMultiUserAssignment?: pulumi.Input<boolean>;
+    /**
      * The description of the incident role
      */
     description?: pulumi.Input<string>;
@@ -131,6 +151,9 @@ export interface IncidentRoleArgs {
      * The name of the incident role
      */
     name?: pulumi.Input<string>;
+    /**
+     * Value must be one of true or false
+     */
     optional?: pulumi.Input<boolean>;
     /**
      * Position of the incident role

@@ -2,16 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getCustomFields(args?: GetCustomFieldsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomFieldsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getCustomFields:getCustomFields", {
         "enabled": args.enabled,
         "kind": args.kind,
@@ -44,9 +42,8 @@ export interface GetCustomFieldsResult {
     readonly label?: string;
     readonly slug?: string;
 }
-
 export function getCustomFieldsOutput(args?: GetCustomFieldsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomFieldsResult> {
-    return pulumi.output(args).apply(a => getCustomFields(a, opts))
+    return pulumi.output(args).apply((a: any) => getCustomFields(a, opts))
 }
 
 /**

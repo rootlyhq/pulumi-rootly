@@ -13,18 +13,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const my_custom_field = pulumi.output(rootly.getCustomField({
+ * const my-custom-field = rootly.getCustomField({
  *     slug: "my-custom-field",
- * }));
+ * });
  * ```
  */
 export function getCustomField(args?: GetCustomFieldArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomFieldResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getCustomField:getCustomField", {
         "createdAt": args.createdAt,
         "enabled": args.enabled,
@@ -38,6 +35,9 @@ export function getCustomField(args?: GetCustomFieldArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getCustomField.
  */
 export interface GetCustomFieldArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: {[key: string]: any};
     enabled?: boolean;
     kind?: string;
@@ -49,22 +49,44 @@ export interface GetCustomFieldArgs {
  * A collection of values returned by getCustomField.
  */
 export interface GetCustomFieldResult {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     readonly createdAt?: {[key: string]: any};
     readonly enabled?: boolean;
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly kind: string;
     readonly label: string;
     readonly slug: string;
 }
-
+/**
+ * DEPRECATED: Please use `formField` data source instead.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my-custom-field = rootly.getCustomField({
+ *     slug: "my-custom-field",
+ * });
+ * ```
+ */
 export function getCustomFieldOutput(args?: GetCustomFieldOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomFieldResult> {
-    return pulumi.output(args).apply(a => getCustomField(a, opts))
+    return pulumi.output(args).apply((a: any) => getCustomField(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getCustomField.
  */
 export interface GetCustomFieldOutputArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: pulumi.Input<{[key: string]: any}>;
     enabled?: pulumi.Input<boolean>;
     kind?: pulumi.Input<string>;

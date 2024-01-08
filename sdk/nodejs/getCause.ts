@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const my_cause = pulumi.output(rootly.getCause({
+ * const my-cause = rootly.getCause({
  *     slug: "my-cause",
- * }));
+ * });
  * ```
  */
 export function getCause(args?: GetCauseArgs, opts?: pulumi.InvokeOptions): Promise<GetCauseResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getCause:getCause", {
         "createdAt": args.createdAt,
         "name": args.name,
@@ -34,6 +31,9 @@ export function getCause(args?: GetCauseArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getCause.
  */
 export interface GetCauseArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: {[key: string]: any};
     name?: string;
     slug?: string;
@@ -43,20 +43,40 @@ export interface GetCauseArgs {
  * A collection of values returned by getCause.
  */
 export interface GetCauseResult {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     readonly createdAt?: {[key: string]: any};
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly slug: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my-cause = rootly.getCause({
+ *     slug: "my-cause",
+ * });
+ * ```
+ */
 export function getCauseOutput(args?: GetCauseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCauseResult> {
-    return pulumi.output(args).apply(a => getCause(a, opts))
+    return pulumi.output(args).apply((a: any) => getCause(a, opts))
 }
 
 /**
  * A collection of arguments for invoking getCause.
  */
 export interface GetCauseOutputArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: pulumi.Input<{[key: string]: any}>;
     name?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;

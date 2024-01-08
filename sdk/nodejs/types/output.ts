@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface DashboardPanelParams {
     datasets?: outputs.DashboardPanelParamsDataset[];
@@ -180,146 +181,431 @@ export interface TeamSlackChannel {
 }
 
 export interface WorkflowActionItemTriggerParams {
+    /**
+     * Value must be one off `ALL`, `ANY`, `NONE`.
+     */
     incidentActionItemCondition?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentActionItemConditionGroup?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentActionItemConditionKind?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentActionItemConditionPriority?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentActionItemConditionStatus?: string;
     incidentActionItemGroupIds: string[];
+    /**
+     * Value must be one of `task`, `followUp`.
+     */
     incidentActionItemKinds: string[];
+    /**
+     * Value must be one of `high`, `medium`, `low`.
+     */
     incidentActionItemPriorities: string[];
+    /**
+     * Value must be one of `open`, `inProgress`, `cancelled`, `done`.
+     */
     incidentActionItemStatuses: string[];
+    /**
+     * Value must be one off `ALL`, `ANY`, `NONE`.
+     */
     incidentCondition?: string;
     incidentConditionAcknowledgedAt: string;
     incidentConditionDetectedAt: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionEnvironment?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionFunctionality?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionGroup?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionIncidentRoles?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionIncidentType?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionKind?: string;
     incidentConditionMitigatedAt: string;
     incidentConditionResolvedAt: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionService?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionSeverity?: string;
     incidentConditionStartedAt: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionStatus?: string;
     incidentConditionSummary: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionVisibility?: string;
     incidentConditionalInactivity: string;
+    /**
+     * ex. 10 min, 1h, 3 days, 2 weeks
+     */
     incidentInactivityDuration: string;
+    /**
+     * Value must be one of `example`, `exampleSub`, `normal`, `normalSub`, `test`, `testSub`, `backfilled`, `scheduled`.
+     */
     incidentKinds: string[];
+    /**
+     * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+     */
     incidentStatuses: string[];
     incidentVisibilities: string[];
+    /**
+     * Value must be one off `actionItem`.
+     */
     triggerType?: string;
+    /**
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*updated, action*item*created, action*item*updated, assigned*user*updated, summary*updated, description*updated, status*updated, priority*updated, due*date*updated, teams*updated, slack*command
+     */
     triggers: string[];
 }
 
 export interface WorkflowAlertTriggerParams {
+    /**
+     * Value must be one off `ALL`, `ANY`, `NONE`.
+     */
     alertCondition?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     alertConditionLabel?: string;
+    /**
+     * Value must be one of true or false
+     */
     alertConditionLabelUseRegexp: boolean;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     alertConditionPayload?: string;
+    /**
+     * Value must be one of true or false
+     */
     alertConditionPayloadUseRegexp: boolean;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     alertConditionSource?: string;
+    /**
+     * Value must be one of true or false
+     */
     alertConditionSourceUseRegexp: boolean;
     alertLabels: string[];
     alertPayloads: string[];
+    /**
+     * You can use jsonpath syntax. eg: $.incident.teams[*]
+     */
     alertQueryPayload: string;
     alertSources: string[];
+    /**
+     * Value must be one off `alert`.
+     */
     triggerType?: string;
+    /**
+     * Actions that trigger the workflow. Value must be one of `alertCreated`.
+     */
     triggers: string[];
 }
 
 export interface WorkflowIncidentTriggerParams {
+    /**
+     * Value must be one off `ALL`, `ANY`, `NONE`.
+     */
     incidentCondition?: string;
     incidentConditionAcknowledgedAt: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    incidentConditionCause?: string;
     incidentConditionDetectedAt: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionEnvironment?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionFunctionality?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionGroup?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionIncidentRoles?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionIncidentType?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionKind?: string;
     incidentConditionMitigatedAt: string;
     incidentConditionResolvedAt: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionService?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionSeverity?: string;
     incidentConditionStartedAt: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionStatus?: string;
     incidentConditionSummary: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionVisibility?: string;
     incidentConditionalInactivity: string;
+    /**
+     * ex. 10 min, 1h, 3 days, 2 weeks
+     */
     incidentInactivityDuration: string;
+    /**
+     * Value must be one of `example`, `exampleSub`, `normal`, `normalSub`, `test`, `testSub`, `backfilled`, `scheduled`.
+     */
     incidentKinds: string[];
+    /**
+     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    incidentPostMortemConditionCause?: string;
+    /**
+     * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+     */
     incidentStatuses: string[];
     incidentVisibilities: string[];
+    /**
+     * Value must be one off `incident`.
+     */
     triggerType?: string;
+    /**
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack_channel
+     */
     triggers: string[];
 }
 
 export interface WorkflowPostMortemTriggerParams {
+    /**
+     * Value must be one off `ALL`, `ANY`, `NONE`.
+     */
     incidentCondition?: string;
     incidentConditionAcknowledgedAt: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    incidentConditionCause?: string;
     incidentConditionDetectedAt: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionEnvironment?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionFunctionality?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionGroup?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionIncidentRoles?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionIncidentType?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionKind?: string;
     incidentConditionMitigatedAt: string;
     incidentConditionResolvedAt: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionService?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionSeverity?: string;
     incidentConditionStartedAt: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionStatus?: string;
     incidentConditionSummary: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentConditionVisibility?: string;
     incidentConditionalInactivity: string;
+    /**
+     * ex. 10 min, 1h, 3 days, 2 weeks
+     */
     incidentInactivityDuration: string;
+    /**
+     * Value must be one of `example`, `exampleSub`, `normal`, `normalSub`, `test`, `testSub`, `backfilled`, `scheduled`.
+     */
     incidentKinds: string[];
-    incidentPostMortemCauseIds: string[];
+    /**
+     * Value must be one off `ALL`, `ANY`, `NONE`.
+     */
     incidentPostMortemCondition?: string;
+    /**
+     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentPostMortemConditionCause?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     incidentPostMortemConditionStatus?: string;
+    /**
+     * Value must be one of `draft`, `published`.
+     */
     incidentPostMortemStatuses: string[];
+    /**
+     * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+     */
     incidentStatuses: string[];
     incidentVisibilities: string[];
+    /**
+     * Value must be one off `postMortem`.
+     */
     triggerType?: string;
+    /**
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, post*mortem*created, post*mortem*updated, status*updated, slack_command
+     */
     triggers: string[];
 }
 
 export interface WorkflowPulseTriggerParams {
+    /**
+     * Value must be one off `ALL`, `ANY`, `NONE`.
+     */
     pulseCondition?: string;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     pulseConditionLabel?: string;
+    /**
+     * Value must be one of true or false
+     */
     pulseConditionLabelUseRegexp: boolean;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     pulseConditionPayload?: string;
+    /**
+     * Value must be one of true or false
+     */
     pulseConditionPayloadUseRegexp: boolean;
+    /**
+     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
     pulseConditionSource?: string;
+    /**
+     * Value must be one of true or false
+     */
     pulseConditionSourceUseRegexp: boolean;
     pulseLabels: string[];
     pulsePayloads: string[];
+    /**
+     * You can use jsonpath syntax. eg: $.incident.teams[*]
+     */
     pulseQueryPayload: string;
     pulseSources: string[];
+    /**
+     * Value must be one off `pulse`.
+     */
     triggerType?: string;
+    /**
+     * Actions that trigger the workflow. Value must be one of `pulseCreated`.
+     */
     triggers: string[];
 }
 
 export interface WorkflowSimpleTriggerParams {
+    /**
+     * Value must be one off `simple`.
+     */
     triggerType?: string;
+    /**
+     * Actions that trigger the workflow. Value must be one of `slackCommand`.
+     */
     triggers: string[];
 }
 
 export interface WorkflowTaskAddActionItemTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.  The user this action item is assigned to
+     */
+    assignedToUser?: {[key: string]: any};
+    /**
+     * [DEPRECATED] Use assigned*to*user attribute instead. The user id this action item is assigned to
+     */
     assignedToUserId?: string;
+    /**
+     * The action item description
+     */
     description?: string;
+    /**
+     * The role id this action item is associated with
+     */
     incidentRoleId?: string;
+    /**
+     * The action item kind
+     */
     kind?: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskAddActionItemTaskParamsPostToSlackChannel[];
+    /**
+     * The action item priority. Value must be one of `high`, `medium`, `low`.
+     */
     priority: string;
+    /**
+     * The action item status. Value must be one of `open`, `inProgress`, `cancelled`, `done`.
+     */
     status: string;
+    /**
+     * The action item summary
+     */
     summary: string;
     taskType?: string;
 }
@@ -330,29 +616,63 @@ export interface WorkflowTaskAddActionItemTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskAddRoleTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.  The user this role is assigned to
+     */
+    assignedToUser?: {[key: string]: any};
+    /**
+     * [DEPRECATED] Use assigned*to*user attribute instead. The user id this role is assigned to
+     */
     assignedToUserId?: string;
+    /**
+     * The role id to add to the incident
+     */
     incidentRoleId: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskAddSlackBookmarkTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     channel: {[key: string]: any};
+    /**
+     * The bookmark emoji
+     */
     emoji?: string;
+    /**
+     * The bookmark link. Required if not a playbook bookmark
+     */
     link?: string;
+    /**
+     * The playbook id if bookmark is of an incident playbook
+     */
     playbookId?: string;
     taskType?: string;
+    /**
+     * The bookmark title. Required if not a playbook bookmark
+     */
     title?: string;
 }
 
 export interface WorkflowTaskAddTeamTaskParams {
+    /**
+     * The team id
+     */
     groupId: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskAddToTimelineTaskParams {
+    /**
+     * The timeline event description
+     */
     event: string;
     postToSlackChannels?: outputs.WorkflowTaskAddToTimelineTaskParamsPostToSlackChannel[];
     taskType?: string;
+    /**
+     * A URL for the timeline event
+     */
     url?: string;
 }
 
@@ -373,6 +693,9 @@ export interface WorkflowTaskArchiveSlackChannelsTaskParamsChannel {
 
 export interface WorkflowTaskAttachDatadogDashboardsTaskParams {
     dashboards: outputs.WorkflowTaskAttachDatadogDashboardsTaskParamsDashboard[];
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannel[];
     taskType?: string;
@@ -389,61 +712,150 @@ export interface WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannel
 }
 
 export interface WorkflowTaskAutoAssignRoleOpsgenieTaskParams {
+    /**
+     * The role id
+     */
     incidentRoleId: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     schedule: {[key: string]: any};
     taskType?: string;
 }
 
 export interface WorkflowTaskAutoAssignRolePagerdutyTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     escalationPolicy?: {[key: string]: any};
+    /**
+     * The role id
+     */
     incidentRoleId: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     schedule?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     service?: {[key: string]: any};
     taskType?: string;
 }
 
 export interface WorkflowTaskAutoAssignRoleVictorOpsTaskParams {
+    /**
+     * The role id
+     */
     incidentRoleId: string;
-    schedule: {[key: string]: any};
     taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    team: {[key: string]: any};
 }
 
 export interface WorkflowTaskCallPeopleTaskParams {
+    /**
+     * The message to be read by text-to-voice
+     */
     content: string;
+    /**
+     * The name
+     */
     name: string;
     phoneNumbers: string[];
     taskType?: string;
 }
 
 export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     base: {[key: string]: any};
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     table: {[key: string]: any};
     taskType?: string;
 }
 
 export interface WorkflowTaskCreateAsanaSubtaskTaskParams {
+    /**
+     * The assigned user's email
+     */
     assignUserEmail?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     completion: {[key: string]: any};
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * Value must be one of `blocking`, `blockedBy`.
+     */
     dependencyDirection?: string;
+    /**
+     * Dependent task ids. Supports liquid syntax
+     */
     dependentTaskIds?: string[];
+    /**
+     * The due date
+     */
+    dueDate?: string;
     notes?: string;
+    /**
+     * The parent task id
+     */
     parentTaskId: string;
     taskType?: string;
+    /**
+     * The subtask title
+     */
     title: string;
 }
 
 export interface WorkflowTaskCreateAsanaTaskTaskParams {
+    /**
+     * The assigned user's email
+     */
     assignUserEmail?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     completion: {[key: string]: any};
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * Value must be one of `blocking`, `blockedBy`.
+     */
     dependencyDirection?: string;
+    /**
+     * Dependent task ids. Supports liquid syntax
+     */
     dependentTaskIds?: string[];
+    /**
+     * The due date
+     */
+    dueDate?: string;
     notes?: string;
     projects: outputs.WorkflowTaskCreateAsanaTaskTaskParamsProject[];
     taskType?: string;
+    /**
+     * The task title
+     */
     title: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     workspace: {[key: string]: any};
 }
 
@@ -452,49 +864,163 @@ export interface WorkflowTaskCreateAsanaTaskTaskParamsProject {
     name: string;
 }
 
+export interface WorkflowTaskCreateClickupTaskTaskParams {
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: string;
+    /**
+     * The task description
+     */
+    description?: string;
+    /**
+     * The due date
+     */
+    dueDate?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
+    priority?: {[key: string]: any};
+    /**
+     * The task tags
+     */
+    tags?: string;
+    /**
+     * Additional ClickUp task attributes. Will be merged into whatever was specified in this tasks current parameters. Can contain liquid markup and need to be valid JSON
+     */
+    taskPayload?: string;
+    taskType?: string;
+    /**
+     * The task title
+     */
+    title: string;
+}
+
 export interface WorkflowTaskCreateConfluencePageTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     ancestor?: {[key: string]: any};
+    /**
+     * The page content
+     */
     content?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
+     */
+    integration?: {[key: string]: any};
+    /**
+     * Value must be one of true or false
+     */
     markPostMortemAsPublished?: boolean;
+    /**
+     * The Retrospective template to use
+     */
     postMortemTemplateId?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     space: {[key: string]: any};
     taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     template?: {[key: string]: any};
+    /**
+     * The page title
+     */
     title: string;
 }
 
 export interface WorkflowTaskCreateDatadogNotebookTaskParams {
+    /**
+     * The notebook content
+     */
     content?: string;
+    /**
+     * The notebook kind. Value must be one of `postmortem`, `runbook`, `investigation`, `documentation`, `report`.
+     */
     kind: string;
+    /**
+     * Value must be one of true or false
+     */
     markPostMortemAsPublished?: boolean;
+    /**
+     * Retrospective template to use when creating notebook, if desired
+     */
     postMortemTemplateId?: string;
     taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     template?: {[key: string]: any};
+    /**
+     * The notebook title
+     */
     title: string;
 }
 
 export interface WorkflowTaskCreateDropboxPaperPageTaskParams {
+    /**
+     * The page content
+     */
     content?: string;
+    /**
+     * Value must be one of true or false
+     */
     markPostMortemAsPublished?: boolean;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     namespace?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     parentFolder?: {[key: string]: any};
+    /**
+     * Retrospective template to use when creating page task, if desired
+     */
     postMortemTemplateId?: string;
     taskType?: string;
+    /**
+     * The page task title
+     */
     title: string;
 }
 
 export interface WorkflowTaskCreateGithubIssueTaskParams {
+    /**
+     * The issue body
+     */
     body?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     repository: {[key: string]: any};
     taskType?: string;
+    /**
+     * The issue title
+     */
     title: string;
 }
 
 export interface WorkflowTaskCreateGoToMeetingTaskParams {
+    /**
+     * Value must be one of `ptsn`, `free`, `hyrid`, `voip`.
+     */
     conferenceCallInfo?: string;
+    /**
+     * Value must be one of true or false
+     */
     passwordRequired?: boolean;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskCreateGoToMeetingTaskParamsPostToSlackChannel[];
+    /**
+     * The meeting subject
+     */
     subject: string;
     taskType?: string;
 }
@@ -505,21 +1031,63 @@ export interface WorkflowTaskCreateGoToMeetingTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskCreateGoogleCalendarEventTaskParams {
+    /**
+     * Emails of attendees
+     */
     attendees: string[];
+    /**
+     * Value must be one of true or false
+     */
     canGuestsInviteOthers?: boolean;
+    /**
+     * Value must be one of true or false
+     */
     canGuestsModifyEvent?: boolean;
+    /**
+     * Value must be one of true or false
+     */
     canGuestsSeeOtherGuests?: boolean;
+    /**
+     * Sets the video conference type attached to the meeting. Value must be one of `eventHangout`, `eventNamedHangout`, `hangoutsMeet`, `addOn`.
+     */
     conferenceSolutionKey?: string;
+    /**
+     * The days until meeting
+     */
     daysUntilMeeting: number;
+    /**
+     * The event description
+     */
     description: string;
+    /**
+     * Value must be one of true or false
+     */
     excludeWeekends?: boolean;
+    /**
+     * Meeting duration in format like '1 hour', '30 minutes'
+     */
     meetingDuration: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannel[];
+    /**
+     * Send an email to the attendees notifying them of the event. Value must be one of true or false
+     */
     sendUpdates?: boolean;
+    /**
+     * The event summary
+     */
     summary: string;
     taskType?: string;
+    /**
+     * Time of meeting in format HH:MM
+     */
     timeOfMeeting: string;
+    /**
+     * Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US & Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US & Canada)`, `Central America`, `Central Time (US & Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US & Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Almaty`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.
+     */
     timeZone?: string;
 }
 
@@ -529,30 +1097,78 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChann
 }
 
 export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
+    /**
+     * The page content
+     */
     content?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     drive?: {[key: string]: any};
+    /**
+     * Value must be one of true or false
+     */
     markPostMortemAsPublished?: boolean;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     parentFolder?: {[key: string]: any};
+    /**
+     * Page permissions JSON
+     */
     permissions?: string;
+    /**
+     * Retrospective template to use when creating page, if desired
+     */
     postMortemTemplateId?: string;
     taskType?: string;
+    /**
+     * The Google Doc file ID to use as a template
+     */
     templateId?: string;
+    /**
+     * The page title
+     */
     title: string;
 }
 
 export interface WorkflowTaskCreateGoogleDocsPermissionsTaskParams {
+    /**
+     * Email message notification
+     */
     emailMessage?: string;
+    /**
+     * The Google Doc file ID
+     */
     fileId: string;
+    /**
+     * Page permissions JSON
+     */
     permissions: string;
+    /**
+     * Value must be one of true or false
+     */
     sendNotificationEmail?: boolean;
     taskType?: string;
 }
 
 export interface WorkflowTaskCreateGoogleMeetingTaskParams {
+    /**
+     * Sets the video conference type attached to the meeting. Value must be one of `eventHangout`, `eventNamedHangout`, `hangoutsMeet`, `addOn`.
+     */
     conferenceSolutionKey?: string;
+    /**
+     * The meeting description
+     */
     description: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannel[];
+    /**
+     * The meeting summary
+     */
     summary: string;
     taskType?: string;
 }
@@ -562,67 +1178,207 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannel {
     name: string;
 }
 
+export interface WorkflowTaskCreateIncidentPostmortemTaskParams {
+    /**
+     * UUID of the incident that needs a retrospective
+     */
+    incidentId: string;
+    status?: string;
+    taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. Retrospective template to use
+     */
+    template?: {[key: string]: any};
+    /**
+     * The retrospective title
+     */
+    title: string;
+}
+
 export interface WorkflowTaskCreateIncidentTaskParams {
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
     environmentIds?: string[];
     functionalityIds?: string[];
     groupIds?: string[];
     incidentTypeIds?: string[];
+    /**
+     * Value must be one of true or false
+     */
     private?: boolean;
     serviceIds?: string[];
     severityId?: string;
+    /**
+     * The incident summary
+     */
     summary?: string;
     taskType?: string;
+    /**
+     * The incident title
+     */
     title: string;
 }
 
 export interface WorkflowTaskCreateJiraIssueTaskParams {
+    /**
+     * The assigned user's email
+     */
     assignUserEmail?: string;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * The issue description
+     */
     description?: string;
+    /**
+     * The due date
+     */
     dueDate?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+     */
+    integration?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`. The issue type id and display name
+     */
     issueType: {[key: string]: any};
+    /**
+     * The issue labels
+     */
     labels?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
     priority?: {[key: string]: any};
+    /**
+     * The project key
+     */
     projectKey: string;
+    /**
+     * The reporter user's email
+     */
     reporterUserEmail?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The status id and display name
+     */
     status?: {[key: string]: any};
     taskType?: string;
+    /**
+     * The issue title
+     */
     title: string;
+    /**
+     * Update payload. Can contain liquid markup and need to be valid JSON
+     */
     updatePayload?: string;
 }
 
 export interface WorkflowTaskCreateJiraSubtaskTaskParams {
+    /**
+     * The assigned user's email
+     */
     assignUserEmail?: string;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * The issue description
+     */
     description?: string;
+    /**
+     * The due date
+     */
     dueDate?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+     */
+    integration?: {[key: string]: any};
+    /**
+     * The issue labels
+     */
     labels?: string;
+    /**
+     * The parent issue
+     */
     parentIssueId: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
     priority?: {[key: string]: any};
+    /**
+     * The project key
+     */
     projectKey: string;
+    /**
+     * The reporter user's email
+     */
     reporterUserEmail?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The status id and display name
+     */
     status?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`. The issue type id and display name
+     */
     subtaskIssueType: {[key: string]: any};
     taskType?: string;
+    /**
+     * The issue title
+     */
     title: string;
+    /**
+     * Update payload. Can contain liquid markup and need to be valid JSON
+     */
     updatePayload?: string;
 }
 
 export interface WorkflowTaskCreateLinearIssueCommentTaskParams {
+    /**
+     * The issue description
+     */
     body: string;
+    /**
+     * The issue id
+     */
     issueId: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskCreateLinearIssueTaskParams {
+    /**
+     * The assigned user's email
+     */
+    assignUserEmail?: string;
+    /**
+     * The issue description
+     */
     description?: string;
     labels?: outputs.WorkflowTaskCreateLinearIssueTaskParamsLabel[];
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
     priority?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`. The project id and display name
+     */
     project?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`. The state id and display name
+     */
     state: {[key: string]: any};
     taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The team id and display name
+     */
     team: {[key: string]: any};
+    /**
+     * The issue title
+     */
     title: string;
 }
 
@@ -632,40 +1388,95 @@ export interface WorkflowTaskCreateLinearIssueTaskParamsLabel {
 }
 
 export interface WorkflowTaskCreateLinearSubtaskIssueTaskParams {
+    /**
+     * The assigned user's email
+     */
+    assignUserEmail?: string;
+    /**
+     * The issue description
+     */
     description?: string;
+    /**
+     * The parent issue
+     */
     parentIssueId: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
     priority?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`. The state id and display name
+     */
     state: {[key: string]: any};
     taskType?: string;
+    /**
+     * The issue title
+     */
     title: string;
 }
 
 export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
+    /**
+     * The meeting name
+     */
     name: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannel[];
+    /**
+     * The meeting subject
+     */
     subject: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannel {
     id: string;
+    /**
+     * The meeting name
+     */
     name: string;
 }
 
 export interface WorkflowTaskCreateNotionPageTaskParams {
+    /**
+     * Value must be one of true or false
+     */
     markPostMortemAsPublished?: boolean;
+    /**
+     * Map must contain two fields, `id` and `name`. The parent page id and display name
+     */
     parentPage: {[key: string]: any};
+    /**
+     * Retrospective template to use when creating page task, if desired
+     */
     postMortemTemplateId?: string;
+    /**
+     * Value must be one of true or false
+     */
     showActionItemsAsTable?: boolean;
+    /**
+     * Value must be one of true or false
+     */
     showTimelineAsTable?: boolean;
     taskType?: string;
 }
 
 export interface WorkflowTaskCreateOpsgenieAlertTaskParams {
+    /**
+     * Description field of the alert that is generally used to provide a detailed information about the alert
+     */
     description?: string;
     escalations?: outputs.WorkflowTaskCreateOpsgenieAlertTaskParamsEscalation[];
+    /**
+     * Message of the alert
+     */
     message: string;
+    /**
+     * Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     */
     priority?: string;
     schedules?: outputs.WorkflowTaskCreateOpsgenieAlertTaskParamsSchedule[];
     taskType?: string;
@@ -694,12 +1505,27 @@ export interface WorkflowTaskCreateOpsgenieAlertTaskParamsUser {
 }
 
 export interface WorkflowTaskCreatePagertreeAlertTaskParams {
+    /**
+     * Description of alert as text
+     */
     description?: string;
+    /**
+     * Setting to true makes an alert a Pagertree incident. Value must be one of true or false
+     */
     incident?: boolean;
+    /**
+     * Value must be one of `auto`, `SEV-1`, `SEV-2`, `SEV-3`, `SEV-4`.
+     */
     severity?: string;
     taskType?: string;
     teams?: outputs.WorkflowTaskCreatePagertreeAlertTaskParamsTeam[];
+    /**
+     * Title of alert as text
+     */
     title?: string;
+    /**
+     * Value must be one of `auto`, `critical`, `high`, `medium`, `low`.
+     */
     urgency?: string;
     users?: outputs.WorkflowTaskCreatePagertreeAlertTaskParamsUser[];
 }
@@ -715,57 +1541,147 @@ export interface WorkflowTaskCreatePagertreeAlertTaskParamsUser {
 }
 
 export interface WorkflowTaskCreateQuipPageTaskParams {
+    /**
+     * The page content
+     */
     content?: string;
+    /**
+     * Value must be one of true or false
+     */
     markPostMortemAsPublished?: boolean;
+    /**
+     * The parent folder id
+     */
     parentFolderId?: string;
+    /**
+     * Retrospective template to use when creating page, if desired
+     */
     postMortemTemplateId?: string;
     taskType?: string;
+    /**
+     * The Quip file ID to use as a template
+     */
     templateId?: string;
+    /**
+     * The page title
+     */
     title: string;
 }
 
 export interface WorkflowTaskCreateServiceNowIncidentTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The completion id and display name
+     */
     completion?: {[key: string]: any};
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * The incident description
+     */
     description?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
     priority?: {[key: string]: any};
     taskType?: string;
+    /**
+     * The incident title
+     */
     title: string;
 }
 
 export interface WorkflowTaskCreateShortcutStoryTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The archivation id and display name
+     */
     archivation: {[key: string]: any};
+    /**
+     * The incident description
+     */
     description?: string;
+    /**
+     * The due date
+     */
     dueDate?: string;
+    /**
+     * Value must be one of `bug`, `chore`, `feature`.
+     */
     kind: string;
+    /**
+     * The story labels
+     */
     labels?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The project id and display name
+     */
     project: {[key: string]: any};
     taskType?: string;
+    /**
+     * The incident title
+     */
     title: string;
 }
 
 export interface WorkflowTaskCreateShortcutTaskTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The completion id and display name
+     */
     completion: {[key: string]: any};
+    /**
+     * The task description
+     */
     description: string;
+    /**
+     * The parent story
+     */
     parentStoryId: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskCreateSlackChannelTaskParams {
+    /**
+     * Value must be one of `auto`, `true`, `false`.
+     */
     private?: string;
     taskType?: string;
+    /**
+     * Slack channel title
+     */
     title: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     workspace: {[key: string]: any};
 }
 
 export interface WorkflowTaskCreateTrelloCardTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The archivation id and display name
+     */
     archivation?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`. The board id and display name
+     */
     board: {[key: string]: any};
+    /**
+     * The card description
+     */
     description?: string;
+    /**
+     * The due date
+     */
     dueDate?: string;
     labels?: outputs.WorkflowTaskCreateTrelloCardTaskParamsLabel[];
+    /**
+     * Map must contain two fields, `id` and `name`. The list id and display name
+     */
     list: {[key: string]: any};
     taskType?: string;
+    /**
+     * The card title
+     */
     title: string;
 }
 
@@ -775,10 +1691,19 @@ export interface WorkflowTaskCreateTrelloCardTaskParamsLabel {
 }
 
 export interface WorkflowTaskCreateWebexMeetingTaskParams {
+    /**
+     * The meeting password
+     */
     password?: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannel[];
     taskType?: string;
+    /**
+     * The meeting topic
+     */
     topic: string;
 }
 
@@ -788,25 +1713,64 @@ export interface WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskCreateZendeskTicketTaskParams {
+    /**
+     * The ticket comment
+     */
     comment?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The completion id and display name
+     */
     completion?: {[key: string]: any};
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * Value must be one of `problem`, `incident`, `question`, `task`.
+     */
     kind: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
     priority?: {[key: string]: any};
+    /**
+     * The ticket subject
+     */
     subject: string;
+    /**
+     * The ticket tags
+     */
     tags?: string;
     taskType?: string;
+    /**
+     * Additional Zendesk ticket attributes. Will be merged into whatever was specified in this tasks current parameters. Can contain liquid markup and need to be valid JSON
+     */
     ticketPayload?: string;
 }
 
 export interface WorkflowTaskCreateZoomMeetingTaskParams {
     alternativeHosts?: string[];
+    /**
+     * Value must be one of `none`, `local`, `cloud`.
+     */
     autoRecording?: string;
+    /**
+     * The email to use if creating as email
+     */
     createAsEmail?: string;
+    /**
+     * The meeting password
+     */
     password?: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel[];
     taskType?: string;
+    /**
+     * The meeting topic
+     */
     topic: string;
 }
 
@@ -818,7 +1782,13 @@ export interface WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel {
 export interface WorkflowTaskGetAlertsTaskParams {
     environmentIds?: string[];
     labels?: string[];
+    /**
+     * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
+     */
     pastDuration: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskGetAlertsTaskParamsPostToSlackChannel[];
     serviceIds?: string[];
@@ -832,9 +1802,18 @@ export interface WorkflowTaskGetAlertsTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskGetGithubCommitsTaskParams {
+    /**
+     * The branch
+     */
     branch: string;
     githubRepositoryNames?: string[];
+    /**
+     * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
+     */
     pastDuration: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskGetGithubCommitsTaskParamsPostToSlackChannel[];
     serviceIds?: string[];
@@ -847,9 +1826,18 @@ export interface WorkflowTaskGetGithubCommitsTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskGetGitlabCommitsTaskParams {
+    /**
+     * The branch
+     */
     branch: string;
     gitlabRepositoryNames?: string[];
+    /**
+     * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
+     */
     pastDuration: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskGetGitlabCommitsTaskParamsPostToSlackChannel[];
     serviceIds?: string[];
@@ -864,7 +1852,13 @@ export interface WorkflowTaskGetGitlabCommitsTaskParamsPostToSlackChannel {
 export interface WorkflowTaskGetPulsesTaskParams {
     environmentIds?: string[];
     labels?: string[];
+    /**
+     * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
+     */
     pastDuration: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskGetPulsesTaskParamsPostToSlackChannel[];
     refs?: string[];
@@ -879,17 +1873,38 @@ export interface WorkflowTaskGetPulsesTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskHTTPClientTaskParams {
+    /**
+     * HTTP body
+     */
     body?: string;
     eventMessage?: string;
     eventUrl?: string;
+    /**
+     * JSON map of HTTP headers
+     */
     headers?: string;
+    /**
+     * HTTP method. Value must be one of `GET`, `POST`, `PUT`, `DELETE`, `OPTIONS`.
+     */
     method?: string;
+    /**
+     * JSON map of HTTP query parameters
+     */
     params?: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskHTTPClientTaskParamsPostToSlackChannel[];
+    /**
+     * HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
+     */
     succeedOnStatus: string;
     taskType?: string;
-    url?: string;
+    /**
+     * URL endpoint
+     */
+    url: string;
 }
 
 export interface WorkflowTaskHTTPClientTaskParamsPostToSlackChannel {
@@ -899,6 +1914,9 @@ export interface WorkflowTaskHTTPClientTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskInviteToSlackChannelOpsgenieTaskParams {
     channels?: outputs.WorkflowTaskInviteToSlackChannelOpsgenieTaskParamsChannel[];
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     schedule: {[key: string]: any};
     taskType?: string;
 }
@@ -910,8 +1928,17 @@ export interface WorkflowTaskInviteToSlackChannelOpsgenieTaskParamsChannel {
 
 export interface WorkflowTaskInviteToSlackChannelPagerdutyTaskParams {
     channels?: outputs.WorkflowTaskInviteToSlackChannelPagerdutyTaskParamsChannel[];
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     escalationPolicy?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     schedule?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     service?: {[key: string]: any};
     taskType?: string;
 }
@@ -922,6 +1949,9 @@ export interface WorkflowTaskInviteToSlackChannelPagerdutyTaskParamsChannel {
 }
 
 export interface WorkflowTaskInviteToSlackChannelTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     channel: {[key: string]: any};
     slackUserGroups?: outputs.WorkflowTaskInviteToSlackChannelTaskParamsSlackUserGroup[];
     slackUsers?: outputs.WorkflowTaskInviteToSlackChannelTaskParamsSlackUser[];
@@ -940,8 +1970,11 @@ export interface WorkflowTaskInviteToSlackChannelTaskParamsSlackUserGroup {
 
 export interface WorkflowTaskInviteToSlackChannelVictorOpsTaskParams {
     channels?: outputs.WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannel[];
-    schedule: {[key: string]: any};
     taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    team: {[key: string]: any};
 }
 
 export interface WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannel {
@@ -950,6 +1983,17 @@ export interface WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannel {
 }
 
 export interface WorkflowTaskPageOpsgenieOnCallRespondersTaskParams {
+    /**
+     * Description field of the incident that is generally used to provide a detailed information about the incident
+     */
+    description?: string;
+    /**
+     * Message of the incident
+     */
+    message?: string;
+    /**
+     * Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     */
     priority?: string;
     taskType?: string;
     teams?: outputs.WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsTeam[];
@@ -967,10 +2011,20 @@ export interface WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsUser {
 }
 
 export interface WorkflowTaskPagePagerdutyOnCallRespondersTaskParams {
+    /**
+     * Rootly only supports linking to a single Pagerduty incident. If this feature is disabled Rootly will add responders from any additional pages to the existing Pagerduty incident that is linked to the Rootly incident. If enabled, Rootly will create a new Pagerduty incident that is not linked to any Rootly incidents. Value must be one of true or false
+     */
+    createNewIncidentOnConflict?: boolean;
     escalationPolicies?: outputs.WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsEscalationPolicy[];
     message?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     service: {[key: string]: any};
     taskType?: string;
+    /**
+     * Value must be one of `high`, `low`, `auto`.
+     */
     urgency?: string;
     users?: outputs.WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsUser[];
 }
@@ -1002,18 +2056,43 @@ export interface WorkflowTaskPageVictorOpsOnCallRespondersTaskParamsUser {
 }
 
 export interface WorkflowTaskPrintTaskParams {
+    /**
+     * The message to print
+     */
     message: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskPublishIncidentTaskParams {
+    /**
+     * Incident event description
+     */
     event?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     incident: {[key: string]: any};
+    /**
+     * Additional API Payload you can pass to statuspage.io for example. Can contain liquid markup and need to be valid JSON
+     */
+    integrationPayload?: string;
+    /**
+     * When true notifies subscribers of the status page by email/text. Value must be one of true or false
+     */
     notifySubscribers?: boolean;
     publicTitle: string;
+    /**
+     * For StatusPage.io integrated pages auto publishes a tweet for your update. Value must be one of true or false
+     */
     shouldTweet?: boolean;
-    status?: string;
+    /**
+     * Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `verifying`, `completed`.
+     */
+    status: string;
     statusPageId: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     statusPageTemplate?: {[key: string]: any};
     taskType?: string;
 }
@@ -1022,6 +2101,9 @@ export interface WorkflowTaskRedisClientTaskParams {
     commands: string;
     eventMessage?: string;
     eventUrl?: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskRedisClientTaskParamsPostToSlackChannel[];
     taskType?: string;
@@ -1034,14 +2116,23 @@ export interface WorkflowTaskRedisClientTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskRemoveGoogleDocsPermissionsTaskParams {
+    /**
+     * Value must be one of `type`, `role`, `emailAddress`.
+     */
     attributeToQueryBy: string;
+    /**
+     * The Google Doc file ID
+     */
     fileId: string;
     taskType?: string;
     value: string;
 }
 
 export interface WorkflowTaskRenameSlackChannelTaskParams {
-    channel?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    channel: {[key: string]: any};
     taskType?: string;
     title: string;
 }
@@ -1049,8 +2140,14 @@ export interface WorkflowTaskRenameSlackChannelTaskParams {
 export interface WorkflowTaskRunCommandHerokuTaskParams {
     appName: string;
     command: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskRunCommandHerokuTaskParamsPostToSlackChannel[];
+    /**
+     * Value must be one of `standard-1X`, `standard-2X`.
+     */
     size: string;
     taskType?: string;
 }
@@ -1061,10 +2158,22 @@ export interface WorkflowTaskRunCommandHerokuTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskSendDashboardReportTaskParams {
+    /**
+     * The email body
+     */
     body: string;
     dashboardIds: string[];
+    /**
+     * The from email address. Need to use SMTP integration if different than rootly.com
+     */
     from?: string;
+    /**
+     * The preheader
+     */
     preheader?: string;
+    /**
+     * The subject
+     */
     subject: string;
     taskType?: string;
     tos: string[];
@@ -1072,30 +2181,73 @@ export interface WorkflowTaskSendDashboardReportTaskParams {
 
 export interface WorkflowTaskSendEmailTaskParams {
     bccs?: string[];
+    /**
+     * The email body
+     */
     body: string;
     ccs?: string[];
+    /**
+     * URL to your custom email logo
+     */
     customLogoUrl?: string;
+    /**
+     * The from email address. Need to use SMTP integration if different than rootly.com
+     */
     from?: string;
+    /**
+     * Value must be one of true or false
+     */
     includeFooter?: boolean;
+    /**
+     * Value must be one of true or false
+     */
     includeHeader?: boolean;
+    /**
+     * The preheader
+     */
     preheader?: string;
+    /**
+     * The subject
+     */
     subject: string;
     taskType?: string;
     tos: string[];
 }
 
 export interface WorkflowTaskSendSlackBlocksTaskParams {
+    /**
+     * Support liquid markup. Needs to be a valid JSON string after liquid is parsed
+     */
     attachments?: string;
+    /**
+     * Support liquid markup. Needs to be a valid JSON string after liquid is parsed
+     */
     blocks: string;
+    /**
+     * Value must be one of true or false
+     */
     broadcastThreadReplyToChannel?: boolean;
     channels?: outputs.WorkflowTaskSendSlackBlocksTaskParamsChannel[];
     message?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
+     */
     parentMessageThreadTask?: {[key: string]: any};
+    /**
+     * Value must be one of true or false
+     */
     pinToChannel?: boolean;
+    /**
+     * Value must be one of true or false
+     */
     sendAsEphemeral?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup[];
     slackUsers?: outputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUser[];
     taskType?: string;
+    /**
+     * Value must be one of true or false
+     */
+    updateParentMessage?: boolean;
 }
 
 export interface WorkflowTaskSendSlackBlocksTaskParamsChannel {
@@ -1114,17 +2266,42 @@ export interface WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup {
 }
 
 export interface WorkflowTaskSendSlackMessageTaskParams {
+    /**
+     * Value must be one of `updateSummary`, `updateStatus`, `archiveChannel`, `manageIncidentRoles`, `updateIncident`, `allCommands`, `leaveFeedback`, `manageFormFields`, `manageActionItems`, `viewTasks`, `addPagerdutyResponders`, `addOpsgenieResponders`, `addVictorOpsResponders`, `snoozeReminder`, `pauseReminder`, `restartReminder`, `updateStatusPage`, `cancelIncident`.
+     */
     actionables?: string[];
+    /**
+     * Value must be one of true or false
+     */
     broadcastThreadReplyToChannel?: boolean;
     channels?: outputs.WorkflowTaskSendSlackMessageTaskParamsChannel[];
+    /**
+     * A hex color
+     */
     color?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
+     */
     parentMessageThreadTask?: {[key: string]: any};
+    /**
+     * Value must be one of true or false
+     */
     pinToChannel?: boolean;
+    /**
+     * Value must be one of true or false
+     */
     sendAsEphemeral?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup[];
     slackUsers?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUser[];
     taskType?: string;
+    /**
+     * The message text
+     */
     text: string;
+    /**
+     * Value must be one of true or false
+     */
+    updateParentMessage?: boolean;
 }
 
 export interface WorkflowTaskSendSlackMessageTaskParamsChannel {
@@ -1143,7 +2320,26 @@ export interface WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup {
 }
 
 export interface WorkflowTaskSendSmsTaskParams {
+    /**
+     * The SMS message
+     */
     content: string;
+    /**
+     * The name
+     */
+    name: string;
+    phoneNumbers: string[];
+    taskType?: string;
+}
+
+export interface WorkflowTaskSendWhatsappMessageTaskParams {
+    /**
+     * The WhatsApp message
+     */
+    content: string;
+    /**
+     * The name
+     */
     name: string;
     phoneNumbers: string[];
     taskType?: string;
@@ -1152,7 +2348,13 @@ export interface WorkflowTaskSendSmsTaskParams {
 export interface WorkflowTaskSnapshotDatadogGraphTaskParams {
     dashboards?: outputs.WorkflowTaskSnapshotDatadogGraphTaskParamsDashboard[];
     metricQueries?: string[];
+    /**
+     * in format '1 minute', '30 days', '3 months', etc
+     */
     pastDuration: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskSnapshotDatadogGraphTaskParamsPostToSlackChannel[];
     taskType?: string;
@@ -1170,6 +2372,9 @@ export interface WorkflowTaskSnapshotDatadogGraphTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskSnapshotGrafanaDashboardTaskParams {
     dashboards: outputs.WorkflowTaskSnapshotGrafanaDashboardTaskParamsDashboard[];
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskSnapshotGrafanaDashboardTaskParamsPostToSlackChannel[];
     taskType?: string;
@@ -1187,6 +2392,9 @@ export interface WorkflowTaskSnapshotGrafanaDashboardTaskParamsPostToSlackChanne
 
 export interface WorkflowTaskSnapshotLookerLookTaskParams {
     dashboards: outputs.WorkflowTaskSnapshotLookerLookTaskParamsDashboard[];
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskSnapshotLookerLookTaskParamsPostToSlackChannel[];
     taskType?: string;
@@ -1204,7 +2412,13 @@ export interface WorkflowTaskSnapshotLookerLookTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskSnapshotNewRelicGraphTaskParams {
     metricQuery: string;
+    /**
+     * Value must be one of `APDEX`, `AREA`, `BAR`, `BASELINE`, `BILLBOARD`, `BULLET`, `EVENT_FEED`, `FUNNEL`, `HEATMAP`, `HISTOGRAM`, `LINE`, `PIE`, `SCATTER`, `STACKED_HORIZONTAL_BAR`, `TABLE`, `VERTICAL_BAR`.
+     */
     metricType: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskSnapshotNewRelicGraphTaskParamsPostToSlackChannel[];
     taskType?: string;
@@ -1216,10 +2430,22 @@ export interface WorkflowTaskSnapshotNewRelicGraphTaskParamsPostToSlackChannel {
 }
 
 export interface WorkflowTaskTriggerWorkflowTaskParams {
+    /**
+     * Value must be one of true or false
+     */
     checkWorkflowConditions?: boolean;
+    /**
+     * Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+     */
     kind: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     resource: {[key: string]: any};
     taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     workflow: {[key: string]: any};
 }
 
@@ -1229,61 +2455,221 @@ export interface WorkflowTaskTweetTwitterMessageTaskParams {
 }
 
 export interface WorkflowTaskUpdateActionItemTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.  The user this action item is assigned to
+     */
+    assignedToUser?: {[key: string]: any};
+    /**
+     * [DEPRECATED] Use assigned*to*user attribute instead. The user id this action item is assigned to
+     */
     assignedToUserId?: string;
+    /**
+     * Attribute of the action item to match against. Value must be one of `id`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
+     */
     attributeToQueryBy: string;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: string;
+    /**
+     * The action item description
+     */
     description?: string;
     groupIds?: string[];
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
+    /**
+     * The action item priority. Value must be one of `high`, `medium`, `low`.
+     */
+    priority?: string;
+    /**
+     * Value that attribute*to*query_by to uses to match against
+     */
     queryValue: string;
+    /**
+     * The action item status. Value must be one of `open`, `inProgress`, `cancelled`, `done`.
+     */
     status?: string;
+    /**
+     * Brief description of the action item
+     */
     summary?: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskUpdateAirtableTableRecordTaskParams {
+    /**
+     * The base key
+     */
     baseKey: string;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * The record id
+     */
     recordId: string;
+    /**
+     * The table name
+     */
     tableName: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskUpdateAsanaTaskTaskParams {
+    /**
+     * The assigned user's email
+     */
     assignUserEmail?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     completion: {[key: string]: any};
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * Value must be one of `blocking`, `blockedBy`.
+     */
     dependencyDirection?: string;
+    /**
+     * Dependent task ids. Supports liquid syntax
+     */
     dependentTaskIds?: string[];
+    /**
+     * The due date
+     */
+    dueDate?: string;
     notes?: string;
+    /**
+     * The task id
+     */
     taskId: string;
     taskType?: string;
+    /**
+     * The task title
+     */
+    title?: string;
+}
+
+export interface WorkflowTaskUpdateClickupTaskTaskParams {
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: string;
+    /**
+     * The task description
+     */
+    description?: string;
+    /**
+     * The due date
+     */
+    dueDate?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
+    priority?: {[key: string]: any};
+    /**
+     * The task tags
+     */
+    tags?: string;
+    /**
+     * The task id
+     */
+    taskId: string;
+    /**
+     * Additional ClickUp task attributes. Will be merged into whatever was specified in this tasks current parameters. Can contain liquid markup and need to be valid JSON
+     */
+    taskPayload?: string;
+    taskType?: string;
+    /**
+     * The task title
+     */
     title?: string;
 }
 
 export interface WorkflowTaskUpdateGithubIssueTaskParams {
+    /**
+     * The issue body
+     */
     body?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     completion: {[key: string]: any};
+    /**
+     * The issue id
+     */
     issueId: string;
     taskType?: string;
+    /**
+     * The issue title
+     */
     title?: string;
 }
 
 export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
+    /**
+     * Days to adjust meeting by
+     */
     adjustmentDays?: number;
+    /**
+     * Emails of attendees
+     */
     attendees?: string[];
+    /**
+     * Value must be one of true or false
+     */
     canGuestsInviteOthers?: boolean;
+    /**
+     * Value must be one of true or false
+     */
     canGuestsModifyEvent?: boolean;
+    /**
+     * Value must be one of true or false
+     */
     canGuestsSeeOtherGuests?: boolean;
+    /**
+     * Sets the video conference type attached to the meeting. Value must be one of `eventHangout`, `eventNamedHangout`, `hangoutsMeet`, `addOn`.
+     */
     conferenceSolutionKey?: string;
+    /**
+     * The event description
+     */
     description?: string;
+    /**
+     * The event ID
+     */
     eventId: string;
+    /**
+     * Meeting duration in format like '1 hour', '30 minutes'
+     */
     meetingDuration?: string;
+    /**
+     * Value must be one of true or false
+     */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannel[];
+    /**
+     * Value must be one of true or false
+     */
     replaceAttendees?: boolean;
+    /**
+     * Send an email to the attendees notifying them of the event. Value must be one of true or false
+     */
     sendUpdates?: boolean;
+    /**
+     * The event summary
+     */
     summary?: string;
     taskType?: string;
+    /**
+     * Time of meeting in format HH:MM
+     */
     timeOfMeeting?: string;
 }
 
@@ -1293,66 +2679,164 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChann
 }
 
 export interface WorkflowTaskUpdateGoogleDocsPageTaskParams {
+    /**
+     * The Google Doc content
+     */
     content?: string;
-    emailMessage?: string;
+    /**
+     * The Google Doc file ID
+     */
     fileId: string;
+    /**
+     * Retrospective template to use when updating page, if desired
+     */
     postMortemTemplateId?: string;
     taskType?: string;
+    /**
+     * The Google Doc file ID to use as a template.
+     */
+    templateId?: string;
+    /**
+     * The Google Doc title
+     */
     title?: string;
 }
 
 export interface WorkflowTaskUpdateIncidentPostmortemTaskParams {
-    postmortemId?: string;
+    /**
+     * UUID of the retrospective that needs to be updated
+     */
+    postmortemId: string;
     status?: string;
     taskType?: string;
+    /**
+     * The incident title
+     */
     title?: string;
 }
 
 export interface WorkflowTaskUpdateIncidentTaskParams {
     acknowledgedAt?: string;
+    /**
+     * Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
+     */
     attributeToQueryBy?: string;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
     detectedAt?: string;
     environmentIds?: string[];
     functionalityIds?: string[];
     groupIds?: string[];
-    incidentId?: string;
+    /**
+     * The incident id to update or id of any attribute on the incident
+     */
+    incidentId: string;
     incidentTypeIds?: string[];
     mitigatedAt?: string;
+    /**
+     * Value must be one of true or false
+     */
     private?: boolean;
     resolvedAt?: string;
     serviceIds?: string[];
     severityId?: string;
     startedAt?: string;
     status?: string;
+    /**
+     * The incident summary
+     */
     summary?: string;
     taskType?: string;
+    /**
+     * The incident title
+     */
     title?: string;
 }
 
 export interface WorkflowTaskUpdateJiraIssueTaskParams {
+    /**
+     * The assigned user's email
+     */
     assignUserEmail?: string;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * The issue description
+     */
     description?: string;
+    /**
+     * The due date
+     */
+    dueDate?: string;
+    /**
+     * The issue id
+     */
     issueId: string;
+    /**
+     * The issue labels
+     */
     labels?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
     priority?: {[key: string]: any};
+    /**
+     * The project key
+     */
     projectKey: string;
+    /**
+     * The reporter user's email
+     */
     reporterUserEmail?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The status id and display name
+     */
     status?: {[key: string]: any};
     taskType?: string;
+    /**
+     * The issue title
+     */
     title?: string;
+    /**
+     * Update payload. Can contain liquid markup and need to be valid JSON
+     */
     updatePayload?: string;
 }
 
 export interface WorkflowTaskUpdateLinearIssueTaskParams {
+    /**
+     * The assigned user's email
+     */
+    assignUserEmail?: string;
+    /**
+     * The issue description
+     */
     description?: string;
+    /**
+     * The issue id
+     */
     issueId: string;
     labels?: outputs.WorkflowTaskUpdateLinearIssueTaskParamsLabel[];
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
     priority?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`. The project id and display name
+     */
     project?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`. The state id and display name
+     */
     state?: {[key: string]: any};
     taskType?: string;
+    /**
+     * The issue title
+     */
     title?: string;
 }
 
@@ -1361,41 +2845,128 @@ export interface WorkflowTaskUpdateLinearIssueTaskParamsLabel {
     name: string;
 }
 
+export interface WorkflowTaskUpdateNotionPageTaskParams {
+    /**
+     * The Notion page ID
+     */
+    fileId: string;
+    /**
+     * Retrospective template to use when creating page task, if desired
+     */
+    postMortemTemplateId?: string;
+    /**
+     * Value must be one of true or false
+     */
+    showActionItemsAsTable?: boolean;
+    /**
+     * Value must be one of true or false
+     */
+    showTimelineAsTable?: boolean;
+    taskType?: string;
+}
+
 export interface WorkflowTaskUpdateOpsgenieAlertTaskParams {
+    /**
+     * Opsgenie Alert ID
+     */
+    alertId: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     completion: {[key: string]: any};
+    /**
+     * Description field of the alert that is generally used to provide a detailed information about the alert
+     */
     description?: string;
+    /**
+     * Message of the alert
+     */
     message?: string;
+    /**
+     * Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     */
     priority: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskUpdateOpsgenieIncidentTaskParams {
+    /**
+     * Description field of the alert that is generally used to provide a detailed information about the alert
+     */
     description?: string;
+    /**
+     * Message of the alert
+     */
     message?: string;
+    /**
+     * The Opsgenie incident ID, this can also be a Rootly incident variable
+     */
     opsgenieIncidentId: string;
+    /**
+     * Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     */
     priority?: string;
+    /**
+     * Value must be one of `resolve`, `open`, `close`, `auto`.
+     */
     status?: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskUpdatePagerdutyIncidentTaskParams {
+    /**
+     * Escalation level of policy attached to incident
+     */
     escalationLevel?: number;
+    /**
+     * Pagerduty incident id
+     */
     pagerdutyIncidentId: string;
+    /**
+     * A message outlining the incident's resolution in Pagerduty
+     */
     resolution?: string;
+    /**
+     * Value must be one of `resolved`, `acknowledged`, `auto`.
+     */
     status?: string;
     taskType?: string;
+    /**
+     * Title to update to
+     */
     title?: string;
+    /**
+     * Pagerduty incident urgency, selecting auto will let Rootly auto map our incident severity. Value must be one of `high`, `low`, `auto`.
+     */
     urgency?: string;
 }
 
 export interface WorkflowTaskUpdatePagertreeAlertTaskParams {
+    /**
+     * Description of alert as text
+     */
     description?: string;
+    /**
+     * Setting to true makes an alert a Pagertree incident. Value must be one of true or false
+     */
     incident?: boolean;
+    /**
+     * The prefix ID of the Pagertree alert
+     */
     pagertreeAlertId?: string;
+    /**
+     * Value must be one of `auto`, `SEV-1`, `SEV-2`, `SEV-3`, `SEV-4`.
+     */
     severity?: string;
     taskType?: string;
     teams?: outputs.WorkflowTaskUpdatePagertreeAlertTaskParamsTeam[];
+    /**
+     * Title of alert as text
+     */
     title?: string;
+    /**
+     * Value must be one of `auto`, `critical`, `high`, `medium`, `low`.
+     */
     urgency?: string;
     users?: outputs.WorkflowTaskUpdatePagertreeAlertTaskParamsUser[];
 }
@@ -1411,54 +2982,132 @@ export interface WorkflowTaskUpdatePagertreeAlertTaskParamsUser {
 }
 
 export interface WorkflowTaskUpdateServiceNowIncidentTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The completion id and display name
+     */
     completion?: {[key: string]: any};
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * The incident description
+     */
     description?: string;
+    /**
+     * The incident id
+     */
     incidentId: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
     priority?: {[key: string]: any};
     taskType?: string;
+    /**
+     * The incident title
+     */
     title?: string;
 }
 
 export interface WorkflowTaskUpdateShortcutStoryTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The archivation id and display name
+     */
     archivation: {[key: string]: any};
+    /**
+     * The incident description
+     */
     description?: string;
+    /**
+     * The due date
+     */
     dueDate?: string;
+    /**
+     * The story labels
+     */
     labels?: string;
+    /**
+     * The story id
+     */
     storyId: string;
     taskType?: string;
+    /**
+     * The incident title
+     */
     title?: string;
 }
 
 export interface WorkflowTaskUpdateShortcutTaskTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The completion id and display name
+     */
     completion: {[key: string]: any};
+    /**
+     * The task description
+     */
     description?: string;
+    /**
+     * The parent story
+     */
     parentStoryId: string;
+    /**
+     * The task id
+     */
     taskId: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskUpdateSlackChannelTopicTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
     channel: {[key: string]: any};
     taskType?: string;
     topic: string;
 }
 
 export interface WorkflowTaskUpdateStatusTaskParams {
+    /**
+     * In format '1 hour', '1 day', etc
+     */
     inactivityTimeout?: string;
+    /**
+     * Value must be one of `inTriage`, `started`, `mitigated`, `resolved`, `cancelled`.
+     */
     status: string;
     taskType?: string;
 }
 
 export interface WorkflowTaskUpdateTrelloCardTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The archivation id and display name
+     */
     archivation: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`. The board id and display name
+     */
     board?: {[key: string]: any};
+    /**
+     * The card id
+     */
     cardId: string;
+    /**
+     * The card description
+     */
     description?: string;
+    /**
+     * The due date
+     */
     dueDate?: string;
     labels?: outputs.WorkflowTaskUpdateTrelloCardTaskParamsLabel[];
+    /**
+     * Map must contain two fields, `id` and `name`. The list id and display name
+     */
     list?: {[key: string]: any};
     taskType?: string;
+    /**
+     * The card title
+     */
     title?: string;
 }
 
@@ -1468,20 +3117,50 @@ export interface WorkflowTaskUpdateTrelloCardTaskParamsLabel {
 }
 
 export interface WorkflowTaskUpdateVictorOpsIncidentTaskParams {
+    /**
+     * Resolution message
+     */
     resolutionMessage?: string;
+    /**
+     * Value must be one of `resolve`, `ack`, `auto`.
+     */
     status: string;
     taskType?: string;
+    /**
+     * The victorOps incident ID, this can also be a Rootly incident variable
+     */
     victorOpsIncidentId: string;
 }
 
 export interface WorkflowTaskUpdateZendeskTicketTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The completion id and display name
+     */
     completion?: {[key: string]: any};
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
     customFieldsMapping?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The priority id and display name
+     */
     priority?: {[key: string]: any};
+    /**
+     * The ticket subject
+     */
     subject?: string;
+    /**
+     * The ticket tags
+     */
     tags?: string;
     taskType?: string;
+    /**
+     * The ticket id
+     */
     ticketId: string;
+    /**
+     * Additional Zendesk ticket attributes. Will be merged into whatever was specified in this tasks current parameters. Can contain liquid markup and need to be valid JSON
+     */
     ticketPayload?: string;
 }
 

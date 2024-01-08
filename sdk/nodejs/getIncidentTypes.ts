@@ -2,16 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getIncidentTypes(args?: GetIncidentTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentTypesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getIncidentTypes:getIncidentTypes", {
         "name": args.name,
         "slug": args.slug,
@@ -38,9 +36,8 @@ export interface GetIncidentTypesResult {
     readonly name?: string;
     readonly slug?: string;
 }
-
 export function getIncidentTypesOutput(args?: GetIncidentTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIncidentTypesResult> {
-    return pulumi.output(args).apply(a => getIncidentTypes(a, opts))
+    return pulumi.output(args).apply((a: any) => getIncidentTypes(a, opts))
 }
 
 /**

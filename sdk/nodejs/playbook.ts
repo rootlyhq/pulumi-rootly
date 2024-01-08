@@ -53,6 +53,10 @@ export class Playbook extends pulumi.CustomResource {
      */
     public readonly incidentTypeIds!: pulumi.Output<string[]>;
     /**
+     * The Service ID's to attach to the incident
+     */
+    public readonly serviceIds!: pulumi.Output<string[]>;
+    /**
      * The Severity ID's to attach to the incident
      */
     public readonly severityIds!: pulumi.Output<string[]>;
@@ -83,6 +87,7 @@ export class Playbook extends pulumi.CustomResource {
             resourceInputs["functionalityIds"] = state ? state.functionalityIds : undefined;
             resourceInputs["groupIds"] = state ? state.groupIds : undefined;
             resourceInputs["incidentTypeIds"] = state ? state.incidentTypeIds : undefined;
+            resourceInputs["serviceIds"] = state ? state.serviceIds : undefined;
             resourceInputs["severityIds"] = state ? state.severityIds : undefined;
             resourceInputs["summary"] = state ? state.summary : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
@@ -96,6 +101,7 @@ export class Playbook extends pulumi.CustomResource {
             resourceInputs["functionalityIds"] = args ? args.functionalityIds : undefined;
             resourceInputs["groupIds"] = args ? args.groupIds : undefined;
             resourceInputs["incidentTypeIds"] = args ? args.incidentTypeIds : undefined;
+            resourceInputs["serviceIds"] = args ? args.serviceIds : undefined;
             resourceInputs["severityIds"] = args ? args.severityIds : undefined;
             resourceInputs["summary"] = args ? args.summary : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
@@ -129,6 +135,10 @@ export interface PlaybookState {
      * The Incident Type ID's to attach to the incident
      */
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Service ID's to attach to the incident
+     */
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Severity ID's to attach to the incident
      */
@@ -167,6 +177,10 @@ export interface PlaybookArgs {
      * The Incident Type ID's to attach to the incident
      */
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Service ID's to attach to the incident
+     */
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Severity ID's to attach to the incident
      */

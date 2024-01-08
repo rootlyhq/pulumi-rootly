@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -79,6 +80,10 @@ export class WorkflowTaskCreateJiraIssue extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Name of the workflow task
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
      * The position of the workflow task (1 being top of list)
      */
     public readonly position!: pulumi.Output<number>;
@@ -109,6 +114,7 @@ export class WorkflowTaskCreateJiraIssue extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkflowTaskCreateJiraIssueState | undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["skipOnFailure"] = state ? state.skipOnFailure : undefined;
             resourceInputs["taskParams"] = state ? state.taskParams : undefined;
@@ -122,6 +128,7 @@ export class WorkflowTaskCreateJiraIssue extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workflowId'");
             }
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["skipOnFailure"] = args ? args.skipOnFailure : undefined;
             resourceInputs["taskParams"] = args ? args.taskParams : undefined;
@@ -140,6 +147,10 @@ export interface WorkflowTaskCreateJiraIssueState {
      * Enable/disable this workflow task
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Name of the workflow task
+     */
+    name?: pulumi.Input<string>;
     /**
      * The position of the workflow task (1 being top of list)
      */
@@ -166,6 +177,10 @@ export interface WorkflowTaskCreateJiraIssueArgs {
      * Enable/disable this workflow task
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Name of the workflow task
+     */
+    name?: pulumi.Input<string>;
     /**
      * The position of the workflow task (1 being top of list)
      */

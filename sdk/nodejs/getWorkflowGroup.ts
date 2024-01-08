@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const my_workflow_group = pulumi.output(rootly.getWorkflowGroup({
+ * const my-workflow-group = rootly.getWorkflowGroup({
  *     slug: "my-workflow-group",
- * }));
+ * });
  * ```
  */
 export function getWorkflowGroup(args?: GetWorkflowGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowGroupResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getWorkflowGroup:getWorkflowGroup", {
         "expanded": args.expanded,
         "kind": args.kind,
@@ -48,15 +45,29 @@ export interface GetWorkflowGroupArgs {
  */
 export interface GetWorkflowGroupResult {
     readonly expanded: boolean;
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly kind: string;
     readonly name: string;
     readonly position: number;
     readonly slug: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my-workflow-group = rootly.getWorkflowGroup({
+ *     slug: "my-workflow-group",
+ * });
+ * ```
+ */
 export function getWorkflowGroupOutput(args?: GetWorkflowGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowGroupResult> {
-    return pulumi.output(args).apply(a => getWorkflowGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkflowGroup(a, opts))
 }
 
 /**

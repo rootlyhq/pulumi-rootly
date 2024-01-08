@@ -37,8 +37,7 @@ export class WorkflowCustomFieldSelection extends pulumi.CustomResource {
      */
     public readonly customFieldId!: pulumi.Output<number>;
     /**
-     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`,
-     * `UNSET`.
+     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     public readonly incidentCondition!: pulumi.Output<string | undefined>;
     public readonly selectedOptionIds!: pulumi.Output<number[]>;
@@ -91,8 +90,7 @@ export interface WorkflowCustomFieldSelectionState {
      */
     customFieldId?: pulumi.Input<number>;
     /**
-     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`,
-     * `UNSET`.
+     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentCondition?: pulumi.Input<string>;
     selectedOptionIds?: pulumi.Input<pulumi.Input<number>[]>;
@@ -112,8 +110,7 @@ export interface WorkflowCustomFieldSelectionArgs {
      */
     customFieldId: pulumi.Input<number>;
     /**
-     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`,
-     * `UNSET`.
+     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentCondition?: pulumi.Input<string>;
     selectedOptionIds?: pulumi.Input<pulumi.Input<number>[]>;

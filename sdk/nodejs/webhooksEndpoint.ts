@@ -34,13 +34,7 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
 
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,
-     * `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,
-     * `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,
-     * `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,
-     * `incident_post_mortem.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`,
-     * `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`,
-     * `genius_workflow_run.canceled`.
+     * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`.
      */
     public readonly eventTypes!: pulumi.Output<string[]>;
     /**
@@ -102,13 +96,7 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
 export interface WebhooksEndpointState {
     enabled?: pulumi.Input<boolean>;
     /**
-     * Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,
-     * `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,
-     * `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,
-     * `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,
-     * `incident_post_mortem.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`,
-     * `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`,
-     * `genius_workflow_run.canceled`.
+     * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`.
      */
     eventTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -135,13 +123,7 @@ export interface WebhooksEndpointState {
 export interface WebhooksEndpointArgs {
     enabled?: pulumi.Input<boolean>;
     /**
-     * Value must be one of `incident.created`, `incident.updated`, `incident.mitigated`, `incident.resolved`,
-     * `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`,
-     * `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`,
-     * `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`,
-     * `incident_post_mortem.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`,
-     * `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`,
-     * `genius_workflow_run.canceled`.
+     * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`.
      */
     eventTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

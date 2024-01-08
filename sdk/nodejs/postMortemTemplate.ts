@@ -33,15 +33,15 @@ export class PostMortemTemplate extends pulumi.CustomResource {
     }
 
     /**
-     * The postmortem template. Liquid syntax and markdown are supported.
+     * The postmortem template. Liquid syntax and markdown are supported
      */
     public readonly content!: pulumi.Output<string>;
     /**
-     * Default selected template when editing a postmortem
+     * Default selected template when editing a postmortem. Value must be one of true or false
      */
     public readonly default!: pulumi.Output<boolean>;
     /**
-     * The format of the input.. Value must be one of `html`, `markdown`.
+     * The format of the input. Value must be one of `html`, `markdown`.
      */
     public readonly format!: pulumi.Output<string | undefined>;
     /**
@@ -56,7 +56,7 @@ export class PostMortemTemplate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: PostMortemTemplateArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: PostMortemTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PostMortemTemplateArgs | PostMortemTemplateState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -68,9 +68,6 @@ export class PostMortemTemplate extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as PostMortemTemplateArgs | undefined;
-            if ((!args || args.content === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'content'");
-            }
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["default"] = args ? args.default : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
@@ -86,15 +83,15 @@ export class PostMortemTemplate extends pulumi.CustomResource {
  */
 export interface PostMortemTemplateState {
     /**
-     * The postmortem template. Liquid syntax and markdown are supported.
+     * The postmortem template. Liquid syntax and markdown are supported
      */
     content?: pulumi.Input<string>;
     /**
-     * Default selected template when editing a postmortem
+     * Default selected template when editing a postmortem. Value must be one of true or false
      */
     default?: pulumi.Input<boolean>;
     /**
-     * The format of the input.. Value must be one of `html`, `markdown`.
+     * The format of the input. Value must be one of `html`, `markdown`.
      */
     format?: pulumi.Input<string>;
     /**
@@ -108,15 +105,15 @@ export interface PostMortemTemplateState {
  */
 export interface PostMortemTemplateArgs {
     /**
-     * The postmortem template. Liquid syntax and markdown are supported.
+     * The postmortem template. Liquid syntax and markdown are supported
      */
-    content: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
     /**
-     * Default selected template when editing a postmortem
+     * Default selected template when editing a postmortem. Value must be one of true or false
      */
     default?: pulumi.Input<boolean>;
     /**
-     * The format of the input.. Value must be one of `html`, `markdown`.
+     * The format of the input. Value must be one of `html`, `markdown`.
      */
     format?: pulumi.Input<string>;
     /**

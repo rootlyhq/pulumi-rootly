@@ -66,20 +66,23 @@ export class FormFieldOption extends pulumi.CustomResource {
     }
 
     /**
-     * The hex color of the form_field_option
+     * The hex color of the form*field*option
      */
     public readonly color!: pulumi.Output<string>;
+    /**
+     * Value must be one of true or false
+     */
     public readonly default!: pulumi.Output<boolean>;
     /**
      * The ID of the parent custom field
      */
     public readonly formFieldId!: pulumi.Output<string>;
     /**
-     * The position of the form_field_option
+     * The position of the form*field*option
      */
     public readonly position!: pulumi.Output<number>;
     /**
-     * The value of the form_field_option
+     * The value of the form*field*option
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -125,20 +128,23 @@ export class FormFieldOption extends pulumi.CustomResource {
  */
 export interface FormFieldOptionState {
     /**
-     * The hex color of the form_field_option
+     * The hex color of the form*field*option
      */
     color?: pulumi.Input<string>;
+    /**
+     * Value must be one of true or false
+     */
     default?: pulumi.Input<boolean>;
     /**
      * The ID of the parent custom field
      */
     formFieldId?: pulumi.Input<string>;
     /**
-     * The position of the form_field_option
+     * The position of the form*field*option
      */
     position?: pulumi.Input<number>;
     /**
-     * The value of the form_field_option
+     * The value of the form*field*option
      */
     value?: pulumi.Input<string>;
 }
@@ -148,20 +154,23 @@ export interface FormFieldOptionState {
  */
 export interface FormFieldOptionArgs {
     /**
-     * The hex color of the form_field_option
+     * The hex color of the form*field*option
      */
     color?: pulumi.Input<string>;
+    /**
+     * Value must be one of true or false
+     */
     default?: pulumi.Input<boolean>;
     /**
      * The ID of the parent custom field
      */
     formFieldId: pulumi.Input<string>;
     /**
-     * The position of the form_field_option
+     * The position of the form*field*option
      */
     position?: pulumi.Input<number>;
     /**
-     * The value of the form_field_option
+     * The value of the form*field*option
      */
     value: pulumi.Input<string>;
 }

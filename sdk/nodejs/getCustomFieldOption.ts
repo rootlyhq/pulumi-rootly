@@ -6,25 +6,11 @@ import * as utilities from "./utilities";
 
 /**
  * DEPRECATED: Please use `formField` and `formFieldOption` data sources instead.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rootly from "@pulumi/rootly";
- *
- * const my_custom_field_option = pulumi.output(rootly.getCustomFieldOption({
- *     slug: "my-custom-field-option",
- * }));
- * ```
  */
 export function getCustomFieldOption(args?: GetCustomFieldOptionArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomFieldOptionResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getCustomFieldOption:getCustomFieldOption", {
         "color": args.color,
         "value": args.value,
@@ -44,12 +30,17 @@ export interface GetCustomFieldOptionArgs {
  */
 export interface GetCustomFieldOptionResult {
     readonly color: string;
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly value: string;
 }
-
+/**
+ * DEPRECATED: Please use `formField` and `formFieldOption` data sources instead.
+ */
 export function getCustomFieldOptionOutput(args?: GetCustomFieldOptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomFieldOptionResult> {
-    return pulumi.output(args).apply(a => getCustomFieldOption(a, opts))
+    return pulumi.output(args).apply((a: any) => getCustomFieldOption(a, opts))
 }
 
 /**

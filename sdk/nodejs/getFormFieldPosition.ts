@@ -6,11 +6,8 @@ import * as utilities from "./utilities";
 
 export function getFormFieldPosition(args?: GetFormFieldPositionArgs, opts?: pulumi.InvokeOptions): Promise<GetFormFieldPositionResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getFormFieldPosition:getFormFieldPosition", {
         "form": args.form,
     }, opts);
@@ -28,11 +25,13 @@ export interface GetFormFieldPositionArgs {
  */
 export interface GetFormFieldPositionResult {
     readonly form: string;
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
 }
-
 export function getFormFieldPositionOutput(args?: GetFormFieldPositionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFormFieldPositionResult> {
-    return pulumi.output(args).apply(a => getFormFieldPosition(a, opts))
+    return pulumi.output(args).apply((a: any) => getFormFieldPosition(a, opts))
 }
 
 /**

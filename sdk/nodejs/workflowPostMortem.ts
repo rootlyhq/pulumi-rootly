@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class WorkflowPostMortem extends pulumi.CustomResource {
@@ -33,16 +34,22 @@ export class WorkflowPostMortem extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkflowPostMortem.__pulumiType;
     }
 
+    public readonly causeIds!: pulumi.Output<string[]>;
     /**
-     * Workflow command.
+     * Workflow command
      */
     public readonly command!: pulumi.Output<string>;
+    /**
+     * This will notify you back when the workflow is starting. Value must be one of true or false
+     */
+    public readonly commandFeedbackEnabled!: pulumi.Output<boolean>;
     /**
      * The description of the workflow
      */
     public readonly description!: pulumi.Output<string>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly environmentIds!: pulumi.Output<string[]>;
+    public readonly functionalityIds!: pulumi.Output<string[]>;
     public readonly groupIds!: pulumi.Output<string[]>;
     public readonly incidentRoleIds!: pulumi.Output<string[]>;
     public readonly incidentTypeIds!: pulumi.Output<string[]>;
@@ -55,11 +62,11 @@ export class WorkflowPostMortem extends pulumi.CustomResource {
      */
     public readonly position!: pulumi.Output<number>;
     /**
-     * Repeat workflow every duration.
+     * Repeat workflow every duration
      */
     public readonly repeatEveryDuration!: pulumi.Output<string>;
     /**
-     * Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
+     * Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
     public readonly repeatOns!: pulumi.Output<string[]>;
     public readonly serviceIds!: pulumi.Output<string[]>;
@@ -70,7 +77,7 @@ export class WorkflowPostMortem extends pulumi.CustomResource {
     public readonly slug!: pulumi.Output<string>;
     public readonly triggerParams!: pulumi.Output<outputs.WorkflowPostMortemTriggerParams>;
     /**
-     * Wait this duration before executing.
+     * Wait this duration before executing
      */
     public readonly wait!: pulumi.Output<string>;
     /**
@@ -91,10 +98,13 @@ export class WorkflowPostMortem extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowPostMortemState | undefined;
+            resourceInputs["causeIds"] = state ? state.causeIds : undefined;
             resourceInputs["command"] = state ? state.command : undefined;
+            resourceInputs["commandFeedbackEnabled"] = state ? state.commandFeedbackEnabled : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["environmentIds"] = state ? state.environmentIds : undefined;
+            resourceInputs["functionalityIds"] = state ? state.functionalityIds : undefined;
             resourceInputs["groupIds"] = state ? state.groupIds : undefined;
             resourceInputs["incidentRoleIds"] = state ? state.incidentRoleIds : undefined;
             resourceInputs["incidentTypeIds"] = state ? state.incidentTypeIds : undefined;
@@ -110,10 +120,13 @@ export class WorkflowPostMortem extends pulumi.CustomResource {
             resourceInputs["workflowGroupId"] = state ? state.workflowGroupId : undefined;
         } else {
             const args = argsOrState as WorkflowPostMortemArgs | undefined;
+            resourceInputs["causeIds"] = args ? args.causeIds : undefined;
             resourceInputs["command"] = args ? args.command : undefined;
+            resourceInputs["commandFeedbackEnabled"] = args ? args.commandFeedbackEnabled : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["environmentIds"] = args ? args.environmentIds : undefined;
+            resourceInputs["functionalityIds"] = args ? args.functionalityIds : undefined;
             resourceInputs["groupIds"] = args ? args.groupIds : undefined;
             resourceInputs["incidentRoleIds"] = args ? args.incidentRoleIds : undefined;
             resourceInputs["incidentTypeIds"] = args ? args.incidentTypeIds : undefined;
@@ -137,16 +150,22 @@ export class WorkflowPostMortem extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkflowPostMortem resources.
  */
 export interface WorkflowPostMortemState {
+    causeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Workflow command.
+     * Workflow command
      */
     command?: pulumi.Input<string>;
+    /**
+     * This will notify you back when the workflow is starting. Value must be one of true or false
+     */
+    commandFeedbackEnabled?: pulumi.Input<boolean>;
     /**
      * The description of the workflow
      */
     description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
     groupIds?: pulumi.Input<pulumi.Input<string>[]>;
     incidentRoleIds?: pulumi.Input<pulumi.Input<string>[]>;
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -159,11 +178,11 @@ export interface WorkflowPostMortemState {
      */
     position?: pulumi.Input<number>;
     /**
-     * Repeat workflow every duration.
+     * Repeat workflow every duration
      */
     repeatEveryDuration?: pulumi.Input<string>;
     /**
-     * Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
+     * Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
     repeatOns?: pulumi.Input<pulumi.Input<string>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -174,7 +193,7 @@ export interface WorkflowPostMortemState {
     slug?: pulumi.Input<string>;
     triggerParams?: pulumi.Input<inputs.WorkflowPostMortemTriggerParams>;
     /**
-     * Wait this duration before executing.
+     * Wait this duration before executing
      */
     wait?: pulumi.Input<string>;
     /**
@@ -187,16 +206,22 @@ export interface WorkflowPostMortemState {
  * The set of arguments for constructing a WorkflowPostMortem resource.
  */
 export interface WorkflowPostMortemArgs {
+    causeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Workflow command.
+     * Workflow command
      */
     command?: pulumi.Input<string>;
+    /**
+     * This will notify you back when the workflow is starting. Value must be one of true or false
+     */
+    commandFeedbackEnabled?: pulumi.Input<boolean>;
     /**
      * The description of the workflow
      */
     description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
     groupIds?: pulumi.Input<pulumi.Input<string>[]>;
     incidentRoleIds?: pulumi.Input<pulumi.Input<string>[]>;
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -209,11 +234,11 @@ export interface WorkflowPostMortemArgs {
      */
     position?: pulumi.Input<number>;
     /**
-     * Repeat workflow every duration.
+     * Repeat workflow every duration
      */
     repeatEveryDuration?: pulumi.Input<string>;
     /**
-     * Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
+     * Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
     repeatOns?: pulumi.Input<pulumi.Input<string>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -224,7 +249,7 @@ export interface WorkflowPostMortemArgs {
     slug?: pulumi.Input<string>;
     triggerParams?: pulumi.Input<inputs.WorkflowPostMortemTriggerParams>;
     /**
-     * Wait this duration before executing.
+     * Wait this duration before executing
      */
     wait?: pulumi.Input<string>;
     /**

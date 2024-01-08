@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rootly from "@pulumi/rootly";
  *
- * const my_team = pulumi.output(rootly.getTeam({
+ * const my-team = rootly.getTeam({
  *     slug: "my-team",
- * }));
+ * });
  * ```
  */
 export function getTeam(args?: GetTeamArgs, opts?: pulumi.InvokeOptions): Promise<GetTeamResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getTeam:getTeam", {
         "color": args.color,
         "createdAt": args.createdAt,
@@ -36,6 +33,9 @@ export function getTeam(args?: GetTeamArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetTeamArgs {
     color?: string;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: {[key: string]: any};
     name?: string;
     slug?: string;
@@ -46,14 +46,31 @@ export interface GetTeamArgs {
  */
 export interface GetTeamResult {
     readonly color: string;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     readonly createdAt?: {[key: string]: any};
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly slug: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rootly from "@pulumi/rootly";
+ *
+ * const my-team = rootly.getTeam({
+ *     slug: "my-team",
+ * });
+ * ```
+ */
 export function getTeamOutput(args?: GetTeamOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamResult> {
-    return pulumi.output(args).apply(a => getTeam(a, opts))
+    return pulumi.output(args).apply((a: any) => getTeam(a, opts))
 }
 
 /**
@@ -61,6 +78,9 @@ export function getTeamOutput(args?: GetTeamOutputArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetTeamOutputArgs {
     color?: pulumi.Input<string>;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: pulumi.Input<{[key: string]: any}>;
     name?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;

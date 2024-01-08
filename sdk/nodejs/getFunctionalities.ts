@@ -2,16 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getFunctionalities(args?: GetFunctionalitiesArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionalitiesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getFunctionalities:getFunctionalities", {
         "name": args.name,
         "opsgenieId": args.opsgenieId,
@@ -44,9 +42,8 @@ export interface GetFunctionalitiesResult {
     readonly pagerdutyId?: string;
     readonly slug?: string;
 }
-
 export function getFunctionalitiesOutput(args?: GetFunctionalitiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionalitiesResult> {
-    return pulumi.output(args).apply(a => getFunctionalities(a, opts))
+    return pulumi.output(args).apply((a: any) => getFunctionalities(a, opts))
 }
 
 /**
