@@ -51,7 +51,7 @@ export class IncidentPermissionSetResource extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: IncidentPermissionSetResourceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: IncidentPermissionSetResourceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IncidentPermissionSetResourceArgs | IncidentPermissionSetResourceState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -64,6 +64,9 @@ export class IncidentPermissionSetResource extends pulumi.CustomResource {
             resourceInputs["resourceType"] = state ? state.resourceType : undefined;
         } else {
             const args = argsOrState as IncidentPermissionSetResourceArgs | undefined;
+            if ((!args || args.incidentPermissionSetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'incidentPermissionSetId'");
+            }
             resourceInputs["incidentPermissionSetId"] = args ? args.incidentPermissionSetId : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["private"] = args ? args.private : undefined;
@@ -96,7 +99,7 @@ export interface IncidentPermissionSetResourceState {
  * The set of arguments for constructing a IncidentPermissionSetResource resource.
  */
 export interface IncidentPermissionSetResourceArgs {
-    incidentPermissionSetId?: pulumi.Input<string>;
+    incidentPermissionSetId: pulumi.Input<string>;
     /**
      * Value must be one of `severities`, `incidentTypes`, `statuses`.
      */

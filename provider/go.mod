@@ -9,7 +9,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/gobuffalo/flect v0.1.3
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.69.0
-	github.com/rootlyhq/terraform-provider-rootly v1.2.12
+	github.com/rootlyhq/terraform-provider-rootly v1.2.15
 )
 
 require (
@@ -229,7 +229,7 @@ require (
 	gocloud.dev v0.27.0 // indirect
 	gocloud.dev/secrets/hashivault v0.27.0 // indirect
 	golang.org/x/crypto v0.18.0 // indirect
-	golang.org/x/exp v0.0.0-20240103183307-be819d1f06fc // indirect
+	golang.org/x/exp v0.0.0-20240110193028-0dcbfd608b1e // indirect
 	golang.org/x/mod v0.14.0 // indirect
 	golang.org/x/net v0.20.0 // indirect
 	golang.org/x/oauth2 v0.13.0 // indirect

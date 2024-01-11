@@ -137,10 +137,6 @@ export class Functionality extends pulumi.CustomResource {
      * The slug of the functionality
      */
     public readonly slug!: pulumi.Output<string>;
-    /**
-     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
-     */
-    public readonly status!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Functionality resource with the given unique name, arguments, and options.
@@ -168,7 +164,6 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
             resourceInputs["slackChannels"] = state ? state.slackChannels : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as FunctionalityArgs | undefined;
             resourceInputs["color"] = args ? args.color : undefined;
@@ -184,7 +179,6 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
             resourceInputs["slackChannels"] = args ? args.slackChannels : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Functionality.__pulumiType, name, resourceInputs, opts);
@@ -247,10 +241,6 @@ export interface FunctionalityState {
      * The slug of the functionality
      */
     slug?: pulumi.Input<string>;
-    /**
-     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
-     */
-    status?: pulumi.Input<string>;
 }
 
 /**
@@ -309,8 +299,4 @@ export interface FunctionalityArgs {
      * The slug of the functionality
      */
     slug?: pulumi.Input<string>;
-    /**
-     * The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
-     */
-    status?: pulumi.Input<string>;
 }

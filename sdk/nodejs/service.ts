@@ -165,10 +165,6 @@ export class Service extends pulumi.CustomResource {
      * The slug of the service
      */
     public readonly slug!: pulumi.Output<string>;
-    /**
-     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
-     */
-    public readonly status!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -203,7 +199,6 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
             resourceInputs["slackChannels"] = state ? state.slackChannels : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             resourceInputs["backstageId"] = args ? args.backstageId : undefined;
@@ -226,7 +221,6 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
             resourceInputs["slackChannels"] = args ? args.slackChannels : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);
@@ -317,10 +311,6 @@ export interface ServiceState {
      * The slug of the service
      */
     slug?: pulumi.Input<string>;
-    /**
-     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
-     */
-    status?: pulumi.Input<string>;
 }
 
 /**
@@ -407,8 +397,4 @@ export interface ServiceArgs {
      * The slug of the service
      */
     slug?: pulumi.Input<string>;
-    /**
-     * The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partialOutage`, `majorOutage`.
-     */
-    status?: pulumi.Input<string>;
 }

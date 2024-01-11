@@ -3060,6 +3060,10 @@
                         "type": "string"
                     }
                 },
+                "environmentsImpactedByIncident": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
                 "labels": {
                     "type": "array",
                     "items": {
@@ -3085,6 +3089,10 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "servicesImpactedByIncident": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
                 },
                 "sources": {
                     "type": "array",
@@ -3148,6 +3156,10 @@
                         "type": "string"
                     }
                 },
+                "servicesImpactedByIncident": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
                 "taskType": {
                     "type": "string"
                 }
@@ -3205,6 +3217,10 @@
                         "type": "string"
                     }
                 },
+                "servicesImpactedByIncident": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
                 "taskType": {
                     "type": "string"
                 }
@@ -3238,6 +3254,10 @@
                         "type": "string"
                     }
                 },
+                "environmentsImpactedByIncident": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
                 "labels": {
                     "type": "array",
                     "items": {
@@ -3269,6 +3289,10 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "servicesImpactedByIncident": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
                 },
                 "sources": {
                     "type": "array",
@@ -7155,10 +7179,6 @@
                 "slug": {
                     "type": "string",
                     "description": "The slug of the functionality\n"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.\n"
                 }
             },
             "required": [
@@ -7249,10 +7269,6 @@
                 "slug": {
                     "type": "string",
                     "description": "The slug of the functionality\n"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.\n"
                 }
             },
             "stateInputs": {
@@ -7330,10 +7346,6 @@
                     "slug": {
                         "type": "string",
                         "description": "The slug of the functionality\n"
-                    },
-                    "status": {
-                        "type": "string",
-                        "description": "The status of the functionality. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.\n"
                     }
                 },
                 "type": "object"
@@ -7474,6 +7486,9 @@
                     "description": "Value must be one of true or false\n"
                 }
             },
+            "requiredInputs": [
+                "incidentPermissionSetId"
+            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering IncidentPermissionSetBoolean resources.\n",
                 "properties": {
@@ -7542,6 +7557,9 @@
                     "type": "string"
                 }
             },
+            "requiredInputs": [
+                "incidentPermissionSetId"
+            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering IncidentPermissionSetResource resources.\n",
                 "properties": {
@@ -9108,10 +9126,6 @@
                 "slug": {
                     "type": "string",
                     "description": "The slug of the service\n"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.\n"
                 }
             },
             "required": [
@@ -9237,10 +9251,6 @@
                 "slug": {
                     "type": "string",
                     "description": "The slug of the service\n"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.\n"
                 }
             },
             "stateInputs": {
@@ -9346,10 +9356,6 @@
                     "slug": {
                         "type": "string",
                         "description": "The slug of the service\n"
-                    },
-                    "status": {
-                        "type": "string",
-                        "description": "The status of the service. Value must be one of `operational`, `impacted`, `outage`, `partial_outage`, `major_outage`.\n"
                     }
                 },
                 "type": "object"

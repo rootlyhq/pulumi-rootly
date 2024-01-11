@@ -1781,6 +1781,10 @@ export interface WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskGetAlertsTaskParams {
     environmentIds?: string[];
+    /**
+     * Value must be one of true or false
+     */
+    environmentsImpactedByIncident?: boolean;
     labels?: string[];
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
@@ -1792,6 +1796,10 @@ export interface WorkflowTaskGetAlertsTaskParams {
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskGetAlertsTaskParamsPostToSlackChannel[];
     serviceIds?: string[];
+    /**
+     * Value must be one of true or false
+     */
+    servicesImpactedByIncident?: boolean;
     sources?: string[];
     taskType?: string;
 }
@@ -1817,6 +1825,10 @@ export interface WorkflowTaskGetGithubCommitsTaskParams {
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskGetGithubCommitsTaskParamsPostToSlackChannel[];
     serviceIds?: string[];
+    /**
+     * Value must be one of true or false
+     */
+    servicesImpactedByIncident?: boolean;
     taskType?: string;
 }
 
@@ -1841,6 +1853,10 @@ export interface WorkflowTaskGetGitlabCommitsTaskParams {
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskGetGitlabCommitsTaskParamsPostToSlackChannel[];
     serviceIds?: string[];
+    /**
+     * Value must be one of true or false
+     */
+    servicesImpactedByIncident?: boolean;
     taskType?: string;
 }
 
@@ -1851,6 +1867,10 @@ export interface WorkflowTaskGetGitlabCommitsTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskGetPulsesTaskParams {
     environmentIds?: string[];
+    /**
+     * Value must be one of true or false
+     */
+    environmentsImpactedByIncident?: boolean;
     labels?: string[];
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
@@ -1863,6 +1883,10 @@ export interface WorkflowTaskGetPulsesTaskParams {
     postToSlackChannels?: outputs.WorkflowTaskGetPulsesTaskParamsPostToSlackChannel[];
     refs?: string[];
     serviceIds?: string[];
+    /**
+     * Value must be one of true or false
+     */
+    servicesImpactedByIncident?: boolean;
     sources?: string[];
     taskType?: string;
 }

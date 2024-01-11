@@ -1697,6 +1697,10 @@ export interface WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskGetAlertsTaskParams {
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Value must be one of true or false
+     */
+    environmentsImpactedByIncident?: pulumi.Input<boolean>;
     labels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
@@ -1708,6 +1712,10 @@ export interface WorkflowTaskGetAlertsTaskParams {
     postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskGetAlertsTaskParamsPostToSlackChannel>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Value must be one of true or false
+     */
+    servicesImpactedByIncident?: pulumi.Input<boolean>;
     sources?: pulumi.Input<pulumi.Input<string>[]>;
     taskType?: pulumi.Input<string>;
 }
@@ -1733,6 +1741,10 @@ export interface WorkflowTaskGetGithubCommitsTaskParams {
     postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskGetGithubCommitsTaskParamsPostToSlackChannel>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Value must be one of true or false
+     */
+    servicesImpactedByIncident?: pulumi.Input<boolean>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -1757,6 +1769,10 @@ export interface WorkflowTaskGetGitlabCommitsTaskParams {
     postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskGetGitlabCommitsTaskParamsPostToSlackChannel>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Value must be one of true or false
+     */
+    servicesImpactedByIncident?: pulumi.Input<boolean>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -1767,6 +1783,10 @@ export interface WorkflowTaskGetGitlabCommitsTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskGetPulsesTaskParams {
     environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Value must be one of true or false
+     */
+    environmentsImpactedByIncident?: pulumi.Input<boolean>;
     labels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
@@ -1779,6 +1799,10 @@ export interface WorkflowTaskGetPulsesTaskParams {
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskGetPulsesTaskParamsPostToSlackChannel>[]>;
     refs?: pulumi.Input<pulumi.Input<string>[]>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Value must be one of true or false
+     */
+    servicesImpactedByIncident?: pulumi.Input<boolean>;
     sources?: pulumi.Input<pulumi.Input<string>[]>;
     taskType?: pulumi.Input<string>;
 }

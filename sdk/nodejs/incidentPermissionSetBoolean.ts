@@ -50,7 +50,7 @@ export class IncidentPermissionSetBoolean extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: IncidentPermissionSetBooleanArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: IncidentPermissionSetBooleanArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IncidentPermissionSetBooleanArgs | IncidentPermissionSetBooleanState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -62,6 +62,9 @@ export class IncidentPermissionSetBoolean extends pulumi.CustomResource {
             resourceInputs["private"] = state ? state.private : undefined;
         } else {
             const args = argsOrState as IncidentPermissionSetBooleanArgs | undefined;
+            if ((!args || args.incidentPermissionSetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'incidentPermissionSetId'");
+            }
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["incidentPermissionSetId"] = args ? args.incidentPermissionSetId : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
@@ -93,7 +96,7 @@ export interface IncidentPermissionSetBooleanState {
  */
 export interface IncidentPermissionSetBooleanArgs {
     enabled?: pulumi.Input<boolean>;
-    incidentPermissionSetId?: pulumi.Input<string>;
+    incidentPermissionSetId: pulumi.Input<string>;
     /**
      * Value must be one of `publishToStatusPage`, `assignIncidentRoles`, `inviteSubscribers`, `updateSummary`, `updateTimeline`, `triggerWorkflows`, `modifyCustomFields`.
      */
