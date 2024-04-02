@@ -48,6 +48,7 @@ export class RetrospectiveStep extends pulumi.CustomResource {
      * Position of the step
      */
     public readonly position!: pulumi.Output<number>;
+    public readonly retrospectiveProcessId!: pulumi.Output<string>;
     /**
      * Is the step skippable?. Value must be one of true or false
      */
@@ -78,6 +79,7 @@ export class RetrospectiveStep extends pulumi.CustomResource {
             resourceInputs["dueAfterDays"] = state ? state.dueAfterDays : undefined;
             resourceInputs["incidentRoleId"] = state ? state.incidentRoleId : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["retrospectiveProcessId"] = state ? state.retrospectiveProcessId : undefined;
             resourceInputs["skippable"] = state ? state.skippable : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
@@ -90,6 +92,7 @@ export class RetrospectiveStep extends pulumi.CustomResource {
             resourceInputs["dueAfterDays"] = args ? args.dueAfterDays : undefined;
             resourceInputs["incidentRoleId"] = args ? args.incidentRoleId : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["retrospectiveProcessId"] = args ? args.retrospectiveProcessId : undefined;
             resourceInputs["skippable"] = args ? args.skippable : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
@@ -119,6 +122,7 @@ export interface RetrospectiveStepState {
      * Position of the step
      */
     position?: pulumi.Input<number>;
+    retrospectiveProcessId?: pulumi.Input<string>;
     /**
      * Is the step skippable?. Value must be one of true or false
      */
@@ -153,6 +157,7 @@ export interface RetrospectiveStepArgs {
      * Position of the step
      */
     position?: pulumi.Input<number>;
+    retrospectiveProcessId?: pulumi.Input<string>;
     /**
      * Is the step skippable?. Value must be one of true or false
      */

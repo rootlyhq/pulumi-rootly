@@ -8,6 +8,7 @@ import * as outputs from "../types/output";
 export interface DashboardPanelParams {
     datasets?: pulumi.Input<pulumi.Input<inputs.DashboardPanelParamsDataset>[]>;
     display: pulumi.Input<string>;
+    legend?: pulumi.Input<inputs.DashboardPanelParamsLegend>;
 }
 
 export interface DashboardPanelParamsDataset {
@@ -34,6 +35,17 @@ export interface DashboardPanelParamsDatasetFilterRule {
     key: pulumi.Input<string>;
     operation: pulumi.Input<string>;
     value: pulumi.Input<string>;
+}
+
+export interface DashboardPanelParamsLegend {
+    groups: pulumi.Input<string>;
+}
+
+export interface DashboardPanelPosition {
+    h: pulumi.Input<number>;
+    w: pulumi.Input<number>;
+    x: pulumi.Input<number>;
+    y: pulumi.Input<number>;
 }
 
 export interface EnvironmentSlackAlias {
@@ -64,6 +76,21 @@ export interface IncidentTypeSlackAlias {
 export interface IncidentTypeSlackChannel {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
+}
+
+export interface RetrospectiveProcessRetrospectiveProcessMatchingCriteria {
+    /**
+     * Teams for process matching criteria.
+     */
+    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Incident types for process matching criteria.
+     */
+    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Severities for process matching criteria.
+     */
+    severityIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ServiceSlackAlias {
@@ -186,7 +213,7 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentInactivityDuration?: pulumi.Input<string>;
     /**
-     * Value must be one of `example`, `exampleSub`, `normal`, `normalSub`, `test`, `testSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
      */
     incidentKinds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -311,7 +338,7 @@ export interface WorkflowIncidentTriggerParams {
      */
     incidentInactivityDuration?: pulumi.Input<string>;
     /**
-     * Value must be one of `example`, `exampleSub`, `normal`, `normalSub`, `test`, `testSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
      */
     incidentKinds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -394,7 +421,7 @@ export interface WorkflowPostMortemTriggerParams {
      */
     incidentInactivityDuration?: pulumi.Input<string>;
     /**
-     * Value must be one of `example`, `exampleSub`, `normal`, `normalSub`, `test`, `testSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
      */
     incidentKinds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -684,6 +711,18 @@ export interface WorkflowTaskCallPeopleTaskParams {
     taskType?: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskChangeSlackChannelPrivacyTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    channel?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Value must be one of `private`, `public`.
+     */
+    privacy: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
@@ -920,6 +959,34 @@ export interface WorkflowTaskCreateGithubIssueTaskParams {
     title: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskCreateGitlabIssueTaskParams {
+    /**
+     * The issue description
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The due date
+     */
+    dueDate?: pulumi.Input<string>;
+    /**
+     * The issue type. Value must be one of `issue`, `incident`, `testCase`, `task`.
+     */
+    issueType?: pulumi.Input<string>;
+    /**
+     * The issue labels
+     */
+    labels?: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    repository: pulumi.Input<{[key: string]: any}>;
+    taskType?: pulumi.Input<string>;
+    /**
+     * The issue title
+     */
+    title: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskCreateGoToMeetingTaskParams {
     /**
      * Value must be one of `ptsn`, `free`, `hyrid`, `voip`.
@@ -1002,7 +1069,7 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParams {
      */
     timeOfMeeting: pulumi.Input<string>;
     /**
-     * Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US & Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US & Canada)`, `Central America`, `Central Time (US & Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US & Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Almaty`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.
+     * Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US & Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US & Canada)`, `Central America`, `Central Time (US & Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US & Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.
      */
     timeZone?: pulumi.Input<string>;
 }
@@ -1077,6 +1144,10 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParams {
      * The meeting description
      */
     description: pulumi.Input<string>;
+    /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    inviteRootlyBot?: pulumi.Input<boolean>;
     /**
      * Value must be one of true or false
      */
@@ -1333,6 +1404,10 @@ export interface WorkflowTaskCreateLinearSubtaskIssueTaskParams {
 
 export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
     /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    inviteRootlyBot?: pulumi.Input<boolean>;
+    /**
      * The meeting name
      */
     name: pulumi.Input<string>;
@@ -1378,6 +1453,10 @@ export interface WorkflowTaskCreateNotionPageTaskParams {
      */
     showTimelineAsTable?: pulumi.Input<boolean>;
     taskType?: pulumi.Input<string>;
+    /**
+     * The Notion page title
+     */
+    title: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskCreateOpsgenieAlertTaskParams {
@@ -1608,6 +1687,10 @@ export interface WorkflowTaskCreateTrelloCardTaskParamsLabel {
 
 export interface WorkflowTaskCreateWebexMeetingTaskParams {
     /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    inviteRootlyBot?: pulumi.Input<boolean>;
+    /**
      * The meeting password
      */
     password?: pulumi.Input<string>;
@@ -1675,6 +1758,10 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      */
     createAsEmail?: pulumi.Input<string>;
     /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    inviteRootlyBot?: pulumi.Input<boolean>;
+    /**
      * The meeting password
      */
     password?: pulumi.Input<string>;
@@ -1702,6 +1789,10 @@ export interface WorkflowTaskGetAlertsTaskParams {
      */
     environmentsImpactedByIncident?: pulumi.Input<boolean>;
     labels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
+     */
+    parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
      */
@@ -1788,6 +1879,10 @@ export interface WorkflowTaskGetPulsesTaskParams {
      */
     environmentsImpactedByIncident?: pulumi.Input<boolean>;
     labels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
+     */
+    parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
      */
@@ -1952,11 +2047,15 @@ export interface WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsUser {
 
 export interface WorkflowTaskPagePagerdutyOnCallRespondersTaskParams {
     /**
-     * Rootly only supports linking to a single Pagerduty incident. If this feature is disabled Rootly will add responders from any additional pages to the existing Pagerduty incident that is linked to the Rootly incident. If enabled, Rootly will create a new Pagerduty incident that is not linked to any Rootly incidents. Value must be one of true or false
+     * Rootly only supports linking to a single PagerDuty incident. If this feature is disabled Rootly will add responders from any additional pages to the existing PagerDuty incident that is linked to the Rootly incident. If enabled, Rootly will create a new PagerDuty incident that is not linked to any Rootly incidents. Value must be one of true or false
      */
     createNewIncidentOnConflict?: pulumi.Input<boolean>;
     escalationPolicies?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsEscalationPolicy>[]>;
     message?: pulumi.Input<string>;
+    /**
+     * PagerDuty incident priority, selecting auto will let Rootly auto map our incident severity
+     */
+    priority?: pulumi.Input<string>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
@@ -2022,7 +2121,7 @@ export interface WorkflowTaskPublishIncidentTaskParams {
     notifySubscribers?: pulumi.Input<boolean>;
     publicTitle: pulumi.Input<string>;
     /**
-     * For StatusPage.io integrated pages auto publishes a tweet for your update. Value must be one of true or false
+     * For Statuspage.io integrated pages auto publishes a tweet for your update. Value must be one of true or false
      */
     shouldTweet?: pulumi.Input<boolean>;
     /**
@@ -2371,11 +2470,15 @@ export interface WorkflowTaskSnapshotNewRelicGraphTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskTriggerWorkflowTaskParams {
     /**
+     * ["(incident) kind can only match [:id, :slug, :sequential*id, :pagerduty*incident*id, :opsgenie*incident*id, :victor*ops*incident*id, :jira*issue*id, :asana*task*id, :shortcut*task*id, :linear*issue*id, :zendesk*ticket*id, :trello*card*id, :airtable*record*id, :shortcut*story*id, :github*issue*id, :freshservice*ticket*id, :freshservice*task*id, :clickup*task*id]", "(post*mortem) kind can only match [:id]", "(action*item) kind can only match [:id, :jira*issue*id, :asana*task*id, :shortcut*task*id, :linear*issue*id, :zendesk*ticket*id, :trello*card*id, :airtable*record*id, :shortcut*story*id, :github*issue*id, :freshservice*ticket*id, :freshservice*task*id, :clickup*task*id]", "(pulse) kind can only match [:id]", "(alert) kind can only match [:id]"]. Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
+     */
+    attributeToQueryBy: pulumi.Input<string>;
+    /**
      * Value must be one of true or false
      */
     checkWorkflowConditions?: pulumi.Input<boolean>;
     /**
-     * Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+     * Value must be one of `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
      */
     kind: pulumi.Input<string>;
     /**
@@ -2404,7 +2507,7 @@ export interface WorkflowTaskUpdateActionItemTaskParams {
      */
     assignedToUserId?: pulumi.Input<string>;
     /**
-     * Attribute of the action item to match against. Value must be one of `id`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
+     * Attribute of the action item to match against. Value must be one of `id`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `gitlabIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
      */
     attributeToQueryBy: pulumi.Input<string>;
     /**
@@ -2552,6 +2655,38 @@ export interface WorkflowTaskUpdateGithubIssueTaskParams {
     title?: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskUpdateGitlabIssueTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    completion: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The issue description
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The due date
+     */
+    dueDate?: pulumi.Input<string>;
+    /**
+     * The issue id
+     */
+    issueId: pulumi.Input<string>;
+    /**
+     * The issue type. Value must be one of `issue`, `incident`, `testCase`, `task`.
+     */
+    issueType?: pulumi.Input<string>;
+    /**
+     * The issue labels
+     */
+    labels?: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+    /**
+     * The issue title
+     */
+    title?: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
     /**
      * Days to adjust meeting by
@@ -2658,7 +2793,7 @@ export interface WorkflowTaskUpdateIncidentPostmortemTaskParams {
 export interface WorkflowTaskUpdateIncidentTaskParams {
     acknowledgedAt?: pulumi.Input<string>;
     /**
-     * Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
+     * Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `gitlabIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
      */
     attributeToQueryBy?: pulumi.Input<string>;
     /**
@@ -2803,6 +2938,10 @@ export interface WorkflowTaskUpdateNotionPageTaskParams {
      */
     showTimelineAsTable?: pulumi.Input<boolean>;
     taskType?: pulumi.Input<string>;
+    /**
+     * The Notion page title
+     */
+    title?: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskUpdateOpsgenieAlertTaskParams {
@@ -2863,7 +3002,11 @@ export interface WorkflowTaskUpdatePagerdutyIncidentTaskParams {
      */
     pagerdutyIncidentId: pulumi.Input<string>;
     /**
-     * A message outlining the incident's resolution in Pagerduty
+     * PagerDuty incident priority, selecting auto will let Rootly auto map our incident severity
+     */
+    priority?: pulumi.Input<string>;
+    /**
+     * A message outlining the incident's resolution in PagerDuty
      */
     resolution?: pulumi.Input<string>;
     /**
@@ -2876,7 +3019,7 @@ export interface WorkflowTaskUpdatePagerdutyIncidentTaskParams {
      */
     title?: pulumi.Input<string>;
     /**
-     * Pagerduty incident urgency, selecting auto will let Rootly auto map our incident severity. Value must be one of `high`, `low`, `auto`.
+     * PagerDuty incident urgency, selecting auto will let Rootly auto map our incident severity. Value must be one of `high`, `low`, `auto`.
      */
     urgency?: pulumi.Input<string>;
 }

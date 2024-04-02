@@ -190,6 +190,11 @@ export const getIpRanges: typeof import("./getIpRanges").getIpRanges = null as a
 export const getIpRangesOutput: typeof import("./getIpRanges").getIpRangesOutput = null as any;
 utilities.lazyLoad(exports, ["getIpRanges","getIpRangesOutput"], () => require("./getIpRanges"));
 
+export { GetRetrospectiveConfigurationArgs, GetRetrospectiveConfigurationResult, GetRetrospectiveConfigurationOutputArgs } from "./getRetrospectiveConfiguration";
+export const getRetrospectiveConfiguration: typeof import("./getRetrospectiveConfiguration").getRetrospectiveConfiguration = null as any;
+export const getRetrospectiveConfigurationOutput: typeof import("./getRetrospectiveConfiguration").getRetrospectiveConfigurationOutput = null as any;
+utilities.lazyLoad(exports, ["getRetrospectiveConfiguration","getRetrospectiveConfigurationOutput"], () => require("./getRetrospectiveConfiguration"));
+
 export { GetRoleArgs, GetRoleResult, GetRoleOutputArgs } from "./getRole";
 export const getRole: typeof import("./getRole").getRole = null as any;
 export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
@@ -304,6 +309,16 @@ export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { RetrospectiveConfigurationArgs, RetrospectiveConfigurationState } from "./retrospectiveConfiguration";
+export type RetrospectiveConfiguration = import("./retrospectiveConfiguration").RetrospectiveConfiguration;
+export const RetrospectiveConfiguration: typeof import("./retrospectiveConfiguration").RetrospectiveConfiguration = null as any;
+utilities.lazyLoad(exports, ["RetrospectiveConfiguration"], () => require("./retrospectiveConfiguration"));
+
+export { RetrospectiveProcessArgs, RetrospectiveProcessState } from "./retrospectiveProcess";
+export type RetrospectiveProcess = import("./retrospectiveProcess").RetrospectiveProcess;
+export const RetrospectiveProcess: typeof import("./retrospectiveProcess").RetrospectiveProcess = null as any;
+utilities.lazyLoad(exports, ["RetrospectiveProcess"], () => require("./retrospectiveProcess"));
 
 export { RetrospectiveStepArgs, RetrospectiveStepState } from "./retrospectiveStep";
 export type RetrospectiveStep = import("./retrospectiveStep").RetrospectiveStep;
@@ -450,6 +465,11 @@ export type WorkflowTaskCallPeople = import("./workflowTaskCallPeople").Workflow
 export const WorkflowTaskCallPeople: typeof import("./workflowTaskCallPeople").WorkflowTaskCallPeople = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCallPeople"], () => require("./workflowTaskCallPeople"));
 
+export { WorkflowTaskChangeSlackChannelPrivacyArgs, WorkflowTaskChangeSlackChannelPrivacyState } from "./workflowTaskChangeSlackChannelPrivacy";
+export type WorkflowTaskChangeSlackChannelPrivacy = import("./workflowTaskChangeSlackChannelPrivacy").WorkflowTaskChangeSlackChannelPrivacy;
+export const WorkflowTaskChangeSlackChannelPrivacy: typeof import("./workflowTaskChangeSlackChannelPrivacy").WorkflowTaskChangeSlackChannelPrivacy = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskChangeSlackChannelPrivacy"], () => require("./workflowTaskChangeSlackChannelPrivacy"));
+
 export { WorkflowTaskCreateAirtableTableRecordArgs, WorkflowTaskCreateAirtableTableRecordState } from "./workflowTaskCreateAirtableTableRecord";
 export type WorkflowTaskCreateAirtableTableRecord = import("./workflowTaskCreateAirtableTableRecord").WorkflowTaskCreateAirtableTableRecord;
 export const WorkflowTaskCreateAirtableTableRecord: typeof import("./workflowTaskCreateAirtableTableRecord").WorkflowTaskCreateAirtableTableRecord = null as any;
@@ -489,6 +509,11 @@ export { WorkflowTaskCreateGithubIssueArgs, WorkflowTaskCreateGithubIssueState }
 export type WorkflowTaskCreateGithubIssue = import("./workflowTaskCreateGithubIssue").WorkflowTaskCreateGithubIssue;
 export const WorkflowTaskCreateGithubIssue: typeof import("./workflowTaskCreateGithubIssue").WorkflowTaskCreateGithubIssue = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateGithubIssue"], () => require("./workflowTaskCreateGithubIssue"));
+
+export { WorkflowTaskCreateGitlabIssueArgs, WorkflowTaskCreateGitlabIssueState } from "./workflowTaskCreateGitlabIssue";
+export type WorkflowTaskCreateGitlabIssue = import("./workflowTaskCreateGitlabIssue").WorkflowTaskCreateGitlabIssue;
+export const WorkflowTaskCreateGitlabIssue: typeof import("./workflowTaskCreateGitlabIssue").WorkflowTaskCreateGitlabIssue = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateGitlabIssue"], () => require("./workflowTaskCreateGitlabIssue"));
 
 export { WorkflowTaskCreateGoToMeetingArgs, WorkflowTaskCreateGoToMeetingState } from "./workflowTaskCreateGoToMeeting";
 export type WorkflowTaskCreateGoToMeeting = import("./workflowTaskCreateGoToMeeting").WorkflowTaskCreateGoToMeeting;
@@ -790,6 +815,11 @@ export type WorkflowTaskUpdateGithubIssue = import("./workflowTaskUpdateGithubIs
 export const WorkflowTaskUpdateGithubIssue: typeof import("./workflowTaskUpdateGithubIssue").WorkflowTaskUpdateGithubIssue = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskUpdateGithubIssue"], () => require("./workflowTaskUpdateGithubIssue"));
 
+export { WorkflowTaskUpdateGitlabIssueArgs, WorkflowTaskUpdateGitlabIssueState } from "./workflowTaskUpdateGitlabIssue";
+export type WorkflowTaskUpdateGitlabIssue = import("./workflowTaskUpdateGitlabIssue").WorkflowTaskUpdateGitlabIssue;
+export const WorkflowTaskUpdateGitlabIssue: typeof import("./workflowTaskUpdateGitlabIssue").WorkflowTaskUpdateGitlabIssue = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskUpdateGitlabIssue"], () => require("./workflowTaskUpdateGitlabIssue"));
+
 export { WorkflowTaskUpdateGoogleCalendarEventArgs, WorkflowTaskUpdateGoogleCalendarEventState } from "./workflowTaskUpdateGoogleCalendarEvent";
 export type WorkflowTaskUpdateGoogleCalendarEvent = import("./workflowTaskUpdateGoogleCalendarEvent").WorkflowTaskUpdateGoogleCalendarEvent;
 export const WorkflowTaskUpdateGoogleCalendarEvent: typeof import("./workflowTaskUpdateGoogleCalendarEvent").WorkflowTaskUpdateGoogleCalendarEvent = null as any;
@@ -941,6 +971,10 @@ const _module = {
                 return new PlaybookTask(name, <any>undefined, { urn })
             case "rootly:index/postMortemTemplate:PostMortemTemplate":
                 return new PostMortemTemplate(name, <any>undefined, { urn })
+            case "rootly:index/retrospectiveConfiguration:RetrospectiveConfiguration":
+                return new RetrospectiveConfiguration(name, <any>undefined, { urn })
+            case "rootly:index/retrospectiveProcess:RetrospectiveProcess":
+                return new RetrospectiveProcess(name, <any>undefined, { urn })
             case "rootly:index/retrospectiveStep:RetrospectiveStep":
                 return new RetrospectiveStep(name, <any>undefined, { urn })
             case "rootly:index/role:Role":
@@ -999,6 +1033,8 @@ const _module = {
                 return new WorkflowTaskAutoAssignRoleVictorOps(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCallPeople:WorkflowTaskCallPeople":
                 return new WorkflowTaskCallPeople(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskChangeSlackChannelPrivacy:WorkflowTaskChangeSlackChannelPrivacy":
+                return new WorkflowTaskChangeSlackChannelPrivacy(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateAirtableTableRecord:WorkflowTaskCreateAirtableTableRecord":
                 return new WorkflowTaskCreateAirtableTableRecord(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateAsanaSubtask:WorkflowTaskCreateAsanaSubtask":
@@ -1015,6 +1051,8 @@ const _module = {
                 return new WorkflowTaskCreateDropboxPaperPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateGithubIssue:WorkflowTaskCreateGithubIssue":
                 return new WorkflowTaskCreateGithubIssue(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateGitlabIssue:WorkflowTaskCreateGitlabIssue":
+                return new WorkflowTaskCreateGitlabIssue(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateGoToMeeting:WorkflowTaskCreateGoToMeeting":
                 return new WorkflowTaskCreateGoToMeeting(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateGoogleCalendarEvent:WorkflowTaskCreateGoogleCalendarEvent":
@@ -1135,6 +1173,8 @@ const _module = {
                 return new WorkflowTaskUpdateClickupTask(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateGithubIssue:WorkflowTaskUpdateGithubIssue":
                 return new WorkflowTaskUpdateGithubIssue(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdateGitlabIssue:WorkflowTaskUpdateGitlabIssue":
+                return new WorkflowTaskUpdateGitlabIssue(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateGoogleCalendarEvent:WorkflowTaskUpdateGoogleCalendarEvent":
                 return new WorkflowTaskUpdateGoogleCalendarEvent(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateGoogleDocsPage:WorkflowTaskUpdateGoogleDocsPage":
@@ -1199,6 +1239,8 @@ pulumi.runtime.registerResourceModule("rootly", "index/incidentType", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/playbook", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/playbookTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/postMortemTemplate", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/retrospectiveConfiguration", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/retrospectiveProcess", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/retrospectiveStep", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/role", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/secret", _module)
@@ -1228,6 +1270,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRol
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRolePagerduty", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRoleVictorOps", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCallPeople", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskChangeSlackChannelPrivacy", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateAirtableTableRecord", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateAsanaSubtask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateAsanaTask", _module)
@@ -1236,6 +1279,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateConflue
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateDatadogNotebook", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateDropboxPaperPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGithubIssue", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGitlabIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoToMeeting", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleCalendarEvent", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleDocsPage", _module)
@@ -1296,6 +1340,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateAirtabl
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateAsanaTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateClickupTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGithubIssue", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGitlabIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGoogleCalendarEvent", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGoogleDocsPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateIncident", _module)

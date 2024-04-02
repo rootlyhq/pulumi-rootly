@@ -75,6 +75,9 @@
                 },
                 "display": {
                     "type": "string"
+                },
+                "legend": {
+                    "$ref": "#/types/rootly:index/DashboardPanelParamsLegend:DashboardPanelParamsLegend"
                 }
             },
             "type": "object",
@@ -176,6 +179,40 @@
                 "value"
             ]
         },
+        "rootly:index/DashboardPanelParamsLegend:DashboardPanelParamsLegend": {
+            "properties": {
+                "groups": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "groups"
+            ]
+        },
+        "rootly:index/DashboardPanelPosition:DashboardPanelPosition": {
+            "properties": {
+                "h": {
+                    "type": "integer"
+                },
+                "w": {
+                    "type": "integer"
+                },
+                "x": {
+                    "type": "integer"
+                },
+                "y": {
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "required": [
+                "h",
+                "w",
+                "x",
+                "y"
+            ]
+        },
         "rootly:index/EnvironmentSlackAlias:EnvironmentSlackAlias": {
             "properties": {
                 "id": {
@@ -265,6 +302,32 @@
                 "id",
                 "name"
             ]
+        },
+        "rootly:index/RetrospectiveProcessRetrospectiveProcessMatchingCriteria:RetrospectiveProcessRetrospectiveProcessMatchingCriteria": {
+            "properties": {
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams for process matching criteria.\n"
+                },
+                "incidentTypeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Incident types for process matching criteria.\n"
+                },
+                "severityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Severities for process matching criteria.\n"
+                }
+            },
+            "type": "object"
         },
         "rootly:index/ServiceSlackAlias:ServiceSlackAlias": {
             "properties": {
@@ -479,7 +542,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value must be one of `example`, `example_sub`, `normal`, `normal_sub`, `test`, `test_sub`, `backfilled`, `scheduled`.\n"
+                    "description": "Value must be one of `test`, `test_sub`, `example`, `example_sub`, `normal`, `normal_sub`, `backfilled`, `scheduled`.\n"
                 },
                 "incidentStatuses": {
                     "type": "array",
@@ -690,7 +753,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value must be one of `example`, `example_sub`, `normal`, `normal_sub`, `test`, `test_sub`, `backfilled`, `scheduled`.\n"
+                    "description": "Value must be one of `test`, `test_sub`, `example`, `example_sub`, `normal`, `normal_sub`, `backfilled`, `scheduled`.\n"
                 },
                 "incidentPostMortemConditionCause": {
                     "type": "string",
@@ -821,7 +884,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value must be one of `example`, `example_sub`, `normal`, `normal_sub`, `test`, `test_sub`, `backfilled`, `scheduled`.\n"
+                    "description": "Value must be one of `test`, `test_sub`, `example`, `example_sub`, `normal`, `normal_sub`, `backfilled`, `scheduled`.\n"
                 },
                 "incidentPostMortemCondition": {
                     "type": "string",
@@ -1377,6 +1440,28 @@
                 "phoneNumbers"
             ]
         },
+        "rootly:index/WorkflowTaskChangeSlackChannelPrivacyTaskParams:WorkflowTaskChangeSlackChannelPrivacyTaskParams": {
+            "properties": {
+                "channel": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "privacy": {
+                    "type": "string",
+                    "description": "Value must be one of `private`, `public`.\n"
+                },
+                "taskType": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "privacy"
+            ]
+        },
         "rootly:index/WorkflowTaskCreateAirtableTableRecordTaskParams:WorkflowTaskCreateAirtableTableRecordTaskParams": {
             "properties": {
                 "base": {
@@ -1745,6 +1830,45 @@
                 "title"
             ]
         },
+        "rootly:index/WorkflowTaskCreateGitlabIssueTaskParams:WorkflowTaskCreateGitlabIssueTaskParams": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The issue description\n"
+                },
+                "dueDate": {
+                    "type": "string",
+                    "description": "The due date\n"
+                },
+                "issueType": {
+                    "type": "string",
+                    "description": "The issue type. Value must be one of `issue`, `incident`, `test_case`, `task`.\n"
+                },
+                "labels": {
+                    "type": "string",
+                    "description": "The issue labels\n"
+                },
+                "repository": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "taskType": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The issue title\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "repository",
+                "title"
+            ]
+        },
         "rootly:index/WorkflowTaskCreateGoToMeetingTaskParams:WorkflowTaskCreateGoToMeetingTaskParams": {
             "properties": {
                 "conferenceCallInfo": {
@@ -1861,7 +1985,7 @@
                 },
                 "timeZone": {
                     "type": "string",
-                    "description": "Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Almaty`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
+                    "description": "Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
                 }
             },
             "type": "object",
@@ -1975,6 +2099,10 @@
                 "description": {
                     "type": "string",
                     "description": "The meeting description\n"
+                },
+                "inviteRootlyBot": {
+                    "type": "boolean",
+                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
                 },
                 "postToIncidentTimeline": {
                     "type": "boolean",
@@ -2403,6 +2531,10 @@
         },
         "rootly:index/WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams:WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams": {
             "properties": {
+                "inviteRootlyBot": {
+                    "type": "boolean",
+                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The meeting name\n"
@@ -2474,11 +2606,16 @@
                 },
                 "taskType": {
                     "type": "string"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The Notion page title\n"
                 }
             },
             "type": "object",
             "required": [
-                "parentPage"
+                "parentPage",
+                "title"
             ]
         },
         "rootly:index/WorkflowTaskCreateOpsgenieAlertTaskParams:WorkflowTaskCreateOpsgenieAlertTaskParams": {
@@ -2902,6 +3039,10 @@
         },
         "rootly:index/WorkflowTaskCreateWebexMeetingTaskParams:WorkflowTaskCreateWebexMeetingTaskParams": {
             "properties": {
+                "inviteRootlyBot": {
+                    "type": "boolean",
+                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
+                },
                 "password": {
                     "type": "string",
                     "description": "The meeting password\n"
@@ -3010,6 +3151,10 @@
                     "type": "string",
                     "description": "The email to use if creating as email\n"
                 },
+                "inviteRootlyBot": {
+                    "type": "boolean",
+                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
+                },
                 "password": {
                     "type": "string",
                     "description": "The meeting password\n"
@@ -3069,6 +3214,13 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "parentMessageThreadTask": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task\n"
                 },
                 "pastDuration": {
                     "type": "string",
@@ -3263,6 +3415,13 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "parentMessageThreadTask": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task\n"
                 },
                 "pastDuration": {
                     "type": "string",
@@ -3645,7 +3804,7 @@
             "properties": {
                 "createNewIncidentOnConflict": {
                     "type": "boolean",
-                    "description": "Rootly only supports linking to a single Pagerduty incident. If this feature is disabled Rootly will add responders from any additional pages to the existing Pagerduty incident that is linked to the Rootly incident. If enabled, Rootly will create a new Pagerduty incident that is not linked to any Rootly incidents. Value must be one of true or false\n"
+                    "description": "Rootly only supports linking to a single PagerDuty incident. If this feature is disabled Rootly will add responders from any additional pages to the existing PagerDuty incident that is linked to the Rootly incident. If enabled, Rootly will create a new PagerDuty incident that is not linked to any Rootly incidents. Value must be one of true or false\n"
                 },
                 "escalationPolicies": {
                     "type": "array",
@@ -3655,6 +3814,10 @@
                 },
                 "message": {
                     "type": "string"
+                },
+                "priority": {
+                    "type": "string",
+                    "description": "PagerDuty incident priority, selecting auto will let Rootly auto map our incident severity\n"
                 },
                 "service": {
                     "type": "object",
@@ -3803,7 +3966,7 @@
                 },
                 "shouldTweet": {
                     "type": "boolean",
-                    "description": "For StatusPage.io integrated pages auto publishes a tweet for your update. Value must be one of true or false\n"
+                    "description": "For Statuspage.io integrated pages auto publishes a tweet for your update. Value must be one of true or false\n"
                 },
                 "status": {
                     "type": "string",
@@ -4576,13 +4739,17 @@
         },
         "rootly:index/WorkflowTaskTriggerWorkflowTaskParams:WorkflowTaskTriggerWorkflowTaskParams": {
             "properties": {
+                "attributeToQueryBy": {
+                    "type": "string",
+                    "description": "[\"(incident) kind can only match [:id, :slug, :sequential*id, :pagerduty*incident*id, :opsgenie*incident*id, :victor*ops*incident*id, :jira*issue*id, :asana*task*id, :shortcut*task*id, :linear*issue*id, :zendesk*ticket*id, :trello*card*id, :airtable*record*id, :shortcut*story*id, :github*issue*id, :freshservice*ticket*id, :freshservice*task*id, :clickup*task*id]\", \"(post*mortem) kind can only match [:id]\", \"(action*item) kind can only match [:id, :jira*issue*id, :asana*task*id, :shortcut*task*id, :linear*issue*id, :zendesk*ticket*id, :trello*card*id, :airtable*record*id, :shortcut*story*id, :github*issue*id, :freshservice*ticket*id, :freshservice*task*id, :clickup*task*id]\", \"(pulse) kind can only match [:id]\", \"(alert) kind can only match [:id]\"]. Value must be one of `id`, `slug`, `sequential_id`, `pagerduty_incident_id`, `opsgenie_incident_id`, `victor_ops_incident_id`, `jira_issue_id`, `asana_task_id`, `shortcut_task_id`, `linear_issue_id`, `zendesk_ticket_id`, `trello_card_id`, `airtable_record_id`, `shortcut_story_id`, `github_issue_id`, `freshservice_ticket_id`, `freshservice_task_id`, `clickup_task_id`.\n"
+                },
                 "checkWorkflowConditions": {
                     "type": "boolean",
                     "description": "Value must be one of true or false\n"
                 },
                 "kind": {
                     "type": "string",
-                    "description": "Value must be one of `simple`, `incident`, `post_mortem`, `action_item`, `pulse`, `alert`.\n"
+                    "description": "Value must be one of `incident`, `post_mortem`, `action_item`, `pulse`, `alert`.\n"
                 },
                 "resource": {
                     "type": "object",
@@ -4604,6 +4771,7 @@
             },
             "type": "object",
             "required": [
+                "attributeToQueryBy",
                 "kind",
                 "resource",
                 "workflow"
@@ -4638,7 +4806,7 @@
                 },
                 "attributeToQueryBy": {
                     "type": "string",
-                    "description": "Attribute of the action item to match against. Value must be one of `id`, `jira_issue_id`, `asana_task_id`, `shortcut_task_id`, `linear_issue_id`, `zendesk_ticket_id`, `trello_card_id`, `airtable_record_id`, `shortcut_story_id`, `github_issue_id`, `freshservice_ticket_id`, `freshservice_task_id`, `clickup_task_id`.\n"
+                    "description": "Attribute of the action item to match against. Value must be one of `id`, `jira_issue_id`, `asana_task_id`, `shortcut_task_id`, `linear_issue_id`, `zendesk_ticket_id`, `trello_card_id`, `airtable_record_id`, `shortcut_story_id`, `github_issue_id`, `gitlab_issue_id`, `freshservice_ticket_id`, `freshservice_task_id`, `clickup_task_id`.\n"
                 },
                 "customFieldsMapping": {
                     "type": "string",
@@ -4843,6 +5011,49 @@
                 "issueId"
             ]
         },
+        "rootly:index/WorkflowTaskUpdateGitlabIssueTaskParams:WorkflowTaskUpdateGitlabIssueTaskParams": {
+            "properties": {
+                "completion": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The issue description\n"
+                },
+                "dueDate": {
+                    "type": "string",
+                    "description": "The due date\n"
+                },
+                "issueId": {
+                    "type": "string",
+                    "description": "The issue id\n"
+                },
+                "issueType": {
+                    "type": "string",
+                    "description": "The issue type. Value must be one of `issue`, `incident`, `test_case`, `task`.\n"
+                },
+                "labels": {
+                    "type": "string",
+                    "description": "The issue labels\n"
+                },
+                "taskType": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The issue title\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "completion",
+                "issueId"
+            ]
+        },
         "rootly:index/WorkflowTaskUpdateGoogleCalendarEventTaskParams:WorkflowTaskUpdateGoogleCalendarEventTaskParams": {
             "properties": {
                 "adjustmentDays": {
@@ -4994,7 +5205,7 @@
                 },
                 "attributeToQueryBy": {
                     "type": "string",
-                    "description": "Value must be one of `id`, `slug`, `sequential_id`, `pagerduty_incident_id`, `opsgenie_incident_id`, `victor_ops_incident_id`, `jira_issue_id`, `asana_task_id`, `shortcut_task_id`, `linear_issue_id`, `zendesk_ticket_id`, `trello_card_id`, `airtable_record_id`, `shortcut_story_id`, `github_issue_id`, `freshservice_ticket_id`, `freshservice_task_id`, `clickup_task_id`.\n"
+                    "description": "Value must be one of `id`, `slug`, `sequential_id`, `pagerduty_incident_id`, `opsgenie_incident_id`, `victor_ops_incident_id`, `jira_issue_id`, `asana_task_id`, `shortcut_task_id`, `linear_issue_id`, `zendesk_ticket_id`, `trello_card_id`, `airtable_record_id`, `shortcut_story_id`, `github_issue_id`, `gitlab_issue_id`, `freshservice_ticket_id`, `freshservice_task_id`, `clickup_task_id`.\n"
                 },
                 "customFieldsMapping": {
                     "type": "string",
@@ -5228,6 +5439,10 @@
                 },
                 "taskType": {
                     "type": "string"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The Notion page title\n"
                 }
             },
             "type": "object",
@@ -5312,9 +5527,13 @@
                     "type": "string",
                     "description": "Pagerduty incident id\n"
                 },
+                "priority": {
+                    "type": "string",
+                    "description": "PagerDuty incident priority, selecting auto will let Rootly auto map our incident severity\n"
+                },
                 "resolution": {
                     "type": "string",
-                    "description": "A message outlining the incident's resolution in Pagerduty\n"
+                    "description": "A message outlining the incident's resolution in PagerDuty\n"
                 },
                 "status": {
                     "type": "string",
@@ -5329,7 +5548,7 @@
                 },
                 "urgency": {
                     "type": "string",
-                    "description": "Pagerduty incident urgency, selecting auto will let Rootly auto map our incident severity. Value must be one of `high`, `low`, `auto`.\n"
+                    "description": "PagerDuty incident urgency, selecting auto will let Rootly auto map our incident severity. Value must be one of `high`, `low`, `auto`.\n"
                 }
             },
             "type": "object",
@@ -6613,6 +6832,9 @@
                 "params": {
                     "$ref": "#/types/rootly:index/DashboardPanelParams:DashboardPanelParams",
                     "description": "The params JSON of the dashboard_panel. See rootly API docs for schema.\n"
+                },
+                "position": {
+                    "$ref": "#/types/rootly:index/DashboardPanelPosition:DashboardPanelPosition"
                 }
             },
             "required": [
@@ -6632,6 +6854,9 @@
                 "params": {
                     "$ref": "#/types/rootly:index/DashboardPanelParams:DashboardPanelParams",
                     "description": "The params JSON of the dashboard_panel. See rootly API docs for schema.\n"
+                },
+                "position": {
+                    "$ref": "#/types/rootly:index/DashboardPanelPosition:DashboardPanelPosition"
                 }
             },
             "requiredInputs": [
@@ -6652,6 +6877,9 @@
                     "params": {
                         "$ref": "#/types/rootly:index/DashboardPanelParams:DashboardPanelParams",
                         "description": "The params JSON of the dashboard_panel. See rootly API docs for schema.\n"
+                    },
+                    "position": {
+                        "$ref": "#/types/rootly:index/DashboardPanelPosition:DashboardPanelPosition"
                     }
                 },
                 "type": "object"
@@ -6821,7 +7049,7 @@
                 },
                 "inputKind": {
                     "type": "string",
-                    "description": "The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`, `users`, `number`, `checkbox`, `tags`, `rich_text`.\n"
+                    "description": "The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`, `number`, `checkbox`, `tags`, `rich_text`.\n"
                 },
                 "kind": {
                     "type": "string",
@@ -6850,6 +7078,10 @@
                 "slug": {
                     "type": "string",
                     "description": "The slug of the form field\n"
+                },
+                "valueKind": {
+                    "type": "string",
+                    "description": "The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.\n"
                 }
             },
             "required": [
@@ -6877,7 +7109,7 @@
                 },
                 "inputKind": {
                     "type": "string",
-                    "description": "The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`, `users`, `number`, `checkbox`, `tags`, `rich_text`.\n"
+                    "description": "The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`, `number`, `checkbox`, `tags`, `rich_text`.\n"
                 },
                 "kind": {
                     "type": "string",
@@ -6906,6 +7138,10 @@
                 "slug": {
                     "type": "string",
                     "description": "The slug of the form field\n"
+                },
+                "valueKind": {
+                    "type": "string",
+                    "description": "The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.\n"
                 }
             },
             "stateInputs": {
@@ -6926,7 +7162,7 @@
                     },
                     "inputKind": {
                         "type": "string",
-                        "description": "The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`, `users`, `number`, `checkbox`, `tags`, `rich_text`.\n"
+                        "description": "The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multi_select`, `date`, `datetime`, `number`, `checkbox`, `tags`, `rich_text`.\n"
                     },
                     "kind": {
                         "type": "string",
@@ -6955,6 +7191,10 @@
                     "slug": {
                         "type": "string",
                         "description": "The slug of the form field\n"
+                    },
+                    "valueKind": {
+                        "type": "string",
+                        "description": "The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.\n"
                     }
                 },
                 "type": "object"
@@ -8234,6 +8474,181 @@
                 "type": "object"
             }
         },
+        "rootly:index/retrospectiveConfiguration:RetrospectiveConfiguration": {
+            "properties": {
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams associated with the retrospective configuration.\n"
+                },
+                "incidentTypeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Incident types associated with the retrospective configuration.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of the retrospective configuration.\n"
+                },
+                "severityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Severities associated with the retrospective configuration.\n"
+                }
+            },
+            "required": [
+                "groupIds",
+                "incidentTypeIds",
+                "kind",
+                "severityIds"
+            ],
+            "inputProperties": {
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Teams associated with the retrospective configuration.\n"
+                },
+                "incidentTypeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Incident types associated with the retrospective configuration.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of the retrospective configuration.\n",
+                    "willReplaceOnChanges": true
+                },
+                "severityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Severities associated with the retrospective configuration.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RetrospectiveConfiguration resources.\n",
+                "properties": {
+                    "groupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Teams associated with the retrospective configuration.\n"
+                    },
+                    "incidentTypeIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Incident types associated with the retrospective configuration.\n"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "The kind of the retrospective configuration.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "severityIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Severities associated with the retrospective configuration.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/retrospectiveProcess:RetrospectiveProcess": {
+            "properties": {
+                "copyFrom": {
+                    "type": "string",
+                    "description": "Retrospective process ID from which retrospective steps have to be copied. To use starter template for retrospective steps provide value: 'starter_template'\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the retrospective process\n"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Is the retrospective process default?. Value must be one of true or false\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the retrospective process\n"
+                },
+                "retrospectiveProcessMatchingCriteria": {
+                    "$ref": "#/types/rootly:index/RetrospectiveProcessRetrospectiveProcessMatchingCriteria:RetrospectiveProcessRetrospectiveProcessMatchingCriteria"
+                }
+            },
+            "required": [
+                "description",
+                "isDefault",
+                "name",
+                "retrospectiveProcessMatchingCriteria"
+            ],
+            "inputProperties": {
+                "copyFrom": {
+                    "type": "string",
+                    "description": "Retrospective process ID from which retrospective steps have to be copied. To use starter template for retrospective steps provide value: 'starter_template'\n",
+                    "willReplaceOnChanges": true
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the retrospective process\n"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Is the retrospective process default?. Value must be one of true or false\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the retrospective process\n"
+                },
+                "retrospectiveProcessMatchingCriteria": {
+                    "$ref": "#/types/rootly:index/RetrospectiveProcessRetrospectiveProcessMatchingCriteria:RetrospectiveProcessRetrospectiveProcessMatchingCriteria"
+                }
+            },
+            "requiredInputs": [
+                "retrospectiveProcessMatchingCriteria"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RetrospectiveProcess resources.\n",
+                "properties": {
+                    "copyFrom": {
+                        "type": "string",
+                        "description": "Retrospective process ID from which retrospective steps have to be copied. To use starter template for retrospective steps provide value: 'starter_template'\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the retrospective process\n"
+                    },
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Is the retrospective process default?. Value must be one of true or false\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the retrospective process\n"
+                    },
+                    "retrospectiveProcessMatchingCriteria": {
+                        "$ref": "#/types/rootly:index/RetrospectiveProcessRetrospectiveProcessMatchingCriteria:RetrospectiveProcessRetrospectiveProcessMatchingCriteria"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/retrospectiveStep:RetrospectiveStep": {
             "properties": {
                 "description": {
@@ -8251,6 +8666,9 @@
                 "position": {
                     "type": "integer",
                     "description": "Position of the step\n"
+                },
+                "retrospectiveProcessId": {
+                    "type": "string"
                 },
                 "skippable": {
                     "type": "boolean",
@@ -8270,6 +8688,7 @@
                 "dueAfterDays",
                 "incidentRoleId",
                 "position",
+                "retrospectiveProcessId",
                 "skippable",
                 "slug",
                 "title"
@@ -8290,6 +8709,10 @@
                 "position": {
                     "type": "integer",
                     "description": "Position of the step\n"
+                },
+                "retrospectiveProcessId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
                 },
                 "skippable": {
                     "type": "boolean",
@@ -8325,6 +8748,10 @@
                     "position": {
                         "type": "integer",
                         "description": "Position of the step\n"
+                    },
+                    "retrospectiveProcessId": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
                     },
                     "skippable": {
                         "type": "boolean",
@@ -9611,7 +10038,7 @@
                 },
                 "timeZone": {
                     "type": "string",
-                    "description": "Status Page Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Almaty`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
+                    "description": "Status Page Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
                 },
                 "title": {
                     "type": "string",
@@ -9728,7 +10155,7 @@
                 },
                 "timeZone": {
                     "type": "string",
-                    "description": "Status Page Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Almaty`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
+                    "description": "Status Page Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
                 },
                 "title": {
                     "type": "string",
@@ -9828,7 +10255,7 @@
                     },
                     "timeZone": {
                         "type": "string",
-                        "description": "Status Page Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Almaty`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
+                        "description": "Status Page Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
                     },
                     "title": {
                         "type": "string",
@@ -13609,6 +14036,103 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowTaskChangeSlackChannelPrivacy:WorkflowTaskChangeSlackChannelPrivacy": {
+            "description": "Manages workflow change_slack_channel_privacy task.\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskChangeSlackChannelPrivacyTaskParams:WorkflowTaskChangeSlackChannelPrivacyTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskChangeSlackChannelPrivacyTaskParams:WorkflowTaskChangeSlackChannelPrivacyTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskChangeSlackChannelPrivacy resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskChangeSlackChannelPrivacyTaskParams:WorkflowTaskChangeSlackChannelPrivacyTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowTaskCreateAirtableTableRecord:WorkflowTaskCreateAirtableTableRecord": {
             "description": "Manages workflow create_airtable_table_record task.\n",
             "properties": {
@@ -14374,6 +14898,103 @@
                     },
                     "taskParams": {
                         "$ref": "#/types/rootly:index/WorkflowTaskCreateGithubIssueTaskParams:WorkflowTaskCreateGithubIssueTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowTaskCreateGitlabIssue:WorkflowTaskCreateGitlabIssue": {
+            "description": "Manages workflow create_gitlab_issue task.\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreateGitlabIssueTaskParams:WorkflowTaskCreateGitlabIssueTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreateGitlabIssueTaskParams:WorkflowTaskCreateGitlabIssueTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskCreateGitlabIssue resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskCreateGitlabIssueTaskParams:WorkflowTaskCreateGitlabIssueTaskParams",
                         "description": "The parameters for this workflow task.\n"
                     },
                     "workflowId": {
@@ -20205,6 +20826,103 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowTaskUpdateGitlabIssue:WorkflowTaskUpdateGitlabIssue": {
+            "description": "Manages workflow update_gitlab_issue task.\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskUpdateGitlabIssueTaskParams:WorkflowTaskUpdateGitlabIssueTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskUpdateGitlabIssueTaskParams:WorkflowTaskUpdateGitlabIssueTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskUpdateGitlabIssue resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskUpdateGitlabIssueTaskParams:WorkflowTaskUpdateGitlabIssueTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowTaskUpdateGoogleCalendarEvent:WorkflowTaskUpdateGoogleCalendarEvent": {
             "description": "Manages workflow update_google_calendar_event task.\n",
             "properties": {
@@ -23424,6 +24142,34 @@
                     "webhooksIpv4s",
                     "webhooksIpv6s",
                     "id"
+                ]
+            }
+        },
+        "rootly:index/getRetrospectiveConfiguration:getRetrospectiveConfiguration": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getRetrospectiveConfiguration.\n",
+                "properties": {
+                    "kind": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRetrospectiveConfiguration.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of this resource.\n"
+                    },
+                    "kind": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "kind"
                 ]
             }
         },

@@ -8,6 +8,7 @@ import * as outputs from "../types/output";
 export interface DashboardPanelParams {
     datasets?: outputs.DashboardPanelParamsDataset[];
     display: string;
+    legend?: outputs.DashboardPanelParamsLegend;
 }
 
 export interface DashboardPanelParamsDataset {
@@ -34,6 +35,17 @@ export interface DashboardPanelParamsDatasetFilterRule {
     key: string;
     operation: string;
     value: string;
+}
+
+export interface DashboardPanelParamsLegend {
+    groups: string;
+}
+
+export interface DashboardPanelPosition {
+    h: number;
+    w: number;
+    x: number;
+    y: number;
 }
 
 export interface EnvironmentSlackAlias {
@@ -148,6 +160,21 @@ export interface IncidentTypeSlackAlias {
 export interface IncidentTypeSlackChannel {
     id: string;
     name: string;
+}
+
+export interface RetrospectiveProcessRetrospectiveProcessMatchingCriteria {
+    /**
+     * Teams for process matching criteria.
+     */
+    groupIds?: string[];
+    /**
+     * Incident types for process matching criteria.
+     */
+    incidentTypeIds?: string[];
+    /**
+     * Severities for process matching criteria.
+     */
+    severityIds?: string[];
 }
 
 export interface ServiceSlackAlias {
@@ -270,7 +297,7 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentInactivityDuration: string;
     /**
-     * Value must be one of `example`, `exampleSub`, `normal`, `normalSub`, `test`, `testSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
      */
     incidentKinds: string[];
     /**
@@ -395,7 +422,7 @@ export interface WorkflowIncidentTriggerParams {
      */
     incidentInactivityDuration: string;
     /**
-     * Value must be one of `example`, `exampleSub`, `normal`, `normalSub`, `test`, `testSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
      */
     incidentKinds: string[];
     /**
@@ -478,7 +505,7 @@ export interface WorkflowPostMortemTriggerParams {
      */
     incidentInactivityDuration: string;
     /**
-     * Value must be one of `example`, `exampleSub`, `normal`, `normalSub`, `test`, `testSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
      */
     incidentKinds: string[];
     /**
@@ -768,6 +795,18 @@ export interface WorkflowTaskCallPeopleTaskParams {
     taskType?: string;
 }
 
+export interface WorkflowTaskChangeSlackChannelPrivacyTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    channel?: {[key: string]: any};
+    /**
+     * Value must be one of `private`, `public`.
+     */
+    privacy: string;
+    taskType?: string;
+}
+
 export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
@@ -1004,6 +1043,34 @@ export interface WorkflowTaskCreateGithubIssueTaskParams {
     title: string;
 }
 
+export interface WorkflowTaskCreateGitlabIssueTaskParams {
+    /**
+     * The issue description
+     */
+    description?: string;
+    /**
+     * The due date
+     */
+    dueDate?: string;
+    /**
+     * The issue type. Value must be one of `issue`, `incident`, `testCase`, `task`.
+     */
+    issueType?: string;
+    /**
+     * The issue labels
+     */
+    labels?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    repository: {[key: string]: any};
+    taskType?: string;
+    /**
+     * The issue title
+     */
+    title: string;
+}
+
 export interface WorkflowTaskCreateGoToMeetingTaskParams {
     /**
      * Value must be one of `ptsn`, `free`, `hyrid`, `voip`.
@@ -1086,7 +1153,7 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParams {
      */
     timeOfMeeting: string;
     /**
-     * Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US & Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US & Canada)`, `Central America`, `Central Time (US & Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US & Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Almaty`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.
+     * Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US & Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US & Canada)`, `Central America`, `Central Time (US & Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US & Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.
      */
     timeZone?: string;
 }
@@ -1161,6 +1228,10 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParams {
      * The meeting description
      */
     description: string;
+    /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    inviteRootlyBot?: boolean;
     /**
      * Value must be one of true or false
      */
@@ -1417,6 +1488,10 @@ export interface WorkflowTaskCreateLinearSubtaskIssueTaskParams {
 
 export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
     /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    inviteRootlyBot?: boolean;
+    /**
      * The meeting name
      */
     name: string;
@@ -1462,6 +1537,10 @@ export interface WorkflowTaskCreateNotionPageTaskParams {
      */
     showTimelineAsTable?: boolean;
     taskType?: string;
+    /**
+     * The Notion page title
+     */
+    title: string;
 }
 
 export interface WorkflowTaskCreateOpsgenieAlertTaskParams {
@@ -1692,6 +1771,10 @@ export interface WorkflowTaskCreateTrelloCardTaskParamsLabel {
 
 export interface WorkflowTaskCreateWebexMeetingTaskParams {
     /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    inviteRootlyBot?: boolean;
+    /**
      * The meeting password
      */
     password?: string;
@@ -1759,6 +1842,10 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      */
     createAsEmail?: string;
     /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    inviteRootlyBot?: boolean;
+    /**
      * The meeting password
      */
     password?: string;
@@ -1786,6 +1873,10 @@ export interface WorkflowTaskGetAlertsTaskParams {
      */
     environmentsImpactedByIncident?: boolean;
     labels?: string[];
+    /**
+     * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
+     */
+    parentMessageThreadTask?: {[key: string]: any};
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
      */
@@ -1872,6 +1963,10 @@ export interface WorkflowTaskGetPulsesTaskParams {
      */
     environmentsImpactedByIncident?: boolean;
     labels?: string[];
+    /**
+     * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
+     */
+    parentMessageThreadTask?: {[key: string]: any};
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
      */
@@ -2036,11 +2131,15 @@ export interface WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsUser {
 
 export interface WorkflowTaskPagePagerdutyOnCallRespondersTaskParams {
     /**
-     * Rootly only supports linking to a single Pagerduty incident. If this feature is disabled Rootly will add responders from any additional pages to the existing Pagerduty incident that is linked to the Rootly incident. If enabled, Rootly will create a new Pagerduty incident that is not linked to any Rootly incidents. Value must be one of true or false
+     * Rootly only supports linking to a single PagerDuty incident. If this feature is disabled Rootly will add responders from any additional pages to the existing PagerDuty incident that is linked to the Rootly incident. If enabled, Rootly will create a new PagerDuty incident that is not linked to any Rootly incidents. Value must be one of true or false
      */
     createNewIncidentOnConflict?: boolean;
     escalationPolicies?: outputs.WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsEscalationPolicy[];
     message?: string;
+    /**
+     * PagerDuty incident priority, selecting auto will let Rootly auto map our incident severity
+     */
+    priority?: string;
     /**
      * Map must contain two fields, `id` and `name`.
      */
@@ -2106,7 +2205,7 @@ export interface WorkflowTaskPublishIncidentTaskParams {
     notifySubscribers?: boolean;
     publicTitle: string;
     /**
-     * For StatusPage.io integrated pages auto publishes a tweet for your update. Value must be one of true or false
+     * For Statuspage.io integrated pages auto publishes a tweet for your update. Value must be one of true or false
      */
     shouldTweet?: boolean;
     /**
@@ -2455,11 +2554,15 @@ export interface WorkflowTaskSnapshotNewRelicGraphTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskTriggerWorkflowTaskParams {
     /**
+     * ["(incident) kind can only match [:id, :slug, :sequential*id, :pagerduty*incident*id, :opsgenie*incident*id, :victor*ops*incident*id, :jira*issue*id, :asana*task*id, :shortcut*task*id, :linear*issue*id, :zendesk*ticket*id, :trello*card*id, :airtable*record*id, :shortcut*story*id, :github*issue*id, :freshservice*ticket*id, :freshservice*task*id, :clickup*task*id]", "(post*mortem) kind can only match [:id]", "(action*item) kind can only match [:id, :jira*issue*id, :asana*task*id, :shortcut*task*id, :linear*issue*id, :zendesk*ticket*id, :trello*card*id, :airtable*record*id, :shortcut*story*id, :github*issue*id, :freshservice*ticket*id, :freshservice*task*id, :clickup*task*id]", "(pulse) kind can only match [:id]", "(alert) kind can only match [:id]"]. Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
+     */
+    attributeToQueryBy: string;
+    /**
      * Value must be one of true or false
      */
     checkWorkflowConditions?: boolean;
     /**
-     * Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+     * Value must be one of `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
      */
     kind: string;
     /**
@@ -2488,7 +2591,7 @@ export interface WorkflowTaskUpdateActionItemTaskParams {
      */
     assignedToUserId?: string;
     /**
-     * Attribute of the action item to match against. Value must be one of `id`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
+     * Attribute of the action item to match against. Value must be one of `id`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `gitlabIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
      */
     attributeToQueryBy: string;
     /**
@@ -2636,6 +2739,38 @@ export interface WorkflowTaskUpdateGithubIssueTaskParams {
     title?: string;
 }
 
+export interface WorkflowTaskUpdateGitlabIssueTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    completion: {[key: string]: any};
+    /**
+     * The issue description
+     */
+    description?: string;
+    /**
+     * The due date
+     */
+    dueDate?: string;
+    /**
+     * The issue id
+     */
+    issueId: string;
+    /**
+     * The issue type. Value must be one of `issue`, `incident`, `testCase`, `task`.
+     */
+    issueType?: string;
+    /**
+     * The issue labels
+     */
+    labels?: string;
+    taskType?: string;
+    /**
+     * The issue title
+     */
+    title?: string;
+}
+
 export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
     /**
      * Days to adjust meeting by
@@ -2742,7 +2877,7 @@ export interface WorkflowTaskUpdateIncidentPostmortemTaskParams {
 export interface WorkflowTaskUpdateIncidentTaskParams {
     acknowledgedAt?: string;
     /**
-     * Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
+     * Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `gitlabIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
      */
     attributeToQueryBy?: string;
     /**
@@ -2887,6 +3022,10 @@ export interface WorkflowTaskUpdateNotionPageTaskParams {
      */
     showTimelineAsTable?: boolean;
     taskType?: string;
+    /**
+     * The Notion page title
+     */
+    title?: string;
 }
 
 export interface WorkflowTaskUpdateOpsgenieAlertTaskParams {
@@ -2947,7 +3086,11 @@ export interface WorkflowTaskUpdatePagerdutyIncidentTaskParams {
      */
     pagerdutyIncidentId: string;
     /**
-     * A message outlining the incident's resolution in Pagerduty
+     * PagerDuty incident priority, selecting auto will let Rootly auto map our incident severity
+     */
+    priority?: string;
+    /**
+     * A message outlining the incident's resolution in PagerDuty
      */
     resolution?: string;
     /**
@@ -2960,7 +3103,7 @@ export interface WorkflowTaskUpdatePagerdutyIncidentTaskParams {
      */
     title?: string;
     /**
-     * Pagerduty incident urgency, selecting auto will let Rootly auto map our incident severity. Value must be one of `high`, `low`, `auto`.
+     * PagerDuty incident urgency, selecting auto will let Rootly auto map our incident severity. Value must be one of `high`, `low`, `auto`.
      */
     urgency?: string;
 }

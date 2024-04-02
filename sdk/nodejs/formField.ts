@@ -72,7 +72,7 @@ export class FormField extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `users`, `number`, `checkbox`, `tags`, `richText`.
+     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
      */
     public readonly inputKind!: pulumi.Output<string | undefined>;
     /**
@@ -93,6 +93,10 @@ export class FormField extends pulumi.CustomResource {
      * The slug of the form field
      */
     public readonly slug!: pulumi.Output<string>;
+    /**
+     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.
+     */
+    public readonly valueKind!: pulumi.Output<string | undefined>;
 
     /**
      * Create a FormField resource with the given unique name, arguments, and options.
@@ -117,6 +121,7 @@ export class FormField extends pulumi.CustomResource {
             resourceInputs["showOnIncidentDetails"] = state ? state.showOnIncidentDetails : undefined;
             resourceInputs["showns"] = state ? state.showns : undefined;
             resourceInputs["slug"] = state ? state.slug : undefined;
+            resourceInputs["valueKind"] = state ? state.valueKind : undefined;
         } else {
             const args = argsOrState as FormFieldArgs | undefined;
             resourceInputs["defaultValues"] = args ? args.defaultValues : undefined;
@@ -129,6 +134,7 @@ export class FormField extends pulumi.CustomResource {
             resourceInputs["showOnIncidentDetails"] = args ? args.showOnIncidentDetails : undefined;
             resourceInputs["showns"] = args ? args.showns : undefined;
             resourceInputs["slug"] = args ? args.slug : undefined;
+            resourceInputs["valueKind"] = args ? args.valueKind : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FormField.__pulumiType, name, resourceInputs, opts);
@@ -146,7 +152,7 @@ export interface FormFieldState {
     description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     /**
-     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `users`, `number`, `checkbox`, `tags`, `richText`.
+     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
      */
     inputKind?: pulumi.Input<string>;
     /**
@@ -167,6 +173,10 @@ export interface FormFieldState {
      * The slug of the form field
      */
     slug?: pulumi.Input<string>;
+    /**
+     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.
+     */
+    valueKind?: pulumi.Input<string>;
 }
 
 /**
@@ -180,7 +190,7 @@ export interface FormFieldArgs {
     description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     /**
-     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `users`, `number`, `checkbox`, `tags`, `richText`.
+     * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
      */
     inputKind?: pulumi.Input<string>;
     /**
@@ -201,4 +211,8 @@ export interface FormFieldArgs {
      * The slug of the form field
      */
     slug?: pulumi.Input<string>;
+    /**
+     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.
+     */
+    valueKind?: pulumi.Input<string>;
 }

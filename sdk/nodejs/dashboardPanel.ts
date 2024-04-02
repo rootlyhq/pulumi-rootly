@@ -82,6 +82,7 @@ export class DashboardPanel extends pulumi.CustomResource {
      * The params JSON of the dashboard_panel. See rootly API docs for schema.
      */
     public readonly params!: pulumi.Output<outputs.DashboardPanelParams>;
+    public readonly position!: pulumi.Output<outputs.DashboardPanelPosition | undefined>;
 
     /**
      * Create a DashboardPanel resource with the given unique name, arguments, and options.
@@ -99,6 +100,7 @@ export class DashboardPanel extends pulumi.CustomResource {
             resourceInputs["dashboardId"] = state ? state.dashboardId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["params"] = state ? state.params : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
         } else {
             const args = argsOrState as DashboardPanelArgs | undefined;
             if ((!args || args.dashboardId === undefined) && !opts.urn) {
@@ -110,6 +112,7 @@ export class DashboardPanel extends pulumi.CustomResource {
             resourceInputs["dashboardId"] = args ? args.dashboardId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["params"] = args ? args.params : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DashboardPanel.__pulumiType, name, resourceInputs, opts);
@@ -132,6 +135,7 @@ export interface DashboardPanelState {
      * The params JSON of the dashboard_panel. See rootly API docs for schema.
      */
     params?: pulumi.Input<inputs.DashboardPanelParams>;
+    position?: pulumi.Input<inputs.DashboardPanelPosition>;
 }
 
 /**
@@ -150,4 +154,5 @@ export interface DashboardPanelArgs {
      * The params JSON of the dashboard_panel. See rootly API docs for schema.
      */
     params: pulumi.Input<inputs.DashboardPanelParams>;
+    position?: pulumi.Input<inputs.DashboardPanelPosition>;
 }
