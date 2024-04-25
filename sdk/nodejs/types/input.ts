@@ -58,6 +58,26 @@ export interface EnvironmentSlackChannel {
     name: pulumi.Input<string>;
 }
 
+export interface EscalationLevelNotificationTargetParam {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface EscalationPolicyEscalationLevel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface EscalationPolicyGroup {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface EscalationPolicyService {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
 export interface FunctionalitySlackAlias {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
@@ -686,6 +706,34 @@ export interface WorkflowTaskAutoAssignRolePagerdutyTaskParams {
     taskType?: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskAutoAssignRoleRootlyTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    escalationPolicyTarget?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    groupTarget?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The role id
+     */
+    incidentRoleId: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    scheduleTarget?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    serviceTarget?: pulumi.Input<{[key: string]: any}>;
+    taskType?: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    userTarget?: pulumi.Input<{[key: string]: any}>;
+}
+
 export interface WorkflowTaskAutoAssignRoleVictorOpsTaskParams {
     /**
      * The role id
@@ -1017,7 +1065,7 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParams {
     /**
      * Emails of attendees
      */
-    attendees: pulumi.Input<pulumi.Input<string>[]>;
+    attendees?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Value must be one of true or false
      */
@@ -1145,14 +1193,14 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParams {
      */
     description: pulumi.Input<string>;
     /**
-     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
-     */
-    inviteRootlyBot?: pulumi.Input<boolean>;
-    /**
      * Value must be one of true or false
      */
     postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannel>[]>;
+    /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    recordMeeting?: pulumi.Input<boolean>;
     /**
      * The meeting summary
      */
@@ -1404,10 +1452,6 @@ export interface WorkflowTaskCreateLinearSubtaskIssueTaskParams {
 
 export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
     /**
-     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
-     */
-    inviteRootlyBot?: pulumi.Input<boolean>;
-    /**
      * The meeting name
      */
     name: pulumi.Input<string>;
@@ -1416,6 +1460,10 @@ export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
      */
     postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannel>[]>;
+    /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    recordMeeting?: pulumi.Input<boolean>;
     /**
      * The meeting subject
      */
@@ -1495,6 +1543,56 @@ export interface WorkflowTaskCreateOpsgenieAlertTaskParamsTeam {
 }
 
 export interface WorkflowTaskCreateOpsgenieAlertTaskParamsUser {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateOutlookEventTaskParams {
+    /**
+     * Emails of attendees
+     */
+    attendees?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    calendar: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The days until meeting
+     */
+    daysUntilMeeting: pulumi.Input<number>;
+    /**
+     * The event description
+     */
+    description: pulumi.Input<string>;
+    /**
+     * Value must be one of true or false
+     */
+    excludeWeekends?: pulumi.Input<boolean>;
+    /**
+     * Meeting duration in format like '1 hour', '30 minutes'
+     */
+    meetingDuration: pulumi.Input<string>;
+    /**
+     * Value must be one of true or false
+     */
+    postToIncidentTimeline?: pulumi.Input<boolean>;
+    postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateOutlookEventTaskParamsPostToSlackChannel>[]>;
+    /**
+     * The event summary
+     */
+    summary: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+    /**
+     * Time of meeting in format HH:MM
+     */
+    timeOfMeeting: pulumi.Input<string>;
+    /**
+     * Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US & Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US & Canada)`, `Central America`, `Central Time (US & Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US & Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.
+     */
+    timeZone?: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateOutlookEventTaskParamsPostToSlackChannel {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
 }
@@ -1583,6 +1681,42 @@ export interface WorkflowTaskCreateServiceNowIncidentTaskParams {
     taskType?: pulumi.Input<string>;
     /**
      * The incident title
+     */
+    title: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateSharepointPageTaskParams {
+    /**
+     * The page content
+     */
+    content?: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    drive: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Value must be one of true or false
+     */
+    markPostMortemAsPublished?: pulumi.Input<boolean>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    parentFolder?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Retrospective template to use when creating page, if desired
+     */
+    postMortemTemplateId?: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    site: pulumi.Input<{[key: string]: any}>;
+    taskType?: pulumi.Input<string>;
+    /**
+     * The SharePoint file ID to use as a template
+     */
+    templateId?: pulumi.Input<string>;
+    /**
+     * The page title
      */
     title: pulumi.Input<string>;
 }
@@ -1687,10 +1821,6 @@ export interface WorkflowTaskCreateTrelloCardTaskParamsLabel {
 
 export interface WorkflowTaskCreateWebexMeetingTaskParams {
     /**
-     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
-     */
-    inviteRootlyBot?: pulumi.Input<boolean>;
-    /**
      * The meeting password
      */
     password?: pulumi.Input<string>;
@@ -1699,6 +1829,10 @@ export interface WorkflowTaskCreateWebexMeetingTaskParams {
      */
     postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannel>[]>;
+    /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    recordMeeting?: pulumi.Input<boolean>;
     taskType?: pulumi.Input<string>;
     /**
      * The meeting topic
@@ -1758,10 +1892,6 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      */
     createAsEmail?: pulumi.Input<string>;
     /**
-     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
-     */
-    inviteRootlyBot?: pulumi.Input<boolean>;
-    /**
      * The meeting password
      */
     password?: pulumi.Input<string>;
@@ -1770,6 +1900,10 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      */
     postToIncidentTimeline?: pulumi.Input<boolean>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel>[]>;
+    /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    recordMeeting?: pulumi.Input<boolean>;
     taskType?: pulumi.Input<string>;
     /**
      * The meeting topic
@@ -1983,6 +2117,36 @@ export interface WorkflowTaskInviteToSlackChannelPagerdutyTaskParamsChannel {
     name: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskInviteToSlackChannelRootlyTaskParams {
+    channels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskInviteToSlackChannelRootlyTaskParamsChannel>[]>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    escalationPolicyTarget?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    groupTarget?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    scheduleTarget?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    serviceTarget?: pulumi.Input<{[key: string]: any}>;
+    taskType?: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    userTarget?: pulumi.Input<{[key: string]: any}>;
+}
+
+export interface WorkflowTaskInviteToSlackChannelRootlyTaskParamsChannel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskInviteToSlackChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
@@ -2076,6 +2240,28 @@ export interface WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsEscalationPo
 export interface WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsUser {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskPageRootlyOnCallRespondersTaskParams {
+    escalationNote?: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    escalationPolicyTarget?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    groupTarget?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    serviceTarget?: pulumi.Input<{[key: string]: any}>;
+    summary: pulumi.Input<string>;
+    taskType?: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    userTarget?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface WorkflowTaskPageVictorOpsOnCallRespondersTaskParams {

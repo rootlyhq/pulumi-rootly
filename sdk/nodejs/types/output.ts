@@ -58,6 +58,26 @@ export interface EnvironmentSlackChannel {
     name: string;
 }
 
+export interface EscalationLevelNotificationTargetParam {
+    id: string;
+    name: string;
+}
+
+export interface EscalationPolicyEscalationLevel {
+    id: string;
+    name: string;
+}
+
+export interface EscalationPolicyGroup {
+    id: string;
+    name: string;
+}
+
+export interface EscalationPolicyService {
+    id: string;
+    name: string;
+}
+
 export interface FunctionalitySlackAlias {
     id: string;
     name: string;
@@ -770,6 +790,34 @@ export interface WorkflowTaskAutoAssignRolePagerdutyTaskParams {
     taskType?: string;
 }
 
+export interface WorkflowTaskAutoAssignRoleRootlyTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    escalationPolicyTarget?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    groupTarget?: {[key: string]: any};
+    /**
+     * The role id
+     */
+    incidentRoleId: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    scheduleTarget?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    serviceTarget?: {[key: string]: any};
+    taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    userTarget?: {[key: string]: any};
+}
+
 export interface WorkflowTaskAutoAssignRoleVictorOpsTaskParams {
     /**
      * The role id
@@ -1101,7 +1149,7 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParams {
     /**
      * Emails of attendees
      */
-    attendees: string[];
+    attendees?: string[];
     /**
      * Value must be one of true or false
      */
@@ -1229,14 +1277,14 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParams {
      */
     description: string;
     /**
-     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
-     */
-    inviteRootlyBot?: boolean;
-    /**
      * Value must be one of true or false
      */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannel[];
+    /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    recordMeeting?: boolean;
     /**
      * The meeting summary
      */
@@ -1488,10 +1536,6 @@ export interface WorkflowTaskCreateLinearSubtaskIssueTaskParams {
 
 export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
     /**
-     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
-     */
-    inviteRootlyBot?: boolean;
-    /**
      * The meeting name
      */
     name: string;
@@ -1500,6 +1544,10 @@ export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
      */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannel[];
+    /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    recordMeeting?: boolean;
     /**
      * The meeting subject
      */
@@ -1579,6 +1627,56 @@ export interface WorkflowTaskCreateOpsgenieAlertTaskParamsTeam {
 }
 
 export interface WorkflowTaskCreateOpsgenieAlertTaskParamsUser {
+    id: string;
+    name: string;
+}
+
+export interface WorkflowTaskCreateOutlookEventTaskParams {
+    /**
+     * Emails of attendees
+     */
+    attendees?: string[];
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    calendar: {[key: string]: any};
+    /**
+     * The days until meeting
+     */
+    daysUntilMeeting: number;
+    /**
+     * The event description
+     */
+    description: string;
+    /**
+     * Value must be one of true or false
+     */
+    excludeWeekends?: boolean;
+    /**
+     * Meeting duration in format like '1 hour', '30 minutes'
+     */
+    meetingDuration: string;
+    /**
+     * Value must be one of true or false
+     */
+    postToIncidentTimeline?: boolean;
+    postToSlackChannels?: outputs.WorkflowTaskCreateOutlookEventTaskParamsPostToSlackChannel[];
+    /**
+     * The event summary
+     */
+    summary: string;
+    taskType?: string;
+    /**
+     * Time of meeting in format HH:MM
+     */
+    timeOfMeeting: string;
+    /**
+     * Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US & Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US & Canada)`, `Central America`, `Central Time (US & Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US & Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.
+     */
+    timeZone?: string;
+}
+
+export interface WorkflowTaskCreateOutlookEventTaskParamsPostToSlackChannel {
     id: string;
     name: string;
 }
@@ -1667,6 +1765,42 @@ export interface WorkflowTaskCreateServiceNowIncidentTaskParams {
     taskType?: string;
     /**
      * The incident title
+     */
+    title: string;
+}
+
+export interface WorkflowTaskCreateSharepointPageTaskParams {
+    /**
+     * The page content
+     */
+    content?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    drive: {[key: string]: any};
+    /**
+     * Value must be one of true or false
+     */
+    markPostMortemAsPublished?: boolean;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    parentFolder?: {[key: string]: any};
+    /**
+     * Retrospective template to use when creating page, if desired
+     */
+    postMortemTemplateId?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    site: {[key: string]: any};
+    taskType?: string;
+    /**
+     * The SharePoint file ID to use as a template
+     */
+    templateId?: string;
+    /**
+     * The page title
      */
     title: string;
 }
@@ -1771,10 +1905,6 @@ export interface WorkflowTaskCreateTrelloCardTaskParamsLabel {
 
 export interface WorkflowTaskCreateWebexMeetingTaskParams {
     /**
-     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
-     */
-    inviteRootlyBot?: boolean;
-    /**
      * The meeting password
      */
     password?: string;
@@ -1783,6 +1913,10 @@ export interface WorkflowTaskCreateWebexMeetingTaskParams {
      */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannel[];
+    /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    recordMeeting?: boolean;
     taskType?: string;
     /**
      * The meeting topic
@@ -1842,10 +1976,6 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      */
     createAsEmail?: string;
     /**
-     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
-     */
-    inviteRootlyBot?: boolean;
-    /**
      * The meeting password
      */
     password?: string;
@@ -1854,6 +1984,10 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel[];
+    /**
+     * We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false
+     */
+    recordMeeting?: boolean;
     taskType?: string;
     /**
      * The meeting topic
@@ -2067,6 +2201,36 @@ export interface WorkflowTaskInviteToSlackChannelPagerdutyTaskParamsChannel {
     name: string;
 }
 
+export interface WorkflowTaskInviteToSlackChannelRootlyTaskParams {
+    channels?: outputs.WorkflowTaskInviteToSlackChannelRootlyTaskParamsChannel[];
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    escalationPolicyTarget?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    groupTarget?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    scheduleTarget?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    serviceTarget?: {[key: string]: any};
+    taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    userTarget?: {[key: string]: any};
+}
+
+export interface WorkflowTaskInviteToSlackChannelRootlyTaskParamsChannel {
+    id: string;
+    name: string;
+}
+
 export interface WorkflowTaskInviteToSlackChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
@@ -2160,6 +2324,28 @@ export interface WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsEscalationPo
 export interface WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsUser {
     id: string;
     name: string;
+}
+
+export interface WorkflowTaskPageRootlyOnCallRespondersTaskParams {
+    escalationNote?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    escalationPolicyTarget?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    groupTarget?: {[key: string]: any};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    serviceTarget?: {[key: string]: any};
+    summary: string;
+    taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    userTarget?: {[key: string]: any};
 }
 
 export interface WorkflowTaskPageVictorOpsOnCallRespondersTaskParams {

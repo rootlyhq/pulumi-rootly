@@ -243,6 +243,66 @@
                 "name"
             ]
         },
+        "rootly:index/EscalationLevelNotificationTargetParam:EscalationLevelNotificationTargetParam": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "rootly:index/EscalationPolicyEscalationLevel:EscalationPolicyEscalationLevel": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "rootly:index/EscalationPolicyGroup:EscalationPolicyGroup": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "rootly:index/EscalationPolicyService:EscalationPolicyService": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "rootly:index/FunctionalitySlackAlias:FunctionalitySlackAlias": {
             "properties": {
                 "id": {
@@ -1390,6 +1450,56 @@
                 "incidentRoleId"
             ]
         },
+        "rootly:index/WorkflowTaskAutoAssignRoleRootlyTaskParams:WorkflowTaskAutoAssignRoleRootlyTaskParams": {
+            "properties": {
+                "escalationPolicyTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "groupTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "incidentRoleId": {
+                    "type": "string",
+                    "description": "The role id\n"
+                },
+                "scheduleTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "serviceTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "taskType": {
+                    "type": "string"
+                },
+                "userTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "incidentRoleId"
+            ]
+        },
         "rootly:index/WorkflowTaskAutoAssignRoleVictorOpsTaskParams:WorkflowTaskAutoAssignRoleVictorOpsTaskParams": {
             "properties": {
                 "incidentRoleId": {
@@ -1990,7 +2100,6 @@
             },
             "type": "object",
             "required": [
-                "attendees",
                 "daysUntilMeeting",
                 "description",
                 "meetingDuration",
@@ -2100,10 +2209,6 @@
                     "type": "string",
                     "description": "The meeting description\n"
                 },
-                "inviteRootlyBot": {
-                    "type": "boolean",
-                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
-                },
                 "postToIncidentTimeline": {
                     "type": "boolean",
                     "description": "Value must be one of true or false\n"
@@ -2113,6 +2218,10 @@
                     "items": {
                         "$ref": "#/types/rootly:index/WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannel:WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannel"
                     }
+                },
+                "recordMeeting": {
+                    "type": "boolean",
+                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
                 },
                 "summary": {
                     "type": "string",
@@ -2531,10 +2640,6 @@
         },
         "rootly:index/WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams:WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams": {
             "properties": {
-                "inviteRootlyBot": {
-                    "type": "boolean",
-                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
-                },
                 "name": {
                     "type": "string",
                     "description": "The meeting name\n"
@@ -2548,6 +2653,10 @@
                     "items": {
                         "$ref": "#/types/rootly:index/WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannel:WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannel"
                     }
+                },
+                "recordMeeting": {
+                    "type": "boolean",
+                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
                 },
                 "subject": {
                     "type": "string",
@@ -2725,6 +2834,89 @@
                 "name"
             ]
         },
+        "rootly:index/WorkflowTaskCreateOutlookEventTaskParams:WorkflowTaskCreateOutlookEventTaskParams": {
+            "properties": {
+                "attendees": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Emails of attendees\n"
+                },
+                "calendar": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "daysUntilMeeting": {
+                    "type": "integer",
+                    "description": "The days until meeting\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The event description\n"
+                },
+                "excludeWeekends": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
+                "meetingDuration": {
+                    "type": "string",
+                    "description": "Meeting duration in format like '1 hour', '30 minutes'\n"
+                },
+                "postToIncidentTimeline": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
+                "postToSlackChannels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskCreateOutlookEventTaskParamsPostToSlackChannel:WorkflowTaskCreateOutlookEventTaskParamsPostToSlackChannel"
+                    }
+                },
+                "summary": {
+                    "type": "string",
+                    "description": "The event summary\n"
+                },
+                "taskType": {
+                    "type": "string"
+                },
+                "timeOfMeeting": {
+                    "type": "string",
+                    "description": "Time of meeting in format HH:MM\n"
+                },
+                "timeZone": {
+                    "type": "string",
+                    "description": "Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "calendar",
+                "daysUntilMeeting",
+                "description",
+                "meetingDuration",
+                "summary",
+                "timeOfMeeting"
+            ]
+        },
+        "rootly:index/WorkflowTaskCreateOutlookEventTaskParamsPostToSlackChannel:WorkflowTaskCreateOutlookEventTaskParamsPostToSlackChannel": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "rootly:index/WorkflowTaskCreatePagertreeAlertTaskParams:WorkflowTaskCreatePagertreeAlertTaskParams": {
             "properties": {
                 "description": {
@@ -2864,6 +3056,60 @@
             },
             "type": "object",
             "required": [
+                "title"
+            ]
+        },
+        "rootly:index/WorkflowTaskCreateSharepointPageTaskParams:WorkflowTaskCreateSharepointPageTaskParams": {
+            "properties": {
+                "content": {
+                    "type": "string",
+                    "description": "The page content\n"
+                },
+                "drive": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "markPostMortemAsPublished": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
+                "parentFolder": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "postMortemTemplateId": {
+                    "type": "string",
+                    "description": "Retrospective template to use when creating page, if desired\n"
+                },
+                "site": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "taskType": {
+                    "type": "string"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "The SharePoint file ID to use as a template\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The page title\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "drive",
+                "site",
                 "title"
             ]
         },
@@ -3039,10 +3285,6 @@
         },
         "rootly:index/WorkflowTaskCreateWebexMeetingTaskParams:WorkflowTaskCreateWebexMeetingTaskParams": {
             "properties": {
-                "inviteRootlyBot": {
-                    "type": "boolean",
-                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
-                },
                 "password": {
                     "type": "string",
                     "description": "The meeting password\n"
@@ -3056,6 +3298,10 @@
                     "items": {
                         "$ref": "#/types/rootly:index/WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannel:WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannel"
                     }
+                },
+                "recordMeeting": {
+                    "type": "boolean",
+                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
                 },
                 "taskType": {
                     "type": "string"
@@ -3151,10 +3397,6 @@
                     "type": "string",
                     "description": "The email to use if creating as email\n"
                 },
-                "inviteRootlyBot": {
-                    "type": "boolean",
-                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
-                },
                 "password": {
                     "type": "string",
                     "description": "The meeting password\n"
@@ -3168,6 +3410,10 @@
                     "items": {
                         "$ref": "#/types/rootly:index/WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel:WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel"
                     }
+                },
+                "recordMeeting": {
+                    "type": "boolean",
+                    "description": "We will invite Rootly Bot to your call and make the transcript available to you. Value must be one of true or false\n"
                 },
                 "taskType": {
                     "type": "string"
@@ -3639,6 +3885,70 @@
                 "name"
             ]
         },
+        "rootly:index/WorkflowTaskInviteToSlackChannelRootlyTaskParams:WorkflowTaskInviteToSlackChannelRootlyTaskParams": {
+            "properties": {
+                "channels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskInviteToSlackChannelRootlyTaskParamsChannel:WorkflowTaskInviteToSlackChannelRootlyTaskParamsChannel"
+                    }
+                },
+                "escalationPolicyTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "groupTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "scheduleTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "serviceTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "taskType": {
+                    "type": "string"
+                },
+                "userTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                }
+            },
+            "type": "object"
+        },
+        "rootly:index/WorkflowTaskInviteToSlackChannelRootlyTaskParamsChannel:WorkflowTaskInviteToSlackChannelRootlyTaskParamsChannel": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "rootly:index/WorkflowTaskInviteToSlackChannelTaskParams:WorkflowTaskInviteToSlackChannelTaskParams": {
             "properties": {
                 "channel": {
@@ -3873,6 +4183,51 @@
             "required": [
                 "id",
                 "name"
+            ]
+        },
+        "rootly:index/WorkflowTaskPageRootlyOnCallRespondersTaskParams:WorkflowTaskPageRootlyOnCallRespondersTaskParams": {
+            "properties": {
+                "escalationNote": {
+                    "type": "string"
+                },
+                "escalationPolicyTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "groupTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "serviceTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                },
+                "summary": {
+                    "type": "string"
+                },
+                "taskType": {
+                    "type": "string"
+                },
+                "userTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Map must contain two fields, `id` and `name`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "summary"
             ]
         },
         "rootly:index/WorkflowTaskPageVictorOpsOnCallRespondersTaskParams:WorkflowTaskPageVictorOpsOnCallRespondersTaskParams": {
@@ -7031,6 +7386,232 @@
                 "type": "object"
             }
         },
+        "rootly:index/escalationLevel:EscalationLevel": {
+            "properties": {
+                "delay": {
+                    "type": "integer",
+                    "description": "Delay before notification targets will be alerted.\n"
+                },
+                "escalationPolicyId": {
+                    "type": "string",
+                    "description": "The ID of the escalation policy\n"
+                },
+                "notificationTargetParams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/EscalationLevelNotificationTargetParam:EscalationLevelNotificationTargetParam"
+                    },
+                    "description": "Escalation level's notification targets\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Position of the escalation policy level\n"
+                }
+            },
+            "required": [
+                "delay",
+                "escalationPolicyId",
+                "notificationTargetParams",
+                "position"
+            ],
+            "inputProperties": {
+                "delay": {
+                    "type": "integer",
+                    "description": "Delay before notification targets will be alerted.\n"
+                },
+                "escalationPolicyId": {
+                    "type": "string",
+                    "description": "The ID of the escalation policy\n",
+                    "willReplaceOnChanges": true
+                },
+                "notificationTargetParams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/EscalationLevelNotificationTargetParam:EscalationLevelNotificationTargetParam"
+                    },
+                    "description": "Escalation level's notification targets\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Position of the escalation policy level\n"
+                }
+            },
+            "requiredInputs": [
+                "notificationTargetParams",
+                "position"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering EscalationLevel resources.\n",
+                "properties": {
+                    "delay": {
+                        "type": "integer",
+                        "description": "Delay before notification targets will be alerted.\n"
+                    },
+                    "escalationPolicyId": {
+                        "type": "string",
+                        "description": "The ID of the escalation policy\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "notificationTargetParams": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rootly:index/EscalationLevelNotificationTargetParam:EscalationLevelNotificationTargetParam"
+                        },
+                        "description": "Escalation level's notification targets\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "Position of the escalation policy level\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/escalationPolicy:EscalationPolicy": {
+            "properties": {
+                "createdByUserId": {
+                    "type": "integer",
+                    "description": "User who created the escalation policy\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the escalation policy\n"
+                },
+                "escalationLevels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/EscalationPolicyEscalationLevel:EscalationPolicyEscalationLevel"
+                    },
+                    "description": "Levels of the escalation policy\n"
+                },
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/EscalationPolicyGroup:EscalationPolicyGroup"
+                    },
+                    "description": "Teams of to the escalation policy\n"
+                },
+                "lastUpdatedByUserId": {
+                    "type": "integer",
+                    "description": "User who updated the escalation policy\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the escalation policy\n"
+                },
+                "repeatCount": {
+                    "type": "integer",
+                    "description": "The number of times this policy will be executed until someone acknowledges the alert\n"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/EscalationPolicyService:EscalationPolicyService"
+                    },
+                    "description": "Services of the escalation policy\n"
+                }
+            },
+            "required": [
+                "createdByUserId",
+                "description",
+                "escalationLevels",
+                "groups",
+                "lastUpdatedByUserId",
+                "name",
+                "repeatCount",
+                "services"
+            ],
+            "inputProperties": {
+                "createdByUserId": {
+                    "type": "integer",
+                    "description": "User who created the escalation policy\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the escalation policy\n"
+                },
+                "escalationLevels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/EscalationPolicyEscalationLevel:EscalationPolicyEscalationLevel"
+                    },
+                    "description": "Levels of the escalation policy\n"
+                },
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/EscalationPolicyGroup:EscalationPolicyGroup"
+                    },
+                    "description": "Teams of to the escalation policy\n"
+                },
+                "lastUpdatedByUserId": {
+                    "type": "integer",
+                    "description": "User who updated the escalation policy\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the escalation policy\n"
+                },
+                "repeatCount": {
+                    "type": "integer",
+                    "description": "The number of times this policy will be executed until someone acknowledges the alert\n"
+                },
+                "services": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/EscalationPolicyService:EscalationPolicyService"
+                    },
+                    "description": "Services of the escalation policy\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering EscalationPolicy resources.\n",
+                "properties": {
+                    "createdByUserId": {
+                        "type": "integer",
+                        "description": "User who created the escalation policy\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the escalation policy\n"
+                    },
+                    "escalationLevels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rootly:index/EscalationPolicyEscalationLevel:EscalationPolicyEscalationLevel"
+                        },
+                        "description": "Levels of the escalation policy\n"
+                    },
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rootly:index/EscalationPolicyGroup:EscalationPolicyGroup"
+                        },
+                        "description": "Teams of to the escalation policy\n"
+                    },
+                    "lastUpdatedByUserId": {
+                        "type": "integer",
+                        "description": "User who updated the escalation policy\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the escalation policy\n"
+                    },
+                    "repeatCount": {
+                        "type": "integer",
+                        "description": "The number of times this policy will be executed until someone acknowledges the alert\n"
+                    },
+                    "services": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rootly:index/EscalationPolicyService:EscalationPolicyService"
+                        },
+                        "description": "Services of the escalation policy\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/formField:FormField": {
             "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as rootly from \"@pulumi/rootly\";\n\nconst regionsAffected = new rootly.FormField(\"regionsAffected\", {\n    kind: \"custom\",\n    inputKind: \"multi_select\",\n    showns: [\n        \"web_new_incident_form\",\n        \"web_update_incident_form\",\n    ],\n    requireds: [\n        \"web_new_incident_form\",\n        \"web_update_incident_form\",\n    ],\n});\nconst asia = new rootly.FormFieldOption(\"asia\", {\n    formFieldId: regionsAffected.id,\n    value: \"Asia\",\n});\nconst europe = new rootly.FormFieldOption(\"europe\", {\n    formFieldId: regionsAffected.id,\n    value: \"Europe\",\n});\nconst northAmerica = new rootly.FormFieldOption(\"northAmerica\", {\n    formFieldId: regionsAffected.id,\n    value: \"North America\",\n});\n```\n```python\nimport pulumi\nimport pulumi_rootly as rootly\n\nregions_affected = rootly.FormField(\"regionsAffected\",\n    kind=\"custom\",\n    input_kind=\"multi_select\",\n    showns=[\n        \"web_new_incident_form\",\n        \"web_update_incident_form\",\n    ],\n    requireds=[\n        \"web_new_incident_form\",\n        \"web_update_incident_form\",\n    ])\nasia = rootly.FormFieldOption(\"asia\",\n    form_field_id=regions_affected.id,\n    value=\"Asia\")\neurope = rootly.FormFieldOption(\"europe\",\n    form_field_id=regions_affected.id,\n    value=\"Europe\")\nnorth_america = rootly.FormFieldOption(\"northAmerica\",\n    form_field_id=regions_affected.id,\n    value=\"North America\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Rootly = Pulumi.Rootly;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var regionsAffected = new Rootly.FormField(\"regionsAffected\", new()\n    {\n        Kind = \"custom\",\n        InputKind = \"multi_select\",\n        Showns = new[]\n        {\n            \"web_new_incident_form\",\n            \"web_update_incident_form\",\n        },\n        Requireds = new[]\n        {\n            \"web_new_incident_form\",\n            \"web_update_incident_form\",\n        },\n    });\n\n    var asia = new Rootly.FormFieldOption(\"asia\", new()\n    {\n        FormFieldId = regionsAffected.Id,\n        Value = \"Asia\",\n    });\n\n    var europe = new Rootly.FormFieldOption(\"europe\", new()\n    {\n        FormFieldId = regionsAffected.Id,\n        Value = \"Europe\",\n    });\n\n    var northAmerica = new Rootly.FormFieldOption(\"northAmerica\", new()\n    {\n        FormFieldId = regionsAffected.Id,\n        Value = \"North America\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-rootly/sdk/go/rootly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tregionsAffected, err := rootly.NewFormField(ctx, \"regionsAffected\", \u0026rootly.FormFieldArgs{\n\t\t\tKind:      pulumi.String(\"custom\"),\n\t\t\tInputKind: pulumi.String(\"multi_select\"),\n\t\t\tShowns: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"web_new_incident_form\"),\n\t\t\t\tpulumi.String(\"web_update_incident_form\"),\n\t\t\t},\n\t\t\tRequireds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"web_new_incident_form\"),\n\t\t\t\tpulumi.String(\"web_update_incident_form\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rootly.NewFormFieldOption(ctx, \"asia\", \u0026rootly.FormFieldOptionArgs{\n\t\t\tFormFieldId: regionsAffected.ID(),\n\t\t\tValue:       pulumi.String(\"Asia\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rootly.NewFormFieldOption(ctx, \"europe\", \u0026rootly.FormFieldOptionArgs{\n\t\t\tFormFieldId: regionsAffected.ID(),\n\t\t\tValue:       pulumi.String(\"Europe\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = rootly.NewFormFieldOption(ctx, \"northAmerica\", \u0026rootly.FormFieldOptionArgs{\n\t\t\tFormFieldId: regionsAffected.ID(),\n\t\t\tValue:       pulumi.String(\"North America\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.rootly.FormField;\nimport com.pulumi.rootly.FormFieldArgs;\nimport com.pulumi.rootly.FormFieldOption;\nimport com.pulumi.rootly.FormFieldOptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var regionsAffected = new FormField(\"regionsAffected\", FormFieldArgs.builder()        \n            .kind(\"custom\")\n            .inputKind(\"multi_select\")\n            .showns(            \n                \"web_new_incident_form\",\n                \"web_update_incident_form\")\n            .requireds(            \n                \"web_new_incident_form\",\n                \"web_update_incident_form\")\n            .build());\n\n        var asia = new FormFieldOption(\"asia\", FormFieldOptionArgs.builder()        \n            .formFieldId(regionsAffected.id())\n            .value(\"Asia\")\n            .build());\n\n        var europe = new FormFieldOption(\"europe\", FormFieldOptionArgs.builder()        \n            .formFieldId(regionsAffected.id())\n            .value(\"Europe\")\n            .build());\n\n        var northAmerica = new FormFieldOption(\"northAmerica\", FormFieldOptionArgs.builder()        \n            .formFieldId(regionsAffected.id())\n            .value(\"North America\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  regionsAffected:\n    type: rootly:FormField\n    properties:\n      kind: custom\n      inputKind: multi_select\n      showns:\n        - web_new_incident_form\n        - web_update_incident_form\n      requireds:\n        - web_new_incident_form\n        - web_update_incident_form\n  asia:\n    type: rootly:FormFieldOption\n    properties:\n      formFieldId: ${regionsAffected.id}\n      value: Asia\n  europe:\n    type: rootly:FormFieldOption\n    properties:\n      formFieldId: ${regionsAffected.id}\n      value: Europe\n  northAmerica:\n    type: rootly:FormFieldOption\n    properties:\n      formFieldId: ${regionsAffected.id}\n      value: North America\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -8146,6 +8727,127 @@
                     "slug": {
                         "type": "string",
                         "description": "The slug of the incident type\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/overrideShift:OverrideShift": {
+            "properties": {
+                "endsAt": {
+                    "type": "string",
+                    "description": "End datetime of shift\n"
+                },
+                "isOverride": {
+                    "type": "boolean",
+                    "description": "Denotes shift is an override shift. Value must be one of true or false\n"
+                },
+                "rotationId": {
+                    "type": "string",
+                    "description": "ID of rotation\n"
+                },
+                "scheduleId": {
+                    "type": "string",
+                    "description": "ID of schedule\n"
+                },
+                "shiftOverride": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Override metadata\n"
+                },
+                "startsAt": {
+                    "type": "string",
+                    "description": "Start datetime of shift\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "User to whom override shift is assigned to\n"
+                }
+            },
+            "required": [
+                "endsAt",
+                "isOverride",
+                "rotationId",
+                "scheduleId",
+                "shiftOverride",
+                "startsAt",
+                "userId"
+            ],
+            "inputProperties": {
+                "endsAt": {
+                    "type": "string",
+                    "description": "End datetime of shift\n"
+                },
+                "isOverride": {
+                    "type": "boolean",
+                    "description": "Denotes shift is an override shift. Value must be one of true or false\n"
+                },
+                "rotationId": {
+                    "type": "string",
+                    "description": "ID of rotation\n"
+                },
+                "scheduleId": {
+                    "type": "string",
+                    "description": "ID of schedule\n",
+                    "willReplaceOnChanges": true
+                },
+                "shiftOverride": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Override metadata\n"
+                },
+                "startsAt": {
+                    "type": "string",
+                    "description": "Start datetime of shift\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "User to whom override shift is assigned to\n"
+                }
+            },
+            "requiredInputs": [
+                "endsAt",
+                "startsAt",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OverrideShift resources.\n",
+                "properties": {
+                    "endsAt": {
+                        "type": "string",
+                        "description": "End datetime of shift\n"
+                    },
+                    "isOverride": {
+                        "type": "boolean",
+                        "description": "Denotes shift is an override shift. Value must be one of true or false\n"
+                    },
+                    "rotationId": {
+                        "type": "string",
+                        "description": "ID of rotation\n"
+                    },
+                    "scheduleId": {
+                        "type": "string",
+                        "description": "ID of schedule\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "shiftOverride": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Override metadata\n"
+                    },
+                    "startsAt": {
+                        "type": "string",
+                        "description": "Start datetime of shift\n"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "description": "User to whom override shift is assigned to\n"
                     }
                 },
                 "type": "object"
@@ -9349,6 +10051,306 @@
                             "type": "string"
                         },
                         "description": "Value must be one of `create`, `read`, `update`, `delete`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/schedule:Schedule": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the schedule\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the schedule\n"
+                }
+            },
+            "required": [
+                "description",
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the schedule\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the schedule\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Schedule resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the schedule\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the schedule\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/scheduleRotation:ScheduleRotation": {
+            "properties": {
+                "activeAllDay": {
+                    "type": "boolean",
+                    "description": "Schedule rotation active all day?. Value must be one of true or false\n"
+                },
+                "activeAllWeek": {
+                    "type": "boolean",
+                    "description": "Schedule rotation active all week?. Value must be one of true or false\n"
+                },
+                "activeDays": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the schedule rotation\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Position of the schedule rotation\n"
+                },
+                "scheduleId": {
+                    "type": "string",
+                    "description": "The ID of parent schedule\n"
+                },
+                "scheduleRotationableAttributes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "scheduleRotationableType": {
+                    "type": "string",
+                    "description": "Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.\n"
+                },
+                "timeZone": {
+                    "type": "string",
+                    "description": "Schedule Rotation Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
+                }
+            },
+            "required": [
+                "activeAllDay",
+                "activeAllWeek",
+                "activeDays",
+                "name",
+                "position",
+                "scheduleId",
+                "scheduleRotationableAttributes"
+            ],
+            "inputProperties": {
+                "activeAllDay": {
+                    "type": "boolean",
+                    "description": "Schedule rotation active all day?. Value must be one of true or false\n"
+                },
+                "activeAllWeek": {
+                    "type": "boolean",
+                    "description": "Schedule rotation active all week?. Value must be one of true or false\n"
+                },
+                "activeDays": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the schedule rotation\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "Position of the schedule rotation\n"
+                },
+                "scheduleId": {
+                    "type": "string",
+                    "description": "The ID of parent schedule\n",
+                    "willReplaceOnChanges": true
+                },
+                "scheduleRotationableAttributes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "scheduleRotationableType": {
+                    "type": "string",
+                    "description": "Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.\n"
+                },
+                "timeZone": {
+                    "type": "string",
+                    "description": "Schedule Rotation Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
+                }
+            },
+            "requiredInputs": [
+                "scheduleRotationableAttributes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ScheduleRotation resources.\n",
+                "properties": {
+                    "activeAllDay": {
+                        "type": "boolean",
+                        "description": "Schedule rotation active all day?. Value must be one of true or false\n"
+                    },
+                    "activeAllWeek": {
+                        "type": "boolean",
+                        "description": "Schedule rotation active all week?. Value must be one of true or false\n"
+                    },
+                    "activeDays": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the schedule rotation\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "Position of the schedule rotation\n"
+                    },
+                    "scheduleId": {
+                        "type": "string",
+                        "description": "The ID of parent schedule\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "scheduleRotationableAttributes": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "scheduleRotationableType": {
+                        "type": "string",
+                        "description": "Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.\n"
+                    },
+                    "timeZone": {
+                        "type": "string",
+                        "description": "Schedule Rotation Timezone. Value must be one of `International Date Line West`, `American Samoa`, `Midway Island`, `Hawaii`, `Alaska`, `Pacific Time (US \u0026 Canada)`, `Tijuana`, `Arizona`, `Mazatlan`, `Mountain Time (US \u0026 Canada)`, `Central America`, `Central Time (US \u0026 Canada)`, `Chihuahua`, `Guadalajara`, `Mexico City`, `Monterrey`, `Saskatchewan`, `Bogota`, `Eastern Time (US \u0026 Canada)`, `Indiana (East)`, `Lima`, `Quito`, `Atlantic Time (Canada)`, `Caracas`, `Georgetown`, `La Paz`, `Puerto Rico`, `Santiago`, `Newfoundland`, `Brasilia`, `Buenos Aires`, `Montevideo`, `Greenland`, `Mid-Atlantic`, `Azores`, `Cape Verde Is.`, `Edinburgh`, `Lisbon`, `London`, `Monrovia`, `UTC`, `Amsterdam`, `Belgrade`, `Berlin`, `Bern`, `Bratislava`, `Brussels`, `Budapest`, `Casablanca`, `Copenhagen`, `Dublin`, `Ljubljana`, `Madrid`, `Paris`, `Prague`, `Rome`, `Sarajevo`, `Skopje`, `Stockholm`, `Vienna`, `Warsaw`, `West Central Africa`, `Zagreb`, `Zurich`, `Athens`, `Bucharest`, `Cairo`, `Harare`, `Helsinki`, `Jerusalem`, `Kaliningrad`, `Kyiv`, `Pretoria`, `Riga`, `Sofia`, `Tallinn`, `Vilnius`, `Baghdad`, `Istanbul`, `Kuwait`, `Minsk`, `Moscow`, `Nairobi`, `Riyadh`, `St. Petersburg`, `Volgograd`, `Tehran`, `Abu Dhabi`, `Baku`, `Muscat`, `Samara`, `Tbilisi`, `Yerevan`, `Kabul`, `Almaty`, `Ekaterinburg`, `Islamabad`, `Karachi`, `Tashkent`, `Chennai`, `Kolkata`, `Mumbai`, `New Delhi`, `Sri Jayawardenepura`, `Kathmandu`, `Astana`, `Dhaka`, `Urumqi`, `Rangoon`, `Bangkok`, `Hanoi`, `Jakarta`, `Krasnoyarsk`, `Novosibirsk`, `Beijing`, `Chongqing`, `Hong Kong`, `Irkutsk`, `Kuala Lumpur`, `Perth`, `Singapore`, `Taipei`, `Ulaanbaatar`, `Osaka`, `Sapporo`, `Seoul`, `Tokyo`, `Yakutsk`, `Adelaide`, `Darwin`, `Brisbane`, `Canberra`, `Guam`, `Hobart`, `Melbourne`, `Port Moresby`, `Sydney`, `Vladivostok`, `Magadan`, `New Caledonia`, `Solomon Is.`, `Srednekolymsk`, `Auckland`, `Fiji`, `Kamchatka`, `Marshall Is.`, `Wellington`, `Chatham Is.`, `Nuku'alofa`, `Samoa`, `Tokelau Is.`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/scheduleRotationActiveTime:ScheduleRotationActiveTime": {
+            "properties": {
+                "endTime": {
+                    "type": "string",
+                    "description": "End time for schedule rotation active time\n"
+                },
+                "scheduleRotationId": {
+                    "type": "string"
+                },
+                "startTime": {
+                    "type": "string",
+                    "description": "Start time for schedule rotation active time\n"
+                }
+            },
+            "required": [
+                "endTime",
+                "scheduleRotationId",
+                "startTime"
+            ],
+            "inputProperties": {
+                "endTime": {
+                    "type": "string",
+                    "description": "End time for schedule rotation active time\n"
+                },
+                "scheduleRotationId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "startTime": {
+                    "type": "string",
+                    "description": "Start time for schedule rotation active time\n"
+                }
+            },
+            "requiredInputs": [
+                "endTime",
+                "startTime"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ScheduleRotationActiveTime resources.\n",
+                "properties": {
+                    "endTime": {
+                        "type": "string",
+                        "description": "End time for schedule rotation active time\n"
+                    },
+                    "scheduleRotationId": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "description": "Start time for schedule rotation active time\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/scheduleRotationUser:ScheduleRotationUser": {
+            "properties": {
+                "position": {
+                    "type": "integer",
+                    "description": "Position of the user inside rotation\n"
+                },
+                "scheduleRotationId": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "Schedule rotation user\n"
+                }
+            },
+            "required": [
+                "position",
+                "scheduleRotationId",
+                "userId"
+            ],
+            "inputProperties": {
+                "position": {
+                    "type": "integer",
+                    "description": "Position of the user inside rotation\n"
+                },
+                "scheduleRotationId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "Schedule rotation user\n"
+                }
+            },
+            "requiredInputs": [
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ScheduleRotationUser resources.\n",
+                "properties": {
+                    "position": {
+                        "type": "integer",
+                        "description": "Position of the user inside rotation\n"
+                    },
+                    "scheduleRotationId": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "description": "Schedule rotation user\n"
                     }
                 },
                 "type": "object"
@@ -13842,6 +14844,103 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowTaskAutoAssignRoleRootly:WorkflowTaskAutoAssignRoleRootly": {
+            "description": "Manages workflow auto_assign_role_rootly task.\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskAutoAssignRoleRootlyTaskParams:WorkflowTaskAutoAssignRoleRootlyTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskAutoAssignRoleRootlyTaskParams:WorkflowTaskAutoAssignRoleRootlyTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskAutoAssignRoleRootly resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskAutoAssignRoleRootlyTaskParams:WorkflowTaskAutoAssignRoleRootlyTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowTaskAutoAssignRoleVictorOps:WorkflowTaskAutoAssignRoleVictorOps": {
             "description": "Manages workflow auto_assign_role_victor_ops task.\n",
             "properties": {
@@ -16461,6 +17560,103 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowTaskCreateOutlookEvent:WorkflowTaskCreateOutlookEvent": {
+            "description": "Manages workflow create_outlook_event task.\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreateOutlookEventTaskParams:WorkflowTaskCreateOutlookEventTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreateOutlookEventTaskParams:WorkflowTaskCreateOutlookEventTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskCreateOutlookEvent resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskCreateOutlookEventTaskParams:WorkflowTaskCreateOutlookEventTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowTaskCreatePagertreeAlert:WorkflowTaskCreatePagertreeAlert": {
             "description": "Manages workflow create_pagertree_alert task.\n",
             "properties": {
@@ -16741,6 +17937,103 @@
                     },
                     "taskParams": {
                         "$ref": "#/types/rootly:index/WorkflowTaskCreateServiceNowIncidentTaskParams:WorkflowTaskCreateServiceNowIncidentTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowTaskCreateSharepointPage:WorkflowTaskCreateSharepointPage": {
+            "description": "Manages workflow create_sharepoint_page task.\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreateSharepointPageTaskParams:WorkflowTaskCreateSharepointPageTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreateSharepointPageTaskParams:WorkflowTaskCreateSharepointPageTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskCreateSharepointPage resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskCreateSharepointPageTaskParams:WorkflowTaskCreateSharepointPageTaskParams",
                         "description": "The parameters for this workflow task.\n"
                     },
                     "workflowId": {
@@ -18207,6 +19500,103 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowTaskInviteToSlackChannelRootly:WorkflowTaskInviteToSlackChannelRootly": {
+            "description": "Manages workflow invite_to_slack_channel_rootly task.\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskInviteToSlackChannelRootlyTaskParams:WorkflowTaskInviteToSlackChannelRootlyTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskInviteToSlackChannelRootlyTaskParams:WorkflowTaskInviteToSlackChannelRootlyTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskInviteToSlackChannelRootly resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskInviteToSlackChannelRootlyTaskParams:WorkflowTaskInviteToSlackChannelRootlyTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowTaskInviteToSlackChannelVictorOps:WorkflowTaskInviteToSlackChannelVictorOps": {
             "description": "Manages workflow invite_to_slack_channel_victor_ops task.\n",
             "properties": {
@@ -18487,6 +19877,103 @@
                     },
                     "taskParams": {
                         "$ref": "#/types/rootly:index/WorkflowTaskPagePagerdutyOnCallRespondersTaskParams:WorkflowTaskPagePagerdutyOnCallRespondersTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowTaskPageRootlyOnCallResponders:WorkflowTaskPageRootlyOnCallResponders": {
+            "description": "Manages workflow page_rootly_on_call_responders task.\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskPageRootlyOnCallRespondersTaskParams:WorkflowTaskPageRootlyOnCallRespondersTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskPageRootlyOnCallRespondersTaskParams:WorkflowTaskPageRootlyOnCallRespondersTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskPageRootlyOnCallResponders resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskPageRootlyOnCallRespondersTaskParams:WorkflowTaskPageRootlyOnCallRespondersTaskParams",
                         "description": "The parameters for this workflow task.\n"
                     },
                     "workflowId": {

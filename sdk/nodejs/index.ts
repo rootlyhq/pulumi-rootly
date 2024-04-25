@@ -45,6 +45,16 @@ export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
+export { EscalationLevelArgs, EscalationLevelState } from "./escalationLevel";
+export type EscalationLevel = import("./escalationLevel").EscalationLevel;
+export const EscalationLevel: typeof import("./escalationLevel").EscalationLevel = null as any;
+utilities.lazyLoad(exports, ["EscalationLevel"], () => require("./escalationLevel"));
+
+export { EscalationPolicyArgs, EscalationPolicyState } from "./escalationPolicy";
+export type EscalationPolicy = import("./escalationPolicy").EscalationPolicy;
+export const EscalationPolicy: typeof import("./escalationPolicy").EscalationPolicy = null as any;
+utilities.lazyLoad(exports, ["EscalationPolicy"], () => require("./escalationPolicy"));
+
 export { FormFieldArgs, FormFieldState } from "./formField";
 export type FormField = import("./formField").FormField;
 export const FormField: typeof import("./formField").FormField = null as any;
@@ -290,6 +300,11 @@ export type IncidentType = import("./incidentType").IncidentType;
 export const IncidentType: typeof import("./incidentType").IncidentType = null as any;
 utilities.lazyLoad(exports, ["IncidentType"], () => require("./incidentType"));
 
+export { OverrideShiftArgs, OverrideShiftState } from "./overrideShift";
+export type OverrideShift = import("./overrideShift").OverrideShift;
+export const OverrideShift: typeof import("./overrideShift").OverrideShift = null as any;
+utilities.lazyLoad(exports, ["OverrideShift"], () => require("./overrideShift"));
+
 export { PlaybookArgs, PlaybookState } from "./playbook";
 export type Playbook = import("./playbook").Playbook;
 export const Playbook: typeof import("./playbook").Playbook = null as any;
@@ -329,6 +344,26 @@ export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
 utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { ScheduleArgs, ScheduleState } from "./schedule";
+export type Schedule = import("./schedule").Schedule;
+export const Schedule: typeof import("./schedule").Schedule = null as any;
+utilities.lazyLoad(exports, ["Schedule"], () => require("./schedule"));
+
+export { ScheduleRotationArgs, ScheduleRotationState } from "./scheduleRotation";
+export type ScheduleRotation = import("./scheduleRotation").ScheduleRotation;
+export const ScheduleRotation: typeof import("./scheduleRotation").ScheduleRotation = null as any;
+utilities.lazyLoad(exports, ["ScheduleRotation"], () => require("./scheduleRotation"));
+
+export { ScheduleRotationActiveTimeArgs, ScheduleRotationActiveTimeState } from "./scheduleRotationActiveTime";
+export type ScheduleRotationActiveTime = import("./scheduleRotationActiveTime").ScheduleRotationActiveTime;
+export const ScheduleRotationActiveTime: typeof import("./scheduleRotationActiveTime").ScheduleRotationActiveTime = null as any;
+utilities.lazyLoad(exports, ["ScheduleRotationActiveTime"], () => require("./scheduleRotationActiveTime"));
+
+export { ScheduleRotationUserArgs, ScheduleRotationUserState } from "./scheduleRotationUser";
+export type ScheduleRotationUser = import("./scheduleRotationUser").ScheduleRotationUser;
+export const ScheduleRotationUser: typeof import("./scheduleRotationUser").ScheduleRotationUser = null as any;
+utilities.lazyLoad(exports, ["ScheduleRotationUser"], () => require("./scheduleRotationUser"));
 
 export { SecretArgs, SecretState } from "./secret";
 export type Secret = import("./secret").Secret;
@@ -454,6 +489,11 @@ export { WorkflowTaskAutoAssignRolePagerdutyArgs, WorkflowTaskAutoAssignRolePage
 export type WorkflowTaskAutoAssignRolePagerduty = import("./workflowTaskAutoAssignRolePagerduty").WorkflowTaskAutoAssignRolePagerduty;
 export const WorkflowTaskAutoAssignRolePagerduty: typeof import("./workflowTaskAutoAssignRolePagerduty").WorkflowTaskAutoAssignRolePagerduty = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskAutoAssignRolePagerduty"], () => require("./workflowTaskAutoAssignRolePagerduty"));
+
+export { WorkflowTaskAutoAssignRoleRootlyArgs, WorkflowTaskAutoAssignRoleRootlyState } from "./workflowTaskAutoAssignRoleRootly";
+export type WorkflowTaskAutoAssignRoleRootly = import("./workflowTaskAutoAssignRoleRootly").WorkflowTaskAutoAssignRoleRootly;
+export const WorkflowTaskAutoAssignRoleRootly: typeof import("./workflowTaskAutoAssignRoleRootly").WorkflowTaskAutoAssignRoleRootly = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskAutoAssignRoleRootly"], () => require("./workflowTaskAutoAssignRoleRootly"));
 
 export { WorkflowTaskAutoAssignRoleVictorOpsArgs, WorkflowTaskAutoAssignRoleVictorOpsState } from "./workflowTaskAutoAssignRoleVictorOps";
 export type WorkflowTaskAutoAssignRoleVictorOps = import("./workflowTaskAutoAssignRoleVictorOps").WorkflowTaskAutoAssignRoleVictorOps;
@@ -590,6 +630,11 @@ export type WorkflowTaskCreateOpsgenieAlert = import("./workflowTaskCreateOpsgen
 export const WorkflowTaskCreateOpsgenieAlert: typeof import("./workflowTaskCreateOpsgenieAlert").WorkflowTaskCreateOpsgenieAlert = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateOpsgenieAlert"], () => require("./workflowTaskCreateOpsgenieAlert"));
 
+export { WorkflowTaskCreateOutlookEventArgs, WorkflowTaskCreateOutlookEventState } from "./workflowTaskCreateOutlookEvent";
+export type WorkflowTaskCreateOutlookEvent = import("./workflowTaskCreateOutlookEvent").WorkflowTaskCreateOutlookEvent;
+export const WorkflowTaskCreateOutlookEvent: typeof import("./workflowTaskCreateOutlookEvent").WorkflowTaskCreateOutlookEvent = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateOutlookEvent"], () => require("./workflowTaskCreateOutlookEvent"));
+
 export { WorkflowTaskCreatePagertreeAlertArgs, WorkflowTaskCreatePagertreeAlertState } from "./workflowTaskCreatePagertreeAlert";
 export type WorkflowTaskCreatePagertreeAlert = import("./workflowTaskCreatePagertreeAlert").WorkflowTaskCreatePagertreeAlert;
 export const WorkflowTaskCreatePagertreeAlert: typeof import("./workflowTaskCreatePagertreeAlert").WorkflowTaskCreatePagertreeAlert = null as any;
@@ -604,6 +649,11 @@ export { WorkflowTaskCreateServiceNowIncidentArgs, WorkflowTaskCreateServiceNowI
 export type WorkflowTaskCreateServiceNowIncident = import("./workflowTaskCreateServiceNowIncident").WorkflowTaskCreateServiceNowIncident;
 export const WorkflowTaskCreateServiceNowIncident: typeof import("./workflowTaskCreateServiceNowIncident").WorkflowTaskCreateServiceNowIncident = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateServiceNowIncident"], () => require("./workflowTaskCreateServiceNowIncident"));
+
+export { WorkflowTaskCreateSharepointPageArgs, WorkflowTaskCreateSharepointPageState } from "./workflowTaskCreateSharepointPage";
+export type WorkflowTaskCreateSharepointPage = import("./workflowTaskCreateSharepointPage").WorkflowTaskCreateSharepointPage;
+export const WorkflowTaskCreateSharepointPage: typeof import("./workflowTaskCreateSharepointPage").WorkflowTaskCreateSharepointPage = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateSharepointPage"], () => require("./workflowTaskCreateSharepointPage"));
 
 export { WorkflowTaskCreateShortcutStoryArgs, WorkflowTaskCreateShortcutStoryState } from "./workflowTaskCreateShortcutStory";
 export type WorkflowTaskCreateShortcutStory = import("./workflowTaskCreateShortcutStory").WorkflowTaskCreateShortcutStory;
@@ -680,6 +730,11 @@ export type WorkflowTaskInviteToSlackChannelPagerduty = import("./workflowTaskIn
 export const WorkflowTaskInviteToSlackChannelPagerduty: typeof import("./workflowTaskInviteToSlackChannelPagerduty").WorkflowTaskInviteToSlackChannelPagerduty = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskInviteToSlackChannelPagerduty"], () => require("./workflowTaskInviteToSlackChannelPagerduty"));
 
+export { WorkflowTaskInviteToSlackChannelRootlyArgs, WorkflowTaskInviteToSlackChannelRootlyState } from "./workflowTaskInviteToSlackChannelRootly";
+export type WorkflowTaskInviteToSlackChannelRootly = import("./workflowTaskInviteToSlackChannelRootly").WorkflowTaskInviteToSlackChannelRootly;
+export const WorkflowTaskInviteToSlackChannelRootly: typeof import("./workflowTaskInviteToSlackChannelRootly").WorkflowTaskInviteToSlackChannelRootly = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskInviteToSlackChannelRootly"], () => require("./workflowTaskInviteToSlackChannelRootly"));
+
 export { WorkflowTaskInviteToSlackChannelVictorOpsArgs, WorkflowTaskInviteToSlackChannelVictorOpsState } from "./workflowTaskInviteToSlackChannelVictorOps";
 export type WorkflowTaskInviteToSlackChannelVictorOps = import("./workflowTaskInviteToSlackChannelVictorOps").WorkflowTaskInviteToSlackChannelVictorOps;
 export const WorkflowTaskInviteToSlackChannelVictorOps: typeof import("./workflowTaskInviteToSlackChannelVictorOps").WorkflowTaskInviteToSlackChannelVictorOps = null as any;
@@ -694,6 +749,11 @@ export { WorkflowTaskPagePagerdutyOnCallRespondersArgs, WorkflowTaskPagePagerdut
 export type WorkflowTaskPagePagerdutyOnCallResponders = import("./workflowTaskPagePagerdutyOnCallResponders").WorkflowTaskPagePagerdutyOnCallResponders;
 export const WorkflowTaskPagePagerdutyOnCallResponders: typeof import("./workflowTaskPagePagerdutyOnCallResponders").WorkflowTaskPagePagerdutyOnCallResponders = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskPagePagerdutyOnCallResponders"], () => require("./workflowTaskPagePagerdutyOnCallResponders"));
+
+export { WorkflowTaskPageRootlyOnCallRespondersArgs, WorkflowTaskPageRootlyOnCallRespondersState } from "./workflowTaskPageRootlyOnCallResponders";
+export type WorkflowTaskPageRootlyOnCallResponders = import("./workflowTaskPageRootlyOnCallResponders").WorkflowTaskPageRootlyOnCallResponders;
+export const WorkflowTaskPageRootlyOnCallResponders: typeof import("./workflowTaskPageRootlyOnCallResponders").WorkflowTaskPageRootlyOnCallResponders = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskPageRootlyOnCallResponders"], () => require("./workflowTaskPageRootlyOnCallResponders"));
 
 export { WorkflowTaskPageVictorOpsOnCallRespondersArgs, WorkflowTaskPageVictorOpsOnCallRespondersState } from "./workflowTaskPageVictorOpsOnCallResponders";
 export type WorkflowTaskPageVictorOpsOnCallResponders = import("./workflowTaskPageVictorOpsOnCallResponders").WorkflowTaskPageVictorOpsOnCallResponders;
@@ -945,6 +1005,10 @@ const _module = {
                 return new DashboardPanel(name, <any>undefined, { urn })
             case "rootly:index/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "rootly:index/escalationLevel:EscalationLevel":
+                return new EscalationLevel(name, <any>undefined, { urn })
+            case "rootly:index/escalationPolicy:EscalationPolicy":
+                return new EscalationPolicy(name, <any>undefined, { urn })
             case "rootly:index/formField:FormField":
                 return new FormField(name, <any>undefined, { urn })
             case "rootly:index/formFieldOption:FormFieldOption":
@@ -965,6 +1029,8 @@ const _module = {
                 return new IncidentRoleTask(name, <any>undefined, { urn })
             case "rootly:index/incidentType:IncidentType":
                 return new IncidentType(name, <any>undefined, { urn })
+            case "rootly:index/overrideShift:OverrideShift":
+                return new OverrideShift(name, <any>undefined, { urn })
             case "rootly:index/playbook:Playbook":
                 return new Playbook(name, <any>undefined, { urn })
             case "rootly:index/playbookTask:PlaybookTask":
@@ -979,6 +1045,14 @@ const _module = {
                 return new RetrospectiveStep(name, <any>undefined, { urn })
             case "rootly:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
+            case "rootly:index/schedule:Schedule":
+                return new Schedule(name, <any>undefined, { urn })
+            case "rootly:index/scheduleRotation:ScheduleRotation":
+                return new ScheduleRotation(name, <any>undefined, { urn })
+            case "rootly:index/scheduleRotationActiveTime:ScheduleRotationActiveTime":
+                return new ScheduleRotationActiveTime(name, <any>undefined, { urn })
+            case "rootly:index/scheduleRotationUser:ScheduleRotationUser":
+                return new ScheduleRotationUser(name, <any>undefined, { urn })
             case "rootly:index/secret:Secret":
                 return new Secret(name, <any>undefined, { urn })
             case "rootly:index/service:Service":
@@ -1029,6 +1103,8 @@ const _module = {
                 return new WorkflowTaskAutoAssignRoleOpsgenie(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskAutoAssignRolePagerduty:WorkflowTaskAutoAssignRolePagerduty":
                 return new WorkflowTaskAutoAssignRolePagerduty(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskAutoAssignRoleRootly:WorkflowTaskAutoAssignRoleRootly":
+                return new WorkflowTaskAutoAssignRoleRootly(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskAutoAssignRoleVictorOps:WorkflowTaskAutoAssignRoleVictorOps":
                 return new WorkflowTaskAutoAssignRoleVictorOps(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCallPeople:WorkflowTaskCallPeople":
@@ -1083,12 +1159,16 @@ const _module = {
                 return new WorkflowTaskCreateNotionPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateOpsgenieAlert:WorkflowTaskCreateOpsgenieAlert":
                 return new WorkflowTaskCreateOpsgenieAlert(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateOutlookEvent:WorkflowTaskCreateOutlookEvent":
+                return new WorkflowTaskCreateOutlookEvent(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreatePagertreeAlert:WorkflowTaskCreatePagertreeAlert":
                 return new WorkflowTaskCreatePagertreeAlert(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateQuipPage:WorkflowTaskCreateQuipPage":
                 return new WorkflowTaskCreateQuipPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateServiceNowIncident:WorkflowTaskCreateServiceNowIncident":
                 return new WorkflowTaskCreateServiceNowIncident(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateSharepointPage:WorkflowTaskCreateSharepointPage":
+                return new WorkflowTaskCreateSharepointPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateShortcutStory:WorkflowTaskCreateShortcutStory":
                 return new WorkflowTaskCreateShortcutStory(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateShortcutTask:WorkflowTaskCreateShortcutTask":
@@ -1119,12 +1199,16 @@ const _module = {
                 return new WorkflowTaskInviteToSlackChannelOpsgenie(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskInviteToSlackChannelPagerduty:WorkflowTaskInviteToSlackChannelPagerduty":
                 return new WorkflowTaskInviteToSlackChannelPagerduty(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskInviteToSlackChannelRootly:WorkflowTaskInviteToSlackChannelRootly":
+                return new WorkflowTaskInviteToSlackChannelRootly(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskInviteToSlackChannelVictorOps:WorkflowTaskInviteToSlackChannelVictorOps":
                 return new WorkflowTaskInviteToSlackChannelVictorOps(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskPageOpsgenieOnCallResponders:WorkflowTaskPageOpsgenieOnCallResponders":
                 return new WorkflowTaskPageOpsgenieOnCallResponders(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskPagePagerdutyOnCallResponders:WorkflowTaskPagePagerdutyOnCallResponders":
                 return new WorkflowTaskPagePagerdutyOnCallResponders(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskPageRootlyOnCallResponders:WorkflowTaskPageRootlyOnCallResponders":
+                return new WorkflowTaskPageRootlyOnCallResponders(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskPageVictorOpsOnCallResponders:WorkflowTaskPageVictorOpsOnCallResponders":
                 return new WorkflowTaskPageVictorOpsOnCallResponders(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskPrint:WorkflowTaskPrint":
@@ -1226,6 +1310,8 @@ pulumi.runtime.registerResourceModule("rootly", "index/customForm", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/dashboardPanel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/environment", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/escalationLevel", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/escalationPolicy", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/formField", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/formFieldOption", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/formFieldPosition", _module)
@@ -1236,6 +1322,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/incidentPermissionSetReso
 pulumi.runtime.registerResourceModule("rootly", "index/incidentRole", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/incidentRoleTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/incidentType", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/overrideShift", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/playbook", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/playbookTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/postMortemTemplate", _module)
@@ -1243,6 +1330,10 @@ pulumi.runtime.registerResourceModule("rootly", "index/retrospectiveConfiguratio
 pulumi.runtime.registerResourceModule("rootly", "index/retrospectiveProcess", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/retrospectiveStep", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/role", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/schedule", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/scheduleRotation", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/scheduleRotationActiveTime", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/scheduleRotationUser", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/secret", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/service", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/severity", _module)
@@ -1268,6 +1359,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskArchiveSlackC
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAttachDatadogDashboards", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRoleOpsgenie", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRolePagerduty", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRoleRootly", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRoleVictorOps", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCallPeople", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskChangeSlackChannelPrivacy", _module)
@@ -1295,9 +1387,11 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateLinearS
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateMicrosoftTeamsMeeting", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateNotionPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateOpsgenieAlert", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateOutlookEvent", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreatePagertreeAlert", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateQuipPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateServiceNowIncident", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateSharepointPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateShortcutStory", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateShortcutTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateSlackChannel", _module)
@@ -1313,9 +1407,11 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskHTTPClient", 
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannelOpsgenie", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannelPagerduty", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannelRootly", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannelVictorOps", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPageOpsgenieOnCallResponders", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPagePagerdutyOnCallResponders", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPageRootlyOnCallResponders", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPageVictorOpsOnCallResponders", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPrint", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPublishIncident", _module)
