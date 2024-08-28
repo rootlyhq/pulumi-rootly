@@ -26,7 +26,7 @@ export interface GetAuthorizationArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: {[key: string]: any};
+    createdAt?: {[key: string]: string};
     granteeId?: string;
     granteeType?: string;
 }
@@ -40,7 +40,7 @@ export interface GetAuthorizationResult {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly createdAt?: {[key: string]: any};
+    readonly createdAt?: {[key: string]: string};
     readonly granteeId: string;
     readonly granteeType: string;
     /**
@@ -61,7 +61,7 @@ export interface GetAuthorizationOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: any}>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     granteeId?: pulumi.Input<string>;
     granteeType?: pulumi.Input<string>;
 }

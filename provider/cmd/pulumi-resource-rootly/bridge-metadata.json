@@ -103,7 +103,15 @@
             },
             "rootly_escalation_policy": {
                 "current": "rootly:index/escalationPolicy:EscalationPolicy",
-                "majorVersion": 2
+                "majorVersion": 2,
+                "fields": {
+                    "group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "service_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rootly_form_field": {
                 "current": "rootly:index/formField:FormField",
@@ -185,6 +193,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "rootly_heartbeat": {
+                "current": "rootly:index/heartbeat:Heartbeat",
+                "majorVersion": 2
             },
             "rootly_incident_permission_set": {
                 "current": "rootly:index/incidentPermissionSet:IncidentPermissionSet",
@@ -2445,6 +2457,10 @@
             },
             "rootly_functionality": {
                 "current": "rootly:index/getFunctionality:getFunctionality",
+                "majorVersion": 2
+            },
+            "rootly_heartbeat": {
+                "current": "rootly:index/getHeartbeat:getHeartbeat",
                 "majorVersion": 2
             },
             "rootly_incident": {

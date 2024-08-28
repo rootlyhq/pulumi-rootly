@@ -41,6 +41,10 @@ export class EscalationPolicy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Associated groups (alerting the group will trigger escalation policy)
+     */
+    public readonly groupIds!: pulumi.Output<string[]>;
+    /**
      * User who updated the escalation policy
      */
     public readonly lastUpdatedByUserId!: pulumi.Output<number>;
@@ -52,6 +56,10 @@ export class EscalationPolicy extends pulumi.CustomResource {
      * The number of times this policy will be executed until someone acknowledges the alert
      */
     public readonly repeatCount!: pulumi.Output<number>;
+    /**
+     * Associated services (alerting the service will trigger escalation policy)
+     */
+    public readonly serviceIds!: pulumi.Output<string[]>;
 
     /**
      * Create a EscalationPolicy resource with the given unique name, arguments, and options.
@@ -68,16 +76,20 @@ export class EscalationPolicy extends pulumi.CustomResource {
             const state = argsOrState as EscalationPolicyState | undefined;
             resourceInputs["createdByUserId"] = state ? state.createdByUserId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["groupIds"] = state ? state.groupIds : undefined;
             resourceInputs["lastUpdatedByUserId"] = state ? state.lastUpdatedByUserId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["repeatCount"] = state ? state.repeatCount : undefined;
+            resourceInputs["serviceIds"] = state ? state.serviceIds : undefined;
         } else {
             const args = argsOrState as EscalationPolicyArgs | undefined;
             resourceInputs["createdByUserId"] = args ? args.createdByUserId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["groupIds"] = args ? args.groupIds : undefined;
             resourceInputs["lastUpdatedByUserId"] = args ? args.lastUpdatedByUserId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["repeatCount"] = args ? args.repeatCount : undefined;
+            resourceInputs["serviceIds"] = args ? args.serviceIds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EscalationPolicy.__pulumiType, name, resourceInputs, opts);
@@ -97,6 +109,10 @@ export interface EscalationPolicyState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Associated groups (alerting the group will trigger escalation policy)
+     */
+    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * User who updated the escalation policy
      */
     lastUpdatedByUserId?: pulumi.Input<number>;
@@ -108,6 +124,10 @@ export interface EscalationPolicyState {
      * The number of times this policy will be executed until someone acknowledges the alert
      */
     repeatCount?: pulumi.Input<number>;
+    /**
+     * Associated services (alerting the service will trigger escalation policy)
+     */
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -123,6 +143,10 @@ export interface EscalationPolicyArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Associated groups (alerting the group will trigger escalation policy)
+     */
+    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * User who updated the escalation policy
      */
     lastUpdatedByUserId?: pulumi.Input<number>;
@@ -134,4 +158,8 @@ export interface EscalationPolicyArgs {
      * The number of times this policy will be executed until someone acknowledges the alert
      */
     repeatCount?: pulumi.Input<number>;
+    /**
+     * Associated services (alerting the service will trigger escalation policy)
+     */
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -24,7 +24,7 @@ export interface GetUserArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: {[key: string]: any};
+    createdAt?: {[key: string]: string};
     email?: string;
 }
 
@@ -35,7 +35,7 @@ export interface GetUserResult {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly createdAt?: {[key: string]: any};
+    readonly createdAt?: {[key: string]: string};
     readonly email: string;
     /**
      * The ID of this resource.
@@ -56,6 +56,6 @@ export interface GetUserOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: any}>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     email?: pulumi.Input<string>;
 }

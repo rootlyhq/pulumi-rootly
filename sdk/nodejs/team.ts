@@ -59,6 +59,10 @@ export class Team extends pulumi.CustomResource {
      */
     public readonly pagerdutyId!: pulumi.Output<string>;
     /**
+     * The PagerDuty service id associated to this team
+     */
+    public readonly pagerdutyServiceId!: pulumi.Output<string>;
+    /**
      * The PagerTree group id associated to this team
      */
     public readonly pagertreeId!: pulumi.Output<string>;
@@ -103,6 +107,7 @@ export class Team extends pulumi.CustomResource {
             resourceInputs["notifyEmails"] = state ? state.notifyEmails : undefined;
             resourceInputs["opsgenieId"] = state ? state.opsgenieId : undefined;
             resourceInputs["pagerdutyId"] = state ? state.pagerdutyId : undefined;
+            resourceInputs["pagerdutyServiceId"] = state ? state.pagerdutyServiceId : undefined;
             resourceInputs["pagertreeId"] = state ? state.pagertreeId : undefined;
             resourceInputs["position"] = state ? state.position : undefined;
             resourceInputs["slackAliases"] = state ? state.slackAliases : undefined;
@@ -118,6 +123,7 @@ export class Team extends pulumi.CustomResource {
             resourceInputs["notifyEmails"] = args ? args.notifyEmails : undefined;
             resourceInputs["opsgenieId"] = args ? args.opsgenieId : undefined;
             resourceInputs["pagerdutyId"] = args ? args.pagerdutyId : undefined;
+            resourceInputs["pagerdutyServiceId"] = args ? args.pagerdutyServiceId : undefined;
             resourceInputs["pagertreeId"] = args ? args.pagertreeId : undefined;
             resourceInputs["position"] = args ? args.position : undefined;
             resourceInputs["slackAliases"] = args ? args.slackAliases : undefined;
@@ -159,6 +165,10 @@ export interface TeamState {
      * The PagerDuty group id associated to this team
      */
     pagerdutyId?: pulumi.Input<string>;
+    /**
+     * The PagerDuty service id associated to this team
+     */
+    pagerdutyServiceId?: pulumi.Input<string>;
     /**
      * The PagerTree group id associated to this team
      */
@@ -214,6 +224,10 @@ export interface TeamArgs {
      * The PagerDuty group id associated to this team
      */
     pagerdutyId?: pulumi.Input<string>;
+    /**
+     * The PagerDuty service id associated to this team
+     */
+    pagerdutyServiceId?: pulumi.Input<string>;
     /**
      * The PagerTree group id associated to this team
      */

@@ -531,7 +531,7 @@ export interface WorkflowTaskAddActionItemTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.  The user this action item is assigned to
      */
-    assignedToUser?: pulumi.Input<{[key: string]: any}>;
+    assignedToUser?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * [DEPRECATED] Use assigned*to*user attribute instead. The user id this action item is assigned to
      */
@@ -577,7 +577,7 @@ export interface WorkflowTaskAddRoleTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.  The user this role is assigned to
      */
-    assignedToUser?: pulumi.Input<{[key: string]: any}>;
+    assignedToUser?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * [DEPRECATED] Use assigned*to*user attribute instead. The user id this role is assigned to
      */
@@ -593,7 +593,7 @@ export interface WorkflowTaskAddSlackBookmarkTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel: pulumi.Input<{[key: string]: any}>;
+    channel: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The bookmark emoji
      */
@@ -677,7 +677,7 @@ export interface WorkflowTaskAutoAssignRoleOpsgenieTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    schedule: pulumi.Input<{[key: string]: any}>;
+    schedule: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -685,7 +685,7 @@ export interface WorkflowTaskAutoAssignRolePagerdutyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    escalationPolicy?: pulumi.Input<{[key: string]: any}>;
+    escalationPolicy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The role id
      */
@@ -693,11 +693,11 @@ export interface WorkflowTaskAutoAssignRolePagerdutyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    schedule?: pulumi.Input<{[key: string]: any}>;
+    schedule?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    service?: pulumi.Input<{[key: string]: any}>;
+    service?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -705,11 +705,11 @@ export interface WorkflowTaskAutoAssignRoleRootlyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    escalationPolicyTarget?: pulumi.Input<{[key: string]: any}>;
+    escalationPolicyTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    groupTarget?: pulumi.Input<{[key: string]: any}>;
+    groupTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The role id
      */
@@ -717,16 +717,16 @@ export interface WorkflowTaskAutoAssignRoleRootlyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    scheduleTarget?: pulumi.Input<{[key: string]: any}>;
+    scheduleTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    serviceTarget?: pulumi.Input<{[key: string]: any}>;
+    serviceTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    userTarget?: pulumi.Input<{[key: string]: any}>;
+    userTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface WorkflowTaskAutoAssignRoleVictorOpsTaskParams {
@@ -738,7 +738,7 @@ export interface WorkflowTaskAutoAssignRoleVictorOpsTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    team: pulumi.Input<{[key: string]: any}>;
+    team: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface WorkflowTaskCallPeopleTaskParams {
@@ -758,7 +758,7 @@ export interface WorkflowTaskChangeSlackChannelPrivacyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel?: pulumi.Input<{[key: string]: any}>;
+    channel?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Value must be one of `private`, `public`.
      */
@@ -770,7 +770,7 @@ export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    base: pulumi.Input<{[key: string]: any}>;
+    base: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -778,7 +778,7 @@ export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    table: pulumi.Input<{[key: string]: any}>;
+    table: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -790,7 +790,7 @@ export interface WorkflowTaskCreateAsanaSubtaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: pulumi.Input<{[key: string]: any}>;
+    completion: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -827,7 +827,7 @@ export interface WorkflowTaskCreateAsanaTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: pulumi.Input<{[key: string]: any}>;
+    completion: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -854,7 +854,7 @@ export interface WorkflowTaskCreateAsanaTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    workspace: pulumi.Input<{[key: string]: any}>;
+    workspace: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface WorkflowTaskCreateAsanaTaskTaskParamsProject {
@@ -878,7 +878,7 @@ export interface WorkflowTaskCreateClickupTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The task tags
      */
@@ -898,7 +898,7 @@ export interface WorkflowTaskCreateConfluencePageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    ancestor?: pulumi.Input<{[key: string]: any}>;
+    ancestor?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The page content
      */
@@ -906,7 +906,7 @@ export interface WorkflowTaskCreateConfluencePageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
      */
-    integration?: pulumi.Input<{[key: string]: any}>;
+    integration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Value must be one of true or false
      */
@@ -918,12 +918,12 @@ export interface WorkflowTaskCreateConfluencePageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    space: pulumi.Input<{[key: string]: any}>;
+    space: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    template?: pulumi.Input<{[key: string]: any}>;
+    template?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The page title
      */
@@ -951,7 +951,7 @@ export interface WorkflowTaskCreateDatadogNotebookTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    template?: pulumi.Input<{[key: string]: any}>;
+    template?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The notebook title
      */
@@ -970,11 +970,11 @@ export interface WorkflowTaskCreateDropboxPaperPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    namespace?: pulumi.Input<{[key: string]: any}>;
+    namespace?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    parentFolder?: pulumi.Input<{[key: string]: any}>;
+    parentFolder?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Retrospective template to use when creating page task, if desired
      */
@@ -994,7 +994,7 @@ export interface WorkflowTaskCreateGithubIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    repository: pulumi.Input<{[key: string]: any}>;
+    repository: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The issue title
@@ -1022,7 +1022,7 @@ export interface WorkflowTaskCreateGitlabIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    repository: pulumi.Input<{[key: string]: any}>;
+    repository: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The issue title
@@ -1130,7 +1130,7 @@ export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    drive?: pulumi.Input<{[key: string]: any}>;
+    drive?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Value must be one of true or false
      */
@@ -1138,7 +1138,7 @@ export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    parentFolder?: pulumi.Input<{[key: string]: any}>;
+    parentFolder?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Page permissions JSON
      */
@@ -1218,7 +1218,7 @@ export interface WorkflowTaskCreateIncidentPostmortemTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. Retrospective template to use
      */
-    template?: pulumi.Input<{[key: string]: any}>;
+    template?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The retrospective title
      */
@@ -1271,11 +1271,11 @@ export interface WorkflowTaskCreateJiraIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
      */
-    integration?: pulumi.Input<{[key: string]: any}>;
+    integration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`. The issue type id and display name
      */
-    issueType: pulumi.Input<{[key: string]: any}>;
+    issueType: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The issue labels
      */
@@ -1283,7 +1283,7 @@ export interface WorkflowTaskCreateJiraIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project key
      */
@@ -1295,7 +1295,7 @@ export interface WorkflowTaskCreateJiraIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
-    status?: pulumi.Input<{[key: string]: any}>;
+    status?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The issue title
@@ -1327,7 +1327,7 @@ export interface WorkflowTaskCreateJiraSubtaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
      */
-    integration?: pulumi.Input<{[key: string]: any}>;
+    integration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The issue labels
      */
@@ -1339,7 +1339,7 @@ export interface WorkflowTaskCreateJiraSubtaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project key
      */
@@ -1351,11 +1351,11 @@ export interface WorkflowTaskCreateJiraSubtaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
-    status?: pulumi.Input<{[key: string]: any}>;
+    status?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`. The issue type id and display name
      */
-    subtaskIssueType: pulumi.Input<{[key: string]: any}>;
+    subtaskIssueType: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The issue title
@@ -1392,20 +1392,20 @@ export interface WorkflowTaskCreateLinearIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`. The project id and display name
      */
-    project?: pulumi.Input<{[key: string]: any}>;
+    project?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`. The state id and display name
      */
-    state: pulumi.Input<{[key: string]: any}>;
+    state: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * Map must contain two fields, `id` and `name`. The team id and display name
      */
-    team: pulumi.Input<{[key: string]: any}>;
+    team: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The issue title
      */
@@ -1433,11 +1433,11 @@ export interface WorkflowTaskCreateLinearSubtaskIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`. The state id and display name
      */
-    state: pulumi.Input<{[key: string]: any}>;
+    state: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The issue title
@@ -1479,7 +1479,7 @@ export interface WorkflowTaskCreateNotionPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The parent page id and display name
      */
-    parentPage: pulumi.Input<{[key: string]: any}>;
+    parentPage: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Retrospective template to use when creating page task, if desired
      */
@@ -1547,7 +1547,7 @@ export interface WorkflowTaskCreateOutlookEventTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    calendar: pulumi.Input<{[key: string]: any}>;
+    calendar: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The days until meeting
      */
@@ -1669,7 +1669,7 @@ export interface WorkflowTaskCreateServiceNowIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion?: pulumi.Input<{[key: string]: any}>;
+    completion?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -1681,7 +1681,7 @@ export interface WorkflowTaskCreateServiceNowIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The incident title
@@ -1697,7 +1697,7 @@ export interface WorkflowTaskCreateSharepointPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    drive: pulumi.Input<{[key: string]: any}>;
+    drive: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Value must be one of true or false
      */
@@ -1705,7 +1705,7 @@ export interface WorkflowTaskCreateSharepointPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    parentFolder?: pulumi.Input<{[key: string]: any}>;
+    parentFolder?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Retrospective template to use when creating page, if desired
      */
@@ -1713,7 +1713,7 @@ export interface WorkflowTaskCreateSharepointPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    site: pulumi.Input<{[key: string]: any}>;
+    site: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The SharePoint file ID to use as a template
@@ -1729,7 +1729,7 @@ export interface WorkflowTaskCreateShortcutStoryTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The archivation id and display name
      */
-    archivation: pulumi.Input<{[key: string]: any}>;
+    archivation: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The incident description
      */
@@ -1749,7 +1749,7 @@ export interface WorkflowTaskCreateShortcutStoryTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The project id and display name
      */
-    project: pulumi.Input<{[key: string]: any}>;
+    project: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The incident title
@@ -1761,7 +1761,7 @@ export interface WorkflowTaskCreateShortcutTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion: pulumi.Input<{[key: string]: any}>;
+    completion: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The task description
      */
@@ -1786,18 +1786,18 @@ export interface WorkflowTaskCreateSlackChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    workspace: pulumi.Input<{[key: string]: any}>;
+    workspace: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface WorkflowTaskCreateTrelloCardTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The archivation id and display name
      */
-    archivation?: pulumi.Input<{[key: string]: any}>;
+    archivation?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`. The board id and display name
      */
-    board: pulumi.Input<{[key: string]: any}>;
+    board: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The card description
      */
@@ -1810,7 +1810,7 @@ export interface WorkflowTaskCreateTrelloCardTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The list id and display name
      */
-    list: pulumi.Input<{[key: string]: any}>;
+    list: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The card title
@@ -1873,7 +1873,7 @@ export interface WorkflowTaskCreateZendeskTicketTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion?: pulumi.Input<{[key: string]: any}>;
+    completion?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -1885,7 +1885,7 @@ export interface WorkflowTaskCreateZendeskTicketTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ticket subject
      */
@@ -1946,7 +1946,7 @@ export interface WorkflowTaskGetAlertsTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
      */
-    parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
+    parentMessageThreadTask?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
      */
@@ -2036,7 +2036,7 @@ export interface WorkflowTaskGetPulsesTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
      */
-    parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
+    parentMessageThreadTask?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
      */
@@ -2106,7 +2106,7 @@ export interface WorkflowTaskInviteToSlackChannelOpsgenieTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    schedule: pulumi.Input<{[key: string]: any}>;
+    schedule: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -2120,15 +2120,15 @@ export interface WorkflowTaskInviteToSlackChannelPagerdutyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    escalationPolicy?: pulumi.Input<{[key: string]: any}>;
+    escalationPolicy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    schedule?: pulumi.Input<{[key: string]: any}>;
+    schedule?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    service?: pulumi.Input<{[key: string]: any}>;
+    service?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -2142,24 +2142,24 @@ export interface WorkflowTaskInviteToSlackChannelRootlyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    escalationPolicyTarget?: pulumi.Input<{[key: string]: any}>;
+    escalationPolicyTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    groupTarget?: pulumi.Input<{[key: string]: any}>;
+    groupTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    scheduleTarget?: pulumi.Input<{[key: string]: any}>;
+    scheduleTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    serviceTarget?: pulumi.Input<{[key: string]: any}>;
+    serviceTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    userTarget?: pulumi.Input<{[key: string]: any}>;
+    userTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface WorkflowTaskInviteToSlackChannelRootlyTaskParamsChannel {
@@ -2171,7 +2171,7 @@ export interface WorkflowTaskInviteToSlackChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel: pulumi.Input<{[key: string]: any}>;
+    channel: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     slackUserGroups?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskInviteToSlackChannelTaskParamsSlackUserGroup>[]>;
     slackUsers?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskInviteToSlackChannelTaskParamsSlackUser>[]>;
     taskType?: pulumi.Input<string>;
@@ -2193,7 +2193,7 @@ export interface WorkflowTaskInviteToSlackChannelVictorOpsTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    team: pulumi.Input<{[key: string]: any}>;
+    team: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannel {
@@ -2247,7 +2247,7 @@ export interface WorkflowTaskPagePagerdutyOnCallRespondersTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    service: pulumi.Input<{[key: string]: any}>;
+    service: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * Incident title.
@@ -2271,25 +2271,29 @@ export interface WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsUser {
 }
 
 export interface WorkflowTaskPageRootlyOnCallRespondersTaskParams {
+    /**
+     * Alert urgency ID
+     */
+    alertUrgencyId?: pulumi.Input<string>;
     escalationNote?: pulumi.Input<string>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    escalationPolicyTarget?: pulumi.Input<{[key: string]: any}>;
+    escalationPolicyTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    groupTarget?: pulumi.Input<{[key: string]: any}>;
+    groupTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    serviceTarget?: pulumi.Input<{[key: string]: any}>;
+    serviceTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     summary: pulumi.Input<string>;
     taskType?: pulumi.Input<string>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    userTarget?: pulumi.Input<{[key: string]: any}>;
+    userTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface WorkflowTaskPageVictorOpsOnCallRespondersTaskParams {
@@ -2328,7 +2332,7 @@ export interface WorkflowTaskPublishIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    incident: pulumi.Input<{[key: string]: any}>;
+    incident: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Additional API Payload you can pass to statuspage.io for example. Can contain liquid markup and need to be valid JSON
      */
@@ -2350,7 +2354,7 @@ export interface WorkflowTaskPublishIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    statusPageTemplate?: pulumi.Input<{[key: string]: any}>;
+    statusPageTemplate?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
 }
 
@@ -2389,7 +2393,7 @@ export interface WorkflowTaskRenameSlackChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel: pulumi.Input<{[key: string]: any}>;
+    channel: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     title: pulumi.Input<string>;
 }
@@ -2489,7 +2493,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
      */
-    parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
+    parentMessageThreadTask?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Value must be one of true or false
      */
@@ -2498,6 +2502,10 @@ export interface WorkflowTaskSendSlackBlocksTaskParams {
      * Value must be one of true or false
      */
     sendAsEphemeral?: pulumi.Input<boolean>;
+    /**
+     * When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+     */
+    sendOnlyAsThreadedMessage?: pulumi.Input<boolean>;
     slackUserGroups?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup>[]>;
     slackUsers?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUser>[]>;
     taskType?: pulumi.Input<string>;
@@ -2539,7 +2547,7 @@ export interface WorkflowTaskSendSlackMessageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
      */
-    parentMessageThreadTask?: pulumi.Input<{[key: string]: any}>;
+    parentMessageThreadTask?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Value must be one of true or false
      */
@@ -2548,6 +2556,10 @@ export interface WorkflowTaskSendSlackMessageTaskParams {
      * Value must be one of true or false
      */
     sendAsEphemeral?: pulumi.Input<boolean>;
+    /**
+     * When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+     */
+    sendOnlyAsThreadedMessage?: pulumi.Input<boolean>;
     slackUserGroups?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup>[]>;
     slackUsers?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsSlackUser>[]>;
     taskType?: pulumi.Input<string>;
@@ -2702,12 +2714,12 @@ export interface WorkflowTaskTriggerWorkflowTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    resource: pulumi.Input<{[key: string]: any}>;
+    resource: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    workflow: pulumi.Input<{[key: string]: any}>;
+    workflow: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface WorkflowTaskTweetTwitterMessageTaskParams {
@@ -2719,7 +2731,7 @@ export interface WorkflowTaskUpdateActionItemTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.  The user this action item is assigned to
      */
-    assignedToUser?: pulumi.Input<{[key: string]: any}>;
+    assignedToUser?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * [DEPRECATED] Use assigned*to*user attribute instead. The user id this action item is assigned to
      */
@@ -2788,7 +2800,7 @@ export interface WorkflowTaskUpdateAsanaTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: pulumi.Input<{[key: string]: any}>;
+    completion: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -2841,7 +2853,7 @@ export interface WorkflowTaskUpdateClickupTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The task tags
      */
@@ -2869,7 +2881,7 @@ export interface WorkflowTaskUpdateGithubIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: pulumi.Input<{[key: string]: any}>;
+    completion: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The issue id
      */
@@ -2885,7 +2897,7 @@ export interface WorkflowTaskUpdateGitlabIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: pulumi.Input<{[key: string]: any}>;
+    completion: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The issue description
      */
@@ -3084,7 +3096,7 @@ export interface WorkflowTaskUpdateJiraIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The project key
      */
@@ -3096,7 +3108,7 @@ export interface WorkflowTaskUpdateJiraIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
-    status?: pulumi.Input<{[key: string]: any}>;
+    status?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The issue title
@@ -3125,15 +3137,15 @@ export interface WorkflowTaskUpdateLinearIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`. The project id and display name
      */
-    project?: pulumi.Input<{[key: string]: any}>;
+    project?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`. The state id and display name
      */
-    state?: pulumi.Input<{[key: string]: any}>;
+    state?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The issue title
@@ -3178,7 +3190,7 @@ export interface WorkflowTaskUpdateOpsgenieAlertTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: pulumi.Input<{[key: string]: any}>;
+    completion: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Description field of the alert that is generally used to provide a detailed information about the alert
      */
@@ -3294,7 +3306,7 @@ export interface WorkflowTaskUpdateServiceNowIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion?: pulumi.Input<{[key: string]: any}>;
+    completion?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -3310,7 +3322,7 @@ export interface WorkflowTaskUpdateServiceNowIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The incident title
@@ -3322,7 +3334,7 @@ export interface WorkflowTaskUpdateShortcutStoryTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The archivation id and display name
      */
-    archivation: pulumi.Input<{[key: string]: any}>;
+    archivation: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The incident description
      */
@@ -3350,7 +3362,7 @@ export interface WorkflowTaskUpdateShortcutTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion: pulumi.Input<{[key: string]: any}>;
+    completion: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The task description
      */
@@ -3370,7 +3382,7 @@ export interface WorkflowTaskUpdateSlackChannelTopicTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel: pulumi.Input<{[key: string]: any}>;
+    channel: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     topic: pulumi.Input<string>;
 }
@@ -3391,11 +3403,11 @@ export interface WorkflowTaskUpdateTrelloCardTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The archivation id and display name
      */
-    archivation: pulumi.Input<{[key: string]: any}>;
+    archivation: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Map must contain two fields, `id` and `name`. The board id and display name
      */
-    board?: pulumi.Input<{[key: string]: any}>;
+    board?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The card id
      */
@@ -3412,7 +3424,7 @@ export interface WorkflowTaskUpdateTrelloCardTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The list id and display name
      */
-    list?: pulumi.Input<{[key: string]: any}>;
+    list?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     taskType?: pulumi.Input<string>;
     /**
      * The card title
@@ -3445,7 +3457,7 @@ export interface WorkflowTaskUpdateZendeskTicketTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion?: pulumi.Input<{[key: string]: any}>;
+    completion?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -3453,7 +3465,7 @@ export interface WorkflowTaskUpdateZendeskTicketTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: pulumi.Input<{[key: string]: any}>;
+    priority?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ticket subject
      */

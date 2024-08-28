@@ -1104,7 +1104,7 @@
                 "assignedToUser": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.  The user this action item is assigned to\n"
                 },
@@ -1177,7 +1177,7 @@
                 "assignedToUser": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.  The user this role is assigned to\n"
                 },
@@ -1203,7 +1203,7 @@
                 "channel": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1385,7 +1385,7 @@
                 "schedule": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1404,7 +1404,7 @@
                 "escalationPolicy": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1415,14 +1415,14 @@
                 "schedule": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
                 "service": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1440,14 +1440,14 @@
                 "escalationPolicyTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
                 "groupTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1458,14 +1458,14 @@
                 "scheduleTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
                 "serviceTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1475,7 +1475,7 @@
                 "userTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 }
@@ -1497,7 +1497,7 @@
                 "team": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 }
@@ -1540,7 +1540,7 @@
                 "channel": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1562,7 +1562,7 @@
                 "base": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1573,7 +1573,7 @@
                 "table": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1596,7 +1596,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1650,7 +1650,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1692,7 +1692,7 @@
                 "workspace": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 }
@@ -1737,7 +1737,7 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
@@ -1767,7 +1767,7 @@
                 "ancestor": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1778,7 +1778,7 @@
                 "integration": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance\n"
                 },
@@ -1793,7 +1793,7 @@
                 "space": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1803,7 +1803,7 @@
                 "template": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1842,7 +1842,7 @@
                 "template": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1870,14 +1870,14 @@
                 "namespace": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
                 "parentFolder": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1907,7 +1907,7 @@
                 "repository": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -1946,7 +1946,7 @@
                 "repository": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -2116,7 +2116,7 @@
                 "drive": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -2127,7 +2127,7 @@
                 "parentFolder": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -2252,7 +2252,7 @@
                 "template": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. Retrospective template to use\n"
                 },
@@ -2348,14 +2348,14 @@
                 "integration": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance\n"
                 },
                 "issueType": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The issue type id and display name\n"
                 },
@@ -2366,7 +2366,7 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
@@ -2381,7 +2381,7 @@
                 "status": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The status id and display name\n"
                 },
@@ -2425,7 +2425,7 @@
                 "integration": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance\n"
                 },
@@ -2440,7 +2440,7 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
@@ -2455,14 +2455,14 @@
                 "status": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The status id and display name\n"
                 },
                 "subtaskIssueType": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The issue type id and display name\n"
                 },
@@ -2525,21 +2525,21 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
                 "project": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The project id and display name\n"
                 },
                 "state": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The state id and display name\n"
                 },
@@ -2549,7 +2549,7 @@
                 "team": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The team id and display name\n"
                 },
@@ -2597,14 +2597,14 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
                 "state": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The state id and display name\n"
                 },
@@ -2681,7 +2681,7 @@
                 "parentPage": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The parent page id and display name\n"
                 },
@@ -2830,7 +2830,7 @@
                 "calendar": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -3031,7 +3031,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The completion id and display name\n"
                 },
@@ -3046,7 +3046,7 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
@@ -3072,7 +3072,7 @@
                 "drive": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -3083,7 +3083,7 @@
                 "parentFolder": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -3094,7 +3094,7 @@
                 "site": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -3122,7 +3122,7 @@
                 "archivation": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The archivation id and display name\n"
                 },
@@ -3145,7 +3145,7 @@
                 "project": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The project id and display name\n"
                 },
@@ -3170,7 +3170,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The completion id and display name\n"
                 },
@@ -3209,7 +3209,7 @@
                 "workspace": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 }
@@ -3225,14 +3225,14 @@
                 "archivation": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The archivation id and display name\n"
                 },
                 "board": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The board id and display name\n"
                 },
@@ -3253,7 +3253,7 @@
                 "list": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The list id and display name\n"
                 },
@@ -3369,7 +3369,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The completion id and display name\n"
                 },
@@ -3384,7 +3384,7 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
@@ -3493,7 +3493,7 @@
                 "parentMessageThreadTask": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task\n"
                 },
@@ -3694,7 +3694,7 @@
                 "parentMessageThreadTask": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task\n"
                 },
@@ -3836,7 +3836,7 @@
                 "schedule": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -3875,21 +3875,21 @@
                 "escalationPolicy": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
                 "schedule": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
                 "service": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -3925,28 +3925,28 @@
                 "escalationPolicyTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
                 "groupTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
                 "scheduleTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
                 "serviceTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -3956,7 +3956,7 @@
                 "userTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 }
@@ -3983,7 +3983,7 @@
                 "channel": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -4052,7 +4052,7 @@
                 "team": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 }
@@ -4165,7 +4165,7 @@
                 "service": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -4224,27 +4224,31 @@
         },
         "rootly:index/WorkflowTaskPageRootlyOnCallRespondersTaskParams:WorkflowTaskPageRootlyOnCallRespondersTaskParams": {
             "properties": {
+                "alertUrgencyId": {
+                    "type": "string",
+                    "description": "Alert urgency ID\n"
+                },
                 "escalationNote": {
                     "type": "string"
                 },
                 "escalationPolicyTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
                 "groupTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
                 "serviceTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -4257,7 +4261,7 @@
                 "userTarget": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 }
@@ -4345,7 +4349,7 @@
                 "incident": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -4374,7 +4378,7 @@
                 "statusPageTemplate": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -4468,7 +4472,7 @@
                 "channel": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -4660,7 +4664,7 @@
                 "parentMessageThreadTask": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task\n"
                 },
@@ -4671,6 +4675,10 @@
                 "sendAsEphemeral": {
                     "type": "boolean",
                     "description": "Value must be one of true or false\n"
+                },
+                "sendOnlyAsThreadedMessage": {
+                    "type": "boolean",
+                    "description": "When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false\n"
                 },
                 "slackUserGroups": {
                     "type": "array",
@@ -4768,7 +4776,7 @@
                 "parentMessageThreadTask": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task\n"
                 },
@@ -4779,6 +4787,10 @@
                 "sendAsEphemeral": {
                     "type": "boolean",
                     "description": "Value must be one of true or false\n"
+                },
+                "sendOnlyAsThreadedMessage": {
+                    "type": "boolean",
+                    "description": "When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false\n"
                 },
                 "slackUserGroups": {
                     "type": "array",
@@ -5150,7 +5162,7 @@
                 "resource": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -5160,7 +5172,7 @@
                 "workflow": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 }
@@ -5192,7 +5204,7 @@
                 "assignedToUser": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.  The user this action item is assigned to\n"
                 },
@@ -5286,7 +5298,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -5362,7 +5374,7 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
@@ -5400,7 +5412,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -5427,7 +5439,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -5724,7 +5736,7 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
@@ -5739,7 +5751,7 @@
                 "status": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The status id and display name\n"
                 },
@@ -5784,21 +5796,21 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
                 "project": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The project id and display name\n"
                 },
                 "state": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The state id and display name\n"
                 },
@@ -5870,7 +5882,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -6046,7 +6058,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The completion id and display name\n"
                 },
@@ -6065,7 +6077,7 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
@@ -6087,7 +6099,7 @@
                 "archivation": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The archivation id and display name\n"
                 },
@@ -6126,7 +6138,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The completion id and display name\n"
                 },
@@ -6158,7 +6170,7 @@
                 "channel": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`.\n"
                 },
@@ -6199,14 +6211,14 @@
                 "archivation": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The archivation id and display name\n"
                 },
                 "board": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The board id and display name\n"
                 },
@@ -6231,7 +6243,7 @@
                 "list": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The list id and display name\n"
                 },
@@ -6293,7 +6305,7 @@
                 "completion": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The completion id and display name\n"
                 },
@@ -6304,7 +6316,7 @@
                 "priority": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "pulumi.json#/Any"
+                        "type": "string"
                     },
                     "description": "Map must contain two fields, `id` and `name`. The priority id and display name\n"
                 },
@@ -7533,6 +7545,13 @@
                     "type": "string",
                     "description": "The description of the escalation policy\n"
                 },
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Associated groups (alerting the group will trigger escalation policy)\n"
+                },
                 "lastUpdatedByUserId": {
                     "type": "integer",
                     "description": "User who updated the escalation policy\n"
@@ -7544,14 +7563,23 @@
                 "repeatCount": {
                     "type": "integer",
                     "description": "The number of times this policy will be executed until someone acknowledges the alert\n"
+                },
+                "serviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Associated services (alerting the service will trigger escalation policy)\n"
                 }
             },
             "required": [
                 "createdByUserId",
                 "description",
+                "groupIds",
                 "lastUpdatedByUserId",
                 "name",
-                "repeatCount"
+                "repeatCount",
+                "serviceIds"
             ],
             "inputProperties": {
                 "createdByUserId": {
@@ -7562,6 +7590,13 @@
                     "type": "string",
                     "description": "The description of the escalation policy\n"
                 },
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Associated groups (alerting the group will trigger escalation policy)\n"
+                },
                 "lastUpdatedByUserId": {
                     "type": "integer",
                     "description": "User who updated the escalation policy\n"
@@ -7573,6 +7608,13 @@
                 "repeatCount": {
                     "type": "integer",
                     "description": "The number of times this policy will be executed until someone acknowledges the alert\n"
+                },
+                "serviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Associated services (alerting the service will trigger escalation policy)\n"
                 }
             },
             "stateInputs": {
@@ -7586,6 +7628,13 @@
                         "type": "string",
                         "description": "The description of the escalation policy\n"
                     },
+                    "groupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Associated groups (alerting the group will trigger escalation policy)\n"
+                    },
                     "lastUpdatedByUserId": {
                         "type": "integer",
                         "description": "User who updated the escalation policy\n"
@@ -7597,6 +7646,13 @@
                     "repeatCount": {
                         "type": "integer",
                         "description": "The number of times this policy will be executed until someone acknowledges the alert\n"
+                    },
+                    "serviceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Associated services (alerting the service will trigger escalation policy)\n"
                     }
                 },
                 "type": "object"
@@ -7652,7 +7708,7 @@
                 },
                 "valueKind": {
                     "type": "string",
-                    "description": "The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.\n"
+                    "description": "The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`.\n"
                 }
             },
             "required": [
@@ -7712,7 +7768,7 @@
                 },
                 "valueKind": {
                     "type": "string",
-                    "description": "The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.\n"
+                    "description": "The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`.\n"
                 }
             },
             "stateInputs": {
@@ -7765,7 +7821,7 @@
                     },
                     "valueKind": {
                         "type": "string",
-                        "description": "The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.\n"
+                        "description": "The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`.\n"
                     }
                 },
                 "type": "object"
@@ -8505,6 +8561,155 @@
                     "slug": {
                         "type": "string",
                         "description": "The slug of the functionality\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/heartbeat:Heartbeat": {
+            "properties": {
+                "alertSummary": {
+                    "type": "string",
+                    "description": "Summary of alerts triggered when heartbeat expires.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the heartbeat\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "When heartbeat expires\n"
+                },
+                "interval": {
+                    "type": "integer"
+                },
+                "intervalUnit": {
+                    "type": "string",
+                    "description": "Value must be one of `seconds`, `minutes`, `hours`.\n"
+                },
+                "lastPingedAt": {
+                    "type": "string",
+                    "description": "When the heartbeat was last pinged.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the heartbeat\n"
+                },
+                "notificationTargetId": {
+                    "type": "string"
+                },
+                "notificationTargetType": {
+                    "type": "string",
+                    "description": "Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Value must be one of `waiting`, `active`, `expired`.\n"
+                }
+            },
+            "required": [
+                "alertSummary",
+                "description",
+                "expiresAt",
+                "interval",
+                "lastPingedAt",
+                "name",
+                "notificationTargetId"
+            ],
+            "inputProperties": {
+                "alertSummary": {
+                    "type": "string",
+                    "description": "Summary of alerts triggered when heartbeat expires.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the heartbeat\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "When heartbeat expires\n"
+                },
+                "interval": {
+                    "type": "integer"
+                },
+                "intervalUnit": {
+                    "type": "string",
+                    "description": "Value must be one of `seconds`, `minutes`, `hours`.\n"
+                },
+                "lastPingedAt": {
+                    "type": "string",
+                    "description": "When the heartbeat was last pinged.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the heartbeat\n"
+                },
+                "notificationTargetId": {
+                    "type": "string"
+                },
+                "notificationTargetType": {
+                    "type": "string",
+                    "description": "Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Value must be one of `waiting`, `active`, `expired`.\n"
+                }
+            },
+            "requiredInputs": [
+                "alertSummary",
+                "interval",
+                "notificationTargetId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Heartbeat resources.\n",
+                "properties": {
+                    "alertSummary": {
+                        "type": "string",
+                        "description": "Summary of alerts triggered when heartbeat expires.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the heartbeat\n"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "When heartbeat expires\n"
+                    },
+                    "interval": {
+                        "type": "integer"
+                    },
+                    "intervalUnit": {
+                        "type": "string",
+                        "description": "Value must be one of `seconds`, `minutes`, `hours`.\n"
+                    },
+                    "lastPingedAt": {
+                        "type": "string",
+                        "description": "When the heartbeat was last pinged.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the heartbeat\n"
+                    },
+                    "notificationTargetId": {
+                        "type": "string"
+                    },
+                    "notificationTargetType": {
+                        "type": "string",
+                        "description": "Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Value must be one of `waiting`, `active`, `expired`.\n"
                     }
                 },
                 "type": "object"
@@ -9581,8 +9786,7 @@
             "inputProperties": {
                 "content": {
                     "type": "string",
-                    "description": "The postmortem template. Liquid syntax and markdown are supported\n",
-                    "willReplaceOnChanges": true
+                    "description": "The postmortem template. Liquid syntax and markdown are supported\n"
                 },
                 "default": {
                     "type": "boolean",
@@ -9602,8 +9806,7 @@
                 "properties": {
                     "content": {
                         "type": "string",
-                        "description": "The postmortem template. Liquid syntax and markdown are supported\n",
-                        "willReplaceOnChanges": true
+                        "description": "The postmortem template. Liquid syntax and markdown are supported\n"
                     },
                     "default": {
                         "type": "boolean",
@@ -11865,6 +12068,10 @@
                     "type": "string",
                     "description": "The PagerDuty group id associated to this team\n"
                 },
+                "pagerdutyServiceId": {
+                    "type": "string",
+                    "description": "The PagerDuty service id associated to this team\n"
+                },
                 "pagertreeId": {
                     "type": "string",
                     "description": "The PagerTree group id associated to this team\n"
@@ -11909,6 +12116,7 @@
                 "notifyEmails",
                 "opsgenieId",
                 "pagerdutyId",
+                "pagerdutyServiceId",
                 "pagertreeId",
                 "position",
                 "slackAliases",
@@ -11944,6 +12152,10 @@
                 "pagerdutyId": {
                     "type": "string",
                     "description": "The PagerDuty group id associated to this team\n"
+                },
+                "pagerdutyServiceId": {
+                    "type": "string",
+                    "description": "The PagerDuty service id associated to this team\n"
                 },
                 "pagertreeId": {
                     "type": "string",
@@ -12011,6 +12223,10 @@
                     "pagerdutyId": {
                         "type": "string",
                         "description": "The PagerDuty group id associated to this team\n"
+                    },
+                    "pagerdutyServiceId": {
+                        "type": "string",
+                        "description": "The PagerDuty service id associated to this team\n"
                     },
                     "pagertreeId": {
                         "type": "string",
@@ -25078,7 +25294,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25103,7 +25319,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25136,7 +25352,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25155,7 +25371,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25226,7 +25442,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25251,7 +25467,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25429,7 +25645,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25451,7 +25667,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25486,7 +25702,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25508,7 +25724,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25580,7 +25796,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25605,7 +25821,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25769,7 +25985,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25788,7 +26004,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25899,7 +26115,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25918,7 +26134,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25941,6 +26157,48 @@
                 ]
             }
         },
+        "rootly:index/getHeartbeat:getHeartbeat": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getHeartbeat.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Filter by date range using 'lt' and 'gt'.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHeartbeat.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Filter by date range using 'lt' and 'gt'.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of this resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "name"
+                ]
+            }
+        },
         "rootly:index/getIncident:getIncident": {
             "description": "## Example Usage\n\n```shell\ndata \"rootly_incident\" \"my-incident\" {\n  slug = \"my-incident-slug\"\n}\n```\n",
             "inputs": {
@@ -25949,21 +26207,21 @@
                     "acknowledgedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
                     "detectedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25976,7 +26234,7 @@
                     "inTriageAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25989,7 +26247,7 @@
                     "mitigatedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -25999,7 +26257,7 @@
                     "resolvedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26012,14 +26270,14 @@
                     "startedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
                     "updatedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     }
@@ -26032,21 +26290,21 @@
                     "acknowledgedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
                     "detectedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26063,7 +26321,7 @@
                     "inTriageAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26076,7 +26334,7 @@
                     "mitigatedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26086,7 +26344,7 @@
                     "resolvedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26099,14 +26357,14 @@
                     "startedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
                     "updatedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     }
@@ -26131,7 +26389,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26150,7 +26408,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26180,7 +26438,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26196,7 +26454,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26222,7 +26480,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26238,7 +26496,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26265,28 +26523,28 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
                     "mitigatedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
                     "resolvedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
                     "startedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26302,7 +26560,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26313,21 +26571,21 @@
                     "mitigatedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
                     "resolvedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
                     "startedAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26350,7 +26608,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26372,7 +26630,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26455,7 +26713,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26477,7 +26735,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26624,7 +26882,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26643,7 +26901,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26677,7 +26935,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26699,7 +26957,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26832,7 +27090,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26857,7 +27115,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26893,7 +27151,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     }
@@ -26906,7 +27164,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26932,7 +27190,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -26954,7 +27212,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -27026,7 +27284,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -27042,7 +27300,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -27105,7 +27363,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },
@@ -27124,7 +27382,7 @@
                     "createdAt": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Filter by date range using 'lt' and 'gt'.\n"
                     },

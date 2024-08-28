@@ -64,7 +64,7 @@ export class FormField extends pulumi.CustomResource {
      */
     public readonly slug!: pulumi.Output<string>;
     /**
-     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.
+     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`.
      */
     public readonly valueKind!: pulumi.Output<string | undefined>;
 
@@ -144,7 +144,7 @@ export interface FormFieldState {
      */
     slug?: pulumi.Input<string>;
     /**
-     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.
+     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`.
      */
     valueKind?: pulumi.Input<string>;
 }
@@ -182,7 +182,7 @@ export interface FormFieldArgs {
      */
     slug?: pulumi.Input<string>;
     /**
-     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `user`.
+     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`.
      */
     valueKind?: pulumi.Input<string>;
 }

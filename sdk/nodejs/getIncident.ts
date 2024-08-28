@@ -37,42 +37,42 @@ export interface GetIncidentArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    acknowledgedAt?: {[key: string]: any};
+    acknowledgedAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: {[key: string]: any};
+    createdAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    detectedAt?: {[key: string]: any};
+    detectedAt?: {[key: string]: string};
     environments?: string;
     functionalities?: string;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    inTriageAt?: {[key: string]: any};
+    inTriageAt?: {[key: string]: string};
     kind?: string;
     labels?: string;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    mitigatedAt?: {[key: string]: any};
+    mitigatedAt?: {[key: string]: string};
     private?: boolean;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    resolvedAt?: {[key: string]: any};
+    resolvedAt?: {[key: string]: string};
     services?: string;
     severity?: string;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    startedAt?: {[key: string]: any};
+    startedAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    updatedAt?: {[key: string]: any};
+    updatedAt?: {[key: string]: string};
 }
 
 /**
@@ -82,15 +82,15 @@ export interface GetIncidentResult {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly acknowledgedAt?: {[key: string]: any};
+    readonly acknowledgedAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly createdAt?: {[key: string]: any};
+    readonly createdAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly detectedAt?: {[key: string]: any};
+    readonly detectedAt?: {[key: string]: string};
     readonly environments: string;
     readonly functionalities: string;
     /**
@@ -100,28 +100,28 @@ export interface GetIncidentResult {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly inTriageAt?: {[key: string]: any};
+    readonly inTriageAt?: {[key: string]: string};
     readonly kind: string;
     readonly labels: string;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly mitigatedAt?: {[key: string]: any};
+    readonly mitigatedAt?: {[key: string]: string};
     readonly private: boolean;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly resolvedAt?: {[key: string]: any};
+    readonly resolvedAt?: {[key: string]: string};
     readonly services: string;
     readonly severity: string;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly startedAt?: {[key: string]: any};
+    readonly startedAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly updatedAt?: {[key: string]: any};
+    readonly updatedAt?: {[key: string]: string};
 }
 /**
  * ## Example Usage
@@ -137,40 +137,40 @@ export interface GetIncidentOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    acknowledgedAt?: pulumi.Input<{[key: string]: any}>;
+    acknowledgedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: any}>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    detectedAt?: pulumi.Input<{[key: string]: any}>;
+    detectedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     environments?: pulumi.Input<string>;
     functionalities?: pulumi.Input<string>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    inTriageAt?: pulumi.Input<{[key: string]: any}>;
+    inTriageAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     kind?: pulumi.Input<string>;
     labels?: pulumi.Input<string>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    mitigatedAt?: pulumi.Input<{[key: string]: any}>;
+    mitigatedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     private?: pulumi.Input<boolean>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    resolvedAt?: pulumi.Input<{[key: string]: any}>;
+    resolvedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     services?: pulumi.Input<string>;
     severity?: pulumi.Input<string>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    startedAt?: pulumi.Input<{[key: string]: any}>;
+    startedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    updatedAt?: pulumi.Input<{[key: string]: any}>;
+    updatedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

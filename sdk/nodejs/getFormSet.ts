@@ -22,7 +22,7 @@ export interface GetFormSetArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: {[key: string]: any};
+    createdAt?: {[key: string]: string};
     isDefault?: boolean;
     slug?: string;
 }
@@ -34,7 +34,7 @@ export interface GetFormSetResult {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly createdAt?: {[key: string]: any};
+    readonly createdAt?: {[key: string]: string};
     /**
      * The ID of this resource.
      */
@@ -53,7 +53,7 @@ export interface GetFormSetOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: any}>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     isDefault?: pulumi.Input<boolean>;
     slug?: pulumi.Input<string>;
 }

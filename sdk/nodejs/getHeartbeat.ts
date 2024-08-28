@@ -4,39 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- */
-export function getTeam(args?: GetTeamArgs, opts?: pulumi.InvokeOptions): Promise<GetTeamResult> {
+export function getHeartbeat(args?: GetHeartbeatArgs, opts?: pulumi.InvokeOptions): Promise<GetHeartbeatResult> {
     args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("rootly:index/getTeam:getTeam", {
-        "color": args.color,
+    return pulumi.runtime.invoke("rootly:index/getHeartbeat:getHeartbeat", {
         "createdAt": args.createdAt,
         "name": args.name,
-        "slug": args.slug,
     }, opts);
 }
 
 /**
- * A collection of arguments for invoking getTeam.
+ * A collection of arguments for invoking getHeartbeat.
  */
-export interface GetTeamArgs {
-    color?: string;
+export interface GetHeartbeatArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
     createdAt?: {[key: string]: string};
     name?: string;
-    slug?: string;
 }
 
 /**
- * A collection of values returned by getTeam.
+ * A collection of values returned by getHeartbeat.
  */
-export interface GetTeamResult {
-    readonly color: string;
+export interface GetHeartbeatResult {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
@@ -46,24 +38,18 @@ export interface GetTeamResult {
      */
     readonly id: string;
     readonly name: string;
-    readonly slug: string;
 }
-/**
- * ## Example Usage
- */
-export function getTeamOutput(args?: GetTeamOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamResult> {
-    return pulumi.output(args).apply((a: any) => getTeam(a, opts))
+export function getHeartbeatOutput(args?: GetHeartbeatOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHeartbeatResult> {
+    return pulumi.output(args).apply((a: any) => getHeartbeat(a, opts))
 }
 
 /**
- * A collection of arguments for invoking getTeam.
+ * A collection of arguments for invoking getHeartbeat.
  */
-export interface GetTeamOutputArgs {
-    color?: pulumi.Input<string>;
+export interface GetHeartbeatOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
     createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     name?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
 }

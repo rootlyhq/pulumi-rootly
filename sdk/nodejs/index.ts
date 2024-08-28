@@ -190,6 +190,11 @@ export const getFunctionality: typeof import("./getFunctionality").getFunctional
 export const getFunctionalityOutput: typeof import("./getFunctionality").getFunctionalityOutput = null as any;
 utilities.lazyLoad(exports, ["getFunctionality","getFunctionalityOutput"], () => require("./getFunctionality"));
 
+export { GetHeartbeatArgs, GetHeartbeatResult, GetHeartbeatOutputArgs } from "./getHeartbeat";
+export const getHeartbeat: typeof import("./getHeartbeat").getHeartbeat = null as any;
+export const getHeartbeatOutput: typeof import("./getHeartbeat").getHeartbeatOutput = null as any;
+utilities.lazyLoad(exports, ["getHeartbeat","getHeartbeatOutput"], () => require("./getHeartbeat"));
+
 export { GetIncidentArgs, GetIncidentResult, GetIncidentOutputArgs } from "./getIncident";
 export const getIncident: typeof import("./getIncident").getIncident = null as any;
 export const getIncidentOutput: typeof import("./getIncident").getIncidentOutput = null as any;
@@ -309,6 +314,11 @@ export { GetWorkflowTaskArgs, GetWorkflowTaskResult, GetWorkflowTaskOutputArgs }
 export const getWorkflowTask: typeof import("./getWorkflowTask").getWorkflowTask = null as any;
 export const getWorkflowTaskOutput: typeof import("./getWorkflowTask").getWorkflowTaskOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkflowTask","getWorkflowTaskOutput"], () => require("./getWorkflowTask"));
+
+export { HeartbeatArgs, HeartbeatState } from "./heartbeat";
+export type Heartbeat = import("./heartbeat").Heartbeat;
+export const Heartbeat: typeof import("./heartbeat").Heartbeat = null as any;
+utilities.lazyLoad(exports, ["Heartbeat"], () => require("./heartbeat"));
 
 export { IncidentPermissionSetArgs, IncidentPermissionSetState } from "./incidentPermissionSet";
 export type IncidentPermissionSet = import("./incidentPermissionSet").IncidentPermissionSet;
@@ -1085,6 +1095,8 @@ const _module = {
                 return new FormSetCondition(name, <any>undefined, { urn })
             case "rootly:index/functionality:Functionality":
                 return new Functionality(name, <any>undefined, { urn })
+            case "rootly:index/heartbeat:Heartbeat":
+                return new Heartbeat(name, <any>undefined, { urn })
             case "rootly:index/incidentPermissionSet:IncidentPermissionSet":
                 return new IncidentPermissionSet(name, <any>undefined, { urn })
             case "rootly:index/incidentPermissionSetBoolean:IncidentPermissionSetBoolean":
@@ -1396,6 +1408,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/formFieldPosition", _modu
 pulumi.runtime.registerResourceModule("rootly", "index/formSet", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/formSetCondition", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/functionality", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/heartbeat", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/incidentPermissionSet", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/incidentPermissionSetBoolean", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/incidentPermissionSetResource", _module)

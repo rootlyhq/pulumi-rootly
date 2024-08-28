@@ -26,7 +26,7 @@ export interface GetIncidentRoleArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: {[key: string]: any};
+    createdAt?: {[key: string]: string};
     enabled?: boolean;
     name?: string;
     slug?: string;
@@ -39,7 +39,7 @@ export interface GetIncidentRoleResult {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly createdAt?: {[key: string]: any};
+    readonly createdAt?: {[key: string]: string};
     readonly enabled?: boolean;
     /**
      * The ID of this resource.
@@ -62,7 +62,7 @@ export interface GetIncidentRoleOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: any}>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     enabled?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;

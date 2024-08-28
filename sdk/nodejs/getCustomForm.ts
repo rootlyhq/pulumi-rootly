@@ -24,7 +24,7 @@ export interface GetCustomFormArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: {[key: string]: any};
+    createdAt?: {[key: string]: string};
     name?: string;
     slug?: string;
 }
@@ -37,7 +37,7 @@ export interface GetCustomFormResult {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly createdAt?: {[key: string]: any};
+    readonly createdAt?: {[key: string]: string};
     /**
      * The ID of this resource.
      */
@@ -57,7 +57,7 @@ export interface GetCustomFormOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: any}>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     name?: pulumi.Input<string>;
     slug?: pulumi.Input<string>;
 }

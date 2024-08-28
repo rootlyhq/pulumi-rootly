@@ -615,7 +615,7 @@ export interface WorkflowTaskAddActionItemTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.  The user this action item is assigned to
      */
-    assignedToUser?: {[key: string]: any};
+    assignedToUser?: {[key: string]: string};
     /**
      * [DEPRECATED] Use assigned*to*user attribute instead. The user id this action item is assigned to
      */
@@ -661,7 +661,7 @@ export interface WorkflowTaskAddRoleTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.  The user this role is assigned to
      */
-    assignedToUser?: {[key: string]: any};
+    assignedToUser?: {[key: string]: string};
     /**
      * [DEPRECATED] Use assigned*to*user attribute instead. The user id this role is assigned to
      */
@@ -677,7 +677,7 @@ export interface WorkflowTaskAddSlackBookmarkTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel: {[key: string]: any};
+    channel: {[key: string]: string};
     /**
      * The bookmark emoji
      */
@@ -761,7 +761,7 @@ export interface WorkflowTaskAutoAssignRoleOpsgenieTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    schedule: {[key: string]: any};
+    schedule: {[key: string]: string};
     taskType?: string;
 }
 
@@ -769,7 +769,7 @@ export interface WorkflowTaskAutoAssignRolePagerdutyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    escalationPolicy?: {[key: string]: any};
+    escalationPolicy?: {[key: string]: string};
     /**
      * The role id
      */
@@ -777,11 +777,11 @@ export interface WorkflowTaskAutoAssignRolePagerdutyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    schedule?: {[key: string]: any};
+    schedule?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    service?: {[key: string]: any};
+    service?: {[key: string]: string};
     taskType?: string;
 }
 
@@ -789,11 +789,11 @@ export interface WorkflowTaskAutoAssignRoleRootlyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    escalationPolicyTarget?: {[key: string]: any};
+    escalationPolicyTarget?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    groupTarget?: {[key: string]: any};
+    groupTarget?: {[key: string]: string};
     /**
      * The role id
      */
@@ -801,16 +801,16 @@ export interface WorkflowTaskAutoAssignRoleRootlyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    scheduleTarget?: {[key: string]: any};
+    scheduleTarget?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    serviceTarget?: {[key: string]: any};
+    serviceTarget?: {[key: string]: string};
     taskType?: string;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    userTarget?: {[key: string]: any};
+    userTarget?: {[key: string]: string};
 }
 
 export interface WorkflowTaskAutoAssignRoleVictorOpsTaskParams {
@@ -822,7 +822,7 @@ export interface WorkflowTaskAutoAssignRoleVictorOpsTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    team: {[key: string]: any};
+    team: {[key: string]: string};
 }
 
 export interface WorkflowTaskCallPeopleTaskParams {
@@ -842,7 +842,7 @@ export interface WorkflowTaskChangeSlackChannelPrivacyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel?: {[key: string]: any};
+    channel?: {[key: string]: string};
     /**
      * Value must be one of `private`, `public`.
      */
@@ -854,7 +854,7 @@ export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    base: {[key: string]: any};
+    base: {[key: string]: string};
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -862,7 +862,7 @@ export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    table: {[key: string]: any};
+    table: {[key: string]: string};
     taskType?: string;
 }
 
@@ -874,7 +874,7 @@ export interface WorkflowTaskCreateAsanaSubtaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: {[key: string]: any};
+    completion: {[key: string]: string};
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -911,7 +911,7 @@ export interface WorkflowTaskCreateAsanaTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: {[key: string]: any};
+    completion: {[key: string]: string};
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -938,7 +938,7 @@ export interface WorkflowTaskCreateAsanaTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    workspace: {[key: string]: any};
+    workspace: {[key: string]: string};
 }
 
 export interface WorkflowTaskCreateAsanaTaskTaskParamsProject {
@@ -962,7 +962,7 @@ export interface WorkflowTaskCreateClickupTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     /**
      * The task tags
      */
@@ -982,7 +982,7 @@ export interface WorkflowTaskCreateConfluencePageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    ancestor?: {[key: string]: any};
+    ancestor?: {[key: string]: string};
     /**
      * The page content
      */
@@ -990,7 +990,7 @@ export interface WorkflowTaskCreateConfluencePageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
      */
-    integration?: {[key: string]: any};
+    integration?: {[key: string]: string};
     /**
      * Value must be one of true or false
      */
@@ -1002,12 +1002,12 @@ export interface WorkflowTaskCreateConfluencePageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    space: {[key: string]: any};
+    space: {[key: string]: string};
     taskType?: string;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    template?: {[key: string]: any};
+    template?: {[key: string]: string};
     /**
      * The page title
      */
@@ -1035,7 +1035,7 @@ export interface WorkflowTaskCreateDatadogNotebookTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    template?: {[key: string]: any};
+    template?: {[key: string]: string};
     /**
      * The notebook title
      */
@@ -1054,11 +1054,11 @@ export interface WorkflowTaskCreateDropboxPaperPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    namespace?: {[key: string]: any};
+    namespace?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    parentFolder?: {[key: string]: any};
+    parentFolder?: {[key: string]: string};
     /**
      * Retrospective template to use when creating page task, if desired
      */
@@ -1078,7 +1078,7 @@ export interface WorkflowTaskCreateGithubIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    repository: {[key: string]: any};
+    repository: {[key: string]: string};
     taskType?: string;
     /**
      * The issue title
@@ -1106,7 +1106,7 @@ export interface WorkflowTaskCreateGitlabIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    repository: {[key: string]: any};
+    repository: {[key: string]: string};
     taskType?: string;
     /**
      * The issue title
@@ -1214,7 +1214,7 @@ export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    drive?: {[key: string]: any};
+    drive?: {[key: string]: string};
     /**
      * Value must be one of true or false
      */
@@ -1222,7 +1222,7 @@ export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    parentFolder?: {[key: string]: any};
+    parentFolder?: {[key: string]: string};
     /**
      * Page permissions JSON
      */
@@ -1302,7 +1302,7 @@ export interface WorkflowTaskCreateIncidentPostmortemTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. Retrospective template to use
      */
-    template?: {[key: string]: any};
+    template?: {[key: string]: string};
     /**
      * The retrospective title
      */
@@ -1355,11 +1355,11 @@ export interface WorkflowTaskCreateJiraIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
      */
-    integration?: {[key: string]: any};
+    integration?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`. The issue type id and display name
      */
-    issueType: {[key: string]: any};
+    issueType: {[key: string]: string};
     /**
      * The issue labels
      */
@@ -1367,7 +1367,7 @@ export interface WorkflowTaskCreateJiraIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     /**
      * The project key
      */
@@ -1379,7 +1379,7 @@ export interface WorkflowTaskCreateJiraIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
-    status?: {[key: string]: any};
+    status?: {[key: string]: string};
     taskType?: string;
     /**
      * The issue title
@@ -1411,7 +1411,7 @@ export interface WorkflowTaskCreateJiraSubtaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
      */
-    integration?: {[key: string]: any};
+    integration?: {[key: string]: string};
     /**
      * The issue labels
      */
@@ -1423,7 +1423,7 @@ export interface WorkflowTaskCreateJiraSubtaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     /**
      * The project key
      */
@@ -1435,11 +1435,11 @@ export interface WorkflowTaskCreateJiraSubtaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
-    status?: {[key: string]: any};
+    status?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`. The issue type id and display name
      */
-    subtaskIssueType: {[key: string]: any};
+    subtaskIssueType: {[key: string]: string};
     taskType?: string;
     /**
      * The issue title
@@ -1476,20 +1476,20 @@ export interface WorkflowTaskCreateLinearIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`. The project id and display name
      */
-    project?: {[key: string]: any};
+    project?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`. The state id and display name
      */
-    state: {[key: string]: any};
+    state: {[key: string]: string};
     taskType?: string;
     /**
      * Map must contain two fields, `id` and `name`. The team id and display name
      */
-    team: {[key: string]: any};
+    team: {[key: string]: string};
     /**
      * The issue title
      */
@@ -1517,11 +1517,11 @@ export interface WorkflowTaskCreateLinearSubtaskIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`. The state id and display name
      */
-    state: {[key: string]: any};
+    state: {[key: string]: string};
     taskType?: string;
     /**
      * The issue title
@@ -1563,7 +1563,7 @@ export interface WorkflowTaskCreateNotionPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The parent page id and display name
      */
-    parentPage: {[key: string]: any};
+    parentPage: {[key: string]: string};
     /**
      * Retrospective template to use when creating page task, if desired
      */
@@ -1631,7 +1631,7 @@ export interface WorkflowTaskCreateOutlookEventTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    calendar: {[key: string]: any};
+    calendar: {[key: string]: string};
     /**
      * The days until meeting
      */
@@ -1753,7 +1753,7 @@ export interface WorkflowTaskCreateServiceNowIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion?: {[key: string]: any};
+    completion?: {[key: string]: string};
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -1765,7 +1765,7 @@ export interface WorkflowTaskCreateServiceNowIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     taskType?: string;
     /**
      * The incident title
@@ -1781,7 +1781,7 @@ export interface WorkflowTaskCreateSharepointPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    drive: {[key: string]: any};
+    drive: {[key: string]: string};
     /**
      * Value must be one of true or false
      */
@@ -1789,7 +1789,7 @@ export interface WorkflowTaskCreateSharepointPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    parentFolder?: {[key: string]: any};
+    parentFolder?: {[key: string]: string};
     /**
      * Retrospective template to use when creating page, if desired
      */
@@ -1797,7 +1797,7 @@ export interface WorkflowTaskCreateSharepointPageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    site: {[key: string]: any};
+    site: {[key: string]: string};
     taskType?: string;
     /**
      * The SharePoint file ID to use as a template
@@ -1813,7 +1813,7 @@ export interface WorkflowTaskCreateShortcutStoryTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The archivation id and display name
      */
-    archivation: {[key: string]: any};
+    archivation: {[key: string]: string};
     /**
      * The incident description
      */
@@ -1833,7 +1833,7 @@ export interface WorkflowTaskCreateShortcutStoryTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The project id and display name
      */
-    project: {[key: string]: any};
+    project: {[key: string]: string};
     taskType?: string;
     /**
      * The incident title
@@ -1845,7 +1845,7 @@ export interface WorkflowTaskCreateShortcutTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion: {[key: string]: any};
+    completion: {[key: string]: string};
     /**
      * The task description
      */
@@ -1870,18 +1870,18 @@ export interface WorkflowTaskCreateSlackChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    workspace: {[key: string]: any};
+    workspace: {[key: string]: string};
 }
 
 export interface WorkflowTaskCreateTrelloCardTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The archivation id and display name
      */
-    archivation?: {[key: string]: any};
+    archivation?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`. The board id and display name
      */
-    board: {[key: string]: any};
+    board: {[key: string]: string};
     /**
      * The card description
      */
@@ -1894,7 +1894,7 @@ export interface WorkflowTaskCreateTrelloCardTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The list id and display name
      */
-    list: {[key: string]: any};
+    list: {[key: string]: string};
     taskType?: string;
     /**
      * The card title
@@ -1957,7 +1957,7 @@ export interface WorkflowTaskCreateZendeskTicketTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion?: {[key: string]: any};
+    completion?: {[key: string]: string};
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -1969,7 +1969,7 @@ export interface WorkflowTaskCreateZendeskTicketTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     /**
      * The ticket subject
      */
@@ -2030,7 +2030,7 @@ export interface WorkflowTaskGetAlertsTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
      */
-    parentMessageThreadTask?: {[key: string]: any};
+    parentMessageThreadTask?: {[key: string]: string};
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
      */
@@ -2120,7 +2120,7 @@ export interface WorkflowTaskGetPulsesTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
      */
-    parentMessageThreadTask?: {[key: string]: any};
+    parentMessageThreadTask?: {[key: string]: string};
     /**
      * How far back to fetch commits (in format '1 minute', '30 days', '3 months', etc.)
      */
@@ -2190,7 +2190,7 @@ export interface WorkflowTaskInviteToSlackChannelOpsgenieTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    schedule: {[key: string]: any};
+    schedule: {[key: string]: string};
     taskType?: string;
 }
 
@@ -2204,15 +2204,15 @@ export interface WorkflowTaskInviteToSlackChannelPagerdutyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    escalationPolicy?: {[key: string]: any};
+    escalationPolicy?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    schedule?: {[key: string]: any};
+    schedule?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    service?: {[key: string]: any};
+    service?: {[key: string]: string};
     taskType?: string;
 }
 
@@ -2226,24 +2226,24 @@ export interface WorkflowTaskInviteToSlackChannelRootlyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    escalationPolicyTarget?: {[key: string]: any};
+    escalationPolicyTarget?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    groupTarget?: {[key: string]: any};
+    groupTarget?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    scheduleTarget?: {[key: string]: any};
+    scheduleTarget?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    serviceTarget?: {[key: string]: any};
+    serviceTarget?: {[key: string]: string};
     taskType?: string;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    userTarget?: {[key: string]: any};
+    userTarget?: {[key: string]: string};
 }
 
 export interface WorkflowTaskInviteToSlackChannelRootlyTaskParamsChannel {
@@ -2255,7 +2255,7 @@ export interface WorkflowTaskInviteToSlackChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel: {[key: string]: any};
+    channel: {[key: string]: string};
     slackUserGroups?: outputs.WorkflowTaskInviteToSlackChannelTaskParamsSlackUserGroup[];
     slackUsers?: outputs.WorkflowTaskInviteToSlackChannelTaskParamsSlackUser[];
     taskType?: string;
@@ -2277,7 +2277,7 @@ export interface WorkflowTaskInviteToSlackChannelVictorOpsTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    team: {[key: string]: any};
+    team: {[key: string]: string};
 }
 
 export interface WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannel {
@@ -2331,7 +2331,7 @@ export interface WorkflowTaskPagePagerdutyOnCallRespondersTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    service: {[key: string]: any};
+    service: {[key: string]: string};
     taskType?: string;
     /**
      * Incident title.
@@ -2355,25 +2355,29 @@ export interface WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsUser {
 }
 
 export interface WorkflowTaskPageRootlyOnCallRespondersTaskParams {
+    /**
+     * Alert urgency ID
+     */
+    alertUrgencyId?: string;
     escalationNote?: string;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    escalationPolicyTarget?: {[key: string]: any};
+    escalationPolicyTarget?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    groupTarget?: {[key: string]: any};
+    groupTarget?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    serviceTarget?: {[key: string]: any};
+    serviceTarget?: {[key: string]: string};
     summary: string;
     taskType?: string;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    userTarget?: {[key: string]: any};
+    userTarget?: {[key: string]: string};
 }
 
 export interface WorkflowTaskPageVictorOpsOnCallRespondersTaskParams {
@@ -2412,7 +2416,7 @@ export interface WorkflowTaskPublishIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    incident: {[key: string]: any};
+    incident: {[key: string]: string};
     /**
      * Additional API Payload you can pass to statuspage.io for example. Can contain liquid markup and need to be valid JSON
      */
@@ -2434,7 +2438,7 @@ export interface WorkflowTaskPublishIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    statusPageTemplate?: {[key: string]: any};
+    statusPageTemplate?: {[key: string]: string};
     taskType?: string;
 }
 
@@ -2473,7 +2477,7 @@ export interface WorkflowTaskRenameSlackChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel: {[key: string]: any};
+    channel: {[key: string]: string};
     taskType?: string;
     title: string;
 }
@@ -2573,7 +2577,7 @@ export interface WorkflowTaskSendSlackBlocksTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
      */
-    parentMessageThreadTask?: {[key: string]: any};
+    parentMessageThreadTask?: {[key: string]: string};
     /**
      * Value must be one of true or false
      */
@@ -2582,6 +2586,10 @@ export interface WorkflowTaskSendSlackBlocksTaskParams {
      * Value must be one of true or false
      */
     sendAsEphemeral?: boolean;
+    /**
+     * When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+     */
+    sendOnlyAsThreadedMessage?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup[];
     slackUsers?: outputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUser[];
     taskType?: string;
@@ -2623,7 +2631,7 @@ export interface WorkflowTaskSendSlackMessageTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. A hash where [id] is the task id of the parent task that sent a message, and [name] is the name of the parent task
      */
-    parentMessageThreadTask?: {[key: string]: any};
+    parentMessageThreadTask?: {[key: string]: string};
     /**
      * Value must be one of true or false
      */
@@ -2632,6 +2640,10 @@ export interface WorkflowTaskSendSlackMessageTaskParams {
      * Value must be one of true or false
      */
     sendAsEphemeral?: boolean;
+    /**
+     * When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+     */
+    sendOnlyAsThreadedMessage?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup[];
     slackUsers?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUser[];
     taskType?: string;
@@ -2786,12 +2798,12 @@ export interface WorkflowTaskTriggerWorkflowTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    resource: {[key: string]: any};
+    resource: {[key: string]: string};
     taskType?: string;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    workflow: {[key: string]: any};
+    workflow: {[key: string]: string};
 }
 
 export interface WorkflowTaskTweetTwitterMessageTaskParams {
@@ -2803,7 +2815,7 @@ export interface WorkflowTaskUpdateActionItemTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.  The user this action item is assigned to
      */
-    assignedToUser?: {[key: string]: any};
+    assignedToUser?: {[key: string]: string};
     /**
      * [DEPRECATED] Use assigned*to*user attribute instead. The user id this action item is assigned to
      */
@@ -2872,7 +2884,7 @@ export interface WorkflowTaskUpdateAsanaTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: {[key: string]: any};
+    completion: {[key: string]: string};
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -2925,7 +2937,7 @@ export interface WorkflowTaskUpdateClickupTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     /**
      * The task tags
      */
@@ -2953,7 +2965,7 @@ export interface WorkflowTaskUpdateGithubIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: {[key: string]: any};
+    completion: {[key: string]: string};
     /**
      * The issue id
      */
@@ -2969,7 +2981,7 @@ export interface WorkflowTaskUpdateGitlabIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: {[key: string]: any};
+    completion: {[key: string]: string};
     /**
      * The issue description
      */
@@ -3168,7 +3180,7 @@ export interface WorkflowTaskUpdateJiraIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     /**
      * The project key
      */
@@ -3180,7 +3192,7 @@ export interface WorkflowTaskUpdateJiraIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
-    status?: {[key: string]: any};
+    status?: {[key: string]: string};
     taskType?: string;
     /**
      * The issue title
@@ -3209,15 +3221,15 @@ export interface WorkflowTaskUpdateLinearIssueTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`. The project id and display name
      */
-    project?: {[key: string]: any};
+    project?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`. The state id and display name
      */
-    state?: {[key: string]: any};
+    state?: {[key: string]: string};
     taskType?: string;
     /**
      * The issue title
@@ -3262,7 +3274,7 @@ export interface WorkflowTaskUpdateOpsgenieAlertTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    completion: {[key: string]: any};
+    completion: {[key: string]: string};
     /**
      * Description field of the alert that is generally used to provide a detailed information about the alert
      */
@@ -3378,7 +3390,7 @@ export interface WorkflowTaskUpdateServiceNowIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion?: {[key: string]: any};
+    completion?: {[key: string]: string};
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -3394,7 +3406,7 @@ export interface WorkflowTaskUpdateServiceNowIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     taskType?: string;
     /**
      * The incident title
@@ -3406,7 +3418,7 @@ export interface WorkflowTaskUpdateShortcutStoryTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The archivation id and display name
      */
-    archivation: {[key: string]: any};
+    archivation: {[key: string]: string};
     /**
      * The incident description
      */
@@ -3434,7 +3446,7 @@ export interface WorkflowTaskUpdateShortcutTaskTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion: {[key: string]: any};
+    completion: {[key: string]: string};
     /**
      * The task description
      */
@@ -3454,7 +3466,7 @@ export interface WorkflowTaskUpdateSlackChannelTopicTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel: {[key: string]: any};
+    channel: {[key: string]: string};
     taskType?: string;
     topic: string;
 }
@@ -3475,11 +3487,11 @@ export interface WorkflowTaskUpdateTrelloCardTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The archivation id and display name
      */
-    archivation: {[key: string]: any};
+    archivation: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`. The board id and display name
      */
-    board?: {[key: string]: any};
+    board?: {[key: string]: string};
     /**
      * The card id
      */
@@ -3496,7 +3508,7 @@ export interface WorkflowTaskUpdateTrelloCardTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The list id and display name
      */
-    list?: {[key: string]: any};
+    list?: {[key: string]: string};
     taskType?: string;
     /**
      * The card title
@@ -3529,7 +3541,7 @@ export interface WorkflowTaskUpdateZendeskTicketTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
      */
-    completion?: {[key: string]: any};
+    completion?: {[key: string]: string};
     /**
      * Custom field mappings. Can contain liquid markup and need to be valid JSON
      */
@@ -3537,7 +3549,7 @@ export interface WorkflowTaskUpdateZendeskTicketTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
-    priority?: {[key: string]: any};
+    priority?: {[key: string]: string};
     /**
      * The ticket subject
      */

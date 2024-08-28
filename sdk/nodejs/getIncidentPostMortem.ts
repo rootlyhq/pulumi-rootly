@@ -27,19 +27,19 @@ export interface GetIncidentPostMortemArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: {[key: string]: any};
+    createdAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    mitigatedAt?: {[key: string]: any};
+    mitigatedAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    resolvedAt?: {[key: string]: any};
+    resolvedAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    startedAt?: {[key: string]: any};
+    startedAt?: {[key: string]: string};
     status?: string;
 }
 
@@ -50,7 +50,7 @@ export interface GetIncidentPostMortemResult {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly createdAt?: {[key: string]: any};
+    readonly createdAt?: {[key: string]: string};
     /**
      * The ID of this resource.
      */
@@ -58,15 +58,15 @@ export interface GetIncidentPostMortemResult {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly mitigatedAt?: {[key: string]: any};
+    readonly mitigatedAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly resolvedAt?: {[key: string]: any};
+    readonly resolvedAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    readonly startedAt?: {[key: string]: any};
+    readonly startedAt?: {[key: string]: string};
     readonly status: string;
 }
 /**
@@ -83,18 +83,18 @@ export interface GetIncidentPostMortemOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: any}>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    mitigatedAt?: pulumi.Input<{[key: string]: any}>;
+    mitigatedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    resolvedAt?: pulumi.Input<{[key: string]: any}>;
+    resolvedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    startedAt?: pulumi.Input<{[key: string]: any}>;
+    startedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     status?: pulumi.Input<string>;
 }
