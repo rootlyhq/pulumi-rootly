@@ -3,7 +3,8 @@ archives:
     name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
 before:
   hooks:
-    - make tfgen
+    - make provider
+    - echo './sdk/nodejs/package.json' >> .gitignore
 builds:
   - binary: pulumi-resource-rootly
     dir: provider
