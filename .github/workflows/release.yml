@@ -31,6 +31,7 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         make build_nodejs
+        npm publish --access public sdk/nodejs/bin
         git checkout -f sdk/nodejs/package.json
     - name: Set PreRelease Version
       run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
