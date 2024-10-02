@@ -4,7 +4,6 @@ archives:
 before:
   hooks:
     - make provider
-    - echo './sdk/nodejs/package.json' >> .gitignore
 builds:
   - binary: pulumi-resource-rootly
     dir: provider
