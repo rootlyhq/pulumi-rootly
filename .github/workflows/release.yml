@@ -37,7 +37,7 @@ jobs:
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v6
       with:
-        args: -p 3 release --clean
+        args: -p 3 release --clean --auto-snapshot
         version: latest
     strategy:
       fail-fast: true
