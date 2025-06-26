@@ -29,7 +29,7 @@ jobs:
     - name: Setup Yarn
       run: |
         corepack enable
-        yarn set version stable
+        yarn set version 1.22.22
     - name: Verify Node.js and Yarn versions
       run: |
         node --version
