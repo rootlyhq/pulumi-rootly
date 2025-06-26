@@ -3,7 +3,7 @@
         "resources": {
             "rootly_authorization": {
                 "current": "rootly:index/authorization:Authorization",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "permissions": {
                         "maxItemsOne": false
@@ -12,11 +12,11 @@
             },
             "rootly_cause": {
                 "current": "rootly:index/cause:Cause",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_custom_field": {
                 "current": "rootly:index/customField:CustomField",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "required": {
                         "maxItemsOne": false
@@ -28,19 +28,19 @@
             },
             "rootly_custom_field_option": {
                 "current": "rootly:index/customFieldOption:CustomFieldOption",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_custom_form": {
                 "current": "rootly:index/customForm:CustomForm",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_dashboard": {
                 "current": "rootly:index/dashboard:Dashboard",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_dashboard_panel": {
                 "current": "rootly:index/dashboardPanel:DashboardPanel",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "params": {
                         "maxItemsOne": true,
@@ -79,7 +79,7 @@
             },
             "rootly_environment": {
                 "current": "rootly:index/environment:Environment",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "notify_emails": {
                         "maxItemsOne": false
@@ -94,7 +94,7 @@
             },
             "rootly_escalation_level": {
                 "current": "rootly:index/escalationLevel:EscalationLevel",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "notification_target_params": {
                         "maxItemsOne": false
@@ -103,7 +103,7 @@
             },
             "rootly_escalation_policy": {
                 "current": "rootly:index/escalationPolicy:EscalationPolicy",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "group_ids": {
                         "maxItemsOne": false
@@ -115,7 +115,7 @@
             },
             "rootly_form_field": {
                 "current": "rootly:index/formField:FormField",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "default_values": {
                         "maxItemsOne": false
@@ -130,15 +130,15 @@
             },
             "rootly_form_field_option": {
                 "current": "rootly:index/formFieldOption:FormFieldOption",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_form_field_placement": {
                 "current": "rootly:index/formFieldPlacement:FormFieldPlacement",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_form_field_placement_condition": {
                 "current": "rootly:index/formFieldPlacementCondition:FormFieldPlacementCondition",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "values": {
                         "maxItemsOne": false
@@ -147,11 +147,11 @@
             },
             "rootly_form_field_position": {
                 "current": "rootly:index/formFieldPosition:FormFieldPosition",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_form_set": {
                 "current": "rootly:index/formSet:FormSet",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "forms": {
                         "maxItemsOne": false
@@ -160,7 +160,7 @@
             },
             "rootly_form_set_condition": {
                 "current": "rootly:index/formSetCondition:FormSetCondition",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "values": {
                         "maxItemsOne": false
@@ -169,7 +169,7 @@
             },
             "rootly_functionality": {
                 "current": "rootly:index/functionality:Functionality",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "environment_ids": {
                         "maxItemsOne": false
@@ -196,11 +196,11 @@
             },
             "rootly_heartbeat": {
                 "current": "rootly:index/heartbeat:Heartbeat",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_permission_set": {
                 "current": "rootly:index/incidentPermissionSet:IncidentPermissionSet",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "private_incident_permissions": {
                         "maxItemsOne": false
@@ -212,23 +212,23 @@
             },
             "rootly_incident_permission_set_boolean": {
                 "current": "rootly:index/incidentPermissionSetBoolean:IncidentPermissionSetBoolean",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_permission_set_resource": {
                 "current": "rootly:index/incidentPermissionSetResource:IncidentPermissionSetResource",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_role": {
                 "current": "rootly:index/incidentRole:IncidentRole",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_role_task": {
                 "current": "rootly:index/incidentRoleTask:IncidentRoleTask",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_type": {
                 "current": "rootly:index/incidentType:IncidentType",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "notify_emails": {
                         "maxItemsOne": false
@@ -243,15 +243,15 @@
             },
             "rootly_on_call_shadow": {
                 "current": "rootly:index/onCallShadow:OnCallShadow",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_override_shift": {
                 "current": "rootly:index/overrideShift:OverrideShift",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_playbook": {
                 "current": "rootly:index/playbook:Playbook",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "environment_ids": {
                         "maxItemsOne": false
@@ -275,15 +275,15 @@
             },
             "rootly_playbook_task": {
                 "current": "rootly:index/playbookTask:PlaybookTask",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_post_mortem_template": {
                 "current": "rootly:index/postMortemTemplate:PostMortemTemplate",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_retrospective_configuration": {
                 "current": "rootly:index/retrospectiveConfiguration:RetrospectiveConfiguration",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "group_ids": {
                         "maxItemsOne": false
@@ -298,7 +298,7 @@
             },
             "rootly_retrospective_process": {
                 "current": "rootly:index/retrospectiveProcess:RetrospectiveProcess",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "retrospective_process_matching_criteria": {
                         "maxItemsOne": true,
@@ -320,11 +320,11 @@
             },
             "rootly_retrospective_step": {
                 "current": "rootly:index/retrospectiveStep:RetrospectiveStep",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_role": {
                 "current": "rootly:index/role:Role",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "api_keys_permissions": {
                         "maxItemsOne": false
@@ -399,11 +399,11 @@
             },
             "rootly_schedule": {
                 "current": "rootly:index/schedule:Schedule",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_schedule_rotation": {
                 "current": "rootly:index/scheduleRotation:ScheduleRotation",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "active_days": {
                         "maxItemsOne": false
@@ -415,7 +415,7 @@
             },
             "rootly_schedule_rotation_active_day": {
                 "current": "rootly:index/scheduleRotationActiveDay:ScheduleRotationActiveDay",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "active_time_attributes": {
                         "maxItemsOne": false
@@ -424,15 +424,15 @@
             },
             "rootly_schedule_rotation_user": {
                 "current": "rootly:index/scheduleRotationUser:ScheduleRotationUser",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_secret": {
                 "current": "rootly:index/secret:Secret",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_service": {
                 "current": "rootly:index/service:Service",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "environment_ids": {
                         "maxItemsOne": false
@@ -459,7 +459,7 @@
             },
             "rootly_severity": {
                 "current": "rootly:index/severity:Severity",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "notify_emails": {
                         "maxItemsOne": false
@@ -474,7 +474,7 @@
             },
             "rootly_status_page": {
                 "current": "rootly:index/statusPage:StatusPage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "functionality_ids": {
                         "maxItemsOne": false
@@ -486,11 +486,11 @@
             },
             "rootly_status_page_template": {
                 "current": "rootly:index/statusPageTemplate:StatusPageTemplate",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_team": {
                 "current": "rootly:index/team:Team",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "notify_emails": {
                         "maxItemsOne": false
@@ -508,7 +508,7 @@
             },
             "rootly_webhooks_endpoint": {
                 "current": "rootly:index/webhooksEndpoint:WebhooksEndpoint",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "event_types": {
                         "maxItemsOne": false
@@ -517,7 +517,7 @@
             },
             "rootly_workflow_action_item": {
                 "current": "rootly:index/workflowActionItem:WorkflowActionItem",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "cause_ids": {
                         "maxItemsOne": false
@@ -581,7 +581,7 @@
             },
             "rootly_workflow_alert": {
                 "current": "rootly:index/workflowAlert:WorkflowAlert",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "cause_ids": {
                         "maxItemsOne": false
@@ -633,7 +633,7 @@
             },
             "rootly_workflow_custom_field_selection": {
                 "current": "rootly:index/workflowCustomFieldSelection:WorkflowCustomFieldSelection",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "selected_option_ids": {
                         "maxItemsOne": false
@@ -645,7 +645,7 @@
             },
             "rootly_workflow_form_field_condition": {
                 "current": "rootly:index/workflowFormFieldCondition:WorkflowFormFieldCondition",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "selected_option_ids": {
                         "maxItemsOne": false
@@ -660,11 +660,11 @@
             },
             "rootly_workflow_group": {
                 "current": "rootly:index/workflowGroup:WorkflowGroup",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_workflow_incident": {
                 "current": "rootly:index/workflowIncident:WorkflowIncident",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "cause_ids": {
                         "maxItemsOne": false
@@ -716,7 +716,7 @@
             },
             "rootly_workflow_post_mortem": {
                 "current": "rootly:index/workflowPostMortem:WorkflowPostMortem",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "cause_ids": {
                         "maxItemsOne": false
@@ -771,7 +771,7 @@
             },
             "rootly_workflow_pulse": {
                 "current": "rootly:index/workflowPulse:WorkflowPulse",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "cause_ids": {
                         "maxItemsOne": false
@@ -823,7 +823,7 @@
             },
             "rootly_workflow_simple": {
                 "current": "rootly:index/workflowSimple:WorkflowSimple",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "cause_ids": {
                         "maxItemsOne": false
@@ -866,7 +866,7 @@
             },
             "rootly_workflow_task_add_action_item": {
                 "current": "rootly:index/workflowTaskAddActionItem:WorkflowTaskAddActionItem",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -882,7 +882,7 @@
             },
             "rootly_workflow_task_add_role": {
                 "current": "rootly:index/workflowTaskAddRole:WorkflowTaskAddRole",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -891,7 +891,7 @@
             },
             "rootly_workflow_task_add_slack_bookmark": {
                 "current": "rootly:index/workflowTaskAddSlackBookmark:WorkflowTaskAddSlackBookmark",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -900,7 +900,7 @@
             },
             "rootly_workflow_task_add_team": {
                 "current": "rootly:index/workflowTaskAddTeam:WorkflowTaskAddTeam",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -909,7 +909,7 @@
             },
             "rootly_workflow_task_add_to_timeline": {
                 "current": "rootly:index/workflowTaskAddToTimeline:WorkflowTaskAddToTimeline",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -925,7 +925,7 @@
             },
             "rootly_workflow_task_archive_slack_channels": {
                 "current": "rootly:index/workflowTaskArchiveSlackChannels:WorkflowTaskArchiveSlackChannels",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -941,7 +941,7 @@
             },
             "rootly_workflow_task_attach_datadog_dashboards": {
                 "current": "rootly:index/workflowTaskAttachDatadogDashboards:WorkflowTaskAttachDatadogDashboards",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -960,7 +960,7 @@
             },
             "rootly_workflow_task_auto_assign_role_opsgenie": {
                 "current": "rootly:index/workflowTaskAutoAssignRoleOpsgenie:WorkflowTaskAutoAssignRoleOpsgenie",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -969,7 +969,7 @@
             },
             "rootly_workflow_task_auto_assign_role_pagerduty": {
                 "current": "rootly:index/workflowTaskAutoAssignRolePagerduty:WorkflowTaskAutoAssignRolePagerduty",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -978,7 +978,7 @@
             },
             "rootly_workflow_task_auto_assign_role_rootly": {
                 "current": "rootly:index/workflowTaskAutoAssignRoleRootly:WorkflowTaskAutoAssignRoleRootly",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -987,7 +987,7 @@
             },
             "rootly_workflow_task_auto_assign_role_victor_ops": {
                 "current": "rootly:index/workflowTaskAutoAssignRoleVictorOps:WorkflowTaskAutoAssignRoleVictorOps",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -996,7 +996,7 @@
             },
             "rootly_workflow_task_call_people": {
                 "current": "rootly:index/workflowTaskCallPeople:WorkflowTaskCallPeople",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1012,7 +1012,7 @@
             },
             "rootly_workflow_task_change_slack_channel_privacy": {
                 "current": "rootly:index/workflowTaskChangeSlackChannelPrivacy:WorkflowTaskChangeSlackChannelPrivacy",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1021,7 +1021,7 @@
             },
             "rootly_workflow_task_create_airtable_table_record": {
                 "current": "rootly:index/workflowTaskCreateAirtableTableRecord:WorkflowTaskCreateAirtableTableRecord",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1030,7 +1030,7 @@
             },
             "rootly_workflow_task_create_asana_subtask": {
                 "current": "rootly:index/workflowTaskCreateAsanaSubtask:WorkflowTaskCreateAsanaSubtask",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1046,7 +1046,7 @@
             },
             "rootly_workflow_task_create_asana_task": {
                 "current": "rootly:index/workflowTaskCreateAsanaTask:WorkflowTaskCreateAsanaTask",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1065,7 +1065,7 @@
             },
             "rootly_workflow_task_create_clickup_task": {
                 "current": "rootly:index/workflowTaskCreateClickupTask:WorkflowTaskCreateClickupTask",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1074,7 +1074,7 @@
             },
             "rootly_workflow_task_create_confluence_page": {
                 "current": "rootly:index/workflowTaskCreateConfluencePage:WorkflowTaskCreateConfluencePage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1083,7 +1083,7 @@
             },
             "rootly_workflow_task_create_datadog_notebook": {
                 "current": "rootly:index/workflowTaskCreateDatadogNotebook:WorkflowTaskCreateDatadogNotebook",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1092,7 +1092,7 @@
             },
             "rootly_workflow_task_create_dropbox_paper_page": {
                 "current": "rootly:index/workflowTaskCreateDropboxPaperPage:WorkflowTaskCreateDropboxPaperPage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1101,7 +1101,7 @@
             },
             "rootly_workflow_task_create_github_issue": {
                 "current": "rootly:index/workflowTaskCreateGithubIssue:WorkflowTaskCreateGithubIssue",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1110,7 +1110,7 @@
             },
             "rootly_workflow_task_create_gitlab_issue": {
                 "current": "rootly:index/workflowTaskCreateGitlabIssue:WorkflowTaskCreateGitlabIssue",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1119,7 +1119,7 @@
             },
             "rootly_workflow_task_create_go_to_meeting": {
                 "current": "rootly:index/workflowTaskCreateGoToMeeting:WorkflowTaskCreateGoToMeeting",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1135,7 +1135,7 @@
             },
             "rootly_workflow_task_create_google_calendar_event": {
                 "current": "rootly:index/workflowTaskCreateGoogleCalendarEvent:WorkflowTaskCreateGoogleCalendarEvent",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1154,7 +1154,7 @@
             },
             "rootly_workflow_task_create_google_docs_page": {
                 "current": "rootly:index/workflowTaskCreateGoogleDocsPage:WorkflowTaskCreateGoogleDocsPage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1163,7 +1163,7 @@
             },
             "rootly_workflow_task_create_google_docs_permissions": {
                 "current": "rootly:index/workflowTaskCreateGoogleDocsPermissions:WorkflowTaskCreateGoogleDocsPermissions",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1172,7 +1172,7 @@
             },
             "rootly_workflow_task_create_google_meeting": {
                 "current": "rootly:index/workflowTaskCreateGoogleMeeting:WorkflowTaskCreateGoogleMeeting",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1188,7 +1188,7 @@
             },
             "rootly_workflow_task_create_incident": {
                 "current": "rootly:index/workflowTaskCreateIncident:WorkflowTaskCreateIncident",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1216,7 +1216,7 @@
             },
             "rootly_workflow_task_create_incident_postmortem": {
                 "current": "rootly:index/workflowTaskCreateIncidentPostmortem:WorkflowTaskCreateIncidentPostmortem",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1225,7 +1225,7 @@
             },
             "rootly_workflow_task_create_jira_issue": {
                 "current": "rootly:index/workflowTaskCreateJiraIssue:WorkflowTaskCreateJiraIssue",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1234,7 +1234,7 @@
             },
             "rootly_workflow_task_create_jira_subtask": {
                 "current": "rootly:index/workflowTaskCreateJiraSubtask:WorkflowTaskCreateJiraSubtask",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1243,7 +1243,7 @@
             },
             "rootly_workflow_task_create_linear_issue": {
                 "current": "rootly:index/workflowTaskCreateLinearIssue:WorkflowTaskCreateLinearIssue",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1259,7 +1259,7 @@
             },
             "rootly_workflow_task_create_linear_issue_comment": {
                 "current": "rootly:index/workflowTaskCreateLinearIssueComment:WorkflowTaskCreateLinearIssueComment",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1268,7 +1268,7 @@
             },
             "rootly_workflow_task_create_linear_subtask_issue": {
                 "current": "rootly:index/workflowTaskCreateLinearSubtaskIssue:WorkflowTaskCreateLinearSubtaskIssue",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1277,7 +1277,7 @@
             },
             "rootly_workflow_task_create_microsoft_teams_meeting": {
                 "current": "rootly:index/workflowTaskCreateMicrosoftTeamsMeeting:WorkflowTaskCreateMicrosoftTeamsMeeting",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1293,7 +1293,7 @@
             },
             "rootly_workflow_task_create_notion_page": {
                 "current": "rootly:index/workflowTaskCreateNotionPage:WorkflowTaskCreateNotionPage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1302,7 +1302,7 @@
             },
             "rootly_workflow_task_create_opsgenie_alert": {
                 "current": "rootly:index/workflowTaskCreateOpsgenieAlert:WorkflowTaskCreateOpsgenieAlert",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1327,7 +1327,7 @@
             },
             "rootly_workflow_task_create_outlook_event": {
                 "current": "rootly:index/workflowTaskCreateOutlookEvent:WorkflowTaskCreateOutlookEvent",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1346,7 +1346,7 @@
             },
             "rootly_workflow_task_create_pagerduty_status_update": {
                 "current": "rootly:index/workflowTaskCreatePagerdutyStatusUpdate:WorkflowTaskCreatePagerdutyStatusUpdate",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1355,7 +1355,7 @@
             },
             "rootly_workflow_task_create_pagertree_alert": {
                 "current": "rootly:index/workflowTaskCreatePagertreeAlert:WorkflowTaskCreatePagertreeAlert",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1374,7 +1374,7 @@
             },
             "rootly_workflow_task_create_quip_page": {
                 "current": "rootly:index/workflowTaskCreateQuipPage:WorkflowTaskCreateQuipPage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1383,7 +1383,7 @@
             },
             "rootly_workflow_task_create_service_now_incident": {
                 "current": "rootly:index/workflowTaskCreateServiceNowIncident:WorkflowTaskCreateServiceNowIncident",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1392,7 +1392,7 @@
             },
             "rootly_workflow_task_create_sharepoint_page": {
                 "current": "rootly:index/workflowTaskCreateSharepointPage:WorkflowTaskCreateSharepointPage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1401,7 +1401,7 @@
             },
             "rootly_workflow_task_create_shortcut_story": {
                 "current": "rootly:index/workflowTaskCreateShortcutStory:WorkflowTaskCreateShortcutStory",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1410,7 +1410,7 @@
             },
             "rootly_workflow_task_create_shortcut_task": {
                 "current": "rootly:index/workflowTaskCreateShortcutTask:WorkflowTaskCreateShortcutTask",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1419,7 +1419,7 @@
             },
             "rootly_workflow_task_create_slack_channel": {
                 "current": "rootly:index/workflowTaskCreateSlackChannel:WorkflowTaskCreateSlackChannel",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1428,7 +1428,7 @@
             },
             "rootly_workflow_task_create_trello_card": {
                 "current": "rootly:index/workflowTaskCreateTrelloCard:WorkflowTaskCreateTrelloCard",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1444,7 +1444,7 @@
             },
             "rootly_workflow_task_create_webex_meeting": {
                 "current": "rootly:index/workflowTaskCreateWebexMeeting:WorkflowTaskCreateWebexMeeting",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1460,7 +1460,7 @@
             },
             "rootly_workflow_task_create_zendesk_jira_link": {
                 "current": "rootly:index/workflowTaskCreateZendeskJiraLink:WorkflowTaskCreateZendeskJiraLink",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1469,7 +1469,7 @@
             },
             "rootly_workflow_task_create_zendesk_ticket": {
                 "current": "rootly:index/workflowTaskCreateZendeskTicket:WorkflowTaskCreateZendeskTicket",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1478,7 +1478,7 @@
             },
             "rootly_workflow_task_create_zoom_meeting": {
                 "current": "rootly:index/workflowTaskCreateZoomMeeting:WorkflowTaskCreateZoomMeeting",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1497,7 +1497,7 @@
             },
             "rootly_workflow_task_get_alerts": {
                 "current": "rootly:index/workflowTaskGetAlerts:WorkflowTaskGetAlerts",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1525,7 +1525,7 @@
             },
             "rootly_workflow_task_get_github_commits": {
                 "current": "rootly:index/workflowTaskGetGithubCommits:WorkflowTaskGetGithubCommits",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1547,7 +1547,7 @@
             },
             "rootly_workflow_task_get_gitlab_commits": {
                 "current": "rootly:index/workflowTaskGetGitlabCommits:WorkflowTaskGetGitlabCommits",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1569,7 +1569,7 @@
             },
             "rootly_workflow_task_get_pulses": {
                 "current": "rootly:index/workflowTaskGetPulses:WorkflowTaskGetPulses",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1600,7 +1600,7 @@
             },
             "rootly_workflow_task_http_client": {
                 "current": "rootly:index/workflowTaskHttpClient:WorkflowTaskHttpClient",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1616,7 +1616,7 @@
             },
             "rootly_workflow_task_invite_to_slack_channel": {
                 "current": "rootly:index/workflowTaskInviteToSlackChannel:WorkflowTaskInviteToSlackChannel",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1635,7 +1635,7 @@
             },
             "rootly_workflow_task_invite_to_slack_channel_opsgenie": {
                 "current": "rootly:index/workflowTaskInviteToSlackChannelOpsgenie:WorkflowTaskInviteToSlackChannelOpsgenie",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1651,7 +1651,7 @@
             },
             "rootly_workflow_task_invite_to_slack_channel_pagerduty": {
                 "current": "rootly:index/workflowTaskInviteToSlackChannelPagerduty:WorkflowTaskInviteToSlackChannelPagerduty",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1667,7 +1667,7 @@
             },
             "rootly_workflow_task_invite_to_slack_channel_rootly": {
                 "current": "rootly:index/workflowTaskInviteToSlackChannelRootly:WorkflowTaskInviteToSlackChannelRootly",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1683,7 +1683,7 @@
             },
             "rootly_workflow_task_invite_to_slack_channel_victor_ops": {
                 "current": "rootly:index/workflowTaskInviteToSlackChannelVictorOps:WorkflowTaskInviteToSlackChannelVictorOps",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1699,7 +1699,7 @@
             },
             "rootly_workflow_task_page_opsgenie_on_call_responders": {
                 "current": "rootly:index/workflowTaskPageOpsgenieOnCallResponders:WorkflowTaskPageOpsgenieOnCallResponders",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1718,7 +1718,7 @@
             },
             "rootly_workflow_task_page_pagerduty_on_call_responders": {
                 "current": "rootly:index/workflowTaskPagePagerdutyOnCallResponders:WorkflowTaskPagePagerdutyOnCallResponders",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1737,7 +1737,7 @@
             },
             "rootly_workflow_task_page_rootly_on_call_responders": {
                 "current": "rootly:index/workflowTaskPageRootlyOnCallResponders:WorkflowTaskPageRootlyOnCallResponders",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1746,7 +1746,7 @@
             },
             "rootly_workflow_task_page_victor_ops_on_call_responders": {
                 "current": "rootly:index/workflowTaskPageVictorOpsOnCallResponders:WorkflowTaskPageVictorOpsOnCallResponders",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1765,7 +1765,7 @@
             },
             "rootly_workflow_task_print": {
                 "current": "rootly:index/workflowTaskPrint:WorkflowTaskPrint",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1774,7 +1774,7 @@
             },
             "rootly_workflow_task_publish_incident": {
                 "current": "rootly:index/workflowTaskPublishIncident:WorkflowTaskPublishIncident",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1783,7 +1783,7 @@
             },
             "rootly_workflow_task_redis_client": {
                 "current": "rootly:index/workflowTaskRedisClient:WorkflowTaskRedisClient",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1799,7 +1799,7 @@
             },
             "rootly_workflow_task_remove_google_docs_permissions": {
                 "current": "rootly:index/workflowTaskRemoveGoogleDocsPermissions:WorkflowTaskRemoveGoogleDocsPermissions",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1808,7 +1808,7 @@
             },
             "rootly_workflow_task_rename_slack_channel": {
                 "current": "rootly:index/workflowTaskRenameSlackChannel:WorkflowTaskRenameSlackChannel",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -1817,7 +1817,7 @@
             },
             "rootly_workflow_task_run_command_heroku": {
                 "current": "rootly:index/workflowTaskRunCommandHeroku:WorkflowTaskRunCommandHeroku",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1833,7 +1833,7 @@
             },
             "rootly_workflow_task_send_dashboard_report": {
                 "current": "rootly:index/workflowTaskSendDashboardReport:WorkflowTaskSendDashboardReport",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1852,7 +1852,7 @@
             },
             "rootly_workflow_task_send_email": {
                 "current": "rootly:index/workflowTaskSendEmail:WorkflowTaskSendEmail",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1874,7 +1874,7 @@
             },
             "rootly_workflow_task_send_slack_blocks": {
                 "current": "rootly:index/workflowTaskSendSlackBlocks:WorkflowTaskSendSlackBlocks",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1896,7 +1896,7 @@
             },
             "rootly_workflow_task_send_slack_message": {
                 "current": "rootly:index/workflowTaskSendSlackMessage:WorkflowTaskSendSlackMessage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1921,7 +1921,7 @@
             },
             "rootly_workflow_task_send_sms": {
                 "current": "rootly:index/workflowTaskSendSms:WorkflowTaskSendSms",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1937,7 +1937,7 @@
             },
             "rootly_workflow_task_send_whatsapp_message": {
                 "current": "rootly:index/workflowTaskSendWhatsappMessage:WorkflowTaskSendWhatsappMessage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1953,7 +1953,7 @@
             },
             "rootly_workflow_task_snapshot_datadog_graph": {
                 "current": "rootly:index/workflowTaskSnapshotDatadogGraph:WorkflowTaskSnapshotDatadogGraph",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1975,7 +1975,7 @@
             },
             "rootly_workflow_task_snapshot_grafana_dashboard": {
                 "current": "rootly:index/workflowTaskSnapshotGrafanaDashboard:WorkflowTaskSnapshotGrafanaDashboard",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -1994,7 +1994,7 @@
             },
             "rootly_workflow_task_snapshot_looker_look": {
                 "current": "rootly:index/workflowTaskSnapshotLookerLook:WorkflowTaskSnapshotLookerLook",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -2013,7 +2013,7 @@
             },
             "rootly_workflow_task_snapshot_new_relic_graph": {
                 "current": "rootly:index/workflowTaskSnapshotNewRelicGraph:WorkflowTaskSnapshotNewRelicGraph",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -2029,7 +2029,7 @@
             },
             "rootly_workflow_task_trigger_workflow": {
                 "current": "rootly:index/workflowTaskTriggerWorkflow:WorkflowTaskTriggerWorkflow",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2038,7 +2038,7 @@
             },
             "rootly_workflow_task_tweet_twitter_message": {
                 "current": "rootly:index/workflowTaskTweetTwitterMessage:WorkflowTaskTweetTwitterMessage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2047,7 +2047,7 @@
             },
             "rootly_workflow_task_update_action_item": {
                 "current": "rootly:index/workflowTaskUpdateActionItem:WorkflowTaskUpdateActionItem",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -2063,7 +2063,7 @@
             },
             "rootly_workflow_task_update_airtable_table_record": {
                 "current": "rootly:index/workflowTaskUpdateAirtableTableRecord:WorkflowTaskUpdateAirtableTableRecord",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2072,7 +2072,7 @@
             },
             "rootly_workflow_task_update_asana_task": {
                 "current": "rootly:index/workflowTaskUpdateAsanaTask:WorkflowTaskUpdateAsanaTask",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -2088,7 +2088,7 @@
             },
             "rootly_workflow_task_update_attached_alerts": {
                 "current": "rootly:index/workflowTaskUpdateAttachedAlerts:WorkflowTaskUpdateAttachedAlerts",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2097,7 +2097,7 @@
             },
             "rootly_workflow_task_update_clickup_task": {
                 "current": "rootly:index/workflowTaskUpdateClickupTask:WorkflowTaskUpdateClickupTask",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2106,7 +2106,7 @@
             },
             "rootly_workflow_task_update_github_issue": {
                 "current": "rootly:index/workflowTaskUpdateGithubIssue:WorkflowTaskUpdateGithubIssue",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2115,7 +2115,7 @@
             },
             "rootly_workflow_task_update_gitlab_issue": {
                 "current": "rootly:index/workflowTaskUpdateGitlabIssue:WorkflowTaskUpdateGitlabIssue",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2124,7 +2124,7 @@
             },
             "rootly_workflow_task_update_google_calendar_event": {
                 "current": "rootly:index/workflowTaskUpdateGoogleCalendarEvent:WorkflowTaskUpdateGoogleCalendarEvent",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -2143,7 +2143,7 @@
             },
             "rootly_workflow_task_update_google_docs_page": {
                 "current": "rootly:index/workflowTaskUpdateGoogleDocsPage:WorkflowTaskUpdateGoogleDocsPage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2152,7 +2152,7 @@
             },
             "rootly_workflow_task_update_incident": {
                 "current": "rootly:index/workflowTaskUpdateIncident:WorkflowTaskUpdateIncident",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -2180,7 +2180,7 @@
             },
             "rootly_workflow_task_update_incident_postmortem": {
                 "current": "rootly:index/workflowTaskUpdateIncidentPostmortem:WorkflowTaskUpdateIncidentPostmortem",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2189,7 +2189,7 @@
             },
             "rootly_workflow_task_update_jira_issue": {
                 "current": "rootly:index/workflowTaskUpdateJiraIssue:WorkflowTaskUpdateJiraIssue",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2198,7 +2198,7 @@
             },
             "rootly_workflow_task_update_linear_issue": {
                 "current": "rootly:index/workflowTaskUpdateLinearIssue:WorkflowTaskUpdateLinearIssue",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -2214,7 +2214,7 @@
             },
             "rootly_workflow_task_update_notion_page": {
                 "current": "rootly:index/workflowTaskUpdateNotionPage:WorkflowTaskUpdateNotionPage",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2223,7 +2223,7 @@
             },
             "rootly_workflow_task_update_opsgenie_alert": {
                 "current": "rootly:index/workflowTaskUpdateOpsgenieAlert:WorkflowTaskUpdateOpsgenieAlert",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2232,7 +2232,7 @@
             },
             "rootly_workflow_task_update_opsgenie_incident": {
                 "current": "rootly:index/workflowTaskUpdateOpsgenieIncident:WorkflowTaskUpdateOpsgenieIncident",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2241,7 +2241,7 @@
             },
             "rootly_workflow_task_update_pagerduty_incident": {
                 "current": "rootly:index/workflowTaskUpdatePagerdutyIncident:WorkflowTaskUpdatePagerdutyIncident",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2250,7 +2250,7 @@
             },
             "rootly_workflow_task_update_pagertree_alert": {
                 "current": "rootly:index/workflowTaskUpdatePagertreeAlert:WorkflowTaskUpdatePagertreeAlert",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -2269,7 +2269,7 @@
             },
             "rootly_workflow_task_update_service_now_incident": {
                 "current": "rootly:index/workflowTaskUpdateServiceNowIncident:WorkflowTaskUpdateServiceNowIncident",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2278,7 +2278,7 @@
             },
             "rootly_workflow_task_update_shortcut_story": {
                 "current": "rootly:index/workflowTaskUpdateShortcutStory:WorkflowTaskUpdateShortcutStory",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2287,7 +2287,7 @@
             },
             "rootly_workflow_task_update_shortcut_task": {
                 "current": "rootly:index/workflowTaskUpdateShortcutTask:WorkflowTaskUpdateShortcutTask",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2296,7 +2296,7 @@
             },
             "rootly_workflow_task_update_slack_channel_topic": {
                 "current": "rootly:index/workflowTaskUpdateSlackChannelTopic:WorkflowTaskUpdateSlackChannelTopic",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2305,7 +2305,7 @@
             },
             "rootly_workflow_task_update_status": {
                 "current": "rootly:index/workflowTaskUpdateStatus:WorkflowTaskUpdateStatus",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2314,7 +2314,7 @@
             },
             "rootly_workflow_task_update_trello_card": {
                 "current": "rootly:index/workflowTaskUpdateTrelloCard:WorkflowTaskUpdateTrelloCard",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true,
@@ -2330,7 +2330,7 @@
             },
             "rootly_workflow_task_update_victor_ops_incident": {
                 "current": "rootly:index/workflowTaskUpdateVictorOpsIncident:WorkflowTaskUpdateVictorOpsIncident",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2339,7 +2339,7 @@
             },
             "rootly_workflow_task_update_zendesk_ticket": {
                 "current": "rootly:index/workflowTaskUpdateZendeskTicket:WorkflowTaskUpdateZendeskTicket",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
@@ -2350,15 +2350,15 @@
         "datasources": {
             "rootly_authorization": {
                 "current": "rootly:index/getAuthorization:getAuthorization",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_cause": {
                 "current": "rootly:index/getCause:getCause",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_causes": {
                 "current": "rootly:index/getCauses:getCauses",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "causes": {
                         "maxItemsOne": false
@@ -2367,15 +2367,15 @@
             },
             "rootly_custom_field": {
                 "current": "rootly:index/getCustomField:getCustomField",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_custom_field_option": {
                 "current": "rootly:index/getCustomFieldOption:getCustomFieldOption",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_custom_field_options": {
                 "current": "rootly:index/getCustomFieldOptions:getCustomFieldOptions",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "custom_field_options": {
                         "maxItemsOne": false
@@ -2384,7 +2384,7 @@
             },
             "rootly_custom_fields": {
                 "current": "rootly:index/getCustomFields:getCustomFields",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "custom_fields": {
                         "maxItemsOne": false,
@@ -2403,15 +2403,15 @@
             },
             "rootly_custom_form": {
                 "current": "rootly:index/getCustomForm:getCustomForm",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_environment": {
                 "current": "rootly:index/getEnvironment:getEnvironment",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_environments": {
                 "current": "rootly:index/getEnvironments:getEnvironments",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "environments": {
                         "maxItemsOne": false
@@ -2420,35 +2420,35 @@
             },
             "rootly_form_field": {
                 "current": "rootly:index/getFormField:getFormField",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_form_field_option": {
                 "current": "rootly:index/getFormFieldOption:getFormFieldOption",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_form_field_placement": {
                 "current": "rootly:index/getFormFieldPlacement:getFormFieldPlacement",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_form_field_placement_condition": {
                 "current": "rootly:index/getFormFieldPlacementCondition:getFormFieldPlacementCondition",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_form_field_position": {
                 "current": "rootly:index/getFormFieldPosition:getFormFieldPosition",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_form_set": {
                 "current": "rootly:index/getFormSet:getFormSet",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_form_set_condition": {
                 "current": "rootly:index/getFormSetCondition:getFormSetCondition",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_functionalities": {
                 "current": "rootly:index/getFunctionalities:getFunctionalities",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "functionalities": {
                         "maxItemsOne": false
@@ -2457,39 +2457,39 @@
             },
             "rootly_functionality": {
                 "current": "rootly:index/getFunctionality:getFunctionality",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_heartbeat": {
                 "current": "rootly:index/getHeartbeat:getHeartbeat",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident": {
                 "current": "rootly:index/getIncident:getIncident",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_permission_set": {
                 "current": "rootly:index/getIncidentPermissionSet:getIncidentPermissionSet",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_permission_set_boolean": {
                 "current": "rootly:index/getIncidentPermissionSetBoolean:getIncidentPermissionSetBoolean",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_permission_set_resource": {
                 "current": "rootly:index/getIncidentPermissionSetResource:getIncidentPermissionSetResource",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_post_mortem": {
                 "current": "rootly:index/getIncidentPostMortem:getIncidentPostMortem",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_role": {
                 "current": "rootly:index/getIncidentRole:getIncidentRole",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_roles": {
                 "current": "rootly:index/getIncidentRoles:getIncidentRoles",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "incident_roles": {
                         "maxItemsOne": false
@@ -2498,11 +2498,11 @@
             },
             "rootly_incident_type": {
                 "current": "rootly:index/getIncidentType:getIncidentType",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_incident_types": {
                 "current": "rootly:index/getIncidentTypes:getIncidentTypes",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "incident_types": {
                         "maxItemsOne": false
@@ -2511,7 +2511,7 @@
             },
             "rootly_ip_ranges": {
                 "current": "rootly:index/getIpRanges:getIpRanges",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "integrations_ipv4": {
                         "maxItemsOne": false
@@ -2529,19 +2529,19 @@
             },
             "rootly_retrospective_configuration": {
                 "current": "rootly:index/getRetrospectiveConfiguration:getRetrospectiveConfiguration",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_role": {
                 "current": "rootly:index/getRole:getRole",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_service": {
                 "current": "rootly:index/getService:getService",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_services": {
                 "current": "rootly:index/getServices:getServices",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "services": {
                         "maxItemsOne": false
@@ -2550,7 +2550,7 @@
             },
             "rootly_severities": {
                 "current": "rootly:index/getSeverities:getSeverities",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "severities": {
                         "maxItemsOne": false
@@ -2559,19 +2559,19 @@
             },
             "rootly_severity": {
                 "current": "rootly:index/getSeverity:getSeverity",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_status_page": {
                 "current": "rootly:index/getStatusPage:getStatusPage",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_team": {
                 "current": "rootly:index/getTeam:getTeam",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_teams": {
                 "current": "rootly:index/getTeams:getTeams",
-                "majorVersion": 2,
+                "majorVersion": 1,
                 "fields": {
                     "teams": {
                         "maxItemsOne": false
@@ -2580,23 +2580,23 @@
             },
             "rootly_user": {
                 "current": "rootly:index/getUser:getUser",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_webhooks_endpoint": {
                 "current": "rootly:index/getWebhooksEndpoint:getWebhooksEndpoint",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_workflow": {
                 "current": "rootly:index/getWorkflow:getWorkflow",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_workflow_group": {
                 "current": "rootly:index/getWorkflowGroup:getWorkflowGroup",
-                "majorVersion": 2
+                "majorVersion": 1
             },
             "rootly_workflow_task": {
                 "current": "rootly:index/getWorkflowTask:getWorkflowTask",
-                "majorVersion": 2
+                "majorVersion": 1
             }
         }
     },

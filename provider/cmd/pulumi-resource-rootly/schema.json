@@ -25,7 +25,7 @@
             "compatibility": "tfbridge20"
         },
         "go": {
-            "importBasePath": "github.com/rootlyhq/pulumi-rootly/sdk/v2/go/rootly",
+            "importBasePath": "github.com/rootlyhq/pulumi-rootly/sdk/go/rootly",
             "generateResourceContainerTypes": true,
             "generateExtraInputTypes": true
         },
