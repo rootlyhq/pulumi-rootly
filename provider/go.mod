@@ -13,6 +13,9 @@ require (
 	github.com/rootlyhq/terraform-provider-rootly/v2 v2.3.9
 )
 
+// Pin terraform-plugin-go to a version before CloseEphemeralResource was added
+replace github.com/hashicorp/terraform-plugin-go => github.com/hashicorp/terraform-plugin-go v0.23.0
+
 require (
 	cloud.google.com/go v0.115.1 // indirect
 	cloud.google.com/go/auth v0.9.1 // indirect
