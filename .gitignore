@@ -32,3 +32,5 @@ sdk/python/venv
 
 go.work
 go.work.sum
+
+.claude
