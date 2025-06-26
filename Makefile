@@ -106,6 +106,15 @@ help::
 	@grep '^[^.#]\+:\s\+.*#' Makefile | \
 		sed "s/\(.\+\):\s*\(.*\) #\s*\(.*\)/`printf "\033[93m"`\1`printf "\033[0m"`	\3 [\2]/" | \
 		expand -t20
+	@echo ""
+	@echo "Version Management Commands:"
+	@echo "  make version-show     - Show current and next versions"
+	@echo "  make version-patch    - Bump patch version (3.0.0 → 3.0.1)"
+	@echo "  make version-minor    - Bump minor version (3.0.0 → 3.1.0)"
+	@echo "  make version-major    - Bump major version (3.0.0 → 4.0.0)"
+	@echo "  make release-patch    - Bump patch and push tag (triggers CI release)"
+	@echo "  make release-minor    - Bump minor and push tag (triggers CI release)"
+	@echo "  make release-major    - Bump major and push tag (triggers CI release)"
 
 clean::
 	rm -rf sdk/{dotnet,nodejs,go,python}
@@ -129,4 +138,43 @@ install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk
 
 test::
 	cd examples && go test -v -tags=all -parallel ${TESTPARALLELISM} -timeout 2h
+
+# Version management targets
+.PHONY: version-patch version-minor version-major version-show version-next version-help
+
+version-show: # Show current and next versions
+	@echo "Current version: $$(git describe --tags --abbrev=0 2>/dev/null || echo 'No tags found')"
+	@echo "Next patch: $$(scripts/bump-version.sh show patch 2>/dev/null || echo 'No script found')"
+	@echo "Next minor: $$(scripts/bump-version.sh show minor 2>/dev/null || echo 'No script found')"
+	@echo "Next major: $$(scripts/bump-version.sh show major 2>/dev/null || echo 'No script found')"
+
+version-patch: # Bump patch version (1.2.3 → 1.2.4)
+	@scripts/bump-version.sh patch
+
+version-minor: # Bump minor version (1.2.3 → 1.3.0)
+	@scripts/bump-version.sh minor
+
+version-major: # Bump major version (1.2.3 → 2.0.0)
+	@scripts/bump-version.sh major
+
+version-next: # Show next patch version
+	@scripts/bump-version.sh show patch
+
+version-help: # Show detailed version help
+	@scripts/bump-version.sh help
+
+# Release targets - these create git tags which trigger CI releases
+.PHONY: release-patch release-minor release-major
+
+release-patch: version-patch # Bump patch and push tag (triggers CI release)
+	@echo "✅ Tag v$$(git describe --tags --abbrev=0) pushed"
+	@echo "🚀 CI will automatically build and publish the release"
+
+release-minor: version-minor # Bump minor and push tag (triggers CI release)
+	@echo "✅ Tag v$$(git describe --tags --abbrev=0) pushed"
+	@echo "🚀 CI will automatically build and publish the release"
+
+release-major: version-major # Bump major and push tag (triggers CI release)
+	@echo "✅ Tag v$$(git describe --tags --abbrev=0) pushed"
+	@echo "🚀 CI will automatically build and publish the release"
 
