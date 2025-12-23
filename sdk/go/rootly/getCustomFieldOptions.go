@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
 func GetCustomFieldOptions(ctx *pulumi.Context, args *GetCustomFieldOptionsArgs, opts ...pulumi.InvokeOption) (*GetCustomFieldOptionsResult, error) {

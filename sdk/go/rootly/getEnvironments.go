@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
 func GetEnvironments(ctx *pulumi.Context, args *GetEnvironmentsArgs, opts ...pulumi.InvokeOption) (*GetEnvironmentsResult, error) {

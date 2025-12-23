@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
 func LookupFormFieldPlacementCondition(ctx *pulumi.Context, args *LookupFormFieldPlacementConditionArgs, opts ...pulumi.InvokeOption) (*LookupFormFieldPlacementConditionResult, error) {

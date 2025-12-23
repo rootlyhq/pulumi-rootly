@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Pulumi provider for Rootly, a platform for incident management and workflow automation. The provider acts as a bridge between Pulumi and the Rootly Terraform provider, allowing users to manage Rootly resources (services, severities, workflows, etc.) through Pulumi infrastructure-as-code.
 
+## Prerequisites
+
+This project uses [mise](https://mise.jdx.dev) for development tool versioning (Go, Node.js, Python, Yarn, Pulumi, golangci-lint). Run `make install_deps` to install all required tools.
+
 ## Key Commands
 
 ### Development Workflow
@@ -17,12 +21,17 @@ This is a Pulumi provider for Rootly, a platform for incident management and wor
 
 ### Provider Updates
 - `make update_provider` - Update the upstream Terraform provider dependency
-- `cd provider && go mod tidy -compat=1.19` - Clean up Go module dependencies
 
 ### Testing and Quality
 - `make test` - Run integration tests (in examples/ directory)
 - `make lint_provider` - Run golangci-lint on provider code
 - `cd provider && golangci-lint run -c ../.golangci.yml` - Manual lint execution
+
+### Version Management and Releases
+- `make version-show` - Show current and next versions
+- `make release-patch` - Bump patch version and push tag (triggers CI release)
+- `make release-minor` - Bump minor version and push tag (triggers CI release)
+- `make release-major` - Bump major version and push tag (triggers CI release)
 
 ### Cleanup
 - `make cleanup` - Remove build artifacts and temporary files
@@ -63,8 +72,12 @@ All Rootly resources are mapped to the main `rootly` module with consistent nami
 2. SDKs depend on generated schema: `make tfgen` → `make build_nodejs`
 3. Use `make development` for complete local development setup
 
+### Environment Variables
+- `ROOTLY_API_TOKEN` - Required for testing; API token from Rootly account settings
+- `ROOTLY_BASE_URL` - Optional; defaults to https://api.rootly.io
+
 ### Testing
-- Integration tests require Rootly API token: `ROOTLY_API_TOKEN`
+- Integration tests require `ROOTLY_API_TOKEN` environment variable
 - Tests run against live Rootly API (not mocked)
 - Test parallelism set to 4 concurrent tests
 
@@ -73,7 +86,9 @@ When updating the upstream Terraform provider:
 1. `make update_provider` - pulls latest terraform-provider-rootly
 2. `make tfgen` - regenerates schema
 3. `make build_sdks` - rebuilds all SDKs
-4. Test changes before committing
+4. Commit generated SDK changes (required for all PRs with code changes)
 
 ### Release Process
-Releases are handled via GitHub Actions when version tags are created. The Makefile uses `pulumictl get version` for consistent versioning across all components.
+Releases are handled via GitHub Actions when version tags are created:
+1. Use `make release-patch|minor|major` to bump version and push tag
+2. CI automatically builds and publishes to NPM and GitHub Releases

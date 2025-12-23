@@ -6,7 +6,7 @@ package config
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-	"github.com/rootlyhq/pulumi-rootly/sdk/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
 var _ = internal.GetEnvOrDefault
