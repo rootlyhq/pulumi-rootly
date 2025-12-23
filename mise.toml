@@ -1,5 +1,5 @@
 [tools]
-go = "1.22"
+go = "1.24"
 node = "20"
 python = "3.12"
 yarn = "1"

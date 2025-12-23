@@ -15,11 +15,11 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v5
+      uses: actions/setup-go@v6
       with:
         go-version: ${{matrix.goversion}}
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      uses: jaxxstorm/action-install-gh-release@v2.1.0
       with:
         repo: pulumi/pulumictl
     - uses: actions/setup-node@v4
@@ -52,4 +52,4 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-        - 1.23.x
+        - 1.24.x

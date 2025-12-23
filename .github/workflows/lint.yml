@@ -23,11 +23,9 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v4
     - name: Install go
-      uses: actions/setup-go@v5
+      uses: actions/setup-go@v6
       with:
-        # The versions of golangci-lint and setup-go here cross-depend and need to update together.
-        go-version: 1.23
-        # Either this action or golangci-lint needs to disable the cache
+        go-version: 1.24
         cache: false
     - name: disarm go:embed directives to enable lint
       continue-on-error: true # this fails if there are no go:embed directives
@@ -40,6 +38,5 @@ jobs:
     - name: golangci-lint
       uses: golangci/golangci-lint-action@v6
       with:
-        version: v1.61.0
+        version: v1.63.4
         working-directory: provider
-        skip-pkg-cache: true
