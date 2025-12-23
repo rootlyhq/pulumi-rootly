@@ -41,9 +41,17 @@ prepare::
 		find ./ ! -path './.git/*' -type f -exec sed -i '' 's/[a]bc/${ORG}/g' {} \; &> /dev/null; \
 	fi
 
-.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup
+.PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup install_deps
 
-development:: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
+install_deps:: # Install all development dependencies via mise
+	@if command -v mise >/dev/null 2>&1; then \
+		mise install; \
+	else \
+		echo "mise not found. Install it from https://mise.jdx.dev"; \
+		exit 1; \
+	fi
+
+development:: install_deps install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
 
 # Required for the codegen action that runs in pulumi/pulumi and pulumi/pulumi-terraform-bridge
 build:: install_plugins provider build_sdks install_sdks
@@ -67,8 +75,8 @@ build_nodejs:: VERSION := $(shell pulumictl get version)
 build_nodejs:: install_plugins tfgen # build the node sdk
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	cd sdk/nodejs/ && \
-        yarn install && \
-        yarn run tsc && \
+        mise exec -- yarn install && \
+        mise exec -- yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json && \
 		sed -i.bak -e "s/pulumi\/rootly/rootly\/pulumi/g" ./bin/package.json
@@ -90,13 +98,13 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		echo "${DOTNET_VERSION}" >version.txt && \
-        dotnet build /p:Version=${DOTNET_VERSION}
+        mise exec -- dotnet build /p:Version=${DOTNET_VERSION}
 
 build_go:: install_plugins tfgen # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
 lint_provider:: provider # lint the provider code
-	cd provider && golangci-lint run -c ../.golangci.yml
+	cd provider && mise exec -- golangci-lint run -c ../.golangci.yml
 
 cleanup:: # cleans up the temporary directory
 	rm -r $(WORKING_DIR)/bin
@@ -120,8 +128,7 @@ clean::
 	rm -rf sdk/{dotnet,nodejs,go,python}
 
 install_plugins::
-	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource random 4.3.1
+	mise exec -- pulumi plugin install resource random 4.3.1
 
 install_dotnet_sdk::
 	mkdir -p $(WORKING_DIR)/nuget
@@ -132,7 +139,7 @@ install_python_sdk::
 install_go_sdk::
 
 install_nodejs_sdk::
-	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
+	mise exec -- yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
 install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk
 

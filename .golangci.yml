@@ -1,21 +1,32 @@
+version: "2"
+
+run:
+  timeout: 20m
+
 linters:
+  default: none
   enable:
     - errcheck
     - goconst
-    - gofmt
     - gosec
     - govet
     - ineffassign
     - lll
-    - megacheck
     - misspell
     - nakedret
     - revive
+    - staticcheck
     - unconvert
     - unused
-  enable-all: false
-run:
-  skip-files:
-    - schema.go
-    - pulumiManifest.go
-  timeout: 20m
+  exclusions:
+    paths:
+      - schema.go
+      - pulumiManifest.go
+
+formatters:
+  enable:
+    - gofmt
+  exclusions:
+    paths:
+      - schema.go
+      - pulumiManifest.go

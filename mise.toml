@@ -1,0 +1,8 @@
+[tools]
+go = "1.22"
+node = "20"
+python = "3.12"
+yarn = "1"
+pulumi = "latest"
+golangci-lint = "latest"
+dotnet = "8"

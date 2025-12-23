@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Package rootly provides the Pulumi provider configuration for Rootly.
 package rootly
 
 import (
