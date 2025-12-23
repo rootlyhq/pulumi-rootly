@@ -8,7 +8,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.89.1
-	github.com/rootlyhq/terraform-provider-rootly/v2 v2.3.9
+	github.com/rootlyhq/terraform-provider-rootly/v2 v2.29.1
 )
 
 // Pin terraform-plugin-go to a version before CloseEphemeralResource was added
