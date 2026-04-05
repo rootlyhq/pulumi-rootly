@@ -4,6 +4,8 @@ updates:
     directory: "/provider"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 3
     commit-message:
       prefix: "deps"
 
@@ -11,6 +13,8 @@ updates:
     directory: "/sdk/nodejs"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 3
     commit-message:
       prefix: "deps"
 
@@ -18,5 +22,7 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 3
     commit-message:
       prefix: "ci"
