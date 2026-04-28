@@ -1,6 +1,76 @@
 {
     "auto-aliasing": {
         "resources": {
+            "rootly_alert_group": {
+                "current": "rootly:index/alertGroup:AlertGroup",
+                "majorVersion": 3,
+                "fields": {
+                    "attributes": {
+                        "maxItemsOne": false
+                    },
+                    "targets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "rootly_alert_routing_rule": {
+                "current": "rootly:index/alertRoutingRule:AlertRoutingRule",
+                "majorVersion": 3,
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "property_field_values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "destination": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_alert_urgency": {
+                "current": "rootly:index/alertUrgency:AlertUrgency",
+                "majorVersion": 3
+            },
+            "rootly_alerts_source": {
+                "current": "rootly:index/alertsSource:AlertsSource",
+                "majorVersion": 3,
+                "fields": {
+                    "alert_source_urgency_rules_attributes": {
+                        "maxItemsOne": false
+                    },
+                    "alert_template_attributes": {
+                        "maxItemsOne": true
+                    },
+                    "owner_group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "resolution_rule_attributes": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "conditions_attributes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sourceable_attributes": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "field_mappings_attributes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "rootly_authorization": {
                 "current": "rootly:index/authorization:Authorization",
                 "majorVersion": 3,
@@ -101,10 +171,39 @@
                     }
                 }
             },
+            "rootly_escalation_path": {
+                "current": "rootly:index/escalationPath:EscalationPath",
+                "majorVersion": 3,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "urgency_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "time_restrictions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "rootly_escalation_policy": {
                 "current": "rootly:index/escalationPolicy:EscalationPolicy",
                 "majorVersion": 3,
                 "fields": {
+                    "business_hours": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "group_ids": {
                         "maxItemsOne": false
                     },
@@ -226,6 +325,10 @@
                 "current": "rootly:index/incidentRoleTask:IncidentRoleTask",
                 "majorVersion": 3
             },
+            "rootly_incident_sub_status": {
+                "current": "rootly:index/incidentSubStatus:IncidentSubStatus",
+                "majorVersion": 3
+            },
             "rootly_incident_type": {
                 "current": "rootly:index/incidentType:IncidentType",
                 "majorVersion": 3,
@@ -237,6 +340,67 @@
                         "maxItemsOne": false
                     },
                     "slack_channels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "rootly_live_call_router": {
+                "current": "rootly:index/liveCallRouter:LiveCallRouter",
+                "majorVersion": 3
+            },
+            "rootly_on_call_role": {
+                "current": "rootly:index/onCallRole:OnCallRole",
+                "majorVersion": 3,
+                "fields": {
+                    "alert_sources_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "alert_urgency_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "alerts_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "api_keys_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "audits_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "contacts_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "escalation_policies_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "groups_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "heartbeats_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "integrations_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "invitations_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "live_call_routing_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "schedule_override_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "schedules_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "services_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "webhooks_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "workflows_permissions": {
                         "maxItemsOne": false
                     }
                 }
@@ -318,6 +482,14 @@
                     }
                 }
             },
+            "rootly_retrospective_process_group": {
+                "current": "rootly:index/retrospectiveProcessGroup:RetrospectiveProcessGroup",
+                "majorVersion": 3
+            },
+            "rootly_retrospective_process_group_step": {
+                "current": "rootly:index/retrospectiveProcessGroupStep:RetrospectiveProcessGroupStep",
+                "majorVersion": 3
+            },
             "rootly_retrospective_step": {
                 "current": "rootly:index/retrospectiveStep:RetrospectiveStep",
                 "majorVersion": 3
@@ -326,6 +498,9 @@
                 "current": "rootly:index/role:Role",
                 "majorVersion": 3,
                 "fields": {
+                    "alerts_permissions": {
+                        "maxItemsOne": false
+                    },
                     "api_keys_permissions": {
                         "maxItemsOne": false
                     },
@@ -362,6 +537,9 @@
                     "incidents_permissions": {
                         "maxItemsOne": false
                     },
+                    "integrations_permissions": {
+                        "maxItemsOne": false
+                    },
                     "invitations_permissions": {
                         "maxItemsOne": false
                     },
@@ -369,6 +547,9 @@
                         "maxItemsOne": false
                     },
                     "private_incidents_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "pulses_permissions": {
                         "maxItemsOne": false
                     },
                     "retrospective_permissions": {
@@ -399,7 +580,12 @@
             },
             "rootly_schedule": {
                 "current": "rootly:index/schedule:Schedule",
-                "majorVersion": 3
+                "majorVersion": 3,
+                "fields": {
+                    "owner_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rootly_schedule_rotation": {
                 "current": "rootly:index/scheduleRotation:ScheduleRotation",
@@ -476,6 +662,9 @@
                 "current": "rootly:index/statusPage:StatusPage",
                 "majorVersion": 3,
                 "fields": {
+                    "external_domain_names": {
+                        "maxItemsOne": false
+                    },
                     "functionality_ids": {
                         "maxItemsOne": false
                     },
@@ -488,10 +677,17 @@
                 "current": "rootly:index/statusPageTemplate:StatusPageTemplate",
                 "majorVersion": 3
             },
+            "rootly_sub_status": {
+                "current": "rootly:index/subStatus:SubStatus",
+                "majorVersion": 3
+            },
             "rootly_team": {
                 "current": "rootly:index/team:Team",
                 "majorVersion": 3,
                 "fields": {
+                    "admin_ids": {
+                        "maxItemsOne": false
+                    },
                     "notify_emails": {
                         "maxItemsOne": false
                     },
@@ -544,6 +740,9 @@
                         "maxItemsOne": false
                     },
                     "severity_ids": {
+                        "maxItemsOne": false
+                    },
+                    "sub_status_ids": {
                         "maxItemsOne": false
                     },
                     "trigger_params": {
@@ -610,6 +809,9 @@
                     "severity_ids": {
                         "maxItemsOne": false
                     },
+                    "sub_status_ids": {
+                        "maxItemsOne": false
+                    },
                     "trigger_params": {
                         "maxItemsOne": true,
                         "elem": {
@@ -621,6 +823,9 @@
                                     "maxItemsOne": false
                                 },
                                 "alert_sources": {
+                                    "maxItemsOne": false
+                                },
+                                "alert_statuses": {
                                     "maxItemsOne": false
                                 },
                                 "triggers": {
@@ -647,7 +852,19 @@
                 "current": "rootly:index/workflowFormFieldCondition:WorkflowFormFieldCondition",
                 "majorVersion": 3,
                 "fields": {
+                    "selected_catalog_entity_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_functionality_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_group_ids": {
+                        "maxItemsOne": false
+                    },
                     "selected_option_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_service_ids": {
                         "maxItemsOne": false
                     },
                     "selected_user_ids": {
@@ -691,6 +908,9 @@
                         "maxItemsOne": false
                     },
                     "severity_ids": {
+                        "maxItemsOne": false
+                    },
+                    "sub_status_ids": {
                         "maxItemsOne": false
                     },
                     "trigger_params": {
@@ -743,6 +963,9 @@
                         "maxItemsOne": false
                     },
                     "severity_ids": {
+                        "maxItemsOne": false
+                    },
+                    "sub_status_ids": {
                         "maxItemsOne": false
                     },
                     "trigger_params": {
@@ -800,6 +1023,9 @@
                     "severity_ids": {
                         "maxItemsOne": false
                     },
+                    "sub_status_ids": {
+                        "maxItemsOne": false
+                    },
                     "trigger_params": {
                         "maxItemsOne": true,
                         "elem": {
@@ -852,6 +1078,9 @@
                     "severity_ids": {
                         "maxItemsOne": false
                     },
+                    "sub_status_ids": {
+                        "maxItemsOne": false
+                    },
                     "trigger_params": {
                         "maxItemsOne": true,
                         "elem": {
@@ -877,6 +1106,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "rootly_workflow_task_add_microsoft_teams_tab": {
+                "current": "rootly:index/workflowTaskAddMicrosoftTeamsTab:WorkflowTaskAddMicrosoftTeamsTab",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -916,6 +1154,22 @@
                         "elem": {
                             "fields": {
                                 "post_to_slack_channels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "rootly_workflow_task_archive_microsoft_teams_channels": {
+                "current": "rootly:index/workflowTaskArchiveMicrosoftTeamsChannels:WorkflowTaskArchiveMicrosoftTeamsChannels",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "channels": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1065,6 +1319,15 @@
             },
             "rootly_workflow_task_create_clickup_task": {
                 "current": "rootly:index/workflowTaskCreateClickupTask:WorkflowTaskCreateClickupTask",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_create_coda_page": {
+                "current": "rootly:index/workflowTaskCreateCodaPage:WorkflowTaskCreateCodaPage",
                 "majorVersion": 3,
                 "fields": {
                     "task_params": {
@@ -1271,6 +1534,22 @@
                 "majorVersion": 3,
                 "fields": {
                     "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "labels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "rootly_workflow_task_create_microsoft_teams_channel": {
+                "current": "rootly:index/workflowTaskCreateMicrosoftTeamsChannel:WorkflowTaskCreateMicrosoftTeamsChannel",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
                         "maxItemsOne": true
                     }
                 }
@@ -1284,6 +1563,22 @@
                         "elem": {
                             "fields": {
                                 "post_to_slack_channels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "rootly_workflow_task_create_motion_task": {
+                "current": "rootly:index/workflowTaskCreateMotionTask:WorkflowTaskCreateMotionTask",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "labels": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1495,6 +1790,24 @@
                     }
                 }
             },
+            "rootly_workflow_task_genius_create_openai_chat_completion": {
+                "current": "rootly:index/workflowTaskGeniusCreateOpenaiChatCompletion:WorkflowTaskGeniusCreateOpenaiChatCompletion",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_genius_create_watsonx_chat_completion": {
+                "current": "rootly:index/workflowTaskGeniusCreateWatsonxChatCompletion:WorkflowTaskGeniusCreateWatsonxChatCompletion",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "rootly_workflow_task_get_alerts": {
                 "current": "rootly:index/workflowTaskGetAlerts:WorkflowTaskGetAlerts",
                 "majorVersion": 3,
@@ -1611,6 +1924,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "rootly_workflow_task_invite_to_microsoft_teams_channel": {
+                "current": "rootly:index/workflowTaskInviteToMicrosoftTeamsChannel:WorkflowTaskInviteToMicrosoftTeamsChannel",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -1806,6 +2128,15 @@
                     }
                 }
             },
+            "rootly_workflow_task_rename_microsoft_teams_channel": {
+                "current": "rootly:index/workflowTaskRenameMicrosoftTeamsChannel:WorkflowTaskRenameMicrosoftTeamsChannel",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "rootly_workflow_task_rename_slack_channel": {
                 "current": "rootly:index/workflowTaskRenameSlackChannel:WorkflowTaskRenameSlackChannel",
                 "majorVersion": 3,
@@ -1865,6 +2196,31 @@
                                     "maxItemsOne": false
                                 },
                                 "to": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "rootly_workflow_task_send_microsoft_teams_blocks": {
+                "current": "rootly:index/workflowTaskSendMicrosoftTeamsBlocks:WorkflowTaskSendMicrosoftTeamsBlocks",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_send_microsoft_teams_message": {
+                "current": "rootly:index/workflowTaskSendMicrosoftTeamsMessage:WorkflowTaskSendMicrosoftTeamsMessage",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "channels": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -2104,6 +2460,15 @@
                     }
                 }
             },
+            "rootly_workflow_task_update_coda_page": {
+                "current": "rootly:index/workflowTaskUpdateCodaPage:WorkflowTaskUpdateCodaPage",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "rootly_workflow_task_update_github_issue": {
                 "current": "rootly:index/workflowTaskUpdateGithubIssue:WorkflowTaskUpdateGithubIssue",
                 "majorVersion": 3,
@@ -2187,6 +2552,15 @@
                     }
                 }
             },
+            "rootly_workflow_task_update_incident_status_timestamp": {
+                "current": "rootly:index/workflowTaskUpdateIncidentStatusTimestamp:WorkflowTaskUpdateIncidentStatusTimestamp",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "rootly_workflow_task_update_jira_issue": {
                 "current": "rootly:index/workflowTaskUpdateJiraIssue:WorkflowTaskUpdateJiraIssue",
                 "majorVersion": 3,
@@ -2198,6 +2572,22 @@
             },
             "rootly_workflow_task_update_linear_issue": {
                 "current": "rootly:index/workflowTaskUpdateLinearIssue:WorkflowTaskUpdateLinearIssue",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "labels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "rootly_workflow_task_update_motion_task": {
+                "current": "rootly:index/workflowTaskUpdateMotionTask:WorkflowTaskUpdateMotionTask",
                 "majorVersion": 3,
                 "fields": {
                     "task_params": {
@@ -2348,6 +2738,18 @@
             }
         },
         "datasources": {
+            "rootly_alert_routing_rule": {
+                "current": "rootly:index/getAlertRoutingRule:getAlertRoutingRule",
+                "majorVersion": 3
+            },
+            "rootly_alert_urgency": {
+                "current": "rootly:index/getAlertUrgency:getAlertUrgency",
+                "majorVersion": 3
+            },
+            "rootly_alerts_source": {
+                "current": "rootly:index/getAlertsSource:getAlertsSource",
+                "majorVersion": 3
+            },
             "rootly_authorization": {
                 "current": "rootly:index/getAuthorization:getAuthorization",
                 "majorVersion": 3
@@ -2417,6 +2819,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "rootly_escalation_policy": {
+                "current": "rootly:index/getEscalationPolicy:getEscalationPolicy",
+                "majorVersion": 3
             },
             "rootly_form_field": {
                 "current": "rootly:index/getFormField:getFormField",
@@ -2496,6 +2902,10 @@
                     }
                 }
             },
+            "rootly_incident_sub_status": {
+                "current": "rootly:index/getIncidentSubStatus:getIncidentSubStatus",
+                "majorVersion": 3
+            },
             "rootly_incident_type": {
                 "current": "rootly:index/getIncidentType:getIncidentType",
                 "majorVersion": 3
@@ -2527,12 +2937,32 @@
                     }
                 }
             },
+            "rootly_live_call_router": {
+                "current": "rootly:index/getLiveCallRouter:getLiveCallRouter",
+                "majorVersion": 3
+            },
+            "rootly_on_call_role": {
+                "current": "rootly:index/getOnCallRole:getOnCallRole",
+                "majorVersion": 3
+            },
             "rootly_retrospective_configuration": {
                 "current": "rootly:index/getRetrospectiveConfiguration:getRetrospectiveConfiguration",
                 "majorVersion": 3
             },
+            "rootly_retrospective_process_group": {
+                "current": "rootly:index/getRetrospectiveProcessGroup:getRetrospectiveProcessGroup",
+                "majorVersion": 3
+            },
+            "rootly_retrospective_process_group_step": {
+                "current": "rootly:index/getRetrospectiveProcessGroupStep:getRetrospectiveProcessGroupStep",
+                "majorVersion": 3
+            },
             "rootly_role": {
                 "current": "rootly:index/getRole:getRole",
+                "majorVersion": 3
+            },
+            "rootly_schedule": {
+                "current": "rootly:index/getSchedule:getSchedule",
                 "majorVersion": 3
             },
             "rootly_service": {
@@ -2563,6 +2993,10 @@
             },
             "rootly_status_page": {
                 "current": "rootly:index/getStatusPage:getStatusPage",
+                "majorVersion": 3
+            },
+            "rootly_sub_status": {
+                "current": "rootly:index/getSubStatus:getSubStatus",
                 "majorVersion": 3
             },
             "rootly_team": {
