@@ -14,6 +14,9 @@ VERSION         := $(shell pulumictl get version)
 
 TESTPARALLELISM := 4
 
+MISE := $(shell command -v mise 2>/dev/null)
+EXEC = $(if $(MISE),mise exec -- )
+
 WORKING_DIR     := $(shell pwd)
 
 OS := $(shell uname)
@@ -75,8 +78,8 @@ build_nodejs:: VERSION := $(shell pulumictl get version)
 build_nodejs:: install_plugins tfgen # build the node sdk
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	cd sdk/nodejs/ && \
-        mise exec -- yarn install && \
-        mise exec -- yarn run tsc && \
+        $(EXEC)yarn install && \
+        $(EXEC)yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json && \
 		sed -i.bak -e "s/pulumi\/rootly/rootly\/pulumi/g" ./bin/package.json
@@ -98,13 +101,13 @@ build_dotnet:: install_plugins tfgen # build the dotnet sdk
 	$(WORKING_DIR)/bin/$(TFGEN) dotnet --overlays provider/overlays/dotnet --out sdk/dotnet/
 	cd sdk/dotnet/ && \
 		echo "${DOTNET_VERSION}" >version.txt && \
-        mise exec -- dotnet build /p:Version=${DOTNET_VERSION}
+        $(EXEC)dotnet build /p:Version=${DOTNET_VERSION}
 
 build_go:: install_plugins tfgen # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
 lint_provider:: provider # lint the provider code
-	cd provider && mise exec -- golangci-lint run -c ../.golangci.yml
+	cd provider && $(EXEC)golangci-lint run -c ../.golangci.yml
 
 cleanup:: # cleans up the temporary directory
 	rm -r $(WORKING_DIR)/bin
@@ -128,7 +131,7 @@ clean::
 	rm -rf sdk/{dotnet,nodejs,go,python}
 
 install_plugins::
-	mise exec -- pulumi plugin install resource random 4.3.1
+	$(EXEC)pulumi plugin install resource random 4.3.1
 
 install_dotnet_sdk::
 	mkdir -p $(WORKING_DIR)/nuget
@@ -139,7 +142,7 @@ install_python_sdk::
 install_go_sdk::
 
 install_nodejs_sdk::
-	mise exec -- yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
+	$(EXEC)yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
 install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk
 
