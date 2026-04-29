@@ -38,6 +38,8 @@ jobs:
         node --version
         yarn --version
     - name: Publish NPM
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         make build_nodejs
         npm publish --access public --provenance sdk/nodejs/bin
