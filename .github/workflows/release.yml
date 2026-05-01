@@ -6,11 +6,41 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  publish:
-    name: publish
+  github-release:
+    name: github-release
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+    - name: Unshallow clone for tags
+      run: git fetch --prune --unshallow --tags
+    - name: Install Go
+      uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
+      with:
+        go-version: ${{matrix.goversion}}
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@25e24d2d23ae098373794ef1d6faecb48ee52da8 # v3.0.0
+      with:
+        repo: pulumi/pulumictl
+    - name: Set PreRelease Version
+      run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
+    - name: Run GoReleaser
+      uses: goreleaser/goreleaser-action@e24998b8b67b290c2fa8b7c14fcfa7de2c5c9b8c # v7.1.0
+      with:
+        args: -p 3 release --clean
+        version: latest
+    strategy:
+      fail-fast: true
+      matrix:
+        goversion:
+        - 1.25.x
+  npm-publish:
+    name: npm-publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
       id-token: write
     steps:
     - name: Checkout Repo
@@ -44,13 +74,6 @@ jobs:
         make build_nodejs
         npm publish --access public --provenance sdk/nodejs/bin
         git checkout -f sdk/nodejs/package.json
-    - name: Set PreRelease Version
-      run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
-    - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@e24998b8b67b290c2fa8b7c14fcfa7de2c5c9b8c # v7.1.0
-      with:
-        args: -p 3 release --clean
-        version: latest
     strategy:
       fail-fast: true
       matrix:
