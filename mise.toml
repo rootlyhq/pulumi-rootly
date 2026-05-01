@@ -1,6 +1,6 @@
 [tools]
-go = "1.25"
-node = "22"
+go = "1.25.8"
+node = "24"
 python = "3.12"
 yarn = "1"
 pulumi = "latest"
