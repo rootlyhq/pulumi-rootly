@@ -122,7 +122,7 @@ func Provider() tfbridge.ProviderInfo {
 		//
 		// You may host a logo on a domain you control or add an SVG logo for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "https://raw.githubusercontent.com/rootlyhq/pulumi-rootly/v1.0.0/rootly.svg",
+		LogoURL: "https://raw.githubusercontent.com/rootlyhq/pulumi-rootly/master/logos/rootly.svg",
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
