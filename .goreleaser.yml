@@ -23,7 +23,8 @@ builds:
     main: ./cmd/pulumi-resource-rootly/
 archives:
   - id: archive
-    format: zip
+    formats:
+      - tar.gz
     name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
     files:
       - 'none*'
