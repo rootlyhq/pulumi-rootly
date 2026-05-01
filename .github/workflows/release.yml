@@ -63,16 +63,10 @@ jobs:
       run: |
         corepack enable
         yarn set version 1.22.22
-    - name: Verify Node.js and Yarn versions
-      run: |
-        node --version
-        yarn --version
     - name: Publish NPM
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         make build_nodejs
-        npm publish --access public --provenance sdk/nodejs/bin
+        npm publish --access public sdk/nodejs/bin
         git checkout -f sdk/nodejs/package.json
     strategy:
       fail-fast: true
