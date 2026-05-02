@@ -94,19 +94,19 @@ export interface RetrospectiveConfigurationState {
     /**
      * Teams associated with the retrospective configuration.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Incident types associated with the retrospective configuration.
      */
-    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The kind of the retrospective configuration.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Severities associated with the retrospective configuration.
      */
-    severityIds?: pulumi.Input<pulumi.Input<string>[]>;
+    severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -116,17 +116,17 @@ export interface RetrospectiveConfigurationArgs {
     /**
      * Teams associated with the retrospective configuration.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Incident types associated with the retrospective configuration.
      */
-    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The kind of the retrospective configuration.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Severities associated with the retrospective configuration.
      */
-    severityIds?: pulumi.Input<pulumi.Input<string>[]>;
+    severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

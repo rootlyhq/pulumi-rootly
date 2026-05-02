@@ -128,80 +128,80 @@ export class AlertsSource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlertsSource resources.
  */
 export interface AlertsSourceState {
-    alertSourceUrgencyRulesAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceUrgencyRulesAttribute>[]>;
-    alertTemplateAttributes?: pulumi.Input<inputs.AlertsSourceAlertTemplateAttributes>;
+    alertSourceUrgencyRulesAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceUrgencyRulesAttribute>[] | undefined>;
+    alertTemplateAttributes?: pulumi.Input<inputs.AlertsSourceAlertTemplateAttributes | undefined>;
     /**
      * The alert urgency ID
      */
-    alertUrgencyId?: pulumi.Input<string>;
+    alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert source
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The group IDS owning this alert source. Note, groups are rootly.Team resource in Terraform.
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    resolutionRuleAttributes?: pulumi.Input<inputs.AlertsSourceResolutionRuleAttributes>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    resolutionRuleAttributes?: pulumi.Input<inputs.AlertsSourceResolutionRuleAttributes | undefined>;
     /**
      * A secret key used to authenticate incoming requests to this alerts source
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * The alert source type
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * Additional attributes specific to certain alert sources (e.g., generic*webhook), encapsulating source-specific configurations or details
      */
-    sourceableAttributes?: pulumi.Input<inputs.AlertsSourceSourceableAttributes>;
+    sourceableAttributes?: pulumi.Input<inputs.AlertsSourceSourceableAttributes | undefined>;
     /**
      * The current status of the alert source
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The URL endpoint of the alert source
      */
-    webhookEndpoint?: pulumi.Input<string>;
+    webhookEndpoint?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a AlertsSource resource.
  */
 export interface AlertsSourceArgs {
-    alertSourceUrgencyRulesAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceUrgencyRulesAttribute>[]>;
-    alertTemplateAttributes?: pulumi.Input<inputs.AlertsSourceAlertTemplateAttributes>;
+    alertSourceUrgencyRulesAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceUrgencyRulesAttribute>[] | undefined>;
+    alertTemplateAttributes?: pulumi.Input<inputs.AlertsSourceAlertTemplateAttributes | undefined>;
     /**
      * The alert urgency ID
      */
-    alertUrgencyId?: pulumi.Input<string>;
+    alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert source
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The group IDS owning this alert source. Note, groups are rootly.Team resource in Terraform.
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    resolutionRuleAttributes?: pulumi.Input<inputs.AlertsSourceResolutionRuleAttributes>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    resolutionRuleAttributes?: pulumi.Input<inputs.AlertsSourceResolutionRuleAttributes | undefined>;
     /**
      * A secret key used to authenticate incoming requests to this alerts source
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * The alert source type
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * Additional attributes specific to certain alert sources (e.g., generic*webhook), encapsulating source-specific configurations or details
      */
-    sourceableAttributes?: pulumi.Input<inputs.AlertsSourceSourceableAttributes>;
+    sourceableAttributes?: pulumi.Input<inputs.AlertsSourceSourceableAttributes | undefined>;
     /**
      * The current status of the alert source
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The URL endpoint of the alert source
      */
-    webhookEndpoint?: pulumi.Input<string>;
+    webhookEndpoint?: pulumi.Input<string | undefined>;
 }

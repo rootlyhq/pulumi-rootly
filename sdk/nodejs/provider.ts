@@ -71,11 +71,11 @@ export interface ProviderArgs {
     /**
      * The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment variable.
      */
-    apiHost?: pulumi.Input<string>;
+    apiHost?: pulumi.Input<string | undefined>;
     /**
      * The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the ROOTLY_API_TOKEN environment variable.
      */
-    apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

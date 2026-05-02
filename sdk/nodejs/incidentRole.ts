@@ -115,32 +115,32 @@ export interface IncidentRoleState {
     /**
      * Value must be one of true or false
      */
-    allowMultiUserAssignment?: pulumi.Input<boolean>;
+    allowMultiUserAssignment?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the incident role
      */
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the incident role
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of true or false
      */
-    optional?: pulumi.Input<boolean>;
+    optional?: pulumi.Input<boolean | undefined>;
     /**
      * Position of the incident role
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the incident role
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The summary of the incident role
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -150,30 +150,30 @@ export interface IncidentRoleArgs {
     /**
      * Value must be one of true or false
      */
-    allowMultiUserAssignment?: pulumi.Input<boolean>;
+    allowMultiUserAssignment?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the incident role
      */
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the incident role
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of true or false
      */
-    optional?: pulumi.Input<boolean>;
+    optional?: pulumi.Input<boolean | undefined>;
     /**
      * Position of the incident role
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the incident role
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The summary of the incident role
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
 }

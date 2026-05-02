@@ -120,30 +120,30 @@ export interface CustomFieldState {
     /**
      * The default value for text field kinds.
      */
-    default?: pulumi.Input<string>;
+    default?: pulumi.Input<string | undefined>;
     /**
      * The description of the custom_field
      */
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The kind of the custom_field
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The name of the custom_field
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The position of the custom_field
      */
-    position?: pulumi.Input<number>;
-    requireds?: pulumi.Input<pulumi.Input<string>[]>;
-    showns?: pulumi.Input<pulumi.Input<string>[]>;
+    position?: pulumi.Input<number | undefined>;
+    requireds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    showns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the custom_field
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -153,16 +153,16 @@ export interface CustomFieldArgs {
     /**
      * The default value for text field kinds.
      */
-    default?: pulumi.Input<string>;
+    default?: pulumi.Input<string | undefined>;
     /**
      * The description of the custom_field
      */
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The kind of the custom_field
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The name of the custom_field
      */
@@ -170,11 +170,11 @@ export interface CustomFieldArgs {
     /**
      * The position of the custom_field
      */
-    position?: pulumi.Input<number>;
-    requireds?: pulumi.Input<pulumi.Input<string>[]>;
-    showns?: pulumi.Input<pulumi.Input<string>[]>;
+    position?: pulumi.Input<number | undefined>;
+    requireds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    showns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the custom_field
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -50,8 +50,8 @@ export function getSubStatusOutput(args?: GetSubStatusOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getSubStatus.
  */
 export interface GetSubStatusOutputArgs {
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    parentStatus?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    parentStatus?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

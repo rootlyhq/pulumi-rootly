@@ -103,16 +103,16 @@ export interface DashboardPanelState {
     /**
      * The id of the parent dashboard
      */
-    dashboardId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string | undefined>;
     /**
      * The name of the dashboard_panel
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The params JSON of the dashboard_panel. See rootly API docs for schema.
      */
-    params?: pulumi.Input<inputs.DashboardPanelParams>;
-    position?: pulumi.Input<inputs.DashboardPanelPosition>;
+    params?: pulumi.Input<inputs.DashboardPanelParams | undefined>;
+    position?: pulumi.Input<inputs.DashboardPanelPosition | undefined>;
 }
 
 /**
@@ -126,10 +126,10 @@ export interface DashboardPanelArgs {
     /**
      * The name of the dashboard_panel
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The params JSON of the dashboard_panel. See rootly API docs for schema.
      */
     params: pulumi.Input<inputs.DashboardPanelParams>;
-    position?: pulumi.Input<inputs.DashboardPanelPosition>;
+    position?: pulumi.Input<inputs.DashboardPanelPosition | undefined>;
 }

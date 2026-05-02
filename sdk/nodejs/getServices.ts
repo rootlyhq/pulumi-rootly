@@ -60,9 +60,9 @@ export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getServices.
  */
 export interface GetServicesOutputArgs {
-    backstageId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    opsgenieId?: pulumi.Input<string>;
-    pagerdutyId?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    backstageId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    opsgenieId?: pulumi.Input<string | undefined>;
+    pagerdutyId?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

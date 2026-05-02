@@ -41,5 +41,5 @@ export function getRetrospectiveConfigurationOutput(args?: GetRetrospectiveConfi
  * A collection of arguments for invoking getRetrospectiveConfiguration.
  */
 export interface GetRetrospectiveConfigurationOutputArgs {
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
 }

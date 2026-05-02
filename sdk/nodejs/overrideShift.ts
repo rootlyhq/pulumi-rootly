@@ -118,31 +118,31 @@ export interface OverrideShiftState {
     /**
      * End datetime of shift
      */
-    endsAt?: pulumi.Input<string>;
+    endsAt?: pulumi.Input<string | undefined>;
     /**
      * Denotes shift is an override shift. Value must be one of true or false
      */
-    isOverride?: pulumi.Input<boolean>;
+    isOverride?: pulumi.Input<boolean | undefined>;
     /**
      * ID of rotation
      */
-    rotationId?: pulumi.Input<string>;
+    rotationId?: pulumi.Input<string | undefined>;
     /**
      * ID of schedule
      */
-    scheduleId?: pulumi.Input<string>;
+    scheduleId?: pulumi.Input<string | undefined>;
     /**
      * Override metadata
      */
-    shiftOverride?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    shiftOverride?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Start datetime of shift
      */
-    startsAt?: pulumi.Input<string>;
+    startsAt?: pulumi.Input<string | undefined>;
     /**
      * User metadata
      */
-    user?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    user?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -156,19 +156,19 @@ export interface OverrideShiftArgs {
     /**
      * Denotes shift is an override shift. Value must be one of true or false
      */
-    isOverride?: pulumi.Input<boolean>;
+    isOverride?: pulumi.Input<boolean | undefined>;
     /**
      * ID of rotation
      */
-    rotationId?: pulumi.Input<string>;
+    rotationId?: pulumi.Input<string | undefined>;
     /**
      * ID of schedule
      */
-    scheduleId?: pulumi.Input<string>;
+    scheduleId?: pulumi.Input<string | undefined>;
     /**
      * Override metadata
      */
-    shiftOverride?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    shiftOverride?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Start datetime of shift
      */
@@ -176,5 +176,5 @@ export interface OverrideShiftArgs {
     /**
      * User metadata
      */
-    user?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    user?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

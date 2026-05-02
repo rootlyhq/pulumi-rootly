@@ -100,23 +100,23 @@ export interface SecretState {
     /**
      * The HashiCorp Vault secret mount path
      */
-    hashicorpVaultMount?: pulumi.Input<string>;
+    hashicorpVaultMount?: pulumi.Input<string | undefined>;
     /**
      * The HashiCorp Vault secret path
      */
-    hashicorpVaultPath?: pulumi.Input<string>;
+    hashicorpVaultPath?: pulumi.Input<string | undefined>;
     /**
      * The HashiCorp Vault secret version
      */
-    hashicorpVaultVersion?: pulumi.Input<number>;
+    hashicorpVaultVersion?: pulumi.Input<number | undefined>;
     /**
      * The name of the secret
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The redacted secret
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -126,21 +126,21 @@ export interface SecretArgs {
     /**
      * The HashiCorp Vault secret mount path
      */
-    hashicorpVaultMount?: pulumi.Input<string>;
+    hashicorpVaultMount?: pulumi.Input<string | undefined>;
     /**
      * The HashiCorp Vault secret path
      */
-    hashicorpVaultPath?: pulumi.Input<string>;
+    hashicorpVaultPath?: pulumi.Input<string | undefined>;
     /**
      * The HashiCorp Vault secret version
      */
-    hashicorpVaultVersion?: pulumi.Input<number>;
+    hashicorpVaultVersion?: pulumi.Input<number | undefined>;
     /**
      * The name of the secret
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The redacted secret
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
 }

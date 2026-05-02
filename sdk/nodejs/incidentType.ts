@@ -120,35 +120,35 @@ export interface IncidentTypeState {
     /**
      * The hex color of the incident type
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The description of the incident type
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the incident type
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails to attach to the incident type
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Position of the incident type
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Slack Aliases associated with this incident type
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this incident type
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[] | undefined>;
     /**
      * The slug of the incident type
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -158,33 +158,33 @@ export interface IncidentTypeArgs {
     /**
      * The hex color of the incident type
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The description of the incident type
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the incident type
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails to attach to the incident type
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Position of the incident type
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Slack Aliases associated with this incident type
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this incident type
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[] | undefined>;
     /**
      * The slug of the incident type
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

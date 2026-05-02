@@ -203,88 +203,88 @@ export interface TeamState {
     /**
      * The user ids of the admins of this team. These users must also be present in userIds attribute.
      */
-    adminIds?: pulumi.Input<pulumi.Input<number>[]>;
+    adminIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The alert urgency id of the team
      */
-    alertUrgencyId?: pulumi.Input<string>;
+    alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
      * Email generated to send alerts to
      */
-    alertsEmailAddress?: pulumi.Input<string>;
+    alertsEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * Enable alerts through email. Value must be one of true or false
      */
-    alertsEmailEnabled?: pulumi.Input<boolean>;
+    alertsEmailEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
      */
-    backstageId?: pulumi.Input<string>;
+    backstageId?: pulumi.Input<string | undefined>;
     /**
      * The hex color of the team
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The Cortex group id associated to this team
      */
-    cortexId?: pulumi.Input<string>;
+    cortexId?: pulumi.Input<string | undefined>;
     /**
      * The description of the team
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The external id associated to this team
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The name of the team
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails to attach to the team
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Opsgenie group id associated to this team
      */
-    opsgenieId?: pulumi.Input<string>;
+    opsgenieId?: pulumi.Input<string | undefined>;
     /**
      * The PagerDuty group id associated to this team
      */
-    pagerdutyId?: pulumi.Input<string>;
+    pagerdutyId?: pulumi.Input<string | undefined>;
     /**
      * The PagerDuty service id associated to this team
      */
-    pagerdutyServiceId?: pulumi.Input<string>;
+    pagerdutyServiceId?: pulumi.Input<string | undefined>;
     /**
      * The PagerTree group id associated to this team
      */
-    pagertreeId?: pulumi.Input<string>;
+    pagertreeId?: pulumi.Input<string | undefined>;
     /**
      * Position of the team
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The Service Now CI sys id associated to this team
      */
-    serviceNowCiSysId?: pulumi.Input<string>;
+    serviceNowCiSysId?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this team
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.TeamSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.TeamSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this team
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[]>;
-    slug?: pulumi.Input<string>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[] | undefined>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The user ids of the members of this team.
      */
-    userIds?: pulumi.Input<pulumi.Input<number>[]>;
+    userIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The VictorOps group id associated to this team
      */
-    victorOpsId?: pulumi.Input<string>;
+    victorOpsId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -294,86 +294,86 @@ export interface TeamArgs {
     /**
      * The user ids of the admins of this team. These users must also be present in userIds attribute.
      */
-    adminIds?: pulumi.Input<pulumi.Input<number>[]>;
+    adminIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The alert urgency id of the team
      */
-    alertUrgencyId?: pulumi.Input<string>;
+    alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
      * Email generated to send alerts to
      */
-    alertsEmailAddress?: pulumi.Input<string>;
+    alertsEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * Enable alerts through email. Value must be one of true or false
      */
-    alertsEmailEnabled?: pulumi.Input<boolean>;
+    alertsEmailEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
      */
-    backstageId?: pulumi.Input<string>;
+    backstageId?: pulumi.Input<string | undefined>;
     /**
      * The hex color of the team
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The Cortex group id associated to this team
      */
-    cortexId?: pulumi.Input<string>;
+    cortexId?: pulumi.Input<string | undefined>;
     /**
      * The description of the team
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The external id associated to this team
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The name of the team
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails to attach to the team
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Opsgenie group id associated to this team
      */
-    opsgenieId?: pulumi.Input<string>;
+    opsgenieId?: pulumi.Input<string | undefined>;
     /**
      * The PagerDuty group id associated to this team
      */
-    pagerdutyId?: pulumi.Input<string>;
+    pagerdutyId?: pulumi.Input<string | undefined>;
     /**
      * The PagerDuty service id associated to this team
      */
-    pagerdutyServiceId?: pulumi.Input<string>;
+    pagerdutyServiceId?: pulumi.Input<string | undefined>;
     /**
      * The PagerTree group id associated to this team
      */
-    pagertreeId?: pulumi.Input<string>;
+    pagertreeId?: pulumi.Input<string | undefined>;
     /**
      * Position of the team
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The Service Now CI sys id associated to this team
      */
-    serviceNowCiSysId?: pulumi.Input<string>;
+    serviceNowCiSysId?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this team
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.TeamSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.TeamSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this team
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[]>;
-    slug?: pulumi.Input<string>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[] | undefined>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The user ids of the members of this team.
      */
-    userIds?: pulumi.Input<pulumi.Input<number>[]>;
+    userIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The VictorOps group id associated to this team
      */
-    victorOpsId?: pulumi.Input<string>;
+    victorOpsId?: pulumi.Input<string | undefined>;
 }

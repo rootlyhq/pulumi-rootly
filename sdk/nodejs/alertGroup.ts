@@ -125,78 +125,78 @@ export class AlertGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlertGroup resources.
  */
 export interface AlertGroupState {
-    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[] | undefined>;
     /**
      * Grouping condition for the alert group
      */
-    conditionType?: pulumi.Input<string>;
+    conditionType?: pulumi.Input<string | undefined>;
     /**
      * Date or deletion
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the alert group
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the alerts are grouped by title or not. Value must be one of true or false
      */
-    groupByAlertTitle?: pulumi.Input<boolean>;
+    groupByAlertTitle?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the alerts are grouped by urgency or not. Value must be one of true or false
      */
-    groupByAlertUrgency?: pulumi.Input<boolean>;
+    groupByAlertUrgency?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the alert group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the alert group
      */
-    slug?: pulumi.Input<string>;
-    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[]>;
+    slug?: pulumi.Input<string | undefined>;
+    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[] | undefined>;
     /**
      * Time window for the alert grouping
      */
-    timeWindow?: pulumi.Input<number>;
+    timeWindow?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a AlertGroup resource.
  */
 export interface AlertGroupArgs {
-    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[] | undefined>;
     /**
      * Grouping condition for the alert group
      */
-    conditionType?: pulumi.Input<string>;
+    conditionType?: pulumi.Input<string | undefined>;
     /**
      * Date or deletion
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the alert group
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the alerts are grouped by title or not. Value must be one of true or false
      */
-    groupByAlertTitle?: pulumi.Input<boolean>;
+    groupByAlertTitle?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the alerts are grouped by urgency or not. Value must be one of true or false
      */
-    groupByAlertUrgency?: pulumi.Input<boolean>;
+    groupByAlertUrgency?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the alert group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the alert group
      */
-    slug?: pulumi.Input<string>;
-    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[]>;
+    slug?: pulumi.Input<string | undefined>;
+    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[] | undefined>;
     /**
      * Time window for the alert grouping
      */
-    timeWindow?: pulumi.Input<number>;
+    timeWindow?: pulumi.Input<number | undefined>;
 }

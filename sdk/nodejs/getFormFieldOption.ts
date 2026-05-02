@@ -51,6 +51,6 @@ export function getFormFieldOptionOutput(args?: GetFormFieldOptionOutputArgs, op
  * A collection of arguments for invoking getFormFieldOption.
  */
 export interface GetFormFieldOptionOutputArgs {
-    color?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }

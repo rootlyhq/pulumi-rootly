@@ -118,32 +118,32 @@ export interface RetrospectiveStepState {
     /**
      * The description of the step
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Due date in days
      */
-    dueAfterDays?: pulumi.Input<number>;
+    dueAfterDays?: pulumi.Input<number | undefined>;
     /**
      * Users assigned to the selected incident role will be the default owners for this step
      */
-    incidentRoleId?: pulumi.Input<string>;
+    incidentRoleId?: pulumi.Input<string | undefined>;
     /**
      * Position of the step
      */
-    position?: pulumi.Input<number>;
-    retrospectiveProcessId?: pulumi.Input<string>;
+    position?: pulumi.Input<number | undefined>;
+    retrospectiveProcessId?: pulumi.Input<string | undefined>;
     /**
      * Is the step skippable?. Value must be one of true or false
      */
-    skippable?: pulumi.Input<boolean>;
+    skippable?: pulumi.Input<boolean | undefined>;
     /**
      * The slug of the step
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The name of the step
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -153,28 +153,28 @@ export interface RetrospectiveStepArgs {
     /**
      * The description of the step
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Due date in days
      */
-    dueAfterDays?: pulumi.Input<number>;
+    dueAfterDays?: pulumi.Input<number | undefined>;
     /**
      * Users assigned to the selected incident role will be the default owners for this step
      */
-    incidentRoleId?: pulumi.Input<string>;
+    incidentRoleId?: pulumi.Input<string | undefined>;
     /**
      * Position of the step
      */
-    position?: pulumi.Input<number>;
-    retrospectiveProcessId?: pulumi.Input<string>;
+    position?: pulumi.Input<number | undefined>;
+    retrospectiveProcessId?: pulumi.Input<string | undefined>;
     /**
      * Is the step skippable?. Value must be one of true or false
      */
-    skippable?: pulumi.Input<boolean>;
+    skippable?: pulumi.Input<boolean | undefined>;
     /**
      * The slug of the step
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The name of the step
      */

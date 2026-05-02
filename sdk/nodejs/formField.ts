@@ -129,82 +129,82 @@ export class FormField extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FormField resources.
  */
 export interface FormFieldState {
-    defaultValues?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the form field
      */
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
      */
-    inputKind?: pulumi.Input<string>;
+    inputKind?: pulumi.Input<string | undefined>;
     /**
      * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `manualStartingDatetimeField`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The name of the form field
      */
-    name?: pulumi.Input<string>;
-    requireds?: pulumi.Input<pulumi.Input<string>[]>;
+    name?: pulumi.Input<string | undefined>;
+    requireds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the form field is shown on the incident details panel. Value must be one of true or false
      */
-    showOnIncidentDetails?: pulumi.Input<boolean>;
-    showns?: pulumi.Input<pulumi.Input<string>[]>;
+    showOnIncidentDetails?: pulumi.Input<boolean | undefined>;
+    showns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the form field
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`.
      */
-    valueKind?: pulumi.Input<string>;
+    valueKind?: pulumi.Input<string | undefined>;
     /**
      * The ID of the catalog used when valueKind is `catalogEntity`
      */
-    valueKindCatalogId?: pulumi.Input<string>;
+    valueKindCatalogId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a FormField resource.
  */
 export interface FormFieldArgs {
-    defaultValues?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the form field
      */
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
      */
-    inputKind?: pulumi.Input<string>;
+    inputKind?: pulumi.Input<string | undefined>;
     /**
      * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `manualStartingDatetimeField`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The name of the form field
      */
-    name?: pulumi.Input<string>;
-    requireds?: pulumi.Input<pulumi.Input<string>[]>;
+    name?: pulumi.Input<string | undefined>;
+    requireds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the form field is shown on the incident details panel. Value must be one of true or false
      */
-    showOnIncidentDetails?: pulumi.Input<boolean>;
-    showns?: pulumi.Input<pulumi.Input<string>[]>;
+    showOnIncidentDetails?: pulumi.Input<boolean | undefined>;
+    showns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the form field
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`.
      */
-    valueKind?: pulumi.Input<string>;
+    valueKind?: pulumi.Input<string | undefined>;
     /**
      * The ID of the catalog used when valueKind is `catalogEntity`
      */
-    valueKindCatalogId?: pulumi.Input<string>;
+    valueKindCatalogId?: pulumi.Input<string | undefined>;
 }

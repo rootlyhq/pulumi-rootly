@@ -122,35 +122,35 @@ export interface EnvironmentState {
     /**
      * The hex color of the environment
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The description of the environment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails attached to the environment
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Position of the environment
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Slack Aliases associated with this environment
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this environment
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[] | undefined>;
     /**
      * The slug of the environment
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -160,33 +160,33 @@ export interface EnvironmentArgs {
     /**
      * The hex color of the environment
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The description of the environment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails attached to the environment
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Position of the environment
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Slack Aliases associated with this environment
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this environment
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[] | undefined>;
     /**
      * The slug of the environment
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -94,19 +94,19 @@ export interface PostMortemTemplateState {
     /**
      * The postmortem template. Liquid syntax and markdown are supported
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Default selected template when editing a postmortem. Value must be one of true or false
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * The format of the input. Value must be one of `html`, `markdown`.
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * The name of the postmortem template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -116,17 +116,17 @@ export interface PostMortemTemplateArgs {
     /**
      * The postmortem template. Liquid syntax and markdown are supported
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Default selected template when editing a postmortem. Value must be one of true or false
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * The format of the input. Value must be one of `html`, `markdown`.
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * The name of the postmortem template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

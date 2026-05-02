@@ -128,39 +128,39 @@ export interface SeverityState {
     /**
      * The hex color of the severity
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The description of the severity
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the severity
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails to attach to the severity
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Position of the severity
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The severity of the severity. Value must be one of `critical`, `high`, `medium`, `low`.
      */
-    severity?: pulumi.Input<string>;
+    severity?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this severity
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.SeveritySlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.SeveritySlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this severity
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[] | undefined>;
     /**
      * The slug of the severity
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,37 +170,37 @@ export interface SeverityArgs {
     /**
      * The hex color of the severity
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The description of the severity
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the severity
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails to attach to the severity
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Position of the severity
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The severity of the severity. Value must be one of `critical`, `high`, `medium`, `low`.
      */
-    severity?: pulumi.Input<string>;
+    severity?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this severity
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.SeveritySlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.SeveritySlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this severity
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[] | undefined>;
     /**
      * The slug of the severity
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

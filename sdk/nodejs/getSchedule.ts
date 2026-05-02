@@ -60,6 +60,6 @@ export interface GetScheduleOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

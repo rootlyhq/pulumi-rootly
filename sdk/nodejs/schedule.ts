@@ -108,27 +108,27 @@ export interface ScheduleState {
     /**
      * 24/7 coverage of the schedule. Value must be one of true or false
      */
-    allTimeCoverage?: pulumi.Input<boolean>;
+    allTimeCoverage?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the schedule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the schedule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The owning teams for this schedules.
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of user assigned as owner of the schedule
      */
-    ownerUserId?: pulumi.Input<number>;
+    ownerUserId?: pulumi.Input<number | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
      */
-    slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -138,25 +138,25 @@ export interface ScheduleArgs {
     /**
      * 24/7 coverage of the schedule. Value must be one of true or false
      */
-    allTimeCoverage?: pulumi.Input<boolean>;
+    allTimeCoverage?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the schedule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the schedule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The owning teams for this schedules.
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of user assigned as owner of the schedule
      */
-    ownerUserId?: pulumi.Input<number>;
+    ownerUserId?: pulumi.Input<number | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
      */
-    slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

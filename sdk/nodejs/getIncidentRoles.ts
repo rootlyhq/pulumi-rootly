@@ -52,7 +52,7 @@ export function getIncidentRolesOutput(args?: GetIncidentRolesOutputArgs, opts?:
  * A collection of arguments for invoking getIncidentRoles.
  */
 export interface GetIncidentRolesOutputArgs {
-    enabled?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

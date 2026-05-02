@@ -122,31 +122,31 @@ export interface EscalationLevelState {
     /**
      * Delay before notification targets will be alerted.
      */
-    delay?: pulumi.Input<number>;
+    delay?: pulumi.Input<number | undefined>;
     /**
      * The ID of the escalation policy
      */
-    escalationPolicyId?: pulumi.Input<string>;
+    escalationPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dynamic escalation policy path the level will belong to. If nothing is specified it will add the level to your default path.
      */
-    escalationPolicyPathId?: pulumi.Input<string>;
+    escalationPolicyPathId?: pulumi.Input<string | undefined>;
     /**
      * Escalation level's notification targets
      */
-    notificationTargetParams?: pulumi.Input<pulumi.Input<inputs.EscalationLevelNotificationTargetParam>[]>;
+    notificationTargetParams?: pulumi.Input<pulumi.Input<inputs.EscalationLevelNotificationTargetParam>[] | undefined>;
     /**
      * Value must be one of `onCallOnly`, `everyone`.
      */
-    pagingStrategyConfigurationScheduleStrategy?: pulumi.Input<string>;
+    pagingStrategyConfigurationScheduleStrategy?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `default`, `random`, `cycle`, `alert`.
      */
-    pagingStrategyConfigurationStrategy?: pulumi.Input<string>;
+    pagingStrategyConfigurationStrategy?: pulumi.Input<string | undefined>;
     /**
      * Position of the escalation policy level
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -156,15 +156,15 @@ export interface EscalationLevelArgs {
     /**
      * Delay before notification targets will be alerted.
      */
-    delay?: pulumi.Input<number>;
+    delay?: pulumi.Input<number | undefined>;
     /**
      * The ID of the escalation policy
      */
-    escalationPolicyId?: pulumi.Input<string>;
+    escalationPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dynamic escalation policy path the level will belong to. If nothing is specified it will add the level to your default path.
      */
-    escalationPolicyPathId?: pulumi.Input<string>;
+    escalationPolicyPathId?: pulumi.Input<string | undefined>;
     /**
      * Escalation level's notification targets
      */
@@ -172,11 +172,11 @@ export interface EscalationLevelArgs {
     /**
      * Value must be one of `onCallOnly`, `everyone`.
      */
-    pagingStrategyConfigurationScheduleStrategy?: pulumi.Input<string>;
+    pagingStrategyConfigurationScheduleStrategy?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `default`, `random`, `cycle`, `alert`.
      */
-    pagingStrategyConfigurationStrategy?: pulumi.Input<string>;
+    pagingStrategyConfigurationStrategy?: pulumi.Input<string | undefined>;
     /**
      * Position of the escalation policy level
      */

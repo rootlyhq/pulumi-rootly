@@ -91,17 +91,17 @@ export class IncidentPermissionSetResource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IncidentPermissionSetResource resources.
  */
 export interface IncidentPermissionSetResourceState {
-    incidentPermissionSetId?: pulumi.Input<string>;
+    incidentPermissionSetId?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `severities`, `incidentTypes`, `statuses`, `subStatuses`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of true or false
      */
-    private?: pulumi.Input<boolean>;
-    resourceId?: pulumi.Input<string>;
-    resourceType?: pulumi.Input<string>;
+    private?: pulumi.Input<boolean | undefined>;
+    resourceId?: pulumi.Input<string | undefined>;
+    resourceType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -112,11 +112,11 @@ export interface IncidentPermissionSetResourceArgs {
     /**
      * Value must be one of `severities`, `incidentTypes`, `statuses`, `subStatuses`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of true or false
      */
-    private?: pulumi.Input<boolean>;
-    resourceId?: pulumi.Input<string>;
-    resourceType?: pulumi.Input<string>;
+    private?: pulumi.Input<boolean | undefined>;
+    resourceId?: pulumi.Input<string | undefined>;
+    resourceType?: pulumi.Input<string | undefined>;
 }

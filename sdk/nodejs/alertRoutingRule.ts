@@ -111,24 +111,24 @@ export interface AlertRoutingRuleState {
     /**
      * The ID of the alerts source
      */
-    alertsSourceId?: pulumi.Input<string>;
+    alertsSourceId?: pulumi.Input<string | undefined>;
     /**
      * The type of condition for the alert routing rule. Value must be one of `all`, `any`.
      */
-    conditionType?: pulumi.Input<string>;
+    conditionType?: pulumi.Input<string | undefined>;
     /**
      * The conditions for the alert routing rule
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleCondition>[] | undefined>;
     /**
      * The destinations for the alert routing rule
      */
-    destination?: pulumi.Input<inputs.AlertRoutingRuleDestination>;
-    enabled?: pulumi.Input<boolean>;
+    destination?: pulumi.Input<inputs.AlertRoutingRuleDestination | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the alert routing rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -142,18 +142,18 @@ export interface AlertRoutingRuleArgs {
     /**
      * The type of condition for the alert routing rule. Value must be one of `all`, `any`.
      */
-    conditionType?: pulumi.Input<string>;
+    conditionType?: pulumi.Input<string | undefined>;
     /**
      * The conditions for the alert routing rule
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleCondition>[] | undefined>;
     /**
      * The destinations for the alert routing rule
      */
     destination: pulumi.Input<inputs.AlertRoutingRuleDestination>;
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the alert routing rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

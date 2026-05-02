@@ -94,16 +94,16 @@ export interface IncidentRoleTaskState {
     /**
      * The description of incident task
      */
-    description?: pulumi.Input<string>;
-    incidentRoleId?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    incidentRoleId?: pulumi.Input<string | undefined>;
     /**
      * The priority of the incident task. Value must be one of `high`, `medium`, `low`.
      */
-    priority?: pulumi.Input<string>;
+    priority?: pulumi.Input<string | undefined>;
     /**
      * The task of the incident task
      */
-    task?: pulumi.Input<string>;
+    task?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -113,12 +113,12 @@ export interface IncidentRoleTaskArgs {
     /**
      * The description of incident task
      */
-    description?: pulumi.Input<string>;
-    incidentRoleId?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    incidentRoleId?: pulumi.Input<string | undefined>;
     /**
      * The priority of the incident task. Value must be one of `high`, `medium`, `low`.
      */
-    priority?: pulumi.Input<string>;
+    priority?: pulumi.Input<string | undefined>;
     /**
      * The task of the incident task
      */

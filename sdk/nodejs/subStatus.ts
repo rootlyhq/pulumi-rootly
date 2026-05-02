@@ -85,26 +85,26 @@ export class SubStatus extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SubStatus resources.
  */
 export interface SubStatusState {
-    description?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
-    parentStatus?: pulumi.Input<string>;
-    position?: pulumi.Input<number>;
-    slug?: pulumi.Input<string>;
+    parentStatus?: pulumi.Input<string | undefined>;
+    position?: pulumi.Input<number | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a SubStatus resource.
  */
 export interface SubStatusArgs {
-    description?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
-    parentStatus?: pulumi.Input<string>;
-    position?: pulumi.Input<number>;
-    slug?: pulumi.Input<string>;
+    parentStatus?: pulumi.Input<string | undefined>;
+    position?: pulumi.Input<number | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

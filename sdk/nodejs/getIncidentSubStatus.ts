@@ -42,6 +42,6 @@ export function getIncidentSubStatusOutput(args?: GetIncidentSubStatusOutputArgs
  * A collection of arguments for invoking getIncidentSubStatus.
  */
 export interface GetIncidentSubStatusOutputArgs {
-    assignedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    subStatusId?: pulumi.Input<string>;
+    assignedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    subStatusId?: pulumi.Input<string | undefined>;
 }

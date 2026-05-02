@@ -97,19 +97,19 @@ export interface FormSetState {
     /**
      * The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`
      */
-    forms?: pulumi.Input<pulumi.Input<string>[]>;
+    forms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the form set is default. Value must be one of true or false
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the form set
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the form set
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -123,13 +123,13 @@ export interface FormSetArgs {
     /**
      * Whether the form set is default. Value must be one of true or false
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the form set
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the form set
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

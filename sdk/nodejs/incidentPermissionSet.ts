@@ -100,23 +100,23 @@ export interface IncidentPermissionSetState {
     /**
      * The incident permission set description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The incident permission set name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    privateIncidentPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIncidentPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    publicIncidentPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    publicIncidentPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The incident permission set slug.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -126,21 +126,21 @@ export interface IncidentPermissionSetArgs {
     /**
      * The incident permission set description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The incident permission set name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    privateIncidentPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIncidentPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    publicIncidentPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    publicIncidentPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The incident permission set slug.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
