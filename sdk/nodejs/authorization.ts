@@ -109,23 +109,23 @@ export interface AuthorizationState {
     /**
      * The id of the resource being accessed.
      */
-    authorizableId?: pulumi.Input<string>;
+    authorizableId?: pulumi.Input<string | undefined>;
     /**
      * The type of resource being accessed.. Value must be one of `Dashboard`.
      */
-    authorizableType?: pulumi.Input<string>;
+    authorizableType?: pulumi.Input<string | undefined>;
     /**
      * The resource id granted access.
      */
-    granteeId?: pulumi.Input<string>;
+    granteeId?: pulumi.Input<string | undefined>;
     /**
      * The type of resource granted access.. Value must be one of `User`, `Team`.
      */
-    granteeType?: pulumi.Input<string>;
+    granteeType?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `read`, `update`, `authorize`, `destroy`.
      */
-    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    permissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface AuthorizationArgs {
     /**
      * The type of resource being accessed.. Value must be one of `Dashboard`.
      */
-    authorizableType?: pulumi.Input<string>;
+    authorizableType?: pulumi.Input<string | undefined>;
     /**
      * The resource id granted access.
      */
@@ -147,7 +147,7 @@ export interface AuthorizationArgs {
     /**
      * The type of resource granted access.. Value must be one of `User`, `Team`.
      */
-    granteeType?: pulumi.Input<string>;
+    granteeType?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `read`, `update`, `authorize`, `destroy`.
      */

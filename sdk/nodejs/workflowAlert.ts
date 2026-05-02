@@ -188,144 +188,144 @@ export class WorkflowAlert extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkflowAlert resources.
  */
 export interface WorkflowAlertState {
-    causeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    causeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Workflow command
      */
-    command?: pulumi.Input<string>;
+    command?: pulumi.Input<string | undefined>;
     /**
      * This will notify you back when the workflow is starting. Value must be one of true or false
      */
-    commandFeedbackEnabled?: pulumi.Input<boolean>;
+    commandFeedbackEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters.. Value must be one of true or false
      */
-    continuouslyRepeat?: pulumi.Input<boolean>;
+    continuouslyRepeat?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the workflow
      */
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
-    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
-    functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    incidentRoleIds?: pulumi.Input<pulumi.Input<string>[]>;
-    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    incidentRoleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * The title of the workflow
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The order which the workflow should run with other workflows.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The workflow will stop repeating if its runtime since it's first workflow run exceeds the duration set in this field
      */
-    repeatConditionDurationSinceFirstRun?: pulumi.Input<string>;
+    repeatConditionDurationSinceFirstRun?: pulumi.Input<string | undefined>;
     /**
      * The workflow will stop repeating if the number of repeats exceeds the value set in this field
      */
-    repeatConditionNumberOfRepeats?: pulumi.Input<number>;
+    repeatConditionNumberOfRepeats?: pulumi.Input<number | undefined>;
     /**
      * Repeat workflow every duration
      */
-    repeatEveryDuration?: pulumi.Input<string>;
+    repeatEveryDuration?: pulumi.Input<string | undefined>;
     /**
      * Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
-    repeatOns?: pulumi.Input<pulumi.Input<string>[]>;
-    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
-    severityIds?: pulumi.Input<pulumi.Input<string>[]>;
+    repeatOns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the workflow
      */
-    slug?: pulumi.Input<string>;
-    subStatusIds?: pulumi.Input<pulumi.Input<string>[]>;
-    triggerParams?: pulumi.Input<inputs.WorkflowAlertTriggerParams>;
+    slug?: pulumi.Input<string | undefined>;
+    subStatusIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    triggerParams?: pulumi.Input<inputs.WorkflowAlertTriggerParams | undefined>;
     /**
      * Wait this duration before executing
      */
-    wait?: pulumi.Input<string>;
+    wait?: pulumi.Input<string | undefined>;
     /**
      * The group this workflow belongs to.
      */
-    workflowGroupId?: pulumi.Input<string>;
+    workflowGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a WorkflowAlert resource.
  */
 export interface WorkflowAlertArgs {
-    causeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    causeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Workflow command
      */
-    command?: pulumi.Input<string>;
+    command?: pulumi.Input<string | undefined>;
     /**
      * This will notify you back when the workflow is starting. Value must be one of true or false
      */
-    commandFeedbackEnabled?: pulumi.Input<boolean>;
+    commandFeedbackEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters.. Value must be one of true or false
      */
-    continuouslyRepeat?: pulumi.Input<boolean>;
+    continuouslyRepeat?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the workflow
      */
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
-    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
-    functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    incidentRoleIds?: pulumi.Input<pulumi.Input<string>[]>;
-    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    incidentRoleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * The title of the workflow
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The order which the workflow should run with other workflows.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The workflow will stop repeating if its runtime since it's first workflow run exceeds the duration set in this field
      */
-    repeatConditionDurationSinceFirstRun?: pulumi.Input<string>;
+    repeatConditionDurationSinceFirstRun?: pulumi.Input<string | undefined>;
     /**
      * The workflow will stop repeating if the number of repeats exceeds the value set in this field
      */
-    repeatConditionNumberOfRepeats?: pulumi.Input<number>;
+    repeatConditionNumberOfRepeats?: pulumi.Input<number | undefined>;
     /**
      * Repeat workflow every duration
      */
-    repeatEveryDuration?: pulumi.Input<string>;
+    repeatEveryDuration?: pulumi.Input<string | undefined>;
     /**
      * Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
-    repeatOns?: pulumi.Input<pulumi.Input<string>[]>;
-    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
-    severityIds?: pulumi.Input<pulumi.Input<string>[]>;
+    repeatOns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the workflow
      */
-    slug?: pulumi.Input<string>;
-    subStatusIds?: pulumi.Input<pulumi.Input<string>[]>;
-    triggerParams?: pulumi.Input<inputs.WorkflowAlertTriggerParams>;
+    slug?: pulumi.Input<string | undefined>;
+    subStatusIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    triggerParams?: pulumi.Input<inputs.WorkflowAlertTriggerParams | undefined>;
     /**
      * Wait this duration before executing
      */
-    wait?: pulumi.Input<string>;
+    wait?: pulumi.Input<string | undefined>;
     /**
      * The group this workflow belongs to.
      */
-    workflowGroupId?: pulumi.Input<string>;
+    workflowGroupId?: pulumi.Input<string | undefined>;
 }

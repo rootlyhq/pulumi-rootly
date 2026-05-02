@@ -77,14 +77,14 @@ export function getTeamOutput(args?: GetTeamOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getTeam.
  */
 export interface GetTeamOutputArgs {
-    backstageId?: pulumi.Input<string>;
-    color?: pulumi.Input<string>;
-    cortexId?: pulumi.Input<string>;
+    backstageId?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string | undefined>;
+    cortexId?: pulumi.Input<string | undefined>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    externalId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    externalId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

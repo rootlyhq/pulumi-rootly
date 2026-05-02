@@ -45,6 +45,6 @@ export function getFormFieldPlacementOutput(args?: GetFormFieldPlacementOutputAr
  * A collection of arguments for invoking getFormFieldPlacement.
  */
 export interface GetFormFieldPlacementOutputArgs {
-    form?: pulumi.Input<string>;
-    formFieldId?: pulumi.Input<string>;
+    form?: pulumi.Input<string | undefined>;
+    formFieldId?: pulumi.Input<string | undefined>;
 }

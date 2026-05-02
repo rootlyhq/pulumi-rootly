@@ -54,6 +54,6 @@ export interface GetIncidentPermissionSetResourceOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    kind?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    kind?: pulumi.Input<string | undefined>;
 }

@@ -116,27 +116,27 @@ export interface WorkflowTaskUpdateTrelloCardState {
     /**
      * Enable/disable this workflow task
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the workflow task
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The position of the workflow task (1 being top of list)
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Skip workflow task if any failures
      */
-    skipOnFailure?: pulumi.Input<boolean>;
+    skipOnFailure?: pulumi.Input<boolean | undefined>;
     /**
      * The parameters for this workflow task.
      */
-    taskParams?: pulumi.Input<inputs.WorkflowTaskUpdateTrelloCardTaskParams>;
+    taskParams?: pulumi.Input<inputs.WorkflowTaskUpdateTrelloCardTaskParams | undefined>;
     /**
      * The ID of the parent workflow
      */
-    workflowId?: pulumi.Input<string>;
+    workflowId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -146,19 +146,19 @@ export interface WorkflowTaskUpdateTrelloCardArgs {
     /**
      * Enable/disable this workflow task
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the workflow task
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The position of the workflow task (1 being top of list)
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Skip workflow task if any failures
      */
-    skipOnFailure?: pulumi.Input<boolean>;
+    skipOnFailure?: pulumi.Input<boolean | undefined>;
     /**
      * The parameters for this workflow task.
      */

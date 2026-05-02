@@ -134,40 +134,40 @@ export interface ScheduleRotationState {
     /**
      * Schedule rotation active all week?. Value must be one of true or false
      */
-    activeAllWeek?: pulumi.Input<boolean>;
+    activeAllWeek?: pulumi.Input<boolean | undefined>;
     /**
      * Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
-    activeDays?: pulumi.Input<pulumi.Input<string>[]>;
+    activeDays?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Schedule rotation's active times
      */
-    activeTimeAttributes?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationActiveTimeAttribute>[]>;
-    activeTimeType?: pulumi.Input<string>;
+    activeTimeAttributes?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationActiveTimeAttribute>[] | undefined>;
+    activeTimeType?: pulumi.Input<string | undefined>;
     /**
      * The name of the schedule rotation
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the schedule rotation
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The ID of parent schedule
      */
-    scheduleId?: pulumi.Input<string>;
+    scheduleId?: pulumi.Input<string | undefined>;
     /**
      * Please see API docs for options: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
      */
-    scheduleRotationableAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    scheduleRotationableAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
      */
-    scheduleRotationableType?: pulumi.Input<string>;
+    scheduleRotationableType?: pulumi.Input<string | undefined>;
     /**
      * A valid IANA time zone name.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,28 +177,28 @@ export interface ScheduleRotationArgs {
     /**
      * Schedule rotation active all week?. Value must be one of true or false
      */
-    activeAllWeek?: pulumi.Input<boolean>;
+    activeAllWeek?: pulumi.Input<boolean | undefined>;
     /**
      * Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
-    activeDays?: pulumi.Input<pulumi.Input<string>[]>;
+    activeDays?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Schedule rotation's active times
      */
-    activeTimeAttributes?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationActiveTimeAttribute>[]>;
-    activeTimeType?: pulumi.Input<string>;
+    activeTimeAttributes?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationActiveTimeAttribute>[] | undefined>;
+    activeTimeType?: pulumi.Input<string | undefined>;
     /**
      * The name of the schedule rotation
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the schedule rotation
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The ID of parent schedule
      */
-    scheduleId?: pulumi.Input<string>;
+    scheduleId?: pulumi.Input<string | undefined>;
     /**
      * Please see API docs for options: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
      */
@@ -206,9 +206,9 @@ export interface ScheduleRotationArgs {
     /**
      * Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
      */
-    scheduleRotationableType?: pulumi.Input<string>;
+    scheduleRotationableType?: pulumi.Input<string | undefined>;
     /**
      * A valid IANA time zone name.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }

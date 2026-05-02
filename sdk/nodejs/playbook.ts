@@ -127,39 +127,39 @@ export interface PlaybookState {
     /**
      * The Environment ID's to attach to the incident
      */
-    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The external url of the playbook
      */
-    externalUrl?: pulumi.Input<string>;
+    externalUrl?: pulumi.Input<string | undefined>;
     /**
      * The Functionality ID's to attach to the incident
      */
-    functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
+    functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Team ID's to attach to the incident
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Incident Type ID's to attach to the incident
      */
-    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Service ID's to attach to the incident
      */
-    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Severity ID's to attach to the incident
      */
-    severityIds?: pulumi.Input<pulumi.Input<string>[]>;
+    severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The summary of the playbook
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
     /**
      * The title of the playbook
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -169,35 +169,35 @@ export interface PlaybookArgs {
     /**
      * The Environment ID's to attach to the incident
      */
-    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The external url of the playbook
      */
-    externalUrl?: pulumi.Input<string>;
+    externalUrl?: pulumi.Input<string | undefined>;
     /**
      * The Functionality ID's to attach to the incident
      */
-    functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
+    functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Team ID's to attach to the incident
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Incident Type ID's to attach to the incident
      */
-    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Service ID's to attach to the incident
      */
-    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Severity ID's to attach to the incident
      */
-    severityIds?: pulumi.Input<pulumi.Input<string>[]>;
+    severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The summary of the playbook
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
     /**
      * The title of the playbook
      */

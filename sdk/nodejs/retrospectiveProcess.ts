@@ -102,20 +102,20 @@ export interface RetrospectiveProcessState {
     /**
      * Retrospective process ID from which retrospective steps have to be copied. To use starter template for retrospective steps provide value: 'starter_template'
      */
-    copyFrom?: pulumi.Input<string>;
+    copyFrom?: pulumi.Input<string | undefined>;
     /**
      * The description of the retrospective process
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is the retrospective process default?. Value must be one of true or false
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the retrospective process
      */
-    name?: pulumi.Input<string>;
-    retrospectiveProcessMatchingCriteria?: pulumi.Input<inputs.RetrospectiveProcessRetrospectiveProcessMatchingCriteria>;
+    name?: pulumi.Input<string | undefined>;
+    retrospectiveProcessMatchingCriteria?: pulumi.Input<inputs.RetrospectiveProcessRetrospectiveProcessMatchingCriteria | undefined>;
 }
 
 /**
@@ -125,18 +125,18 @@ export interface RetrospectiveProcessArgs {
     /**
      * Retrospective process ID from which retrospective steps have to be copied. To use starter template for retrospective steps provide value: 'starter_template'
      */
-    copyFrom?: pulumi.Input<string>;
+    copyFrom?: pulumi.Input<string | undefined>;
     /**
      * The description of the retrospective process
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is the retrospective process default?. Value must be one of true or false
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the retrospective process
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     retrospectiveProcessMatchingCriteria: pulumi.Input<inputs.RetrospectiveProcessRetrospectiveProcessMatchingCriteria>;
 }

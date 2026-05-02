@@ -51,6 +51,6 @@ export function getWebhooksEndpointOutput(args?: GetWebhooksEndpointOutputArgs, 
  * A collection of arguments for invoking getWebhooksEndpoint.
  */
 export interface GetWebhooksEndpointOutputArgs {
-    name?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

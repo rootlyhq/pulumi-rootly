@@ -160,57 +160,57 @@ export interface LiveCallRouterState {
     /**
      * This is used in escalation paths to determine who to page
      */
-    alertUrgencyId?: pulumi.Input<string>;
+    alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
      * The caller greeting message of the live*call*router
      */
-    callerGreeting?: pulumi.Input<string>;
+    callerGreeting?: pulumi.Input<string | undefined>;
     /**
      * The country code of the live*call*router. Value must be one of `US`, `GB`, `NZ`, `CA`, `AU`.
      */
-    countryCode?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    countryCode?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * This overrides the delay (seconds) in escalation levels
      */
-    escalationLevelDelayInSeconds?: pulumi.Input<number>;
-    escalationPolicyTriggerParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    escalationLevelDelayInSeconds?: pulumi.Input<number | undefined>;
+    escalationPolicyTriggerParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The kind of the live*call*router. Value must be one of `voicemail`, `live`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The name of the live*call*router
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * You can select a phone number using generate*phone*number API and pass that phone number here to register
      */
-    phoneNumber?: pulumi.Input<string>;
+    phoneNumber?: pulumi.Input<string | undefined>;
     /**
      * The phone type of the live*call*router. Value must be one of `local`, `tollFree`.
      */
-    phoneType?: pulumi.Input<string>;
+    phoneType?: pulumi.Input<string | undefined>;
     /**
      * The delay (seconds) after which the caller in redirected to voicemail
      */
-    sentToVoicemailDelay?: pulumi.Input<number>;
+    sentToVoicemailDelay?: pulumi.Input<number | undefined>;
     /**
      * This overrides the delay (seconds) in escalation levels. Value must be one of true or false
      */
-    shouldAutoResolveAlertOnCallEnd?: pulumi.Input<boolean>;
+    shouldAutoResolveAlertOnCallEnd?: pulumi.Input<boolean | undefined>;
     /**
      * This prompts the caller to choose voicemail or connect live. Value must be one of true or false
      */
-    shouldRedirectToVoicemailOnNoAnswer?: pulumi.Input<boolean>;
+    shouldRedirectToVoicemailOnNoAnswer?: pulumi.Input<boolean | undefined>;
     /**
      * The voicemail greeting of the live*call*router
      */
-    voicemailGreeting?: pulumi.Input<string>;
+    voicemailGreeting?: pulumi.Input<string | undefined>;
     /**
      * The waiting music URL of the live*call*router
      */
-    waitingMusicUrl?: pulumi.Input<string>;
+    waitingMusicUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -220,29 +220,29 @@ export interface LiveCallRouterArgs {
     /**
      * This is used in escalation paths to determine who to page
      */
-    alertUrgencyId?: pulumi.Input<string>;
+    alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
      * The caller greeting message of the live*call*router
      */
-    callerGreeting?: pulumi.Input<string>;
+    callerGreeting?: pulumi.Input<string | undefined>;
     /**
      * The country code of the live*call*router. Value must be one of `US`, `GB`, `NZ`, `CA`, `AU`.
      */
-    countryCode?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    countryCode?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * This overrides the delay (seconds) in escalation levels
      */
-    escalationLevelDelayInSeconds?: pulumi.Input<number>;
+    escalationLevelDelayInSeconds?: pulumi.Input<number | undefined>;
     escalationPolicyTriggerParams: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The kind of the live*call*router. Value must be one of `voicemail`, `live`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The name of the live*call*router
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * You can select a phone number using generate*phone*number API and pass that phone number here to register
      */
@@ -250,25 +250,25 @@ export interface LiveCallRouterArgs {
     /**
      * The phone type of the live*call*router. Value must be one of `local`, `tollFree`.
      */
-    phoneType?: pulumi.Input<string>;
+    phoneType?: pulumi.Input<string | undefined>;
     /**
      * The delay (seconds) after which the caller in redirected to voicemail
      */
-    sentToVoicemailDelay?: pulumi.Input<number>;
+    sentToVoicemailDelay?: pulumi.Input<number | undefined>;
     /**
      * This overrides the delay (seconds) in escalation levels. Value must be one of true or false
      */
-    shouldAutoResolveAlertOnCallEnd?: pulumi.Input<boolean>;
+    shouldAutoResolveAlertOnCallEnd?: pulumi.Input<boolean | undefined>;
     /**
      * This prompts the caller to choose voicemail or connect live. Value must be one of true or false
      */
-    shouldRedirectToVoicemailOnNoAnswer?: pulumi.Input<boolean>;
+    shouldRedirectToVoicemailOnNoAnswer?: pulumi.Input<boolean | undefined>;
     /**
      * The voicemail greeting of the live*call*router
      */
-    voicemailGreeting?: pulumi.Input<string>;
+    voicemailGreeting?: pulumi.Input<string | undefined>;
     /**
      * The waiting music URL of the live*call*router
      */
-    waitingMusicUrl?: pulumi.Input<string>;
+    waitingMusicUrl?: pulumi.Input<string | undefined>;
 }

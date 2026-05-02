@@ -41,5 +41,5 @@ export function getFormFieldPlacementConditionOutput(args?: GetFormFieldPlacemen
  * A collection of arguments for invoking getFormFieldPlacementCondition.
  */
 export interface GetFormFieldPlacementConditionOutputArgs {
-    formFieldId?: pulumi.Input<string>;
+    formFieldId?: pulumi.Input<string | undefined>;
 }

@@ -79,16 +79,16 @@ export class RetrospectiveProcessGroupStep extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RetrospectiveProcessGroupStep resources.
  */
 export interface RetrospectiveProcessGroupStepState {
-    position?: pulumi.Input<number>;
-    retrospectiveProcessGroupId?: pulumi.Input<string>;
-    retrospectiveStepId?: pulumi.Input<string>;
+    position?: pulumi.Input<number | undefined>;
+    retrospectiveProcessGroupId?: pulumi.Input<string | undefined>;
+    retrospectiveStepId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a RetrospectiveProcessGroupStep resource.
  */
 export interface RetrospectiveProcessGroupStepArgs {
-    position?: pulumi.Input<number>;
-    retrospectiveProcessGroupId?: pulumi.Input<string>;
+    position?: pulumi.Input<number | undefined>;
+    retrospectiveProcessGroupId?: pulumi.Input<string | undefined>;
     retrospectiveStepId: pulumi.Input<string>;
 }

@@ -118,27 +118,27 @@ export interface OnCallShadowState {
     /**
      * End datetime for shadow shift
      */
-    endsAt?: pulumi.Input<string>;
+    endsAt?: pulumi.Input<string | undefined>;
     /**
      * ID of schedule the shadow shift belongs to
      */
-    scheduleId?: pulumi.Input<string>;
+    scheduleId?: pulumi.Input<string | undefined>;
     /**
      * Which user the shadow shift belongs to.
      */
-    shadowUserId?: pulumi.Input<number>;
+    shadowUserId?: pulumi.Input<number | undefined>;
     /**
      * ID of schedule or user the shadow user is shadowing
      */
-    shadowableId?: pulumi.Input<string>;
+    shadowableId?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `User`, `Schedule`.
      */
-    shadowableType?: pulumi.Input<string>;
+    shadowableType?: pulumi.Input<string | undefined>;
     /**
      * Start datetime of shadow shift
      */
-    startsAt?: pulumi.Input<string>;
+    startsAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,7 +152,7 @@ export interface OnCallShadowArgs {
     /**
      * ID of schedule the shadow shift belongs to
      */
-    scheduleId?: pulumi.Input<string>;
+    scheduleId?: pulumi.Input<string | undefined>;
     /**
      * Which user the shadow shift belongs to.
      */
@@ -164,7 +164,7 @@ export interface OnCallShadowArgs {
     /**
      * Value must be one of `User`, `Schedule`.
      */
-    shadowableType?: pulumi.Input<string>;
+    shadowableType?: pulumi.Input<string | undefined>;
     /**
      * Start datetime of shadow shift
      */

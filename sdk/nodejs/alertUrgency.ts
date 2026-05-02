@@ -91,15 +91,15 @@ export interface AlertUrgencyState {
     /**
      * The description of the alert urgency
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert urgency
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the alert urgency
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -113,9 +113,9 @@ export interface AlertUrgencyArgs {
     /**
      * The name of the alert urgency
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the alert urgency
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
 }

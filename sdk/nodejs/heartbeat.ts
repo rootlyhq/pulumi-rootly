@@ -154,50 +154,50 @@ export interface HeartbeatState {
     /**
      * Summary of alerts triggered when heartbeat expires.
      */
-    alertSummary?: pulumi.Input<string>;
+    alertSummary?: pulumi.Input<string | undefined>;
     /**
      * Urgency of alerts triggered when heartbeat expires.
      */
-    alertUrgencyId?: pulumi.Input<string>;
+    alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
      * The description of the heartbeat
      */
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When heartbeat expires
      */
-    expiresAt?: pulumi.Input<string>;
-    interval?: pulumi.Input<number>;
+    expiresAt?: pulumi.Input<string | undefined>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * Value must be one of `seconds`, `minutes`, `hours`.
      */
-    intervalUnit?: pulumi.Input<string>;
+    intervalUnit?: pulumi.Input<string | undefined>;
     /**
      * When the heartbeat was last pinged.
      */
-    lastPingedAt?: pulumi.Input<string>;
+    lastPingedAt?: pulumi.Input<string | undefined>;
     /**
      * The name of the heartbeat
      */
-    name?: pulumi.Input<string>;
-    notificationTargetId?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    notificationTargetId?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.
      */
-    notificationTargetType?: pulumi.Input<string>;
+    notificationTargetType?: pulumi.Input<string | undefined>;
     /**
      * URL to receive heartbeat pings.
      */
-    pingUrl?: pulumi.Input<string>;
+    pingUrl?: pulumi.Input<string | undefined>;
     /**
      * Secret used as bearer token when pinging heartbeat.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `waiting`, `active`, `expired`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,44 +211,44 @@ export interface HeartbeatArgs {
     /**
      * Urgency of alerts triggered when heartbeat expires.
      */
-    alertUrgencyId?: pulumi.Input<string>;
+    alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
      * The description of the heartbeat
      */
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When heartbeat expires
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     interval: pulumi.Input<number>;
     /**
      * Value must be one of `seconds`, `minutes`, `hours`.
      */
-    intervalUnit?: pulumi.Input<string>;
+    intervalUnit?: pulumi.Input<string | undefined>;
     /**
      * When the heartbeat was last pinged.
      */
-    lastPingedAt?: pulumi.Input<string>;
+    lastPingedAt?: pulumi.Input<string | undefined>;
     /**
      * The name of the heartbeat
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     notificationTargetId: pulumi.Input<string>;
     /**
      * Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.
      */
-    notificationTargetType?: pulumi.Input<string>;
+    notificationTargetType?: pulumi.Input<string | undefined>;
     /**
      * URL to receive heartbeat pings.
      */
-    pingUrl?: pulumi.Input<string>;
+    pingUrl?: pulumi.Input<string | undefined>;
     /**
      * Secret used as bearer token when pinging heartbeat.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `waiting`, `active`, `expired`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
