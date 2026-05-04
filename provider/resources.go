@@ -125,8 +125,8 @@ func Provider() tfbridge.ProviderInfo {
 		LogoURL: "https://raw.githubusercontent.com/rootlyhq/pulumi-rootly/master/logos/rootly.svg",
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
-		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "https://github.com/rootlyhq/pulumi-rootly/releases/v${VERSION}",
+		// e.g https://github.com/org/pulumi-provider-name/releases/download/v${VERSION}
+		PluginDownloadURL: "https://github.com/rootlyhq/pulumi-rootly/releases/download/v${VERSION}",
 		Description:       "A Pulumi package for creating and managing rootly cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in

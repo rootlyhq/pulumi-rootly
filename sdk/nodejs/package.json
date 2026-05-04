@@ -24,6 +24,6 @@
     "pulumi": {
         "resource": true,
         "name": "rootly",
-        "server": "https://github.com/rootlyhq/pulumi-rootly/releases/v${VERSION}"
+        "server": "https://github.com/rootlyhq/pulumi-rootly/releases/download/v${VERSION}"
     }
 }
