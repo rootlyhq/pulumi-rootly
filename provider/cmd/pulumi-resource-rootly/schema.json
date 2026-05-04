@@ -12,7 +12,7 @@
     "attribution": "This Pulumi package is based on the [`rootly` Terraform Provider](https://github.com/rootlyhq/terraform-provider-rootly).",
     "repository": "https://github.com/rootlyhq/pulumi-rootly",
     "logoUrl": "https://raw.githubusercontent.com/rootlyhq/pulumi-rootly/master/logos/rootly.svg",
-    "pluginDownloadURL": "https://github.com/rootlyhq/pulumi-rootly/releases/v${VERSION}",
+    "pluginDownloadURL": "https://github.com/rootlyhq/pulumi-rootly/releases/download/v${VERSION}",
     "publisher": "rootlyhq",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
