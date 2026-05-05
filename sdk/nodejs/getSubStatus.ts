@@ -19,6 +19,9 @@ export function getSubStatus(args?: GetSubStatusArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getSubStatus.
  */
 export interface GetSubStatusArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: {[key: string]: string};
     name?: string;
     parentStatus?: string;
@@ -29,7 +32,13 @@ export interface GetSubStatusArgs {
  * A collection of values returned by getSubStatus.
  */
 export interface GetSubStatusResult {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     readonly createdAt?: {[key: string]: string};
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
     readonly name: string;
     readonly parentStatus: string;
@@ -50,6 +59,9 @@ export function getSubStatusOutput(args?: GetSubStatusOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getSubStatus.
  */
 export interface GetSubStatusOutputArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     name?: pulumi.Input<string | undefined>;
     parentStatus?: pulumi.Input<string | undefined>;

@@ -23,12 +23,14 @@ func LookupFormFieldPosition(ctx *pulumi.Context, args *LookupFormFieldPositionA
 
 // A collection of arguments for invoking getFormFieldPosition.
 type LookupFormFieldPositionArgs struct {
-	Form *string `pulumi:"form"`
+	Form        *string `pulumi:"form"`
+	FormFieldId string  `pulumi:"formFieldId"`
 }
 
 // A collection of values returned by getFormFieldPosition.
 type LookupFormFieldPositionResult struct {
-	Form string `pulumi:"form"`
+	Form        string `pulumi:"form"`
+	FormFieldId string `pulumi:"formFieldId"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 }
@@ -44,7 +46,8 @@ func LookupFormFieldPositionOutput(ctx *pulumi.Context, args LookupFormFieldPosi
 
 // A collection of arguments for invoking getFormFieldPosition.
 type LookupFormFieldPositionOutputArgs struct {
-	Form pulumi.StringPtrInput `pulumi:"form"`
+	Form        pulumi.StringPtrInput `pulumi:"form"`
+	FormFieldId pulumi.StringInput    `pulumi:"formFieldId"`
 }
 
 func (LookupFormFieldPositionOutputArgs) ElementType() reflect.Type {
@@ -68,6 +71,10 @@ func (o LookupFormFieldPositionResultOutput) ToLookupFormFieldPositionResultOutp
 
 func (o LookupFormFieldPositionResultOutput) Form() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormFieldPositionResult) string { return v.Form }).(pulumi.StringOutput)
+}
+
+func (o LookupFormFieldPositionResultOutput) FormFieldId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFormFieldPositionResult) string { return v.FormFieldId }).(pulumi.StringOutput)
 }
 
 // The ID of this resource.

@@ -11,10 +11,12 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getService:getService", {
+        "alertBroadcastEnabled": args.alertBroadcastEnabled,
         "backstageId": args.backstageId,
         "cortexId": args.cortexId,
         "createdAt": args.createdAt,
         "externalId": args.externalId,
+        "incidentBroadcastEnabled": args.incidentBroadcastEnabled,
         "name": args.name,
         "slug": args.slug,
     }, opts);
@@ -24,6 +26,7 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceArgs {
+    alertBroadcastEnabled?: boolean;
     backstageId?: string;
     cortexId?: string;
     /**
@@ -31,6 +34,7 @@ export interface GetServiceArgs {
      */
     createdAt?: {[key: string]: string};
     externalId?: string;
+    incidentBroadcastEnabled?: boolean;
     name?: string;
     slug?: string;
 }
@@ -39,6 +43,7 @@ export interface GetServiceArgs {
  * A collection of values returned by getService.
  */
 export interface GetServiceResult {
+    readonly alertBroadcastEnabled: boolean;
     readonly backstageId: string;
     readonly cortexId: string;
     /**
@@ -50,6 +55,7 @@ export interface GetServiceResult {
      * The ID of this resource.
      */
     readonly id: string;
+    readonly incidentBroadcastEnabled: boolean;
     readonly name: string;
     readonly slug: string;
 }
@@ -60,10 +66,12 @@ export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.Invo
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getService:getService", {
+        "alertBroadcastEnabled": args.alertBroadcastEnabled,
         "backstageId": args.backstageId,
         "cortexId": args.cortexId,
         "createdAt": args.createdAt,
         "externalId": args.externalId,
+        "incidentBroadcastEnabled": args.incidentBroadcastEnabled,
         "name": args.name,
         "slug": args.slug,
     }, opts);
@@ -73,6 +81,7 @@ export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceOutputArgs {
+    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     backstageId?: pulumi.Input<string | undefined>;
     cortexId?: pulumi.Input<string | undefined>;
     /**
@@ -80,6 +89,7 @@ export interface GetServiceOutputArgs {
      */
     createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     externalId?: pulumi.Input<string | undefined>;
+    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     name?: pulumi.Input<string | undefined>;
     slug?: pulumi.Input<string | undefined>;
 }

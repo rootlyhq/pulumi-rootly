@@ -13,17 +13,27 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import SubStatus using the `id`. For example:
+// SubStatus can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/subStatus:SubStatus my-resource my-resource-slug
+// $ pulumi import rootly:index/subStatus:SubStatus primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type SubStatus struct {
 	pulumi.CustomResourceState
 
 	Description pulumi.StringOutput `pulumi:"description"`
 	Name        pulumi.StringOutput `pulumi:"name"`
-	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus pulumi.StringPtrOutput `pulumi:"parentStatus"`
 	Position     pulumi.IntOutput       `pulumi:"position"`
 	Slug         pulumi.StringOutput    `pulumi:"slug"`
@@ -61,7 +71,7 @@ func GetSubStatus(ctx *pulumi.Context,
 type subStatusState struct {
 	Description *string `pulumi:"description"`
 	Name        *string `pulumi:"name"`
-	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus *string `pulumi:"parentStatus"`
 	Position     *int    `pulumi:"position"`
 	Slug         *string `pulumi:"slug"`
@@ -70,7 +80,7 @@ type subStatusState struct {
 type SubStatusState struct {
 	Description pulumi.StringPtrInput
 	Name        pulumi.StringPtrInput
-	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus pulumi.StringPtrInput
 	Position     pulumi.IntPtrInput
 	Slug         pulumi.StringPtrInput
@@ -83,7 +93,7 @@ func (SubStatusState) ElementType() reflect.Type {
 type subStatusArgs struct {
 	Description *string `pulumi:"description"`
 	Name        *string `pulumi:"name"`
-	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus *string `pulumi:"parentStatus"`
 	Position     *int    `pulumi:"position"`
 	Slug         *string `pulumi:"slug"`
@@ -93,7 +103,7 @@ type subStatusArgs struct {
 type SubStatusArgs struct {
 	Description pulumi.StringPtrInput
 	Name        pulumi.StringPtrInput
-	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus pulumi.StringPtrInput
 	Position     pulumi.IntPtrInput
 	Slug         pulumi.StringPtrInput
@@ -194,7 +204,7 @@ func (o SubStatusOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SubStatus) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 func (o SubStatusOutput) ParentStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubStatus) pulumi.StringPtrOutput { return v.ParentStatus }).(pulumi.StringPtrOutput)
 }

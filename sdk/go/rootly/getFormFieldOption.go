@@ -24,13 +24,15 @@ func LookupFormFieldOption(ctx *pulumi.Context, args *LookupFormFieldOptionArgs,
 
 // A collection of arguments for invoking getFormFieldOption.
 type LookupFormFieldOptionArgs struct {
-	Color *string `pulumi:"color"`
-	Value *string `pulumi:"value"`
+	Color       *string `pulumi:"color"`
+	FormFieldId string  `pulumi:"formFieldId"`
+	Value       *string `pulumi:"value"`
 }
 
 // A collection of values returned by getFormFieldOption.
 type LookupFormFieldOptionResult struct {
-	Color string `pulumi:"color"`
+	Color       string `pulumi:"color"`
+	FormFieldId string `pulumi:"formFieldId"`
 	// The ID of this resource.
 	Id    string `pulumi:"id"`
 	Value string `pulumi:"value"`
@@ -47,8 +49,9 @@ func LookupFormFieldOptionOutput(ctx *pulumi.Context, args LookupFormFieldOption
 
 // A collection of arguments for invoking getFormFieldOption.
 type LookupFormFieldOptionOutputArgs struct {
-	Color pulumi.StringPtrInput `pulumi:"color"`
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Color       pulumi.StringPtrInput `pulumi:"color"`
+	FormFieldId pulumi.StringInput    `pulumi:"formFieldId"`
+	Value       pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (LookupFormFieldOptionOutputArgs) ElementType() reflect.Type {
@@ -72,6 +75,10 @@ func (o LookupFormFieldOptionResultOutput) ToLookupFormFieldOptionResultOutputWi
 
 func (o LookupFormFieldOptionResultOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormFieldOptionResult) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o LookupFormFieldOptionResultOutput) FormFieldId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFormFieldOptionResult) string { return v.FormFieldId }).(pulumi.StringOutput)
 }
 
 // The ID of this resource.

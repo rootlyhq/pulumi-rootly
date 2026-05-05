@@ -15,10 +15,20 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import Environment using the `id`. For example:
+// Environment can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/environment:Environment my-resource my-resource-slug
+// $ pulumi import rootly:index/environment:Environment primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type Environment struct {
 	pulumi.CustomResourceState
@@ -33,6 +43,8 @@ type Environment struct {
 	NotifyEmails pulumi.StringArrayOutput `pulumi:"notifyEmails"`
 	// Position of the environment
 	Position pulumi.IntOutput `pulumi:"position"`
+	// Array of property values for this environment.
+	Properties EnvironmentPropertyArrayOutput `pulumi:"properties"`
 	// Slack Aliases associated with this environment
 	SlackAliases EnvironmentSlackAliasArrayOutput `pulumi:"slackAliases"`
 	// Slack Channels associated with this environment
@@ -81,6 +93,8 @@ type environmentState struct {
 	NotifyEmails []string `pulumi:"notifyEmails"`
 	// Position of the environment
 	Position *int `pulumi:"position"`
+	// Array of property values for this environment.
+	Properties []EnvironmentProperty `pulumi:"properties"`
 	// Slack Aliases associated with this environment
 	SlackAliases []EnvironmentSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this environment
@@ -100,6 +114,8 @@ type EnvironmentState struct {
 	NotifyEmails pulumi.StringArrayInput
 	// Position of the environment
 	Position pulumi.IntPtrInput
+	// Array of property values for this environment.
+	Properties EnvironmentPropertyArrayInput
 	// Slack Aliases associated with this environment
 	SlackAliases EnvironmentSlackAliasArrayInput
 	// Slack Channels associated with this environment
@@ -123,6 +139,8 @@ type environmentArgs struct {
 	NotifyEmails []string `pulumi:"notifyEmails"`
 	// Position of the environment
 	Position *int `pulumi:"position"`
+	// Array of property values for this environment.
+	Properties []EnvironmentProperty `pulumi:"properties"`
 	// Slack Aliases associated with this environment
 	SlackAliases []EnvironmentSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this environment
@@ -143,6 +161,8 @@ type EnvironmentArgs struct {
 	NotifyEmails pulumi.StringArrayInput
 	// Position of the environment
 	Position pulumi.IntPtrInput
+	// Array of property values for this environment.
+	Properties EnvironmentPropertyArrayInput
 	// Slack Aliases associated with this environment
 	SlackAliases EnvironmentSlackAliasArrayInput
 	// Slack Channels associated with this environment
@@ -261,6 +281,11 @@ func (o EnvironmentOutput) NotifyEmails() pulumi.StringArrayOutput {
 // Position of the environment
 func (o EnvironmentOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *Environment) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
+}
+
+// Array of property values for this environment.
+func (o EnvironmentOutput) Properties() EnvironmentPropertyArrayOutput {
+	return o.ApplyT(func(v *Environment) EnvironmentPropertyArrayOutput { return v.Properties }).(EnvironmentPropertyArrayOutput)
 }
 
 // Slack Aliases associated with this environment

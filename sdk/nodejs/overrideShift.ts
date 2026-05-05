@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.OverrideShift using the `id`. For example:
+ * rootly.OverrideShift can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/overrideShift:OverrideShift my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/overrideShift:OverrideShift primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class OverrideShift extends pulumi.CustomResource {
@@ -46,10 +56,6 @@ export class OverrideShift extends pulumi.CustomResource {
      */
     declare public readonly endsAt: pulumi.Output<string>;
     /**
-     * Denotes shift is an override shift. Value must be one of true or false
-     */
-    declare public readonly isOverride: pulumi.Output<boolean>;
-    /**
      * ID of rotation
      */
     declare public readonly rotationId: pulumi.Output<string>;
@@ -58,17 +64,13 @@ export class OverrideShift extends pulumi.CustomResource {
      */
     declare public readonly scheduleId: pulumi.Output<string>;
     /**
-     * Override metadata
-     */
-    declare public readonly shiftOverride: pulumi.Output<{[key: string]: string}>;
-    /**
      * Start datetime of shift
      */
     declare public readonly startsAt: pulumi.Output<string>;
     /**
-     * User metadata
+     * Override shift user
      */
-    declare public readonly user: pulumi.Output<{[key: string]: string}>;
+    declare public readonly userId: pulumi.Output<number>;
 
     /**
      * Create a OverrideShift resource with the given unique name, arguments, and options.
@@ -84,12 +86,10 @@ export class OverrideShift extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OverrideShiftState | undefined;
             resourceInputs["endsAt"] = state?.endsAt;
-            resourceInputs["isOverride"] = state?.isOverride;
             resourceInputs["rotationId"] = state?.rotationId;
             resourceInputs["scheduleId"] = state?.scheduleId;
-            resourceInputs["shiftOverride"] = state?.shiftOverride;
             resourceInputs["startsAt"] = state?.startsAt;
-            resourceInputs["user"] = state?.user;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as OverrideShiftArgs | undefined;
             if (args?.endsAt === undefined && !opts.urn) {
@@ -98,13 +98,14 @@ export class OverrideShift extends pulumi.CustomResource {
             if (args?.startsAt === undefined && !opts.urn) {
                 throw new Error("Missing required property 'startsAt'");
             }
+            if (args?.userId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'userId'");
+            }
             resourceInputs["endsAt"] = args?.endsAt;
-            resourceInputs["isOverride"] = args?.isOverride;
             resourceInputs["rotationId"] = args?.rotationId;
             resourceInputs["scheduleId"] = args?.scheduleId;
-            resourceInputs["shiftOverride"] = args?.shiftOverride;
             resourceInputs["startsAt"] = args?.startsAt;
-            resourceInputs["user"] = args?.user;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OverrideShift.__pulumiType, name, resourceInputs, opts);
@@ -120,10 +121,6 @@ export interface OverrideShiftState {
      */
     endsAt?: pulumi.Input<string | undefined>;
     /**
-     * Denotes shift is an override shift. Value must be one of true or false
-     */
-    isOverride?: pulumi.Input<boolean | undefined>;
-    /**
      * ID of rotation
      */
     rotationId?: pulumi.Input<string | undefined>;
@@ -132,17 +129,13 @@ export interface OverrideShiftState {
      */
     scheduleId?: pulumi.Input<string | undefined>;
     /**
-     * Override metadata
-     */
-    shiftOverride?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    /**
      * Start datetime of shift
      */
     startsAt?: pulumi.Input<string | undefined>;
     /**
-     * User metadata
+     * Override shift user
      */
-    user?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    userId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -154,10 +147,6 @@ export interface OverrideShiftArgs {
      */
     endsAt: pulumi.Input<string>;
     /**
-     * Denotes shift is an override shift. Value must be one of true or false
-     */
-    isOverride?: pulumi.Input<boolean | undefined>;
-    /**
      * ID of rotation
      */
     rotationId?: pulumi.Input<string | undefined>;
@@ -166,15 +155,11 @@ export interface OverrideShiftArgs {
      */
     scheduleId?: pulumi.Input<string | undefined>;
     /**
-     * Override metadata
-     */
-    shiftOverride?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    /**
      * Start datetime of shift
      */
     startsAt: pulumi.Input<string>;
     /**
-     * User metadata
+     * Override shift user
      */
-    user?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    userId: pulumi.Input<number>;
 }

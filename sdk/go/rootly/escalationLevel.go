@@ -16,15 +16,25 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import EscalationLevel using the `id`. For example:
+// EscalationLevel can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/escalationLevel:EscalationLevel my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/escalationLevel:EscalationLevel primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type EscalationLevel struct {
 	pulumi.CustomResourceState
 
-	// Delay before notification targets will be alerted.
+	// Delay before notifying targets in the next Escalation Level.
 	Delay pulumi.IntOutput `pulumi:"delay"`
 	// The ID of the escalation policy
 	EscalationPolicyId pulumi.StringOutput `pulumi:"escalationPolicyId"`
@@ -76,7 +86,7 @@ func GetEscalationLevel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EscalationLevel resources.
 type escalationLevelState struct {
-	// Delay before notification targets will be alerted.
+	// Delay before notifying targets in the next Escalation Level.
 	Delay *int `pulumi:"delay"`
 	// The ID of the escalation policy
 	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
@@ -93,7 +103,7 @@ type escalationLevelState struct {
 }
 
 type EscalationLevelState struct {
-	// Delay before notification targets will be alerted.
+	// Delay before notifying targets in the next Escalation Level.
 	Delay pulumi.IntPtrInput
 	// The ID of the escalation policy
 	EscalationPolicyId pulumi.StringPtrInput
@@ -114,7 +124,7 @@ func (EscalationLevelState) ElementType() reflect.Type {
 }
 
 type escalationLevelArgs struct {
-	// Delay before notification targets will be alerted.
+	// Delay before notifying targets in the next Escalation Level.
 	Delay *int `pulumi:"delay"`
 	// The ID of the escalation policy
 	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
@@ -132,7 +142,7 @@ type escalationLevelArgs struct {
 
 // The set of arguments for constructing a EscalationLevel resource.
 type EscalationLevelArgs struct {
-	// Delay before notification targets will be alerted.
+	// Delay before notifying targets in the next Escalation Level.
 	Delay pulumi.IntPtrInput
 	// The ID of the escalation policy
 	EscalationPolicyId pulumi.StringPtrInput
@@ -235,7 +245,7 @@ func (o EscalationLevelOutput) ToEscalationLevelOutputWithContext(ctx context.Co
 	return o
 }
 
-// Delay before notification targets will be alerted.
+// Delay before notifying targets in the next Escalation Level.
 func (o EscalationLevelOutput) Delay() pulumi.IntOutput {
 	return o.ApplyT(func(v *EscalationLevel) pulumi.IntOutput { return v.Delay }).(pulumi.IntOutput)
 }

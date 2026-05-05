@@ -24,26 +24,30 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getService.
 type LookupServiceArgs struct {
-	BackstageId *string `pulumi:"backstageId"`
-	CortexId    *string `pulumi:"cortexId"`
+	AlertBroadcastEnabled *bool   `pulumi:"alertBroadcastEnabled"`
+	BackstageId           *string `pulumi:"backstageId"`
+	CortexId              *string `pulumi:"cortexId"`
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt  map[string]string `pulumi:"createdAt"`
-	ExternalId *string           `pulumi:"externalId"`
-	Name       *string           `pulumi:"name"`
-	Slug       *string           `pulumi:"slug"`
+	CreatedAt                map[string]string `pulumi:"createdAt"`
+	ExternalId               *string           `pulumi:"externalId"`
+	IncidentBroadcastEnabled *bool             `pulumi:"incidentBroadcastEnabled"`
+	Name                     *string           `pulumi:"name"`
+	Slug                     *string           `pulumi:"slug"`
 }
 
 // A collection of values returned by getService.
 type LookupServiceResult struct {
-	BackstageId string `pulumi:"backstageId"`
-	CortexId    string `pulumi:"cortexId"`
+	AlertBroadcastEnabled bool   `pulumi:"alertBroadcastEnabled"`
+	BackstageId           string `pulumi:"backstageId"`
+	CortexId              string `pulumi:"cortexId"`
 	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt  map[string]string `pulumi:"createdAt"`
 	ExternalId string            `pulumi:"externalId"`
 	// The ID of this resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
-	Slug string `pulumi:"slug"`
+	Id                       string `pulumi:"id"`
+	IncidentBroadcastEnabled bool   `pulumi:"incidentBroadcastEnabled"`
+	Name                     string `pulumi:"name"`
+	Slug                     string `pulumi:"slug"`
 }
 
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
@@ -57,13 +61,15 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 
 // A collection of arguments for invoking getService.
 type LookupServiceOutputArgs struct {
-	BackstageId pulumi.StringPtrInput `pulumi:"backstageId"`
-	CortexId    pulumi.StringPtrInput `pulumi:"cortexId"`
+	AlertBroadcastEnabled pulumi.BoolPtrInput   `pulumi:"alertBroadcastEnabled"`
+	BackstageId           pulumi.StringPtrInput `pulumi:"backstageId"`
+	CortexId              pulumi.StringPtrInput `pulumi:"cortexId"`
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt  pulumi.StringMapInput `pulumi:"createdAt"`
-	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Slug       pulumi.StringPtrInput `pulumi:"slug"`
+	CreatedAt                pulumi.StringMapInput `pulumi:"createdAt"`
+	ExternalId               pulumi.StringPtrInput `pulumi:"externalId"`
+	IncidentBroadcastEnabled pulumi.BoolPtrInput   `pulumi:"incidentBroadcastEnabled"`
+	Name                     pulumi.StringPtrInput `pulumi:"name"`
+	Slug                     pulumi.StringPtrInput `pulumi:"slug"`
 }
 
 func (LookupServiceOutputArgs) ElementType() reflect.Type {
@@ -83,6 +89,10 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceRe
 
 func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
 	return o
+}
+
+func (o LookupServiceResultOutput) AlertBroadcastEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceResult) bool { return v.AlertBroadcastEnabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupServiceResultOutput) BackstageId() pulumi.StringOutput {
@@ -105,6 +115,10 @@ func (o LookupServiceResultOutput) ExternalId() pulumi.StringOutput {
 // The ID of this resource.
 func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) IncidentBroadcastEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceResult) bool { return v.IncidentBroadcastEnabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupServiceResultOutput) Name() pulumi.StringOutput {

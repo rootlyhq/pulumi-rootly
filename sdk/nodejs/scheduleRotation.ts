@@ -11,10 +11,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.ScheduleRotation using the `id`. For example:
+ * rootly.ScheduleRotation can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/scheduleRotation:ScheduleRotation my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/scheduleRotation:ScheduleRotation primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class ScheduleRotation extends pulumi.CustomResource {
@@ -57,7 +67,14 @@ export class ScheduleRotation extends pulumi.CustomResource {
      * Schedule rotation's active times
      */
     declare public readonly activeTimeAttributes: pulumi.Output<outputs.ScheduleRotationActiveTimeAttribute[]>;
+    /**
+     * Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `rootly.ScheduleRotationActiveDay` resources linked to this `rootly.ScheduleRotation`.
+     */
     declare public readonly activeTimeType: pulumi.Output<string>;
+    /**
+     * ISO8601 date and time when rotation ends. Shifts will only be created before this time.
+     */
+    declare public readonly endTime: pulumi.Output<string>;
     /**
      * The name of the schedule rotation
      */
@@ -71,13 +88,21 @@ export class ScheduleRotation extends pulumi.CustomResource {
      */
     declare public readonly scheduleId: pulumi.Output<string>;
     /**
-     * Please see API docs for options: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+     * Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
+     */
+    declare public readonly scheduleRotationMembers: pulumi.Output<outputs.ScheduleRotationScheduleRotationMember[]>;
+    /**
+     * handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
      */
     declare public readonly scheduleRotationableAttributes: pulumi.Output<{[key: string]: string}>;
     /**
      * Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
      */
     declare public readonly scheduleRotationableType: pulumi.Output<string | undefined>;
+    /**
+     * ISO8601 date and time when rotation starts. Shifts will only be created after this time.
+     */
+    declare public readonly startTime: pulumi.Output<string>;
     /**
      * A valid IANA time zone name.
      */
@@ -100,14 +125,20 @@ export class ScheduleRotation extends pulumi.CustomResource {
             resourceInputs["activeDays"] = state?.activeDays;
             resourceInputs["activeTimeAttributes"] = state?.activeTimeAttributes;
             resourceInputs["activeTimeType"] = state?.activeTimeType;
+            resourceInputs["endTime"] = state?.endTime;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
             resourceInputs["scheduleId"] = state?.scheduleId;
+            resourceInputs["scheduleRotationMembers"] = state?.scheduleRotationMembers;
             resourceInputs["scheduleRotationableAttributes"] = state?.scheduleRotationableAttributes;
             resourceInputs["scheduleRotationableType"] = state?.scheduleRotationableType;
+            resourceInputs["startTime"] = state?.startTime;
             resourceInputs["timeZone"] = state?.timeZone;
         } else {
             const args = argsOrState as ScheduleRotationArgs | undefined;
+            if (args?.scheduleId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'scheduleId'");
+            }
             if (args?.scheduleRotationableAttributes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scheduleRotationableAttributes'");
             }
@@ -115,11 +146,14 @@ export class ScheduleRotation extends pulumi.CustomResource {
             resourceInputs["activeDays"] = args?.activeDays;
             resourceInputs["activeTimeAttributes"] = args?.activeTimeAttributes;
             resourceInputs["activeTimeType"] = args?.activeTimeType;
+            resourceInputs["endTime"] = args?.endTime;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
             resourceInputs["scheduleId"] = args?.scheduleId;
+            resourceInputs["scheduleRotationMembers"] = args?.scheduleRotationMembers;
             resourceInputs["scheduleRotationableAttributes"] = args?.scheduleRotationableAttributes;
             resourceInputs["scheduleRotationableType"] = args?.scheduleRotationableType;
+            resourceInputs["startTime"] = args?.startTime;
             resourceInputs["timeZone"] = args?.timeZone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -143,7 +177,14 @@ export interface ScheduleRotationState {
      * Schedule rotation's active times
      */
     activeTimeAttributes?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationActiveTimeAttribute>[] | undefined>;
+    /**
+     * Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `rootly.ScheduleRotationActiveDay` resources linked to this `rootly.ScheduleRotation`.
+     */
     activeTimeType?: pulumi.Input<string | undefined>;
+    /**
+     * ISO8601 date and time when rotation ends. Shifts will only be created before this time.
+     */
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the schedule rotation
      */
@@ -157,13 +198,21 @@ export interface ScheduleRotationState {
      */
     scheduleId?: pulumi.Input<string | undefined>;
     /**
-     * Please see API docs for options: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+     * Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
+     */
+    scheduleRotationMembers?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationScheduleRotationMember>[] | undefined>;
+    /**
+     * handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
      */
     scheduleRotationableAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
      */
     scheduleRotationableType?: pulumi.Input<string | undefined>;
+    /**
+     * ISO8601 date and time when rotation starts. Shifts will only be created after this time.
+     */
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * A valid IANA time zone name.
      */
@@ -186,7 +235,14 @@ export interface ScheduleRotationArgs {
      * Schedule rotation's active times
      */
     activeTimeAttributes?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationActiveTimeAttribute>[] | undefined>;
+    /**
+     * Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `rootly.ScheduleRotationActiveDay` resources linked to this `rootly.ScheduleRotation`.
+     */
     activeTimeType?: pulumi.Input<string | undefined>;
+    /**
+     * ISO8601 date and time when rotation ends. Shifts will only be created before this time.
+     */
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the schedule rotation
      */
@@ -198,15 +254,23 @@ export interface ScheduleRotationArgs {
     /**
      * The ID of parent schedule
      */
-    scheduleId?: pulumi.Input<string | undefined>;
+    scheduleId: pulumi.Input<string>;
     /**
-     * Please see API docs for options: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+     * Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
+     */
+    scheduleRotationMembers?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationScheduleRotationMember>[] | undefined>;
+    /**
+     * handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
      */
     scheduleRotationableAttributes: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
      */
     scheduleRotationableType?: pulumi.Input<string | undefined>;
+    /**
+     * ISO8601 date and time when rotation starts. Shifts will only be created after this time.
+     */
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * A valid IANA time zone name.
      */

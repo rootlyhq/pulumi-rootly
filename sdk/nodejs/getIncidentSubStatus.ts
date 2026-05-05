@@ -4,11 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export function getIncidentSubStatus(args?: GetIncidentSubStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentSubStatusResult> {
-    args = args || {};
+export function getIncidentSubStatus(args: GetIncidentSubStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentSubStatusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getIncidentSubStatus:getIncidentSubStatus", {
         "assignedAt": args.assignedAt,
+        "incidentId": args.incidentId,
         "subStatusId": args.subStatusId,
     }, opts);
 }
@@ -17,7 +17,11 @@ export function getIncidentSubStatus(args?: GetIncidentSubStatusArgs, opts?: pul
  * A collection of arguments for invoking getIncidentSubStatus.
  */
 export interface GetIncidentSubStatusArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     assignedAt?: {[key: string]: string};
+    incidentId: string;
     subStatusId?: string;
 }
 
@@ -25,15 +29,22 @@ export interface GetIncidentSubStatusArgs {
  * A collection of values returned by getIncidentSubStatus.
  */
 export interface GetIncidentSubStatusResult {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     readonly assignedAt?: {[key: string]: string};
+    /**
+     * The ID of this resource.
+     */
     readonly id: string;
+    readonly incidentId: string;
     readonly subStatusId: string;
 }
-export function getIncidentSubStatusOutput(args?: GetIncidentSubStatusOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIncidentSubStatusResult> {
-    args = args || {};
+export function getIncidentSubStatusOutput(args: GetIncidentSubStatusOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIncidentSubStatusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getIncidentSubStatus:getIncidentSubStatus", {
         "assignedAt": args.assignedAt,
+        "incidentId": args.incidentId,
         "subStatusId": args.subStatusId,
     }, opts);
 }
@@ -42,6 +53,10 @@ export function getIncidentSubStatusOutput(args?: GetIncidentSubStatusOutputArgs
  * A collection of arguments for invoking getIncidentSubStatus.
  */
 export interface GetIncidentSubStatusOutputArgs {
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
     assignedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    incidentId: pulumi.Input<string>;
     subStatusId?: pulumi.Input<string | undefined>;
 }

@@ -11,10 +11,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.Service using the `id`. For example:
+ * rootly.Service can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/service:Service my-resource my-resource-slug
+ * $ pulumi import rootly:index/service:Service primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class Service extends pulumi.CustomResource {
@@ -46,6 +56,14 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     */
+    declare public readonly alertBroadcastChannel: pulumi.Output<outputs.ServiceAlertBroadcastChannel>;
+    /**
+     * Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    declare public readonly alertBroadcastEnabled: pulumi.Output<boolean>;
+    /**
      * The alert urgency id of the service
      */
     declare public readonly alertUrgencyId: pulumi.Output<string>;
@@ -76,7 +94,11 @@ export class Service extends pulumi.CustomResource {
     /**
      * Environments associated with this service
      */
-    declare public readonly environmentIds: pulumi.Output<string[]>;
+    declare public readonly environmentIds: pulumi.Output<string[] | undefined>;
+    /**
+     * The escalation policy id of the service
+     */
+    declare public readonly escalationPolicyId: pulumi.Output<string>;
     /**
      * The external id associated to this service
      */
@@ -98,27 +120,37 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly gitlabRepositoryName: pulumi.Output<string>;
     /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+     */
+    declare public readonly incidentBroadcastChannel: pulumi.Output<outputs.ServiceIncidentBroadcastChannel>;
+    /**
+     * Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    declare public readonly incidentBroadcastEnabled: pulumi.Output<boolean>;
+    /**
+     * The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
+     */
+    declare public readonly kubernetesDeploymentName: pulumi.Output<string>;
+    /**
      * The name of the service
      */
     declare public readonly name: pulumi.Output<string>;
     /**
      * Emails attached to the service
      */
-    declare public readonly notifyEmails: pulumi.Output<string[]>;
+    declare public readonly notifyEmails: pulumi.Output<string[] | undefined>;
     /**
      * The Opsgenie service id associated to this service
      */
     declare public readonly opsgenieId: pulumi.Output<string | undefined>;
     /**
      * Owner Teams associated with this service
-     *
-     * @deprecated The ownersGroupIds attribute will be renamed to ownerGroupIds in the next major version release.
      */
-    declare public readonly ownersGroupIds: pulumi.Output<string[]>;
+    declare public readonly ownerGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * Owner Users associated with this service
      */
-    declare public readonly ownersUserIds: pulumi.Output<number[]>;
+    declare public readonly ownerUserIds: pulumi.Output<number[] | undefined>;
     /**
      * The PagerDuty service id associated to this service
      */
@@ -128,13 +160,17 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly position: pulumi.Output<number>;
     /**
+     * Array of property values for this service.
+     */
+    declare public readonly properties: pulumi.Output<outputs.ServiceProperty[] | undefined>;
+    /**
      * The public description of the service
      */
     declare public readonly publicDescription: pulumi.Output<string>;
     /**
      * Services dependent on this service
      */
-    declare public readonly serviceIds: pulumi.Output<string[]>;
+    declare public readonly serviceIds: pulumi.Output<string[] | undefined>;
     /**
      * The Service Now CI sys id associated to this service
      */
@@ -142,11 +178,11 @@ export class Service extends pulumi.CustomResource {
     /**
      * Slack Aliases associated with this service
      */
-    declare public readonly slackAliases: pulumi.Output<outputs.ServiceSlackAlias[]>;
+    declare public readonly slackAliases: pulumi.Output<outputs.ServiceSlackAlias[] | undefined>;
     /**
      * Slack Channels associated with this service
      */
-    declare public readonly slackChannels: pulumi.Output<outputs.ServiceSlackChannel[]>;
+    declare public readonly slackChannels: pulumi.Output<outputs.ServiceSlackChannel[] | undefined>;
     /**
      * The slug of the service
      */
@@ -165,6 +201,8 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
+            resourceInputs["alertBroadcastChannel"] = state?.alertBroadcastChannel;
+            resourceInputs["alertBroadcastEnabled"] = state?.alertBroadcastEnabled;
             resourceInputs["alertUrgencyId"] = state?.alertUrgencyId;
             resourceInputs["alertsEmailAddress"] = state?.alertsEmailAddress;
             resourceInputs["alertsEmailEnabled"] = state?.alertsEmailEnabled;
@@ -173,18 +211,23 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["cortexId"] = state?.cortexId;
             resourceInputs["description"] = state?.description;
             resourceInputs["environmentIds"] = state?.environmentIds;
+            resourceInputs["escalationPolicyId"] = state?.escalationPolicyId;
             resourceInputs["externalId"] = state?.externalId;
             resourceInputs["githubRepositoryBranch"] = state?.githubRepositoryBranch;
             resourceInputs["githubRepositoryName"] = state?.githubRepositoryName;
             resourceInputs["gitlabRepositoryBranch"] = state?.gitlabRepositoryBranch;
             resourceInputs["gitlabRepositoryName"] = state?.gitlabRepositoryName;
+            resourceInputs["incidentBroadcastChannel"] = state?.incidentBroadcastChannel;
+            resourceInputs["incidentBroadcastEnabled"] = state?.incidentBroadcastEnabled;
+            resourceInputs["kubernetesDeploymentName"] = state?.kubernetesDeploymentName;
             resourceInputs["name"] = state?.name;
             resourceInputs["notifyEmails"] = state?.notifyEmails;
             resourceInputs["opsgenieId"] = state?.opsgenieId;
-            resourceInputs["ownersGroupIds"] = state?.ownersGroupIds;
-            resourceInputs["ownersUserIds"] = state?.ownersUserIds;
+            resourceInputs["ownerGroupIds"] = state?.ownerGroupIds;
+            resourceInputs["ownerUserIds"] = state?.ownerUserIds;
             resourceInputs["pagerdutyId"] = state?.pagerdutyId;
             resourceInputs["position"] = state?.position;
+            resourceInputs["properties"] = state?.properties;
             resourceInputs["publicDescription"] = state?.publicDescription;
             resourceInputs["serviceIds"] = state?.serviceIds;
             resourceInputs["serviceNowCiSysId"] = state?.serviceNowCiSysId;
@@ -193,6 +236,8 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
+            resourceInputs["alertBroadcastChannel"] = args?.alertBroadcastChannel;
+            resourceInputs["alertBroadcastEnabled"] = args?.alertBroadcastEnabled;
             resourceInputs["alertUrgencyId"] = args?.alertUrgencyId;
             resourceInputs["alertsEmailAddress"] = args?.alertsEmailAddress;
             resourceInputs["alertsEmailEnabled"] = args?.alertsEmailEnabled;
@@ -201,18 +246,23 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["cortexId"] = args?.cortexId;
             resourceInputs["description"] = args?.description;
             resourceInputs["environmentIds"] = args?.environmentIds;
+            resourceInputs["escalationPolicyId"] = args?.escalationPolicyId;
             resourceInputs["externalId"] = args?.externalId;
             resourceInputs["githubRepositoryBranch"] = args?.githubRepositoryBranch;
             resourceInputs["githubRepositoryName"] = args?.githubRepositoryName;
             resourceInputs["gitlabRepositoryBranch"] = args?.gitlabRepositoryBranch;
             resourceInputs["gitlabRepositoryName"] = args?.gitlabRepositoryName;
+            resourceInputs["incidentBroadcastChannel"] = args?.incidentBroadcastChannel;
+            resourceInputs["incidentBroadcastEnabled"] = args?.incidentBroadcastEnabled;
+            resourceInputs["kubernetesDeploymentName"] = args?.kubernetesDeploymentName;
             resourceInputs["name"] = args?.name;
             resourceInputs["notifyEmails"] = args?.notifyEmails;
             resourceInputs["opsgenieId"] = args?.opsgenieId;
-            resourceInputs["ownersGroupIds"] = args?.ownersGroupIds;
-            resourceInputs["ownersUserIds"] = args?.ownersUserIds;
+            resourceInputs["ownerGroupIds"] = args?.ownerGroupIds;
+            resourceInputs["ownerUserIds"] = args?.ownerUserIds;
             resourceInputs["pagerdutyId"] = args?.pagerdutyId;
             resourceInputs["position"] = args?.position;
+            resourceInputs["properties"] = args?.properties;
             resourceInputs["publicDescription"] = args?.publicDescription;
             resourceInputs["serviceIds"] = args?.serviceIds;
             resourceInputs["serviceNowCiSysId"] = args?.serviceNowCiSysId;
@@ -229,6 +279,14 @@ export class Service extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Service resources.
  */
 export interface ServiceState {
+    /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     */
+    alertBroadcastChannel?: pulumi.Input<inputs.ServiceAlertBroadcastChannel | undefined>;
+    /**
+     * Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The alert urgency id of the service
      */
@@ -262,6 +320,10 @@ export interface ServiceState {
      */
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The escalation policy id of the service
+     */
+    escalationPolicyId?: pulumi.Input<string | undefined>;
+    /**
      * The external id associated to this service
      */
     externalId?: pulumi.Input<string | undefined>;
@@ -282,6 +344,18 @@ export interface ServiceState {
      */
     gitlabRepositoryName?: pulumi.Input<string | undefined>;
     /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+     */
+    incidentBroadcastChannel?: pulumi.Input<inputs.ServiceIncidentBroadcastChannel | undefined>;
+    /**
+     * Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
+     */
+    kubernetesDeploymentName?: pulumi.Input<string | undefined>;
+    /**
      * The name of the service
      */
     name?: pulumi.Input<string | undefined>;
@@ -295,14 +369,12 @@ export interface ServiceState {
     opsgenieId?: pulumi.Input<string | undefined>;
     /**
      * Owner Teams associated with this service
-     *
-     * @deprecated The ownersGroupIds attribute will be renamed to ownerGroupIds in the next major version release.
      */
-    ownersGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Owner Users associated with this service
      */
-    ownersUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The PagerDuty service id associated to this service
      */
@@ -311,6 +383,10 @@ export interface ServiceState {
      * Position of the service
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Array of property values for this service.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.ServiceProperty>[] | undefined>;
     /**
      * The public description of the service
      */
@@ -342,6 +418,14 @@ export interface ServiceState {
  */
 export interface ServiceArgs {
     /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     */
+    alertBroadcastChannel?: pulumi.Input<inputs.ServiceAlertBroadcastChannel | undefined>;
+    /**
+     * Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * The alert urgency id of the service
      */
     alertUrgencyId?: pulumi.Input<string | undefined>;
@@ -374,6 +458,10 @@ export interface ServiceArgs {
      */
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The escalation policy id of the service
+     */
+    escalationPolicyId?: pulumi.Input<string | undefined>;
+    /**
      * The external id associated to this service
      */
     externalId?: pulumi.Input<string | undefined>;
@@ -394,6 +482,18 @@ export interface ServiceArgs {
      */
     gitlabRepositoryName?: pulumi.Input<string | undefined>;
     /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+     */
+    incidentBroadcastChannel?: pulumi.Input<inputs.ServiceIncidentBroadcastChannel | undefined>;
+    /**
+     * Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
+     */
+    kubernetesDeploymentName?: pulumi.Input<string | undefined>;
+    /**
      * The name of the service
      */
     name?: pulumi.Input<string | undefined>;
@@ -407,14 +507,12 @@ export interface ServiceArgs {
     opsgenieId?: pulumi.Input<string | undefined>;
     /**
      * Owner Teams associated with this service
-     *
-     * @deprecated The ownersGroupIds attribute will be renamed to ownerGroupIds in the next major version release.
      */
-    ownersGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Owner Users associated with this service
      */
-    ownersUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The PagerDuty service id associated to this service
      */
@@ -423,6 +521,10 @@ export interface ServiceArgs {
      * Position of the service
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Array of property values for this service.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.ServiceProperty>[] | undefined>;
     /**
      * The public description of the service
      */

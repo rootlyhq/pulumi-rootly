@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.StatusPageTemplate using the `id`. For example:
+ * rootly.StatusPageTemplate can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/statusPageTemplate:StatusPageTemplate my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/statusPageTemplate:StatusPageTemplate primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class StatusPageTemplate extends pulumi.CustomResource {
@@ -67,6 +77,10 @@ export class StatusPageTemplate extends pulumi.CustomResource {
      * Status of the event the template will populate
      */
     declare public readonly updateStatus: pulumi.Output<string>;
+    /**
+     * Title that will be used for the status page update
+     */
+    declare public readonly updateTitle: pulumi.Output<string>;
 
     /**
      * Create a StatusPageTemplate resource with the given unique name, arguments, and options.
@@ -89,6 +103,7 @@ export class StatusPageTemplate extends pulumi.CustomResource {
             resourceInputs["statusPageId"] = state?.statusPageId;
             resourceInputs["title"] = state?.title;
             resourceInputs["updateStatus"] = state?.updateStatus;
+            resourceInputs["updateTitle"] = state?.updateTitle;
         } else {
             const args = argsOrState as StatusPageTemplateArgs | undefined;
             if (args?.body === undefined && !opts.urn) {
@@ -105,6 +120,7 @@ export class StatusPageTemplate extends pulumi.CustomResource {
             resourceInputs["statusPageId"] = args?.statusPageId;
             resourceInputs["title"] = args?.title;
             resourceInputs["updateStatus"] = args?.updateStatus;
+            resourceInputs["updateTitle"] = args?.updateTitle;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StatusPageTemplate.__pulumiType, name, resourceInputs, opts);
@@ -141,6 +157,10 @@ export interface StatusPageTemplateState {
      * Status of the event the template will populate
      */
     updateStatus?: pulumi.Input<string | undefined>;
+    /**
+     * Title that will be used for the status page update
+     */
+    updateTitle?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,4 +193,8 @@ export interface StatusPageTemplateArgs {
      * Status of the event the template will populate
      */
     updateStatus?: pulumi.Input<string | undefined>;
+    /**
+     * Title that will be used for the status page update
+     */
+    updateTitle?: pulumi.Input<string | undefined>;
 }

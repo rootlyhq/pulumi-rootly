@@ -12,13 +12,131 @@ export interface AlertGroupAttribute {
     jsonPath: string;
 }
 
+export interface AlertGroupCondition {
+    /**
+     * The Alert Urgency IDs to check in the condition. Only need to be set when the property field type is 'attribute', the property field name is 'alert*urgency' and the property field condition type is 'is*one*of' or 'is*not*one*of'
+     */
+    alertUrgencyIds?: string[];
+    /**
+     * The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+     */
+    conditionableId: string;
+    /**
+     * The type of the conditionable. Value must be one of `AlertField`.
+     */
+    conditionableType: string;
+    /**
+     * The condition type of the property field. Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`, `matchesExistingAlert`.
+     */
+    propertyFieldConditionType?: string;
+    /**
+     * The name of the property field. If the property field type is selected as 'attribute', then the allowed property field names are 'summary' (for Title), 'description', 'alert*urgency' and 'external*url' (for Alert Source URL). If the property field type is selected as 'payload', then the property field name should be supplied in JSON Path syntax.
+     */
+    propertyFieldName: string;
+    /**
+     * The type of the property field. Value must be one of `attribute`, `payload`, `alertField`.
+     */
+    propertyFieldType?: string;
+    /**
+     * The value of the property field. Can be null if the property field condition type is 'is*one*of' or 'is*not*one_of'
+     */
+    propertyFieldValue: string;
+    /**
+     * The values of the property field. Used if the property field condition type is 'is*one*of' or 'is*not*one*of' except for when property field name is 'alert*urgency'
+     */
+    propertyFieldValues?: string[];
+    values?: outputs.AlertGroupConditionValue[];
+}
+
+export interface AlertGroupConditionValue {
+    /**
+     * ID of the Alert Urgency to set.
+     */
+    recordId: string;
+    /**
+     * Should be "AlertUrgency".
+     */
+    recordType: string;
+}
+
 export interface AlertGroupTarget {
     /**
      * id for the Group, Service or EscalationPolicy
      */
     targetId: string;
     /**
-     * The type of the target.. Value must be one of `Group`, `Service`, `EscalationPolicy`.
+     * The type of the target.. Value must be one of `Group`, `Service`, `Functionality`, `EscalationPolicy`.
+     */
+    targetType?: string;
+}
+
+export interface AlertRouteRule {
+    /**
+     * Must be specified if `fallbackRule` is `false`.
+     */
+    conditionGroups?: outputs.AlertRouteRuleConditionGroup[];
+    destinations?: outputs.AlertRouteRuleDestination[];
+    /**
+     * Whether this is a fallback rule. Must be `true` if `conditionGroups` is not specified.
+     */
+    fallbackRule?: boolean;
+    /**
+     * The name of the alert routing rule
+     */
+    name: string;
+    /**
+     * The position of the alert routing rule for ordering evaluation
+     */
+    position: number;
+}
+
+export interface AlertRouteRuleConditionGroup {
+    conditions?: outputs.AlertRouteRuleConditionGroupCondition[];
+    /**
+     * The position of the condition group
+     */
+    position: number;
+}
+
+export interface AlertRouteRuleConditionGroupCondition {
+    /**
+     * The Alert Urgency IDs to check in the condition
+     */
+    alertUrgencyIds?: string[];
+    /**
+     * The ID of the conditionable
+     */
+    conditionableId: string;
+    /**
+     * The type of the conditionable. Value must be one of `AlertField`.
+     */
+    conditionableType: string;
+    /**
+     * Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`.
+     */
+    propertyFieldConditionType?: string;
+    /**
+     * The name of the property field
+     */
+    propertyFieldName: string;
+    /**
+     * Value must be one of `attribute`, `payload`, `alertField`.
+     */
+    propertyFieldType?: string;
+    /**
+     * The value of the property field
+     */
+    propertyFieldValue: string;
+    propertyFieldValues?: string[];
+}
+
+export interface AlertRouteRuleDestination {
+    /**
+     * The ID of the target
+     */
+    targetId: string;
+    /**
+     * The type of the target. Value must be one of `Service`, `Group`, `EscalationPolicy`.
      */
     targetType?: string;
 }
@@ -43,7 +161,73 @@ export interface AlertRoutingRuleCondition {
     /**
      * The values of the property field. Used if the property field condition type is 'is*one*of' or 'is*not*one*of' except for when property field name is 'alert*urgency'
      */
-    propertyFieldValues: string[];
+    propertyFieldValues?: string[];
+}
+
+export interface AlertRoutingRuleConditionGroup {
+    /**
+     * The conditions within this group
+     */
+    conditions?: outputs.AlertRoutingRuleConditionGroupCondition[];
+    /**
+     * Date of creation
+     */
+    createdAt: string;
+    /**
+     * Unique ID of the condition group
+     */
+    id: string;
+    /**
+     * The position of the condition group for ordering
+     */
+    position: number;
+    /**
+     * Date of last update
+     */
+    updatedAt: string;
+}
+
+export interface AlertRoutingRuleConditionGroupCondition {
+    /**
+     * The ID of the conditionable object
+     */
+    conditionableId: string;
+    /**
+     * The type of the conditionable object
+     */
+    conditionableType: string;
+    /**
+     * Date of creation
+     */
+    createdAt: string;
+    /**
+     * Unique ID of the condition
+     */
+    id: string;
+    /**
+     * The condition type of the property field. Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`.
+     */
+    propertyFieldConditionType?: string;
+    /**
+     * The name of the property field
+     */
+    propertyFieldName: string;
+    /**
+     * The type of the property field. Value must be one of `attribute`, `payload`.
+     */
+    propertyFieldType?: string;
+    /**
+     * The value of the property field
+     */
+    propertyFieldValue: string;
+    /**
+     * The values of the property field
+     */
+    propertyFieldValues?: string[];
+    /**
+     * Date of last update
+     */
+    updatedAt: string;
 }
 
 export interface AlertRoutingRuleDestination {
@@ -52,86 +236,365 @@ export interface AlertRoutingRuleDestination {
      */
     targetId: string;
     /**
-     * The type of the target. Value must be one of `Group`, `Service`, `EscalationPolicy`.
+     * The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
      */
     targetType?: string;
 }
 
+export interface AlertsSourceAlertSourceFieldsAttribute {
+    /**
+     * The ID of the alert field
+     */
+    alertFieldId: string;
+    /**
+     * Liquid expression to extract a specific value from the alert's payload for evaluation
+     */
+    templateBody: string;
+}
+
 export interface AlertsSourceAlertSourceUrgencyRulesAttribute {
+    /**
+     * The ID of the alert urgency
+     */
     alertUrgencyId: string;
+    /**
+     * The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+     */
+    conditionableId: string;
+    /**
+     * The type of the conditionable. Value must be one of `AlertField or (empty string)`.
+     */
+    conditionableType: string;
+    /**
+     * JSON path expression to extract a specific value from the alert's payload for evaluation
+     */
     jsonPath: string;
-    operator: string;
+    /**
+     * The kind of the conditionable. Value must be one of `payload`, `alertField`.
+     */
+    kind?: string;
+    /**
+     * Comparison operator used to evaluate the extracted value against the specified condition. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`.
+     */
+    operator?: string;
+    /**
+     * Value that the extracted payload data is compared to using the specified operator to determine a match
+     */
     value: string;
 }
 
 export interface AlertsSourceAlertTemplateAttributes {
-    description?: string;
-    externalUrl?: string;
-    title?: string;
+    /**
+     * The alert description.
+     */
+    description: string;
+    /**
+     * The alert URL.
+     */
+    externalUrl: string;
+    /**
+     * The alert title.
+     */
+    title: string;
 }
 
 export interface AlertsSourceResolutionRuleAttributes {
+    /**
+     * The type of condition to evaluate to apply auto resolution rule. Value must be one of `all`, `any`.
+     */
     conditionType?: string;
+    /**
+     * List of conditions to evaluate for auto resolution
+     */
     conditionsAttributes?: outputs.AlertsSourceResolutionRuleAttributesConditionsAttribute[];
     enabled?: boolean;
-    identifierJsonPath?: string;
-    identifierValueRegex?: string;
+    /**
+     * JSON path expression to extract unique alert identifier used to match triggered alerts with resolving alerts
+     */
+    identifierJsonPath: string;
+    /**
+     * The ID of the identifier matchable. If identifier*matchable*type is AlertField, this is the ID of the alert field.
+     */
+    identifierMatchableId: string;
+    /**
+     * The type of the identifier matchable. Value must be one of `AlertField`.
+     */
+    identifierMatchableType?: string;
+    /**
+     * The kind of the identifier reference. Value must be one of `payload`, `alertField`.
+     */
+    identifierReferenceKind?: string;
+    /**
+     * Regex group to further specify the part of the string used as a unique identifier
+     */
+    identifierValueRegex: string;
 }
 
 export interface AlertsSourceResolutionRuleAttributesConditionsAttribute {
-    field?: string;
+    /**
+     * The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+     */
+    conditionableId: string;
+    /**
+     * The type of the conditionable. Value must be one of `AlertField or (empty string)`.
+     */
+    conditionableType: string;
+    /**
+     * JSON path expression to extract a specific value from the alert's payload for evaluation
+     */
+    field: string;
+    /**
+     * The kind of the conditionable. Value must be one of `payload`, `alertField`.
+     */
+    kind?: string;
+    /**
+     * Comparison operator used to evaluate the extracted value against the specified condition. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`, `startsWith`, `endsWith`.
+     */
     operator?: string;
-    value?: string;
+    /**
+     * Value that the extracted payload data is compared to using the specified operator to determine a match
+     */
+    value: string;
 }
 
 export interface AlertsSourceSourceableAttributes {
-    autoResolve?: boolean;
-    fieldMappingsAttributes?: outputs.AlertsSourceSourceableAttributesFieldMappingsAttribute[];
+    /**
+     * Set this to false to reject threaded emails. Value must be one of true or false
+     */
+    acceptThreadedEmails: boolean;
+    /**
+     * Set this to true to auto-resolve alerts based on field*mappings*attributes conditions. Value must be one of true or false
+     */
+    autoResolve: boolean;
+    /**
+     * Specify rules to auto resolve alerts
+     */
+    fieldMappingsAttributes: outputs.AlertsSourceSourceableAttributesFieldMappingsAttribute[];
     /**
      * This value is matched with the value extracted from alerts payload using JSON path in field*mappings*attributes
      */
-    resolveState?: string;
+    resolveState: string;
 }
 
 export interface AlertsSourceSourceableAttributesFieldMappingsAttribute {
+    /**
+     * Select the field on which the condition to be evaluated. Value must be one of `externalId`, `state`, `alertTitle`, `alertExternalUrl`, `notificationTargetType`, `notificationTargetId`.
+     */
     field?: string;
-    jsonPath?: string;
+    /**
+     * JSON path expression to extract a specific value from the alert's payload for evaluation
+     */
+    jsonPath: string;
+}
+
+export interface CatalogChecklistTemplateField {
+    /**
+     * ID of the catalog property for custom fields
+     */
+    catalogPropertyId: string;
+    /**
+     * Key identifying the field
+     */
+    fieldKey: string;
+    /**
+     * Source of the field. Value must be one of `builtin`, `custom`.
+     */
+    fieldSource?: string;
+}
+
+export interface CatalogChecklistTemplateOwner {
+    /**
+     * User ID for user owners, or field key for field owners
+     */
+    id: string;
+    /**
+     * Type of owner. Value must be one of `field`, `user`.
+     */
+    type?: string;
+}
+
+export interface CatalogEntityProperty {
+    /**
+     * Unique ID of the catalog property
+     */
+    catalogPropertyId: string;
+    /**
+     * The value for this property
+     */
+    value: string;
+}
+
+export interface CauseProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId: string;
+    /**
+     * The property value
+     */
+    value: string;
+}
+
+export interface CommunicationsGroupCommunicationExternalGroupMember {
+    /**
+     * Email of the external member
+     */
+    email: string;
+    /**
+     * ID of the external group member
+     */
+    id: string;
+    /**
+     * Name of the external member
+     */
+    name: string;
+    /**
+     * Phone number of the external member
+     */
+    phoneNumber: string;
+}
+
+export interface CommunicationsGroupCommunicationGroupCondition {
+    /**
+     * Condition
+     */
+    condition: string;
+    /**
+     * ID of the condition
+     */
+    id: string;
+    /**
+     * Properties
+     */
+    properties?: outputs.CommunicationsGroupCommunicationGroupConditionProperty[];
+    /**
+     * Property type. Value must be one of `service`, `severity`, `functionality`, `group`, `incidentType`.
+     */
+    propertyType?: string;
+}
+
+export interface CommunicationsGroupCommunicationGroupConditionProperty {
+    id: string;
+    /**
+     * @deprecated This field is deprecated and will be removed in a future version
+     */
+    name: string;
+}
+
+export interface CommunicationsGroupCommunicationGroupMember {
+    /**
+     * ID of the group member
+     */
+    id: string;
+    /**
+     * User ID
+     */
+    userId: number;
+}
+
+export interface CommunicationsTemplateCommunicationTemplateStage {
+    /**
+     * The communication stage ID
+     */
+    communicationStageId: string;
+    /**
+     * Email body for the stage
+     */
+    emailBody: string;
+    /**
+     * Email subject for the stage
+     */
+    emailSubject: string;
+    /**
+     * ID of the communication template stage
+     */
+    id: string;
+    /**
+     * Slack content for the stage
+     */
+    slackContent: string;
+    /**
+     * SMS content for the stage
+     */
+    smsContent: string;
+}
+
+export interface CommunicationsTemplateCommunicationType {
+    /**
+     * ID of the communication type
+     */
+    id: string;
+    /**
+     * Name of the communication type
+     */
+    name: string;
 }
 
 export interface DashboardPanelParams {
+    datalabels: outputs.DashboardPanelParamsDatalabels;
     datasets?: outputs.DashboardPanelParamsDataset[];
-    display: string;
-    legend?: outputs.DashboardPanelParamsLegend;
+    description?: string;
+    /**
+     * Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `table`, `aggregateValue`.
+     */
+    display?: string;
+    legend: outputs.DashboardPanelParamsLegend;
+    tableFields?: string[];
+}
+
+export interface DashboardPanelParamsDatalabels {
+    enabled?: boolean;
 }
 
 export interface DashboardPanelParamsDataset {
-    aggregate?: outputs.DashboardPanelParamsDatasetAggregate;
-    collection: string;
+    aggregate: outputs.DashboardPanelParamsDatasetAggregate;
+    /**
+     * Value must be one of `alerts`, `incidents`, `incidentPostMortems`, `incidentActionItems`, `users`.
+     */
+    collection?: string;
     filters?: outputs.DashboardPanelParamsDatasetFilter[];
     groupBy: string;
     name: string;
 }
 
 export interface DashboardPanelParamsDatasetAggregate {
+    /**
+     * Value must be one of true or false
+     */
     cumulative: boolean;
     key: string;
-    operation: string;
+    /**
+     * Value must be one of `count`, `sum`, `average`.
+     */
+    operation?: string;
 }
 
 export interface DashboardPanelParamsDatasetFilter {
-    operation: string;
+    /**
+     * Value must be one of `and`, `or`.
+     */
+    operation?: string;
     rules?: outputs.DashboardPanelParamsDatasetFilterRule[];
 }
 
 export interface DashboardPanelParamsDatasetFilterRule {
-    condition: string;
+    /**
+     * Value must be one of `=`, `!=`, `>=`, `<=`, `exists`, `notExists`, `contains`, `notContains`, `assigned`, `unassigned`.
+     */
+    condition?: string;
     key: string;
-    operation: string;
+    /**
+     * Value must be one of `and`, `or`.
+     */
+    operation?: string;
     value: string;
 }
 
 export interface DashboardPanelParamsLegend {
-    groups: string;
+    /**
+     * Value must be one of `all`, `charted`.
+     */
+    groups?: string;
 }
 
 export interface DashboardPanelPosition {
@@ -139,6 +602,26 @@ export interface DashboardPanelPosition {
     w: number;
     x: number;
     y: number;
+}
+
+export interface EdgeConnectorActionParameter {
+    default: string;
+    description: string;
+    name: string;
+    options?: string[];
+    required: boolean;
+    type?: string;
+}
+
+export interface EnvironmentProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId: string;
+    /**
+     * The property value
+     */
+    value: string;
 }
 
 export interface EnvironmentSlackAlias {
@@ -171,7 +654,7 @@ export interface EscalationLevelNotificationTargetParam {
     /**
      * For targets with type=team, controls whether to notify admins, all team members, or escalate to team EP.. Value must be one of `all`, `admins`, `escalate`.
      */
-    teamMembers?: string;
+    teamMembers: string;
     /**
      * The type of the notification target. Value must be one of `team`, `user`, `schedule`, `slackChannel`, `service`.
      */
@@ -180,29 +663,100 @@ export interface EscalationLevelNotificationTargetParam {
 
 export interface EscalationPathRule {
     /**
+     * The ID of the alert field. Only used with `field` rule type.
+     */
+    fieldableId: string;
+    /**
+     * The type of the fieldable. Only used with `field` rule type. Value must be one of `AlertField`.
+     */
+    fieldableType: string;
+    /**
      * JSON path to extract value from payload
      */
     jsonPath: string;
     /**
-     * How JSON path value should be matched. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`.
+     * How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`.
      */
     operator: string;
     /**
-     * The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`.
+     * The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`.
      */
     ruleType: string;
     /**
+     * Service ids for which this escalation path should be used. Only used with `service` rule type.
+     */
+    serviceIds?: string[];
+    /**
+     * Time windows during which alerts are deferred. Only used with `deferralWindow` rule type.
+     */
+    timeBlocks?: outputs.EscalationPathRuleTimeBlock[];
+    /**
+     * Time zone for the deferral window (IANA format, e.g. `America/New_York`). Only used with `deferralWindow` rule type.
+     */
+    timeZone: string;
+    /**
      * Alert urgency ids for which this escalation path should be used
      */
-    urgencyIds: string[];
+    urgencyIds?: string[];
     /**
      * Value with which JSON path value should be matched
      */
     value: string;
     /**
+     * Values to match against. Only used with `field` rule type.
+     */
+    values?: string[];
+    /**
      * Whether the escalation path should be used within working hours. Value must be one of true or false
      */
     withinWorkingHour: boolean;
+}
+
+export interface EscalationPathRuleTimeBlock {
+    /**
+     * Whether this time block covers the entire day
+     */
+    allDay: boolean;
+    /**
+     * Formatted as HH:MM
+     */
+    endTime: string;
+    /**
+     * Whether the time block applies on Friday
+     */
+    friday: boolean;
+    /**
+     * Whether the time block applies on Monday
+     */
+    monday: boolean;
+    /**
+     * Position of the time block
+     */
+    position: number;
+    /**
+     * Whether the time block applies on Saturday
+     */
+    saturday: boolean;
+    /**
+     * Formatted as HH:MM
+     */
+    startTime: string;
+    /**
+     * Whether the time block applies on Sunday
+     */
+    sunday: boolean;
+    /**
+     * Whether the time block applies on Thursday
+     */
+    thursday: boolean;
+    /**
+     * Whether the time block applies on Tuesday
+     */
+    tuesday: boolean;
+    /**
+     * Whether the time block applies on Wednesday
+     */
+    wednesday: boolean;
 }
 
 export interface EscalationPathTimeRestriction {
@@ -238,9 +792,20 @@ export interface EscalationPolicyBusinessHours {
      */
     startTime: string;
     /**
-     * Time zone for business hours
+     * Time zone for business hours. Value must be one of `International Date Line West`, `Etc/GMT+12`, `American Samoa`, `Pacific/Pago_Pago`, `Midway Island`, `Pacific/Midway`, `Hawaii`, `Pacific/Honolulu`, `Alaska`, `America/Juneau`, `Pacific Time (US & Canada)`, `America/Los_Angeles`, `Tijuana`, `America/Tijuana`, `Arizona`, `America/Phoenix`, `Mazatlan`, `America/Mazatlan`, `Mountain Time (US & Canada)`, `America/Denver`, `Central America`, `America/Guatemala`, `Central Time (US & Canada)`, `America/Chicago`, `Chihuahua`, `America/Chihuahua`, `Guadalajara`, `America/Mexico_City`, `Mexico City`, `America/Mexico_City`, `Monterrey`, `America/Monterrey`, `Saskatchewan`, `America/Regina`, `Bogota`, `America/Bogota`, `Eastern Time (US & Canada)`, `America/New_York`, `Indiana (East)`, `America/Indiana/Indianapolis`, `Lima`, `America/Lima`, `Quito`, `America/Lima`, `Atlantic Time (Canada)`, `America/Halifax`, `Caracas`, `America/Caracas`, `Georgetown`, `America/Guyana`, `La Paz`, `America/La_Paz`, `Puerto Rico`, `America/Puerto_Rico`, `Santiago`, `America/Santiago`, `Newfoundland`, `America/St_Johns`, `Asuncion`, `America/Asuncion`, `Brasilia`, `America/Sao_Paulo`, `Buenos Aires`, `America/Argentina/Buenos_Aires`, `Montevideo`, `America/Montevideo`, `Greenland`, `America/Nuuk`, `Mid-Atlantic`, `Atlantic/South_Georgia`, `Azores`, `Atlantic/Azores`, `Cape Verde Is.`, `Atlantic/Cape_Verde`, `Casablanca`, `Africa/Casablanca`, `Dublin`, `Europe/Dublin`, `Edinburgh`, `Europe/London`, `Lisbon`, `Europe/Lisbon`, `London`, `Europe/London`, `Monrovia`, `Africa/Monrovia`, `UTC`, `Etc/UTC`, `Amsterdam`, `Europe/Amsterdam`, `Belgrade`, `Europe/Belgrade`, `Berlin`, `Europe/Berlin`, `Bern`, `Europe/Zurich`, `Bratislava`, `Europe/Bratislava`, `Brussels`, `Europe/Brussels`, `Budapest`, `Europe/Budapest`, `Copenhagen`, `Europe/Copenhagen`, `Ljubljana`, `Europe/Ljubljana`, `Madrid`, `Europe/Madrid`, `Paris`, `Europe/Paris`, `Prague`, `Europe/Prague`, `Rome`, `Europe/Rome`, `Sarajevo`, `Europe/Sarajevo`, `Skopje`, `Europe/Skopje`, `Stockholm`, `Europe/Stockholm`, `Vienna`, `Europe/Vienna`, `Warsaw`, `Europe/Warsaw`, `West Central Africa`, `Africa/Algiers`, `Zagreb`, `Europe/Zagreb`, `Zurich`, `Europe/Zurich`, `Athens`, `Europe/Athens`, `Bucharest`, `Europe/Bucharest`, `Cairo`, `Africa/Cairo`, `Harare`, `Africa/Harare`, `Helsinki`, `Europe/Helsinki`, `Jerusalem`, `Asia/Jerusalem`, `Kaliningrad`, `Europe/Kaliningrad`, `Kyiv`, `Europe/Kiev`, `Pretoria`, `Africa/Johannesburg`, `Riga`, `Europe/Riga`, `Sofia`, `Europe/Sofia`, `Tallinn`, `Europe/Tallinn`, `Vilnius`, `Europe/Vilnius`, `Baghdad`, `Asia/Baghdad`, `Istanbul`, `Europe/Istanbul`, `Kuwait`, `Asia/Kuwait`, `Minsk`, `Europe/Minsk`, `Moscow`, `Europe/Moscow`, `Nairobi`, `Africa/Nairobi`, `Riyadh`, `Asia/Riyadh`, `St. Petersburg`, `Europe/Moscow`, `Volgograd`, `Europe/Volgograd`, `Tehran`, `Asia/Tehran`, `Abu Dhabi`, `Asia/Muscat`, `Baku`, `Asia/Baku`, `Muscat`, `Asia/Muscat`, `Samara`, `Europe/Samara`, `Tbilisi`, `Asia/Tbilisi`, `Yerevan`, `Asia/Yerevan`, `Kabul`, `Asia/Kabul`, `Almaty`, `Asia/Almaty`, `Astana`, `Asia/Almaty`, `Ekaterinburg`, `Asia/Yekaterinburg`, `Islamabad`, `Asia/Karachi`, `Karachi`, `Asia/Karachi`, `Tashkent`, `Asia/Tashkent`, `Chennai`, `Asia/Kolkata`, `Kolkata`, `Asia/Kolkata`, `Mumbai`, `Asia/Kolkata`, `New Delhi`, `Asia/Kolkata`, `Sri Jayawardenepura`, `Asia/Colombo`, `Kathmandu`, `Asia/Kathmandu`, `Dhaka`, `Asia/Dhaka`, `Urumqi`, `Asia/Urumqi`, `Rangoon`, `Asia/Rangoon`, `Bangkok`, `Asia/Bangkok`, `Hanoi`, `Asia/Bangkok`, `Jakarta`, `Asia/Jakarta`, `Krasnoyarsk`, `Asia/Krasnoyarsk`, `Novosibirsk`, `Asia/Novosibirsk`, `Beijing`, `Asia/Shanghai`, `Chongqing`, `Asia/Chongqing`, `Hong Kong`, `Asia/Hong_Kong`, `Irkutsk`, `Asia/Irkutsk`, `Kuala Lumpur`, `Asia/Kuala_Lumpur`, `Perth`, `Australia/Perth`, `Singapore`, `Asia/Singapore`, `Taipei`, `Asia/Taipei`, `Ulaanbaatar`, `Asia/Ulaanbaatar`, `Osaka`, `Asia/Tokyo`, `Sapporo`, `Asia/Tokyo`, `Seoul`, `Asia/Seoul`, `Tokyo`, `Asia/Tokyo`, `Yakutsk`, `Asia/Yakutsk`, `Adelaide`, `Australia/Adelaide`, `Darwin`, `Australia/Darwin`, `Brisbane`, `Australia/Brisbane`, `Canberra`, `Australia/Canberra`, `Guam`, `Pacific/Guam`, `Hobart`, `Australia/Hobart`, `Melbourne`, `Australia/Melbourne`, `Port Moresby`, `Pacific/Port_Moresby`, `Sydney`, `Australia/Sydney`, `Vladivostok`, `Asia/Vladivostok`, `Magadan`, `Asia/Magadan`, `New Caledonia`, `Pacific/Noumea`, `Solomon Is.`, `Pacific/Guadalcanal`, `Srednekolymsk`, `Asia/Srednekolymsk`, `Auckland`, `Pacific/Auckland`, `Fiji`, `Pacific/Fiji`, `Kamchatka`, `Asia/Kamchatka`, `Marshall Is.`, `Pacific/Majuro`, `Wellington`, `Pacific/Auckland`, `Chatham Is.`, `Pacific/Chatham`, `Nuku'alofa`, `Pacific/Tongatapu`, `Samoa`, `Pacific/Apia`, `Tokelau Is.`, `Pacific/Fakaofo`.
      */
-    timeZone: string;
+    timeZone?: string;
+}
+
+export interface FunctionalityProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId: string;
+    /**
+     * The property value
+     */
+    value: string;
 }
 
 export interface FunctionalitySlackAlias {
@@ -349,6 +914,17 @@ export interface GetTeamsTeam {
     slug: string;
 }
 
+export interface IncidentTypeProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId: string;
+    /**
+     * The property value
+     */
+    value: string;
+}
+
 export interface IncidentTypeSlackAlias {
     /**
      * Slack alias ID
@@ -369,6 +945,21 @@ export interface IncidentTypeSlackChannel {
      * Slack channel name
      */
     name: string;
+}
+
+export interface LiveCallRouterPagingTarget {
+    /**
+     * This is used in escalation paths to determine who to page
+     */
+    alertUrgencyId: string;
+    /**
+     * The ID of paging target
+     */
+    id: string;
+    /**
+     * The type of the paging target. Value must be one of `service`, `team`, `escalationPolicy`.
+     */
+    type?: string;
 }
 
 export interface RetrospectiveProcessRetrospectiveProcessMatchingCriteria {
@@ -406,6 +997,54 @@ export interface ScheduleRotationActiveTimeAttribute {
      * Start time for schedule rotation active time
      */
     startTime: string;
+}
+
+export interface ScheduleRotationScheduleRotationMember {
+    /**
+     * ID of the member
+     */
+    memberId: string;
+    /**
+     * Type of member. Value must be one of `Schedule` or `User`.
+     */
+    memberType: string;
+    /**
+     * Position of the member in rotation
+     */
+    position: number;
+}
+
+export interface ServiceAlertBroadcastChannel {
+    /**
+     * Slack channel ID
+     */
+    id: string;
+    /**
+     * Slack channel name
+     */
+    name: string;
+}
+
+export interface ServiceIncidentBroadcastChannel {
+    /**
+     * Slack channel ID
+     */
+    id: string;
+    /**
+     * Slack channel name
+     */
+    name: string;
+}
+
+export interface ServiceProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId: string;
+    /**
+     * The property value
+     */
+    value: string;
 }
 
 export interface ServiceSlackAlias {
@@ -452,6 +1091,93 @@ export interface SeveritySlackChannel {
     name: string;
 }
 
+export interface SlaCondition {
+    /**
+     * The type of condition. Value must be one of `SLAs::BuiltInFieldCondition`, `SLAs::CustomFieldCondition`.
+     */
+    conditionableType?: string;
+    /**
+     * The ID of the form field (for custom field conditions)
+     */
+    formFieldId: string;
+    /**
+     * Unique ID of the condition
+     */
+    id: string;
+    /**
+     * The comparison operator
+     */
+    operator: string;
+    /**
+     * The position of the condition
+     */
+    position: number;
+    /**
+     * The property to evaluate (for built-in field conditions)
+     */
+    property: string;
+    /**
+     * The values to compare against
+     */
+    values?: string[];
+}
+
+export interface SlaNotificationConfiguration {
+    /**
+     * Date of creation
+     */
+    createdAt: string;
+    /**
+     * Unique ID of the notification configuration
+     */
+    id: string;
+    /**
+     * Number of days offset from the deadline
+     */
+    offsetDays: number;
+    /**
+     * When to send the notification relative to the deadline. Value must be one of `beforeDue`, `whenDue`, `afterDue`.
+     */
+    offsetType?: string;
+    /**
+     * Date of last update
+     */
+    updatedAt: string;
+}
+
+export interface TeamAlertBroadcastChannel {
+    /**
+     * Slack channel ID
+     */
+    id: string;
+    /**
+     * Slack channel name
+     */
+    name: string;
+}
+
+export interface TeamIncidentBroadcastChannel {
+    /**
+     * Slack channel ID
+     */
+    id: string;
+    /**
+     * Slack channel name
+     */
+    name: string;
+}
+
+export interface TeamProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId: string;
+    /**
+     * The property value
+     */
+    value: string;
+}
+
 export interface TeamSlackAlias {
     /**
      * Slack alias ID
@@ -480,19 +1206,19 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentActionItemCondition?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionGroup?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionKind?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionPriority?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionStatus?: string;
     incidentActionItemGroupIds: string[];
@@ -515,51 +1241,51 @@ export interface WorkflowActionItemTriggerParams {
     incidentConditionAcknowledgedAt: string;
     incidentConditionDetectedAt: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: string;
     incidentConditionMitigatedAt: string;
     incidentConditionResolvedAt: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: string;
     incidentConditionStartedAt: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: string;
     incidentConditionSummary: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: string;
     incidentConditionalInactivity: string;
@@ -568,7 +1294,7 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentInactivityDuration: string;
     /**
-     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds: string[];
     /**
@@ -592,7 +1318,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertCondition?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionLabel?: string;
     /**
@@ -600,7 +1326,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionLabelUseRegexp: boolean;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionPayload?: string;
     /**
@@ -608,7 +1334,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionPayloadUseRegexp: boolean;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionSource?: string;
     /**
@@ -616,14 +1342,20 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionSourceUseRegexp: boolean;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionStatus?: string;
     /**
      * Value must be one of true or false
      */
     alertConditionStatusUseRegexp: boolean;
+    /**
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    alertConditionUrgency?: string;
+    alertFieldConditions: outputs.WorkflowAlertTriggerParamsAlertFieldCondition[];
     alertLabels: string[];
+    alertPayloadConditions: outputs.WorkflowAlertTriggerParamsAlertPayloadConditions;
     alertPayloads: string[];
     /**
      * You can use jsonpath syntax. eg: $.incident.teams[*]
@@ -631,6 +1363,7 @@ export interface WorkflowAlertTriggerParams {
     alertQueryPayload: string;
     alertSources: string[];
     alertStatuses: string[];
+    alertUrgencyIds: string[];
     /**
      * Value must be one off `alert`.
      */
@@ -641,6 +1374,32 @@ export interface WorkflowAlertTriggerParams {
     triggers: string[];
 }
 
+export interface WorkflowAlertTriggerParamsAlertFieldCondition {
+    id: string;
+    name: string;
+}
+
+export interface WorkflowAlertTriggerParamsAlertPayloadConditions {
+    conditions?: outputs.WorkflowAlertTriggerParamsAlertPayloadConditionsCondition[];
+    /**
+     * Logic operator for conditions. Value must be one of `ALL` or `ANY`.
+     */
+    logic?: string;
+}
+
+export interface WorkflowAlertTriggerParamsAlertPayloadConditionsCondition {
+    /**
+     * Value must be one of `IS`, `IS NOT`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `SET`, `UNSET`.
+     */
+    operator: string;
+    /**
+     * JSONPath query. eg: $.commonLabels.namespace
+     */
+    query: string;
+    useRegexp?: boolean;
+    values: string[];
+}
+
 export interface WorkflowIncidentTriggerParams {
     /**
      * Value must be one off `ALL`, `ANY`, `NONE`.
@@ -648,56 +1407,56 @@ export interface WorkflowIncidentTriggerParams {
     incidentCondition?: string;
     incidentConditionAcknowledgedAt: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionCause?: string;
     incidentConditionDetectedAt: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: string;
     incidentConditionMitigatedAt: string;
     incidentConditionResolvedAt: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: string;
     incidentConditionStartedAt: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: string;
     incidentConditionSummary: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: string;
     incidentConditionalInactivity: string;
@@ -706,11 +1465,11 @@ export interface WorkflowIncidentTriggerParams {
      */
     incidentInactivityDuration: string;
     /**
-     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds: string[];
     /**
-     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionCause?: string;
     /**
@@ -723,7 +1482,7 @@ export interface WorkflowIncidentTriggerParams {
      */
     triggerType?: string;
     /**
-     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack_channel
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
      */
     triggers: string[];
 }
@@ -735,56 +1494,56 @@ export interface WorkflowPostMortemTriggerParams {
     incidentCondition?: string;
     incidentConditionAcknowledgedAt: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionCause?: string;
     incidentConditionDetectedAt: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: string;
     incidentConditionMitigatedAt: string;
     incidentConditionResolvedAt: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: string;
     incidentConditionStartedAt: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: string;
     incidentConditionSummary: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: string;
     incidentConditionalInactivity: string;
@@ -793,7 +1552,7 @@ export interface WorkflowPostMortemTriggerParams {
      */
     incidentInactivityDuration: string;
     /**
-     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds: string[];
     /**
@@ -801,11 +1560,11 @@ export interface WorkflowPostMortemTriggerParams {
      */
     incidentPostMortemCondition?: string;
     /**
-     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionCause?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionStatus?: string;
     /**
@@ -833,7 +1592,7 @@ export interface WorkflowPulseTriggerParams {
      */
     pulseCondition?: string;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionLabel?: string;
     /**
@@ -841,7 +1600,7 @@ export interface WorkflowPulseTriggerParams {
      */
     pulseConditionLabelUseRegexp: boolean;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionPayload?: string;
     /**
@@ -849,7 +1608,7 @@ export interface WorkflowPulseTriggerParams {
      */
     pulseConditionPayloadUseRegexp: boolean;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionSource?: string;
     /**
@@ -940,6 +1699,22 @@ export interface WorkflowTaskAddActionItemTaskParams {
 export interface WorkflowTaskAddActionItemTaskParamsPostToSlackChannel {
     id: string;
     name: string;
+}
+
+export interface WorkflowTaskAddMicrosoftTeamsChatTabTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    chat: {[key: string]: string};
+    /**
+     * The tab link
+     */
+    link: string;
+    taskType?: string;
+    /**
+     * The tab title
+     */
+    title: string;
 }
 
 export interface WorkflowTaskAddMicrosoftTeamsTabTaskParams {
@@ -1189,6 +1964,22 @@ export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
     taskType?: string;
 }
 
+export interface WorkflowTaskCreateAnthropicChatCompletionTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The Anthropic model. eg: claude-3-5-sonnet-20241022
+     */
+    model: {[key: string]: string};
+    /**
+     * The prompt to send to Anthropic
+     */
+    prompt: string;
+    /**
+     * The system prompt to send to Anthropic (optional)
+     */
+    systemPrompt?: string;
+    taskType?: string;
+}
+
 export interface WorkflowTaskCreateAsanaSubtaskTaskParams {
     /**
      * The assigned user's email
@@ -1306,6 +2097,10 @@ export interface WorkflowTaskCreateCodaPageTaskParams {
      * The Coda page content
      */
     content?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The Coda doc object with id and name
+     */
+    doc?: {[key: string]: string};
     /**
      * The Coda folder id
      */
@@ -1431,6 +2226,18 @@ export interface WorkflowTaskCreateGithubIssueTaskParams {
      */
     body?: string;
     /**
+     * Map must contain two fields, `id` and `name`. The issue type
+     */
+    issueType?: {[key: string]: string};
+    /**
+     * The issue labels
+     */
+    labels?: outputs.WorkflowTaskCreateGithubIssueTaskParamsLabel[];
+    /**
+     * The parent issue number for sub-issue linking
+     */
+    parentIssueNumber?: string;
+    /**
      * Map must contain two fields, `id` and `name`.
      */
     repository: {[key: string]: string};
@@ -1439,6 +2246,11 @@ export interface WorkflowTaskCreateGithubIssueTaskParams {
      * The issue title
      */
     title: string;
+}
+
+export interface WorkflowTaskCreateGithubIssueTaskParamsLabel {
+    id: string;
+    name: string;
 }
 
 export interface WorkflowTaskCreateGitlabIssueTaskParams {
@@ -1618,6 +2430,22 @@ export interface WorkflowTaskCreateGoogleDocsPermissionsTaskParams {
     taskType?: string;
 }
 
+export interface WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The Gemini model. eg: gemini-2.0-flash
+     */
+    model: {[key: string]: string};
+    /**
+     * The prompt to send to Gemini
+     */
+    prompt: string;
+    /**
+     * The system prompt to send to Gemini (optional)
+     */
+    systemPrompt?: string;
+    taskType?: string;
+}
+
 export interface WorkflowTaskCreateGoogleMeetingTaskParams {
     /**
      * [DEPRECATED] Sets the video conference type attached to the meeting. Value must be one of `eventHangout`, `eventNamedHangout`, `hangoutsMeet`, `addOn`.
@@ -1636,6 +2464,10 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParams {
      * Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
      */
     recordMeeting?: boolean;
+    /**
+     * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+     */
+    recordingMode?: string;
     /**
      * [DEPRECATED] The meeting summary
      */
@@ -1667,17 +2499,26 @@ export interface WorkflowTaskCreateIncidentPostmortemTaskParams {
 
 export interface WorkflowTaskCreateIncidentTaskParams {
     /**
-     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
      */
     customFieldsMapping?: string;
     environmentIds?: string[];
+    /**
+     * Array of functionality UUIDs
+     */
     functionalityIds?: string[];
+    /**
+     * Array of group/team UUIDs
+     */
     groupIds?: string[];
     incidentTypeIds?: string[];
     /**
      * Value must be one of true or false
      */
     private?: boolean;
+    /**
+     * Array of service UUIDs
+     */
     serviceIds?: string[];
     severityId?: string;
     /**
@@ -1807,6 +2648,50 @@ export interface WorkflowTaskCreateJiraSubtaskTaskParams {
     updatePayload?: string;
 }
 
+export interface WorkflowTaskCreateJsmopsAlertTaskParams {
+    /**
+     * Description field of the alert that is generally used to provide a detailed information about the alert
+     */
+    description?: string;
+    /**
+     * Details payload. Can contain liquid markup and need to be valid JSON
+     */
+    details?: string;
+    escalations?: outputs.WorkflowTaskCreateJsmopsAlertTaskParamsEscalation[];
+    /**
+     * Message of the alert
+     */
+    message: string;
+    /**
+     * Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     */
+    priority?: string;
+    schedules?: outputs.WorkflowTaskCreateJsmopsAlertTaskParamsSchedule[];
+    taskType?: string;
+    teams?: outputs.WorkflowTaskCreateJsmopsAlertTaskParamsTeam[];
+    users?: outputs.WorkflowTaskCreateJsmopsAlertTaskParamsUser[];
+}
+
+export interface WorkflowTaskCreateJsmopsAlertTaskParamsEscalation {
+    id: string;
+    name: string;
+}
+
+export interface WorkflowTaskCreateJsmopsAlertTaskParamsSchedule {
+    id: string;
+    name: string;
+}
+
+export interface WorkflowTaskCreateJsmopsAlertTaskParamsTeam {
+    id: string;
+    name: string;
+}
+
+export interface WorkflowTaskCreateJsmopsAlertTaskParamsUser {
+    id: string;
+    name: string;
+}
+
 export interface WorkflowTaskCreateLinearIssueCommentTaskParams {
     /**
      * The issue description
@@ -1911,6 +2796,27 @@ export interface WorkflowTaskCreateMicrosoftTeamsChannelTaskParams {
     title: string;
 }
 
+export interface WorkflowTaskCreateMicrosoftTeamsChatTaskParams {
+    /**
+     * Type of chat to create. Value must be one of `group`, `oneOnOne`.
+     */
+    chatType?: string;
+    /**
+     * Array of members to include in the chat
+     */
+    members: outputs.WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember[];
+    taskType?: string;
+    /**
+     * Chat topic (only for group chats)
+     */
+    topic?: string;
+}
+
+export interface WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember {
+    id: string;
+    name: string;
+}
+
 export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
     /**
      * The meeting name
@@ -1926,6 +2832,10 @@ export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
      */
     recordMeeting?: boolean;
     /**
+     * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+     */
+    recordingMode?: string;
+    /**
      * The meeting subject
      */
     subject: string;
@@ -1935,6 +2845,34 @@ export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
 export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannel {
     id: string;
     name: string;
+}
+
+export interface WorkflowTaskCreateMistralChatCompletionTaskParams {
+    /**
+     * Maximum number of tokens to generate
+     */
+    maxTokens?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
+     */
+    model: {[key: string]: string};
+    /**
+     * The prompt to send to Mistral
+     */
+    prompt: string;
+    /**
+     * The system prompt to send to Mistral (optional)
+     */
+    systemPrompt?: string;
+    taskType?: string;
+    /**
+     * Sampling temperature (0.0-1.5). Higher values make output more random.
+     */
+    temperature?: number;
+    /**
+     * Nucleus sampling parameter (0.0-1.0)
+     */
+    topP?: number;
 }
 
 export interface WorkflowTaskCreateMotionTaskTaskParams {
@@ -1976,6 +2914,10 @@ export interface WorkflowTaskCreateMotionTaskTaskParams {
 
 export interface WorkflowTaskCreateNotionPageTaskParams {
     /**
+     * Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+     */
+    content?: string;
+    /**
      * Value must be one of true or false
      */
     markPostMortemAsPublished?: boolean;
@@ -2000,6 +2942,42 @@ export interface WorkflowTaskCreateNotionPageTaskParams {
      * The Notion page title
      */
     title: string;
+}
+
+export interface WorkflowTaskCreateOpenaiChatCompletionTaskParams {
+    /**
+     * Maximum number of tokens to generate in the response
+     */
+    maxTokens?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
+     */
+    model: {[key: string]: string};
+    /**
+     * The prompt to send to OpenAI
+     */
+    prompt: string;
+    /**
+     * Constrains effort on reasoning for GPT-5 and o-series models. Value must be one of `minimal`, `low`, `medium`, `high`.
+     */
+    reasoningEffort?: string;
+    /**
+     * Summary of the reasoning performed by the model for GPT-5 and o-series models. Value must be one of `auto`, `concise`, `detailed`.
+     */
+    reasoningSummary?: string;
+    /**
+     * The system prompt to send to OpenAI (optional)
+     */
+    systemPrompt?: string;
+    taskType?: string;
+    /**
+     * Controls randomness in the response. Higher values make output more random
+     */
+    temperature?: number;
+    /**
+     * Controls diversity via nucleus sampling. Lower values make output more focused
+     */
+    topP?: number;
 }
 
 export interface WorkflowTaskCreateOpsgenieAlertTaskParams {
@@ -2063,6 +3041,10 @@ export interface WorkflowTaskCreateOutlookEventTaskParams {
      * The event description
      */
     description: string;
+    /**
+     * Enable Microsoft Teams online meeting. Value must be one of true or false
+     */
+    enableOnlineMeeting?: boolean;
     /**
      * Value must be one of true or false
      */
@@ -2304,6 +3286,18 @@ export interface WorkflowTaskCreateSlackChannelTaskParams {
     workspace: {[key: string]: string};
 }
 
+export interface WorkflowTaskCreateSubIncidentTaskParams {
+    /**
+     * The sub incident summary
+     */
+    summary?: string;
+    taskType?: string;
+    /**
+     * The sub incident title
+     */
+    title: string;
+}
+
 export interface WorkflowTaskCreateTrelloCardTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The archivation id and display name
@@ -2338,6 +3332,23 @@ export interface WorkflowTaskCreateTrelloCardTaskParamsLabel {
     name: string;
 }
 
+export interface WorkflowTaskCreateWatsonxChatCompletionTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
+     */
+    model: {[key: string]: string};
+    projectId: string;
+    /**
+     * The prompt to send to WatsonX
+     */
+    prompt: string;
+    /**
+     * The system prompt to send to WatsonX (optional)
+     */
+    systemPrompt?: string;
+    taskType?: string;
+}
+
 export interface WorkflowTaskCreateWebexMeetingTaskParams {
     /**
      * The meeting password
@@ -2352,6 +3363,10 @@ export interface WorkflowTaskCreateWebexMeetingTaskParams {
      * Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
      */
     recordMeeting?: boolean;
+    /**
+     * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+     */
+    recordingMode?: string;
     taskType?: string;
     /**
      * The meeting topic
@@ -2439,6 +3454,10 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      * Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
      */
     recordMeeting?: boolean;
+    /**
+     * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+     */
+    recordingMode?: string;
     taskType?: string;
     /**
      * The meeting topic
@@ -2449,31 +3468,6 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
 export interface WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel {
     id: string;
     name: string;
-}
-
-export interface WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams {
-    /**
-     * Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-4o-mini
-     */
-    model: {[key: string]: string};
-    /**
-     * The prompt to send to OpenAI
-     */
-    prompt: string;
-    taskType?: string;
-}
-
-export interface WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams {
-    /**
-     * Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
-     */
-    model: {[key: string]: string};
-    projectId: string;
-    /**
-     * The prompt to send to WatsonX
-     */
-    prompt: string;
-    taskType?: string;
 }
 
 export interface WorkflowTaskGetAlertsTaskParams {
@@ -2761,6 +3755,38 @@ export interface WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannel {
     name: string;
 }
 
+export interface WorkflowTaskPageJsmopsOnCallRespondersTaskParams {
+    /**
+     * Description field of the incident that is generally used to provide a detailed information about the incident
+     */
+    description?: string;
+    /**
+     * Message of the incident
+     */
+    message?: string;
+    /**
+     * Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     */
+    priority?: string;
+    taskType?: string;
+    teams?: outputs.WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam[];
+    /**
+     * Incident title.
+     */
+    title?: string;
+    users?: outputs.WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser[];
+}
+
+export interface WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam {
+    id: string;
+    name: string;
+}
+
+export interface WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser {
+    id: string;
+    name: string;
+}
+
 export interface WorkflowTaskPageOpsgenieOnCallRespondersTaskParams {
     /**
      * Description field of the incident that is generally used to provide a detailed information about the incident
@@ -2834,7 +3860,7 @@ export interface WorkflowTaskPageRootlyOnCallRespondersTaskParams {
     /**
      * Alert urgency ID
      */
-    alertUrgencyId?: string;
+    alertUrgencyId: string;
     /**
      * Alert description
      */
@@ -2844,6 +3870,10 @@ export interface WorkflowTaskPageRootlyOnCallRespondersTaskParams {
      * Map must contain two fields, `id` and `name`.
      */
     escalationPolicyTarget?: {[key: string]: string};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    functionalityTarget?: {[key: string]: string};
     /**
      * Map must contain two fields, `id` and `name`.
      */
@@ -2914,7 +3944,7 @@ export interface WorkflowTaskPublishIncidentTaskParams {
      */
     shouldTweet?: boolean;
     /**
-     * Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `verifying`, `completed`.
+     * Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `completed`.
      */
     status: string;
     statusPageId: string;
@@ -3061,6 +4091,20 @@ export interface WorkflowTaskSendMicrosoftTeamsBlocksTaskParams {
      */
     attachments: string;
     taskType?: string;
+}
+
+export interface WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams {
+    chats: outputs.WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat[];
+    taskType?: string;
+    /**
+     * The message text
+     */
+    text: string;
+}
+
+export interface WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat {
+    id: string;
+    name: string;
 }
 
 export interface WorkflowTaskSendMicrosoftTeamsMessageTaskParams {
@@ -3511,6 +4555,82 @@ export interface WorkflowTaskUpdateCodaPageTaskParams {
     title?: string;
 }
 
+export interface WorkflowTaskUpdateConfluencePageTaskParams {
+    /**
+     * The Confluence page content
+     */
+    content?: string;
+    /**
+     * The Confluence page ID
+     */
+    fileId: string;
+    /**
+     * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
+     */
+    integration?: {[key: string]: string};
+    /**
+     * Retrospective template to use when updating page, if desired
+     */
+    postMortemTemplateId?: string;
+    taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The Confluence template to use
+     */
+    template?: {[key: string]: string};
+    /**
+     * The Confluence page title
+     */
+    title?: string;
+}
+
+export interface WorkflowTaskUpdateDatadogNotebookTaskParams {
+    /**
+     * The Datadog notebook content
+     */
+    content?: string;
+    /**
+     * The Datadog notebook ID
+     */
+    fileId: string;
+    /**
+     * The notebook type. Value must be one of `postmortem`, `runbook`, `investigation`, `documentation`, `report`.
+     */
+    kind?: string;
+    /**
+     * Retrospective template to use when updating notebook, if desired
+     */
+    postMortemTemplateId?: string;
+    taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The Datadog notebook template to use
+     */
+    template?: {[key: string]: string};
+    /**
+     * The Datadog notebook title
+     */
+    title?: string;
+}
+
+export interface WorkflowTaskUpdateDropboxPaperPageTaskParams {
+    /**
+     * The Dropbox Paper document content
+     */
+    content?: string;
+    /**
+     * The Dropbox Paper document ID
+     */
+    fileId: string;
+    /**
+     * Retrospective template to use when updating document, if desired
+     */
+    postMortemTemplateId?: string;
+    taskType?: string;
+    /**
+     * The Dropbox Paper document title
+     */
+    title?: string;
+}
+
 export interface WorkflowTaskUpdateGithubIssueTaskParams {
     /**
      * The issue body
@@ -3524,11 +4644,32 @@ export interface WorkflowTaskUpdateGithubIssueTaskParams {
      * The issue id
      */
     issueId: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The issue type
+     */
+    issueType?: {[key: string]: string};
+    /**
+     * The issue labels
+     */
+    labels?: outputs.WorkflowTaskUpdateGithubIssueTaskParamsLabel[];
+    /**
+     * How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+     */
+    labelsMode?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. The repository (used for loading labels and issue types)
+     */
+    repository?: {[key: string]: string};
     taskType?: string;
     /**
      * The issue title
      */
     title?: string;
+}
+
+export interface WorkflowTaskUpdateGithubIssueTaskParamsLabel {
+    id: string;
+    name: string;
 }
 
 export interface WorkflowTaskUpdateGitlabIssueTaskParams {
@@ -3686,12 +4827,18 @@ export interface WorkflowTaskUpdateIncidentTaskParams {
      */
     attributeToQueryBy?: string;
     /**
-     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
      */
     customFieldsMapping?: string;
     detectedAt?: string;
     environmentIds?: string[];
+    /**
+     * Array of functionality UUIDs
+     */
     functionalityIds?: string[];
+    /**
+     * Array of group/team UUIDs
+     */
     groupIds?: string[];
     /**
      * The incident id to update or id of any attribute on the incident
@@ -3704,6 +4851,9 @@ export interface WorkflowTaskUpdateIncidentTaskParams {
      */
     private?: boolean;
     resolvedAt?: string;
+    /**
+     * Array of service UUIDs
+     */
     serviceIds?: string[];
     severityId?: string;
     startedAt?: string;
@@ -3736,6 +4886,10 @@ export interface WorkflowTaskUpdateJiraIssueTaskParams {
      * The due date
      */
     dueDate?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+     */
+    integration?: {[key: string]: string};
     /**
      * The issue id
      */
@@ -3840,6 +4994,10 @@ export interface WorkflowTaskUpdateMotionTaskTaskParams {
 
 export interface WorkflowTaskUpdateNotionPageTaskParams {
     /**
+     * Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+     */
+    content?: string;
+    /**
      * The Notion page ID
      */
     fileId: string;
@@ -3900,7 +5058,7 @@ export interface WorkflowTaskUpdateOpsgenieIncidentTaskParams {
      */
     opsgenieIncidentId: string;
     /**
-     * Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     * Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`, ``.
      */
     priority?: string;
     /**
@@ -3982,6 +5140,30 @@ export interface WorkflowTaskUpdatePagertreeAlertTaskParamsUser {
     name: string;
 }
 
+export interface WorkflowTaskUpdateQuipPageTaskParams {
+    /**
+     * The Quip page content
+     */
+    content?: string;
+    /**
+     * The Quip page ID
+     */
+    fileId: string;
+    /**
+     * Retrospective template to use when updating page, if desired
+     */
+    postMortemTemplateId?: string;
+    taskType?: string;
+    /**
+     * The Quip file ID to use as a template
+     */
+    templateId?: string;
+    /**
+     * The Quip page title
+     */
+    title?: string;
+}
+
 export interface WorkflowTaskUpdateServiceNowIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
@@ -4006,6 +5188,26 @@ export interface WorkflowTaskUpdateServiceNowIncidentTaskParams {
     taskType?: string;
     /**
      * The incident title
+     */
+    title?: string;
+}
+
+export interface WorkflowTaskUpdateSharepointPageTaskParams {
+    /**
+     * The SharePoint document content
+     */
+    content?: string;
+    /**
+     * The SharePoint file ID
+     */
+    fileId: string;
+    /**
+     * Retrospective template to use when updating document, if desired
+     */
+    postMortemTemplateId?: string;
+    taskType?: string;
+    /**
+     * The SharePoint document title
      */
     title?: string;
 }

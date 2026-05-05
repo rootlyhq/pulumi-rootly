@@ -26,11 +26,11 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment variable.
+     * The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the `ROOTLY_API_URL` environment variable.
      */
     declare public readonly apiHost: pulumi.Output<string | undefined>;
     /**
-     * The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the ROOTLY_API_TOKEN environment variable.
+     * The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the `ROOTLY_API_TOKEN` environment variable.
      */
     declare public readonly apiToken: pulumi.Output<string | undefined>;
 
@@ -69,11 +69,11 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment variable.
+     * The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the `ROOTLY_API_URL` environment variable.
      */
     apiHost?: pulumi.Input<string | undefined>;
     /**
-     * The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the ROOTLY_API_TOKEN environment variable.
+     * The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the `ROOTLY_API_TOKEN` environment variable.
      */
     apiToken?: pulumi.Input<string | undefined>;
 }

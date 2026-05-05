@@ -11,10 +11,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.Severity using the `id`. For example:
+ * rootly.Severity can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/severity:Severity my-resource my-resource-slug
+ * $ pulumi import rootly:index/severity:Severity primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class Severity extends pulumi.CustomResource {
@@ -60,7 +70,7 @@ export class Severity extends pulumi.CustomResource {
     /**
      * Emails to attach to the severity
      */
-    declare public readonly notifyEmails: pulumi.Output<string[]>;
+    declare public readonly notifyEmails: pulumi.Output<string[] | undefined>;
     /**
      * Position of the severity
      */
@@ -72,11 +82,11 @@ export class Severity extends pulumi.CustomResource {
     /**
      * Slack Aliases associated with this severity
      */
-    declare public readonly slackAliases: pulumi.Output<outputs.SeveritySlackAlias[]>;
+    declare public readonly slackAliases: pulumi.Output<outputs.SeveritySlackAlias[] | undefined>;
     /**
      * Slack Channels associated with this severity
      */
-    declare public readonly slackChannels: pulumi.Output<outputs.SeveritySlackChannel[]>;
+    declare public readonly slackChannels: pulumi.Output<outputs.SeveritySlackChannel[] | undefined>;
     /**
      * The slug of the severity
      */

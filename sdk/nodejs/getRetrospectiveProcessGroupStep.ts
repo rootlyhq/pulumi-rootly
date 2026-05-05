@@ -4,10 +4,10 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export function getRetrospectiveProcessGroupStep(args?: GetRetrospectiveProcessGroupStepArgs, opts?: pulumi.InvokeOptions): Promise<GetRetrospectiveProcessGroupStepResult> {
-    args = args || {};
+export function getRetrospectiveProcessGroupStep(args: GetRetrospectiveProcessGroupStepArgs, opts?: pulumi.InvokeOptions): Promise<GetRetrospectiveProcessGroupStepResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getRetrospectiveProcessGroupStep:getRetrospectiveProcessGroupStep", {
+        "retrospectiveProcessGroupId": args.retrospectiveProcessGroupId,
         "retrospectiveStepId": args.retrospectiveStepId,
     }, opts);
 }
@@ -16,6 +16,7 @@ export function getRetrospectiveProcessGroupStep(args?: GetRetrospectiveProcessG
  * A collection of arguments for invoking getRetrospectiveProcessGroupStep.
  */
 export interface GetRetrospectiveProcessGroupStepArgs {
+    retrospectiveProcessGroupId: string;
     retrospectiveStepId?: string;
 }
 
@@ -27,12 +28,13 @@ export interface GetRetrospectiveProcessGroupStepResult {
      * The ID of this resource.
      */
     readonly id: string;
+    readonly retrospectiveProcessGroupId: string;
     readonly retrospectiveStepId: string;
 }
-export function getRetrospectiveProcessGroupStepOutput(args?: GetRetrospectiveProcessGroupStepOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRetrospectiveProcessGroupStepResult> {
-    args = args || {};
+export function getRetrospectiveProcessGroupStepOutput(args: GetRetrospectiveProcessGroupStepOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRetrospectiveProcessGroupStepResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getRetrospectiveProcessGroupStep:getRetrospectiveProcessGroupStep", {
+        "retrospectiveProcessGroupId": args.retrospectiveProcessGroupId,
         "retrospectiveStepId": args.retrospectiveStepId,
     }, opts);
 }
@@ -41,5 +43,6 @@ export function getRetrospectiveProcessGroupStepOutput(args?: GetRetrospectivePr
  * A collection of arguments for invoking getRetrospectiveProcessGroupStep.
  */
 export interface GetRetrospectiveProcessGroupStepOutputArgs {
+    retrospectiveProcessGroupId: pulumi.Input<string>;
     retrospectiveStepId?: pulumi.Input<string | undefined>;
 }

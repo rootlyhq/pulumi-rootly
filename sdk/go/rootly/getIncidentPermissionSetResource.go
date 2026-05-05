@@ -24,8 +24,9 @@ func LookupIncidentPermissionSetResource(ctx *pulumi.Context, args *LookupIncide
 // A collection of arguments for invoking getIncidentPermissionSetResource.
 type LookupIncidentPermissionSetResourceArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt map[string]string `pulumi:"createdAt"`
-	Kind      *string           `pulumi:"kind"`
+	CreatedAt               map[string]string `pulumi:"createdAt"`
+	IncidentPermissionSetId string            `pulumi:"incidentPermissionSetId"`
+	Kind                    *string           `pulumi:"kind"`
 }
 
 // A collection of values returned by getIncidentPermissionSetResource.
@@ -33,8 +34,9 @@ type LookupIncidentPermissionSetResourceResult struct {
 	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt map[string]string `pulumi:"createdAt"`
 	// The ID of this resource.
-	Id   string `pulumi:"id"`
-	Kind string `pulumi:"kind"`
+	Id                      string `pulumi:"id"`
+	IncidentPermissionSetId string `pulumi:"incidentPermissionSetId"`
+	Kind                    string `pulumi:"kind"`
 }
 
 func LookupIncidentPermissionSetResourceOutput(ctx *pulumi.Context, args LookupIncidentPermissionSetResourceOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentPermissionSetResourceResultOutput {
@@ -49,8 +51,9 @@ func LookupIncidentPermissionSetResourceOutput(ctx *pulumi.Context, args LookupI
 // A collection of arguments for invoking getIncidentPermissionSetResource.
 type LookupIncidentPermissionSetResourceOutputArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt pulumi.StringMapInput `pulumi:"createdAt"`
-	Kind      pulumi.StringPtrInput `pulumi:"kind"`
+	CreatedAt               pulumi.StringMapInput `pulumi:"createdAt"`
+	IncidentPermissionSetId pulumi.StringInput    `pulumi:"incidentPermissionSetId"`
+	Kind                    pulumi.StringPtrInput `pulumi:"kind"`
 }
 
 func (LookupIncidentPermissionSetResourceOutputArgs) ElementType() reflect.Type {
@@ -80,6 +83,10 @@ func (o LookupIncidentPermissionSetResourceResultOutput) CreatedAt() pulumi.Stri
 // The ID of this resource.
 func (o LookupIncidentPermissionSetResourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentPermissionSetResourceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupIncidentPermissionSetResourceResultOutput) IncidentPermissionSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIncidentPermissionSetResourceResult) string { return v.IncidentPermissionSetId }).(pulumi.StringOutput)
 }
 
 func (o LookupIncidentPermissionSetResourceResultOutput) Kind() pulumi.StringOutput {

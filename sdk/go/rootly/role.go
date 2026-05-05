@@ -13,10 +13,20 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import Role using the `id`. For example:
+// Role can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/role:Role my-resource my-resource-slug
+// $ pulumi import rootly:index/role:Role primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type Role struct {
 	pulumi.CustomResourceState
@@ -30,6 +40,12 @@ type Role struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	BillingPermissions pulumi.StringArrayOutput `pulumi:"billingPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
+	CatalogsPermissions pulumi.StringArrayOutput `pulumi:"catalogsPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	CommunicationPermissions pulumi.StringArrayOutput `pulumi:"communicationPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	EdgeConnectorPermissions pulumi.StringArrayOutput `pulumi:"edgeConnectorPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	EnvironmentsPermissions pulumi.StringArrayOutput `pulumi:"environmentsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	FormFieldsPermissions pulumi.StringArrayOutput `pulumi:"formFieldsPermissions"`
@@ -39,6 +55,8 @@ type Role struct {
 	GroupsPermissions pulumi.StringArrayOutput `pulumi:"groupsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	IncidentCausesPermissions pulumi.StringArrayOutput `pulumi:"incidentCausesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`, `send`.
+	IncidentCommunicationPermissions pulumi.StringArrayOutput `pulumi:"incidentCommunicationPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	IncidentFeedbacksPermissions pulumi.StringArrayOutput `pulumi:"incidentFeedbacksPermissions"`
 	// Associated incident permissions set.
@@ -60,6 +78,8 @@ type Role struct {
 	// The role name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
+	PagingPermissions pulumi.StringArrayOutput `pulumi:"pagingPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	PlaybooksPermissions pulumi.StringArrayOutput `pulumi:"playbooksPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PrivateIncidentsPermissions pulumi.StringArrayOutput `pulumi:"privateIncidentsPermissions"`
@@ -75,10 +95,14 @@ type Role struct {
 	ServicesPermissions pulumi.StringArrayOutput `pulumi:"servicesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SeveritiesPermissions pulumi.StringArrayOutput `pulumi:"severitiesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	SlasPermissions pulumi.StringArrayOutput `pulumi:"slasPermissions"`
 	// The role slug.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions pulumi.StringArrayOutput `pulumi:"statusPagesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	SubStatusesPermissions pulumi.StringArrayOutput `pulumi:"subStatusesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	WebhooksPermissions pulumi.StringArrayOutput `pulumi:"webhooksPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -124,6 +148,12 @@ type roleState struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	BillingPermissions []string `pulumi:"billingPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
+	CatalogsPermissions []string `pulumi:"catalogsPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	CommunicationPermissions []string `pulumi:"communicationPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	EdgeConnectorPermissions []string `pulumi:"edgeConnectorPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	EnvironmentsPermissions []string `pulumi:"environmentsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	FormFieldsPermissions []string `pulumi:"formFieldsPermissions"`
@@ -133,6 +163,8 @@ type roleState struct {
 	GroupsPermissions []string `pulumi:"groupsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	IncidentCausesPermissions []string `pulumi:"incidentCausesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`, `send`.
+	IncidentCommunicationPermissions []string `pulumi:"incidentCommunicationPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	IncidentFeedbacksPermissions []string `pulumi:"incidentFeedbacksPermissions"`
 	// Associated incident permissions set.
@@ -154,6 +186,8 @@ type roleState struct {
 	// The role name.
 	Name *string `pulumi:"name"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
+	PagingPermissions []string `pulumi:"pagingPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	PlaybooksPermissions []string `pulumi:"playbooksPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PrivateIncidentsPermissions []string `pulumi:"privateIncidentsPermissions"`
@@ -169,10 +203,14 @@ type roleState struct {
 	ServicesPermissions []string `pulumi:"servicesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SeveritiesPermissions []string `pulumi:"severitiesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	SlasPermissions []string `pulumi:"slasPermissions"`
 	// The role slug.
 	Slug *string `pulumi:"slug"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions []string `pulumi:"statusPagesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	SubStatusesPermissions []string `pulumi:"subStatusesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	WebhooksPermissions []string `pulumi:"webhooksPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -189,6 +227,12 @@ type RoleState struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	BillingPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
+	CatalogsPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	CommunicationPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	EdgeConnectorPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	EnvironmentsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	FormFieldsPermissions pulumi.StringArrayInput
@@ -198,6 +242,8 @@ type RoleState struct {
 	GroupsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	IncidentCausesPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`, `send`.
+	IncidentCommunicationPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	IncidentFeedbacksPermissions pulumi.StringArrayInput
 	// Associated incident permissions set.
@@ -219,6 +265,8 @@ type RoleState struct {
 	// The role name.
 	Name pulumi.StringPtrInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
+	PagingPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	PlaybooksPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PrivateIncidentsPermissions pulumi.StringArrayInput
@@ -234,10 +282,14 @@ type RoleState struct {
 	ServicesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SeveritiesPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	SlasPermissions pulumi.StringArrayInput
 	// The role slug.
 	Slug pulumi.StringPtrInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	SubStatusesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	WebhooksPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -258,6 +310,12 @@ type roleArgs struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	BillingPermissions []string `pulumi:"billingPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
+	CatalogsPermissions []string `pulumi:"catalogsPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	CommunicationPermissions []string `pulumi:"communicationPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	EdgeConnectorPermissions []string `pulumi:"edgeConnectorPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	EnvironmentsPermissions []string `pulumi:"environmentsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	FormFieldsPermissions []string `pulumi:"formFieldsPermissions"`
@@ -267,6 +325,8 @@ type roleArgs struct {
 	GroupsPermissions []string `pulumi:"groupsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	IncidentCausesPermissions []string `pulumi:"incidentCausesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`, `send`.
+	IncidentCommunicationPermissions []string `pulumi:"incidentCommunicationPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	IncidentFeedbacksPermissions []string `pulumi:"incidentFeedbacksPermissions"`
 	// Associated incident permissions set.
@@ -288,6 +348,8 @@ type roleArgs struct {
 	// The role name.
 	Name *string `pulumi:"name"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
+	PagingPermissions []string `pulumi:"pagingPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	PlaybooksPermissions []string `pulumi:"playbooksPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PrivateIncidentsPermissions []string `pulumi:"privateIncidentsPermissions"`
@@ -303,10 +365,14 @@ type roleArgs struct {
 	ServicesPermissions []string `pulumi:"servicesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SeveritiesPermissions []string `pulumi:"severitiesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	SlasPermissions []string `pulumi:"slasPermissions"`
 	// The role slug.
 	Slug *string `pulumi:"slug"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions []string `pulumi:"statusPagesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	SubStatusesPermissions []string `pulumi:"subStatusesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	WebhooksPermissions []string `pulumi:"webhooksPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -324,6 +390,12 @@ type RoleArgs struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	BillingPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
+	CatalogsPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	CommunicationPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	EdgeConnectorPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	EnvironmentsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	FormFieldsPermissions pulumi.StringArrayInput
@@ -333,6 +405,8 @@ type RoleArgs struct {
 	GroupsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	IncidentCausesPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`, `send`.
+	IncidentCommunicationPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	IncidentFeedbacksPermissions pulumi.StringArrayInput
 	// Associated incident permissions set.
@@ -354,6 +428,8 @@ type RoleArgs struct {
 	// The role name.
 	Name pulumi.StringPtrInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
+	PagingPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	PlaybooksPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PrivateIncidentsPermissions pulumi.StringArrayInput
@@ -369,10 +445,14 @@ type RoleArgs struct {
 	ServicesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SeveritiesPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	SlasPermissions pulumi.StringArrayInput
 	// The role slug.
 	Slug pulumi.StringPtrInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	SubStatusesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	WebhooksPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -487,6 +567,21 @@ func (o RoleOutput) BillingPermissions() pulumi.StringArrayOutput {
 }
 
 // Value must be one of `create`, `read`, `update`, `delete`.
+func (o RoleOutput) CatalogsPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.CatalogsPermissions }).(pulumi.StringArrayOutput)
+}
+
+// Value must be one of `create`, `read`, `update`, `delete`.
+func (o RoleOutput) CommunicationPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.CommunicationPermissions }).(pulumi.StringArrayOutput)
+}
+
+// Value must be one of `create`, `read`, `update`, `delete`.
+func (o RoleOutput) EdgeConnectorPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.EdgeConnectorPermissions }).(pulumi.StringArrayOutput)
+}
+
+// Value must be one of `create`, `read`, `update`, `delete`.
 func (o RoleOutput) EnvironmentsPermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.EnvironmentsPermissions }).(pulumi.StringArrayOutput)
 }
@@ -509,6 +604,11 @@ func (o RoleOutput) GroupsPermissions() pulumi.StringArrayOutput {
 // Value must be one of `create`, `read`, `update`, `delete`.
 func (o RoleOutput) IncidentCausesPermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.IncidentCausesPermissions }).(pulumi.StringArrayOutput)
+}
+
+// Value must be one of `create`, `read`, `update`, `delete`, `send`.
+func (o RoleOutput) IncidentCommunicationPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.IncidentCommunicationPermissions }).(pulumi.StringArrayOutput)
 }
 
 // Value must be one of `create`, `read`, `update`, `delete`.
@@ -562,6 +662,11 @@ func (o RoleOutput) Name() pulumi.StringOutput {
 }
 
 // Value must be one of `create`, `read`, `update`, `delete`.
+func (o RoleOutput) PagingPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.PagingPermissions }).(pulumi.StringArrayOutput)
+}
+
+// Value must be one of `create`, `read`, `update`, `delete`.
 func (o RoleOutput) PlaybooksPermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.PlaybooksPermissions }).(pulumi.StringArrayOutput)
 }
@@ -601,6 +706,11 @@ func (o RoleOutput) SeveritiesPermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.SeveritiesPermissions }).(pulumi.StringArrayOutput)
 }
 
+// Value must be one of `create`, `read`, `update`, `delete`.
+func (o RoleOutput) SlasPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.SlasPermissions }).(pulumi.StringArrayOutput)
+}
+
 // The role slug.
 func (o RoleOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
@@ -609,6 +719,11 @@ func (o RoleOutput) Slug() pulumi.StringOutput {
 // Value must be one of `create`, `read`, `update`, `delete`.
 func (o RoleOutput) StatusPagesPermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.StatusPagesPermissions }).(pulumi.StringArrayOutput)
+}
+
+// Value must be one of `create`, `read`, `update`, `delete`.
+func (o RoleOutput) SubStatusesPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.SubStatusesPermissions }).(pulumi.StringArrayOutput)
 }
 
 // Value must be one of `create`, `read`, `update`, `delete`.

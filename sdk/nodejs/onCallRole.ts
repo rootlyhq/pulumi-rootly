@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.OnCallRole using the `id`. For example:
+ * rootly.OnCallRole can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/onCallRole:OnCallRole my-resource my-resource-slug
+ * $ pulumi import rootly:index/onCallRole:OnCallRole primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class OnCallRole extends pulumi.CustomResource {
@@ -42,7 +52,19 @@ export class OnCallRole extends pulumi.CustomResource {
     }
 
     /**
-     * Value must be one of `create`, `update`, `delete`.
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    declare public readonly alertFieldsPermissions: pulumi.Output<string[]>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    declare public readonly alertGroupsPermissions: pulumi.Output<string[]>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    declare public readonly alertRoutingRulesPermissions: pulumi.Output<string[]>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
      */
     declare public readonly alertSourcesPermissions: pulumi.Output<string[]>;
     /**
@@ -50,7 +72,7 @@ export class OnCallRole extends pulumi.CustomResource {
      */
     declare public readonly alertUrgencyPermissions: pulumi.Output<string[]>;
     /**
-     * Value must be one of `create`, `update`, `read`.
+     * Value must be one of `create`, `update`, `read`, `delete`.
      */
     declare public readonly alertsPermissions: pulumi.Output<string[]>;
     /**
@@ -94,6 +116,14 @@ export class OnCallRole extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    declare public readonly onCallReadinessReportPermissions: pulumi.Output<string[]>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    declare public readonly onCallRolesPermissions: pulumi.Output<string[]>;
+    /**
      * Value must be one of `create`, `update`.
      */
     declare public readonly scheduleOverridePermissions: pulumi.Output<string[]>;
@@ -112,7 +142,7 @@ export class OnCallRole extends pulumi.CustomResource {
     /**
      * The kind of role
      */
-    declare public readonly systemRole: pulumi.Output<string>;
+    declare public readonly systemRole: pulumi.Output<string | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
@@ -129,12 +159,15 @@ export class OnCallRole extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: OnCallRoleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: OnCallRoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OnCallRoleArgs | OnCallRoleState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OnCallRoleState | undefined;
+            resourceInputs["alertFieldsPermissions"] = state?.alertFieldsPermissions;
+            resourceInputs["alertGroupsPermissions"] = state?.alertGroupsPermissions;
+            resourceInputs["alertRoutingRulesPermissions"] = state?.alertRoutingRulesPermissions;
             resourceInputs["alertSourcesPermissions"] = state?.alertSourcesPermissions;
             resourceInputs["alertUrgencyPermissions"] = state?.alertUrgencyPermissions;
             resourceInputs["alertsPermissions"] = state?.alertsPermissions;
@@ -148,6 +181,8 @@ export class OnCallRole extends pulumi.CustomResource {
             resourceInputs["invitationsPermissions"] = state?.invitationsPermissions;
             resourceInputs["liveCallRoutingPermissions"] = state?.liveCallRoutingPermissions;
             resourceInputs["name"] = state?.name;
+            resourceInputs["onCallReadinessReportPermissions"] = state?.onCallReadinessReportPermissions;
+            resourceInputs["onCallRolesPermissions"] = state?.onCallRolesPermissions;
             resourceInputs["scheduleOverridePermissions"] = state?.scheduleOverridePermissions;
             resourceInputs["schedulesPermissions"] = state?.schedulesPermissions;
             resourceInputs["servicesPermissions"] = state?.servicesPermissions;
@@ -157,9 +192,9 @@ export class OnCallRole extends pulumi.CustomResource {
             resourceInputs["workflowsPermissions"] = state?.workflowsPermissions;
         } else {
             const args = argsOrState as OnCallRoleArgs | undefined;
-            if (args?.systemRole === undefined && !opts.urn) {
-                throw new Error("Missing required property 'systemRole'");
-            }
+            resourceInputs["alertFieldsPermissions"] = args?.alertFieldsPermissions;
+            resourceInputs["alertGroupsPermissions"] = args?.alertGroupsPermissions;
+            resourceInputs["alertRoutingRulesPermissions"] = args?.alertRoutingRulesPermissions;
             resourceInputs["alertSourcesPermissions"] = args?.alertSourcesPermissions;
             resourceInputs["alertUrgencyPermissions"] = args?.alertUrgencyPermissions;
             resourceInputs["alertsPermissions"] = args?.alertsPermissions;
@@ -173,6 +208,8 @@ export class OnCallRole extends pulumi.CustomResource {
             resourceInputs["invitationsPermissions"] = args?.invitationsPermissions;
             resourceInputs["liveCallRoutingPermissions"] = args?.liveCallRoutingPermissions;
             resourceInputs["name"] = args?.name;
+            resourceInputs["onCallReadinessReportPermissions"] = args?.onCallReadinessReportPermissions;
+            resourceInputs["onCallRolesPermissions"] = args?.onCallRolesPermissions;
             resourceInputs["scheduleOverridePermissions"] = args?.scheduleOverridePermissions;
             resourceInputs["schedulesPermissions"] = args?.schedulesPermissions;
             resourceInputs["servicesPermissions"] = args?.servicesPermissions;
@@ -191,7 +228,19 @@ export class OnCallRole extends pulumi.CustomResource {
  */
 export interface OnCallRoleState {
     /**
-     * Value must be one of `create`, `update`, `delete`.
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    alertFieldsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    alertGroupsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    alertRoutingRulesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
      */
     alertSourcesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -199,7 +248,7 @@ export interface OnCallRoleState {
      */
     alertUrgencyPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Value must be one of `create`, `update`, `read`.
+     * Value must be one of `create`, `update`, `read`, `delete`.
      */
     alertsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -242,6 +291,14 @@ export interface OnCallRoleState {
      * The role name.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    onCallReadinessReportPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    onCallRolesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `update`.
      */
@@ -277,7 +334,19 @@ export interface OnCallRoleState {
  */
 export interface OnCallRoleArgs {
     /**
-     * Value must be one of `create`, `update`, `delete`.
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    alertFieldsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    alertGroupsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    alertRoutingRulesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
      */
     alertSourcesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -285,7 +354,7 @@ export interface OnCallRoleArgs {
      */
     alertUrgencyPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Value must be one of `create`, `update`, `read`.
+     * Value must be one of `create`, `update`, `read`, `delete`.
      */
     alertsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -329,6 +398,14 @@ export interface OnCallRoleArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    onCallReadinessReportPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    onCallRolesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Value must be one of `create`, `update`.
      */
     scheduleOverridePermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -347,7 +424,7 @@ export interface OnCallRoleArgs {
     /**
      * The kind of role
      */
-    systemRole: pulumi.Input<string>;
+    systemRole?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */

@@ -14,18 +14,30 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import StatusPage using the `id`. For example:
+// StatusPage can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/statusPage:StatusPage my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/statusPage:StatusPage primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type StatusPage struct {
 	pulumi.CustomResourceState
 
 	// Allow search engines to include your public status page in search results. Value must be one of true or false
 	AllowSearchEngineIndex pulumi.BoolOutput `pulumi:"allowSearchEngineIndex"`
-	// Enable authentication. Value must be one of true or false
+	// Enable authentication (deprecated - use authenticationMethod instead). Value must be one of true or false
 	AuthenticationEnabled pulumi.BoolOutput `pulumi:"authenticationEnabled"`
+	// Authentication method. Value must be one of `none`, `password`, `saml`.
+	AuthenticationMethod pulumi.StringPtrOutput `pulumi:"authenticationMethod"`
 	// Authentication password
 	AuthenticationPassword pulumi.StringOutput `pulumi:"authenticationPassword"`
 	// The description of the status page
@@ -49,12 +61,26 @@ type StatusPage struct {
 	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
 	// The public title of the status page
 	PublicTitle pulumi.StringOutput `pulumi:"publicTitle"`
+	// SAML IdP certificate
+	SamlIdpCert pulumi.StringOutput `pulumi:"samlIdpCert"`
+	// SAML IdP certificate fingerprint
+	SamlIdpCertFingerprint pulumi.StringOutput `pulumi:"samlIdpCertFingerprint"`
+	// SAML IdP SLO service URL
+	SamlIdpSloServiceUrl pulumi.StringOutput `pulumi:"samlIdpSloServiceUrl"`
+	// SAML IdP SSO service URL
+	SamlIdpSsoServiceUrl pulumi.StringOutput `pulumi:"samlIdpSsoServiceUrl"`
+	// SAML name identifier format. Value must be one of `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`, `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`, `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+	SamlNameIdentifierFormat pulumi.StringOutput `pulumi:"samlNameIdentifierFormat"`
+	// Order of sections on the status page. Value must be a list of `maintenance`, `systemStatus`, `incidents`.
+	SectionOrders pulumi.StringArrayOutput `pulumi:"sectionOrders"`
 	// Services attached to the status page
 	ServiceIds pulumi.StringArrayOutput `pulumi:"serviceIds"`
 	// Show uptime. Value must be one of true or false
 	ShowUptime pulumi.BoolOutput `pulumi:"showUptime"`
-	// Show uptime over x days. Value must be one of `30`, `60`, `90`, `180`, `360`.
+	// Show uptime over x days. Value must be one of `30`, `60`, `90`.
 	ShowUptimeLastDays pulumi.IntOutput `pulumi:"showUptimeLastDays"`
+	// The slug of the status page
+	Slug pulumi.StringOutput `pulumi:"slug"`
 	// Message showing when all components are operational
 	SuccessMessage pulumi.StringOutput `pulumi:"successMessage"`
 	// A valid IANA time zone name.
@@ -104,8 +130,10 @@ func GetStatusPage(ctx *pulumi.Context,
 type statusPageState struct {
 	// Allow search engines to include your public status page in search results. Value must be one of true or false
 	AllowSearchEngineIndex *bool `pulumi:"allowSearchEngineIndex"`
-	// Enable authentication. Value must be one of true or false
+	// Enable authentication (deprecated - use authenticationMethod instead). Value must be one of true or false
 	AuthenticationEnabled *bool `pulumi:"authenticationEnabled"`
+	// Authentication method. Value must be one of `none`, `password`, `saml`.
+	AuthenticationMethod *string `pulumi:"authenticationMethod"`
 	// Authentication password
 	AuthenticationPassword *string `pulumi:"authenticationPassword"`
 	// The description of the status page
@@ -129,12 +157,26 @@ type statusPageState struct {
 	PublicDescription *string `pulumi:"publicDescription"`
 	// The public title of the status page
 	PublicTitle *string `pulumi:"publicTitle"`
+	// SAML IdP certificate
+	SamlIdpCert *string `pulumi:"samlIdpCert"`
+	// SAML IdP certificate fingerprint
+	SamlIdpCertFingerprint *string `pulumi:"samlIdpCertFingerprint"`
+	// SAML IdP SLO service URL
+	SamlIdpSloServiceUrl *string `pulumi:"samlIdpSloServiceUrl"`
+	// SAML IdP SSO service URL
+	SamlIdpSsoServiceUrl *string `pulumi:"samlIdpSsoServiceUrl"`
+	// SAML name identifier format. Value must be one of `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`, `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`, `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+	SamlNameIdentifierFormat *string `pulumi:"samlNameIdentifierFormat"`
+	// Order of sections on the status page. Value must be a list of `maintenance`, `systemStatus`, `incidents`.
+	SectionOrders []string `pulumi:"sectionOrders"`
 	// Services attached to the status page
 	ServiceIds []string `pulumi:"serviceIds"`
 	// Show uptime. Value must be one of true or false
 	ShowUptime *bool `pulumi:"showUptime"`
-	// Show uptime over x days. Value must be one of `30`, `60`, `90`, `180`, `360`.
+	// Show uptime over x days. Value must be one of `30`, `60`, `90`.
 	ShowUptimeLastDays *int `pulumi:"showUptimeLastDays"`
+	// The slug of the status page
+	Slug *string `pulumi:"slug"`
 	// Message showing when all components are operational
 	SuccessMessage *string `pulumi:"successMessage"`
 	// A valid IANA time zone name.
@@ -152,8 +194,10 @@ type statusPageState struct {
 type StatusPageState struct {
 	// Allow search engines to include your public status page in search results. Value must be one of true or false
 	AllowSearchEngineIndex pulumi.BoolPtrInput
-	// Enable authentication. Value must be one of true or false
+	// Enable authentication (deprecated - use authenticationMethod instead). Value must be one of true or false
 	AuthenticationEnabled pulumi.BoolPtrInput
+	// Authentication method. Value must be one of `none`, `password`, `saml`.
+	AuthenticationMethod pulumi.StringPtrInput
 	// Authentication password
 	AuthenticationPassword pulumi.StringPtrInput
 	// The description of the status page
@@ -177,12 +221,26 @@ type StatusPageState struct {
 	PublicDescription pulumi.StringPtrInput
 	// The public title of the status page
 	PublicTitle pulumi.StringPtrInput
+	// SAML IdP certificate
+	SamlIdpCert pulumi.StringPtrInput
+	// SAML IdP certificate fingerprint
+	SamlIdpCertFingerprint pulumi.StringPtrInput
+	// SAML IdP SLO service URL
+	SamlIdpSloServiceUrl pulumi.StringPtrInput
+	// SAML IdP SSO service URL
+	SamlIdpSsoServiceUrl pulumi.StringPtrInput
+	// SAML name identifier format. Value must be one of `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`, `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`, `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+	SamlNameIdentifierFormat pulumi.StringPtrInput
+	// Order of sections on the status page. Value must be a list of `maintenance`, `systemStatus`, `incidents`.
+	SectionOrders pulumi.StringArrayInput
 	// Services attached to the status page
 	ServiceIds pulumi.StringArrayInput
 	// Show uptime. Value must be one of true or false
 	ShowUptime pulumi.BoolPtrInput
-	// Show uptime over x days. Value must be one of `30`, `60`, `90`, `180`, `360`.
+	// Show uptime over x days. Value must be one of `30`, `60`, `90`.
 	ShowUptimeLastDays pulumi.IntPtrInput
+	// The slug of the status page
+	Slug pulumi.StringPtrInput
 	// Message showing when all components are operational
 	SuccessMessage pulumi.StringPtrInput
 	// A valid IANA time zone name.
@@ -204,8 +262,10 @@ func (StatusPageState) ElementType() reflect.Type {
 type statusPageArgs struct {
 	// Allow search engines to include your public status page in search results. Value must be one of true or false
 	AllowSearchEngineIndex *bool `pulumi:"allowSearchEngineIndex"`
-	// Enable authentication. Value must be one of true or false
+	// Enable authentication (deprecated - use authenticationMethod instead). Value must be one of true or false
 	AuthenticationEnabled *bool `pulumi:"authenticationEnabled"`
+	// Authentication method. Value must be one of `none`, `password`, `saml`.
+	AuthenticationMethod *string `pulumi:"authenticationMethod"`
 	// Authentication password
 	AuthenticationPassword *string `pulumi:"authenticationPassword"`
 	// The description of the status page
@@ -229,12 +289,26 @@ type statusPageArgs struct {
 	PublicDescription *string `pulumi:"publicDescription"`
 	// The public title of the status page
 	PublicTitle *string `pulumi:"publicTitle"`
+	// SAML IdP certificate
+	SamlIdpCert *string `pulumi:"samlIdpCert"`
+	// SAML IdP certificate fingerprint
+	SamlIdpCertFingerprint *string `pulumi:"samlIdpCertFingerprint"`
+	// SAML IdP SLO service URL
+	SamlIdpSloServiceUrl *string `pulumi:"samlIdpSloServiceUrl"`
+	// SAML IdP SSO service URL
+	SamlIdpSsoServiceUrl *string `pulumi:"samlIdpSsoServiceUrl"`
+	// SAML name identifier format. Value must be one of `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`, `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`, `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+	SamlNameIdentifierFormat *string `pulumi:"samlNameIdentifierFormat"`
+	// Order of sections on the status page. Value must be a list of `maintenance`, `systemStatus`, `incidents`.
+	SectionOrders []string `pulumi:"sectionOrders"`
 	// Services attached to the status page
 	ServiceIds []string `pulumi:"serviceIds"`
 	// Show uptime. Value must be one of true or false
 	ShowUptime *bool `pulumi:"showUptime"`
-	// Show uptime over x days. Value must be one of `30`, `60`, `90`, `180`, `360`.
+	// Show uptime over x days. Value must be one of `30`, `60`, `90`.
 	ShowUptimeLastDays *int `pulumi:"showUptimeLastDays"`
+	// The slug of the status page
+	Slug *string `pulumi:"slug"`
 	// Message showing when all components are operational
 	SuccessMessage *string `pulumi:"successMessage"`
 	// A valid IANA time zone name.
@@ -253,8 +327,10 @@ type statusPageArgs struct {
 type StatusPageArgs struct {
 	// Allow search engines to include your public status page in search results. Value must be one of true or false
 	AllowSearchEngineIndex pulumi.BoolPtrInput
-	// Enable authentication. Value must be one of true or false
+	// Enable authentication (deprecated - use authenticationMethod instead). Value must be one of true or false
 	AuthenticationEnabled pulumi.BoolPtrInput
+	// Authentication method. Value must be one of `none`, `password`, `saml`.
+	AuthenticationMethod pulumi.StringPtrInput
 	// Authentication password
 	AuthenticationPassword pulumi.StringPtrInput
 	// The description of the status page
@@ -278,12 +354,26 @@ type StatusPageArgs struct {
 	PublicDescription pulumi.StringPtrInput
 	// The public title of the status page
 	PublicTitle pulumi.StringPtrInput
+	// SAML IdP certificate
+	SamlIdpCert pulumi.StringPtrInput
+	// SAML IdP certificate fingerprint
+	SamlIdpCertFingerprint pulumi.StringPtrInput
+	// SAML IdP SLO service URL
+	SamlIdpSloServiceUrl pulumi.StringPtrInput
+	// SAML IdP SSO service URL
+	SamlIdpSsoServiceUrl pulumi.StringPtrInput
+	// SAML name identifier format. Value must be one of `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`, `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`, `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+	SamlNameIdentifierFormat pulumi.StringPtrInput
+	// Order of sections on the status page. Value must be a list of `maintenance`, `systemStatus`, `incidents`.
+	SectionOrders pulumi.StringArrayInput
 	// Services attached to the status page
 	ServiceIds pulumi.StringArrayInput
 	// Show uptime. Value must be one of true or false
 	ShowUptime pulumi.BoolPtrInput
-	// Show uptime over x days. Value must be one of `30`, `60`, `90`, `180`, `360`.
+	// Show uptime over x days. Value must be one of `30`, `60`, `90`.
 	ShowUptimeLastDays pulumi.IntPtrInput
+	// The slug of the status page
+	Slug pulumi.StringPtrInput
 	// Message showing when all components are operational
 	SuccessMessage pulumi.StringPtrInput
 	// A valid IANA time zone name.
@@ -390,9 +480,14 @@ func (o StatusPageOutput) AllowSearchEngineIndex() pulumi.BoolOutput {
 	return o.ApplyT(func(v *StatusPage) pulumi.BoolOutput { return v.AllowSearchEngineIndex }).(pulumi.BoolOutput)
 }
 
-// Enable authentication. Value must be one of true or false
+// Enable authentication (deprecated - use authenticationMethod instead). Value must be one of true or false
 func (o StatusPageOutput) AuthenticationEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *StatusPage) pulumi.BoolOutput { return v.AuthenticationEnabled }).(pulumi.BoolOutput)
+}
+
+// Authentication method. Value must be one of `none`, `password`, `saml`.
+func (o StatusPageOutput) AuthenticationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatusPage) pulumi.StringPtrOutput { return v.AuthenticationMethod }).(pulumi.StringPtrOutput)
 }
 
 // Authentication password
@@ -454,6 +549,36 @@ func (o StatusPageOutput) PublicTitle() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatusPage) pulumi.StringOutput { return v.PublicTitle }).(pulumi.StringOutput)
 }
 
+// SAML IdP certificate
+func (o StatusPageOutput) SamlIdpCert() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatusPage) pulumi.StringOutput { return v.SamlIdpCert }).(pulumi.StringOutput)
+}
+
+// SAML IdP certificate fingerprint
+func (o StatusPageOutput) SamlIdpCertFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatusPage) pulumi.StringOutput { return v.SamlIdpCertFingerprint }).(pulumi.StringOutput)
+}
+
+// SAML IdP SLO service URL
+func (o StatusPageOutput) SamlIdpSloServiceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatusPage) pulumi.StringOutput { return v.SamlIdpSloServiceUrl }).(pulumi.StringOutput)
+}
+
+// SAML IdP SSO service URL
+func (o StatusPageOutput) SamlIdpSsoServiceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatusPage) pulumi.StringOutput { return v.SamlIdpSsoServiceUrl }).(pulumi.StringOutput)
+}
+
+// SAML name identifier format. Value must be one of `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`, `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`, `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+func (o StatusPageOutput) SamlNameIdentifierFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatusPage) pulumi.StringOutput { return v.SamlNameIdentifierFormat }).(pulumi.StringOutput)
+}
+
+// Order of sections on the status page. Value must be a list of `maintenance`, `systemStatus`, `incidents`.
+func (o StatusPageOutput) SectionOrders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StatusPage) pulumi.StringArrayOutput { return v.SectionOrders }).(pulumi.StringArrayOutput)
+}
+
 // Services attached to the status page
 func (o StatusPageOutput) ServiceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *StatusPage) pulumi.StringArrayOutput { return v.ServiceIds }).(pulumi.StringArrayOutput)
@@ -464,9 +589,14 @@ func (o StatusPageOutput) ShowUptime() pulumi.BoolOutput {
 	return o.ApplyT(func(v *StatusPage) pulumi.BoolOutput { return v.ShowUptime }).(pulumi.BoolOutput)
 }
 
-// Show uptime over x days. Value must be one of `30`, `60`, `90`, `180`, `360`.
+// Show uptime over x days. Value must be one of `30`, `60`, `90`.
 func (o StatusPageOutput) ShowUptimeLastDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *StatusPage) pulumi.IntOutput { return v.ShowUptimeLastDays }).(pulumi.IntOutput)
+}
+
+// The slug of the status page
+func (o StatusPageOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatusPage) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }
 
 // Message showing when all components are operational

@@ -9,10 +9,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.FormField using the `id`. For example:
+ * rootly.FormField can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/formField:FormField my-resource my-resource-slug
+ * $ pulumi import rootly:index/formField:FormField primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class FormField extends pulumi.CustomResource {
@@ -43,7 +53,11 @@ export class FormField extends pulumi.CustomResource {
         return obj['__pulumiType'] === FormField.__pulumiType;
     }
 
-    declare public readonly defaultValues: pulumi.Output<string[]>;
+    /**
+     * Catalog property ID to auto-set this form field. Only reference-kind catalog properties are supported.
+     */
+    declare public readonly autoSetByCatalogPropertyId: pulumi.Output<string>;
+    declare public readonly defaultValues: pulumi.Output<string[] | undefined>;
     /**
      * The description of the form field
      */
@@ -54,25 +68,25 @@ export class FormField extends pulumi.CustomResource {
      */
     declare public readonly inputKind: pulumi.Output<string | undefined>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `manualStartingDatetimeField`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
      * The name of the form field
      */
     declare public readonly name: pulumi.Output<string>;
-    declare public readonly requireds: pulumi.Output<string[]>;
+    declare public readonly requireds: pulumi.Output<string[] | undefined>;
     /**
      * Whether the form field is shown on the incident details panel. Value must be one of true or false
      */
     declare public readonly showOnIncidentDetails: pulumi.Output<boolean>;
-    declare public readonly showns: pulumi.Output<string[]>;
+    declare public readonly showns: pulumi.Output<string[] | undefined>;
     /**
      * The slug of the form field
      */
     declare public readonly slug: pulumi.Output<string>;
     /**
-     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`.
+     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
      */
     declare public readonly valueKind: pulumi.Output<string | undefined>;
     /**
@@ -93,6 +107,7 @@ export class FormField extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FormFieldState | undefined;
+            resourceInputs["autoSetByCatalogPropertyId"] = state?.autoSetByCatalogPropertyId;
             resourceInputs["defaultValues"] = state?.defaultValues;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
@@ -107,6 +122,7 @@ export class FormField extends pulumi.CustomResource {
             resourceInputs["valueKindCatalogId"] = state?.valueKindCatalogId;
         } else {
             const args = argsOrState as FormFieldArgs | undefined;
+            resourceInputs["autoSetByCatalogPropertyId"] = args?.autoSetByCatalogPropertyId;
             resourceInputs["defaultValues"] = args?.defaultValues;
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
@@ -129,6 +145,10 @@ export class FormField extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FormField resources.
  */
 export interface FormFieldState {
+    /**
+     * Catalog property ID to auto-set this form field. Only reference-kind catalog properties are supported.
+     */
+    autoSetByCatalogPropertyId?: pulumi.Input<string | undefined>;
     defaultValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the form field
@@ -140,7 +160,7 @@ export interface FormFieldState {
      */
     inputKind?: pulumi.Input<string | undefined>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `manualStartingDatetimeField`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
@@ -158,7 +178,7 @@ export interface FormFieldState {
      */
     slug?: pulumi.Input<string | undefined>;
     /**
-     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`.
+     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
      */
     valueKind?: pulumi.Input<string | undefined>;
     /**
@@ -171,6 +191,10 @@ export interface FormFieldState {
  * The set of arguments for constructing a FormField resource.
  */
 export interface FormFieldArgs {
+    /**
+     * Catalog property ID to auto-set this form field. Only reference-kind catalog properties are supported.
+     */
+    autoSetByCatalogPropertyId?: pulumi.Input<string | undefined>;
     defaultValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the form field
@@ -182,7 +206,7 @@ export interface FormFieldArgs {
      */
     inputKind?: pulumi.Input<string | undefined>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `manualStartingDatetimeField`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
@@ -200,7 +224,7 @@ export interface FormFieldArgs {
      */
     slug?: pulumi.Input<string | undefined>;
     /**
-     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`.
+     * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
      */
     valueKind?: pulumi.Input<string | undefined>;
     /**

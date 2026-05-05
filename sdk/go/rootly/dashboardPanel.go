@@ -12,27 +12,34 @@ import (
 	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
-// Manages dashboard_panels.
-//
 // ## Example Usage
 //
 // ## Import
 //
-// Using `pulumi import`, import DashboardPanel using the `id`. For example:
+// DashboardPanel can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/dashboardPanel:DashboardPanel my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/dashboardPanel:DashboardPanel primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type DashboardPanel struct {
 	pulumi.CustomResourceState
 
-	// The id of the parent dashboard
+	// The panel dashboard
 	DashboardId pulumi.StringOutput `pulumi:"dashboardId"`
 	// The name of the dashboard_panel
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The params JSON of the dashboard_panel. See rootly API docs for schema.
-	Params   DashboardPanelParamsOutput      `pulumi:"params"`
-	Position DashboardPanelPositionPtrOutput `pulumi:"position"`
+	Name     pulumi.StringOutput          `pulumi:"name"`
+	Params   DashboardPanelParamsOutput   `pulumi:"params"`
+	Position DashboardPanelPositionOutput `pulumi:"position"`
 }
 
 // NewDashboardPanel registers a new resource with the given unique name, arguments, and options.
@@ -71,21 +78,19 @@ func GetDashboardPanel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DashboardPanel resources.
 type dashboardPanelState struct {
-	// The id of the parent dashboard
+	// The panel dashboard
 	DashboardId *string `pulumi:"dashboardId"`
 	// The name of the dashboard_panel
-	Name *string `pulumi:"name"`
-	// The params JSON of the dashboard_panel. See rootly API docs for schema.
+	Name     *string                 `pulumi:"name"`
 	Params   *DashboardPanelParams   `pulumi:"params"`
 	Position *DashboardPanelPosition `pulumi:"position"`
 }
 
 type DashboardPanelState struct {
-	// The id of the parent dashboard
+	// The panel dashboard
 	DashboardId pulumi.StringPtrInput
 	// The name of the dashboard_panel
-	Name pulumi.StringPtrInput
-	// The params JSON of the dashboard_panel. See rootly API docs for schema.
+	Name     pulumi.StringPtrInput
 	Params   DashboardPanelParamsPtrInput
 	Position DashboardPanelPositionPtrInput
 }
@@ -95,22 +100,20 @@ func (DashboardPanelState) ElementType() reflect.Type {
 }
 
 type dashboardPanelArgs struct {
-	// The id of the parent dashboard
+	// The panel dashboard
 	DashboardId string `pulumi:"dashboardId"`
 	// The name of the dashboard_panel
-	Name *string `pulumi:"name"`
-	// The params JSON of the dashboard_panel. See rootly API docs for schema.
+	Name     *string                 `pulumi:"name"`
 	Params   DashboardPanelParams    `pulumi:"params"`
 	Position *DashboardPanelPosition `pulumi:"position"`
 }
 
 // The set of arguments for constructing a DashboardPanel resource.
 type DashboardPanelArgs struct {
-	// The id of the parent dashboard
+	// The panel dashboard
 	DashboardId pulumi.StringInput
 	// The name of the dashboard_panel
-	Name pulumi.StringPtrInput
-	// The params JSON of the dashboard_panel. See rootly API docs for schema.
+	Name     pulumi.StringPtrInput
 	Params   DashboardPanelParamsInput
 	Position DashboardPanelPositionPtrInput
 }
@@ -202,7 +205,7 @@ func (o DashboardPanelOutput) ToDashboardPanelOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The id of the parent dashboard
+// The panel dashboard
 func (o DashboardPanelOutput) DashboardId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DashboardPanel) pulumi.StringOutput { return v.DashboardId }).(pulumi.StringOutput)
 }
@@ -212,13 +215,12 @@ func (o DashboardPanelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DashboardPanel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The params JSON of the dashboard_panel. See rootly API docs for schema.
 func (o DashboardPanelOutput) Params() DashboardPanelParamsOutput {
 	return o.ApplyT(func(v *DashboardPanel) DashboardPanelParamsOutput { return v.Params }).(DashboardPanelParamsOutput)
 }
 
-func (o DashboardPanelOutput) Position() DashboardPanelPositionPtrOutput {
-	return o.ApplyT(func(v *DashboardPanel) DashboardPanelPositionPtrOutput { return v.Position }).(DashboardPanelPositionPtrOutput)
+func (o DashboardPanelOutput) Position() DashboardPanelPositionOutput {
+	return o.ApplyT(func(v *DashboardPanel) DashboardPanelPositionOutput { return v.Position }).(DashboardPanelPositionOutput)
 }
 
 type DashboardPanelArrayOutput struct{ *pulumi.OutputState }

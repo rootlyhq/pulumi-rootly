@@ -23,6 +23,7 @@ func LookupSubStatus(ctx *pulumi.Context, args *LookupSubStatusArgs, opts ...pul
 
 // A collection of arguments for invoking getSubStatus.
 type LookupSubStatusArgs struct {
+	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt    map[string]string `pulumi:"createdAt"`
 	Name         *string           `pulumi:"name"`
 	ParentStatus *string           `pulumi:"parentStatus"`
@@ -31,11 +32,13 @@ type LookupSubStatusArgs struct {
 
 // A collection of values returned by getSubStatus.
 type LookupSubStatusResult struct {
-	CreatedAt    map[string]string `pulumi:"createdAt"`
-	Id           string            `pulumi:"id"`
-	Name         string            `pulumi:"name"`
-	ParentStatus string            `pulumi:"parentStatus"`
-	Slug         string            `pulumi:"slug"`
+	// Filter by date range using 'lt' and 'gt'.
+	CreatedAt map[string]string `pulumi:"createdAt"`
+	// The ID of this resource.
+	Id           string `pulumi:"id"`
+	Name         string `pulumi:"name"`
+	ParentStatus string `pulumi:"parentStatus"`
+	Slug         string `pulumi:"slug"`
 }
 
 func LookupSubStatusOutput(ctx *pulumi.Context, args LookupSubStatusOutputArgs, opts ...pulumi.InvokeOption) LookupSubStatusResultOutput {
@@ -49,6 +52,7 @@ func LookupSubStatusOutput(ctx *pulumi.Context, args LookupSubStatusOutputArgs, 
 
 // A collection of arguments for invoking getSubStatus.
 type LookupSubStatusOutputArgs struct {
+	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt    pulumi.StringMapInput `pulumi:"createdAt"`
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	ParentStatus pulumi.StringPtrInput `pulumi:"parentStatus"`
@@ -74,10 +78,12 @@ func (o LookupSubStatusResultOutput) ToLookupSubStatusResultOutputWithContext(ct
 	return o
 }
 
+// Filter by date range using 'lt' and 'gt'.
 func (o LookupSubStatusResultOutput) CreatedAt() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupSubStatusResult) map[string]string { return v.CreatedAt }).(pulumi.StringMapOutput)
 }
 
+// The ID of this resource.
 func (o LookupSubStatusResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubStatusResult) string { return v.Id }).(pulumi.StringOutput)
 }

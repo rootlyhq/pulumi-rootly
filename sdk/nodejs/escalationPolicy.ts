@@ -11,10 +11,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.EscalationPolicy using the `id`. For example:
+ * rootly.EscalationPolicy can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/escalationPolicy:EscalationPolicy my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/escalationPolicy:EscalationPolicy primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class EscalationPolicy extends pulumi.CustomResource {
@@ -57,7 +67,7 @@ export class EscalationPolicy extends pulumi.CustomResource {
     /**
      * Associated groups (alerting the group will trigger escalation policy)
      */
-    declare public readonly groupIds: pulumi.Output<string[]>;
+    declare public readonly groupIds: pulumi.Output<string[] | undefined>;
     /**
      * User who updated the escalation policy
      */

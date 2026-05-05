@@ -2,15 +2,27 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.Cause using the `id`. For example:
+ * rootly.Cause can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/cause:Cause my-resource my-resource-slug
+ * $ pulumi import rootly:index/cause:Cause primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class Cause extends pulumi.CustomResource {
@@ -54,6 +66,10 @@ export class Cause extends pulumi.CustomResource {
      */
     declare public readonly position: pulumi.Output<number>;
     /**
+     * Array of property values for this cause.
+     */
+    declare public readonly properties: pulumi.Output<outputs.CauseProperty[] | undefined>;
+    /**
      * The slug of the cause
      */
     declare public readonly slug: pulumi.Output<string>;
@@ -74,12 +90,14 @@ export class Cause extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
+            resourceInputs["properties"] = state?.properties;
             resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as CauseArgs | undefined;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
+            resourceInputs["properties"] = args?.properties;
             resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -104,6 +122,10 @@ export interface CauseState {
      */
     position?: pulumi.Input<number | undefined>;
     /**
+     * Array of property values for this cause.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.CauseProperty>[] | undefined>;
+    /**
      * The slug of the cause
      */
     slug?: pulumi.Input<string | undefined>;
@@ -125,6 +147,10 @@ export interface CauseArgs {
      * Position of the cause
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Array of property values for this cause.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.CauseProperty>[] | undefined>;
     /**
      * The slug of the cause
      */

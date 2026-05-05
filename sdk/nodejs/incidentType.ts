@@ -9,10 +9,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.IncidentType using the `id`. For example:
+ * rootly.IncidentType can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/incidentType:IncidentType my-resource my-resource-slug
+ * $ pulumi import rootly:index/incidentType:IncidentType primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class IncidentType extends pulumi.CustomResource {
@@ -58,19 +68,23 @@ export class IncidentType extends pulumi.CustomResource {
     /**
      * Emails to attach to the incident type
      */
-    declare public readonly notifyEmails: pulumi.Output<string[]>;
+    declare public readonly notifyEmails: pulumi.Output<string[] | undefined>;
     /**
      * Position of the incident type
      */
     declare public readonly position: pulumi.Output<number>;
     /**
+     * Array of property values for this incident type.
+     */
+    declare public readonly properties: pulumi.Output<outputs.IncidentTypeProperty[] | undefined>;
+    /**
      * Slack Aliases associated with this incident type
      */
-    declare public readonly slackAliases: pulumi.Output<outputs.IncidentTypeSlackAlias[]>;
+    declare public readonly slackAliases: pulumi.Output<outputs.IncidentTypeSlackAlias[] | undefined>;
     /**
      * Slack Channels associated with this incident type
      */
-    declare public readonly slackChannels: pulumi.Output<outputs.IncidentTypeSlackChannel[]>;
+    declare public readonly slackChannels: pulumi.Output<outputs.IncidentTypeSlackChannel[] | undefined>;
     /**
      * The slug of the incident type
      */
@@ -94,6 +108,7 @@ export class IncidentType extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["notifyEmails"] = state?.notifyEmails;
             resourceInputs["position"] = state?.position;
+            resourceInputs["properties"] = state?.properties;
             resourceInputs["slackAliases"] = state?.slackAliases;
             resourceInputs["slackChannels"] = state?.slackChannels;
             resourceInputs["slug"] = state?.slug;
@@ -104,6 +119,7 @@ export class IncidentType extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["notifyEmails"] = args?.notifyEmails;
             resourceInputs["position"] = args?.position;
+            resourceInputs["properties"] = args?.properties;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
             resourceInputs["slug"] = args?.slug;
@@ -137,6 +153,10 @@ export interface IncidentTypeState {
      * Position of the incident type
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Array of property values for this incident type.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[] | undefined>;
     /**
      * Slack Aliases associated with this incident type
      */
@@ -175,6 +195,10 @@ export interface IncidentTypeArgs {
      * Position of the incident type
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Array of property values for this incident type.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[] | undefined>;
     /**
      * Slack Aliases associated with this incident type
      */

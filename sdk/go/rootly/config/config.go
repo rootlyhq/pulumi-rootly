@@ -11,12 +11,12 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment variable.
+// The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the `ROOTLY_API_URL` environment variable.
 func GetApiHost(ctx *pulumi.Context) string {
 	return config.Get(ctx, "rootly:apiHost")
 }
 
-// The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the ROOTLY_API_TOKEN environment variable.
+// The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the `ROOTLY_API_TOKEN` environment variable.
 func GetApiToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "rootly:apiToken")
 }

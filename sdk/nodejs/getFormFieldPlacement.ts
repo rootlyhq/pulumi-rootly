@@ -4,8 +4,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export function getFormFieldPlacement(args?: GetFormFieldPlacementArgs, opts?: pulumi.InvokeOptions): Promise<GetFormFieldPlacementResult> {
-    args = args || {};
+export function getFormFieldPlacement(args: GetFormFieldPlacementArgs, opts?: pulumi.InvokeOptions): Promise<GetFormFieldPlacementResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getFormFieldPlacement:getFormFieldPlacement", {
         "form": args.form,
@@ -18,7 +17,7 @@ export function getFormFieldPlacement(args?: GetFormFieldPlacementArgs, opts?: p
  */
 export interface GetFormFieldPlacementArgs {
     form?: string;
-    formFieldId?: string;
+    formFieldId: string;
 }
 
 /**
@@ -32,8 +31,7 @@ export interface GetFormFieldPlacementResult {
      */
     readonly id: string;
 }
-export function getFormFieldPlacementOutput(args?: GetFormFieldPlacementOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFormFieldPlacementResult> {
-    args = args || {};
+export function getFormFieldPlacementOutput(args: GetFormFieldPlacementOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFormFieldPlacementResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getFormFieldPlacement:getFormFieldPlacement", {
         "form": args.form,
@@ -46,5 +44,5 @@ export function getFormFieldPlacementOutput(args?: GetFormFieldPlacementOutputAr
  */
 export interface GetFormFieldPlacementOutputArgs {
     form?: pulumi.Input<string | undefined>;
-    formFieldId?: pulumi.Input<string | undefined>;
+    formFieldId: pulumi.Input<string>;
 }

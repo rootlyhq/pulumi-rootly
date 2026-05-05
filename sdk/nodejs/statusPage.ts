@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.StatusPage using the `id`. For example:
+ * rootly.StatusPage can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/statusPage:StatusPage my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/statusPage:StatusPage primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class StatusPage extends pulumi.CustomResource {
@@ -46,9 +56,13 @@ export class StatusPage extends pulumi.CustomResource {
      */
     declare public readonly allowSearchEngineIndex: pulumi.Output<boolean>;
     /**
-     * Enable authentication. Value must be one of true or false
+     * Enable authentication (deprecated - use authenticationMethod instead). Value must be one of true or false
      */
     declare public readonly authenticationEnabled: pulumi.Output<boolean>;
+    /**
+     * Authentication method. Value must be one of `none`, `password`, `saml`.
+     */
+    declare public readonly authenticationMethod: pulumi.Output<string | undefined>;
     /**
      * Authentication password
      */
@@ -61,7 +75,7 @@ export class StatusPage extends pulumi.CustomResource {
     /**
      * External domain names attached to the status page
      */
-    declare public readonly externalDomainNames: pulumi.Output<string[]>;
+    declare public readonly externalDomainNames: pulumi.Output<string[] | undefined>;
     /**
      * Message showing when at least one component is not operational
      */
@@ -73,7 +87,7 @@ export class StatusPage extends pulumi.CustomResource {
     /**
      * Functionalities attached to the status page
      */
-    declare public readonly functionalityIds: pulumi.Output<string[]>;
+    declare public readonly functionalityIds: pulumi.Output<string[] | undefined>;
     /**
      * Google Analytics tracking ID
      */
@@ -95,17 +109,45 @@ export class StatusPage extends pulumi.CustomResource {
      */
     declare public readonly publicTitle: pulumi.Output<string>;
     /**
+     * SAML IdP certificate
+     */
+    declare public readonly samlIdpCert: pulumi.Output<string>;
+    /**
+     * SAML IdP certificate fingerprint
+     */
+    declare public readonly samlIdpCertFingerprint: pulumi.Output<string>;
+    /**
+     * SAML IdP SLO service URL
+     */
+    declare public readonly samlIdpSloServiceUrl: pulumi.Output<string>;
+    /**
+     * SAML IdP SSO service URL
+     */
+    declare public readonly samlIdpSsoServiceUrl: pulumi.Output<string>;
+    /**
+     * SAML name identifier format. Value must be one of `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`, `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`, `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     */
+    declare public readonly samlNameIdentifierFormat: pulumi.Output<string>;
+    /**
+     * Order of sections on the status page. Value must be a list of `maintenance`, `systemStatus`, `incidents`.
+     */
+    declare public readonly sectionOrders: pulumi.Output<string[]>;
+    /**
      * Services attached to the status page
      */
-    declare public readonly serviceIds: pulumi.Output<string[]>;
+    declare public readonly serviceIds: pulumi.Output<string[] | undefined>;
     /**
      * Show uptime. Value must be one of true or false
      */
     declare public readonly showUptime: pulumi.Output<boolean>;
     /**
-     * Show uptime over x days. Value must be one of `30`, `60`, `90`, `180`, `360`.
+     * Show uptime over x days. Value must be one of `30`, `60`, `90`.
      */
     declare public readonly showUptimeLastDays: pulumi.Output<number>;
+    /**
+     * The slug of the status page
+     */
+    declare public readonly slug: pulumi.Output<string>;
     /**
      * Message showing when all components are operational
      */
@@ -146,6 +188,7 @@ export class StatusPage extends pulumi.CustomResource {
             const state = argsOrState as StatusPageState | undefined;
             resourceInputs["allowSearchEngineIndex"] = state?.allowSearchEngineIndex;
             resourceInputs["authenticationEnabled"] = state?.authenticationEnabled;
+            resourceInputs["authenticationMethod"] = state?.authenticationMethod;
             resourceInputs["authenticationPassword"] = state?.authenticationPassword;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
@@ -158,9 +201,16 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["public"] = state?.public;
             resourceInputs["publicDescription"] = state?.publicDescription;
             resourceInputs["publicTitle"] = state?.publicTitle;
+            resourceInputs["samlIdpCert"] = state?.samlIdpCert;
+            resourceInputs["samlIdpCertFingerprint"] = state?.samlIdpCertFingerprint;
+            resourceInputs["samlIdpSloServiceUrl"] = state?.samlIdpSloServiceUrl;
+            resourceInputs["samlIdpSsoServiceUrl"] = state?.samlIdpSsoServiceUrl;
+            resourceInputs["samlNameIdentifierFormat"] = state?.samlNameIdentifierFormat;
+            resourceInputs["sectionOrders"] = state?.sectionOrders;
             resourceInputs["serviceIds"] = state?.serviceIds;
             resourceInputs["showUptime"] = state?.showUptime;
             resourceInputs["showUptimeLastDays"] = state?.showUptimeLastDays;
+            resourceInputs["slug"] = state?.slug;
             resourceInputs["successMessage"] = state?.successMessage;
             resourceInputs["timeZone"] = state?.timeZone;
             resourceInputs["title"] = state?.title;
@@ -174,6 +224,7 @@ export class StatusPage extends pulumi.CustomResource {
             }
             resourceInputs["allowSearchEngineIndex"] = args?.allowSearchEngineIndex;
             resourceInputs["authenticationEnabled"] = args?.authenticationEnabled;
+            resourceInputs["authenticationMethod"] = args?.authenticationMethod;
             resourceInputs["authenticationPassword"] = args?.authenticationPassword;
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
@@ -186,9 +237,16 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["public"] = args?.public;
             resourceInputs["publicDescription"] = args?.publicDescription;
             resourceInputs["publicTitle"] = args?.publicTitle;
+            resourceInputs["samlIdpCert"] = args?.samlIdpCert;
+            resourceInputs["samlIdpCertFingerprint"] = args?.samlIdpCertFingerprint;
+            resourceInputs["samlIdpSloServiceUrl"] = args?.samlIdpSloServiceUrl;
+            resourceInputs["samlIdpSsoServiceUrl"] = args?.samlIdpSsoServiceUrl;
+            resourceInputs["samlNameIdentifierFormat"] = args?.samlNameIdentifierFormat;
+            resourceInputs["sectionOrders"] = args?.sectionOrders;
             resourceInputs["serviceIds"] = args?.serviceIds;
             resourceInputs["showUptime"] = args?.showUptime;
             resourceInputs["showUptimeLastDays"] = args?.showUptimeLastDays;
+            resourceInputs["slug"] = args?.slug;
             resourceInputs["successMessage"] = args?.successMessage;
             resourceInputs["timeZone"] = args?.timeZone;
             resourceInputs["title"] = args?.title;
@@ -210,9 +268,13 @@ export interface StatusPageState {
      */
     allowSearchEngineIndex?: pulumi.Input<boolean | undefined>;
     /**
-     * Enable authentication. Value must be one of true or false
+     * Enable authentication (deprecated - use authenticationMethod instead). Value must be one of true or false
      */
     authenticationEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Authentication method. Value must be one of `none`, `password`, `saml`.
+     */
+    authenticationMethod?: pulumi.Input<string | undefined>;
     /**
      * Authentication password
      */
@@ -259,6 +321,30 @@ export interface StatusPageState {
      */
     publicTitle?: pulumi.Input<string | undefined>;
     /**
+     * SAML IdP certificate
+     */
+    samlIdpCert?: pulumi.Input<string | undefined>;
+    /**
+     * SAML IdP certificate fingerprint
+     */
+    samlIdpCertFingerprint?: pulumi.Input<string | undefined>;
+    /**
+     * SAML IdP SLO service URL
+     */
+    samlIdpSloServiceUrl?: pulumi.Input<string | undefined>;
+    /**
+     * SAML IdP SSO service URL
+     */
+    samlIdpSsoServiceUrl?: pulumi.Input<string | undefined>;
+    /**
+     * SAML name identifier format. Value must be one of `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`, `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`, `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     */
+    samlNameIdentifierFormat?: pulumi.Input<string | undefined>;
+    /**
+     * Order of sections on the status page. Value must be a list of `maintenance`, `systemStatus`, `incidents`.
+     */
+    sectionOrders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Services attached to the status page
      */
     serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -267,9 +353,13 @@ export interface StatusPageState {
      */
     showUptime?: pulumi.Input<boolean | undefined>;
     /**
-     * Show uptime over x days. Value must be one of `30`, `60`, `90`, `180`, `360`.
+     * Show uptime over x days. Value must be one of `30`, `60`, `90`.
      */
     showUptimeLastDays?: pulumi.Input<number | undefined>;
+    /**
+     * The slug of the status page
+     */
+    slug?: pulumi.Input<string | undefined>;
     /**
      * Message showing when all components are operational
      */
@@ -305,9 +395,13 @@ export interface StatusPageArgs {
      */
     allowSearchEngineIndex?: pulumi.Input<boolean | undefined>;
     /**
-     * Enable authentication. Value must be one of true or false
+     * Enable authentication (deprecated - use authenticationMethod instead). Value must be one of true or false
      */
     authenticationEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Authentication method. Value must be one of `none`, `password`, `saml`.
+     */
+    authenticationMethod?: pulumi.Input<string | undefined>;
     /**
      * Authentication password
      */
@@ -354,6 +448,30 @@ export interface StatusPageArgs {
      */
     publicTitle?: pulumi.Input<string | undefined>;
     /**
+     * SAML IdP certificate
+     */
+    samlIdpCert?: pulumi.Input<string | undefined>;
+    /**
+     * SAML IdP certificate fingerprint
+     */
+    samlIdpCertFingerprint?: pulumi.Input<string | undefined>;
+    /**
+     * SAML IdP SLO service URL
+     */
+    samlIdpSloServiceUrl?: pulumi.Input<string | undefined>;
+    /**
+     * SAML IdP SSO service URL
+     */
+    samlIdpSsoServiceUrl?: pulumi.Input<string | undefined>;
+    /**
+     * SAML name identifier format. Value must be one of `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`, `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`, `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
+     */
+    samlNameIdentifierFormat?: pulumi.Input<string | undefined>;
+    /**
+     * Order of sections on the status page. Value must be a list of `maintenance`, `systemStatus`, `incidents`.
+     */
+    sectionOrders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Services attached to the status page
      */
     serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -362,9 +480,13 @@ export interface StatusPageArgs {
      */
     showUptime?: pulumi.Input<boolean | undefined>;
     /**
-     * Show uptime over x days. Value must be one of `30`, `60`, `90`, `180`, `360`.
+     * Show uptime over x days. Value must be one of `30`, `60`, `90`.
      */
     showUptimeLastDays?: pulumi.Input<number | undefined>;
+    /**
+     * The slug of the status page
+     */
+    slug?: pulumi.Input<string | undefined>;
     /**
      * Message showing when all components are operational
      */

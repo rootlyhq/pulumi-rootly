@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.FormFieldPlacement using the `id`. For example:
+ * rootly.FormFieldPlacement can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/formFieldPlacement:FormFieldPlacement my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/formFieldPlacement:FormFieldPlacement primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class FormFieldPlacement extends pulumi.CustomResource {
@@ -54,6 +64,10 @@ export class FormFieldPlacement extends pulumi.CustomResource {
      */
     declare public readonly formSetId: pulumi.Output<string>;
     /**
+     * Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
+     */
+    declare public readonly nonEditable: pulumi.Output<boolean>;
+    /**
      * Logical operator when evaluating multiple form*field*placement_conditions with conditioned=placement. Value must be one of `and`, `or`.
      */
     declare public readonly placementOperator: pulumi.Output<string | undefined>;
@@ -86,6 +100,7 @@ export class FormFieldPlacement extends pulumi.CustomResource {
             resourceInputs["form"] = state?.form;
             resourceInputs["formFieldId"] = state?.formFieldId;
             resourceInputs["formSetId"] = state?.formSetId;
+            resourceInputs["nonEditable"] = state?.nonEditable;
             resourceInputs["placementOperator"] = state?.placementOperator;
             resourceInputs["position"] = state?.position;
             resourceInputs["required"] = state?.required;
@@ -101,6 +116,7 @@ export class FormFieldPlacement extends pulumi.CustomResource {
             resourceInputs["form"] = args?.form;
             resourceInputs["formFieldId"] = args?.formFieldId;
             resourceInputs["formSetId"] = args?.formSetId;
+            resourceInputs["nonEditable"] = args?.nonEditable;
             resourceInputs["placementOperator"] = args?.placementOperator;
             resourceInputs["position"] = args?.position;
             resourceInputs["required"] = args?.required;
@@ -127,6 +143,10 @@ export interface FormFieldPlacementState {
      * The form set this field is placed in.
      */
     formSetId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
+     */
+    nonEditable?: pulumi.Input<boolean | undefined>;
     /**
      * Logical operator when evaluating multiple form*field*placement_conditions with conditioned=placement. Value must be one of `and`, `or`.
      */
@@ -161,6 +181,10 @@ export interface FormFieldPlacementArgs {
      * The form set this field is placed in.
      */
     formSetId: pulumi.Input<string>;
+    /**
+     * Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
+     */
+    nonEditable?: pulumi.Input<boolean | undefined>;
     /**
      * Logical operator when evaluating multiple form*field*placement_conditions with conditioned=placement. Value must be one of `and`, `or`.
      */

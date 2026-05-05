@@ -12,18 +12,32 @@ import (
 	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
+// *Note: If you are an advanced alert routing user, you should use the Alert Routes resource/data source instead of this one. If you don't know whether you are an advanced alert routing user, please contact Rootly customer support.*
+//
 // ## Import
 //
-// Using `pulumi import`, import AlertRoutingRule using the `id`. For example:
+// AlertRoutingRule can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/alertRoutingRule:AlertRoutingRule my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/alertRoutingRule:AlertRoutingRule primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type AlertRoutingRule struct {
 	pulumi.CustomResourceState
 
 	// The ID of the alerts source
 	AlertsSourceId pulumi.StringOutput `pulumi:"alertsSourceId"`
+	// The condition groups for the alert routing rule
+	ConditionGroups AlertRoutingRuleConditionGroupArrayOutput `pulumi:"conditionGroups"`
 	// The type of condition for the alert routing rule. Value must be one of `all`, `any`.
 	ConditionType pulumi.StringPtrOutput `pulumi:"conditionType"`
 	// The conditions for the alert routing rule
@@ -33,6 +47,8 @@ type AlertRoutingRule struct {
 	Enabled     pulumi.BoolPtrOutput              `pulumi:"enabled"`
 	// The name of the alert routing rule
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The position of the alert routing rule for ordering evaluation
+	Position pulumi.IntOutput `pulumi:"position"`
 }
 
 // NewAlertRoutingRule registers a new resource with the given unique name, arguments, and options.
@@ -73,6 +89,8 @@ func GetAlertRoutingRule(ctx *pulumi.Context,
 type alertRoutingRuleState struct {
 	// The ID of the alerts source
 	AlertsSourceId *string `pulumi:"alertsSourceId"`
+	// The condition groups for the alert routing rule
+	ConditionGroups []AlertRoutingRuleConditionGroup `pulumi:"conditionGroups"`
 	// The type of condition for the alert routing rule. Value must be one of `all`, `any`.
 	ConditionType *string `pulumi:"conditionType"`
 	// The conditions for the alert routing rule
@@ -82,11 +100,15 @@ type alertRoutingRuleState struct {
 	Enabled     *bool                        `pulumi:"enabled"`
 	// The name of the alert routing rule
 	Name *string `pulumi:"name"`
+	// The position of the alert routing rule for ordering evaluation
+	Position *int `pulumi:"position"`
 }
 
 type AlertRoutingRuleState struct {
 	// The ID of the alerts source
 	AlertsSourceId pulumi.StringPtrInput
+	// The condition groups for the alert routing rule
+	ConditionGroups AlertRoutingRuleConditionGroupArrayInput
 	// The type of condition for the alert routing rule. Value must be one of `all`, `any`.
 	ConditionType pulumi.StringPtrInput
 	// The conditions for the alert routing rule
@@ -96,6 +118,8 @@ type AlertRoutingRuleState struct {
 	Enabled     pulumi.BoolPtrInput
 	// The name of the alert routing rule
 	Name pulumi.StringPtrInput
+	// The position of the alert routing rule for ordering evaluation
+	Position pulumi.IntPtrInput
 }
 
 func (AlertRoutingRuleState) ElementType() reflect.Type {
@@ -105,6 +129,8 @@ func (AlertRoutingRuleState) ElementType() reflect.Type {
 type alertRoutingRuleArgs struct {
 	// The ID of the alerts source
 	AlertsSourceId string `pulumi:"alertsSourceId"`
+	// The condition groups for the alert routing rule
+	ConditionGroups []AlertRoutingRuleConditionGroup `pulumi:"conditionGroups"`
 	// The type of condition for the alert routing rule. Value must be one of `all`, `any`.
 	ConditionType *string `pulumi:"conditionType"`
 	// The conditions for the alert routing rule
@@ -114,12 +140,16 @@ type alertRoutingRuleArgs struct {
 	Enabled     *bool                       `pulumi:"enabled"`
 	// The name of the alert routing rule
 	Name *string `pulumi:"name"`
+	// The position of the alert routing rule for ordering evaluation
+	Position *int `pulumi:"position"`
 }
 
 // The set of arguments for constructing a AlertRoutingRule resource.
 type AlertRoutingRuleArgs struct {
 	// The ID of the alerts source
 	AlertsSourceId pulumi.StringInput
+	// The condition groups for the alert routing rule
+	ConditionGroups AlertRoutingRuleConditionGroupArrayInput
 	// The type of condition for the alert routing rule. Value must be one of `all`, `any`.
 	ConditionType pulumi.StringPtrInput
 	// The conditions for the alert routing rule
@@ -129,6 +159,8 @@ type AlertRoutingRuleArgs struct {
 	Enabled     pulumi.BoolPtrInput
 	// The name of the alert routing rule
 	Name pulumi.StringPtrInput
+	// The position of the alert routing rule for ordering evaluation
+	Position pulumi.IntPtrInput
 }
 
 func (AlertRoutingRuleArgs) ElementType() reflect.Type {
@@ -223,6 +255,11 @@ func (o AlertRoutingRuleOutput) AlertsSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertRoutingRule) pulumi.StringOutput { return v.AlertsSourceId }).(pulumi.StringOutput)
 }
 
+// The condition groups for the alert routing rule
+func (o AlertRoutingRuleOutput) ConditionGroups() AlertRoutingRuleConditionGroupArrayOutput {
+	return o.ApplyT(func(v *AlertRoutingRule) AlertRoutingRuleConditionGroupArrayOutput { return v.ConditionGroups }).(AlertRoutingRuleConditionGroupArrayOutput)
+}
+
 // The type of condition for the alert routing rule. Value must be one of `all`, `any`.
 func (o AlertRoutingRuleOutput) ConditionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertRoutingRule) pulumi.StringPtrOutput { return v.ConditionType }).(pulumi.StringPtrOutput)
@@ -245,6 +282,11 @@ func (o AlertRoutingRuleOutput) Enabled() pulumi.BoolPtrOutput {
 // The name of the alert routing rule
 func (o AlertRoutingRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertRoutingRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The position of the alert routing rule for ordering evaluation
+func (o AlertRoutingRuleOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v *AlertRoutingRule) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
 }
 
 type AlertRoutingRuleArrayOutput struct{ *pulumi.OutputState }
