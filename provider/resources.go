@@ -26,7 +26,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 
 	// Replace this provider with the provider you are bridging.
-	rootly "github.com/rootlyhq/terraform-provider-rootly/v2/provider"
+	rootly "github.com/rootlyhq/terraform-provider-rootly/v5/provider"
 
 	"github.com/rootlyhq/pulumi-rootly/provider/pkg/version"
 )
@@ -138,7 +138,7 @@ func Provider() tfbridge.ProviderInfo {
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this should
 		// match the TF provider module's require directive, not any replace directives.
 		GitHubOrg:               "rootlyhq",
-		TFProviderModuleVersion: "v2",
+		TFProviderModuleVersion: "v5",
 		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
 		Config:                  map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
