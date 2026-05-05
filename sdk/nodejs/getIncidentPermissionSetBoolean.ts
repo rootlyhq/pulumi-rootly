@@ -4,11 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export function getIncidentPermissionSetBoolean(args?: GetIncidentPermissionSetBooleanArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentPermissionSetBooleanResult> {
-    args = args || {};
+export function getIncidentPermissionSetBoolean(args: GetIncidentPermissionSetBooleanArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentPermissionSetBooleanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getIncidentPermissionSetBoolean:getIncidentPermissionSetBoolean", {
         "createdAt": args.createdAt,
+        "incidentPermissionSetId": args.incidentPermissionSetId,
         "kind": args.kind,
     }, opts);
 }
@@ -21,6 +21,7 @@ export interface GetIncidentPermissionSetBooleanArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     createdAt?: {[key: string]: string};
+    incidentPermissionSetId: string;
     kind?: string;
 }
 
@@ -36,13 +37,14 @@ export interface GetIncidentPermissionSetBooleanResult {
      * The ID of this resource.
      */
     readonly id: string;
+    readonly incidentPermissionSetId: string;
     readonly kind: string;
 }
-export function getIncidentPermissionSetBooleanOutput(args?: GetIncidentPermissionSetBooleanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIncidentPermissionSetBooleanResult> {
-    args = args || {};
+export function getIncidentPermissionSetBooleanOutput(args: GetIncidentPermissionSetBooleanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIncidentPermissionSetBooleanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getIncidentPermissionSetBoolean:getIncidentPermissionSetBoolean", {
         "createdAt": args.createdAt,
+        "incidentPermissionSetId": args.incidentPermissionSetId,
         "kind": args.kind,
     }, opts);
 }
@@ -55,5 +57,6 @@ export interface GetIncidentPermissionSetBooleanOutputArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    incidentPermissionSetId: pulumi.Input<string>;
     kind?: pulumi.Input<string | undefined>;
 }

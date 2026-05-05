@@ -23,15 +23,20 @@ func LookupIncidentSubStatus(ctx *pulumi.Context, args *LookupIncidentSubStatusA
 
 // A collection of arguments for invoking getIncidentSubStatus.
 type LookupIncidentSubStatusArgs struct {
+	// Filter by date range using 'lt' and 'gt'.
 	AssignedAt  map[string]string `pulumi:"assignedAt"`
+	IncidentId  string            `pulumi:"incidentId"`
 	SubStatusId *string           `pulumi:"subStatusId"`
 }
 
 // A collection of values returned by getIncidentSubStatus.
 type LookupIncidentSubStatusResult struct {
-	AssignedAt  map[string]string `pulumi:"assignedAt"`
-	Id          string            `pulumi:"id"`
-	SubStatusId string            `pulumi:"subStatusId"`
+	// Filter by date range using 'lt' and 'gt'.
+	AssignedAt map[string]string `pulumi:"assignedAt"`
+	// The ID of this resource.
+	Id          string `pulumi:"id"`
+	IncidentId  string `pulumi:"incidentId"`
+	SubStatusId string `pulumi:"subStatusId"`
 }
 
 func LookupIncidentSubStatusOutput(ctx *pulumi.Context, args LookupIncidentSubStatusOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentSubStatusResultOutput {
@@ -45,7 +50,9 @@ func LookupIncidentSubStatusOutput(ctx *pulumi.Context, args LookupIncidentSubSt
 
 // A collection of arguments for invoking getIncidentSubStatus.
 type LookupIncidentSubStatusOutputArgs struct {
+	// Filter by date range using 'lt' and 'gt'.
 	AssignedAt  pulumi.StringMapInput `pulumi:"assignedAt"`
+	IncidentId  pulumi.StringInput    `pulumi:"incidentId"`
 	SubStatusId pulumi.StringPtrInput `pulumi:"subStatusId"`
 }
 
@@ -68,12 +75,18 @@ func (o LookupIncidentSubStatusResultOutput) ToLookupIncidentSubStatusResultOutp
 	return o
 }
 
+// Filter by date range using 'lt' and 'gt'.
 func (o LookupIncidentSubStatusResultOutput) AssignedAt() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupIncidentSubStatusResult) map[string]string { return v.AssignedAt }).(pulumi.StringMapOutput)
 }
 
+// The ID of this resource.
 func (o LookupIncidentSubStatusResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentSubStatusResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupIncidentSubStatusResultOutput) IncidentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIncidentSubStatusResult) string { return v.IncidentId }).(pulumi.StringOutput)
 }
 
 func (o LookupIncidentSubStatusResultOutput) SubStatusId() pulumi.StringOutput {

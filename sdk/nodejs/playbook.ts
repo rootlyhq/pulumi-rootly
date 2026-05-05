@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.Playbook using the `id`. For example:
+ * rootly.Playbook can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/playbook:Playbook my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/playbook:Playbook primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class Playbook extends pulumi.CustomResource {
@@ -42,33 +52,33 @@ export class Playbook extends pulumi.CustomResource {
     }
 
     /**
-     * The Environment ID's to attach to the incident
+     * The Environment IDs to attach to the incident
      */
-    declare public readonly environmentIds: pulumi.Output<string[]>;
+    declare public readonly environmentIds: pulumi.Output<string[] | undefined>;
     /**
      * The external url of the playbook
      */
     declare public readonly externalUrl: pulumi.Output<string>;
     /**
-     * The Functionality ID's to attach to the incident
+     * The Functionality IDs to attach to the incident
      */
-    declare public readonly functionalityIds: pulumi.Output<string[]>;
+    declare public readonly functionalityIds: pulumi.Output<string[] | undefined>;
     /**
-     * The Team ID's to attach to the incident
+     * The Team IDs to attach to the incident
      */
-    declare public readonly groupIds: pulumi.Output<string[]>;
+    declare public readonly groupIds: pulumi.Output<string[] | undefined>;
     /**
-     * The Incident Type ID's to attach to the incident
+     * The Incident Type IDs to attach to the incident
      */
-    declare public readonly incidentTypeIds: pulumi.Output<string[]>;
+    declare public readonly incidentTypeIds: pulumi.Output<string[] | undefined>;
     /**
-     * The Service ID's to attach to the incident
+     * The Service IDs to attach to the incident
      */
-    declare public readonly serviceIds: pulumi.Output<string[]>;
+    declare public readonly serviceIds: pulumi.Output<string[] | undefined>;
     /**
-     * The Severity ID's to attach to the incident
+     * The Severity IDs to attach to the incident
      */
-    declare public readonly severityIds: pulumi.Output<string[]>;
+    declare public readonly severityIds: pulumi.Output<string[] | undefined>;
     /**
      * The summary of the playbook
      */
@@ -125,7 +135,7 @@ export class Playbook extends pulumi.CustomResource {
  */
 export interface PlaybookState {
     /**
-     * The Environment ID's to attach to the incident
+     * The Environment IDs to attach to the incident
      */
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -133,23 +143,23 @@ export interface PlaybookState {
      */
     externalUrl?: pulumi.Input<string | undefined>;
     /**
-     * The Functionality ID's to attach to the incident
+     * The Functionality IDs to attach to the incident
      */
     functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Team ID's to attach to the incident
+     * The Team IDs to attach to the incident
      */
     groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Incident Type ID's to attach to the incident
+     * The Incident Type IDs to attach to the incident
      */
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Service ID's to attach to the incident
+     * The Service IDs to attach to the incident
      */
     serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Severity ID's to attach to the incident
+     * The Severity IDs to attach to the incident
      */
     severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -167,7 +177,7 @@ export interface PlaybookState {
  */
 export interface PlaybookArgs {
     /**
-     * The Environment ID's to attach to the incident
+     * The Environment IDs to attach to the incident
      */
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -175,23 +185,23 @@ export interface PlaybookArgs {
      */
     externalUrl?: pulumi.Input<string | undefined>;
     /**
-     * The Functionality ID's to attach to the incident
+     * The Functionality IDs to attach to the incident
      */
     functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Team ID's to attach to the incident
+     * The Team IDs to attach to the incident
      */
     groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Incident Type ID's to attach to the incident
+     * The Incident Type IDs to attach to the incident
      */
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Service ID's to attach to the incident
+     * The Service IDs to attach to the incident
      */
     serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Severity ID's to attach to the incident
+     * The Severity IDs to attach to the incident
      */
     severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

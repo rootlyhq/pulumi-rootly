@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.Heartbeat using the `id`. For example:
+ * rootly.Heartbeat can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/heartbeat:Heartbeat my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/heartbeat:Heartbeat primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class Heartbeat extends pulumi.CustomResource {
@@ -42,6 +52,10 @@ export class Heartbeat extends pulumi.CustomResource {
     }
 
     /**
+     * Description of alerts triggered when heartbeat expires.
+     */
+    declare public readonly alertDescription: pulumi.Output<string>;
+    /**
      * Summary of alerts triggered when heartbeat expires.
      */
     declare public readonly alertSummary: pulumi.Output<string>;
@@ -53,6 +67,10 @@ export class Heartbeat extends pulumi.CustomResource {
      * The description of the heartbeat
      */
     declare public readonly description: pulumi.Output<string>;
+    /**
+     * Email address to receive heartbeat pings.
+     */
+    declare public readonly emailAddress: pulumi.Output<string>;
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * When heartbeat expires
@@ -60,7 +78,7 @@ export class Heartbeat extends pulumi.CustomResource {
     declare public readonly expiresAt: pulumi.Output<string>;
     declare public readonly interval: pulumi.Output<number>;
     /**
-     * Value must be one of `seconds`, `minutes`, `hours`.
+     * Value must be one of `minutes`, `hours`, `days`.
      */
     declare public readonly intervalUnit: pulumi.Output<string | undefined>;
     /**
@@ -73,7 +91,7 @@ export class Heartbeat extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly notificationTargetId: pulumi.Output<string>;
     /**
-     * Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.
+     * The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
      */
     declare public readonly notificationTargetType: pulumi.Output<string | undefined>;
     /**
@@ -87,7 +105,7 @@ export class Heartbeat extends pulumi.CustomResource {
     /**
      * Value must be one of `waiting`, `active`, `expired`.
      */
-    declare public readonly status: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string>;
 
     /**
      * Create a Heartbeat resource with the given unique name, arguments, and options.
@@ -102,9 +120,11 @@ export class Heartbeat extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HeartbeatState | undefined;
+            resourceInputs["alertDescription"] = state?.alertDescription;
             resourceInputs["alertSummary"] = state?.alertSummary;
             resourceInputs["alertUrgencyId"] = state?.alertUrgencyId;
             resourceInputs["description"] = state?.description;
+            resourceInputs["emailAddress"] = state?.emailAddress;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["interval"] = state?.interval;
@@ -127,9 +147,11 @@ export class Heartbeat extends pulumi.CustomResource {
             if (args?.notificationTargetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationTargetId'");
             }
+            resourceInputs["alertDescription"] = args?.alertDescription;
             resourceInputs["alertSummary"] = args?.alertSummary;
             resourceInputs["alertUrgencyId"] = args?.alertUrgencyId;
             resourceInputs["description"] = args?.description;
+            resourceInputs["emailAddress"] = args?.emailAddress;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["expiresAt"] = args?.expiresAt;
             resourceInputs["interval"] = args?.interval;
@@ -152,6 +174,10 @@ export class Heartbeat extends pulumi.CustomResource {
  */
 export interface HeartbeatState {
     /**
+     * Description of alerts triggered when heartbeat expires.
+     */
+    alertDescription?: pulumi.Input<string | undefined>;
+    /**
      * Summary of alerts triggered when heartbeat expires.
      */
     alertSummary?: pulumi.Input<string | undefined>;
@@ -163,6 +189,10 @@ export interface HeartbeatState {
      * The description of the heartbeat
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Email address to receive heartbeat pings.
+     */
+    emailAddress?: pulumi.Input<string | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When heartbeat expires
@@ -170,7 +200,7 @@ export interface HeartbeatState {
     expiresAt?: pulumi.Input<string | undefined>;
     interval?: pulumi.Input<number | undefined>;
     /**
-     * Value must be one of `seconds`, `minutes`, `hours`.
+     * Value must be one of `minutes`, `hours`, `days`.
      */
     intervalUnit?: pulumi.Input<string | undefined>;
     /**
@@ -183,7 +213,7 @@ export interface HeartbeatState {
     name?: pulumi.Input<string | undefined>;
     notificationTargetId?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.
+     * The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
      */
     notificationTargetType?: pulumi.Input<string | undefined>;
     /**
@@ -205,6 +235,10 @@ export interface HeartbeatState {
  */
 export interface HeartbeatArgs {
     /**
+     * Description of alerts triggered when heartbeat expires.
+     */
+    alertDescription?: pulumi.Input<string | undefined>;
+    /**
      * Summary of alerts triggered when heartbeat expires.
      */
     alertSummary: pulumi.Input<string>;
@@ -216,6 +250,10 @@ export interface HeartbeatArgs {
      * The description of the heartbeat
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Email address to receive heartbeat pings.
+     */
+    emailAddress?: pulumi.Input<string | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     /**
      * When heartbeat expires
@@ -223,7 +261,7 @@ export interface HeartbeatArgs {
     expiresAt?: pulumi.Input<string | undefined>;
     interval: pulumi.Input<number>;
     /**
-     * Value must be one of `seconds`, `minutes`, `hours`.
+     * Value must be one of `minutes`, `hours`, `days`.
      */
     intervalUnit?: pulumi.Input<string | undefined>;
     /**
@@ -236,7 +274,7 @@ export interface HeartbeatArgs {
     name?: pulumi.Input<string | undefined>;
     notificationTargetId: pulumi.Input<string>;
     /**
-     * Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.
+     * The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
      */
     notificationTargetType?: pulumi.Input<string | undefined>;
     /**

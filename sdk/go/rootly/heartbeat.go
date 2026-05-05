@@ -14,39 +14,53 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import Heartbeat using the `id`. For example:
+// Heartbeat can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/heartbeat:Heartbeat my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/heartbeat:Heartbeat primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type Heartbeat struct {
 	pulumi.CustomResourceState
 
+	// Description of alerts triggered when heartbeat expires.
+	AlertDescription pulumi.StringOutput `pulumi:"alertDescription"`
 	// Summary of alerts triggered when heartbeat expires.
 	AlertSummary pulumi.StringOutput `pulumi:"alertSummary"`
 	// Urgency of alerts triggered when heartbeat expires.
 	AlertUrgencyId pulumi.StringOutput `pulumi:"alertUrgencyId"`
 	// The description of the heartbeat
-	Description pulumi.StringOutput  `pulumi:"description"`
-	Enabled     pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Email address to receive heartbeat pings.
+	EmailAddress pulumi.StringOutput  `pulumi:"emailAddress"`
+	Enabled      pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// When heartbeat expires
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	Interval  pulumi.IntOutput    `pulumi:"interval"`
-	// Value must be one of `seconds`, `minutes`, `hours`.
+	// Value must be one of `minutes`, `hours`, `days`.
 	IntervalUnit pulumi.StringPtrOutput `pulumi:"intervalUnit"`
 	// When the heartbeat was last pinged.
 	LastPingedAt pulumi.StringOutput `pulumi:"lastPingedAt"`
 	// The name of the heartbeat
 	Name                 pulumi.StringOutput `pulumi:"name"`
 	NotificationTargetId pulumi.StringOutput `pulumi:"notificationTargetId"`
-	// Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.
+	// The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 	NotificationTargetType pulumi.StringPtrOutput `pulumi:"notificationTargetType"`
 	// URL to receive heartbeat pings.
 	PingUrl pulumi.StringOutput `pulumi:"pingUrl"`
 	// Secret used as bearer token when pinging heartbeat.
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// Value must be one of `waiting`, `active`, `expired`.
-	Status pulumi.StringPtrOutput `pulumi:"status"`
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewHeartbeat registers a new resource with the given unique name, arguments, and options.
@@ -88,24 +102,28 @@ func GetHeartbeat(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Heartbeat resources.
 type heartbeatState struct {
+	// Description of alerts triggered when heartbeat expires.
+	AlertDescription *string `pulumi:"alertDescription"`
 	// Summary of alerts triggered when heartbeat expires.
 	AlertSummary *string `pulumi:"alertSummary"`
 	// Urgency of alerts triggered when heartbeat expires.
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
 	// The description of the heartbeat
 	Description *string `pulumi:"description"`
-	Enabled     *bool   `pulumi:"enabled"`
+	// Email address to receive heartbeat pings.
+	EmailAddress *string `pulumi:"emailAddress"`
+	Enabled      *bool   `pulumi:"enabled"`
 	// When heartbeat expires
 	ExpiresAt *string `pulumi:"expiresAt"`
 	Interval  *int    `pulumi:"interval"`
-	// Value must be one of `seconds`, `minutes`, `hours`.
+	// Value must be one of `minutes`, `hours`, `days`.
 	IntervalUnit *string `pulumi:"intervalUnit"`
 	// When the heartbeat was last pinged.
 	LastPingedAt *string `pulumi:"lastPingedAt"`
 	// The name of the heartbeat
 	Name                 *string `pulumi:"name"`
 	NotificationTargetId *string `pulumi:"notificationTargetId"`
-	// Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.
+	// The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 	NotificationTargetType *string `pulumi:"notificationTargetType"`
 	// URL to receive heartbeat pings.
 	PingUrl *string `pulumi:"pingUrl"`
@@ -116,24 +134,28 @@ type heartbeatState struct {
 }
 
 type HeartbeatState struct {
+	// Description of alerts triggered when heartbeat expires.
+	AlertDescription pulumi.StringPtrInput
 	// Summary of alerts triggered when heartbeat expires.
 	AlertSummary pulumi.StringPtrInput
 	// Urgency of alerts triggered when heartbeat expires.
 	AlertUrgencyId pulumi.StringPtrInput
 	// The description of the heartbeat
 	Description pulumi.StringPtrInput
-	Enabled     pulumi.BoolPtrInput
+	// Email address to receive heartbeat pings.
+	EmailAddress pulumi.StringPtrInput
+	Enabled      pulumi.BoolPtrInput
 	// When heartbeat expires
 	ExpiresAt pulumi.StringPtrInput
 	Interval  pulumi.IntPtrInput
-	// Value must be one of `seconds`, `minutes`, `hours`.
+	// Value must be one of `minutes`, `hours`, `days`.
 	IntervalUnit pulumi.StringPtrInput
 	// When the heartbeat was last pinged.
 	LastPingedAt pulumi.StringPtrInput
 	// The name of the heartbeat
 	Name                 pulumi.StringPtrInput
 	NotificationTargetId pulumi.StringPtrInput
-	// Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.
+	// The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 	NotificationTargetType pulumi.StringPtrInput
 	// URL to receive heartbeat pings.
 	PingUrl pulumi.StringPtrInput
@@ -148,24 +170,28 @@ func (HeartbeatState) ElementType() reflect.Type {
 }
 
 type heartbeatArgs struct {
+	// Description of alerts triggered when heartbeat expires.
+	AlertDescription *string `pulumi:"alertDescription"`
 	// Summary of alerts triggered when heartbeat expires.
 	AlertSummary string `pulumi:"alertSummary"`
 	// Urgency of alerts triggered when heartbeat expires.
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
 	// The description of the heartbeat
 	Description *string `pulumi:"description"`
-	Enabled     *bool   `pulumi:"enabled"`
+	// Email address to receive heartbeat pings.
+	EmailAddress *string `pulumi:"emailAddress"`
+	Enabled      *bool   `pulumi:"enabled"`
 	// When heartbeat expires
 	ExpiresAt *string `pulumi:"expiresAt"`
 	Interval  int     `pulumi:"interval"`
-	// Value must be one of `seconds`, `minutes`, `hours`.
+	// Value must be one of `minutes`, `hours`, `days`.
 	IntervalUnit *string `pulumi:"intervalUnit"`
 	// When the heartbeat was last pinged.
 	LastPingedAt *string `pulumi:"lastPingedAt"`
 	// The name of the heartbeat
 	Name                 *string `pulumi:"name"`
 	NotificationTargetId string  `pulumi:"notificationTargetId"`
-	// Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.
+	// The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 	NotificationTargetType *string `pulumi:"notificationTargetType"`
 	// URL to receive heartbeat pings.
 	PingUrl *string `pulumi:"pingUrl"`
@@ -177,24 +203,28 @@ type heartbeatArgs struct {
 
 // The set of arguments for constructing a Heartbeat resource.
 type HeartbeatArgs struct {
+	// Description of alerts triggered when heartbeat expires.
+	AlertDescription pulumi.StringPtrInput
 	// Summary of alerts triggered when heartbeat expires.
 	AlertSummary pulumi.StringInput
 	// Urgency of alerts triggered when heartbeat expires.
 	AlertUrgencyId pulumi.StringPtrInput
 	// The description of the heartbeat
 	Description pulumi.StringPtrInput
-	Enabled     pulumi.BoolPtrInput
+	// Email address to receive heartbeat pings.
+	EmailAddress pulumi.StringPtrInput
+	Enabled      pulumi.BoolPtrInput
 	// When heartbeat expires
 	ExpiresAt pulumi.StringPtrInput
 	Interval  pulumi.IntInput
-	// Value must be one of `seconds`, `minutes`, `hours`.
+	// Value must be one of `minutes`, `hours`, `days`.
 	IntervalUnit pulumi.StringPtrInput
 	// When the heartbeat was last pinged.
 	LastPingedAt pulumi.StringPtrInput
 	// The name of the heartbeat
 	Name                 pulumi.StringPtrInput
 	NotificationTargetId pulumi.StringInput
-	// Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.
+	// The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 	NotificationTargetType pulumi.StringPtrInput
 	// URL to receive heartbeat pings.
 	PingUrl pulumi.StringPtrInput
@@ -291,6 +321,11 @@ func (o HeartbeatOutput) ToHeartbeatOutputWithContext(ctx context.Context) Heart
 	return o
 }
 
+// Description of alerts triggered when heartbeat expires.
+func (o HeartbeatOutput) AlertDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Heartbeat) pulumi.StringOutput { return v.AlertDescription }).(pulumi.StringOutput)
+}
+
 // Summary of alerts triggered when heartbeat expires.
 func (o HeartbeatOutput) AlertSummary() pulumi.StringOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.StringOutput { return v.AlertSummary }).(pulumi.StringOutput)
@@ -306,6 +341,11 @@ func (o HeartbeatOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Email address to receive heartbeat pings.
+func (o HeartbeatOutput) EmailAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Heartbeat) pulumi.StringOutput { return v.EmailAddress }).(pulumi.StringOutput)
+}
+
 func (o HeartbeatOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -319,7 +359,7 @@ func (o HeartbeatOutput) Interval() pulumi.IntOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.IntOutput { return v.Interval }).(pulumi.IntOutput)
 }
 
-// Value must be one of `seconds`, `minutes`, `hours`.
+// Value must be one of `minutes`, `hours`, `days`.
 func (o HeartbeatOutput) IntervalUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.StringPtrOutput { return v.IntervalUnit }).(pulumi.StringPtrOutput)
 }
@@ -338,7 +378,7 @@ func (o HeartbeatOutput) NotificationTargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.StringOutput { return v.NotificationTargetId }).(pulumi.StringOutput)
 }
 
-// Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`.
+// The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 func (o HeartbeatOutput) NotificationTargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.StringPtrOutput { return v.NotificationTargetType }).(pulumi.StringPtrOutput)
 }
@@ -354,8 +394,8 @@ func (o HeartbeatOutput) Secret() pulumi.StringOutput {
 }
 
 // Value must be one of `waiting`, `active`, `expired`.
-func (o HeartbeatOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Heartbeat) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+func (o HeartbeatOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Heartbeat) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 type HeartbeatArrayOutput struct{ *pulumi.OutputState }

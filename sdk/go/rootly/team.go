@@ -15,22 +15,34 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import Team using the `id`. For example:
+// Team can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/team:Team my-resource my-resource-slug
+// $ pulumi import rootly:index/team:Team primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type Team struct {
 	pulumi.CustomResourceState
 
 	// The user ids of the admins of this team. These users must also be present in userIds attribute.
 	AdminIds pulumi.IntArrayOutput `pulumi:"adminIds"`
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	AlertBroadcastChannel TeamAlertBroadcastChannelOutput `pulumi:"alertBroadcastChannel"`
+	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+	AlertBroadcastEnabled pulumi.BoolOutput `pulumi:"alertBroadcastEnabled"`
 	// The alert urgency id of the team
 	AlertUrgencyId pulumi.StringOutput `pulumi:"alertUrgencyId"`
-	// Email generated to send alerts to
-	AlertsEmailAddress pulumi.StringOutput `pulumi:"alertsEmailAddress"`
-	// Enable alerts through email. Value must be one of true or false
-	AlertsEmailEnabled pulumi.BoolOutput `pulumi:"alertsEmailEnabled"`
+	// Auto add members to incident channel when team is attached. Value must be one of true or false
+	AutoAddMembersWhenAttached pulumi.BoolOutput `pulumi:"autoAddMembersWhenAttached"`
 	// The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
 	BackstageId pulumi.StringOutput `pulumi:"backstageId"`
 	// The hex color of the team
@@ -41,6 +53,10 @@ type Team struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The external id associated to this team
 	ExternalId pulumi.StringOutput `pulumi:"externalId"`
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+	IncidentBroadcastChannel TeamIncidentBroadcastChannelOutput `pulumi:"incidentBroadcastChannel"`
+	// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+	IncidentBroadcastEnabled pulumi.BoolOutput `pulumi:"incidentBroadcastEnabled"`
 	// The name of the team
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Emails to attach to the team
@@ -55,6 +71,8 @@ type Team struct {
 	PagertreeId pulumi.StringOutput `pulumi:"pagertreeId"`
 	// Position of the team
 	Position pulumi.IntOutput `pulumi:"position"`
+	// Array of property values for this team.
+	Properties TeamPropertyArrayOutput `pulumi:"properties"`
 	// The Service Now CI sys id associated to this team
 	ServiceNowCiSysId pulumi.StringOutput `pulumi:"serviceNowCiSysId"`
 	// Slack Aliases associated with this team
@@ -100,12 +118,14 @@ func GetTeam(ctx *pulumi.Context,
 type teamState struct {
 	// The user ids of the admins of this team. These users must also be present in userIds attribute.
 	AdminIds []int `pulumi:"adminIds"`
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	AlertBroadcastChannel *TeamAlertBroadcastChannel `pulumi:"alertBroadcastChannel"`
+	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+	AlertBroadcastEnabled *bool `pulumi:"alertBroadcastEnabled"`
 	// The alert urgency id of the team
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
-	// Email generated to send alerts to
-	AlertsEmailAddress *string `pulumi:"alertsEmailAddress"`
-	// Enable alerts through email. Value must be one of true or false
-	AlertsEmailEnabled *bool `pulumi:"alertsEmailEnabled"`
+	// Auto add members to incident channel when team is attached. Value must be one of true or false
+	AutoAddMembersWhenAttached *bool `pulumi:"autoAddMembersWhenAttached"`
 	// The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
 	BackstageId *string `pulumi:"backstageId"`
 	// The hex color of the team
@@ -116,6 +136,10 @@ type teamState struct {
 	Description *string `pulumi:"description"`
 	// The external id associated to this team
 	ExternalId *string `pulumi:"externalId"`
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+	IncidentBroadcastChannel *TeamIncidentBroadcastChannel `pulumi:"incidentBroadcastChannel"`
+	// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+	IncidentBroadcastEnabled *bool `pulumi:"incidentBroadcastEnabled"`
 	// The name of the team
 	Name *string `pulumi:"name"`
 	// Emails to attach to the team
@@ -130,6 +154,8 @@ type teamState struct {
 	PagertreeId *string `pulumi:"pagertreeId"`
 	// Position of the team
 	Position *int `pulumi:"position"`
+	// Array of property values for this team.
+	Properties []TeamProperty `pulumi:"properties"`
 	// The Service Now CI sys id associated to this team
 	ServiceNowCiSysId *string `pulumi:"serviceNowCiSysId"`
 	// Slack Aliases associated with this team
@@ -146,12 +172,14 @@ type teamState struct {
 type TeamState struct {
 	// The user ids of the admins of this team. These users must also be present in userIds attribute.
 	AdminIds pulumi.IntArrayInput
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	AlertBroadcastChannel TeamAlertBroadcastChannelPtrInput
+	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+	AlertBroadcastEnabled pulumi.BoolPtrInput
 	// The alert urgency id of the team
 	AlertUrgencyId pulumi.StringPtrInput
-	// Email generated to send alerts to
-	AlertsEmailAddress pulumi.StringPtrInput
-	// Enable alerts through email. Value must be one of true or false
-	AlertsEmailEnabled pulumi.BoolPtrInput
+	// Auto add members to incident channel when team is attached. Value must be one of true or false
+	AutoAddMembersWhenAttached pulumi.BoolPtrInput
 	// The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
 	BackstageId pulumi.StringPtrInput
 	// The hex color of the team
@@ -162,6 +190,10 @@ type TeamState struct {
 	Description pulumi.StringPtrInput
 	// The external id associated to this team
 	ExternalId pulumi.StringPtrInput
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+	IncidentBroadcastChannel TeamIncidentBroadcastChannelPtrInput
+	// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+	IncidentBroadcastEnabled pulumi.BoolPtrInput
 	// The name of the team
 	Name pulumi.StringPtrInput
 	// Emails to attach to the team
@@ -176,6 +208,8 @@ type TeamState struct {
 	PagertreeId pulumi.StringPtrInput
 	// Position of the team
 	Position pulumi.IntPtrInput
+	// Array of property values for this team.
+	Properties TeamPropertyArrayInput
 	// The Service Now CI sys id associated to this team
 	ServiceNowCiSysId pulumi.StringPtrInput
 	// Slack Aliases associated with this team
@@ -196,12 +230,14 @@ func (TeamState) ElementType() reflect.Type {
 type teamArgs struct {
 	// The user ids of the admins of this team. These users must also be present in userIds attribute.
 	AdminIds []int `pulumi:"adminIds"`
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	AlertBroadcastChannel *TeamAlertBroadcastChannel `pulumi:"alertBroadcastChannel"`
+	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+	AlertBroadcastEnabled *bool `pulumi:"alertBroadcastEnabled"`
 	// The alert urgency id of the team
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
-	// Email generated to send alerts to
-	AlertsEmailAddress *string `pulumi:"alertsEmailAddress"`
-	// Enable alerts through email. Value must be one of true or false
-	AlertsEmailEnabled *bool `pulumi:"alertsEmailEnabled"`
+	// Auto add members to incident channel when team is attached. Value must be one of true or false
+	AutoAddMembersWhenAttached *bool `pulumi:"autoAddMembersWhenAttached"`
 	// The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
 	BackstageId *string `pulumi:"backstageId"`
 	// The hex color of the team
@@ -212,6 +248,10 @@ type teamArgs struct {
 	Description *string `pulumi:"description"`
 	// The external id associated to this team
 	ExternalId *string `pulumi:"externalId"`
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+	IncidentBroadcastChannel *TeamIncidentBroadcastChannel `pulumi:"incidentBroadcastChannel"`
+	// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+	IncidentBroadcastEnabled *bool `pulumi:"incidentBroadcastEnabled"`
 	// The name of the team
 	Name *string `pulumi:"name"`
 	// Emails to attach to the team
@@ -226,6 +266,8 @@ type teamArgs struct {
 	PagertreeId *string `pulumi:"pagertreeId"`
 	// Position of the team
 	Position *int `pulumi:"position"`
+	// Array of property values for this team.
+	Properties []TeamProperty `pulumi:"properties"`
 	// The Service Now CI sys id associated to this team
 	ServiceNowCiSysId *string `pulumi:"serviceNowCiSysId"`
 	// Slack Aliases associated with this team
@@ -243,12 +285,14 @@ type teamArgs struct {
 type TeamArgs struct {
 	// The user ids of the admins of this team. These users must also be present in userIds attribute.
 	AdminIds pulumi.IntArrayInput
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	AlertBroadcastChannel TeamAlertBroadcastChannelPtrInput
+	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+	AlertBroadcastEnabled pulumi.BoolPtrInput
 	// The alert urgency id of the team
 	AlertUrgencyId pulumi.StringPtrInput
-	// Email generated to send alerts to
-	AlertsEmailAddress pulumi.StringPtrInput
-	// Enable alerts through email. Value must be one of true or false
-	AlertsEmailEnabled pulumi.BoolPtrInput
+	// Auto add members to incident channel when team is attached. Value must be one of true or false
+	AutoAddMembersWhenAttached pulumi.BoolPtrInput
 	// The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
 	BackstageId pulumi.StringPtrInput
 	// The hex color of the team
@@ -259,6 +303,10 @@ type TeamArgs struct {
 	Description pulumi.StringPtrInput
 	// The external id associated to this team
 	ExternalId pulumi.StringPtrInput
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+	IncidentBroadcastChannel TeamIncidentBroadcastChannelPtrInput
+	// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+	IncidentBroadcastEnabled pulumi.BoolPtrInput
 	// The name of the team
 	Name pulumi.StringPtrInput
 	// Emails to attach to the team
@@ -273,6 +321,8 @@ type TeamArgs struct {
 	PagertreeId pulumi.StringPtrInput
 	// Position of the team
 	Position pulumi.IntPtrInput
+	// Array of property values for this team.
+	Properties TeamPropertyArrayInput
 	// The Service Now CI sys id associated to this team
 	ServiceNowCiSysId pulumi.StringPtrInput
 	// Slack Aliases associated with this team
@@ -378,19 +428,24 @@ func (o TeamOutput) AdminIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Team) pulumi.IntArrayOutput { return v.AdminIds }).(pulumi.IntArrayOutput)
 }
 
+// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+func (o TeamOutput) AlertBroadcastChannel() TeamAlertBroadcastChannelOutput {
+	return o.ApplyT(func(v *Team) TeamAlertBroadcastChannelOutput { return v.AlertBroadcastChannel }).(TeamAlertBroadcastChannelOutput)
+}
+
+// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+func (o TeamOutput) AlertBroadcastEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Team) pulumi.BoolOutput { return v.AlertBroadcastEnabled }).(pulumi.BoolOutput)
+}
+
 // The alert urgency id of the team
 func (o TeamOutput) AlertUrgencyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringOutput { return v.AlertUrgencyId }).(pulumi.StringOutput)
 }
 
-// Email generated to send alerts to
-func (o TeamOutput) AlertsEmailAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v *Team) pulumi.StringOutput { return v.AlertsEmailAddress }).(pulumi.StringOutput)
-}
-
-// Enable alerts through email. Value must be one of true or false
-func (o TeamOutput) AlertsEmailEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Team) pulumi.BoolOutput { return v.AlertsEmailEnabled }).(pulumi.BoolOutput)
+// Auto add members to incident channel when team is attached. Value must be one of true or false
+func (o TeamOutput) AutoAddMembersWhenAttached() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Team) pulumi.BoolOutput { return v.AutoAddMembersWhenAttached }).(pulumi.BoolOutput)
 }
 
 // The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
@@ -416,6 +471,16 @@ func (o TeamOutput) Description() pulumi.StringOutput {
 // The external id associated to this team
 func (o TeamOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+func (o TeamOutput) IncidentBroadcastChannel() TeamIncidentBroadcastChannelOutput {
+	return o.ApplyT(func(v *Team) TeamIncidentBroadcastChannelOutput { return v.IncidentBroadcastChannel }).(TeamIncidentBroadcastChannelOutput)
+}
+
+// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+func (o TeamOutput) IncidentBroadcastEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Team) pulumi.BoolOutput { return v.IncidentBroadcastEnabled }).(pulumi.BoolOutput)
 }
 
 // The name of the team
@@ -451,6 +516,11 @@ func (o TeamOutput) PagertreeId() pulumi.StringOutput {
 // Position of the team
 func (o TeamOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *Team) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
+}
+
+// Array of property values for this team.
+func (o TeamOutput) Properties() TeamPropertyArrayOutput {
+	return o.ApplyT(func(v *Team) TeamPropertyArrayOutput { return v.Properties }).(TeamPropertyArrayOutput)
 }
 
 // The Service Now CI sys id associated to this team

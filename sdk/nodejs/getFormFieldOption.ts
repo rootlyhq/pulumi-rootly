@@ -7,11 +7,11 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  */
-export function getFormFieldOption(args?: GetFormFieldOptionArgs, opts?: pulumi.InvokeOptions): Promise<GetFormFieldOptionResult> {
-    args = args || {};
+export function getFormFieldOption(args: GetFormFieldOptionArgs, opts?: pulumi.InvokeOptions): Promise<GetFormFieldOptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getFormFieldOption:getFormFieldOption", {
         "color": args.color,
+        "formFieldId": args.formFieldId,
         "value": args.value,
     }, opts);
 }
@@ -21,6 +21,7 @@ export function getFormFieldOption(args?: GetFormFieldOptionArgs, opts?: pulumi.
  */
 export interface GetFormFieldOptionArgs {
     color?: string;
+    formFieldId: string;
     value?: string;
 }
 
@@ -29,6 +30,7 @@ export interface GetFormFieldOptionArgs {
  */
 export interface GetFormFieldOptionResult {
     readonly color: string;
+    readonly formFieldId: string;
     /**
      * The ID of this resource.
      */
@@ -38,11 +40,11 @@ export interface GetFormFieldOptionResult {
 /**
  * ## Example Usage
  */
-export function getFormFieldOptionOutput(args?: GetFormFieldOptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFormFieldOptionResult> {
-    args = args || {};
+export function getFormFieldOptionOutput(args: GetFormFieldOptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFormFieldOptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getFormFieldOption:getFormFieldOption", {
         "color": args.color,
+        "formFieldId": args.formFieldId,
         "value": args.value,
     }, opts);
 }
@@ -52,5 +54,6 @@ export function getFormFieldOptionOutput(args?: GetFormFieldOptionOutputArgs, op
  */
 export interface GetFormFieldOptionOutputArgs {
     color?: pulumi.Input<string | undefined>;
+    formFieldId: pulumi.Input<string>;
     value?: pulumi.Input<string | undefined>;
 }

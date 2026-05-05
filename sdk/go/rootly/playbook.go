@@ -14,27 +14,37 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import Playbook using the `id`. For example:
+// Playbook can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/playbook:Playbook my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/playbook:Playbook primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type Playbook struct {
 	pulumi.CustomResourceState
 
-	// The Environment ID's to attach to the incident
+	// The Environment IDs to attach to the incident
 	EnvironmentIds pulumi.StringArrayOutput `pulumi:"environmentIds"`
 	// The external url of the playbook
 	ExternalUrl pulumi.StringOutput `pulumi:"externalUrl"`
-	// The Functionality ID's to attach to the incident
+	// The Functionality IDs to attach to the incident
 	FunctionalityIds pulumi.StringArrayOutput `pulumi:"functionalityIds"`
-	// The Team ID's to attach to the incident
+	// The Team IDs to attach to the incident
 	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
-	// The Incident Type ID's to attach to the incident
+	// The Incident Type IDs to attach to the incident
 	IncidentTypeIds pulumi.StringArrayOutput `pulumi:"incidentTypeIds"`
-	// The Service ID's to attach to the incident
+	// The Service IDs to attach to the incident
 	ServiceIds pulumi.StringArrayOutput `pulumi:"serviceIds"`
-	// The Severity ID's to attach to the incident
+	// The Severity IDs to attach to the incident
 	SeverityIds pulumi.StringArrayOutput `pulumi:"severityIds"`
 	// The summary of the playbook
 	Summary pulumi.StringOutput `pulumi:"summary"`
@@ -75,19 +85,19 @@ func GetPlaybook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Playbook resources.
 type playbookState struct {
-	// The Environment ID's to attach to the incident
+	// The Environment IDs to attach to the incident
 	EnvironmentIds []string `pulumi:"environmentIds"`
 	// The external url of the playbook
 	ExternalUrl *string `pulumi:"externalUrl"`
-	// The Functionality ID's to attach to the incident
+	// The Functionality IDs to attach to the incident
 	FunctionalityIds []string `pulumi:"functionalityIds"`
-	// The Team ID's to attach to the incident
+	// The Team IDs to attach to the incident
 	GroupIds []string `pulumi:"groupIds"`
-	// The Incident Type ID's to attach to the incident
+	// The Incident Type IDs to attach to the incident
 	IncidentTypeIds []string `pulumi:"incidentTypeIds"`
-	// The Service ID's to attach to the incident
+	// The Service IDs to attach to the incident
 	ServiceIds []string `pulumi:"serviceIds"`
-	// The Severity ID's to attach to the incident
+	// The Severity IDs to attach to the incident
 	SeverityIds []string `pulumi:"severityIds"`
 	// The summary of the playbook
 	Summary *string `pulumi:"summary"`
@@ -96,19 +106,19 @@ type playbookState struct {
 }
 
 type PlaybookState struct {
-	// The Environment ID's to attach to the incident
+	// The Environment IDs to attach to the incident
 	EnvironmentIds pulumi.StringArrayInput
 	// The external url of the playbook
 	ExternalUrl pulumi.StringPtrInput
-	// The Functionality ID's to attach to the incident
+	// The Functionality IDs to attach to the incident
 	FunctionalityIds pulumi.StringArrayInput
-	// The Team ID's to attach to the incident
+	// The Team IDs to attach to the incident
 	GroupIds pulumi.StringArrayInput
-	// The Incident Type ID's to attach to the incident
+	// The Incident Type IDs to attach to the incident
 	IncidentTypeIds pulumi.StringArrayInput
-	// The Service ID's to attach to the incident
+	// The Service IDs to attach to the incident
 	ServiceIds pulumi.StringArrayInput
-	// The Severity ID's to attach to the incident
+	// The Severity IDs to attach to the incident
 	SeverityIds pulumi.StringArrayInput
 	// The summary of the playbook
 	Summary pulumi.StringPtrInput
@@ -121,19 +131,19 @@ func (PlaybookState) ElementType() reflect.Type {
 }
 
 type playbookArgs struct {
-	// The Environment ID's to attach to the incident
+	// The Environment IDs to attach to the incident
 	EnvironmentIds []string `pulumi:"environmentIds"`
 	// The external url of the playbook
 	ExternalUrl *string `pulumi:"externalUrl"`
-	// The Functionality ID's to attach to the incident
+	// The Functionality IDs to attach to the incident
 	FunctionalityIds []string `pulumi:"functionalityIds"`
-	// The Team ID's to attach to the incident
+	// The Team IDs to attach to the incident
 	GroupIds []string `pulumi:"groupIds"`
-	// The Incident Type ID's to attach to the incident
+	// The Incident Type IDs to attach to the incident
 	IncidentTypeIds []string `pulumi:"incidentTypeIds"`
-	// The Service ID's to attach to the incident
+	// The Service IDs to attach to the incident
 	ServiceIds []string `pulumi:"serviceIds"`
-	// The Severity ID's to attach to the incident
+	// The Severity IDs to attach to the incident
 	SeverityIds []string `pulumi:"severityIds"`
 	// The summary of the playbook
 	Summary *string `pulumi:"summary"`
@@ -143,19 +153,19 @@ type playbookArgs struct {
 
 // The set of arguments for constructing a Playbook resource.
 type PlaybookArgs struct {
-	// The Environment ID's to attach to the incident
+	// The Environment IDs to attach to the incident
 	EnvironmentIds pulumi.StringArrayInput
 	// The external url of the playbook
 	ExternalUrl pulumi.StringPtrInput
-	// The Functionality ID's to attach to the incident
+	// The Functionality IDs to attach to the incident
 	FunctionalityIds pulumi.StringArrayInput
-	// The Team ID's to attach to the incident
+	// The Team IDs to attach to the incident
 	GroupIds pulumi.StringArrayInput
-	// The Incident Type ID's to attach to the incident
+	// The Incident Type IDs to attach to the incident
 	IncidentTypeIds pulumi.StringArrayInput
-	// The Service ID's to attach to the incident
+	// The Service IDs to attach to the incident
 	ServiceIds pulumi.StringArrayInput
-	// The Severity ID's to attach to the incident
+	// The Severity IDs to attach to the incident
 	SeverityIds pulumi.StringArrayInput
 	// The summary of the playbook
 	Summary pulumi.StringPtrInput
@@ -250,7 +260,7 @@ func (o PlaybookOutput) ToPlaybookOutputWithContext(ctx context.Context) Playboo
 	return o
 }
 
-// The Environment ID's to attach to the incident
+// The Environment IDs to attach to the incident
 func (o PlaybookOutput) EnvironmentIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Playbook) pulumi.StringArrayOutput { return v.EnvironmentIds }).(pulumi.StringArrayOutput)
 }
@@ -260,27 +270,27 @@ func (o PlaybookOutput) ExternalUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Playbook) pulumi.StringOutput { return v.ExternalUrl }).(pulumi.StringOutput)
 }
 
-// The Functionality ID's to attach to the incident
+// The Functionality IDs to attach to the incident
 func (o PlaybookOutput) FunctionalityIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Playbook) pulumi.StringArrayOutput { return v.FunctionalityIds }).(pulumi.StringArrayOutput)
 }
 
-// The Team ID's to attach to the incident
+// The Team IDs to attach to the incident
 func (o PlaybookOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Playbook) pulumi.StringArrayOutput { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The Incident Type ID's to attach to the incident
+// The Incident Type IDs to attach to the incident
 func (o PlaybookOutput) IncidentTypeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Playbook) pulumi.StringArrayOutput { return v.IncidentTypeIds }).(pulumi.StringArrayOutput)
 }
 
-// The Service ID's to attach to the incident
+// The Service IDs to attach to the incident
 func (o PlaybookOutput) ServiceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Playbook) pulumi.StringArrayOutput { return v.ServiceIds }).(pulumi.StringArrayOutput)
 }
 
-// The Severity ID's to attach to the incident
+// The Severity IDs to attach to the incident
 func (o PlaybookOutput) SeverityIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Playbook) pulumi.StringArrayOutput { return v.SeverityIds }).(pulumi.StringArrayOutput)
 }

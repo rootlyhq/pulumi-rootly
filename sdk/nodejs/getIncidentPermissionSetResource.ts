@@ -4,11 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export function getIncidentPermissionSetResource(args?: GetIncidentPermissionSetResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentPermissionSetResourceResult> {
-    args = args || {};
+export function getIncidentPermissionSetResource(args: GetIncidentPermissionSetResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentPermissionSetResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getIncidentPermissionSetResource:getIncidentPermissionSetResource", {
         "createdAt": args.createdAt,
+        "incidentPermissionSetId": args.incidentPermissionSetId,
         "kind": args.kind,
     }, opts);
 }
@@ -21,6 +21,7 @@ export interface GetIncidentPermissionSetResourceArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     createdAt?: {[key: string]: string};
+    incidentPermissionSetId: string;
     kind?: string;
 }
 
@@ -36,13 +37,14 @@ export interface GetIncidentPermissionSetResourceResult {
      * The ID of this resource.
      */
     readonly id: string;
+    readonly incidentPermissionSetId: string;
     readonly kind: string;
 }
-export function getIncidentPermissionSetResourceOutput(args?: GetIncidentPermissionSetResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIncidentPermissionSetResourceResult> {
-    args = args || {};
+export function getIncidentPermissionSetResourceOutput(args: GetIncidentPermissionSetResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIncidentPermissionSetResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getIncidentPermissionSetResource:getIncidentPermissionSetResource", {
         "createdAt": args.createdAt,
+        "incidentPermissionSetId": args.incidentPermissionSetId,
         "kind": args.kind,
     }, opts);
 }
@@ -55,5 +57,6 @@ export interface GetIncidentPermissionSetResourceOutputArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    incidentPermissionSetId: pulumi.Input<string>;
     kind?: pulumi.Input<string | undefined>;
 }

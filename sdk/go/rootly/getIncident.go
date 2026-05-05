@@ -27,6 +27,8 @@ type GetIncidentArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
 	AcknowledgedAt map[string]string `pulumi:"acknowledgedAt"`
 	// Filter by date range using 'lt' and 'gt'.
+	ClosedAt map[string]string `pulumi:"closedAt"`
+	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt map[string]string `pulumi:"createdAt"`
 	// Filter by date range using 'lt' and 'gt'.
 	DetectedAt      map[string]string `pulumi:"detectedAt"`
@@ -45,14 +47,18 @@ type GetIncidentArgs struct {
 	Severity   *string           `pulumi:"severity"`
 	// Filter by date range using 'lt' and 'gt'.
 	StartedAt map[string]string `pulumi:"startedAt"`
+	Status    *string           `pulumi:"status"`
 	// Filter by date range using 'lt' and 'gt'.
 	UpdatedAt map[string]string `pulumi:"updatedAt"`
+	User      *string           `pulumi:"user"`
 }
 
 // A collection of values returned by getIncident.
 type GetIncidentResult struct {
 	// Filter by date range using 'lt' and 'gt'.
 	AcknowledgedAt map[string]string `pulumi:"acknowledgedAt"`
+	// Filter by date range using 'lt' and 'gt'.
+	ClosedAt map[string]string `pulumi:"closedAt"`
 	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt map[string]string `pulumi:"createdAt"`
 	// Filter by date range using 'lt' and 'gt'.
@@ -74,8 +80,10 @@ type GetIncidentResult struct {
 	Severity   string            `pulumi:"severity"`
 	// Filter by date range using 'lt' and 'gt'.
 	StartedAt map[string]string `pulumi:"startedAt"`
+	Status    string            `pulumi:"status"`
 	// Filter by date range using 'lt' and 'gt'.
 	UpdatedAt map[string]string `pulumi:"updatedAt"`
+	User      string            `pulumi:"user"`
 }
 
 func GetIncidentOutput(ctx *pulumi.Context, args GetIncidentOutputArgs, opts ...pulumi.InvokeOption) GetIncidentResultOutput {
@@ -91,6 +99,8 @@ func GetIncidentOutput(ctx *pulumi.Context, args GetIncidentOutputArgs, opts ...
 type GetIncidentOutputArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
 	AcknowledgedAt pulumi.StringMapInput `pulumi:"acknowledgedAt"`
+	// Filter by date range using 'lt' and 'gt'.
+	ClosedAt pulumi.StringMapInput `pulumi:"closedAt"`
 	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt pulumi.StringMapInput `pulumi:"createdAt"`
 	// Filter by date range using 'lt' and 'gt'.
@@ -110,8 +120,10 @@ type GetIncidentOutputArgs struct {
 	Severity   pulumi.StringPtrInput `pulumi:"severity"`
 	// Filter by date range using 'lt' and 'gt'.
 	StartedAt pulumi.StringMapInput `pulumi:"startedAt"`
+	Status    pulumi.StringPtrInput `pulumi:"status"`
 	// Filter by date range using 'lt' and 'gt'.
 	UpdatedAt pulumi.StringMapInput `pulumi:"updatedAt"`
+	User      pulumi.StringPtrInput `pulumi:"user"`
 }
 
 func (GetIncidentOutputArgs) ElementType() reflect.Type {
@@ -136,6 +148,11 @@ func (o GetIncidentResultOutput) ToGetIncidentResultOutputWithContext(ctx contex
 // Filter by date range using 'lt' and 'gt'.
 func (o GetIncidentResultOutput) AcknowledgedAt() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetIncidentResult) map[string]string { return v.AcknowledgedAt }).(pulumi.StringMapOutput)
+}
+
+// Filter by date range using 'lt' and 'gt'.
+func (o GetIncidentResultOutput) ClosedAt() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetIncidentResult) map[string]string { return v.ClosedAt }).(pulumi.StringMapOutput)
 }
 
 // Filter by date range using 'lt' and 'gt'.
@@ -201,9 +218,17 @@ func (o GetIncidentResultOutput) StartedAt() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetIncidentResult) map[string]string { return v.StartedAt }).(pulumi.StringMapOutput)
 }
 
+func (o GetIncidentResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIncidentResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
 // Filter by date range using 'lt' and 'gt'.
 func (o GetIncidentResultOutput) UpdatedAt() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetIncidentResult) map[string]string { return v.UpdatedAt }).(pulumi.StringMapOutput)
+}
+
+func (o GetIncidentResultOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIncidentResult) string { return v.User }).(pulumi.StringOutput)
 }
 
 func init() {

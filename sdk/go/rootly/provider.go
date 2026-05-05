@@ -18,9 +18,9 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment variable.
+	// The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the `ROOTLY_API_URL` environment variable.
 	ApiHost pulumi.StringPtrOutput `pulumi:"apiHost"`
-	// The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the ROOTLY_API_TOKEN environment variable.
+	// The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the `ROOTLY_API_TOKEN` environment variable.
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
 }
 
@@ -48,17 +48,17 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment variable.
+	// The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the `ROOTLY_API_URL` environment variable.
 	ApiHost *string `pulumi:"apiHost"`
-	// The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the ROOTLY_API_TOKEN environment variable.
+	// The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the `ROOTLY_API_TOKEN` environment variable.
 	ApiToken *string `pulumi:"apiToken"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment variable.
+	// The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the `ROOTLY_API_URL` environment variable.
 	ApiHost pulumi.StringPtrInput
-	// The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the ROOTLY_API_TOKEN environment variable.
+	// The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the `ROOTLY_API_TOKEN` environment variable.
 	ApiToken pulumi.StringPtrInput
 }
 
@@ -122,12 +122,12 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the ROOTLY_API_URL environment variable.
+// The Rootly API host. Defaults to https://api.rootly.com. Can also be sourced from the `ROOTLY_API_URL` environment variable.
 func (o ProviderOutput) ApiHost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiHost }).(pulumi.StringPtrOutput)
 }
 
-// The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the ROOTLY_API_TOKEN environment variable.
+// The Rootly API Token. Generate it from your account at https://rootly.com/account. It must be provided but can also be sourced from the `ROOTLY_API_TOKEN` environment variable.
 func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
 }

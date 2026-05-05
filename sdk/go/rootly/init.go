@@ -21,18 +21,40 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "rootly:index/alertField:AlertField":
+		r = &AlertField{}
 	case "rootly:index/alertGroup:AlertGroup":
 		r = &AlertGroup{}
+	case "rootly:index/alertRoute:AlertRoute":
+		r = &AlertRoute{}
 	case "rootly:index/alertRoutingRule:AlertRoutingRule":
 		r = &AlertRoutingRule{}
 	case "rootly:index/alertUrgency:AlertUrgency":
 		r = &AlertUrgency{}
 	case "rootly:index/alertsSource:AlertsSource":
 		r = &AlertsSource{}
+	case "rootly:index/apiKey:ApiKey":
+		r = &ApiKey{}
 	case "rootly:index/authorization:Authorization":
 		r = &Authorization{}
+	case "rootly:index/catalog:Catalog":
+		r = &Catalog{}
+	case "rootly:index/catalogChecklistTemplate:CatalogChecklistTemplate":
+		r = &CatalogChecklistTemplate{}
+	case "rootly:index/catalogEntity:CatalogEntity":
+		r = &CatalogEntity{}
+	case "rootly:index/catalogProperty:CatalogProperty":
+		r = &CatalogProperty{}
 	case "rootly:index/cause:Cause":
 		r = &Cause{}
+	case "rootly:index/communicationsGroup:CommunicationsGroup":
+		r = &CommunicationsGroup{}
+	case "rootly:index/communicationsStage:CommunicationsStage":
+		r = &CommunicationsStage{}
+	case "rootly:index/communicationsTemplate:CommunicationsTemplate":
+		r = &CommunicationsTemplate{}
+	case "rootly:index/communicationsType:CommunicationsType":
+		r = &CommunicationsType{}
 	case "rootly:index/customField:CustomField":
 		r = &CustomField{}
 	case "rootly:index/customFieldOption:CustomFieldOption":
@@ -43,6 +65,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Dashboard{}
 	case "rootly:index/dashboardPanel:DashboardPanel":
 		r = &DashboardPanel{}
+	case "rootly:index/edgeConnector:EdgeConnector":
+		r = &EdgeConnector{}
+	case "rootly:index/edgeConnectorAction:EdgeConnectorAction":
+		r = &EdgeConnectorAction{}
 	case "rootly:index/environment:Environment":
 		r = &Environment{}
 	case "rootly:index/escalationLevel:EscalationLevel":
@@ -123,6 +149,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Service{}
 	case "rootly:index/severity:Severity":
 		r = &Severity{}
+	case "rootly:index/sla:Sla":
+		r = &Sla{}
 	case "rootly:index/statusPage:StatusPage":
 		r = &StatusPage{}
 	case "rootly:index/statusPageTemplate:StatusPageTemplate":
@@ -153,6 +181,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowSimple{}
 	case "rootly:index/workflowTaskAddActionItem:WorkflowTaskAddActionItem":
 		r = &WorkflowTaskAddActionItem{}
+	case "rootly:index/workflowTaskAddMicrosoftTeamsChatTab:WorkflowTaskAddMicrosoftTeamsChatTab":
+		r = &WorkflowTaskAddMicrosoftTeamsChatTab{}
 	case "rootly:index/workflowTaskAddMicrosoftTeamsTab:WorkflowTaskAddMicrosoftTeamsTab":
 		r = &WorkflowTaskAddMicrosoftTeamsTab{}
 	case "rootly:index/workflowTaskAddRole:WorkflowTaskAddRole":
@@ -183,6 +213,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskChangeSlackChannelPrivacy{}
 	case "rootly:index/workflowTaskCreateAirtableTableRecord:WorkflowTaskCreateAirtableTableRecord":
 		r = &WorkflowTaskCreateAirtableTableRecord{}
+	case "rootly:index/workflowTaskCreateAnthropicChatCompletion:WorkflowTaskCreateAnthropicChatCompletion":
+		r = &WorkflowTaskCreateAnthropicChatCompletion{}
 	case "rootly:index/workflowTaskCreateAsanaSubtask:WorkflowTaskCreateAsanaSubtask":
 		r = &WorkflowTaskCreateAsanaSubtask{}
 	case "rootly:index/workflowTaskCreateAsanaTask:WorkflowTaskCreateAsanaTask":
@@ -209,6 +241,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskCreateGoogleDocsPage{}
 	case "rootly:index/workflowTaskCreateGoogleDocsPermissions:WorkflowTaskCreateGoogleDocsPermissions":
 		r = &WorkflowTaskCreateGoogleDocsPermissions{}
+	case "rootly:index/workflowTaskCreateGoogleGeminiChatCompletion:WorkflowTaskCreateGoogleGeminiChatCompletion":
+		r = &WorkflowTaskCreateGoogleGeminiChatCompletion{}
 	case "rootly:index/workflowTaskCreateGoogleMeeting:WorkflowTaskCreateGoogleMeeting":
 		r = &WorkflowTaskCreateGoogleMeeting{}
 	case "rootly:index/workflowTaskCreateIncident:WorkflowTaskCreateIncident":
@@ -219,6 +253,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskCreateJiraIssue{}
 	case "rootly:index/workflowTaskCreateJiraSubtask:WorkflowTaskCreateJiraSubtask":
 		r = &WorkflowTaskCreateJiraSubtask{}
+	case "rootly:index/workflowTaskCreateJsmopsAlert:WorkflowTaskCreateJsmopsAlert":
+		r = &WorkflowTaskCreateJsmopsAlert{}
 	case "rootly:index/workflowTaskCreateLinearIssue:WorkflowTaskCreateLinearIssue":
 		r = &WorkflowTaskCreateLinearIssue{}
 	case "rootly:index/workflowTaskCreateLinearIssueComment:WorkflowTaskCreateLinearIssueComment":
@@ -227,12 +263,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskCreateLinearSubtaskIssue{}
 	case "rootly:index/workflowTaskCreateMicrosoftTeamsChannel:WorkflowTaskCreateMicrosoftTeamsChannel":
 		r = &WorkflowTaskCreateMicrosoftTeamsChannel{}
+	case "rootly:index/workflowTaskCreateMicrosoftTeamsChat:WorkflowTaskCreateMicrosoftTeamsChat":
+		r = &WorkflowTaskCreateMicrosoftTeamsChat{}
 	case "rootly:index/workflowTaskCreateMicrosoftTeamsMeeting:WorkflowTaskCreateMicrosoftTeamsMeeting":
 		r = &WorkflowTaskCreateMicrosoftTeamsMeeting{}
+	case "rootly:index/workflowTaskCreateMistralChatCompletion:WorkflowTaskCreateMistralChatCompletion":
+		r = &WorkflowTaskCreateMistralChatCompletion{}
 	case "rootly:index/workflowTaskCreateMotionTask:WorkflowTaskCreateMotionTask":
 		r = &WorkflowTaskCreateMotionTask{}
 	case "rootly:index/workflowTaskCreateNotionPage:WorkflowTaskCreateNotionPage":
 		r = &WorkflowTaskCreateNotionPage{}
+	case "rootly:index/workflowTaskCreateOpenaiChatCompletion:WorkflowTaskCreateOpenaiChatCompletion":
+		r = &WorkflowTaskCreateOpenaiChatCompletion{}
 	case "rootly:index/workflowTaskCreateOpsgenieAlert:WorkflowTaskCreateOpsgenieAlert":
 		r = &WorkflowTaskCreateOpsgenieAlert{}
 	case "rootly:index/workflowTaskCreateOutlookEvent:WorkflowTaskCreateOutlookEvent":
@@ -253,8 +295,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskCreateShortcutTask{}
 	case "rootly:index/workflowTaskCreateSlackChannel:WorkflowTaskCreateSlackChannel":
 		r = &WorkflowTaskCreateSlackChannel{}
+	case "rootly:index/workflowTaskCreateSubIncident:WorkflowTaskCreateSubIncident":
+		r = &WorkflowTaskCreateSubIncident{}
 	case "rootly:index/workflowTaskCreateTrelloCard:WorkflowTaskCreateTrelloCard":
 		r = &WorkflowTaskCreateTrelloCard{}
+	case "rootly:index/workflowTaskCreateWatsonxChatCompletion:WorkflowTaskCreateWatsonxChatCompletion":
+		r = &WorkflowTaskCreateWatsonxChatCompletion{}
 	case "rootly:index/workflowTaskCreateWebexMeeting:WorkflowTaskCreateWebexMeeting":
 		r = &WorkflowTaskCreateWebexMeeting{}
 	case "rootly:index/workflowTaskCreateZendeskJiraLink:WorkflowTaskCreateZendeskJiraLink":
@@ -263,10 +309,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskCreateZendeskTicket{}
 	case "rootly:index/workflowTaskCreateZoomMeeting:WorkflowTaskCreateZoomMeeting":
 		r = &WorkflowTaskCreateZoomMeeting{}
-	case "rootly:index/workflowTaskGeniusCreateOpenaiChatCompletion:WorkflowTaskGeniusCreateOpenaiChatCompletion":
-		r = &WorkflowTaskGeniusCreateOpenaiChatCompletion{}
-	case "rootly:index/workflowTaskGeniusCreateWatsonxChatCompletion:WorkflowTaskGeniusCreateWatsonxChatCompletion":
-		r = &WorkflowTaskGeniusCreateWatsonxChatCompletion{}
 	case "rootly:index/workflowTaskGetAlerts:WorkflowTaskGetAlerts":
 		r = &WorkflowTaskGetAlerts{}
 	case "rootly:index/workflowTaskGetGithubCommits:WorkflowTaskGetGithubCommits":
@@ -289,6 +331,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskInviteToSlackChannelRootly{}
 	case "rootly:index/workflowTaskInviteToSlackChannelVictorOps:WorkflowTaskInviteToSlackChannelVictorOps":
 		r = &WorkflowTaskInviteToSlackChannelVictorOps{}
+	case "rootly:index/workflowTaskPageJsmopsOnCallResponders:WorkflowTaskPageJsmopsOnCallResponders":
+		r = &WorkflowTaskPageJsmopsOnCallResponders{}
 	case "rootly:index/workflowTaskPageOpsgenieOnCallResponders:WorkflowTaskPageOpsgenieOnCallResponders":
 		r = &WorkflowTaskPageOpsgenieOnCallResponders{}
 	case "rootly:index/workflowTaskPagePagerdutyOnCallResponders:WorkflowTaskPagePagerdutyOnCallResponders":
@@ -317,6 +361,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskSendEmail{}
 	case "rootly:index/workflowTaskSendMicrosoftTeamsBlocks:WorkflowTaskSendMicrosoftTeamsBlocks":
 		r = &WorkflowTaskSendMicrosoftTeamsBlocks{}
+	case "rootly:index/workflowTaskSendMicrosoftTeamsChatMessage:WorkflowTaskSendMicrosoftTeamsChatMessage":
+		r = &WorkflowTaskSendMicrosoftTeamsChatMessage{}
 	case "rootly:index/workflowTaskSendMicrosoftTeamsMessage:WorkflowTaskSendMicrosoftTeamsMessage":
 		r = &WorkflowTaskSendMicrosoftTeamsMessage{}
 	case "rootly:index/workflowTaskSendSlackBlocks:WorkflowTaskSendSlackBlocks":
@@ -351,6 +397,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskUpdateClickupTask{}
 	case "rootly:index/workflowTaskUpdateCodaPage:WorkflowTaskUpdateCodaPage":
 		r = &WorkflowTaskUpdateCodaPage{}
+	case "rootly:index/workflowTaskUpdateConfluencePage:WorkflowTaskUpdateConfluencePage":
+		r = &WorkflowTaskUpdateConfluencePage{}
+	case "rootly:index/workflowTaskUpdateDatadogNotebook:WorkflowTaskUpdateDatadogNotebook":
+		r = &WorkflowTaskUpdateDatadogNotebook{}
+	case "rootly:index/workflowTaskUpdateDropboxPaperPage:WorkflowTaskUpdateDropboxPaperPage":
+		r = &WorkflowTaskUpdateDropboxPaperPage{}
 	case "rootly:index/workflowTaskUpdateGithubIssue:WorkflowTaskUpdateGithubIssue":
 		r = &WorkflowTaskUpdateGithubIssue{}
 	case "rootly:index/workflowTaskUpdateGitlabIssue:WorkflowTaskUpdateGitlabIssue":
@@ -381,8 +433,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskUpdatePagerdutyIncident{}
 	case "rootly:index/workflowTaskUpdatePagertreeAlert:WorkflowTaskUpdatePagertreeAlert":
 		r = &WorkflowTaskUpdatePagertreeAlert{}
+	case "rootly:index/workflowTaskUpdateQuipPage:WorkflowTaskUpdateQuipPage":
+		r = &WorkflowTaskUpdateQuipPage{}
 	case "rootly:index/workflowTaskUpdateServiceNowIncident:WorkflowTaskUpdateServiceNowIncident":
 		r = &WorkflowTaskUpdateServiceNowIncident{}
+	case "rootly:index/workflowTaskUpdateSharepointPage:WorkflowTaskUpdateSharepointPage":
+		r = &WorkflowTaskUpdateSharepointPage{}
 	case "rootly:index/workflowTaskUpdateShortcutStory:WorkflowTaskUpdateShortcutStory":
 		r = &WorkflowTaskUpdateShortcutStory{}
 	case "rootly:index/workflowTaskUpdateShortcutTask:WorkflowTaskUpdateShortcutTask":
@@ -430,7 +486,17 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/alertField",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/alertGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/alertRoute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -450,12 +516,57 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/apiKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/authorization",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/catalog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/catalogChecklistTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/catalogEntity",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/catalogProperty",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/cause",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/communicationsGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/communicationsStage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/communicationsTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/communicationsType",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -481,6 +592,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/dashboardPanel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/edgeConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/edgeConnectorAction",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -685,6 +806,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/sla",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/statusPage",
 		&module{version},
 	)
@@ -756,6 +882,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/workflowTaskAddActionItem",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskAddMicrosoftTeamsChatTab",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -835,6 +966,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/workflowTaskCreateAnthropicChatCompletion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/workflowTaskCreateAsanaSubtask",
 		&module{version},
 	)
@@ -900,6 +1036,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/workflowTaskCreateGoogleGeminiChatCompletion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/workflowTaskCreateGoogleMeeting",
 		&module{version},
 	)
@@ -925,6 +1066,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/workflowTaskCreateJsmopsAlert",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/workflowTaskCreateLinearIssue",
 		&module{version},
 	)
@@ -945,7 +1091,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/workflowTaskCreateMicrosoftTeamsChat",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/workflowTaskCreateMicrosoftTeamsMeeting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskCreateMistralChatCompletion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -956,6 +1112,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/workflowTaskCreateNotionPage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskCreateOpenaiChatCompletion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1010,7 +1171,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/workflowTaskCreateSubIncident",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/workflowTaskCreateTrelloCard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskCreateWatsonxChatCompletion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1031,16 +1202,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/workflowTaskCreateZoomMeeting",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rootly",
-		"index/workflowTaskGeniusCreateOpenaiChatCompletion",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rootly",
-		"index/workflowTaskGeniusCreateWatsonxChatCompletion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1096,6 +1257,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/workflowTaskInviteToSlackChannelVictorOps",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskPageJsmopsOnCallResponders",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1166,6 +1332,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/workflowTaskSendMicrosoftTeamsBlocks",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskSendMicrosoftTeamsChatMessage",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1255,6 +1426,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/workflowTaskUpdateConfluencePage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskUpdateDatadogNotebook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskUpdateDropboxPaperPage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/workflowTaskUpdateGithubIssue",
 		&module{version},
 	)
@@ -1330,7 +1516,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/workflowTaskUpdateQuipPage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/workflowTaskUpdateServiceNowIncident",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskUpdateSharepointPage",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

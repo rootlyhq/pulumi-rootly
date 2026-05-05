@@ -11,10 +11,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.Functionality using the `id`. For example:
+ * rootly.Functionality can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/functionality:Functionality my-resource my-resource-slug
+ * $ pulumi import rootly:index/functionality:Functionality primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class Functionality extends pulumi.CustomResource {
@@ -64,7 +74,11 @@ export class Functionality extends pulumi.CustomResource {
     /**
      * Environments associated with this functionality
      */
-    declare public readonly environmentIds: pulumi.Output<string[]>;
+    declare public readonly environmentIds: pulumi.Output<string[] | undefined>;
+    /**
+     * The escalation policy id of the functionality
+     */
+    declare public readonly escalationPolicyId: pulumi.Output<string>;
     /**
      * The external id associated to this functionality
      */
@@ -76,7 +90,7 @@ export class Functionality extends pulumi.CustomResource {
     /**
      * Emails attached to the functionality
      */
-    declare public readonly notifyEmails: pulumi.Output<string[]>;
+    declare public readonly notifyEmails: pulumi.Output<string[] | undefined>;
     /**
      * The Opsgenie service id associated to this functionality
      */
@@ -88,11 +102,11 @@ export class Functionality extends pulumi.CustomResource {
     /**
      * Owner Teams associated with this functionality
      */
-    declare public readonly ownersGroupIds: pulumi.Output<string[]>;
+    declare public readonly ownerGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * Owner Users associated with this functionality
      */
-    declare public readonly ownersUserIds: pulumi.Output<number[]>;
+    declare public readonly ownerUserIds: pulumi.Output<number[] | undefined>;
     /**
      * The PagerDuty service id associated to this functionality
      */
@@ -102,13 +116,17 @@ export class Functionality extends pulumi.CustomResource {
      */
     declare public readonly position: pulumi.Output<number>;
     /**
+     * Array of property values for this functionality.
+     */
+    declare public readonly properties: pulumi.Output<outputs.FunctionalityProperty[] | undefined>;
+    /**
      * The public description of the functionality
      */
     declare public readonly publicDescription: pulumi.Output<string>;
     /**
      * Services associated with this functionality
      */
-    declare public readonly serviceIds: pulumi.Output<string[]>;
+    declare public readonly serviceIds: pulumi.Output<string[] | undefined>;
     /**
      * The Service Now CI sys id associated to this functionality
      */
@@ -116,11 +134,11 @@ export class Functionality extends pulumi.CustomResource {
     /**
      * Slack Aliases associated with this functionality
      */
-    declare public readonly slackAliases: pulumi.Output<outputs.FunctionalitySlackAlias[]>;
+    declare public readonly slackAliases: pulumi.Output<outputs.FunctionalitySlackAlias[] | undefined>;
     /**
      * Slack Channels associated with this functionality
      */
-    declare public readonly slackChannels: pulumi.Output<outputs.FunctionalitySlackChannel[]>;
+    declare public readonly slackChannels: pulumi.Output<outputs.FunctionalitySlackChannel[] | undefined>;
     /**
      * The slug of the functionality
      */
@@ -144,15 +162,17 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["cortexId"] = state?.cortexId;
             resourceInputs["description"] = state?.description;
             resourceInputs["environmentIds"] = state?.environmentIds;
+            resourceInputs["escalationPolicyId"] = state?.escalationPolicyId;
             resourceInputs["externalId"] = state?.externalId;
             resourceInputs["name"] = state?.name;
             resourceInputs["notifyEmails"] = state?.notifyEmails;
             resourceInputs["opsgenieId"] = state?.opsgenieId;
             resourceInputs["opsgenieTeamId"] = state?.opsgenieTeamId;
-            resourceInputs["ownersGroupIds"] = state?.ownersGroupIds;
-            resourceInputs["ownersUserIds"] = state?.ownersUserIds;
+            resourceInputs["ownerGroupIds"] = state?.ownerGroupIds;
+            resourceInputs["ownerUserIds"] = state?.ownerUserIds;
             resourceInputs["pagerdutyId"] = state?.pagerdutyId;
             resourceInputs["position"] = state?.position;
+            resourceInputs["properties"] = state?.properties;
             resourceInputs["publicDescription"] = state?.publicDescription;
             resourceInputs["serviceIds"] = state?.serviceIds;
             resourceInputs["serviceNowCiSysId"] = state?.serviceNowCiSysId;
@@ -166,15 +186,17 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["cortexId"] = args?.cortexId;
             resourceInputs["description"] = args?.description;
             resourceInputs["environmentIds"] = args?.environmentIds;
+            resourceInputs["escalationPolicyId"] = args?.escalationPolicyId;
             resourceInputs["externalId"] = args?.externalId;
             resourceInputs["name"] = args?.name;
             resourceInputs["notifyEmails"] = args?.notifyEmails;
             resourceInputs["opsgenieId"] = args?.opsgenieId;
             resourceInputs["opsgenieTeamId"] = args?.opsgenieTeamId;
-            resourceInputs["ownersGroupIds"] = args?.ownersGroupIds;
-            resourceInputs["ownersUserIds"] = args?.ownersUserIds;
+            resourceInputs["ownerGroupIds"] = args?.ownerGroupIds;
+            resourceInputs["ownerUserIds"] = args?.ownerUserIds;
             resourceInputs["pagerdutyId"] = args?.pagerdutyId;
             resourceInputs["position"] = args?.position;
+            resourceInputs["properties"] = args?.properties;
             resourceInputs["publicDescription"] = args?.publicDescription;
             resourceInputs["serviceIds"] = args?.serviceIds;
             resourceInputs["serviceNowCiSysId"] = args?.serviceNowCiSysId;
@@ -212,6 +234,10 @@ export interface FunctionalityState {
      */
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The escalation policy id of the functionality
+     */
+    escalationPolicyId?: pulumi.Input<string | undefined>;
+    /**
      * The external id associated to this functionality
      */
     externalId?: pulumi.Input<string | undefined>;
@@ -234,11 +260,11 @@ export interface FunctionalityState {
     /**
      * Owner Teams associated with this functionality
      */
-    ownersGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Owner Users associated with this functionality
      */
-    ownersUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The PagerDuty service id associated to this functionality
      */
@@ -247,6 +273,10 @@ export interface FunctionalityState {
      * Position of the functionality
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Array of property values for this functionality.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.FunctionalityProperty>[] | undefined>;
     /**
      * The public description of the functionality
      */
@@ -298,6 +328,10 @@ export interface FunctionalityArgs {
      */
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The escalation policy id of the functionality
+     */
+    escalationPolicyId?: pulumi.Input<string | undefined>;
+    /**
      * The external id associated to this functionality
      */
     externalId?: pulumi.Input<string | undefined>;
@@ -320,11 +354,11 @@ export interface FunctionalityArgs {
     /**
      * Owner Teams associated with this functionality
      */
-    ownersGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Owner Users associated with this functionality
      */
-    ownersUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The PagerDuty service id associated to this functionality
      */
@@ -333,6 +367,10 @@ export interface FunctionalityArgs {
      * Position of the functionality
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Array of property values for this functionality.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.FunctionalityProperty>[] | undefined>;
     /**
      * The public description of the functionality
      */

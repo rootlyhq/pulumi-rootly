@@ -24,8 +24,9 @@ func LookupIncidentPermissionSetBoolean(ctx *pulumi.Context, args *LookupInciden
 // A collection of arguments for invoking getIncidentPermissionSetBoolean.
 type LookupIncidentPermissionSetBooleanArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt map[string]string `pulumi:"createdAt"`
-	Kind      *string           `pulumi:"kind"`
+	CreatedAt               map[string]string `pulumi:"createdAt"`
+	IncidentPermissionSetId string            `pulumi:"incidentPermissionSetId"`
+	Kind                    *string           `pulumi:"kind"`
 }
 
 // A collection of values returned by getIncidentPermissionSetBoolean.
@@ -33,8 +34,9 @@ type LookupIncidentPermissionSetBooleanResult struct {
 	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt map[string]string `pulumi:"createdAt"`
 	// The ID of this resource.
-	Id   string `pulumi:"id"`
-	Kind string `pulumi:"kind"`
+	Id                      string `pulumi:"id"`
+	IncidentPermissionSetId string `pulumi:"incidentPermissionSetId"`
+	Kind                    string `pulumi:"kind"`
 }
 
 func LookupIncidentPermissionSetBooleanOutput(ctx *pulumi.Context, args LookupIncidentPermissionSetBooleanOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentPermissionSetBooleanResultOutput {
@@ -49,8 +51,9 @@ func LookupIncidentPermissionSetBooleanOutput(ctx *pulumi.Context, args LookupIn
 // A collection of arguments for invoking getIncidentPermissionSetBoolean.
 type LookupIncidentPermissionSetBooleanOutputArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt pulumi.StringMapInput `pulumi:"createdAt"`
-	Kind      pulumi.StringPtrInput `pulumi:"kind"`
+	CreatedAt               pulumi.StringMapInput `pulumi:"createdAt"`
+	IncidentPermissionSetId pulumi.StringInput    `pulumi:"incidentPermissionSetId"`
+	Kind                    pulumi.StringPtrInput `pulumi:"kind"`
 }
 
 func (LookupIncidentPermissionSetBooleanOutputArgs) ElementType() reflect.Type {
@@ -80,6 +83,10 @@ func (o LookupIncidentPermissionSetBooleanResultOutput) CreatedAt() pulumi.Strin
 // The ID of this resource.
 func (o LookupIncidentPermissionSetBooleanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentPermissionSetBooleanResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupIncidentPermissionSetBooleanResultOutput) IncidentPermissionSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIncidentPermissionSetBooleanResult) string { return v.IncidentPermissionSetId }).(pulumi.StringOutput)
 }
 
 func (o LookupIncidentPermissionSetBooleanResultOutput) Kind() pulumi.StringOutput {

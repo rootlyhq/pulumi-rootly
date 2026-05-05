@@ -11,10 +11,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.Environment using the `id`. For example:
+ * rootly.Environment can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/environment:Environment my-resource my-resource-slug
+ * $ pulumi import rootly:index/environment:Environment primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class Environment extends pulumi.CustomResource {
@@ -60,19 +70,23 @@ export class Environment extends pulumi.CustomResource {
     /**
      * Emails attached to the environment
      */
-    declare public readonly notifyEmails: pulumi.Output<string[]>;
+    declare public readonly notifyEmails: pulumi.Output<string[] | undefined>;
     /**
      * Position of the environment
      */
     declare public readonly position: pulumi.Output<number>;
     /**
+     * Array of property values for this environment.
+     */
+    declare public readonly properties: pulumi.Output<outputs.EnvironmentProperty[] | undefined>;
+    /**
      * Slack Aliases associated with this environment
      */
-    declare public readonly slackAliases: pulumi.Output<outputs.EnvironmentSlackAlias[]>;
+    declare public readonly slackAliases: pulumi.Output<outputs.EnvironmentSlackAlias[] | undefined>;
     /**
      * Slack Channels associated with this environment
      */
-    declare public readonly slackChannels: pulumi.Output<outputs.EnvironmentSlackChannel[]>;
+    declare public readonly slackChannels: pulumi.Output<outputs.EnvironmentSlackChannel[] | undefined>;
     /**
      * The slug of the environment
      */
@@ -96,6 +110,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["notifyEmails"] = state?.notifyEmails;
             resourceInputs["position"] = state?.position;
+            resourceInputs["properties"] = state?.properties;
             resourceInputs["slackAliases"] = state?.slackAliases;
             resourceInputs["slackChannels"] = state?.slackChannels;
             resourceInputs["slug"] = state?.slug;
@@ -106,6 +121,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["notifyEmails"] = args?.notifyEmails;
             resourceInputs["position"] = args?.position;
+            resourceInputs["properties"] = args?.properties;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
             resourceInputs["slug"] = args?.slug;
@@ -139,6 +155,10 @@ export interface EnvironmentState {
      * Position of the environment
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Array of property values for this environment.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.EnvironmentProperty>[] | undefined>;
     /**
      * Slack Aliases associated with this environment
      */
@@ -177,6 +197,10 @@ export interface EnvironmentArgs {
      * Position of the environment
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Array of property values for this environment.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.EnvironmentProperty>[] | undefined>;
     /**
      * Slack Aliases associated with this environment
      */

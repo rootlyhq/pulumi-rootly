@@ -7,19 +7,29 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Manages workflow geniusCreateOpenaiChatCompletion task.
+ * Manages workflow updateDropboxPaperPage task.
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.WorkflowTaskGeniusCreateOpenaiChatCompletion using the `id`. For example:
+ * rootly.WorkflowTaskUpdateDropboxPaperPage can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/workflowTaskGeniusCreateOpenaiChatCompletion:WorkflowTaskGeniusCreateOpenaiChatCompletion my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/workflowTaskUpdateDropboxPaperPage:WorkflowTaskUpdateDropboxPaperPage primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
-export class WorkflowTaskGeniusCreateOpenaiChatCompletion extends pulumi.CustomResource {
+export class WorkflowTaskUpdateDropboxPaperPage extends pulumi.CustomResource {
     /**
-     * Get an existing WorkflowTaskGeniusCreateOpenaiChatCompletion resource's state with the given name, ID, and optional extra
+     * Get an existing WorkflowTaskUpdateDropboxPaperPage resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -27,22 +37,22 @@ export class WorkflowTaskGeniusCreateOpenaiChatCompletion extends pulumi.CustomR
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkflowTaskGeniusCreateOpenaiChatCompletionState, opts?: pulumi.CustomResourceOptions): WorkflowTaskGeniusCreateOpenaiChatCompletion {
-        return new WorkflowTaskGeniusCreateOpenaiChatCompletion(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkflowTaskUpdateDropboxPaperPageState, opts?: pulumi.CustomResourceOptions): WorkflowTaskUpdateDropboxPaperPage {
+        return new WorkflowTaskUpdateDropboxPaperPage(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'rootly:index/workflowTaskGeniusCreateOpenaiChatCompletion:WorkflowTaskGeniusCreateOpenaiChatCompletion';
+    public static readonly __pulumiType = 'rootly:index/workflowTaskUpdateDropboxPaperPage:WorkflowTaskUpdateDropboxPaperPage';
 
     /**
-     * Returns true if the given object is an instance of WorkflowTaskGeniusCreateOpenaiChatCompletion.  This is designed to work even
+     * Returns true if the given object is an instance of WorkflowTaskUpdateDropboxPaperPage.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is WorkflowTaskGeniusCreateOpenaiChatCompletion {
+    public static isInstance(obj: any): obj is WorkflowTaskUpdateDropboxPaperPage {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === WorkflowTaskGeniusCreateOpenaiChatCompletion.__pulumiType;
+        return obj['__pulumiType'] === WorkflowTaskUpdateDropboxPaperPage.__pulumiType;
     }
 
     /**
@@ -64,25 +74,25 @@ export class WorkflowTaskGeniusCreateOpenaiChatCompletion extends pulumi.CustomR
     /**
      * The parameters for this workflow task.
      */
-    declare public readonly taskParams: pulumi.Output<outputs.WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams>;
+    declare public readonly taskParams: pulumi.Output<outputs.WorkflowTaskUpdateDropboxPaperPageTaskParams>;
     /**
      * The ID of the parent workflow
      */
     declare public readonly workflowId: pulumi.Output<string>;
 
     /**
-     * Create a WorkflowTaskGeniusCreateOpenaiChatCompletion resource with the given unique name, arguments, and options.
+     * Create a WorkflowTaskUpdateDropboxPaperPage resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: WorkflowTaskGeniusCreateOpenaiChatCompletionArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: WorkflowTaskGeniusCreateOpenaiChatCompletionArgs | WorkflowTaskGeniusCreateOpenaiChatCompletionState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: WorkflowTaskUpdateDropboxPaperPageArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: WorkflowTaskUpdateDropboxPaperPageArgs | WorkflowTaskUpdateDropboxPaperPageState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as WorkflowTaskGeniusCreateOpenaiChatCompletionState | undefined;
+            const state = argsOrState as WorkflowTaskUpdateDropboxPaperPageState | undefined;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
@@ -90,7 +100,7 @@ export class WorkflowTaskGeniusCreateOpenaiChatCompletion extends pulumi.CustomR
             resourceInputs["taskParams"] = state?.taskParams;
             resourceInputs["workflowId"] = state?.workflowId;
         } else {
-            const args = argsOrState as WorkflowTaskGeniusCreateOpenaiChatCompletionArgs | undefined;
+            const args = argsOrState as WorkflowTaskUpdateDropboxPaperPageArgs | undefined;
             if (args?.taskParams === undefined && !opts.urn) {
                 throw new Error("Missing required property 'taskParams'");
             }
@@ -105,14 +115,14 @@ export class WorkflowTaskGeniusCreateOpenaiChatCompletion extends pulumi.CustomR
             resourceInputs["workflowId"] = args?.workflowId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(WorkflowTaskGeniusCreateOpenaiChatCompletion.__pulumiType, name, resourceInputs, opts);
+        super(WorkflowTaskUpdateDropboxPaperPage.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering WorkflowTaskGeniusCreateOpenaiChatCompletion resources.
+ * Input properties used for looking up and filtering WorkflowTaskUpdateDropboxPaperPage resources.
  */
-export interface WorkflowTaskGeniusCreateOpenaiChatCompletionState {
+export interface WorkflowTaskUpdateDropboxPaperPageState {
     /**
      * Enable/disable this workflow task
      */
@@ -132,7 +142,7 @@ export interface WorkflowTaskGeniusCreateOpenaiChatCompletionState {
     /**
      * The parameters for this workflow task.
      */
-    taskParams?: pulumi.Input<inputs.WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams | undefined>;
+    taskParams?: pulumi.Input<inputs.WorkflowTaskUpdateDropboxPaperPageTaskParams | undefined>;
     /**
      * The ID of the parent workflow
      */
@@ -140,9 +150,9 @@ export interface WorkflowTaskGeniusCreateOpenaiChatCompletionState {
 }
 
 /**
- * The set of arguments for constructing a WorkflowTaskGeniusCreateOpenaiChatCompletion resource.
+ * The set of arguments for constructing a WorkflowTaskUpdateDropboxPaperPage resource.
  */
-export interface WorkflowTaskGeniusCreateOpenaiChatCompletionArgs {
+export interface WorkflowTaskUpdateDropboxPaperPageArgs {
     /**
      * Enable/disable this workflow task
      */
@@ -162,7 +172,7 @@ export interface WorkflowTaskGeniusCreateOpenaiChatCompletionArgs {
     /**
      * The parameters for this workflow task.
      */
-    taskParams: pulumi.Input<inputs.WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams>;
+    taskParams: pulumi.Input<inputs.WorkflowTaskUpdateDropboxPaperPageTaskParams>;
     /**
      * The ID of the parent workflow
      */

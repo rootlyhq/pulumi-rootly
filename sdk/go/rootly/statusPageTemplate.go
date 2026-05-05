@@ -14,10 +14,20 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import StatusPageTemplate using the `id`. For example:
+// StatusPageTemplate can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/statusPageTemplate:StatusPageTemplate my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/statusPageTemplate:StatusPageTemplate primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type StatusPageTemplate struct {
 	pulumi.CustomResourceState
@@ -36,6 +46,8 @@ type StatusPageTemplate struct {
 	Title pulumi.StringOutput `pulumi:"title"`
 	// Status of the event the template will populate
 	UpdateStatus pulumi.StringOutput `pulumi:"updateStatus"`
+	// Title that will be used for the status page update
+	UpdateTitle pulumi.StringOutput `pulumi:"updateTitle"`
 }
 
 // NewStatusPageTemplate registers a new resource with the given unique name, arguments, and options.
@@ -88,6 +100,8 @@ type statusPageTemplateState struct {
 	Title *string `pulumi:"title"`
 	// Status of the event the template will populate
 	UpdateStatus *string `pulumi:"updateStatus"`
+	// Title that will be used for the status page update
+	UpdateTitle *string `pulumi:"updateTitle"`
 }
 
 type StatusPageTemplateState struct {
@@ -105,6 +119,8 @@ type StatusPageTemplateState struct {
 	Title pulumi.StringPtrInput
 	// Status of the event the template will populate
 	UpdateStatus pulumi.StringPtrInput
+	// Title that will be used for the status page update
+	UpdateTitle pulumi.StringPtrInput
 }
 
 func (StatusPageTemplateState) ElementType() reflect.Type {
@@ -126,6 +142,8 @@ type statusPageTemplateArgs struct {
 	Title string `pulumi:"title"`
 	// Status of the event the template will populate
 	UpdateStatus *string `pulumi:"updateStatus"`
+	// Title that will be used for the status page update
+	UpdateTitle *string `pulumi:"updateTitle"`
 }
 
 // The set of arguments for constructing a StatusPageTemplate resource.
@@ -144,6 +162,8 @@ type StatusPageTemplateArgs struct {
 	Title pulumi.StringInput
 	// Status of the event the template will populate
 	UpdateStatus pulumi.StringPtrInput
+	// Title that will be used for the status page update
+	UpdateTitle pulumi.StringPtrInput
 }
 
 func (StatusPageTemplateArgs) ElementType() reflect.Type {
@@ -269,6 +289,11 @@ func (o StatusPageTemplateOutput) Title() pulumi.StringOutput {
 // Status of the event the template will populate
 func (o StatusPageTemplateOutput) UpdateStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatusPageTemplate) pulumi.StringOutput { return v.UpdateStatus }).(pulumi.StringOutput)
+}
+
+// Title that will be used for the status page update
+func (o StatusPageTemplateOutput) UpdateTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v *StatusPageTemplate) pulumi.StringOutput { return v.UpdateTitle }).(pulumi.StringOutput)
 }
 
 type StatusPageTemplateArrayOutput struct{ *pulumi.OutputState }

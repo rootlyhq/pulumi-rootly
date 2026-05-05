@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.SubStatus using the `id`. For example:
+ * rootly.SubStatus can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/subStatus:SubStatus my-resource my-resource-slug
+ * $ pulumi import rootly:index/subStatus:SubStatus primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class SubStatus extends pulumi.CustomResource {
@@ -44,7 +54,7 @@ export class SubStatus extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+     * Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
      */
     declare public readonly parentStatus: pulumi.Output<string | undefined>;
     declare public readonly position: pulumi.Output<number>;
@@ -88,7 +98,7 @@ export interface SubStatusState {
     description?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+     * Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
      */
     parentStatus?: pulumi.Input<string | undefined>;
     position?: pulumi.Input<number | undefined>;
@@ -102,7 +112,7 @@ export interface SubStatusArgs {
     description?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
+     * Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
      */
     parentStatus?: pulumi.Input<string | undefined>;
     position?: pulumi.Input<number | undefined>;

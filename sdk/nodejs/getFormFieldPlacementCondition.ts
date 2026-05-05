@@ -4,11 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export function getFormFieldPlacementCondition(args?: GetFormFieldPlacementConditionArgs, opts?: pulumi.InvokeOptions): Promise<GetFormFieldPlacementConditionResult> {
-    args = args || {};
+export function getFormFieldPlacementCondition(args: GetFormFieldPlacementConditionArgs, opts?: pulumi.InvokeOptions): Promise<GetFormFieldPlacementConditionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getFormFieldPlacementCondition:getFormFieldPlacementCondition", {
         "formFieldId": args.formFieldId,
+        "formFieldPlacementId": args.formFieldPlacementId,
     }, opts);
 }
 
@@ -17,6 +17,7 @@ export function getFormFieldPlacementCondition(args?: GetFormFieldPlacementCondi
  */
 export interface GetFormFieldPlacementConditionArgs {
     formFieldId?: string;
+    formFieldPlacementId: string;
 }
 
 /**
@@ -24,16 +25,17 @@ export interface GetFormFieldPlacementConditionArgs {
  */
 export interface GetFormFieldPlacementConditionResult {
     readonly formFieldId: string;
+    readonly formFieldPlacementId: string;
     /**
      * The ID of this resource.
      */
     readonly id: string;
 }
-export function getFormFieldPlacementConditionOutput(args?: GetFormFieldPlacementConditionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFormFieldPlacementConditionResult> {
-    args = args || {};
+export function getFormFieldPlacementConditionOutput(args: GetFormFieldPlacementConditionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFormFieldPlacementConditionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getFormFieldPlacementCondition:getFormFieldPlacementCondition", {
         "formFieldId": args.formFieldId,
+        "formFieldPlacementId": args.formFieldPlacementId,
     }, opts);
 }
 
@@ -42,4 +44,5 @@ export function getFormFieldPlacementConditionOutput(args?: GetFormFieldPlacemen
  */
 export interface GetFormFieldPlacementConditionOutputArgs {
     formFieldId?: pulumi.Input<string | undefined>;
+    formFieldPlacementId: pulumi.Input<string>;
 }

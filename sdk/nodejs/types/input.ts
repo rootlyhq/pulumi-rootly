@@ -12,13 +12,131 @@ export interface AlertGroupAttribute {
     jsonPath?: pulumi.Input<string | undefined>;
 }
 
+export interface AlertGroupCondition {
+    /**
+     * The Alert Urgency IDs to check in the condition. Only need to be set when the property field type is 'attribute', the property field name is 'alert*urgency' and the property field condition type is 'is*one*of' or 'is*not*one*of'
+     */
+    alertUrgencyIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+     */
+    conditionableId?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the conditionable. Value must be one of `AlertField`.
+     */
+    conditionableType?: pulumi.Input<string | undefined>;
+    /**
+     * The condition type of the property field. Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`, `matchesExistingAlert`.
+     */
+    propertyFieldConditionType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the property field. If the property field type is selected as 'attribute', then the allowed property field names are 'summary' (for Title), 'description', 'alert*urgency' and 'external*url' (for Alert Source URL). If the property field type is selected as 'payload', then the property field name should be supplied in JSON Path syntax.
+     */
+    propertyFieldName?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the property field. Value must be one of `attribute`, `payload`, `alertField`.
+     */
+    propertyFieldType?: pulumi.Input<string | undefined>;
+    /**
+     * The value of the property field. Can be null if the property field condition type is 'is*one*of' or 'is*not*one_of'
+     */
+    propertyFieldValue?: pulumi.Input<string | undefined>;
+    /**
+     * The values of the property field. Used if the property field condition type is 'is*one*of' or 'is*not*one*of' except for when property field name is 'alert*urgency'
+     */
+    propertyFieldValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    values?: pulumi.Input<pulumi.Input<inputs.AlertGroupConditionValue>[] | undefined>;
+}
+
+export interface AlertGroupConditionValue {
+    /**
+     * ID of the Alert Urgency to set.
+     */
+    recordId?: pulumi.Input<string | undefined>;
+    /**
+     * Should be "AlertUrgency".
+     */
+    recordType?: pulumi.Input<string | undefined>;
+}
+
 export interface AlertGroupTarget {
     /**
      * id for the Group, Service or EscalationPolicy
      */
     targetId?: pulumi.Input<string | undefined>;
     /**
-     * The type of the target.. Value must be one of `Group`, `Service`, `EscalationPolicy`.
+     * The type of the target.. Value must be one of `Group`, `Service`, `Functionality`, `EscalationPolicy`.
+     */
+    targetType?: pulumi.Input<string | undefined>;
+}
+
+export interface AlertRouteRule {
+    /**
+     * Must be specified if `fallbackRule` is `false`.
+     */
+    conditionGroups?: pulumi.Input<pulumi.Input<inputs.AlertRouteRuleConditionGroup>[] | undefined>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.AlertRouteRuleDestination>[] | undefined>;
+    /**
+     * Whether this is a fallback rule. Must be `true` if `conditionGroups` is not specified.
+     */
+    fallbackRule?: pulumi.Input<boolean | undefined>;
+    /**
+     * The name of the alert routing rule
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * The position of the alert routing rule for ordering evaluation
+     */
+    position?: pulumi.Input<number | undefined>;
+}
+
+export interface AlertRouteRuleConditionGroup {
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertRouteRuleConditionGroupCondition>[] | undefined>;
+    /**
+     * The position of the condition group
+     */
+    position?: pulumi.Input<number | undefined>;
+}
+
+export interface AlertRouteRuleConditionGroupCondition {
+    /**
+     * The Alert Urgency IDs to check in the condition
+     */
+    alertUrgencyIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The ID of the conditionable
+     */
+    conditionableId?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the conditionable. Value must be one of `AlertField`.
+     */
+    conditionableType?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`.
+     */
+    propertyFieldConditionType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the property field
+     */
+    propertyFieldName?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `attribute`, `payload`, `alertField`.
+     */
+    propertyFieldType?: pulumi.Input<string | undefined>;
+    /**
+     * The value of the property field
+     */
+    propertyFieldValue?: pulumi.Input<string | undefined>;
+    propertyFieldValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AlertRouteRuleDestination {
+    /**
+     * The ID of the target
+     */
+    targetId?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the target. Value must be one of `Service`, `Group`, `EscalationPolicy`.
      */
     targetType?: pulumi.Input<string | undefined>;
 }
@@ -46,46 +164,211 @@ export interface AlertRoutingRuleCondition {
     propertyFieldValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
+export interface AlertRoutingRuleConditionGroup {
+    /**
+     * The conditions within this group
+     */
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleConditionGroupCondition>[] | undefined>;
+    /**
+     * Date of creation
+     */
+    createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Unique ID of the condition group
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The position of the condition group for ordering
+     */
+    position?: pulumi.Input<number | undefined>;
+    /**
+     * Date of last update
+     */
+    updatedAt?: pulumi.Input<string | undefined>;
+}
+
+export interface AlertRoutingRuleConditionGroupCondition {
+    /**
+     * The ID of the conditionable object
+     */
+    conditionableId?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the conditionable object
+     */
+    conditionableType?: pulumi.Input<string | undefined>;
+    /**
+     * Date of creation
+     */
+    createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Unique ID of the condition
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The condition type of the property field. Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`.
+     */
+    propertyFieldConditionType?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the property field
+     */
+    propertyFieldName?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the property field. Value must be one of `attribute`, `payload`.
+     */
+    propertyFieldType?: pulumi.Input<string | undefined>;
+    /**
+     * The value of the property field
+     */
+    propertyFieldValue?: pulumi.Input<string | undefined>;
+    /**
+     * The values of the property field
+     */
+    propertyFieldValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Date of last update
+     */
+    updatedAt?: pulumi.Input<string | undefined>;
+}
+
 export interface AlertRoutingRuleDestination {
     /**
      * The ID of the target
      */
-    targetId?: pulumi.Input<string | undefined>;
+    targetId: pulumi.Input<string>;
     /**
-     * The type of the target. Value must be one of `Group`, `Service`, `EscalationPolicy`.
+     * The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
      */
     targetType?: pulumi.Input<string | undefined>;
 }
 
+export interface AlertsSourceAlertSourceFieldsAttribute {
+    /**
+     * The ID of the alert field
+     */
+    alertFieldId?: pulumi.Input<string | undefined>;
+    /**
+     * Liquid expression to extract a specific value from the alert's payload for evaluation
+     */
+    templateBody?: pulumi.Input<string | undefined>;
+}
+
 export interface AlertsSourceAlertSourceUrgencyRulesAttribute {
-    alertUrgencyId: pulumi.Input<string>;
-    jsonPath: pulumi.Input<string>;
-    operator: pulumi.Input<string>;
-    value: pulumi.Input<string>;
+    /**
+     * The ID of the alert urgency
+     */
+    alertUrgencyId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+     */
+    conditionableId?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the conditionable. Value must be one of `AlertField or (empty string)`.
+     */
+    conditionableType?: pulumi.Input<string | undefined>;
+    /**
+     * JSON path expression to extract a specific value from the alert's payload for evaluation
+     */
+    jsonPath?: pulumi.Input<string | undefined>;
+    /**
+     * The kind of the conditionable. Value must be one of `payload`, `alertField`.
+     */
+    kind?: pulumi.Input<string | undefined>;
+    /**
+     * Comparison operator used to evaluate the extracted value against the specified condition. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`.
+     */
+    operator?: pulumi.Input<string | undefined>;
+    /**
+     * Value that the extracted payload data is compared to using the specified operator to determine a match
+     */
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertsSourceAlertTemplateAttributes {
+    /**
+     * The alert description.
+     */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The alert URL.
+     */
     externalUrl?: pulumi.Input<string | undefined>;
+    /**
+     * The alert title.
+     */
     title?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertsSourceResolutionRuleAttributes {
+    /**
+     * The type of condition to evaluate to apply auto resolution rule. Value must be one of `all`, `any`.
+     */
     conditionType?: pulumi.Input<string | undefined>;
+    /**
+     * List of conditions to evaluate for auto resolution
+     */
     conditionsAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceResolutionRuleAttributesConditionsAttribute>[] | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * JSON path expression to extract unique alert identifier used to match triggered alerts with resolving alerts
+     */
     identifierJsonPath?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the identifier matchable. If identifier*matchable*type is AlertField, this is the ID of the alert field.
+     */
+    identifierMatchableId?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the identifier matchable. Value must be one of `AlertField`.
+     */
+    identifierMatchableType?: pulumi.Input<string | undefined>;
+    /**
+     * The kind of the identifier reference. Value must be one of `payload`, `alertField`.
+     */
+    identifierReferenceKind?: pulumi.Input<string | undefined>;
+    /**
+     * Regex group to further specify the part of the string used as a unique identifier
+     */
     identifierValueRegex?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertsSourceResolutionRuleAttributesConditionsAttribute {
+    /**
+     * The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+     */
+    conditionableId?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the conditionable. Value must be one of `AlertField or (empty string)`.
+     */
+    conditionableType?: pulumi.Input<string | undefined>;
+    /**
+     * JSON path expression to extract a specific value from the alert's payload for evaluation
+     */
     field?: pulumi.Input<string | undefined>;
+    /**
+     * The kind of the conditionable. Value must be one of `payload`, `alertField`.
+     */
+    kind?: pulumi.Input<string | undefined>;
+    /**
+     * Comparison operator used to evaluate the extracted value against the specified condition. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`, `startsWith`, `endsWith`.
+     */
     operator?: pulumi.Input<string | undefined>;
+    /**
+     * Value that the extracted payload data is compared to using the specified operator to determine a match
+     */
     value?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertsSourceSourceableAttributes {
+    /**
+     * Set this to false to reject threaded emails. Value must be one of true or false
+     */
+    acceptThreadedEmails?: pulumi.Input<boolean | undefined>;
+    /**
+     * Set this to true to auto-resolve alerts based on field*mappings*attributes conditions. Value must be one of true or false
+     */
     autoResolve?: pulumi.Input<boolean | undefined>;
+    /**
+     * Specify rules to auto resolve alerts
+     */
     fieldMappingsAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceSourceableAttributesFieldMappingsAttribute>[] | undefined>;
     /**
      * This value is matched with the value extracted from alerts payload using JSON path in field*mappings*attributes
@@ -94,44 +377,224 @@ export interface AlertsSourceSourceableAttributes {
 }
 
 export interface AlertsSourceSourceableAttributesFieldMappingsAttribute {
+    /**
+     * Select the field on which the condition to be evaluated. Value must be one of `externalId`, `state`, `alertTitle`, `alertExternalUrl`, `notificationTargetType`, `notificationTargetId`.
+     */
     field?: pulumi.Input<string | undefined>;
+    /**
+     * JSON path expression to extract a specific value from the alert's payload for evaluation
+     */
     jsonPath?: pulumi.Input<string | undefined>;
 }
 
+export interface CatalogChecklistTemplateField {
+    /**
+     * ID of the catalog property for custom fields
+     */
+    catalogPropertyId?: pulumi.Input<string | undefined>;
+    /**
+     * Key identifying the field
+     */
+    fieldKey?: pulumi.Input<string | undefined>;
+    /**
+     * Source of the field. Value must be one of `builtin`, `custom`.
+     */
+    fieldSource?: pulumi.Input<string | undefined>;
+}
+
+export interface CatalogChecklistTemplateOwner {
+    /**
+     * User ID for user owners, or field key for field owners
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Type of owner. Value must be one of `field`, `user`.
+     */
+    type?: pulumi.Input<string | undefined>;
+}
+
+export interface CatalogEntityProperty {
+    /**
+     * Unique ID of the catalog property
+     */
+    catalogPropertyId?: pulumi.Input<string | undefined>;
+    /**
+     * The value for this property
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CauseProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId?: pulumi.Input<string | undefined>;
+    /**
+     * The property value
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface CommunicationsGroupCommunicationExternalGroupMember {
+    /**
+     * Email of the external member
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the external group member
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the external member
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Phone number of the external member
+     */
+    phoneNumber?: pulumi.Input<string | undefined>;
+}
+
+export interface CommunicationsGroupCommunicationGroupCondition {
+    /**
+     * Condition
+     */
+    condition?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the condition
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Properties
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationGroupConditionProperty>[] | undefined>;
+    /**
+     * Property type. Value must be one of `service`, `severity`, `functionality`, `group`, `incidentType`.
+     */
+    propertyType?: pulumi.Input<string | undefined>;
+}
+
+export interface CommunicationsGroupCommunicationGroupConditionProperty {
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * @deprecated This field is deprecated and will be removed in a future version
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface CommunicationsGroupCommunicationGroupMember {
+    /**
+     * ID of the group member
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * User ID
+     */
+    userId?: pulumi.Input<number | undefined>;
+}
+
+export interface CommunicationsTemplateCommunicationTemplateStage {
+    /**
+     * The communication stage ID
+     */
+    communicationStageId?: pulumi.Input<string | undefined>;
+    /**
+     * Email body for the stage
+     */
+    emailBody?: pulumi.Input<string | undefined>;
+    /**
+     * Email subject for the stage
+     */
+    emailSubject?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the communication template stage
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Slack content for the stage
+     */
+    slackContent?: pulumi.Input<string | undefined>;
+    /**
+     * SMS content for the stage
+     */
+    smsContent?: pulumi.Input<string | undefined>;
+}
+
+export interface CommunicationsTemplateCommunicationType {
+    /**
+     * ID of the communication type
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the communication type
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
 export interface DashboardPanelParams {
+    datalabels?: pulumi.Input<inputs.DashboardPanelParamsDatalabels | undefined>;
     datasets?: pulumi.Input<pulumi.Input<inputs.DashboardPanelParamsDataset>[] | undefined>;
-    display: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `table`, `aggregateValue`.
+     */
+    display?: pulumi.Input<string | undefined>;
     legend?: pulumi.Input<inputs.DashboardPanelParamsLegend | undefined>;
+    tableFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface DashboardPanelParamsDatalabels {
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface DashboardPanelParamsDataset {
     aggregate?: pulumi.Input<inputs.DashboardPanelParamsDatasetAggregate | undefined>;
-    collection: pulumi.Input<string>;
+    /**
+     * Value must be one of `alerts`, `incidents`, `incidentPostMortems`, `incidentActionItems`, `users`.
+     */
+    collection?: pulumi.Input<string | undefined>;
     filters?: pulumi.Input<pulumi.Input<inputs.DashboardPanelParamsDatasetFilter>[] | undefined>;
     groupBy?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
 }
 
 export interface DashboardPanelParamsDatasetAggregate {
-    cumulative: pulumi.Input<boolean>;
-    key: pulumi.Input<string>;
-    operation: pulumi.Input<string>;
+    /**
+     * Value must be one of true or false
+     */
+    cumulative?: pulumi.Input<boolean | undefined>;
+    key?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `count`, `sum`, `average`.
+     */
+    operation?: pulumi.Input<string | undefined>;
 }
 
 export interface DashboardPanelParamsDatasetFilter {
-    operation: pulumi.Input<string>;
+    /**
+     * Value must be one of `and`, `or`.
+     */
+    operation?: pulumi.Input<string | undefined>;
     rules?: pulumi.Input<pulumi.Input<inputs.DashboardPanelParamsDatasetFilterRule>[] | undefined>;
 }
 
 export interface DashboardPanelParamsDatasetFilterRule {
-    condition: pulumi.Input<string>;
-    key: pulumi.Input<string>;
-    operation: pulumi.Input<string>;
-    value: pulumi.Input<string>;
+    /**
+     * Value must be one of `=`, `!=`, `>=`, `<=`, `exists`, `notExists`, `contains`, `notContains`, `assigned`, `unassigned`.
+     */
+    condition?: pulumi.Input<string | undefined>;
+    key?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `and`, `or`.
+     */
+    operation?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface DashboardPanelParamsLegend {
-    groups: pulumi.Input<string>;
+    /**
+     * Value must be one of `all`, `charted`.
+     */
+    groups?: pulumi.Input<string | undefined>;
 }
 
 export interface DashboardPanelPosition {
@@ -139,6 +602,26 @@ export interface DashboardPanelPosition {
     w: pulumi.Input<number>;
     x: pulumi.Input<number>;
     y: pulumi.Input<number>;
+}
+
+export interface EdgeConnectorActionParameter {
+    default?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    options?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    required?: pulumi.Input<boolean | undefined>;
+    type?: pulumi.Input<string | undefined>;
+}
+
+export interface EnvironmentProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId?: pulumi.Input<string | undefined>;
+    /**
+     * The property value
+     */
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface EnvironmentSlackAlias {
@@ -180,17 +663,37 @@ export interface EscalationLevelNotificationTargetParam {
 
 export interface EscalationPathRule {
     /**
+     * The ID of the alert field. Only used with `field` rule type.
+     */
+    fieldableId?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the fieldable. Only used with `field` rule type. Value must be one of `AlertField`.
+     */
+    fieldableType?: pulumi.Input<string | undefined>;
+    /**
      * JSON path to extract value from payload
      */
     jsonPath?: pulumi.Input<string | undefined>;
     /**
-     * How JSON path value should be matched. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`.
+     * How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`.
      */
     operator?: pulumi.Input<string | undefined>;
     /**
-     * The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`.
+     * The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`.
      */
     ruleType?: pulumi.Input<string | undefined>;
+    /**
+     * Service ids for which this escalation path should be used. Only used with `service` rule type.
+     */
+    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Time windows during which alerts are deferred. Only used with `deferralWindow` rule type.
+     */
+    timeBlocks?: pulumi.Input<pulumi.Input<inputs.EscalationPathRuleTimeBlock>[] | undefined>;
+    /**
+     * Time zone for the deferral window (IANA format, e.g. `America/New_York`). Only used with `deferralWindow` rule type.
+     */
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Alert urgency ids for which this escalation path should be used
      */
@@ -200,9 +703,60 @@ export interface EscalationPathRule {
      */
     value?: pulumi.Input<string | undefined>;
     /**
+     * Values to match against. Only used with `field` rule type.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Whether the escalation path should be used within working hours. Value must be one of true or false
      */
     withinWorkingHour?: pulumi.Input<boolean | undefined>;
+}
+
+export interface EscalationPathRuleTimeBlock {
+    /**
+     * Whether this time block covers the entire day
+     */
+    allDay?: pulumi.Input<boolean | undefined>;
+    /**
+     * Formatted as HH:MM
+     */
+    endTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the time block applies on Friday
+     */
+    friday?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the time block applies on Monday
+     */
+    monday?: pulumi.Input<boolean | undefined>;
+    /**
+     * Position of the time block
+     */
+    position?: pulumi.Input<number | undefined>;
+    /**
+     * Whether the time block applies on Saturday
+     */
+    saturday?: pulumi.Input<boolean | undefined>;
+    /**
+     * Formatted as HH:MM
+     */
+    startTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the time block applies on Sunday
+     */
+    sunday?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the time block applies on Thursday
+     */
+    thursday?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the time block applies on Tuesday
+     */
+    tuesday?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the time block applies on Wednesday
+     */
+    wednesday?: pulumi.Input<boolean | undefined>;
 }
 
 export interface EscalationPathTimeRestriction {
@@ -238,9 +792,20 @@ export interface EscalationPolicyBusinessHours {
      */
     startTime?: pulumi.Input<string | undefined>;
     /**
-     * Time zone for business hours
+     * Time zone for business hours. Value must be one of `International Date Line West`, `Etc/GMT+12`, `American Samoa`, `Pacific/Pago_Pago`, `Midway Island`, `Pacific/Midway`, `Hawaii`, `Pacific/Honolulu`, `Alaska`, `America/Juneau`, `Pacific Time (US & Canada)`, `America/Los_Angeles`, `Tijuana`, `America/Tijuana`, `Arizona`, `America/Phoenix`, `Mazatlan`, `America/Mazatlan`, `Mountain Time (US & Canada)`, `America/Denver`, `Central America`, `America/Guatemala`, `Central Time (US & Canada)`, `America/Chicago`, `Chihuahua`, `America/Chihuahua`, `Guadalajara`, `America/Mexico_City`, `Mexico City`, `America/Mexico_City`, `Monterrey`, `America/Monterrey`, `Saskatchewan`, `America/Regina`, `Bogota`, `America/Bogota`, `Eastern Time (US & Canada)`, `America/New_York`, `Indiana (East)`, `America/Indiana/Indianapolis`, `Lima`, `America/Lima`, `Quito`, `America/Lima`, `Atlantic Time (Canada)`, `America/Halifax`, `Caracas`, `America/Caracas`, `Georgetown`, `America/Guyana`, `La Paz`, `America/La_Paz`, `Puerto Rico`, `America/Puerto_Rico`, `Santiago`, `America/Santiago`, `Newfoundland`, `America/St_Johns`, `Asuncion`, `America/Asuncion`, `Brasilia`, `America/Sao_Paulo`, `Buenos Aires`, `America/Argentina/Buenos_Aires`, `Montevideo`, `America/Montevideo`, `Greenland`, `America/Nuuk`, `Mid-Atlantic`, `Atlantic/South_Georgia`, `Azores`, `Atlantic/Azores`, `Cape Verde Is.`, `Atlantic/Cape_Verde`, `Casablanca`, `Africa/Casablanca`, `Dublin`, `Europe/Dublin`, `Edinburgh`, `Europe/London`, `Lisbon`, `Europe/Lisbon`, `London`, `Europe/London`, `Monrovia`, `Africa/Monrovia`, `UTC`, `Etc/UTC`, `Amsterdam`, `Europe/Amsterdam`, `Belgrade`, `Europe/Belgrade`, `Berlin`, `Europe/Berlin`, `Bern`, `Europe/Zurich`, `Bratislava`, `Europe/Bratislava`, `Brussels`, `Europe/Brussels`, `Budapest`, `Europe/Budapest`, `Copenhagen`, `Europe/Copenhagen`, `Ljubljana`, `Europe/Ljubljana`, `Madrid`, `Europe/Madrid`, `Paris`, `Europe/Paris`, `Prague`, `Europe/Prague`, `Rome`, `Europe/Rome`, `Sarajevo`, `Europe/Sarajevo`, `Skopje`, `Europe/Skopje`, `Stockholm`, `Europe/Stockholm`, `Vienna`, `Europe/Vienna`, `Warsaw`, `Europe/Warsaw`, `West Central Africa`, `Africa/Algiers`, `Zagreb`, `Europe/Zagreb`, `Zurich`, `Europe/Zurich`, `Athens`, `Europe/Athens`, `Bucharest`, `Europe/Bucharest`, `Cairo`, `Africa/Cairo`, `Harare`, `Africa/Harare`, `Helsinki`, `Europe/Helsinki`, `Jerusalem`, `Asia/Jerusalem`, `Kaliningrad`, `Europe/Kaliningrad`, `Kyiv`, `Europe/Kiev`, `Pretoria`, `Africa/Johannesburg`, `Riga`, `Europe/Riga`, `Sofia`, `Europe/Sofia`, `Tallinn`, `Europe/Tallinn`, `Vilnius`, `Europe/Vilnius`, `Baghdad`, `Asia/Baghdad`, `Istanbul`, `Europe/Istanbul`, `Kuwait`, `Asia/Kuwait`, `Minsk`, `Europe/Minsk`, `Moscow`, `Europe/Moscow`, `Nairobi`, `Africa/Nairobi`, `Riyadh`, `Asia/Riyadh`, `St. Petersburg`, `Europe/Moscow`, `Volgograd`, `Europe/Volgograd`, `Tehran`, `Asia/Tehran`, `Abu Dhabi`, `Asia/Muscat`, `Baku`, `Asia/Baku`, `Muscat`, `Asia/Muscat`, `Samara`, `Europe/Samara`, `Tbilisi`, `Asia/Tbilisi`, `Yerevan`, `Asia/Yerevan`, `Kabul`, `Asia/Kabul`, `Almaty`, `Asia/Almaty`, `Astana`, `Asia/Almaty`, `Ekaterinburg`, `Asia/Yekaterinburg`, `Islamabad`, `Asia/Karachi`, `Karachi`, `Asia/Karachi`, `Tashkent`, `Asia/Tashkent`, `Chennai`, `Asia/Kolkata`, `Kolkata`, `Asia/Kolkata`, `Mumbai`, `Asia/Kolkata`, `New Delhi`, `Asia/Kolkata`, `Sri Jayawardenepura`, `Asia/Colombo`, `Kathmandu`, `Asia/Kathmandu`, `Dhaka`, `Asia/Dhaka`, `Urumqi`, `Asia/Urumqi`, `Rangoon`, `Asia/Rangoon`, `Bangkok`, `Asia/Bangkok`, `Hanoi`, `Asia/Bangkok`, `Jakarta`, `Asia/Jakarta`, `Krasnoyarsk`, `Asia/Krasnoyarsk`, `Novosibirsk`, `Asia/Novosibirsk`, `Beijing`, `Asia/Shanghai`, `Chongqing`, `Asia/Chongqing`, `Hong Kong`, `Asia/Hong_Kong`, `Irkutsk`, `Asia/Irkutsk`, `Kuala Lumpur`, `Asia/Kuala_Lumpur`, `Perth`, `Australia/Perth`, `Singapore`, `Asia/Singapore`, `Taipei`, `Asia/Taipei`, `Ulaanbaatar`, `Asia/Ulaanbaatar`, `Osaka`, `Asia/Tokyo`, `Sapporo`, `Asia/Tokyo`, `Seoul`, `Asia/Seoul`, `Tokyo`, `Asia/Tokyo`, `Yakutsk`, `Asia/Yakutsk`, `Adelaide`, `Australia/Adelaide`, `Darwin`, `Australia/Darwin`, `Brisbane`, `Australia/Brisbane`, `Canberra`, `Australia/Canberra`, `Guam`, `Pacific/Guam`, `Hobart`, `Australia/Hobart`, `Melbourne`, `Australia/Melbourne`, `Port Moresby`, `Pacific/Port_Moresby`, `Sydney`, `Australia/Sydney`, `Vladivostok`, `Asia/Vladivostok`, `Magadan`, `Asia/Magadan`, `New Caledonia`, `Pacific/Noumea`, `Solomon Is.`, `Pacific/Guadalcanal`, `Srednekolymsk`, `Asia/Srednekolymsk`, `Auckland`, `Pacific/Auckland`, `Fiji`, `Pacific/Fiji`, `Kamchatka`, `Asia/Kamchatka`, `Marshall Is.`, `Pacific/Majuro`, `Wellington`, `Pacific/Auckland`, `Chatham Is.`, `Pacific/Chatham`, `Nuku'alofa`, `Pacific/Tongatapu`, `Samoa`, `Pacific/Apia`, `Tokelau Is.`, `Pacific/Fakaofo`.
      */
     timeZone?: pulumi.Input<string | undefined>;
+}
+
+export interface FunctionalityProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId?: pulumi.Input<string | undefined>;
+    /**
+     * The property value
+     */
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface FunctionalitySlackAlias {
@@ -265,6 +830,17 @@ export interface FunctionalitySlackChannel {
     name?: pulumi.Input<string | undefined>;
 }
 
+export interface IncidentTypeProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId?: pulumi.Input<string | undefined>;
+    /**
+     * The property value
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
 export interface IncidentTypeSlackAlias {
     /**
      * Slack alias ID
@@ -285,6 +861,21 @@ export interface IncidentTypeSlackChannel {
      * Slack channel name
      */
     name?: pulumi.Input<string | undefined>;
+}
+
+export interface LiveCallRouterPagingTarget {
+    /**
+     * This is used in escalation paths to determine who to page
+     */
+    alertUrgencyId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of paging target
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the paging target. Value must be one of `service`, `team`, `escalationPolicy`.
+     */
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface RetrospectiveProcessRetrospectiveProcessMatchingCriteria {
@@ -322,6 +913,54 @@ export interface ScheduleRotationActiveTimeAttribute {
      * Start time for schedule rotation active time
      */
     startTime?: pulumi.Input<string | undefined>;
+}
+
+export interface ScheduleRotationScheduleRotationMember {
+    /**
+     * ID of the member
+     */
+    memberId?: pulumi.Input<string | undefined>;
+    /**
+     * Type of member. Value must be one of `Schedule` or `User`.
+     */
+    memberType?: pulumi.Input<string | undefined>;
+    /**
+     * Position of the member in rotation
+     */
+    position?: pulumi.Input<number | undefined>;
+}
+
+export interface ServiceAlertBroadcastChannel {
+    /**
+     * Slack channel ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Slack channel name
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface ServiceIncidentBroadcastChannel {
+    /**
+     * Slack channel ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Slack channel name
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface ServiceProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId?: pulumi.Input<string | undefined>;
+    /**
+     * The property value
+     */
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ServiceSlackAlias {
@@ -368,6 +1007,93 @@ export interface SeveritySlackChannel {
     name?: pulumi.Input<string | undefined>;
 }
 
+export interface SlaCondition {
+    /**
+     * The type of condition. Value must be one of `SLAs::BuiltInFieldCondition`, `SLAs::CustomFieldCondition`.
+     */
+    conditionableType?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the form field (for custom field conditions)
+     */
+    formFieldId?: pulumi.Input<string | undefined>;
+    /**
+     * Unique ID of the condition
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The comparison operator
+     */
+    operator?: pulumi.Input<string | undefined>;
+    /**
+     * The position of the condition
+     */
+    position?: pulumi.Input<number | undefined>;
+    /**
+     * The property to evaluate (for built-in field conditions)
+     */
+    property?: pulumi.Input<string | undefined>;
+    /**
+     * The values to compare against
+     */
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface SlaNotificationConfiguration {
+    /**
+     * Date of creation
+     */
+    createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Unique ID of the notification configuration
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Number of days offset from the deadline
+     */
+    offsetDays?: pulumi.Input<number | undefined>;
+    /**
+     * When to send the notification relative to the deadline. Value must be one of `beforeDue`, `whenDue`, `afterDue`.
+     */
+    offsetType?: pulumi.Input<string | undefined>;
+    /**
+     * Date of last update
+     */
+    updatedAt?: pulumi.Input<string | undefined>;
+}
+
+export interface TeamAlertBroadcastChannel {
+    /**
+     * Slack channel ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Slack channel name
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface TeamIncidentBroadcastChannel {
+    /**
+     * Slack channel ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Slack channel name
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface TeamProperty {
+    /**
+     * Catalog property ID
+     */
+    catalogPropertyId?: pulumi.Input<string | undefined>;
+    /**
+     * The property value
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
 export interface TeamSlackAlias {
     /**
      * Slack alias ID
@@ -396,19 +1122,19 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentActionItemCondition?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionGroup?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionKind?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionPriority?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionStatus?: pulumi.Input<string | undefined>;
     incidentActionItemGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -431,51 +1157,51 @@ export interface WorkflowActionItemTriggerParams {
     incidentConditionAcknowledgedAt?: pulumi.Input<string | undefined>;
     incidentConditionDetectedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: pulumi.Input<string | undefined>;
     incidentConditionMitigatedAt?: pulumi.Input<string | undefined>;
     incidentConditionResolvedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: pulumi.Input<string | undefined>;
     incidentConditionStartedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: pulumi.Input<string | undefined>;
     incidentConditionSummary?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: pulumi.Input<string | undefined>;
     incidentConditionalInactivity?: pulumi.Input<string | undefined>;
@@ -484,7 +1210,7 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentInactivityDuration?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -508,7 +1234,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertCondition?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionLabel?: pulumi.Input<string | undefined>;
     /**
@@ -516,7 +1242,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionLabelUseRegexp?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionPayload?: pulumi.Input<string | undefined>;
     /**
@@ -524,7 +1250,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionPayloadUseRegexp?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionSource?: pulumi.Input<string | undefined>;
     /**
@@ -532,14 +1258,20 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionSourceUseRegexp?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionStatus?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of true or false
      */
     alertConditionStatusUseRegexp?: pulumi.Input<boolean | undefined>;
+    /**
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    alertConditionUrgency?: pulumi.Input<string | undefined>;
+    alertFieldConditions?: pulumi.Input<pulumi.Input<inputs.WorkflowAlertTriggerParamsAlertFieldCondition>[] | undefined>;
     alertLabels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    alertPayloadConditions?: pulumi.Input<inputs.WorkflowAlertTriggerParamsAlertPayloadConditions | undefined>;
     alertPayloads?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * You can use jsonpath syntax. eg: $.incident.teams[*]
@@ -547,6 +1279,7 @@ export interface WorkflowAlertTriggerParams {
     alertQueryPayload?: pulumi.Input<string | undefined>;
     alertSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     alertStatuses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    alertUrgencyIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one off `alert`.
      */
@@ -557,6 +1290,32 @@ export interface WorkflowAlertTriggerParams {
     triggers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
+export interface WorkflowAlertTriggerParamsAlertFieldCondition {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface WorkflowAlertTriggerParamsAlertPayloadConditions {
+    conditions?: pulumi.Input<pulumi.Input<inputs.WorkflowAlertTriggerParamsAlertPayloadConditionsCondition>[] | undefined>;
+    /**
+     * Logic operator for conditions. Value must be one of `ALL` or `ANY`.
+     */
+    logic?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowAlertTriggerParamsAlertPayloadConditionsCondition {
+    /**
+     * Value must be one of `IS`, `IS NOT`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `SET`, `UNSET`.
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * JSONPath query. eg: $.commonLabels.namespace
+     */
+    query: pulumi.Input<string>;
+    useRegexp?: pulumi.Input<boolean | undefined>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface WorkflowIncidentTriggerParams {
     /**
      * Value must be one off `ALL`, `ANY`, `NONE`.
@@ -564,56 +1323,56 @@ export interface WorkflowIncidentTriggerParams {
     incidentCondition?: pulumi.Input<string | undefined>;
     incidentConditionAcknowledgedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionCause?: pulumi.Input<string | undefined>;
     incidentConditionDetectedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: pulumi.Input<string | undefined>;
     incidentConditionMitigatedAt?: pulumi.Input<string | undefined>;
     incidentConditionResolvedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: pulumi.Input<string | undefined>;
     incidentConditionStartedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: pulumi.Input<string | undefined>;
     incidentConditionSummary?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: pulumi.Input<string | undefined>;
     incidentConditionalInactivity?: pulumi.Input<string | undefined>;
@@ -622,11 +1381,11 @@ export interface WorkflowIncidentTriggerParams {
      */
     incidentInactivityDuration?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionCause?: pulumi.Input<string | undefined>;
     /**
@@ -639,7 +1398,7 @@ export interface WorkflowIncidentTriggerParams {
      */
     triggerType?: pulumi.Input<string | undefined>;
     /**
-     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack_channel
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
      */
     triggers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -651,56 +1410,56 @@ export interface WorkflowPostMortemTriggerParams {
     incidentCondition?: pulumi.Input<string | undefined>;
     incidentConditionAcknowledgedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionCause?: pulumi.Input<string | undefined>;
     incidentConditionDetectedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: pulumi.Input<string | undefined>;
     incidentConditionMitigatedAt?: pulumi.Input<string | undefined>;
     incidentConditionResolvedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: pulumi.Input<string | undefined>;
     incidentConditionStartedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: pulumi.Input<string | undefined>;
     incidentConditionSummary?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: pulumi.Input<string | undefined>;
     incidentConditionalInactivity?: pulumi.Input<string | undefined>;
@@ -709,7 +1468,7 @@ export interface WorkflowPostMortemTriggerParams {
      */
     incidentInactivityDuration?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+     * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -717,11 +1476,11 @@ export interface WorkflowPostMortemTriggerParams {
      */
     incidentPostMortemCondition?: pulumi.Input<string | undefined>;
     /**
-     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionCause?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionStatus?: pulumi.Input<string | undefined>;
     /**
@@ -749,7 +1508,7 @@ export interface WorkflowPulseTriggerParams {
      */
     pulseCondition?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionLabel?: pulumi.Input<string | undefined>;
     /**
@@ -757,7 +1516,7 @@ export interface WorkflowPulseTriggerParams {
      */
     pulseConditionLabelUseRegexp?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionPayload?: pulumi.Input<string | undefined>;
     /**
@@ -765,7 +1524,7 @@ export interface WorkflowPulseTriggerParams {
      */
     pulseConditionPayloadUseRegexp?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionSource?: pulumi.Input<string | undefined>;
     /**
@@ -856,6 +1615,22 @@ export interface WorkflowTaskAddActionItemTaskParams {
 export interface WorkflowTaskAddActionItemTaskParamsPostToSlackChannel {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskAddMicrosoftTeamsChatTabTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    chat: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The tab link
+     */
+    link: pulumi.Input<string>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * The tab title
+     */
+    title: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskAddMicrosoftTeamsTabTaskParams {
@@ -1105,6 +1880,22 @@ export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
     taskType?: pulumi.Input<string | undefined>;
 }
 
+export interface WorkflowTaskCreateAnthropicChatCompletionTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The Anthropic model. eg: claude-3-5-sonnet-20241022
+     */
+    model: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The prompt to send to Anthropic
+     */
+    prompt: pulumi.Input<string>;
+    /**
+     * The system prompt to send to Anthropic (optional)
+     */
+    systemPrompt?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+}
+
 export interface WorkflowTaskCreateAsanaSubtaskTaskParams {
     /**
      * The assigned user's email
@@ -1222,6 +2013,10 @@ export interface WorkflowTaskCreateCodaPageTaskParams {
      * The Coda page content
      */
     content?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`. The Coda doc object with id and name
+     */
+    doc?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Coda folder id
      */
@@ -1347,6 +2142,18 @@ export interface WorkflowTaskCreateGithubIssueTaskParams {
      */
     body?: pulumi.Input<string | undefined>;
     /**
+     * Map must contain two fields, `id` and `name`. The issue type
+     */
+    issueType?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The issue labels
+     */
+    labels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateGithubIssueTaskParamsLabel>[] | undefined>;
+    /**
+     * The parent issue number for sub-issue linking
+     */
+    parentIssueNumber?: pulumi.Input<string | undefined>;
+    /**
      * Map must contain two fields, `id` and `name`.
      */
     repository: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1355,6 +2162,11 @@ export interface WorkflowTaskCreateGithubIssueTaskParams {
      * The issue title
      */
     title: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateGithubIssueTaskParamsLabel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskCreateGitlabIssueTaskParams {
@@ -1534,6 +2346,22 @@ export interface WorkflowTaskCreateGoogleDocsPermissionsTaskParams {
     taskType?: pulumi.Input<string | undefined>;
 }
 
+export interface WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The Gemini model. eg: gemini-2.0-flash
+     */
+    model: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The prompt to send to Gemini
+     */
+    prompt: pulumi.Input<string>;
+    /**
+     * The system prompt to send to Gemini (optional)
+     */
+    systemPrompt?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+}
+
 export interface WorkflowTaskCreateGoogleMeetingTaskParams {
     /**
      * [DEPRECATED] Sets the video conference type attached to the meeting. Value must be one of `eventHangout`, `eventNamedHangout`, `hangoutsMeet`, `addOn`.
@@ -1552,6 +2380,10 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParams {
      * Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
      */
     recordMeeting?: pulumi.Input<boolean | undefined>;
+    /**
+     * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+     */
+    recordingMode?: pulumi.Input<string | undefined>;
     /**
      * [DEPRECATED] The meeting summary
      */
@@ -1583,17 +2415,26 @@ export interface WorkflowTaskCreateIncidentPostmortemTaskParams {
 
 export interface WorkflowTaskCreateIncidentTaskParams {
     /**
-     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
      */
     customFieldsMapping?: pulumi.Input<string | undefined>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Array of functionality UUIDs
+     */
     functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Array of group/team UUIDs
+     */
     groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of true or false
      */
     private?: pulumi.Input<boolean | undefined>;
+    /**
+     * Array of service UUIDs
+     */
     serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     severityId?: pulumi.Input<string | undefined>;
     /**
@@ -1723,6 +2564,50 @@ export interface WorkflowTaskCreateJiraSubtaskTaskParams {
     updatePayload?: pulumi.Input<string | undefined>;
 }
 
+export interface WorkflowTaskCreateJsmopsAlertTaskParams {
+    /**
+     * Description field of the alert that is generally used to provide a detailed information about the alert
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Details payload. Can contain liquid markup and need to be valid JSON
+     */
+    details?: pulumi.Input<string | undefined>;
+    escalations?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateJsmopsAlertTaskParamsEscalation>[] | undefined>;
+    /**
+     * Message of the alert
+     */
+    message: pulumi.Input<string>;
+    /**
+     * Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     */
+    priority?: pulumi.Input<string | undefined>;
+    schedules?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateJsmopsAlertTaskParamsSchedule>[] | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    teams?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateJsmopsAlertTaskParamsTeam>[] | undefined>;
+    users?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateJsmopsAlertTaskParamsUser>[] | undefined>;
+}
+
+export interface WorkflowTaskCreateJsmopsAlertTaskParamsEscalation {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateJsmopsAlertTaskParamsSchedule {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateJsmopsAlertTaskParamsTeam {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateJsmopsAlertTaskParamsUser {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskCreateLinearIssueCommentTaskParams {
     /**
      * The issue description
@@ -1827,6 +2712,27 @@ export interface WorkflowTaskCreateMicrosoftTeamsChannelTaskParams {
     title: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskCreateMicrosoftTeamsChatTaskParams {
+    /**
+     * Type of chat to create. Value must be one of `group`, `oneOnOne`.
+     */
+    chatType?: pulumi.Input<string | undefined>;
+    /**
+     * Array of members to include in the chat
+     */
+    members: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember>[]>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * Chat topic (only for group chats)
+     */
+    topic?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
     /**
      * The meeting name
@@ -1842,6 +2748,10 @@ export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
      */
     recordMeeting?: pulumi.Input<boolean | undefined>;
     /**
+     * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+     */
+    recordingMode?: pulumi.Input<string | undefined>;
+    /**
      * The meeting subject
      */
     subject: pulumi.Input<string>;
@@ -1851,6 +2761,34 @@ export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams {
 export interface WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannel {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateMistralChatCompletionTaskParams {
+    /**
+     * Maximum number of tokens to generate
+     */
+    maxTokens?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
+     */
+    model: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The prompt to send to Mistral
+     */
+    prompt: pulumi.Input<string>;
+    /**
+     * The system prompt to send to Mistral (optional)
+     */
+    systemPrompt?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * Sampling temperature (0.0-1.5). Higher values make output more random.
+     */
+    temperature?: pulumi.Input<number | undefined>;
+    /**
+     * Nucleus sampling parameter (0.0-1.0)
+     */
+    topP?: pulumi.Input<number | undefined>;
 }
 
 export interface WorkflowTaskCreateMotionTaskTaskParams {
@@ -1892,6 +2830,10 @@ export interface WorkflowTaskCreateMotionTaskTaskParams {
 
 export interface WorkflowTaskCreateNotionPageTaskParams {
     /**
+     * Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
      * Value must be one of true or false
      */
     markPostMortemAsPublished?: pulumi.Input<boolean | undefined>;
@@ -1916,6 +2858,42 @@ export interface WorkflowTaskCreateNotionPageTaskParams {
      * The Notion page title
      */
     title: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateOpenaiChatCompletionTaskParams {
+    /**
+     * Maximum number of tokens to generate in the response
+     */
+    maxTokens?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
+     */
+    model: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The prompt to send to OpenAI
+     */
+    prompt: pulumi.Input<string>;
+    /**
+     * Constrains effort on reasoning for GPT-5 and o-series models. Value must be one of `minimal`, `low`, `medium`, `high`.
+     */
+    reasoningEffort?: pulumi.Input<string | undefined>;
+    /**
+     * Summary of the reasoning performed by the model for GPT-5 and o-series models. Value must be one of `auto`, `concise`, `detailed`.
+     */
+    reasoningSummary?: pulumi.Input<string | undefined>;
+    /**
+     * The system prompt to send to OpenAI (optional)
+     */
+    systemPrompt?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * Controls randomness in the response. Higher values make output more random
+     */
+    temperature?: pulumi.Input<number | undefined>;
+    /**
+     * Controls diversity via nucleus sampling. Lower values make output more focused
+     */
+    topP?: pulumi.Input<number | undefined>;
 }
 
 export interface WorkflowTaskCreateOpsgenieAlertTaskParams {
@@ -1979,6 +2957,10 @@ export interface WorkflowTaskCreateOutlookEventTaskParams {
      * The event description
      */
     description: pulumi.Input<string>;
+    /**
+     * Enable Microsoft Teams online meeting. Value must be one of true or false
+     */
+    enableOnlineMeeting?: pulumi.Input<boolean | undefined>;
     /**
      * Value must be one of true or false
      */
@@ -2220,6 +3202,18 @@ export interface WorkflowTaskCreateSlackChannelTaskParams {
     workspace: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface WorkflowTaskCreateSubIncidentTaskParams {
+    /**
+     * The sub incident summary
+     */
+    summary?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * The sub incident title
+     */
+    title: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskCreateTrelloCardTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The archivation id and display name
@@ -2254,6 +3248,23 @@ export interface WorkflowTaskCreateTrelloCardTaskParamsLabel {
     name: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskCreateWatsonxChatCompletionTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
+     */
+    model: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    projectId: pulumi.Input<string>;
+    /**
+     * The prompt to send to WatsonX
+     */
+    prompt: pulumi.Input<string>;
+    /**
+     * The system prompt to send to WatsonX (optional)
+     */
+    systemPrompt?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+}
+
 export interface WorkflowTaskCreateWebexMeetingTaskParams {
     /**
      * The meeting password
@@ -2268,6 +3279,10 @@ export interface WorkflowTaskCreateWebexMeetingTaskParams {
      * Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
      */
     recordMeeting?: pulumi.Input<boolean | undefined>;
+    /**
+     * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+     */
+    recordingMode?: pulumi.Input<string | undefined>;
     taskType?: pulumi.Input<string | undefined>;
     /**
      * The meeting topic
@@ -2355,6 +3370,10 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      * Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
      */
     recordMeeting?: pulumi.Input<boolean | undefined>;
+    /**
+     * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+     */
+    recordingMode?: pulumi.Input<string | undefined>;
     taskType?: pulumi.Input<string | undefined>;
     /**
      * The meeting topic
@@ -2365,31 +3384,6 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
 export interface WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
-}
-
-export interface WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams {
-    /**
-     * Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-4o-mini
-     */
-    model: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The prompt to send to OpenAI
-     */
-    prompt: pulumi.Input<string>;
-    taskType?: pulumi.Input<string | undefined>;
-}
-
-export interface WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams {
-    /**
-     * Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
-     */
-    model: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    projectId: pulumi.Input<string>;
-    /**
-     * The prompt to send to WatsonX
-     */
-    prompt: pulumi.Input<string>;
-    taskType?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkflowTaskGetAlertsTaskParams {
@@ -2677,6 +3671,38 @@ export interface WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannel {
     name: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskPageJsmopsOnCallRespondersTaskParams {
+    /**
+     * Description field of the incident that is generally used to provide a detailed information about the incident
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Message of the incident
+     */
+    message?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     */
+    priority?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    teams?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam>[] | undefined>;
+    /**
+     * Incident title.
+     */
+    title?: pulumi.Input<string | undefined>;
+    users?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser>[] | undefined>;
+}
+
+export interface WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskPageOpsgenieOnCallRespondersTaskParams {
     /**
      * Description field of the incident that is generally used to provide a detailed information about the incident
@@ -2750,7 +3776,7 @@ export interface WorkflowTaskPageRootlyOnCallRespondersTaskParams {
     /**
      * Alert urgency ID
      */
-    alertUrgencyId?: pulumi.Input<string | undefined>;
+    alertUrgencyId: pulumi.Input<string>;
     /**
      * Alert description
      */
@@ -2760,6 +3786,10 @@ export interface WorkflowTaskPageRootlyOnCallRespondersTaskParams {
      * Map must contain two fields, `id` and `name`.
      */
     escalationPolicyTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    functionalityTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
@@ -2830,7 +3860,7 @@ export interface WorkflowTaskPublishIncidentTaskParams {
      */
     shouldTweet?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `verifying`, `completed`.
+     * Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `completed`.
      */
     status: pulumi.Input<string>;
     statusPageId: pulumi.Input<string>;
@@ -2977,6 +4007,20 @@ export interface WorkflowTaskSendMicrosoftTeamsBlocksTaskParams {
      */
     attachments: pulumi.Input<string>;
     taskType?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams {
+    chats: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat>[]>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * The message text
+     */
+    text: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskSendMicrosoftTeamsMessageTaskParams {
@@ -3427,6 +4471,82 @@ export interface WorkflowTaskUpdateCodaPageTaskParams {
     title?: pulumi.Input<string | undefined>;
 }
 
+export interface WorkflowTaskUpdateConfluencePageTaskParams {
+    /**
+     * The Confluence page content
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * The Confluence page ID
+     */
+    fileId: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
+     */
+    integration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Retrospective template to use when updating page, if desired
+     */
+    postMortemTemplateId?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`. The Confluence template to use
+     */
+    template?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The Confluence page title
+     */
+    title?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskUpdateDatadogNotebookTaskParams {
+    /**
+     * The Datadog notebook content
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * The Datadog notebook ID
+     */
+    fileId: pulumi.Input<string>;
+    /**
+     * The notebook type. Value must be one of `postmortem`, `runbook`, `investigation`, `documentation`, `report`.
+     */
+    kind?: pulumi.Input<string | undefined>;
+    /**
+     * Retrospective template to use when updating notebook, if desired
+     */
+    postMortemTemplateId?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`. The Datadog notebook template to use
+     */
+    template?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The Datadog notebook title
+     */
+    title?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskUpdateDropboxPaperPageTaskParams {
+    /**
+     * The Dropbox Paper document content
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * The Dropbox Paper document ID
+     */
+    fileId: pulumi.Input<string>;
+    /**
+     * Retrospective template to use when updating document, if desired
+     */
+    postMortemTemplateId?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * The Dropbox Paper document title
+     */
+    title?: pulumi.Input<string | undefined>;
+}
+
 export interface WorkflowTaskUpdateGithubIssueTaskParams {
     /**
      * The issue body
@@ -3440,11 +4560,32 @@ export interface WorkflowTaskUpdateGithubIssueTaskParams {
      * The issue id
      */
     issueId: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`. The issue type
+     */
+    issueType?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The issue labels
+     */
+    labels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskUpdateGithubIssueTaskParamsLabel>[] | undefined>;
+    /**
+     * How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+     */
+    labelsMode?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`. The repository (used for loading labels and issue types)
+     */
+    repository?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     taskType?: pulumi.Input<string | undefined>;
     /**
      * The issue title
      */
     title?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskUpdateGithubIssueTaskParamsLabel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskUpdateGitlabIssueTaskParams {
@@ -3602,12 +4743,18 @@ export interface WorkflowTaskUpdateIncidentTaskParams {
      */
     attributeToQueryBy?: pulumi.Input<string | undefined>;
     /**
-     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
      */
     customFieldsMapping?: pulumi.Input<string | undefined>;
     detectedAt?: pulumi.Input<string | undefined>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Array of functionality UUIDs
+     */
     functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Array of group/team UUIDs
+     */
     groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The incident id to update or id of any attribute on the incident
@@ -3620,6 +4767,9 @@ export interface WorkflowTaskUpdateIncidentTaskParams {
      */
     private?: pulumi.Input<boolean | undefined>;
     resolvedAt?: pulumi.Input<string | undefined>;
+    /**
+     * Array of service UUIDs
+     */
     serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     severityId?: pulumi.Input<string | undefined>;
     startedAt?: pulumi.Input<string | undefined>;
@@ -3652,6 +4802,10 @@ export interface WorkflowTaskUpdateJiraIssueTaskParams {
      * The due date
      */
     dueDate?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+     */
+    integration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The issue id
      */
@@ -3756,6 +4910,10 @@ export interface WorkflowTaskUpdateMotionTaskTaskParams {
 
 export interface WorkflowTaskUpdateNotionPageTaskParams {
     /**
+     * Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
      * The Notion page ID
      */
     fileId: pulumi.Input<string>;
@@ -3816,7 +4974,7 @@ export interface WorkflowTaskUpdateOpsgenieIncidentTaskParams {
      */
     opsgenieIncidentId: pulumi.Input<string>;
     /**
-     * Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     * Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`, ``.
      */
     priority?: pulumi.Input<string | undefined>;
     /**
@@ -3898,6 +5056,30 @@ export interface WorkflowTaskUpdatePagertreeAlertTaskParamsUser {
     name: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskUpdateQuipPageTaskParams {
+    /**
+     * The Quip page content
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * The Quip page ID
+     */
+    fileId: pulumi.Input<string>;
+    /**
+     * Retrospective template to use when updating page, if desired
+     */
+    postMortemTemplateId?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * The Quip file ID to use as a template
+     */
+    templateId?: pulumi.Input<string | undefined>;
+    /**
+     * The Quip page title
+     */
+    title?: pulumi.Input<string | undefined>;
+}
+
 export interface WorkflowTaskUpdateServiceNowIncidentTaskParams {
     /**
      * Map must contain two fields, `id` and `name`. The completion id and display name
@@ -3922,6 +5104,26 @@ export interface WorkflowTaskUpdateServiceNowIncidentTaskParams {
     taskType?: pulumi.Input<string | undefined>;
     /**
      * The incident title
+     */
+    title?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskUpdateSharepointPageTaskParams {
+    /**
+     * The SharePoint document content
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
+     * The SharePoint file ID
+     */
+    fileId: pulumi.Input<string>;
+    /**
+     * Retrospective template to use when updating document, if desired
+     */
+    postMortemTemplateId?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * The SharePoint document title
      */
     title?: pulumi.Input<string | undefined>;
 }

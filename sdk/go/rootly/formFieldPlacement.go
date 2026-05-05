@@ -14,10 +14,20 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import FormFieldPlacement using the `id`. For example:
+// FormFieldPlacement can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/formFieldPlacement:FormFieldPlacement my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/formFieldPlacement:FormFieldPlacement primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type FormFieldPlacement struct {
 	pulumi.CustomResourceState
@@ -28,6 +38,8 @@ type FormFieldPlacement struct {
 	FormFieldId pulumi.StringOutput `pulumi:"formFieldId"`
 	// The form set this field is placed in.
 	FormSetId pulumi.StringOutput `pulumi:"formSetId"`
+	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
+	NonEditable pulumi.BoolOutput `pulumi:"nonEditable"`
 	// Logical operator when evaluating multiple form*field*placement_conditions with conditioned=placement. Value must be one of `and`, `or`.
 	PlacementOperator pulumi.StringPtrOutput `pulumi:"placementOperator"`
 	// The position of the field placement.
@@ -80,6 +92,8 @@ type formFieldPlacementState struct {
 	FormFieldId *string `pulumi:"formFieldId"`
 	// The form set this field is placed in.
 	FormSetId *string `pulumi:"formSetId"`
+	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
+	NonEditable *bool `pulumi:"nonEditable"`
 	// Logical operator when evaluating multiple form*field*placement_conditions with conditioned=placement. Value must be one of `and`, `or`.
 	PlacementOperator *string `pulumi:"placementOperator"`
 	// The position of the field placement.
@@ -97,6 +111,8 @@ type FormFieldPlacementState struct {
 	FormFieldId pulumi.StringPtrInput
 	// The form set this field is placed in.
 	FormSetId pulumi.StringPtrInput
+	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
+	NonEditable pulumi.BoolPtrInput
 	// Logical operator when evaluating multiple form*field*placement_conditions with conditioned=placement. Value must be one of `and`, `or`.
 	PlacementOperator pulumi.StringPtrInput
 	// The position of the field placement.
@@ -118,6 +134,8 @@ type formFieldPlacementArgs struct {
 	FormFieldId *string `pulumi:"formFieldId"`
 	// The form set this field is placed in.
 	FormSetId string `pulumi:"formSetId"`
+	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
+	NonEditable *bool `pulumi:"nonEditable"`
 	// Logical operator when evaluating multiple form*field*placement_conditions with conditioned=placement. Value must be one of `and`, `or`.
 	PlacementOperator *string `pulumi:"placementOperator"`
 	// The position of the field placement.
@@ -136,6 +154,8 @@ type FormFieldPlacementArgs struct {
 	FormFieldId pulumi.StringPtrInput
 	// The form set this field is placed in.
 	FormSetId pulumi.StringInput
+	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
+	NonEditable pulumi.BoolPtrInput
 	// Logical operator when evaluating multiple form*field*placement_conditions with conditioned=placement. Value must be one of `and`, `or`.
 	PlacementOperator pulumi.StringPtrInput
 	// The position of the field placement.
@@ -246,6 +266,11 @@ func (o FormFieldPlacementOutput) FormFieldId() pulumi.StringOutput {
 // The form set this field is placed in.
 func (o FormFieldPlacementOutput) FormSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FormFieldPlacement) pulumi.StringOutput { return v.FormSetId }).(pulumi.StringOutput)
+}
+
+// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
+func (o FormFieldPlacementOutput) NonEditable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *FormFieldPlacement) pulumi.BoolOutput { return v.NonEditable }).(pulumi.BoolOutput)
 }
 
 // Logical operator when evaluating multiple form*field*placement_conditions with conditioned=placement. Value must be one of `and`, `or`.

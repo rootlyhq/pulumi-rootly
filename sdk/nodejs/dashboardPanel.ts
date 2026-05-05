@@ -7,16 +7,24 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Manages dashboard_panels.
- *
  * ## Example Usage
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.DashboardPanel using the `id`. For example:
+ * rootly.DashboardPanel can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/dashboardPanel:DashboardPanel my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/dashboardPanel:DashboardPanel primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class DashboardPanel extends pulumi.CustomResource {
@@ -48,18 +56,15 @@ export class DashboardPanel extends pulumi.CustomResource {
     }
 
     /**
-     * The id of the parent dashboard
+     * The panel dashboard
      */
     declare public readonly dashboardId: pulumi.Output<string>;
     /**
      * The name of the dashboard_panel
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The params JSON of the dashboard_panel. See rootly API docs for schema.
-     */
     declare public readonly params: pulumi.Output<outputs.DashboardPanelParams>;
-    declare public readonly position: pulumi.Output<outputs.DashboardPanelPosition | undefined>;
+    declare public readonly position: pulumi.Output<outputs.DashboardPanelPosition>;
 
     /**
      * Create a DashboardPanel resource with the given unique name, arguments, and options.
@@ -101,16 +106,13 @@ export class DashboardPanel extends pulumi.CustomResource {
  */
 export interface DashboardPanelState {
     /**
-     * The id of the parent dashboard
+     * The panel dashboard
      */
     dashboardId?: pulumi.Input<string | undefined>;
     /**
      * The name of the dashboard_panel
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * The params JSON of the dashboard_panel. See rootly API docs for schema.
-     */
     params?: pulumi.Input<inputs.DashboardPanelParams | undefined>;
     position?: pulumi.Input<inputs.DashboardPanelPosition | undefined>;
 }
@@ -120,16 +122,13 @@ export interface DashboardPanelState {
  */
 export interface DashboardPanelArgs {
     /**
-     * The id of the parent dashboard
+     * The panel dashboard
      */
     dashboardId: pulumi.Input<string>;
     /**
      * The name of the dashboard_panel
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * The params JSON of the dashboard_panel. See rootly API docs for schema.
-     */
     params: pulumi.Input<inputs.DashboardPanelParams>;
     position?: pulumi.Input<inputs.DashboardPanelPosition | undefined>;
 }

@@ -24,28 +24,32 @@ func LookupTeam(ctx *pulumi.Context, args *LookupTeamArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getTeam.
 type LookupTeamArgs struct {
-	BackstageId *string `pulumi:"backstageId"`
-	Color       *string `pulumi:"color"`
-	CortexId    *string `pulumi:"cortexId"`
+	AlertBroadcastEnabled *bool   `pulumi:"alertBroadcastEnabled"`
+	BackstageId           *string `pulumi:"backstageId"`
+	Color                 *string `pulumi:"color"`
+	CortexId              *string `pulumi:"cortexId"`
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt  map[string]string `pulumi:"createdAt"`
-	ExternalId *string           `pulumi:"externalId"`
-	Name       *string           `pulumi:"name"`
-	Slug       *string           `pulumi:"slug"`
+	CreatedAt                map[string]string `pulumi:"createdAt"`
+	ExternalId               *string           `pulumi:"externalId"`
+	IncidentBroadcastEnabled *bool             `pulumi:"incidentBroadcastEnabled"`
+	Name                     *string           `pulumi:"name"`
+	Slug                     *string           `pulumi:"slug"`
 }
 
 // A collection of values returned by getTeam.
 type LookupTeamResult struct {
-	BackstageId string `pulumi:"backstageId"`
-	Color       string `pulumi:"color"`
-	CortexId    string `pulumi:"cortexId"`
+	AlertBroadcastEnabled bool   `pulumi:"alertBroadcastEnabled"`
+	BackstageId           string `pulumi:"backstageId"`
+	Color                 string `pulumi:"color"`
+	CortexId              string `pulumi:"cortexId"`
 	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt  map[string]string `pulumi:"createdAt"`
 	ExternalId string            `pulumi:"externalId"`
 	// The ID of this resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
-	Slug string `pulumi:"slug"`
+	Id                       string `pulumi:"id"`
+	IncidentBroadcastEnabled bool   `pulumi:"incidentBroadcastEnabled"`
+	Name                     string `pulumi:"name"`
+	Slug                     string `pulumi:"slug"`
 }
 
 func LookupTeamOutput(ctx *pulumi.Context, args LookupTeamOutputArgs, opts ...pulumi.InvokeOption) LookupTeamResultOutput {
@@ -59,14 +63,16 @@ func LookupTeamOutput(ctx *pulumi.Context, args LookupTeamOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getTeam.
 type LookupTeamOutputArgs struct {
-	BackstageId pulumi.StringPtrInput `pulumi:"backstageId"`
-	Color       pulumi.StringPtrInput `pulumi:"color"`
-	CortexId    pulumi.StringPtrInput `pulumi:"cortexId"`
+	AlertBroadcastEnabled pulumi.BoolPtrInput   `pulumi:"alertBroadcastEnabled"`
+	BackstageId           pulumi.StringPtrInput `pulumi:"backstageId"`
+	Color                 pulumi.StringPtrInput `pulumi:"color"`
+	CortexId              pulumi.StringPtrInput `pulumi:"cortexId"`
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt  pulumi.StringMapInput `pulumi:"createdAt"`
-	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Slug       pulumi.StringPtrInput `pulumi:"slug"`
+	CreatedAt                pulumi.StringMapInput `pulumi:"createdAt"`
+	ExternalId               pulumi.StringPtrInput `pulumi:"externalId"`
+	IncidentBroadcastEnabled pulumi.BoolPtrInput   `pulumi:"incidentBroadcastEnabled"`
+	Name                     pulumi.StringPtrInput `pulumi:"name"`
+	Slug                     pulumi.StringPtrInput `pulumi:"slug"`
 }
 
 func (LookupTeamOutputArgs) ElementType() reflect.Type {
@@ -86,6 +92,10 @@ func (o LookupTeamResultOutput) ToLookupTeamResultOutput() LookupTeamResultOutpu
 
 func (o LookupTeamResultOutput) ToLookupTeamResultOutputWithContext(ctx context.Context) LookupTeamResultOutput {
 	return o
+}
+
+func (o LookupTeamResultOutput) AlertBroadcastEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTeamResult) bool { return v.AlertBroadcastEnabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupTeamResultOutput) BackstageId() pulumi.StringOutput {
@@ -112,6 +122,10 @@ func (o LookupTeamResultOutput) ExternalId() pulumi.StringOutput {
 // The ID of this resource.
 func (o LookupTeamResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupTeamResultOutput) IncidentBroadcastEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTeamResult) bool { return v.IncidentBroadcastEnabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupTeamResultOutput) Name() pulumi.StringOutput {

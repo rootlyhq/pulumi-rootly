@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * *Note: If you are an advanced alert routing user, you should use the Alert Routes resource/data source instead of this one. If you don't know whether you are an advanced alert routing user, please contact Rootly customer support.*
+ */
 export function getAlertRoutingRule(args?: GetAlertRoutingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertRoutingRuleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,6 +41,9 @@ export interface GetAlertRoutingRuleResult {
     readonly id: string;
     readonly name: string;
 }
+/**
+ * *Note: If you are an advanced alert routing user, you should use the Alert Routes resource/data source instead of this one. If you don't know whether you are an advanced alert routing user, please contact Rootly customer support.*
+ */
 export function getAlertRoutingRuleOutput(args?: GetAlertRoutingRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertRoutingRuleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

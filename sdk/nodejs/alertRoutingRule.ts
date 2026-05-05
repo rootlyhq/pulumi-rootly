@@ -7,12 +7,24 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * *Note: If you are an advanced alert routing user, you should use the Alert Routes resource/data source instead of this one. If you don't know whether you are an advanced alert routing user, please contact Rootly customer support.*
+ *
  * ## Import
  *
- * Using `pulumi import`, import rootly.AlertRoutingRule using the `id`. For example:
+ * rootly.AlertRoutingRule can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/alertRoutingRule:AlertRoutingRule my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/alertRoutingRule:AlertRoutingRule primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class AlertRoutingRule extends pulumi.CustomResource {
@@ -48,13 +60,17 @@ export class AlertRoutingRule extends pulumi.CustomResource {
      */
     declare public readonly alertsSourceId: pulumi.Output<string>;
     /**
+     * The condition groups for the alert routing rule
+     */
+    declare public readonly conditionGroups: pulumi.Output<outputs.AlertRoutingRuleConditionGroup[] | undefined>;
+    /**
      * The type of condition for the alert routing rule. Value must be one of `all`, `any`.
      */
     declare public readonly conditionType: pulumi.Output<string | undefined>;
     /**
      * The conditions for the alert routing rule
      */
-    declare public readonly conditions: pulumi.Output<outputs.AlertRoutingRuleCondition[]>;
+    declare public readonly conditions: pulumi.Output<outputs.AlertRoutingRuleCondition[] | undefined>;
     /**
      * The destinations for the alert routing rule
      */
@@ -64,6 +80,10 @@ export class AlertRoutingRule extends pulumi.CustomResource {
      * The name of the alert routing rule
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The position of the alert routing rule for ordering evaluation
+     */
+    declare public readonly position: pulumi.Output<number>;
 
     /**
      * Create a AlertRoutingRule resource with the given unique name, arguments, and options.
@@ -79,11 +99,13 @@ export class AlertRoutingRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AlertRoutingRuleState | undefined;
             resourceInputs["alertsSourceId"] = state?.alertsSourceId;
+            resourceInputs["conditionGroups"] = state?.conditionGroups;
             resourceInputs["conditionType"] = state?.conditionType;
             resourceInputs["conditions"] = state?.conditions;
             resourceInputs["destination"] = state?.destination;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["name"] = state?.name;
+            resourceInputs["position"] = state?.position;
         } else {
             const args = argsOrState as AlertRoutingRuleArgs | undefined;
             if (args?.alertsSourceId === undefined && !opts.urn) {
@@ -93,11 +115,13 @@ export class AlertRoutingRule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'destination'");
             }
             resourceInputs["alertsSourceId"] = args?.alertsSourceId;
+            resourceInputs["conditionGroups"] = args?.conditionGroups;
             resourceInputs["conditionType"] = args?.conditionType;
             resourceInputs["conditions"] = args?.conditions;
             resourceInputs["destination"] = args?.destination;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["name"] = args?.name;
+            resourceInputs["position"] = args?.position;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlertRoutingRule.__pulumiType, name, resourceInputs, opts);
@@ -112,6 +136,10 @@ export interface AlertRoutingRuleState {
      * The ID of the alerts source
      */
     alertsSourceId?: pulumi.Input<string | undefined>;
+    /**
+     * The condition groups for the alert routing rule
+     */
+    conditionGroups?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleConditionGroup>[] | undefined>;
     /**
      * The type of condition for the alert routing rule. Value must be one of `all`, `any`.
      */
@@ -129,6 +157,10 @@ export interface AlertRoutingRuleState {
      * The name of the alert routing rule
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The position of the alert routing rule for ordering evaluation
+     */
+    position?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -139,6 +171,10 @@ export interface AlertRoutingRuleArgs {
      * The ID of the alerts source
      */
     alertsSourceId: pulumi.Input<string>;
+    /**
+     * The condition groups for the alert routing rule
+     */
+    conditionGroups?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleConditionGroup>[] | undefined>;
     /**
      * The type of condition for the alert routing rule. Value must be one of `all`, `any`.
      */
@@ -156,4 +192,8 @@ export interface AlertRoutingRuleArgs {
      * The name of the alert routing rule
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The position of the alert routing rule for ordering evaluation
+     */
+    position?: pulumi.Input<number | undefined>;
 }

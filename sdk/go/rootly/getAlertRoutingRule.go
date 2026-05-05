@@ -11,6 +11,7 @@ import (
 	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
+// *Note: If you are an advanced alert routing user, you should use the Alert Routes resource/data source instead of this one. If you don't know whether you are an advanced alert routing user, please contact Rootly customer support.*
 func LookupAlertRoutingRule(ctx *pulumi.Context, args *LookupAlertRoutingRuleArgs, opts ...pulumi.InvokeOption) (*LookupAlertRoutingRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertRoutingRuleResult

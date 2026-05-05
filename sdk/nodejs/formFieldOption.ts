@@ -9,10 +9,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.FormFieldOption using the `id`. For example:
+ * rootly.FormFieldOption can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/formFieldOption:FormFieldOption my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/formFieldOption:FormFieldOption primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class FormFieldOption extends pulumi.CustomResource {
@@ -44,7 +54,7 @@ export class FormFieldOption extends pulumi.CustomResource {
     }
 
     /**
-     * The hex color of the form*field*option
+     * The hex color of the form field option
      */
     declare public readonly color: pulumi.Output<string>;
     /**
@@ -56,11 +66,15 @@ export class FormFieldOption extends pulumi.CustomResource {
      */
     declare public readonly formFieldId: pulumi.Output<string>;
     /**
-     * The position of the form*field*option
+     * Unique ID of the form field option
+     */
+    declare public readonly formFieldOptionId: pulumi.Output<string>;
+    /**
+     * The position of the form field option
      */
     declare public readonly position: pulumi.Output<number>;
     /**
-     * The value of the form*field*option
+     * The value of the form field option
      */
     declare public readonly value: pulumi.Output<string>;
 
@@ -80,6 +94,7 @@ export class FormFieldOption extends pulumi.CustomResource {
             resourceInputs["color"] = state?.color;
             resourceInputs["default"] = state?.default;
             resourceInputs["formFieldId"] = state?.formFieldId;
+            resourceInputs["formFieldOptionId"] = state?.formFieldOptionId;
             resourceInputs["position"] = state?.position;
             resourceInputs["value"] = state?.value;
         } else {
@@ -93,6 +108,7 @@ export class FormFieldOption extends pulumi.CustomResource {
             resourceInputs["color"] = args?.color;
             resourceInputs["default"] = args?.default;
             resourceInputs["formFieldId"] = args?.formFieldId;
+            resourceInputs["formFieldOptionId"] = args?.formFieldOptionId;
             resourceInputs["position"] = args?.position;
             resourceInputs["value"] = args?.value;
         }
@@ -106,7 +122,7 @@ export class FormFieldOption extends pulumi.CustomResource {
  */
 export interface FormFieldOptionState {
     /**
-     * The hex color of the form*field*option
+     * The hex color of the form field option
      */
     color?: pulumi.Input<string | undefined>;
     /**
@@ -118,11 +134,15 @@ export interface FormFieldOptionState {
      */
     formFieldId?: pulumi.Input<string | undefined>;
     /**
-     * The position of the form*field*option
+     * Unique ID of the form field option
+     */
+    formFieldOptionId?: pulumi.Input<string | undefined>;
+    /**
+     * The position of the form field option
      */
     position?: pulumi.Input<number | undefined>;
     /**
-     * The value of the form*field*option
+     * The value of the form field option
      */
     value?: pulumi.Input<string | undefined>;
 }
@@ -132,7 +152,7 @@ export interface FormFieldOptionState {
  */
 export interface FormFieldOptionArgs {
     /**
-     * The hex color of the form*field*option
+     * The hex color of the form field option
      */
     color?: pulumi.Input<string | undefined>;
     /**
@@ -144,11 +164,15 @@ export interface FormFieldOptionArgs {
      */
     formFieldId: pulumi.Input<string>;
     /**
-     * The position of the form*field*option
+     * Unique ID of the form field option
+     */
+    formFieldOptionId?: pulumi.Input<string | undefined>;
+    /**
+     * The position of the form field option
      */
     position?: pulumi.Input<number | undefined>;
     /**
-     * The value of the form*field*option
+     * The value of the form field option
      */
     value: pulumi.Input<string>;
 }

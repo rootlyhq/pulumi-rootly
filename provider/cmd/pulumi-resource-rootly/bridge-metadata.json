@@ -1,6 +1,10 @@
 {
     "auto-aliasing": {
         "resources": {
+            "rootly_alert_field": {
+                "current": "rootly:index/alertField:AlertField",
+                "majorVersion": 3
+            },
             "rootly_alert_group": {
                 "current": "rootly:index/alertGroup:AlertGroup",
                 "majorVersion": 3,
@@ -8,8 +12,66 @@
                     "attributes": {
                         "maxItemsOne": false
                     },
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "alert_urgency_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "property_field_values": {
+                                    "maxItemsOne": false
+                                },
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "targets": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "rootly_alert_route": {
+                "current": "rootly:index/alertRoute:AlertRoute",
+                "majorVersion": 3,
+                "fields": {
+                    "alerts_source_ids": {
+                        "maxItemsOne": false
+                    },
+                    "owning_team_ids": {
+                        "maxItemsOne": false
+                    },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "condition_groups": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "conditions": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "alert_urgency_ids": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "property_field_values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "destinations": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -17,6 +79,23 @@
                 "current": "rootly:index/alertRoutingRule:AlertRoutingRule",
                 "majorVersion": 3,
                 "fields": {
+                    "condition_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "conditions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "property_field_values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "conditions": {
                         "maxItemsOne": false,
                         "elem": {
@@ -40,6 +119,9 @@
                 "current": "rootly:index/alertsSource:AlertsSource",
                 "majorVersion": 3,
                 "fields": {
+                    "alert_source_fields_attributes": {
+                        "maxItemsOne": false
+                    },
                     "alert_source_urgency_rules_attributes": {
                         "maxItemsOne": false
                     },
@@ -71,6 +153,10 @@
                     }
                 }
             },
+            "rootly_api_key": {
+                "current": "rootly:index/apiKey:ApiKey",
+                "majorVersion": 3
+            },
             "rootly_authorization": {
                 "current": "rootly:index/authorization:Authorization",
                 "majorVersion": 3,
@@ -80,8 +166,84 @@
                     }
                 }
             },
+            "rootly_catalog": {
+                "current": "rootly:index/catalog:Catalog",
+                "majorVersion": 3
+            },
+            "rootly_catalog_checklist_template": {
+                "current": "rootly:index/catalogChecklistTemplate:CatalogChecklistTemplate",
+                "majorVersion": 3,
+                "fields": {
+                    "fields": {
+                        "maxItemsOne": false
+                    },
+                    "owners": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "rootly_catalog_entity": {
+                "current": "rootly:index/catalogEntity:CatalogEntity",
+                "majorVersion": 3,
+                "fields": {
+                    "properties": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "rootly_catalog_property": {
+                "current": "rootly:index/catalogProperty:CatalogProperty",
+                "majorVersion": 3
+            },
             "rootly_cause": {
                 "current": "rootly:index/cause:Cause",
+                "majorVersion": 3,
+                "fields": {
+                    "properties": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "rootly_communications_group": {
+                "current": "rootly:index/communicationsGroup:CommunicationsGroup",
+                "majorVersion": 3,
+                "fields": {
+                    "communication_external_group_members": {
+                        "maxItemsOne": false
+                    },
+                    "communication_group_conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "properties": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "communication_group_members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "rootly_communications_stage": {
+                "current": "rootly:index/communicationsStage:CommunicationsStage",
+                "majorVersion": 3
+            },
+            "rootly_communications_template": {
+                "current": "rootly:index/communicationsTemplate:CommunicationsTemplate",
+                "majorVersion": 3,
+                "fields": {
+                    "communication_template_stages": {
+                        "maxItemsOne": false
+                    },
+                    "communication_type": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_communications_type": {
+                "current": "rootly:index/communicationsType:CommunicationsType",
                 "majorVersion": 3
             },
             "rootly_custom_field": {
@@ -116,6 +278,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "datalabels": {
+                                    "maxItemsOne": true
+                                },
                                 "datasets": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -138,6 +303,9 @@
                                 },
                                 "legend": {
                                     "maxItemsOne": true
+                                },
+                                "table_fields": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -147,11 +315,39 @@
                     }
                 }
             },
+            "rootly_edge_connector": {
+                "current": "rootly:index/edgeConnector:EdgeConnector",
+                "majorVersion": 3,
+                "fields": {
+                    "subscriptions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "rootly_edge_connector_action": {
+                "current": "rootly:index/edgeConnectorAction:EdgeConnectorAction",
+                "majorVersion": 3,
+                "fields": {
+                    "parameters": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "options": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "rootly_environment": {
                 "current": "rootly:index/environment:Environment",
                 "majorVersion": 3,
                 "fields": {
                     "notify_emails": {
+                        "maxItemsOne": false
+                    },
+                    "properties": {
                         "maxItemsOne": false
                     },
                     "slack_aliases": {
@@ -179,7 +375,16 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "service_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "time_blocks": {
+                                    "maxItemsOne": false
+                                },
                                 "urgency_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "values": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -276,10 +481,13 @@
                     "notify_emails": {
                         "maxItemsOne": false
                     },
-                    "owners_group_ids": {
+                    "owner_group_ids": {
                         "maxItemsOne": false
                     },
-                    "owners_user_ids": {
+                    "owner_user_ids": {
+                        "maxItemsOne": false
+                    },
+                    "properties": {
                         "maxItemsOne": false
                     },
                     "service_ids": {
@@ -336,6 +544,9 @@
                     "notify_emails": {
                         "maxItemsOne": false
                     },
+                    "properties": {
+                        "maxItemsOne": false
+                    },
                     "slack_aliases": {
                         "maxItemsOne": false
                     },
@@ -346,12 +557,26 @@
             },
             "rootly_live_call_router": {
                 "current": "rootly:index/liveCallRouter:LiveCallRouter",
-                "majorVersion": 3
+                "majorVersion": 3,
+                "fields": {
+                    "paging_targets": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rootly_on_call_role": {
                 "current": "rootly:index/onCallRole:OnCallRole",
                 "majorVersion": 3,
                 "fields": {
+                    "alert_fields_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "alert_groups_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "alert_routing_rules_permissions": {
+                        "maxItemsOne": false
+                    },
                     "alert_sources_permissions": {
                         "maxItemsOne": false
                     },
@@ -386,6 +611,12 @@
                         "maxItemsOne": false
                     },
                     "live_call_routing_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "on_call_readiness_report_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "on_call_roles_permissions": {
                         "maxItemsOne": false
                     },
                     "schedule_override_permissions": {
@@ -510,6 +741,15 @@
                     "billing_permissions": {
                         "maxItemsOne": false
                     },
+                    "catalogs_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "communication_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "edge_connector_permissions": {
+                        "maxItemsOne": false
+                    },
                     "environments_permissions": {
                         "maxItemsOne": false
                     },
@@ -523,6 +763,9 @@
                         "maxItemsOne": false
                     },
                     "incident_causes_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "incident_communication_permissions": {
                         "maxItemsOne": false
                     },
                     "incident_feedbacks_permissions": {
@@ -541,6 +784,9 @@
                         "maxItemsOne": false
                     },
                     "invitations_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "paging_permissions": {
                         "maxItemsOne": false
                     },
                     "playbooks_permissions": {
@@ -567,7 +813,13 @@
                     "severities_permissions": {
                         "maxItemsOne": false
                     },
+                    "slas_permissions": {
+                        "maxItemsOne": false
+                    },
                     "status_pages_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "sub_statuses_permissions": {
                         "maxItemsOne": false
                     },
                     "webhooks_permissions": {
@@ -596,6 +848,9 @@
                     },
                     "active_time_attributes": {
                         "maxItemsOne": false
+                    },
+                    "schedule_rotation_members": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -620,16 +875,25 @@
                 "current": "rootly:index/service:Service",
                 "majorVersion": 3,
                 "fields": {
+                    "alert_broadcast_channel": {
+                        "maxItemsOne": true
+                    },
                     "environment_ids": {
                         "maxItemsOne": false
+                    },
+                    "incident_broadcast_channel": {
+                        "maxItemsOne": true
                     },
                     "notify_emails": {
                         "maxItemsOne": false
                     },
-                    "owners_group_ids": {
+                    "owner_group_ids": {
                         "maxItemsOne": false
                     },
-                    "owners_user_ids": {
+                    "owner_user_ids": {
+                        "maxItemsOne": false
+                    },
+                    "properties": {
                         "maxItemsOne": false
                     },
                     "service_ids": {
@@ -658,6 +922,25 @@
                     }
                 }
             },
+            "rootly_sla": {
+                "current": "rootly:index/sla:Sla",
+                "majorVersion": 3,
+                "fields": {
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "notification_configurations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "rootly_status_page": {
                 "current": "rootly:index/statusPage:StatusPage",
                 "majorVersion": 3,
@@ -666,6 +949,9 @@
                         "maxItemsOne": false
                     },
                     "functionality_ids": {
+                        "maxItemsOne": false
+                    },
+                    "section_order": {
                         "maxItemsOne": false
                     },
                     "service_ids": {
@@ -688,7 +974,16 @@
                     "admin_ids": {
                         "maxItemsOne": false
                     },
+                    "alert_broadcast_channel": {
+                        "maxItemsOne": true
+                    },
+                    "incident_broadcast_channel": {
+                        "maxItemsOne": true
+                    },
                     "notify_emails": {
+                        "maxItemsOne": false
+                    },
+                    "properties": {
                         "maxItemsOne": false
                     },
                     "slack_aliases": {
@@ -816,16 +1111,39 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "alert_field_conditions": {
+                                    "maxItemsOne": false
+                                },
                                 "alert_labels": {
                                     "maxItemsOne": false
                                 },
                                 "alert_payload": {
                                     "maxItemsOne": false
                                 },
+                                "alert_payload_conditions": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "conditions": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "alert_sources": {
                                     "maxItemsOne": false
                                 },
                                 "alert_statuses": {
+                                    "maxItemsOne": false
+                                },
+                                "alert_urgency_ids": {
                                     "maxItemsOne": false
                                 },
                                 "triggers": {
@@ -855,10 +1173,19 @@
                     "selected_catalog_entity_ids": {
                         "maxItemsOne": false
                     },
+                    "selected_cause_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_environment_ids": {
+                        "maxItemsOne": false
+                    },
                     "selected_functionality_ids": {
                         "maxItemsOne": false
                     },
                     "selected_group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_incident_type_ids": {
                         "maxItemsOne": false
                     },
                     "selected_option_ids": {
@@ -1109,6 +1436,15 @@
                     }
                 }
             },
+            "rootly_workflow_task_add_microsoft_teams_chat_tab": {
+                "current": "rootly:index/workflowTaskAddMicrosoftTeamsChatTab:WorkflowTaskAddMicrosoftTeamsChatTab",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "rootly_workflow_task_add_microsoft_teams_tab": {
                 "current": "rootly:index/workflowTaskAddMicrosoftTeamsTab:WorkflowTaskAddMicrosoftTeamsTab",
                 "majorVersion": 3,
@@ -1282,6 +1618,15 @@
                     }
                 }
             },
+            "rootly_workflow_task_create_anthropic_chat_completion": {
+                "current": "rootly:index/workflowTaskCreateAnthropicChatCompletion:WorkflowTaskCreateAnthropicChatCompletion",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "rootly_workflow_task_create_asana_subtask": {
                 "current": "rootly:index/workflowTaskCreateAsanaSubtask:WorkflowTaskCreateAsanaSubtask",
                 "majorVersion": 3,
@@ -1367,7 +1712,14 @@
                 "majorVersion": 3,
                 "fields": {
                     "task_params": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "labels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1426,6 +1778,15 @@
             },
             "rootly_workflow_task_create_google_docs_permissions": {
                 "current": "rootly:index/workflowTaskCreateGoogleDocsPermissions:WorkflowTaskCreateGoogleDocsPermissions",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_create_google_gemini_chat_completion": {
+                "current": "rootly:index/workflowTaskCreateGoogleGeminiChatCompletion:WorkflowTaskCreateGoogleGeminiChatCompletion",
                 "majorVersion": 3,
                 "fields": {
                     "task_params": {
@@ -1504,6 +1865,31 @@
                     }
                 }
             },
+            "rootly_workflow_task_create_jsmops_alert": {
+                "current": "rootly:index/workflowTaskCreateJsmopsAlert:WorkflowTaskCreateJsmopsAlert",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "escalations": {
+                                    "maxItemsOne": false
+                                },
+                                "schedules": {
+                                    "maxItemsOne": false
+                                },
+                                "teams": {
+                                    "maxItemsOne": false
+                                },
+                                "users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "rootly_workflow_task_create_linear_issue": {
                 "current": "rootly:index/workflowTaskCreateLinearIssue:WorkflowTaskCreateLinearIssue",
                 "majorVersion": 3,
@@ -1554,6 +1940,22 @@
                     }
                 }
             },
+            "rootly_workflow_task_create_microsoft_teams_chat": {
+                "current": "rootly:index/workflowTaskCreateMicrosoftTeamsChat:WorkflowTaskCreateMicrosoftTeamsChat",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "members": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "rootly_workflow_task_create_microsoft_teams_meeting": {
                 "current": "rootly:index/workflowTaskCreateMicrosoftTeamsMeeting:WorkflowTaskCreateMicrosoftTeamsMeeting",
                 "majorVersion": 3,
@@ -1567,6 +1969,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "rootly_workflow_task_create_mistral_chat_completion": {
+                "current": "rootly:index/workflowTaskCreateMistralChatCompletion:WorkflowTaskCreateMistralChatCompletion",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -1588,6 +1999,15 @@
             },
             "rootly_workflow_task_create_notion_page": {
                 "current": "rootly:index/workflowTaskCreateNotionPage:WorkflowTaskCreateNotionPage",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_create_openai_chat_completion": {
+                "current": "rootly:index/workflowTaskCreateOpenaiChatCompletion:WorkflowTaskCreateOpenaiChatCompletion",
                 "majorVersion": 3,
                 "fields": {
                     "task_params": {
@@ -1721,6 +2141,15 @@
                     }
                 }
             },
+            "rootly_workflow_task_create_sub_incident": {
+                "current": "rootly:index/workflowTaskCreateSubIncident:WorkflowTaskCreateSubIncident",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "rootly_workflow_task_create_trello_card": {
                 "current": "rootly:index/workflowTaskCreateTrelloCard:WorkflowTaskCreateTrelloCard",
                 "majorVersion": 3,
@@ -1734,6 +2163,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "rootly_workflow_task_create_watsonx_chat_completion": {
+                "current": "rootly:index/workflowTaskCreateWatsonxChatCompletion:WorkflowTaskCreateWatsonxChatCompletion",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -1787,24 +2225,6 @@
                                 }
                             }
                         }
-                    }
-                }
-            },
-            "rootly_workflow_task_genius_create_openai_chat_completion": {
-                "current": "rootly:index/workflowTaskGeniusCreateOpenaiChatCompletion:WorkflowTaskGeniusCreateOpenaiChatCompletion",
-                "majorVersion": 3,
-                "fields": {
-                    "task_params": {
-                        "maxItemsOne": true
-                    }
-                }
-            },
-            "rootly_workflow_task_genius_create_watsonx_chat_completion": {
-                "current": "rootly:index/workflowTaskGeniusCreateWatsonxChatCompletion:WorkflowTaskGeniusCreateWatsonxChatCompletion",
-                "majorVersion": 3,
-                "fields": {
-                    "task_params": {
-                        "maxItemsOne": true
                     }
                 }
             },
@@ -2019,6 +2439,25 @@
                     }
                 }
             },
+            "rootly_workflow_task_page_jsmops_on_call_responders": {
+                "current": "rootly:index/workflowTaskPageJsmopsOnCallResponders:WorkflowTaskPageJsmopsOnCallResponders",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "teams": {
+                                    "maxItemsOne": false
+                                },
+                                "users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "rootly_workflow_task_page_opsgenie_on_call_responders": {
                 "current": "rootly:index/workflowTaskPageOpsgenieOnCallResponders:WorkflowTaskPageOpsgenieOnCallResponders",
                 "majorVersion": 3,
@@ -2209,6 +2648,22 @@
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_send_microsoft_teams_chat_message": {
+                "current": "rootly:index/workflowTaskSendMicrosoftTeamsChatMessage:WorkflowTaskSendMicrosoftTeamsChatMessage",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "chats": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2469,12 +2924,46 @@
                     }
                 }
             },
+            "rootly_workflow_task_update_confluence_page": {
+                "current": "rootly:index/workflowTaskUpdateConfluencePage:WorkflowTaskUpdateConfluencePage",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_update_datadog_notebook": {
+                "current": "rootly:index/workflowTaskUpdateDatadogNotebook:WorkflowTaskUpdateDatadogNotebook",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_update_dropbox_paper_page": {
+                "current": "rootly:index/workflowTaskUpdateDropboxPaperPage:WorkflowTaskUpdateDropboxPaperPage",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "rootly_workflow_task_update_github_issue": {
                 "current": "rootly:index/workflowTaskUpdateGithubIssue:WorkflowTaskUpdateGithubIssue",
                 "majorVersion": 3,
                 "fields": {
                     "task_params": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "labels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2657,8 +3146,26 @@
                     }
                 }
             },
+            "rootly_workflow_task_update_quip_page": {
+                "current": "rootly:index/workflowTaskUpdateQuipPage:WorkflowTaskUpdateQuipPage",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "rootly_workflow_task_update_service_now_incident": {
                 "current": "rootly:index/workflowTaskUpdateServiceNowIncident:WorkflowTaskUpdateServiceNowIncident",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_update_sharepoint_page": {
+                "current": "rootly:index/workflowTaskUpdateSharepointPage:WorkflowTaskUpdateSharepointPage",
                 "majorVersion": 3,
                 "fields": {
                     "task_params": {
@@ -2738,6 +3245,14 @@
             }
         },
         "datasources": {
+            "rootly_alert_field": {
+                "current": "rootly:index/getAlertField:getAlertField",
+                "majorVersion": 3
+            },
+            "rootly_alert_route": {
+                "current": "rootly:index/getAlertRoute:getAlertRoute",
+                "majorVersion": 3
+            },
             "rootly_alert_routing_rule": {
                 "current": "rootly:index/getAlertRoutingRule:getAlertRoutingRule",
                 "majorVersion": 3
@@ -2750,8 +3265,24 @@
                 "current": "rootly:index/getAlertsSource:getAlertsSource",
                 "majorVersion": 3
             },
+            "rootly_api_key": {
+                "current": "rootly:index/getApiKey:getApiKey",
+                "majorVersion": 3
+            },
             "rootly_authorization": {
                 "current": "rootly:index/getAuthorization:getAuthorization",
+                "majorVersion": 3
+            },
+            "rootly_catalog": {
+                "current": "rootly:index/getCatalog:getCatalog",
+                "majorVersion": 3
+            },
+            "rootly_catalog_checklist_template": {
+                "current": "rootly:index/getCatalogChecklistTemplate:getCatalogChecklistTemplate",
+                "majorVersion": 3
+            },
+            "rootly_catalog_entity": {
+                "current": "rootly:index/getCatalogEntity:getCatalogEntity",
                 "majorVersion": 3
             },
             "rootly_cause": {
@@ -2766,6 +3297,22 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "rootly_communications_group": {
+                "current": "rootly:index/getCommunicationsGroup:getCommunicationsGroup",
+                "majorVersion": 3
+            },
+            "rootly_communications_stage": {
+                "current": "rootly:index/getCommunicationsStage:getCommunicationsStage",
+                "majorVersion": 3
+            },
+            "rootly_communications_template": {
+                "current": "rootly:index/getCommunicationsTemplate:getCommunicationsTemplate",
+                "majorVersion": 3
+            },
+            "rootly_communications_type": {
+                "current": "rootly:index/getCommunicationsType:getCommunicationsType",
+                "majorVersion": 3
             },
             "rootly_custom_field": {
                 "current": "rootly:index/getCustomField:getCustomField",
@@ -2989,6 +3536,10 @@
             },
             "rootly_severity": {
                 "current": "rootly:index/getSeverity:getSeverity",
+                "majorVersion": 3
+            },
+            "rootly_sla": {
+                "current": "rootly:index/getSla:getSla",
                 "majorVersion": 3
             },
             "rootly_status_page": {

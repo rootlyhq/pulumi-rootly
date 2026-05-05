@@ -5,10 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AlertFieldArgs, AlertFieldState } from "./alertField";
+export type AlertField = import("./alertField").AlertField;
+export const AlertField: typeof import("./alertField").AlertField = null as any;
+utilities.lazyLoad(exports, ["AlertField"], () => require("./alertField"));
+
 export { AlertGroupArgs, AlertGroupState } from "./alertGroup";
 export type AlertGroup = import("./alertGroup").AlertGroup;
 export const AlertGroup: typeof import("./alertGroup").AlertGroup = null as any;
 utilities.lazyLoad(exports, ["AlertGroup"], () => require("./alertGroup"));
+
+export { AlertRouteArgs, AlertRouteState } from "./alertRoute";
+export type AlertRoute = import("./alertRoute").AlertRoute;
+export const AlertRoute: typeof import("./alertRoute").AlertRoute = null as any;
+utilities.lazyLoad(exports, ["AlertRoute"], () => require("./alertRoute"));
 
 export { AlertRoutingRuleArgs, AlertRoutingRuleState } from "./alertRoutingRule";
 export type AlertRoutingRule = import("./alertRoutingRule").AlertRoutingRule;
@@ -25,15 +35,60 @@ export type AlertsSource = import("./alertsSource").AlertsSource;
 export const AlertsSource: typeof import("./alertsSource").AlertsSource = null as any;
 utilities.lazyLoad(exports, ["AlertsSource"], () => require("./alertsSource"));
 
+export { ApiKeyArgs, ApiKeyState } from "./apiKey";
+export type ApiKey = import("./apiKey").ApiKey;
+export const ApiKey: typeof import("./apiKey").ApiKey = null as any;
+utilities.lazyLoad(exports, ["ApiKey"], () => require("./apiKey"));
+
 export { AuthorizationArgs, AuthorizationState } from "./authorization";
 export type Authorization = import("./authorization").Authorization;
 export const Authorization: typeof import("./authorization").Authorization = null as any;
 utilities.lazyLoad(exports, ["Authorization"], () => require("./authorization"));
 
+export { CatalogArgs, CatalogState } from "./catalog";
+export type Catalog = import("./catalog").Catalog;
+export const Catalog: typeof import("./catalog").Catalog = null as any;
+utilities.lazyLoad(exports, ["Catalog"], () => require("./catalog"));
+
+export { CatalogChecklistTemplateArgs, CatalogChecklistTemplateState } from "./catalogChecklistTemplate";
+export type CatalogChecklistTemplate = import("./catalogChecklistTemplate").CatalogChecklistTemplate;
+export const CatalogChecklistTemplate: typeof import("./catalogChecklistTemplate").CatalogChecklistTemplate = null as any;
+utilities.lazyLoad(exports, ["CatalogChecklistTemplate"], () => require("./catalogChecklistTemplate"));
+
+export { CatalogEntityArgs, CatalogEntityState } from "./catalogEntity";
+export type CatalogEntity = import("./catalogEntity").CatalogEntity;
+export const CatalogEntity: typeof import("./catalogEntity").CatalogEntity = null as any;
+utilities.lazyLoad(exports, ["CatalogEntity"], () => require("./catalogEntity"));
+
+export { CatalogPropertyArgs, CatalogPropertyState } from "./catalogProperty";
+export type CatalogProperty = import("./catalogProperty").CatalogProperty;
+export const CatalogProperty: typeof import("./catalogProperty").CatalogProperty = null as any;
+utilities.lazyLoad(exports, ["CatalogProperty"], () => require("./catalogProperty"));
+
 export { CauseArgs, CauseState } from "./cause";
 export type Cause = import("./cause").Cause;
 export const Cause: typeof import("./cause").Cause = null as any;
 utilities.lazyLoad(exports, ["Cause"], () => require("./cause"));
+
+export { CommunicationsGroupArgs, CommunicationsGroupState } from "./communicationsGroup";
+export type CommunicationsGroup = import("./communicationsGroup").CommunicationsGroup;
+export const CommunicationsGroup: typeof import("./communicationsGroup").CommunicationsGroup = null as any;
+utilities.lazyLoad(exports, ["CommunicationsGroup"], () => require("./communicationsGroup"));
+
+export { CommunicationsStageArgs, CommunicationsStageState } from "./communicationsStage";
+export type CommunicationsStage = import("./communicationsStage").CommunicationsStage;
+export const CommunicationsStage: typeof import("./communicationsStage").CommunicationsStage = null as any;
+utilities.lazyLoad(exports, ["CommunicationsStage"], () => require("./communicationsStage"));
+
+export { CommunicationsTemplateArgs, CommunicationsTemplateState } from "./communicationsTemplate";
+export type CommunicationsTemplate = import("./communicationsTemplate").CommunicationsTemplate;
+export const CommunicationsTemplate: typeof import("./communicationsTemplate").CommunicationsTemplate = null as any;
+utilities.lazyLoad(exports, ["CommunicationsTemplate"], () => require("./communicationsTemplate"));
+
+export { CommunicationsTypeArgs, CommunicationsTypeState } from "./communicationsType";
+export type CommunicationsType = import("./communicationsType").CommunicationsType;
+export const CommunicationsType: typeof import("./communicationsType").CommunicationsType = null as any;
+utilities.lazyLoad(exports, ["CommunicationsType"], () => require("./communicationsType"));
 
 export { CustomFieldArgs, CustomFieldState } from "./customField";
 export type CustomField = import("./customField").CustomField;
@@ -59,6 +114,16 @@ export { DashboardPanelArgs, DashboardPanelState } from "./dashboardPanel";
 export type DashboardPanel = import("./dashboardPanel").DashboardPanel;
 export const DashboardPanel: typeof import("./dashboardPanel").DashboardPanel = null as any;
 utilities.lazyLoad(exports, ["DashboardPanel"], () => require("./dashboardPanel"));
+
+export { EdgeConnectorArgs, EdgeConnectorState } from "./edgeConnector";
+export type EdgeConnector = import("./edgeConnector").EdgeConnector;
+export const EdgeConnector: typeof import("./edgeConnector").EdgeConnector = null as any;
+utilities.lazyLoad(exports, ["EdgeConnector"], () => require("./edgeConnector"));
+
+export { EdgeConnectorActionArgs, EdgeConnectorActionState } from "./edgeConnectorAction";
+export type EdgeConnectorAction = import("./edgeConnectorAction").EdgeConnectorAction;
+export const EdgeConnectorAction: typeof import("./edgeConnectorAction").EdgeConnectorAction = null as any;
+utilities.lazyLoad(exports, ["EdgeConnectorAction"], () => require("./edgeConnectorAction"));
 
 export { EnvironmentArgs, EnvironmentState } from "./environment";
 export type Environment = import("./environment").Environment;
@@ -120,6 +185,16 @@ export type Functionality = import("./functionality").Functionality;
 export const Functionality: typeof import("./functionality").Functionality = null as any;
 utilities.lazyLoad(exports, ["Functionality"], () => require("./functionality"));
 
+export { GetAlertFieldArgs, GetAlertFieldResult, GetAlertFieldOutputArgs } from "./getAlertField";
+export const getAlertField: typeof import("./getAlertField").getAlertField = null as any;
+export const getAlertFieldOutput: typeof import("./getAlertField").getAlertFieldOutput = null as any;
+utilities.lazyLoad(exports, ["getAlertField","getAlertFieldOutput"], () => require("./getAlertField"));
+
+export { GetAlertRouteArgs, GetAlertRouteResult, GetAlertRouteOutputArgs } from "./getAlertRoute";
+export const getAlertRoute: typeof import("./getAlertRoute").getAlertRoute = null as any;
+export const getAlertRouteOutput: typeof import("./getAlertRoute").getAlertRouteOutput = null as any;
+utilities.lazyLoad(exports, ["getAlertRoute","getAlertRouteOutput"], () => require("./getAlertRoute"));
+
 export { GetAlertRoutingRuleArgs, GetAlertRoutingRuleResult, GetAlertRoutingRuleOutputArgs } from "./getAlertRoutingRule";
 export const getAlertRoutingRule: typeof import("./getAlertRoutingRule").getAlertRoutingRule = null as any;
 export const getAlertRoutingRuleOutput: typeof import("./getAlertRoutingRule").getAlertRoutingRuleOutput = null as any;
@@ -135,10 +210,30 @@ export const getAlertsSource: typeof import("./getAlertsSource").getAlertsSource
 export const getAlertsSourceOutput: typeof import("./getAlertsSource").getAlertsSourceOutput = null as any;
 utilities.lazyLoad(exports, ["getAlertsSource","getAlertsSourceOutput"], () => require("./getAlertsSource"));
 
+export { GetApiKeyArgs, GetApiKeyResult, GetApiKeyOutputArgs } from "./getApiKey";
+export const getApiKey: typeof import("./getApiKey").getApiKey = null as any;
+export const getApiKeyOutput: typeof import("./getApiKey").getApiKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getApiKey","getApiKeyOutput"], () => require("./getApiKey"));
+
 export { GetAuthorizationArgs, GetAuthorizationResult, GetAuthorizationOutputArgs } from "./getAuthorization";
 export const getAuthorization: typeof import("./getAuthorization").getAuthorization = null as any;
 export const getAuthorizationOutput: typeof import("./getAuthorization").getAuthorizationOutput = null as any;
 utilities.lazyLoad(exports, ["getAuthorization","getAuthorizationOutput"], () => require("./getAuthorization"));
+
+export { GetCatalogArgs, GetCatalogResult, GetCatalogOutputArgs } from "./getCatalog";
+export const getCatalog: typeof import("./getCatalog").getCatalog = null as any;
+export const getCatalogOutput: typeof import("./getCatalog").getCatalogOutput = null as any;
+utilities.lazyLoad(exports, ["getCatalog","getCatalogOutput"], () => require("./getCatalog"));
+
+export { GetCatalogChecklistTemplateArgs, GetCatalogChecklistTemplateResult, GetCatalogChecklistTemplateOutputArgs } from "./getCatalogChecklistTemplate";
+export const getCatalogChecklistTemplate: typeof import("./getCatalogChecklistTemplate").getCatalogChecklistTemplate = null as any;
+export const getCatalogChecklistTemplateOutput: typeof import("./getCatalogChecklistTemplate").getCatalogChecklistTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getCatalogChecklistTemplate","getCatalogChecklistTemplateOutput"], () => require("./getCatalogChecklistTemplate"));
+
+export { GetCatalogEntityArgs, GetCatalogEntityResult, GetCatalogEntityOutputArgs } from "./getCatalogEntity";
+export const getCatalogEntity: typeof import("./getCatalogEntity").getCatalogEntity = null as any;
+export const getCatalogEntityOutput: typeof import("./getCatalogEntity").getCatalogEntityOutput = null as any;
+utilities.lazyLoad(exports, ["getCatalogEntity","getCatalogEntityOutput"], () => require("./getCatalogEntity"));
 
 export { GetCauseArgs, GetCauseResult, GetCauseOutputArgs } from "./getCause";
 export const getCause: typeof import("./getCause").getCause = null as any;
@@ -149,6 +244,26 @@ export { GetCausesArgs, GetCausesResult, GetCausesOutputArgs } from "./getCauses
 export const getCauses: typeof import("./getCauses").getCauses = null as any;
 export const getCausesOutput: typeof import("./getCauses").getCausesOutput = null as any;
 utilities.lazyLoad(exports, ["getCauses","getCausesOutput"], () => require("./getCauses"));
+
+export { GetCommunicationsGroupArgs, GetCommunicationsGroupResult, GetCommunicationsGroupOutputArgs } from "./getCommunicationsGroup";
+export const getCommunicationsGroup: typeof import("./getCommunicationsGroup").getCommunicationsGroup = null as any;
+export const getCommunicationsGroupOutput: typeof import("./getCommunicationsGroup").getCommunicationsGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getCommunicationsGroup","getCommunicationsGroupOutput"], () => require("./getCommunicationsGroup"));
+
+export { GetCommunicationsStageArgs, GetCommunicationsStageResult, GetCommunicationsStageOutputArgs } from "./getCommunicationsStage";
+export const getCommunicationsStage: typeof import("./getCommunicationsStage").getCommunicationsStage = null as any;
+export const getCommunicationsStageOutput: typeof import("./getCommunicationsStage").getCommunicationsStageOutput = null as any;
+utilities.lazyLoad(exports, ["getCommunicationsStage","getCommunicationsStageOutput"], () => require("./getCommunicationsStage"));
+
+export { GetCommunicationsTemplateArgs, GetCommunicationsTemplateResult, GetCommunicationsTemplateOutputArgs } from "./getCommunicationsTemplate";
+export const getCommunicationsTemplate: typeof import("./getCommunicationsTemplate").getCommunicationsTemplate = null as any;
+export const getCommunicationsTemplateOutput: typeof import("./getCommunicationsTemplate").getCommunicationsTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getCommunicationsTemplate","getCommunicationsTemplateOutput"], () => require("./getCommunicationsTemplate"));
+
+export { GetCommunicationsTypeArgs, GetCommunicationsTypeResult, GetCommunicationsTypeOutputArgs } from "./getCommunicationsType";
+export const getCommunicationsType: typeof import("./getCommunicationsType").getCommunicationsType = null as any;
+export const getCommunicationsTypeOutput: typeof import("./getCommunicationsType").getCommunicationsTypeOutput = null as any;
+utilities.lazyLoad(exports, ["getCommunicationsType","getCommunicationsTypeOutput"], () => require("./getCommunicationsType"));
 
 export { GetCustomFieldArgs, GetCustomFieldResult, GetCustomFieldOutputArgs } from "./getCustomField";
 export const getCustomField: typeof import("./getCustomField").getCustomField = null as any;
@@ -350,6 +465,11 @@ export const getSeverity: typeof import("./getSeverity").getSeverity = null as a
 export const getSeverityOutput: typeof import("./getSeverity").getSeverityOutput = null as any;
 utilities.lazyLoad(exports, ["getSeverity","getSeverityOutput"], () => require("./getSeverity"));
 
+export { GetSlaArgs, GetSlaResult, GetSlaOutputArgs } from "./getSla";
+export const getSla: typeof import("./getSla").getSla = null as any;
+export const getSlaOutput: typeof import("./getSla").getSlaOutput = null as any;
+utilities.lazyLoad(exports, ["getSla","getSlaOutput"], () => require("./getSla"));
+
 export { GetStatusPageArgs, GetStatusPageResult, GetStatusPageOutputArgs } from "./getStatusPage";
 export const getStatusPage: typeof import("./getStatusPage").getStatusPage = null as any;
 export const getStatusPageOutput: typeof import("./getStatusPage").getStatusPageOutput = null as any;
@@ -538,6 +658,11 @@ export type Severity = import("./severity").Severity;
 export const Severity: typeof import("./severity").Severity = null as any;
 utilities.lazyLoad(exports, ["Severity"], () => require("./severity"));
 
+export { SlaArgs, SlaState } from "./sla";
+export type Sla = import("./sla").Sla;
+export const Sla: typeof import("./sla").Sla = null as any;
+utilities.lazyLoad(exports, ["Sla"], () => require("./sla"));
+
 export { StatusPageArgs, StatusPageState } from "./statusPage";
 export type StatusPage = import("./statusPage").StatusPage;
 export const StatusPage: typeof import("./statusPage").StatusPage = null as any;
@@ -612,6 +737,11 @@ export { WorkflowTaskAddActionItemArgs, WorkflowTaskAddActionItemState } from ".
 export type WorkflowTaskAddActionItem = import("./workflowTaskAddActionItem").WorkflowTaskAddActionItem;
 export const WorkflowTaskAddActionItem: typeof import("./workflowTaskAddActionItem").WorkflowTaskAddActionItem = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskAddActionItem"], () => require("./workflowTaskAddActionItem"));
+
+export { WorkflowTaskAddMicrosoftTeamsChatTabArgs, WorkflowTaskAddMicrosoftTeamsChatTabState } from "./workflowTaskAddMicrosoftTeamsChatTab";
+export type WorkflowTaskAddMicrosoftTeamsChatTab = import("./workflowTaskAddMicrosoftTeamsChatTab").WorkflowTaskAddMicrosoftTeamsChatTab;
+export const WorkflowTaskAddMicrosoftTeamsChatTab: typeof import("./workflowTaskAddMicrosoftTeamsChatTab").WorkflowTaskAddMicrosoftTeamsChatTab = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskAddMicrosoftTeamsChatTab"], () => require("./workflowTaskAddMicrosoftTeamsChatTab"));
 
 export { WorkflowTaskAddMicrosoftTeamsTabArgs, WorkflowTaskAddMicrosoftTeamsTabState } from "./workflowTaskAddMicrosoftTeamsTab";
 export type WorkflowTaskAddMicrosoftTeamsTab = import("./workflowTaskAddMicrosoftTeamsTab").WorkflowTaskAddMicrosoftTeamsTab;
@@ -688,6 +818,11 @@ export type WorkflowTaskCreateAirtableTableRecord = import("./workflowTaskCreate
 export const WorkflowTaskCreateAirtableTableRecord: typeof import("./workflowTaskCreateAirtableTableRecord").WorkflowTaskCreateAirtableTableRecord = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateAirtableTableRecord"], () => require("./workflowTaskCreateAirtableTableRecord"));
 
+export { WorkflowTaskCreateAnthropicChatCompletionArgs, WorkflowTaskCreateAnthropicChatCompletionState } from "./workflowTaskCreateAnthropicChatCompletion";
+export type WorkflowTaskCreateAnthropicChatCompletion = import("./workflowTaskCreateAnthropicChatCompletion").WorkflowTaskCreateAnthropicChatCompletion;
+export const WorkflowTaskCreateAnthropicChatCompletion: typeof import("./workflowTaskCreateAnthropicChatCompletion").WorkflowTaskCreateAnthropicChatCompletion = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateAnthropicChatCompletion"], () => require("./workflowTaskCreateAnthropicChatCompletion"));
+
 export { WorkflowTaskCreateAsanaSubtaskArgs, WorkflowTaskCreateAsanaSubtaskState } from "./workflowTaskCreateAsanaSubtask";
 export type WorkflowTaskCreateAsanaSubtask = import("./workflowTaskCreateAsanaSubtask").WorkflowTaskCreateAsanaSubtask;
 export const WorkflowTaskCreateAsanaSubtask: typeof import("./workflowTaskCreateAsanaSubtask").WorkflowTaskCreateAsanaSubtask = null as any;
@@ -753,6 +888,11 @@ export type WorkflowTaskCreateGoogleDocsPermissions = import("./workflowTaskCrea
 export const WorkflowTaskCreateGoogleDocsPermissions: typeof import("./workflowTaskCreateGoogleDocsPermissions").WorkflowTaskCreateGoogleDocsPermissions = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateGoogleDocsPermissions"], () => require("./workflowTaskCreateGoogleDocsPermissions"));
 
+export { WorkflowTaskCreateGoogleGeminiChatCompletionArgs, WorkflowTaskCreateGoogleGeminiChatCompletionState } from "./workflowTaskCreateGoogleGeminiChatCompletion";
+export type WorkflowTaskCreateGoogleGeminiChatCompletion = import("./workflowTaskCreateGoogleGeminiChatCompletion").WorkflowTaskCreateGoogleGeminiChatCompletion;
+export const WorkflowTaskCreateGoogleGeminiChatCompletion: typeof import("./workflowTaskCreateGoogleGeminiChatCompletion").WorkflowTaskCreateGoogleGeminiChatCompletion = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateGoogleGeminiChatCompletion"], () => require("./workflowTaskCreateGoogleGeminiChatCompletion"));
+
 export { WorkflowTaskCreateGoogleMeetingArgs, WorkflowTaskCreateGoogleMeetingState } from "./workflowTaskCreateGoogleMeeting";
 export type WorkflowTaskCreateGoogleMeeting = import("./workflowTaskCreateGoogleMeeting").WorkflowTaskCreateGoogleMeeting;
 export const WorkflowTaskCreateGoogleMeeting: typeof import("./workflowTaskCreateGoogleMeeting").WorkflowTaskCreateGoogleMeeting = null as any;
@@ -778,6 +918,11 @@ export type WorkflowTaskCreateJiraSubtask = import("./workflowTaskCreateJiraSubt
 export const WorkflowTaskCreateJiraSubtask: typeof import("./workflowTaskCreateJiraSubtask").WorkflowTaskCreateJiraSubtask = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateJiraSubtask"], () => require("./workflowTaskCreateJiraSubtask"));
 
+export { WorkflowTaskCreateJsmopsAlertArgs, WorkflowTaskCreateJsmopsAlertState } from "./workflowTaskCreateJsmopsAlert";
+export type WorkflowTaskCreateJsmopsAlert = import("./workflowTaskCreateJsmopsAlert").WorkflowTaskCreateJsmopsAlert;
+export const WorkflowTaskCreateJsmopsAlert: typeof import("./workflowTaskCreateJsmopsAlert").WorkflowTaskCreateJsmopsAlert = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateJsmopsAlert"], () => require("./workflowTaskCreateJsmopsAlert"));
+
 export { WorkflowTaskCreateLinearIssueArgs, WorkflowTaskCreateLinearIssueState } from "./workflowTaskCreateLinearIssue";
 export type WorkflowTaskCreateLinearIssue = import("./workflowTaskCreateLinearIssue").WorkflowTaskCreateLinearIssue;
 export const WorkflowTaskCreateLinearIssue: typeof import("./workflowTaskCreateLinearIssue").WorkflowTaskCreateLinearIssue = null as any;
@@ -798,10 +943,20 @@ export type WorkflowTaskCreateMicrosoftTeamsChannel = import("./workflowTaskCrea
 export const WorkflowTaskCreateMicrosoftTeamsChannel: typeof import("./workflowTaskCreateMicrosoftTeamsChannel").WorkflowTaskCreateMicrosoftTeamsChannel = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateMicrosoftTeamsChannel"], () => require("./workflowTaskCreateMicrosoftTeamsChannel"));
 
+export { WorkflowTaskCreateMicrosoftTeamsChatArgs, WorkflowTaskCreateMicrosoftTeamsChatState } from "./workflowTaskCreateMicrosoftTeamsChat";
+export type WorkflowTaskCreateMicrosoftTeamsChat = import("./workflowTaskCreateMicrosoftTeamsChat").WorkflowTaskCreateMicrosoftTeamsChat;
+export const WorkflowTaskCreateMicrosoftTeamsChat: typeof import("./workflowTaskCreateMicrosoftTeamsChat").WorkflowTaskCreateMicrosoftTeamsChat = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateMicrosoftTeamsChat"], () => require("./workflowTaskCreateMicrosoftTeamsChat"));
+
 export { WorkflowTaskCreateMicrosoftTeamsMeetingArgs, WorkflowTaskCreateMicrosoftTeamsMeetingState } from "./workflowTaskCreateMicrosoftTeamsMeeting";
 export type WorkflowTaskCreateMicrosoftTeamsMeeting = import("./workflowTaskCreateMicrosoftTeamsMeeting").WorkflowTaskCreateMicrosoftTeamsMeeting;
 export const WorkflowTaskCreateMicrosoftTeamsMeeting: typeof import("./workflowTaskCreateMicrosoftTeamsMeeting").WorkflowTaskCreateMicrosoftTeamsMeeting = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateMicrosoftTeamsMeeting"], () => require("./workflowTaskCreateMicrosoftTeamsMeeting"));
+
+export { WorkflowTaskCreateMistralChatCompletionArgs, WorkflowTaskCreateMistralChatCompletionState } from "./workflowTaskCreateMistralChatCompletion";
+export type WorkflowTaskCreateMistralChatCompletion = import("./workflowTaskCreateMistralChatCompletion").WorkflowTaskCreateMistralChatCompletion;
+export const WorkflowTaskCreateMistralChatCompletion: typeof import("./workflowTaskCreateMistralChatCompletion").WorkflowTaskCreateMistralChatCompletion = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateMistralChatCompletion"], () => require("./workflowTaskCreateMistralChatCompletion"));
 
 export { WorkflowTaskCreateMotionTaskArgs, WorkflowTaskCreateMotionTaskState } from "./workflowTaskCreateMotionTask";
 export type WorkflowTaskCreateMotionTask = import("./workflowTaskCreateMotionTask").WorkflowTaskCreateMotionTask;
@@ -812,6 +967,11 @@ export { WorkflowTaskCreateNotionPageArgs, WorkflowTaskCreateNotionPageState } f
 export type WorkflowTaskCreateNotionPage = import("./workflowTaskCreateNotionPage").WorkflowTaskCreateNotionPage;
 export const WorkflowTaskCreateNotionPage: typeof import("./workflowTaskCreateNotionPage").WorkflowTaskCreateNotionPage = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateNotionPage"], () => require("./workflowTaskCreateNotionPage"));
+
+export { WorkflowTaskCreateOpenaiChatCompletionArgs, WorkflowTaskCreateOpenaiChatCompletionState } from "./workflowTaskCreateOpenaiChatCompletion";
+export type WorkflowTaskCreateOpenaiChatCompletion = import("./workflowTaskCreateOpenaiChatCompletion").WorkflowTaskCreateOpenaiChatCompletion;
+export const WorkflowTaskCreateOpenaiChatCompletion: typeof import("./workflowTaskCreateOpenaiChatCompletion").WorkflowTaskCreateOpenaiChatCompletion = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateOpenaiChatCompletion"], () => require("./workflowTaskCreateOpenaiChatCompletion"));
 
 export { WorkflowTaskCreateOpsgenieAlertArgs, WorkflowTaskCreateOpsgenieAlertState } from "./workflowTaskCreateOpsgenieAlert";
 export type WorkflowTaskCreateOpsgenieAlert = import("./workflowTaskCreateOpsgenieAlert").WorkflowTaskCreateOpsgenieAlert;
@@ -863,10 +1023,20 @@ export type WorkflowTaskCreateSlackChannel = import("./workflowTaskCreateSlackCh
 export const WorkflowTaskCreateSlackChannel: typeof import("./workflowTaskCreateSlackChannel").WorkflowTaskCreateSlackChannel = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateSlackChannel"], () => require("./workflowTaskCreateSlackChannel"));
 
+export { WorkflowTaskCreateSubIncidentArgs, WorkflowTaskCreateSubIncidentState } from "./workflowTaskCreateSubIncident";
+export type WorkflowTaskCreateSubIncident = import("./workflowTaskCreateSubIncident").WorkflowTaskCreateSubIncident;
+export const WorkflowTaskCreateSubIncident: typeof import("./workflowTaskCreateSubIncident").WorkflowTaskCreateSubIncident = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateSubIncident"], () => require("./workflowTaskCreateSubIncident"));
+
 export { WorkflowTaskCreateTrelloCardArgs, WorkflowTaskCreateTrelloCardState } from "./workflowTaskCreateTrelloCard";
 export type WorkflowTaskCreateTrelloCard = import("./workflowTaskCreateTrelloCard").WorkflowTaskCreateTrelloCard;
 export const WorkflowTaskCreateTrelloCard: typeof import("./workflowTaskCreateTrelloCard").WorkflowTaskCreateTrelloCard = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateTrelloCard"], () => require("./workflowTaskCreateTrelloCard"));
+
+export { WorkflowTaskCreateWatsonxChatCompletionArgs, WorkflowTaskCreateWatsonxChatCompletionState } from "./workflowTaskCreateWatsonxChatCompletion";
+export type WorkflowTaskCreateWatsonxChatCompletion = import("./workflowTaskCreateWatsonxChatCompletion").WorkflowTaskCreateWatsonxChatCompletion;
+export const WorkflowTaskCreateWatsonxChatCompletion: typeof import("./workflowTaskCreateWatsonxChatCompletion").WorkflowTaskCreateWatsonxChatCompletion = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateWatsonxChatCompletion"], () => require("./workflowTaskCreateWatsonxChatCompletion"));
 
 export { WorkflowTaskCreateWebexMeetingArgs, WorkflowTaskCreateWebexMeetingState } from "./workflowTaskCreateWebexMeeting";
 export type WorkflowTaskCreateWebexMeeting = import("./workflowTaskCreateWebexMeeting").WorkflowTaskCreateWebexMeeting;
@@ -887,16 +1057,6 @@ export { WorkflowTaskCreateZoomMeetingArgs, WorkflowTaskCreateZoomMeetingState }
 export type WorkflowTaskCreateZoomMeeting = import("./workflowTaskCreateZoomMeeting").WorkflowTaskCreateZoomMeeting;
 export const WorkflowTaskCreateZoomMeeting: typeof import("./workflowTaskCreateZoomMeeting").WorkflowTaskCreateZoomMeeting = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateZoomMeeting"], () => require("./workflowTaskCreateZoomMeeting"));
-
-export { WorkflowTaskGeniusCreateOpenaiChatCompletionArgs, WorkflowTaskGeniusCreateOpenaiChatCompletionState } from "./workflowTaskGeniusCreateOpenaiChatCompletion";
-export type WorkflowTaskGeniusCreateOpenaiChatCompletion = import("./workflowTaskGeniusCreateOpenaiChatCompletion").WorkflowTaskGeniusCreateOpenaiChatCompletion;
-export const WorkflowTaskGeniusCreateOpenaiChatCompletion: typeof import("./workflowTaskGeniusCreateOpenaiChatCompletion").WorkflowTaskGeniusCreateOpenaiChatCompletion = null as any;
-utilities.lazyLoad(exports, ["WorkflowTaskGeniusCreateOpenaiChatCompletion"], () => require("./workflowTaskGeniusCreateOpenaiChatCompletion"));
-
-export { WorkflowTaskGeniusCreateWatsonxChatCompletionArgs, WorkflowTaskGeniusCreateWatsonxChatCompletionState } from "./workflowTaskGeniusCreateWatsonxChatCompletion";
-export type WorkflowTaskGeniusCreateWatsonxChatCompletion = import("./workflowTaskGeniusCreateWatsonxChatCompletion").WorkflowTaskGeniusCreateWatsonxChatCompletion;
-export const WorkflowTaskGeniusCreateWatsonxChatCompletion: typeof import("./workflowTaskGeniusCreateWatsonxChatCompletion").WorkflowTaskGeniusCreateWatsonxChatCompletion = null as any;
-utilities.lazyLoad(exports, ["WorkflowTaskGeniusCreateWatsonxChatCompletion"], () => require("./workflowTaskGeniusCreateWatsonxChatCompletion"));
 
 export { WorkflowTaskGetAlertsArgs, WorkflowTaskGetAlertsState } from "./workflowTaskGetAlerts";
 export type WorkflowTaskGetAlerts = import("./workflowTaskGetAlerts").WorkflowTaskGetAlerts;
@@ -952,6 +1112,11 @@ export { WorkflowTaskInviteToSlackChannelVictorOpsArgs, WorkflowTaskInviteToSlac
 export type WorkflowTaskInviteToSlackChannelVictorOps = import("./workflowTaskInviteToSlackChannelVictorOps").WorkflowTaskInviteToSlackChannelVictorOps;
 export const WorkflowTaskInviteToSlackChannelVictorOps: typeof import("./workflowTaskInviteToSlackChannelVictorOps").WorkflowTaskInviteToSlackChannelVictorOps = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskInviteToSlackChannelVictorOps"], () => require("./workflowTaskInviteToSlackChannelVictorOps"));
+
+export { WorkflowTaskPageJsmopsOnCallRespondersArgs, WorkflowTaskPageJsmopsOnCallRespondersState } from "./workflowTaskPageJsmopsOnCallResponders";
+export type WorkflowTaskPageJsmopsOnCallResponders = import("./workflowTaskPageJsmopsOnCallResponders").WorkflowTaskPageJsmopsOnCallResponders;
+export const WorkflowTaskPageJsmopsOnCallResponders: typeof import("./workflowTaskPageJsmopsOnCallResponders").WorkflowTaskPageJsmopsOnCallResponders = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskPageJsmopsOnCallResponders"], () => require("./workflowTaskPageJsmopsOnCallResponders"));
 
 export { WorkflowTaskPageOpsgenieOnCallRespondersArgs, WorkflowTaskPageOpsgenieOnCallRespondersState } from "./workflowTaskPageOpsgenieOnCallResponders";
 export type WorkflowTaskPageOpsgenieOnCallResponders = import("./workflowTaskPageOpsgenieOnCallResponders").WorkflowTaskPageOpsgenieOnCallResponders;
@@ -1022,6 +1187,11 @@ export { WorkflowTaskSendMicrosoftTeamsBlocksArgs, WorkflowTaskSendMicrosoftTeam
 export type WorkflowTaskSendMicrosoftTeamsBlocks = import("./workflowTaskSendMicrosoftTeamsBlocks").WorkflowTaskSendMicrosoftTeamsBlocks;
 export const WorkflowTaskSendMicrosoftTeamsBlocks: typeof import("./workflowTaskSendMicrosoftTeamsBlocks").WorkflowTaskSendMicrosoftTeamsBlocks = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskSendMicrosoftTeamsBlocks"], () => require("./workflowTaskSendMicrosoftTeamsBlocks"));
+
+export { WorkflowTaskSendMicrosoftTeamsChatMessageArgs, WorkflowTaskSendMicrosoftTeamsChatMessageState } from "./workflowTaskSendMicrosoftTeamsChatMessage";
+export type WorkflowTaskSendMicrosoftTeamsChatMessage = import("./workflowTaskSendMicrosoftTeamsChatMessage").WorkflowTaskSendMicrosoftTeamsChatMessage;
+export const WorkflowTaskSendMicrosoftTeamsChatMessage: typeof import("./workflowTaskSendMicrosoftTeamsChatMessage").WorkflowTaskSendMicrosoftTeamsChatMessage = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskSendMicrosoftTeamsChatMessage"], () => require("./workflowTaskSendMicrosoftTeamsChatMessage"));
 
 export { WorkflowTaskSendMicrosoftTeamsMessageArgs, WorkflowTaskSendMicrosoftTeamsMessageState } from "./workflowTaskSendMicrosoftTeamsMessage";
 export type WorkflowTaskSendMicrosoftTeamsMessage = import("./workflowTaskSendMicrosoftTeamsMessage").WorkflowTaskSendMicrosoftTeamsMessage;
@@ -1108,6 +1278,21 @@ export type WorkflowTaskUpdateCodaPage = import("./workflowTaskUpdateCodaPage").
 export const WorkflowTaskUpdateCodaPage: typeof import("./workflowTaskUpdateCodaPage").WorkflowTaskUpdateCodaPage = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskUpdateCodaPage"], () => require("./workflowTaskUpdateCodaPage"));
 
+export { WorkflowTaskUpdateConfluencePageArgs, WorkflowTaskUpdateConfluencePageState } from "./workflowTaskUpdateConfluencePage";
+export type WorkflowTaskUpdateConfluencePage = import("./workflowTaskUpdateConfluencePage").WorkflowTaskUpdateConfluencePage;
+export const WorkflowTaskUpdateConfluencePage: typeof import("./workflowTaskUpdateConfluencePage").WorkflowTaskUpdateConfluencePage = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskUpdateConfluencePage"], () => require("./workflowTaskUpdateConfluencePage"));
+
+export { WorkflowTaskUpdateDatadogNotebookArgs, WorkflowTaskUpdateDatadogNotebookState } from "./workflowTaskUpdateDatadogNotebook";
+export type WorkflowTaskUpdateDatadogNotebook = import("./workflowTaskUpdateDatadogNotebook").WorkflowTaskUpdateDatadogNotebook;
+export const WorkflowTaskUpdateDatadogNotebook: typeof import("./workflowTaskUpdateDatadogNotebook").WorkflowTaskUpdateDatadogNotebook = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskUpdateDatadogNotebook"], () => require("./workflowTaskUpdateDatadogNotebook"));
+
+export { WorkflowTaskUpdateDropboxPaperPageArgs, WorkflowTaskUpdateDropboxPaperPageState } from "./workflowTaskUpdateDropboxPaperPage";
+export type WorkflowTaskUpdateDropboxPaperPage = import("./workflowTaskUpdateDropboxPaperPage").WorkflowTaskUpdateDropboxPaperPage;
+export const WorkflowTaskUpdateDropboxPaperPage: typeof import("./workflowTaskUpdateDropboxPaperPage").WorkflowTaskUpdateDropboxPaperPage = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskUpdateDropboxPaperPage"], () => require("./workflowTaskUpdateDropboxPaperPage"));
+
 export { WorkflowTaskUpdateGithubIssueArgs, WorkflowTaskUpdateGithubIssueState } from "./workflowTaskUpdateGithubIssue";
 export type WorkflowTaskUpdateGithubIssue = import("./workflowTaskUpdateGithubIssue").WorkflowTaskUpdateGithubIssue;
 export const WorkflowTaskUpdateGithubIssue: typeof import("./workflowTaskUpdateGithubIssue").WorkflowTaskUpdateGithubIssue = null as any;
@@ -1183,10 +1368,20 @@ export type WorkflowTaskUpdatePagertreeAlert = import("./workflowTaskUpdatePager
 export const WorkflowTaskUpdatePagertreeAlert: typeof import("./workflowTaskUpdatePagertreeAlert").WorkflowTaskUpdatePagertreeAlert = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskUpdatePagertreeAlert"], () => require("./workflowTaskUpdatePagertreeAlert"));
 
+export { WorkflowTaskUpdateQuipPageArgs, WorkflowTaskUpdateQuipPageState } from "./workflowTaskUpdateQuipPage";
+export type WorkflowTaskUpdateQuipPage = import("./workflowTaskUpdateQuipPage").WorkflowTaskUpdateQuipPage;
+export const WorkflowTaskUpdateQuipPage: typeof import("./workflowTaskUpdateQuipPage").WorkflowTaskUpdateQuipPage = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskUpdateQuipPage"], () => require("./workflowTaskUpdateQuipPage"));
+
 export { WorkflowTaskUpdateServiceNowIncidentArgs, WorkflowTaskUpdateServiceNowIncidentState } from "./workflowTaskUpdateServiceNowIncident";
 export type WorkflowTaskUpdateServiceNowIncident = import("./workflowTaskUpdateServiceNowIncident").WorkflowTaskUpdateServiceNowIncident;
 export const WorkflowTaskUpdateServiceNowIncident: typeof import("./workflowTaskUpdateServiceNowIncident").WorkflowTaskUpdateServiceNowIncident = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskUpdateServiceNowIncident"], () => require("./workflowTaskUpdateServiceNowIncident"));
+
+export { WorkflowTaskUpdateSharepointPageArgs, WorkflowTaskUpdateSharepointPageState } from "./workflowTaskUpdateSharepointPage";
+export type WorkflowTaskUpdateSharepointPage = import("./workflowTaskUpdateSharepointPage").WorkflowTaskUpdateSharepointPage;
+export const WorkflowTaskUpdateSharepointPage: typeof import("./workflowTaskUpdateSharepointPage").WorkflowTaskUpdateSharepointPage = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskUpdateSharepointPage"], () => require("./workflowTaskUpdateSharepointPage"));
 
 export { WorkflowTaskUpdateShortcutStoryArgs, WorkflowTaskUpdateShortcutStoryState } from "./workflowTaskUpdateShortcutStory";
 export type WorkflowTaskUpdateShortcutStory = import("./workflowTaskUpdateShortcutStory").WorkflowTaskUpdateShortcutStory;
@@ -1237,18 +1432,40 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "rootly:index/alertField:AlertField":
+                return new AlertField(name, <any>undefined, { urn })
             case "rootly:index/alertGroup:AlertGroup":
                 return new AlertGroup(name, <any>undefined, { urn })
+            case "rootly:index/alertRoute:AlertRoute":
+                return new AlertRoute(name, <any>undefined, { urn })
             case "rootly:index/alertRoutingRule:AlertRoutingRule":
                 return new AlertRoutingRule(name, <any>undefined, { urn })
             case "rootly:index/alertUrgency:AlertUrgency":
                 return new AlertUrgency(name, <any>undefined, { urn })
             case "rootly:index/alertsSource:AlertsSource":
                 return new AlertsSource(name, <any>undefined, { urn })
+            case "rootly:index/apiKey:ApiKey":
+                return new ApiKey(name, <any>undefined, { urn })
             case "rootly:index/authorization:Authorization":
                 return new Authorization(name, <any>undefined, { urn })
+            case "rootly:index/catalog:Catalog":
+                return new Catalog(name, <any>undefined, { urn })
+            case "rootly:index/catalogChecklistTemplate:CatalogChecklistTemplate":
+                return new CatalogChecklistTemplate(name, <any>undefined, { urn })
+            case "rootly:index/catalogEntity:CatalogEntity":
+                return new CatalogEntity(name, <any>undefined, { urn })
+            case "rootly:index/catalogProperty:CatalogProperty":
+                return new CatalogProperty(name, <any>undefined, { urn })
             case "rootly:index/cause:Cause":
                 return new Cause(name, <any>undefined, { urn })
+            case "rootly:index/communicationsGroup:CommunicationsGroup":
+                return new CommunicationsGroup(name, <any>undefined, { urn })
+            case "rootly:index/communicationsStage:CommunicationsStage":
+                return new CommunicationsStage(name, <any>undefined, { urn })
+            case "rootly:index/communicationsTemplate:CommunicationsTemplate":
+                return new CommunicationsTemplate(name, <any>undefined, { urn })
+            case "rootly:index/communicationsType:CommunicationsType":
+                return new CommunicationsType(name, <any>undefined, { urn })
             case "rootly:index/customField:CustomField":
                 return new CustomField(name, <any>undefined, { urn })
             case "rootly:index/customFieldOption:CustomFieldOption":
@@ -1259,6 +1476,10 @@ const _module = {
                 return new Dashboard(name, <any>undefined, { urn })
             case "rootly:index/dashboardPanel:DashboardPanel":
                 return new DashboardPanel(name, <any>undefined, { urn })
+            case "rootly:index/edgeConnector:EdgeConnector":
+                return new EdgeConnector(name, <any>undefined, { urn })
+            case "rootly:index/edgeConnectorAction:EdgeConnectorAction":
+                return new EdgeConnectorAction(name, <any>undefined, { urn })
             case "rootly:index/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
             case "rootly:index/escalationLevel:EscalationLevel":
@@ -1339,6 +1560,8 @@ const _module = {
                 return new Service(name, <any>undefined, { urn })
             case "rootly:index/severity:Severity":
                 return new Severity(name, <any>undefined, { urn })
+            case "rootly:index/sla:Sla":
+                return new Sla(name, <any>undefined, { urn })
             case "rootly:index/statusPage:StatusPage":
                 return new StatusPage(name, <any>undefined, { urn })
             case "rootly:index/statusPageTemplate:StatusPageTemplate":
@@ -1369,6 +1592,8 @@ const _module = {
                 return new WorkflowSimple(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskAddActionItem:WorkflowTaskAddActionItem":
                 return new WorkflowTaskAddActionItem(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskAddMicrosoftTeamsChatTab:WorkflowTaskAddMicrosoftTeamsChatTab":
+                return new WorkflowTaskAddMicrosoftTeamsChatTab(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskAddMicrosoftTeamsTab:WorkflowTaskAddMicrosoftTeamsTab":
                 return new WorkflowTaskAddMicrosoftTeamsTab(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskAddRole:WorkflowTaskAddRole":
@@ -1399,6 +1624,8 @@ const _module = {
                 return new WorkflowTaskChangeSlackChannelPrivacy(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateAirtableTableRecord:WorkflowTaskCreateAirtableTableRecord":
                 return new WorkflowTaskCreateAirtableTableRecord(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateAnthropicChatCompletion:WorkflowTaskCreateAnthropicChatCompletion":
+                return new WorkflowTaskCreateAnthropicChatCompletion(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateAsanaSubtask:WorkflowTaskCreateAsanaSubtask":
                 return new WorkflowTaskCreateAsanaSubtask(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateAsanaTask:WorkflowTaskCreateAsanaTask":
@@ -1425,6 +1652,8 @@ const _module = {
                 return new WorkflowTaskCreateGoogleDocsPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateGoogleDocsPermissions:WorkflowTaskCreateGoogleDocsPermissions":
                 return new WorkflowTaskCreateGoogleDocsPermissions(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateGoogleGeminiChatCompletion:WorkflowTaskCreateGoogleGeminiChatCompletion":
+                return new WorkflowTaskCreateGoogleGeminiChatCompletion(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateGoogleMeeting:WorkflowTaskCreateGoogleMeeting":
                 return new WorkflowTaskCreateGoogleMeeting(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateIncident:WorkflowTaskCreateIncident":
@@ -1435,6 +1664,8 @@ const _module = {
                 return new WorkflowTaskCreateJiraIssue(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateJiraSubtask:WorkflowTaskCreateJiraSubtask":
                 return new WorkflowTaskCreateJiraSubtask(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateJsmopsAlert:WorkflowTaskCreateJsmopsAlert":
+                return new WorkflowTaskCreateJsmopsAlert(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateLinearIssue:WorkflowTaskCreateLinearIssue":
                 return new WorkflowTaskCreateLinearIssue(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateLinearIssueComment:WorkflowTaskCreateLinearIssueComment":
@@ -1443,12 +1674,18 @@ const _module = {
                 return new WorkflowTaskCreateLinearSubtaskIssue(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateMicrosoftTeamsChannel:WorkflowTaskCreateMicrosoftTeamsChannel":
                 return new WorkflowTaskCreateMicrosoftTeamsChannel(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateMicrosoftTeamsChat:WorkflowTaskCreateMicrosoftTeamsChat":
+                return new WorkflowTaskCreateMicrosoftTeamsChat(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateMicrosoftTeamsMeeting:WorkflowTaskCreateMicrosoftTeamsMeeting":
                 return new WorkflowTaskCreateMicrosoftTeamsMeeting(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateMistralChatCompletion:WorkflowTaskCreateMistralChatCompletion":
+                return new WorkflowTaskCreateMistralChatCompletion(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateMotionTask:WorkflowTaskCreateMotionTask":
                 return new WorkflowTaskCreateMotionTask(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateNotionPage:WorkflowTaskCreateNotionPage":
                 return new WorkflowTaskCreateNotionPage(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateOpenaiChatCompletion:WorkflowTaskCreateOpenaiChatCompletion":
+                return new WorkflowTaskCreateOpenaiChatCompletion(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateOpsgenieAlert:WorkflowTaskCreateOpsgenieAlert":
                 return new WorkflowTaskCreateOpsgenieAlert(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateOutlookEvent:WorkflowTaskCreateOutlookEvent":
@@ -1469,8 +1706,12 @@ const _module = {
                 return new WorkflowTaskCreateShortcutTask(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateSlackChannel:WorkflowTaskCreateSlackChannel":
                 return new WorkflowTaskCreateSlackChannel(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateSubIncident:WorkflowTaskCreateSubIncident":
+                return new WorkflowTaskCreateSubIncident(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateTrelloCard:WorkflowTaskCreateTrelloCard":
                 return new WorkflowTaskCreateTrelloCard(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateWatsonxChatCompletion:WorkflowTaskCreateWatsonxChatCompletion":
+                return new WorkflowTaskCreateWatsonxChatCompletion(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateWebexMeeting:WorkflowTaskCreateWebexMeeting":
                 return new WorkflowTaskCreateWebexMeeting(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateZendeskJiraLink:WorkflowTaskCreateZendeskJiraLink":
@@ -1479,10 +1720,6 @@ const _module = {
                 return new WorkflowTaskCreateZendeskTicket(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateZoomMeeting:WorkflowTaskCreateZoomMeeting":
                 return new WorkflowTaskCreateZoomMeeting(name, <any>undefined, { urn })
-            case "rootly:index/workflowTaskGeniusCreateOpenaiChatCompletion:WorkflowTaskGeniusCreateOpenaiChatCompletion":
-                return new WorkflowTaskGeniusCreateOpenaiChatCompletion(name, <any>undefined, { urn })
-            case "rootly:index/workflowTaskGeniusCreateWatsonxChatCompletion:WorkflowTaskGeniusCreateWatsonxChatCompletion":
-                return new WorkflowTaskGeniusCreateWatsonxChatCompletion(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskGetAlerts:WorkflowTaskGetAlerts":
                 return new WorkflowTaskGetAlerts(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskGetGithubCommits:WorkflowTaskGetGithubCommits":
@@ -1505,6 +1742,8 @@ const _module = {
                 return new WorkflowTaskInviteToSlackChannelRootly(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskInviteToSlackChannelVictorOps:WorkflowTaskInviteToSlackChannelVictorOps":
                 return new WorkflowTaskInviteToSlackChannelVictorOps(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskPageJsmopsOnCallResponders:WorkflowTaskPageJsmopsOnCallResponders":
+                return new WorkflowTaskPageJsmopsOnCallResponders(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskPageOpsgenieOnCallResponders:WorkflowTaskPageOpsgenieOnCallResponders":
                 return new WorkflowTaskPageOpsgenieOnCallResponders(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskPagePagerdutyOnCallResponders:WorkflowTaskPagePagerdutyOnCallResponders":
@@ -1533,6 +1772,8 @@ const _module = {
                 return new WorkflowTaskSendEmail(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskSendMicrosoftTeamsBlocks:WorkflowTaskSendMicrosoftTeamsBlocks":
                 return new WorkflowTaskSendMicrosoftTeamsBlocks(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskSendMicrosoftTeamsChatMessage:WorkflowTaskSendMicrosoftTeamsChatMessage":
+                return new WorkflowTaskSendMicrosoftTeamsChatMessage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskSendMicrosoftTeamsMessage:WorkflowTaskSendMicrosoftTeamsMessage":
                 return new WorkflowTaskSendMicrosoftTeamsMessage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskSendSlackBlocks:WorkflowTaskSendSlackBlocks":
@@ -1567,6 +1808,12 @@ const _module = {
                 return new WorkflowTaskUpdateClickupTask(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateCodaPage:WorkflowTaskUpdateCodaPage":
                 return new WorkflowTaskUpdateCodaPage(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdateConfluencePage:WorkflowTaskUpdateConfluencePage":
+                return new WorkflowTaskUpdateConfluencePage(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdateDatadogNotebook:WorkflowTaskUpdateDatadogNotebook":
+                return new WorkflowTaskUpdateDatadogNotebook(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdateDropboxPaperPage:WorkflowTaskUpdateDropboxPaperPage":
+                return new WorkflowTaskUpdateDropboxPaperPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateGithubIssue:WorkflowTaskUpdateGithubIssue":
                 return new WorkflowTaskUpdateGithubIssue(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateGitlabIssue:WorkflowTaskUpdateGitlabIssue":
@@ -1597,8 +1844,12 @@ const _module = {
                 return new WorkflowTaskUpdatePagerdutyIncident(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdatePagertreeAlert:WorkflowTaskUpdatePagertreeAlert":
                 return new WorkflowTaskUpdatePagertreeAlert(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdateQuipPage:WorkflowTaskUpdateQuipPage":
+                return new WorkflowTaskUpdateQuipPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateServiceNowIncident:WorkflowTaskUpdateServiceNowIncident":
                 return new WorkflowTaskUpdateServiceNowIncident(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdateSharepointPage:WorkflowTaskUpdateSharepointPage":
+                return new WorkflowTaskUpdateSharepointPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateShortcutStory:WorkflowTaskUpdateShortcutStory":
                 return new WorkflowTaskUpdateShortcutStory(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateShortcutTask:WorkflowTaskUpdateShortcutTask":
@@ -1618,17 +1869,30 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("rootly", "index/alertField", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/alertGroup", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/alertRoute", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/alertRoutingRule", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/alertUrgency", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/alertsSource", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/apiKey", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/authorization", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/catalog", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/catalogChecklistTemplate", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/catalogEntity", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/catalogProperty", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/cause", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/communicationsGroup", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/communicationsStage", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/communicationsTemplate", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/communicationsType", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/customField", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/customFieldOption", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/customForm", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/dashboard", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/dashboardPanel", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/edgeConnector", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/edgeConnectorAction", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/environment", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/escalationLevel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/escalationPath", _module)
@@ -1669,6 +1933,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/scheduleRotationUser", _m
 pulumi.runtime.registerResourceModule("rootly", "index/secret", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/service", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/severity", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/sla", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/statusPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/statusPageTemplate", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/subStatus", _module)
@@ -1684,6 +1949,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowPostMortem", _mod
 pulumi.runtime.registerResourceModule("rootly", "index/workflowPulse", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowSimple", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddActionItem", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddMicrosoftTeamsChatTab", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddMicrosoftTeamsTab", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddRole", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddSlackBookmark", _module)
@@ -1699,6 +1965,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRol
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCallPeople", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskChangeSlackChannelPrivacy", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateAirtableTableRecord", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateAnthropicChatCompletion", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateAsanaSubtask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateAsanaTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateClickupTask", _module)
@@ -1712,18 +1979,23 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoToMee
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleCalendarEvent", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleDocsPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleDocsPermissions", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleGeminiChatCompletion", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleMeeting", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateIncidentPostmortem", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateJiraIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateJiraSubtask", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateJsmopsAlert", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateLinearIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateLinearIssueComment", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateLinearSubtaskIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateMicrosoftTeamsChannel", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateMicrosoftTeamsChat", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateMicrosoftTeamsMeeting", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateMistralChatCompletion", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateMotionTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateNotionPage", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateOpenaiChatCompletion", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateOpsgenieAlert", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateOutlookEvent", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreatePagerdutyStatusUpdate", _module)
@@ -1734,13 +2006,13 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateSharepo
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateShortcutStory", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateShortcutTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateSlackChannel", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateSubIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateTrelloCard", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateWatsonxChatCompletion", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateWebexMeeting", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateZendeskJiraLink", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateZendeskTicket", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateZoomMeeting", _module)
-pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGeniusCreateOpenaiChatCompletion", _module)
-pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGeniusCreateWatsonxChatCompletion", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetAlerts", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetGithubCommits", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetGitlabCommits", _module)
@@ -1752,6 +2024,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlack
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannelPagerduty", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannelRootly", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannelVictorOps", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPageJsmopsOnCallResponders", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPageOpsgenieOnCallResponders", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPagePagerdutyOnCallResponders", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPageRootlyOnCallResponders", _module)
@@ -1766,6 +2039,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskRunCommandHer
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendDashboardReport", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendEmail", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendMicrosoftTeamsBlocks", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendMicrosoftTeamsChatMessage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendMicrosoftTeamsMessage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendSlackBlocks", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendSlackMessage", _module)
@@ -1783,6 +2057,9 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateAsanaTa
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateAttachedAlerts", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateClickupTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateCodaPage", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateConfluencePage", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateDatadogNotebook", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateDropboxPaperPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGithubIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGitlabIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGoogleCalendarEvent", _module)
@@ -1798,7 +2075,9 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateOpsgeni
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateOpsgenieIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdatePagerdutyIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdatePagertreeAlert", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateQuipPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateServiceNowIncident", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateSharepointPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateShortcutStory", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateShortcutTask", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateSlackChannelTopic", _module)

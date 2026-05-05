@@ -15,10 +15,20 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import Schedule using the `id`. For example:
+// Schedule can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/schedule:Schedule my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/schedule:Schedule primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type Schedule struct {
 	pulumi.CustomResourceState
@@ -33,6 +43,8 @@ type Schedule struct {
 	OwnerGroupIds pulumi.StringArrayOutput `pulumi:"ownerGroupIds"`
 	// ID of user assigned as owner of the schedule
 	OwnerUserId pulumi.IntOutput `pulumi:"ownerUserId"`
+	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+	SlackChannel pulumi.StringMapOutput `pulumi:"slackChannel"`
 	// Map must contain two fields, `id` and `name`. Synced slack group of the schedule
 	SlackUserGroup pulumi.StringMapOutput `pulumi:"slackUserGroup"`
 }
@@ -77,6 +89,8 @@ type scheduleState struct {
 	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// ID of user assigned as owner of the schedule
 	OwnerUserId *int `pulumi:"ownerUserId"`
+	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+	SlackChannel map[string]string `pulumi:"slackChannel"`
 	// Map must contain two fields, `id` and `name`. Synced slack group of the schedule
 	SlackUserGroup map[string]string `pulumi:"slackUserGroup"`
 }
@@ -92,6 +106,8 @@ type ScheduleState struct {
 	OwnerGroupIds pulumi.StringArrayInput
 	// ID of user assigned as owner of the schedule
 	OwnerUserId pulumi.IntPtrInput
+	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+	SlackChannel pulumi.StringMapInput
 	// Map must contain two fields, `id` and `name`. Synced slack group of the schedule
 	SlackUserGroup pulumi.StringMapInput
 }
@@ -111,6 +127,8 @@ type scheduleArgs struct {
 	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// ID of user assigned as owner of the schedule
 	OwnerUserId *int `pulumi:"ownerUserId"`
+	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+	SlackChannel map[string]string `pulumi:"slackChannel"`
 	// Map must contain two fields, `id` and `name`. Synced slack group of the schedule
 	SlackUserGroup map[string]string `pulumi:"slackUserGroup"`
 }
@@ -127,6 +145,8 @@ type ScheduleArgs struct {
 	OwnerGroupIds pulumi.StringArrayInput
 	// ID of user assigned as owner of the schedule
 	OwnerUserId pulumi.IntPtrInput
+	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+	SlackChannel pulumi.StringMapInput
 	// Map must contain two fields, `id` and `name`. Synced slack group of the schedule
 	SlackUserGroup pulumi.StringMapInput
 }
@@ -241,6 +261,11 @@ func (o ScheduleOutput) OwnerGroupIds() pulumi.StringArrayOutput {
 // ID of user assigned as owner of the schedule
 func (o ScheduleOutput) OwnerUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.IntOutput { return v.OwnerUserId }).(pulumi.IntOutput)
+}
+
+// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+func (o ScheduleOutput) SlackChannel() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringMapOutput { return v.SlackChannel }).(pulumi.StringMapOutput)
 }
 
 // Map must contain two fields, `id` and `name`. Synced slack group of the schedule

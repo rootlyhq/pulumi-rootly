@@ -11,10 +11,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.AlertGroup using the `id`. For example:
+ * rootly.AlertGroup can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/alertGroup:AlertGroup my-resource my-resource-slug
+ * $ pulumi import rootly:index/alertGroup:AlertGroup primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class AlertGroup extends pulumi.CustomResource {
@@ -45,11 +55,18 @@ export class AlertGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === AlertGroup.__pulumiType;
     }
 
-    declare public readonly attributes: pulumi.Output<outputs.AlertGroupAttribute[]>;
+    /**
+     * This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
+     */
+    declare public readonly attributes: pulumi.Output<outputs.AlertGroupAttribute[] | undefined>;
     /**
      * Grouping condition for the alert group
      */
     declare public readonly conditionType: pulumi.Output<string>;
+    /**
+     * The conditions for the alert group
+     */
+    declare public readonly conditions: pulumi.Output<outputs.AlertGroupCondition[] | undefined>;
     /**
      * Date or deletion
      */
@@ -59,11 +76,15 @@ export class AlertGroup extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * Whether the alerts are grouped by title or not. Value must be one of true or false
+     * [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+     *
+     * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
     declare public readonly groupByAlertTitle: pulumi.Output<boolean>;
     /**
-     * Whether the alerts are grouped by urgency or not. Value must be one of true or false
+     * [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+     *
+     * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
     declare public readonly groupByAlertUrgency: pulumi.Output<boolean>;
     /**
@@ -74,7 +95,7 @@ export class AlertGroup extends pulumi.CustomResource {
      * The slug of the alert group
      */
     declare public readonly slug: pulumi.Output<string>;
-    declare public readonly targets: pulumi.Output<outputs.AlertGroupTarget[]>;
+    declare public readonly targets: pulumi.Output<outputs.AlertGroupTarget[] | undefined>;
     /**
      * Time window for the alert grouping
      */
@@ -95,6 +116,7 @@ export class AlertGroup extends pulumi.CustomResource {
             const state = argsOrState as AlertGroupState | undefined;
             resourceInputs["attributes"] = state?.attributes;
             resourceInputs["conditionType"] = state?.conditionType;
+            resourceInputs["conditions"] = state?.conditions;
             resourceInputs["deletedAt"] = state?.deletedAt;
             resourceInputs["description"] = state?.description;
             resourceInputs["groupByAlertTitle"] = state?.groupByAlertTitle;
@@ -107,6 +129,7 @@ export class AlertGroup extends pulumi.CustomResource {
             const args = argsOrState as AlertGroupArgs | undefined;
             resourceInputs["attributes"] = args?.attributes;
             resourceInputs["conditionType"] = args?.conditionType;
+            resourceInputs["conditions"] = args?.conditions;
             resourceInputs["deletedAt"] = args?.deletedAt;
             resourceInputs["description"] = args?.description;
             resourceInputs["groupByAlertTitle"] = args?.groupByAlertTitle;
@@ -125,11 +148,18 @@ export class AlertGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlertGroup resources.
  */
 export interface AlertGroupState {
+    /**
+     * This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
+     */
     attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[] | undefined>;
     /**
      * Grouping condition for the alert group
      */
     conditionType?: pulumi.Input<string | undefined>;
+    /**
+     * The conditions for the alert group
+     */
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertGroupCondition>[] | undefined>;
     /**
      * Date or deletion
      */
@@ -139,11 +169,15 @@ export interface AlertGroupState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Whether the alerts are grouped by title or not. Value must be one of true or false
+     * [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+     *
+     * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
     groupByAlertTitle?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether the alerts are grouped by urgency or not. Value must be one of true or false
+     * [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+     *
+     * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
     groupByAlertUrgency?: pulumi.Input<boolean | undefined>;
     /**
@@ -165,11 +199,18 @@ export interface AlertGroupState {
  * The set of arguments for constructing a AlertGroup resource.
  */
 export interface AlertGroupArgs {
+    /**
+     * This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
+     */
     attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[] | undefined>;
     /**
      * Grouping condition for the alert group
      */
     conditionType?: pulumi.Input<string | undefined>;
+    /**
+     * The conditions for the alert group
+     */
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertGroupCondition>[] | undefined>;
     /**
      * Date or deletion
      */
@@ -179,11 +220,15 @@ export interface AlertGroupArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Whether the alerts are grouped by title or not. Value must be one of true or false
+     * [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+     *
+     * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
     groupByAlertTitle?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether the alerts are grouped by urgency or not. Value must be one of true or false
+     * [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+     *
+     * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
     groupByAlertUrgency?: pulumi.Input<boolean | undefined>;
     /**

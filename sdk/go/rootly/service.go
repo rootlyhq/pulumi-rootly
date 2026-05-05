@@ -15,14 +15,28 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import Service using the `id`. For example:
+// Service can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/service:Service my-resource my-resource-slug
+// $ pulumi import rootly:index/service:Service primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type Service struct {
 	pulumi.CustomResourceState
 
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	AlertBroadcastChannel ServiceAlertBroadcastChannelOutput `pulumi:"alertBroadcastChannel"`
+	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+	AlertBroadcastEnabled pulumi.BoolOutput `pulumi:"alertBroadcastEnabled"`
 	// The alert urgency id of the service
 	AlertUrgencyId pulumi.StringOutput `pulumi:"alertUrgencyId"`
 	// Email generated to send alerts to
@@ -39,6 +53,8 @@ type Service struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Environments associated with this service
 	EnvironmentIds pulumi.StringArrayOutput `pulumi:"environmentIds"`
+	// The escalation policy id of the service
+	EscalationPolicyId pulumi.StringOutput `pulumi:"escalationPolicyId"`
 	// The external id associated to this service
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
 	// The GitHub repository branch associated to this service. eg: main
@@ -49,6 +65,12 @@ type Service struct {
 	GitlabRepositoryBranch pulumi.StringOutput `pulumi:"gitlabRepositoryBranch"`
 	// The GitLab repository name associated to this service. eg: rootlyhq/my-service
 	GitlabRepositoryName pulumi.StringOutput `pulumi:"gitlabRepositoryName"`
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+	IncidentBroadcastChannel ServiceIncidentBroadcastChannelOutput `pulumi:"incidentBroadcastChannel"`
+	// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+	IncidentBroadcastEnabled pulumi.BoolOutput `pulumi:"incidentBroadcastEnabled"`
+	// The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
+	KubernetesDeploymentName pulumi.StringOutput `pulumi:"kubernetesDeploymentName"`
 	// The name of the service
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Emails attached to the service
@@ -56,15 +78,15 @@ type Service struct {
 	// The Opsgenie service id associated to this service
 	OpsgenieId pulumi.StringPtrOutput `pulumi:"opsgenieId"`
 	// Owner Teams associated with this service
-	//
-	// Deprecated: The ownersGroupIds attribute will be renamed to ownerGroupIds in the next major version release.
-	OwnersGroupIds pulumi.StringArrayOutput `pulumi:"ownersGroupIds"`
+	OwnerGroupIds pulumi.StringArrayOutput `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this service
-	OwnersUserIds pulumi.IntArrayOutput `pulumi:"ownersUserIds"`
+	OwnerUserIds pulumi.IntArrayOutput `pulumi:"ownerUserIds"`
 	// The PagerDuty service id associated to this service
 	PagerdutyId pulumi.StringPtrOutput `pulumi:"pagerdutyId"`
 	// Position of the service
 	Position pulumi.IntOutput `pulumi:"position"`
+	// Array of property values for this service.
+	Properties ServicePropertyArrayOutput `pulumi:"properties"`
 	// The public description of the service
 	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
 	// Services dependent on this service
@@ -109,6 +131,10 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	AlertBroadcastChannel *ServiceAlertBroadcastChannel `pulumi:"alertBroadcastChannel"`
+	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+	AlertBroadcastEnabled *bool `pulumi:"alertBroadcastEnabled"`
 	// The alert urgency id of the service
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
 	// Email generated to send alerts to
@@ -125,6 +151,8 @@ type serviceState struct {
 	Description *string `pulumi:"description"`
 	// Environments associated with this service
 	EnvironmentIds []string `pulumi:"environmentIds"`
+	// The escalation policy id of the service
+	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
 	// The external id associated to this service
 	ExternalId *string `pulumi:"externalId"`
 	// The GitHub repository branch associated to this service. eg: main
@@ -135,6 +163,12 @@ type serviceState struct {
 	GitlabRepositoryBranch *string `pulumi:"gitlabRepositoryBranch"`
 	// The GitLab repository name associated to this service. eg: rootlyhq/my-service
 	GitlabRepositoryName *string `pulumi:"gitlabRepositoryName"`
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+	IncidentBroadcastChannel *ServiceIncidentBroadcastChannel `pulumi:"incidentBroadcastChannel"`
+	// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+	IncidentBroadcastEnabled *bool `pulumi:"incidentBroadcastEnabled"`
+	// The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
+	KubernetesDeploymentName *string `pulumi:"kubernetesDeploymentName"`
 	// The name of the service
 	Name *string `pulumi:"name"`
 	// Emails attached to the service
@@ -142,15 +176,15 @@ type serviceState struct {
 	// The Opsgenie service id associated to this service
 	OpsgenieId *string `pulumi:"opsgenieId"`
 	// Owner Teams associated with this service
-	//
-	// Deprecated: The ownersGroupIds attribute will be renamed to ownerGroupIds in the next major version release.
-	OwnersGroupIds []string `pulumi:"ownersGroupIds"`
+	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this service
-	OwnersUserIds []int `pulumi:"ownersUserIds"`
+	OwnerUserIds []int `pulumi:"ownerUserIds"`
 	// The PagerDuty service id associated to this service
 	PagerdutyId *string `pulumi:"pagerdutyId"`
 	// Position of the service
 	Position *int `pulumi:"position"`
+	// Array of property values for this service.
+	Properties []ServiceProperty `pulumi:"properties"`
 	// The public description of the service
 	PublicDescription *string `pulumi:"publicDescription"`
 	// Services dependent on this service
@@ -166,6 +200,10 @@ type serviceState struct {
 }
 
 type ServiceState struct {
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	AlertBroadcastChannel ServiceAlertBroadcastChannelPtrInput
+	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+	AlertBroadcastEnabled pulumi.BoolPtrInput
 	// The alert urgency id of the service
 	AlertUrgencyId pulumi.StringPtrInput
 	// Email generated to send alerts to
@@ -182,6 +220,8 @@ type ServiceState struct {
 	Description pulumi.StringPtrInput
 	// Environments associated with this service
 	EnvironmentIds pulumi.StringArrayInput
+	// The escalation policy id of the service
+	EscalationPolicyId pulumi.StringPtrInput
 	// The external id associated to this service
 	ExternalId pulumi.StringPtrInput
 	// The GitHub repository branch associated to this service. eg: main
@@ -192,6 +232,12 @@ type ServiceState struct {
 	GitlabRepositoryBranch pulumi.StringPtrInput
 	// The GitLab repository name associated to this service. eg: rootlyhq/my-service
 	GitlabRepositoryName pulumi.StringPtrInput
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+	IncidentBroadcastChannel ServiceIncidentBroadcastChannelPtrInput
+	// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+	IncidentBroadcastEnabled pulumi.BoolPtrInput
+	// The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
+	KubernetesDeploymentName pulumi.StringPtrInput
 	// The name of the service
 	Name pulumi.StringPtrInput
 	// Emails attached to the service
@@ -199,15 +245,15 @@ type ServiceState struct {
 	// The Opsgenie service id associated to this service
 	OpsgenieId pulumi.StringPtrInput
 	// Owner Teams associated with this service
-	//
-	// Deprecated: The ownersGroupIds attribute will be renamed to ownerGroupIds in the next major version release.
-	OwnersGroupIds pulumi.StringArrayInput
+	OwnerGroupIds pulumi.StringArrayInput
 	// Owner Users associated with this service
-	OwnersUserIds pulumi.IntArrayInput
+	OwnerUserIds pulumi.IntArrayInput
 	// The PagerDuty service id associated to this service
 	PagerdutyId pulumi.StringPtrInput
 	// Position of the service
 	Position pulumi.IntPtrInput
+	// Array of property values for this service.
+	Properties ServicePropertyArrayInput
 	// The public description of the service
 	PublicDescription pulumi.StringPtrInput
 	// Services dependent on this service
@@ -227,6 +273,10 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	AlertBroadcastChannel *ServiceAlertBroadcastChannel `pulumi:"alertBroadcastChannel"`
+	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+	AlertBroadcastEnabled *bool `pulumi:"alertBroadcastEnabled"`
 	// The alert urgency id of the service
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
 	// Email generated to send alerts to
@@ -243,6 +293,8 @@ type serviceArgs struct {
 	Description *string `pulumi:"description"`
 	// Environments associated with this service
 	EnvironmentIds []string `pulumi:"environmentIds"`
+	// The escalation policy id of the service
+	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
 	// The external id associated to this service
 	ExternalId *string `pulumi:"externalId"`
 	// The GitHub repository branch associated to this service. eg: main
@@ -253,6 +305,12 @@ type serviceArgs struct {
 	GitlabRepositoryBranch *string `pulumi:"gitlabRepositoryBranch"`
 	// The GitLab repository name associated to this service. eg: rootlyhq/my-service
 	GitlabRepositoryName *string `pulumi:"gitlabRepositoryName"`
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+	IncidentBroadcastChannel *ServiceIncidentBroadcastChannel `pulumi:"incidentBroadcastChannel"`
+	// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+	IncidentBroadcastEnabled *bool `pulumi:"incidentBroadcastEnabled"`
+	// The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
+	KubernetesDeploymentName *string `pulumi:"kubernetesDeploymentName"`
 	// The name of the service
 	Name *string `pulumi:"name"`
 	// Emails attached to the service
@@ -260,15 +318,15 @@ type serviceArgs struct {
 	// The Opsgenie service id associated to this service
 	OpsgenieId *string `pulumi:"opsgenieId"`
 	// Owner Teams associated with this service
-	//
-	// Deprecated: The ownersGroupIds attribute will be renamed to ownerGroupIds in the next major version release.
-	OwnersGroupIds []string `pulumi:"ownersGroupIds"`
+	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this service
-	OwnersUserIds []int `pulumi:"ownersUserIds"`
+	OwnerUserIds []int `pulumi:"ownerUserIds"`
 	// The PagerDuty service id associated to this service
 	PagerdutyId *string `pulumi:"pagerdutyId"`
 	// Position of the service
 	Position *int `pulumi:"position"`
+	// Array of property values for this service.
+	Properties []ServiceProperty `pulumi:"properties"`
 	// The public description of the service
 	PublicDescription *string `pulumi:"publicDescription"`
 	// Services dependent on this service
@@ -285,6 +343,10 @@ type serviceArgs struct {
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	AlertBroadcastChannel ServiceAlertBroadcastChannelPtrInput
+	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+	AlertBroadcastEnabled pulumi.BoolPtrInput
 	// The alert urgency id of the service
 	AlertUrgencyId pulumi.StringPtrInput
 	// Email generated to send alerts to
@@ -301,6 +363,8 @@ type ServiceArgs struct {
 	Description pulumi.StringPtrInput
 	// Environments associated with this service
 	EnvironmentIds pulumi.StringArrayInput
+	// The escalation policy id of the service
+	EscalationPolicyId pulumi.StringPtrInput
 	// The external id associated to this service
 	ExternalId pulumi.StringPtrInput
 	// The GitHub repository branch associated to this service. eg: main
@@ -311,6 +375,12 @@ type ServiceArgs struct {
 	GitlabRepositoryBranch pulumi.StringPtrInput
 	// The GitLab repository name associated to this service. eg: rootlyhq/my-service
 	GitlabRepositoryName pulumi.StringPtrInput
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+	IncidentBroadcastChannel ServiceIncidentBroadcastChannelPtrInput
+	// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+	IncidentBroadcastEnabled pulumi.BoolPtrInput
+	// The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
+	KubernetesDeploymentName pulumi.StringPtrInput
 	// The name of the service
 	Name pulumi.StringPtrInput
 	// Emails attached to the service
@@ -318,15 +388,15 @@ type ServiceArgs struct {
 	// The Opsgenie service id associated to this service
 	OpsgenieId pulumi.StringPtrInput
 	// Owner Teams associated with this service
-	//
-	// Deprecated: The ownersGroupIds attribute will be renamed to ownerGroupIds in the next major version release.
-	OwnersGroupIds pulumi.StringArrayInput
+	OwnerGroupIds pulumi.StringArrayInput
 	// Owner Users associated with this service
-	OwnersUserIds pulumi.IntArrayInput
+	OwnerUserIds pulumi.IntArrayInput
 	// The PagerDuty service id associated to this service
 	PagerdutyId pulumi.StringPtrInput
 	// Position of the service
 	Position pulumi.IntPtrInput
+	// Array of property values for this service.
+	Properties ServicePropertyArrayInput
 	// The public description of the service
 	PublicDescription pulumi.StringPtrInput
 	// Services dependent on this service
@@ -428,6 +498,16 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
+// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+func (o ServiceOutput) AlertBroadcastChannel() ServiceAlertBroadcastChannelOutput {
+	return o.ApplyT(func(v *Service) ServiceAlertBroadcastChannelOutput { return v.AlertBroadcastChannel }).(ServiceAlertBroadcastChannelOutput)
+}
+
+// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+func (o ServiceOutput) AlertBroadcastEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.AlertBroadcastEnabled }).(pulumi.BoolOutput)
+}
+
 // The alert urgency id of the service
 func (o ServiceOutput) AlertUrgencyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.AlertUrgencyId }).(pulumi.StringOutput)
@@ -468,6 +548,11 @@ func (o ServiceOutput) EnvironmentIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.EnvironmentIds }).(pulumi.StringArrayOutput)
 }
 
+// The escalation policy id of the service
+func (o ServiceOutput) EscalationPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.EscalationPolicyId }).(pulumi.StringOutput)
+}
+
 // The external id associated to this service
 func (o ServiceOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.ExternalId }).(pulumi.StringPtrOutput)
@@ -493,6 +578,21 @@ func (o ServiceOutput) GitlabRepositoryName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.GitlabRepositoryName }).(pulumi.StringOutput)
 }
 
+// Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+func (o ServiceOutput) IncidentBroadcastChannel() ServiceIncidentBroadcastChannelOutput {
+	return o.ApplyT(func(v *Service) ServiceIncidentBroadcastChannelOutput { return v.IncidentBroadcastChannel }).(ServiceIncidentBroadcastChannelOutput)
+}
+
+// Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+func (o ServiceOutput) IncidentBroadcastEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.IncidentBroadcastEnabled }).(pulumi.BoolOutput)
+}
+
+// The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
+func (o ServiceOutput) KubernetesDeploymentName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.KubernetesDeploymentName }).(pulumi.StringOutput)
+}
+
 // The name of the service
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -509,15 +609,13 @@ func (o ServiceOutput) OpsgenieId() pulumi.StringPtrOutput {
 }
 
 // Owner Teams associated with this service
-//
-// Deprecated: The ownersGroupIds attribute will be renamed to ownerGroupIds in the next major version release.
-func (o ServiceOutput) OwnersGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.OwnersGroupIds }).(pulumi.StringArrayOutput)
+func (o ServiceOutput) OwnerGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.OwnerGroupIds }).(pulumi.StringArrayOutput)
 }
 
 // Owner Users associated with this service
-func (o ServiceOutput) OwnersUserIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *Service) pulumi.IntArrayOutput { return v.OwnersUserIds }).(pulumi.IntArrayOutput)
+func (o ServiceOutput) OwnerUserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Service) pulumi.IntArrayOutput { return v.OwnerUserIds }).(pulumi.IntArrayOutput)
 }
 
 // The PagerDuty service id associated to this service
@@ -528,6 +626,11 @@ func (o ServiceOutput) PagerdutyId() pulumi.StringPtrOutput {
 // Position of the service
 func (o ServiceOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *Service) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
+}
+
+// Array of property values for this service.
+func (o ServiceOutput) Properties() ServicePropertyArrayOutput {
+	return o.ApplyT(func(v *Service) ServicePropertyArrayOutput { return v.Properties }).(ServicePropertyArrayOutput)
 }
 
 // The public description of the service

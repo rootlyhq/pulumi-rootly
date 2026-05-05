@@ -15,21 +15,33 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import FormField using the `id`. For example:
+// FormField can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/formField:FormField my-resource my-resource-slug
+// $ pulumi import rootly:index/formField:FormField primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type FormField struct {
 	pulumi.CustomResourceState
 
-	DefaultValues pulumi.StringArrayOutput `pulumi:"defaultValues"`
+	// Catalog property ID to auto-set this form field. Only reference-kind catalog properties are supported.
+	AutoSetByCatalogPropertyId pulumi.StringOutput      `pulumi:"autoSetByCatalogPropertyId"`
+	DefaultValues              pulumi.StringArrayOutput `pulumi:"defaultValues"`
 	// The description of the form field
 	Description pulumi.StringOutput  `pulumi:"description"`
 	Enabled     pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
 	InputKind pulumi.StringPtrOutput `pulumi:"inputKind"`
-	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `manualStartingDatetimeField`.
+	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The name of the form field
 	Name      pulumi.StringOutput      `pulumi:"name"`
@@ -39,7 +51,7 @@ type FormField struct {
 	Showns                pulumi.StringArrayOutput `pulumi:"showns"`
 	// The slug of the form field
 	Slug pulumi.StringOutput `pulumi:"slug"`
-	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`.
+	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
 	ValueKind pulumi.StringPtrOutput `pulumi:"valueKind"`
 	// The ID of the catalog used when valueKind is `catalogEntity`
 	ValueKindCatalogId pulumi.StringOutput `pulumi:"valueKindCatalogId"`
@@ -75,13 +87,15 @@ func GetFormField(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FormField resources.
 type formFieldState struct {
-	DefaultValues []string `pulumi:"defaultValues"`
+	// Catalog property ID to auto-set this form field. Only reference-kind catalog properties are supported.
+	AutoSetByCatalogPropertyId *string  `pulumi:"autoSetByCatalogPropertyId"`
+	DefaultValues              []string `pulumi:"defaultValues"`
 	// The description of the form field
 	Description *string `pulumi:"description"`
 	Enabled     *bool   `pulumi:"enabled"`
 	// The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
 	InputKind *string `pulumi:"inputKind"`
-	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `manualStartingDatetimeField`.
+	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
 	Kind *string `pulumi:"kind"`
 	// The name of the form field
 	Name      *string  `pulumi:"name"`
@@ -91,20 +105,22 @@ type formFieldState struct {
 	Showns                []string `pulumi:"showns"`
 	// The slug of the form field
 	Slug *string `pulumi:"slug"`
-	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`.
+	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
 	ValueKind *string `pulumi:"valueKind"`
 	// The ID of the catalog used when valueKind is `catalogEntity`
 	ValueKindCatalogId *string `pulumi:"valueKindCatalogId"`
 }
 
 type FormFieldState struct {
-	DefaultValues pulumi.StringArrayInput
+	// Catalog property ID to auto-set this form field. Only reference-kind catalog properties are supported.
+	AutoSetByCatalogPropertyId pulumi.StringPtrInput
+	DefaultValues              pulumi.StringArrayInput
 	// The description of the form field
 	Description pulumi.StringPtrInput
 	Enabled     pulumi.BoolPtrInput
 	// The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
 	InputKind pulumi.StringPtrInput
-	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `manualStartingDatetimeField`.
+	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
 	Kind pulumi.StringPtrInput
 	// The name of the form field
 	Name      pulumi.StringPtrInput
@@ -114,7 +130,7 @@ type FormFieldState struct {
 	Showns                pulumi.StringArrayInput
 	// The slug of the form field
 	Slug pulumi.StringPtrInput
-	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`.
+	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
 	ValueKind pulumi.StringPtrInput
 	// The ID of the catalog used when valueKind is `catalogEntity`
 	ValueKindCatalogId pulumi.StringPtrInput
@@ -125,13 +141,15 @@ func (FormFieldState) ElementType() reflect.Type {
 }
 
 type formFieldArgs struct {
-	DefaultValues []string `pulumi:"defaultValues"`
+	// Catalog property ID to auto-set this form field. Only reference-kind catalog properties are supported.
+	AutoSetByCatalogPropertyId *string  `pulumi:"autoSetByCatalogPropertyId"`
+	DefaultValues              []string `pulumi:"defaultValues"`
 	// The description of the form field
 	Description *string `pulumi:"description"`
 	Enabled     *bool   `pulumi:"enabled"`
 	// The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
 	InputKind *string `pulumi:"inputKind"`
-	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `manualStartingDatetimeField`.
+	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
 	Kind *string `pulumi:"kind"`
 	// The name of the form field
 	Name      *string  `pulumi:"name"`
@@ -141,7 +159,7 @@ type formFieldArgs struct {
 	Showns                []string `pulumi:"showns"`
 	// The slug of the form field
 	Slug *string `pulumi:"slug"`
-	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`.
+	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
 	ValueKind *string `pulumi:"valueKind"`
 	// The ID of the catalog used when valueKind is `catalogEntity`
 	ValueKindCatalogId *string `pulumi:"valueKindCatalogId"`
@@ -149,13 +167,15 @@ type formFieldArgs struct {
 
 // The set of arguments for constructing a FormField resource.
 type FormFieldArgs struct {
-	DefaultValues pulumi.StringArrayInput
+	// Catalog property ID to auto-set this form field. Only reference-kind catalog properties are supported.
+	AutoSetByCatalogPropertyId pulumi.StringPtrInput
+	DefaultValues              pulumi.StringArrayInput
 	// The description of the form field
 	Description pulumi.StringPtrInput
 	Enabled     pulumi.BoolPtrInput
 	// The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
 	InputKind pulumi.StringPtrInput
-	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `manualStartingDatetimeField`.
+	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
 	Kind pulumi.StringPtrInput
 	// The name of the form field
 	Name      pulumi.StringPtrInput
@@ -165,7 +185,7 @@ type FormFieldArgs struct {
 	Showns                pulumi.StringArrayInput
 	// The slug of the form field
 	Slug pulumi.StringPtrInput
-	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`.
+	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
 	ValueKind pulumi.StringPtrInput
 	// The ID of the catalog used when valueKind is `catalogEntity`
 	ValueKindCatalogId pulumi.StringPtrInput
@@ -258,6 +278,11 @@ func (o FormFieldOutput) ToFormFieldOutputWithContext(ctx context.Context) FormF
 	return o
 }
 
+// Catalog property ID to auto-set this form field. Only reference-kind catalog properties are supported.
+func (o FormFieldOutput) AutoSetByCatalogPropertyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FormField) pulumi.StringOutput { return v.AutoSetByCatalogPropertyId }).(pulumi.StringOutput)
+}
+
 func (o FormFieldOutput) DefaultValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FormField) pulumi.StringArrayOutput { return v.DefaultValues }).(pulumi.StringArrayOutput)
 }
@@ -276,7 +301,7 @@ func (o FormFieldOutput) InputKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FormField) pulumi.StringPtrOutput { return v.InputKind }).(pulumi.StringPtrOutput)
 }
 
-// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `manualStartingDatetimeField`.
+// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
 func (o FormFieldOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FormField) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -304,7 +329,7 @@ func (o FormFieldOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *FormField) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }
 
-// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`.
+// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
 func (o FormFieldOutput) ValueKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FormField) pulumi.StringPtrOutput { return v.ValueKind }).(pulumi.StringPtrOutput)
 }

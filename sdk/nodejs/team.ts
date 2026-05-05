@@ -11,10 +11,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.Team using the `id`. For example:
+ * rootly.Team can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/team:Team my-resource my-resource-slug
+ * $ pulumi import rootly:index/team:Team primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class Team extends pulumi.CustomResource {
@@ -50,17 +60,21 @@ export class Team extends pulumi.CustomResource {
      */
     declare public readonly adminIds: pulumi.Output<number[]>;
     /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     */
+    declare public readonly alertBroadcastChannel: pulumi.Output<outputs.TeamAlertBroadcastChannel>;
+    /**
+     * Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    declare public readonly alertBroadcastEnabled: pulumi.Output<boolean>;
+    /**
      * The alert urgency id of the team
      */
     declare public readonly alertUrgencyId: pulumi.Output<string>;
     /**
-     * Email generated to send alerts to
+     * Auto add members to incident channel when team is attached. Value must be one of true or false
      */
-    declare public readonly alertsEmailAddress: pulumi.Output<string>;
-    /**
-     * Enable alerts through email. Value must be one of true or false
-     */
-    declare public readonly alertsEmailEnabled: pulumi.Output<boolean>;
+    declare public readonly autoAddMembersWhenAttached: pulumi.Output<boolean>;
     /**
      * The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
      */
@@ -82,13 +96,21 @@ export class Team extends pulumi.CustomResource {
      */
     declare public readonly externalId: pulumi.Output<string>;
     /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+     */
+    declare public readonly incidentBroadcastChannel: pulumi.Output<outputs.TeamIncidentBroadcastChannel>;
+    /**
+     * Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    declare public readonly incidentBroadcastEnabled: pulumi.Output<boolean>;
+    /**
      * The name of the team
      */
     declare public readonly name: pulumi.Output<string>;
     /**
      * Emails to attach to the team
      */
-    declare public readonly notifyEmails: pulumi.Output<string[]>;
+    declare public readonly notifyEmails: pulumi.Output<string[] | undefined>;
     /**
      * The Opsgenie group id associated to this team
      */
@@ -110,17 +132,21 @@ export class Team extends pulumi.CustomResource {
      */
     declare public readonly position: pulumi.Output<number>;
     /**
+     * Array of property values for this team.
+     */
+    declare public readonly properties: pulumi.Output<outputs.TeamProperty[] | undefined>;
+    /**
      * The Service Now CI sys id associated to this team
      */
     declare public readonly serviceNowCiSysId: pulumi.Output<string>;
     /**
      * Slack Aliases associated with this team
      */
-    declare public readonly slackAliases: pulumi.Output<outputs.TeamSlackAlias[]>;
+    declare public readonly slackAliases: pulumi.Output<outputs.TeamSlackAlias[] | undefined>;
     /**
      * Slack Channels associated with this team
      */
-    declare public readonly slackChannels: pulumi.Output<outputs.TeamSlackChannel[]>;
+    declare public readonly slackChannels: pulumi.Output<outputs.TeamSlackChannel[] | undefined>;
     declare public readonly slug: pulumi.Output<string>;
     /**
      * The user ids of the members of this team.
@@ -145,14 +171,17 @@ export class Team extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TeamState | undefined;
             resourceInputs["adminIds"] = state?.adminIds;
+            resourceInputs["alertBroadcastChannel"] = state?.alertBroadcastChannel;
+            resourceInputs["alertBroadcastEnabled"] = state?.alertBroadcastEnabled;
             resourceInputs["alertUrgencyId"] = state?.alertUrgencyId;
-            resourceInputs["alertsEmailAddress"] = state?.alertsEmailAddress;
-            resourceInputs["alertsEmailEnabled"] = state?.alertsEmailEnabled;
+            resourceInputs["autoAddMembersWhenAttached"] = state?.autoAddMembersWhenAttached;
             resourceInputs["backstageId"] = state?.backstageId;
             resourceInputs["color"] = state?.color;
             resourceInputs["cortexId"] = state?.cortexId;
             resourceInputs["description"] = state?.description;
             resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["incidentBroadcastChannel"] = state?.incidentBroadcastChannel;
+            resourceInputs["incidentBroadcastEnabled"] = state?.incidentBroadcastEnabled;
             resourceInputs["name"] = state?.name;
             resourceInputs["notifyEmails"] = state?.notifyEmails;
             resourceInputs["opsgenieId"] = state?.opsgenieId;
@@ -160,6 +189,7 @@ export class Team extends pulumi.CustomResource {
             resourceInputs["pagerdutyServiceId"] = state?.pagerdutyServiceId;
             resourceInputs["pagertreeId"] = state?.pagertreeId;
             resourceInputs["position"] = state?.position;
+            resourceInputs["properties"] = state?.properties;
             resourceInputs["serviceNowCiSysId"] = state?.serviceNowCiSysId;
             resourceInputs["slackAliases"] = state?.slackAliases;
             resourceInputs["slackChannels"] = state?.slackChannels;
@@ -169,14 +199,17 @@ export class Team extends pulumi.CustomResource {
         } else {
             const args = argsOrState as TeamArgs | undefined;
             resourceInputs["adminIds"] = args?.adminIds;
+            resourceInputs["alertBroadcastChannel"] = args?.alertBroadcastChannel;
+            resourceInputs["alertBroadcastEnabled"] = args?.alertBroadcastEnabled;
             resourceInputs["alertUrgencyId"] = args?.alertUrgencyId;
-            resourceInputs["alertsEmailAddress"] = args?.alertsEmailAddress;
-            resourceInputs["alertsEmailEnabled"] = args?.alertsEmailEnabled;
+            resourceInputs["autoAddMembersWhenAttached"] = args?.autoAddMembersWhenAttached;
             resourceInputs["backstageId"] = args?.backstageId;
             resourceInputs["color"] = args?.color;
             resourceInputs["cortexId"] = args?.cortexId;
             resourceInputs["description"] = args?.description;
             resourceInputs["externalId"] = args?.externalId;
+            resourceInputs["incidentBroadcastChannel"] = args?.incidentBroadcastChannel;
+            resourceInputs["incidentBroadcastEnabled"] = args?.incidentBroadcastEnabled;
             resourceInputs["name"] = args?.name;
             resourceInputs["notifyEmails"] = args?.notifyEmails;
             resourceInputs["opsgenieId"] = args?.opsgenieId;
@@ -184,6 +217,7 @@ export class Team extends pulumi.CustomResource {
             resourceInputs["pagerdutyServiceId"] = args?.pagerdutyServiceId;
             resourceInputs["pagertreeId"] = args?.pagertreeId;
             resourceInputs["position"] = args?.position;
+            resourceInputs["properties"] = args?.properties;
             resourceInputs["serviceNowCiSysId"] = args?.serviceNowCiSysId;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
@@ -205,17 +239,21 @@ export interface TeamState {
      */
     adminIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     */
+    alertBroadcastChannel?: pulumi.Input<inputs.TeamAlertBroadcastChannel | undefined>;
+    /**
+     * Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * The alert urgency id of the team
      */
     alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
-     * Email generated to send alerts to
+     * Auto add members to incident channel when team is attached. Value must be one of true or false
      */
-    alertsEmailAddress?: pulumi.Input<string | undefined>;
-    /**
-     * Enable alerts through email. Value must be one of true or false
-     */
-    alertsEmailEnabled?: pulumi.Input<boolean | undefined>;
+    autoAddMembersWhenAttached?: pulumi.Input<boolean | undefined>;
     /**
      * The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
      */
@@ -236,6 +274,14 @@ export interface TeamState {
      * The external id associated to this team
      */
     externalId?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+     */
+    incidentBroadcastChannel?: pulumi.Input<inputs.TeamIncidentBroadcastChannel | undefined>;
+    /**
+     * Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the team
      */
@@ -264,6 +310,10 @@ export interface TeamState {
      * Position of the team
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Array of property values for this team.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.TeamProperty>[] | undefined>;
     /**
      * The Service Now CI sys id associated to this team
      */
@@ -296,17 +346,21 @@ export interface TeamArgs {
      */
     adminIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     */
+    alertBroadcastChannel?: pulumi.Input<inputs.TeamAlertBroadcastChannel | undefined>;
+    /**
+     * Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * The alert urgency id of the team
      */
     alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
-     * Email generated to send alerts to
+     * Auto add members to incident channel when team is attached. Value must be one of true or false
      */
-    alertsEmailAddress?: pulumi.Input<string | undefined>;
-    /**
-     * Enable alerts through email. Value must be one of true or false
-     */
-    alertsEmailEnabled?: pulumi.Input<boolean | undefined>;
+    autoAddMembersWhenAttached?: pulumi.Input<boolean | undefined>;
     /**
      * The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
      */
@@ -327,6 +381,14 @@ export interface TeamArgs {
      * The external id associated to this team
      */
     externalId?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
+     */
+    incidentBroadcastChannel?: pulumi.Input<inputs.TeamIncidentBroadcastChannel | undefined>;
+    /**
+     * Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
+     */
+    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the team
      */
@@ -355,6 +417,10 @@ export interface TeamArgs {
      * Position of the team
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Array of property values for this team.
+     */
+    properties?: pulumi.Input<pulumi.Input<inputs.TeamProperty>[] | undefined>;
     /**
      * The Service Now CI sys id associated to this team
      */

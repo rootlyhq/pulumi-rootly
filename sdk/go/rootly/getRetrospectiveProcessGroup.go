@@ -23,14 +23,16 @@ func LookupRetrospectiveProcessGroup(ctx *pulumi.Context, args *LookupRetrospect
 
 // A collection of arguments for invoking getRetrospectiveProcessGroup.
 type LookupRetrospectiveProcessGroupArgs struct {
-	SubStatusId *string `pulumi:"subStatusId"`
+	RetrospectiveProcessId string  `pulumi:"retrospectiveProcessId"`
+	SubStatusId            *string `pulumi:"subStatusId"`
 }
 
 // A collection of values returned by getRetrospectiveProcessGroup.
 type LookupRetrospectiveProcessGroupResult struct {
 	// The ID of this resource.
-	Id          string `pulumi:"id"`
-	SubStatusId string `pulumi:"subStatusId"`
+	Id                     string `pulumi:"id"`
+	RetrospectiveProcessId string `pulumi:"retrospectiveProcessId"`
+	SubStatusId            string `pulumi:"subStatusId"`
 }
 
 func LookupRetrospectiveProcessGroupOutput(ctx *pulumi.Context, args LookupRetrospectiveProcessGroupOutputArgs, opts ...pulumi.InvokeOption) LookupRetrospectiveProcessGroupResultOutput {
@@ -44,7 +46,8 @@ func LookupRetrospectiveProcessGroupOutput(ctx *pulumi.Context, args LookupRetro
 
 // A collection of arguments for invoking getRetrospectiveProcessGroup.
 type LookupRetrospectiveProcessGroupOutputArgs struct {
-	SubStatusId pulumi.StringPtrInput `pulumi:"subStatusId"`
+	RetrospectiveProcessId pulumi.StringInput    `pulumi:"retrospectiveProcessId"`
+	SubStatusId            pulumi.StringPtrInput `pulumi:"subStatusId"`
 }
 
 func (LookupRetrospectiveProcessGroupOutputArgs) ElementType() reflect.Type {
@@ -69,6 +72,10 @@ func (o LookupRetrospectiveProcessGroupResultOutput) ToLookupRetrospectiveProces
 // The ID of this resource.
 func (o LookupRetrospectiveProcessGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRetrospectiveProcessGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRetrospectiveProcessGroupResultOutput) RetrospectiveProcessId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRetrospectiveProcessGroupResult) string { return v.RetrospectiveProcessId }).(pulumi.StringOutput)
 }
 
 func (o LookupRetrospectiveProcessGroupResultOutput) SubStatusId() pulumi.StringOutput {

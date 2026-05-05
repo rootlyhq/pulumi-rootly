@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.WorkflowFormFieldCondition using the `id`. For example:
+ * rootly.WorkflowFormFieldCondition can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/workflowFormFieldCondition:WorkflowFormFieldCondition my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/workflowFormFieldCondition:WorkflowFormFieldCondition primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class WorkflowFormFieldCondition extends pulumi.CustomResource {
@@ -46,16 +56,19 @@ export class WorkflowFormFieldCondition extends pulumi.CustomResource {
      */
     declare public readonly formFieldId: pulumi.Output<string>;
     /**
-     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     declare public readonly incidentCondition: pulumi.Output<string | undefined>;
-    declare public readonly selectedCatalogEntityIds: pulumi.Output<string[]>;
-    declare public readonly selectedFunctionalityIds: pulumi.Output<string[]>;
-    declare public readonly selectedGroupIds: pulumi.Output<string[]>;
-    declare public readonly selectedOptionIds: pulumi.Output<string[]>;
-    declare public readonly selectedServiceIds: pulumi.Output<string[]>;
-    declare public readonly selectedUserIds: pulumi.Output<number[]>;
-    declare public readonly values: pulumi.Output<string[]>;
+    declare public readonly selectedCatalogEntityIds: pulumi.Output<string[] | undefined>;
+    declare public readonly selectedCauseIds: pulumi.Output<string[] | undefined>;
+    declare public readonly selectedEnvironmentIds: pulumi.Output<string[] | undefined>;
+    declare public readonly selectedFunctionalityIds: pulumi.Output<string[] | undefined>;
+    declare public readonly selectedGroupIds: pulumi.Output<string[] | undefined>;
+    declare public readonly selectedIncidentTypeIds: pulumi.Output<string[] | undefined>;
+    declare public readonly selectedOptionIds: pulumi.Output<string[] | undefined>;
+    declare public readonly selectedServiceIds: pulumi.Output<string[] | undefined>;
+    declare public readonly selectedUserIds: pulumi.Output<number[] | undefined>;
+    declare public readonly values: pulumi.Output<string[] | undefined>;
     /**
      * The workflow for this condition
      */
@@ -77,8 +90,11 @@ export class WorkflowFormFieldCondition extends pulumi.CustomResource {
             resourceInputs["formFieldId"] = state?.formFieldId;
             resourceInputs["incidentCondition"] = state?.incidentCondition;
             resourceInputs["selectedCatalogEntityIds"] = state?.selectedCatalogEntityIds;
+            resourceInputs["selectedCauseIds"] = state?.selectedCauseIds;
+            resourceInputs["selectedEnvironmentIds"] = state?.selectedEnvironmentIds;
             resourceInputs["selectedFunctionalityIds"] = state?.selectedFunctionalityIds;
             resourceInputs["selectedGroupIds"] = state?.selectedGroupIds;
+            resourceInputs["selectedIncidentTypeIds"] = state?.selectedIncidentTypeIds;
             resourceInputs["selectedOptionIds"] = state?.selectedOptionIds;
             resourceInputs["selectedServiceIds"] = state?.selectedServiceIds;
             resourceInputs["selectedUserIds"] = state?.selectedUserIds;
@@ -92,8 +108,11 @@ export class WorkflowFormFieldCondition extends pulumi.CustomResource {
             resourceInputs["formFieldId"] = args?.formFieldId;
             resourceInputs["incidentCondition"] = args?.incidentCondition;
             resourceInputs["selectedCatalogEntityIds"] = args?.selectedCatalogEntityIds;
+            resourceInputs["selectedCauseIds"] = args?.selectedCauseIds;
+            resourceInputs["selectedEnvironmentIds"] = args?.selectedEnvironmentIds;
             resourceInputs["selectedFunctionalityIds"] = args?.selectedFunctionalityIds;
             resourceInputs["selectedGroupIds"] = args?.selectedGroupIds;
+            resourceInputs["selectedIncidentTypeIds"] = args?.selectedIncidentTypeIds;
             resourceInputs["selectedOptionIds"] = args?.selectedOptionIds;
             resourceInputs["selectedServiceIds"] = args?.selectedServiceIds;
             resourceInputs["selectedUserIds"] = args?.selectedUserIds;
@@ -114,12 +133,15 @@ export interface WorkflowFormFieldConditionState {
      */
     formFieldId?: pulumi.Input<string | undefined>;
     /**
-     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentCondition?: pulumi.Input<string | undefined>;
     selectedCatalogEntityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedCauseIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedEnvironmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     selectedFunctionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     selectedGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedIncidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     selectedOptionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     selectedServiceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     selectedUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
@@ -139,12 +161,15 @@ export interface WorkflowFormFieldConditionArgs {
      */
     formFieldId: pulumi.Input<string>;
     /**
-     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentCondition?: pulumi.Input<string | undefined>;
     selectedCatalogEntityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedCauseIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedEnvironmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     selectedFunctionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     selectedGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedIncidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     selectedOptionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     selectedServiceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     selectedUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
