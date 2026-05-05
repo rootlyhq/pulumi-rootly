@@ -7,26 +7,41 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
 // ## Import
 //
-// Using `pulumi import`, import OnCallRole using the `id`. For example:
+// OnCallRole can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/onCallRole:OnCallRole my-resource my-resource-slug
+// $ pulumi import rootly:index/onCallRole:OnCallRole primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type OnCallRole struct {
 	pulumi.CustomResourceState
 
-	// Value must be one of `create`, `update`, `delete`.
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertFieldsPermissions pulumi.StringArrayOutput `pulumi:"alertFieldsPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertGroupsPermissions pulumi.StringArrayOutput `pulumi:"alertGroupsPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertRoutingRulesPermissions pulumi.StringArrayOutput `pulumi:"alertRoutingRulesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	AlertSourcesPermissions pulumi.StringArrayOutput `pulumi:"alertSourcesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	AlertUrgencyPermissions pulumi.StringArrayOutput `pulumi:"alertUrgencyPermissions"`
-	// Value must be one of `create`, `update`, `read`.
+	// Value must be one of `create`, `update`, `read`, `delete`.
 	AlertsPermissions pulumi.StringArrayOutput `pulumi:"alertsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	ApiKeysPermissions pulumi.StringArrayOutput `pulumi:"apiKeysPermissions"`
@@ -48,6 +63,10 @@ type OnCallRole struct {
 	LiveCallRoutingPermissions pulumi.StringArrayOutput `pulumi:"liveCallRoutingPermissions"`
 	// The role name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	OnCallReadinessReportPermissions pulumi.StringArrayOutput `pulumi:"onCallReadinessReportPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	OnCallRolesPermissions pulumi.StringArrayOutput `pulumi:"onCallRolesPermissions"`
 	// Value must be one of `create`, `update`.
 	ScheduleOverridePermissions pulumi.StringArrayOutput `pulumi:"scheduleOverridePermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -57,7 +76,7 @@ type OnCallRole struct {
 	// The role slug.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// The kind of role
-	SystemRole pulumi.StringOutput `pulumi:"systemRole"`
+	SystemRole pulumi.StringPtrOutput `pulumi:"systemRole"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	WebhooksPermissions pulumi.StringArrayOutput `pulumi:"webhooksPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -68,12 +87,9 @@ type OnCallRole struct {
 func NewOnCallRole(ctx *pulumi.Context,
 	name string, args *OnCallRoleArgs, opts ...pulumi.ResourceOption) (*OnCallRole, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &OnCallRoleArgs{}
 	}
 
-	if args.SystemRole == nil {
-		return nil, errors.New("invalid value for required argument 'SystemRole'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OnCallRole
 	err := ctx.RegisterResource("rootly:index/onCallRole:OnCallRole", name, args, &resource, opts...)
@@ -97,11 +113,17 @@ func GetOnCallRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OnCallRole resources.
 type onCallRoleState struct {
-	// Value must be one of `create`, `update`, `delete`.
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertFieldsPermissions []string `pulumi:"alertFieldsPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertGroupsPermissions []string `pulumi:"alertGroupsPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertRoutingRulesPermissions []string `pulumi:"alertRoutingRulesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	AlertSourcesPermissions []string `pulumi:"alertSourcesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	AlertUrgencyPermissions []string `pulumi:"alertUrgencyPermissions"`
-	// Value must be one of `create`, `update`, `read`.
+	// Value must be one of `create`, `update`, `read`, `delete`.
 	AlertsPermissions []string `pulumi:"alertsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	ApiKeysPermissions []string `pulumi:"apiKeysPermissions"`
@@ -123,6 +145,10 @@ type onCallRoleState struct {
 	LiveCallRoutingPermissions []string `pulumi:"liveCallRoutingPermissions"`
 	// The role name.
 	Name *string `pulumi:"name"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	OnCallReadinessReportPermissions []string `pulumi:"onCallReadinessReportPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	OnCallRolesPermissions []string `pulumi:"onCallRolesPermissions"`
 	// Value must be one of `create`, `update`.
 	ScheduleOverridePermissions []string `pulumi:"scheduleOverridePermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -140,11 +166,17 @@ type onCallRoleState struct {
 }
 
 type OnCallRoleState struct {
-	// Value must be one of `create`, `update`, `delete`.
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertFieldsPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertGroupsPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertRoutingRulesPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	AlertSourcesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	AlertUrgencyPermissions pulumi.StringArrayInput
-	// Value must be one of `create`, `update`, `read`.
+	// Value must be one of `create`, `update`, `read`, `delete`.
 	AlertsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	ApiKeysPermissions pulumi.StringArrayInput
@@ -166,6 +198,10 @@ type OnCallRoleState struct {
 	LiveCallRoutingPermissions pulumi.StringArrayInput
 	// The role name.
 	Name pulumi.StringPtrInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	OnCallReadinessReportPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	OnCallRolesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `update`.
 	ScheduleOverridePermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -187,11 +223,17 @@ func (OnCallRoleState) ElementType() reflect.Type {
 }
 
 type onCallRoleArgs struct {
-	// Value must be one of `create`, `update`, `delete`.
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertFieldsPermissions []string `pulumi:"alertFieldsPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertGroupsPermissions []string `pulumi:"alertGroupsPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertRoutingRulesPermissions []string `pulumi:"alertRoutingRulesPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	AlertSourcesPermissions []string `pulumi:"alertSourcesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	AlertUrgencyPermissions []string `pulumi:"alertUrgencyPermissions"`
-	// Value must be one of `create`, `update`, `read`.
+	// Value must be one of `create`, `update`, `read`, `delete`.
 	AlertsPermissions []string `pulumi:"alertsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	ApiKeysPermissions []string `pulumi:"apiKeysPermissions"`
@@ -213,6 +255,10 @@ type onCallRoleArgs struct {
 	LiveCallRoutingPermissions []string `pulumi:"liveCallRoutingPermissions"`
 	// The role name.
 	Name *string `pulumi:"name"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	OnCallReadinessReportPermissions []string `pulumi:"onCallReadinessReportPermissions"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	OnCallRolesPermissions []string `pulumi:"onCallRolesPermissions"`
 	// Value must be one of `create`, `update`.
 	ScheduleOverridePermissions []string `pulumi:"scheduleOverridePermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -222,7 +268,7 @@ type onCallRoleArgs struct {
 	// The role slug.
 	Slug *string `pulumi:"slug"`
 	// The kind of role
-	SystemRole string `pulumi:"systemRole"`
+	SystemRole *string `pulumi:"systemRole"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	WebhooksPermissions []string `pulumi:"webhooksPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -231,11 +277,17 @@ type onCallRoleArgs struct {
 
 // The set of arguments for constructing a OnCallRole resource.
 type OnCallRoleArgs struct {
-	// Value must be one of `create`, `update`, `delete`.
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertFieldsPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertGroupsPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	AlertRoutingRulesPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
 	AlertSourcesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	AlertUrgencyPermissions pulumi.StringArrayInput
-	// Value must be one of `create`, `update`, `read`.
+	// Value must be one of `create`, `update`, `read`, `delete`.
 	AlertsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	ApiKeysPermissions pulumi.StringArrayInput
@@ -257,6 +309,10 @@ type OnCallRoleArgs struct {
 	LiveCallRoutingPermissions pulumi.StringArrayInput
 	// The role name.
 	Name pulumi.StringPtrInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	OnCallReadinessReportPermissions pulumi.StringArrayInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	OnCallRolesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `update`.
 	ScheduleOverridePermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -266,7 +322,7 @@ type OnCallRoleArgs struct {
 	// The role slug.
 	Slug pulumi.StringPtrInput
 	// The kind of role
-	SystemRole pulumi.StringInput
+	SystemRole pulumi.StringPtrInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	WebhooksPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -360,7 +416,22 @@ func (o OnCallRoleOutput) ToOnCallRoleOutputWithContext(ctx context.Context) OnC
 	return o
 }
 
-// Value must be one of `create`, `update`, `delete`.
+// Value must be one of `create`, `read`, `update`, `delete`.
+func (o OnCallRoleOutput) AlertFieldsPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OnCallRole) pulumi.StringArrayOutput { return v.AlertFieldsPermissions }).(pulumi.StringArrayOutput)
+}
+
+// Value must be one of `create`, `read`, `update`, `delete`.
+func (o OnCallRoleOutput) AlertGroupsPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OnCallRole) pulumi.StringArrayOutput { return v.AlertGroupsPermissions }).(pulumi.StringArrayOutput)
+}
+
+// Value must be one of `create`, `read`, `update`, `delete`.
+func (o OnCallRoleOutput) AlertRoutingRulesPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OnCallRole) pulumi.StringArrayOutput { return v.AlertRoutingRulesPermissions }).(pulumi.StringArrayOutput)
+}
+
+// Value must be one of `create`, `read`, `update`, `delete`.
 func (o OnCallRoleOutput) AlertSourcesPermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OnCallRole) pulumi.StringArrayOutput { return v.AlertSourcesPermissions }).(pulumi.StringArrayOutput)
 }
@@ -370,7 +441,7 @@ func (o OnCallRoleOutput) AlertUrgencyPermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OnCallRole) pulumi.StringArrayOutput { return v.AlertUrgencyPermissions }).(pulumi.StringArrayOutput)
 }
 
-// Value must be one of `create`, `update`, `read`.
+// Value must be one of `create`, `update`, `read`, `delete`.
 func (o OnCallRoleOutput) AlertsPermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OnCallRole) pulumi.StringArrayOutput { return v.AlertsPermissions }).(pulumi.StringArrayOutput)
 }
@@ -425,6 +496,16 @@ func (o OnCallRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OnCallRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Value must be one of `create`, `read`, `update`, `delete`.
+func (o OnCallRoleOutput) OnCallReadinessReportPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OnCallRole) pulumi.StringArrayOutput { return v.OnCallReadinessReportPermissions }).(pulumi.StringArrayOutput)
+}
+
+// Value must be one of `create`, `read`, `update`, `delete`.
+func (o OnCallRoleOutput) OnCallRolesPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OnCallRole) pulumi.StringArrayOutput { return v.OnCallRolesPermissions }).(pulumi.StringArrayOutput)
+}
+
 // Value must be one of `create`, `update`.
 func (o OnCallRoleOutput) ScheduleOverridePermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OnCallRole) pulumi.StringArrayOutput { return v.ScheduleOverridePermissions }).(pulumi.StringArrayOutput)
@@ -446,8 +527,8 @@ func (o OnCallRoleOutput) Slug() pulumi.StringOutput {
 }
 
 // The kind of role
-func (o OnCallRoleOutput) SystemRole() pulumi.StringOutput {
-	return o.ApplyT(func(v *OnCallRole) pulumi.StringOutput { return v.SystemRole }).(pulumi.StringOutput)
+func (o OnCallRoleOutput) SystemRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OnCallRole) pulumi.StringPtrOutput { return v.SystemRole }).(pulumi.StringPtrOutput)
 }
 
 // Value must be one of `create`, `read`, `update`, `delete`.

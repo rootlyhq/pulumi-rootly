@@ -16,23 +16,35 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import FormFieldOption using the `id`. For example:
+// FormFieldOption can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/formFieldOption:FormFieldOption my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/formFieldOption:FormFieldOption primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type FormFieldOption struct {
 	pulumi.CustomResourceState
 
-	// The hex color of the form*field*option
+	// The hex color of the form field option
 	Color pulumi.StringOutput `pulumi:"color"`
 	// Value must be one of true or false
 	Default pulumi.BoolOutput `pulumi:"default"`
 	// The ID of the parent custom field
 	FormFieldId pulumi.StringOutput `pulumi:"formFieldId"`
-	// The position of the form*field*option
+	// Unique ID of the form field option
+	FormFieldOptionId pulumi.StringOutput `pulumi:"formFieldOptionId"`
+	// The position of the form field option
 	Position pulumi.IntOutput `pulumi:"position"`
-	// The value of the form*field*option
+	// The value of the form field option
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -72,28 +84,32 @@ func GetFormFieldOption(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FormFieldOption resources.
 type formFieldOptionState struct {
-	// The hex color of the form*field*option
+	// The hex color of the form field option
 	Color *string `pulumi:"color"`
 	// Value must be one of true or false
 	Default *bool `pulumi:"default"`
 	// The ID of the parent custom field
 	FormFieldId *string `pulumi:"formFieldId"`
-	// The position of the form*field*option
+	// Unique ID of the form field option
+	FormFieldOptionId *string `pulumi:"formFieldOptionId"`
+	// The position of the form field option
 	Position *int `pulumi:"position"`
-	// The value of the form*field*option
+	// The value of the form field option
 	Value *string `pulumi:"value"`
 }
 
 type FormFieldOptionState struct {
-	// The hex color of the form*field*option
+	// The hex color of the form field option
 	Color pulumi.StringPtrInput
 	// Value must be one of true or false
 	Default pulumi.BoolPtrInput
 	// The ID of the parent custom field
 	FormFieldId pulumi.StringPtrInput
-	// The position of the form*field*option
+	// Unique ID of the form field option
+	FormFieldOptionId pulumi.StringPtrInput
+	// The position of the form field option
 	Position pulumi.IntPtrInput
-	// The value of the form*field*option
+	// The value of the form field option
 	Value pulumi.StringPtrInput
 }
 
@@ -102,29 +118,33 @@ func (FormFieldOptionState) ElementType() reflect.Type {
 }
 
 type formFieldOptionArgs struct {
-	// The hex color of the form*field*option
+	// The hex color of the form field option
 	Color *string `pulumi:"color"`
 	// Value must be one of true or false
 	Default *bool `pulumi:"default"`
 	// The ID of the parent custom field
 	FormFieldId string `pulumi:"formFieldId"`
-	// The position of the form*field*option
+	// Unique ID of the form field option
+	FormFieldOptionId *string `pulumi:"formFieldOptionId"`
+	// The position of the form field option
 	Position *int `pulumi:"position"`
-	// The value of the form*field*option
+	// The value of the form field option
 	Value string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a FormFieldOption resource.
 type FormFieldOptionArgs struct {
-	// The hex color of the form*field*option
+	// The hex color of the form field option
 	Color pulumi.StringPtrInput
 	// Value must be one of true or false
 	Default pulumi.BoolPtrInput
 	// The ID of the parent custom field
 	FormFieldId pulumi.StringInput
-	// The position of the form*field*option
+	// Unique ID of the form field option
+	FormFieldOptionId pulumi.StringPtrInput
+	// The position of the form field option
 	Position pulumi.IntPtrInput
-	// The value of the form*field*option
+	// The value of the form field option
 	Value pulumi.StringInput
 }
 
@@ -215,7 +235,7 @@ func (o FormFieldOptionOutput) ToFormFieldOptionOutputWithContext(ctx context.Co
 	return o
 }
 
-// The hex color of the form*field*option
+// The hex color of the form field option
 func (o FormFieldOptionOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v *FormFieldOption) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
 }
@@ -230,12 +250,17 @@ func (o FormFieldOptionOutput) FormFieldId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FormFieldOption) pulumi.StringOutput { return v.FormFieldId }).(pulumi.StringOutput)
 }
 
-// The position of the form*field*option
+// Unique ID of the form field option
+func (o FormFieldOptionOutput) FormFieldOptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FormFieldOption) pulumi.StringOutput { return v.FormFieldOptionId }).(pulumi.StringOutput)
+}
+
+// The position of the form field option
 func (o FormFieldOptionOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *FormFieldOption) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
 }
 
-// The value of the form*field*option
+// The value of the form field option
 func (o FormFieldOptionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *FormFieldOption) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

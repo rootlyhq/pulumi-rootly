@@ -23,12 +23,14 @@ func LookupFormFieldPlacementCondition(ctx *pulumi.Context, args *LookupFormFiel
 
 // A collection of arguments for invoking getFormFieldPlacementCondition.
 type LookupFormFieldPlacementConditionArgs struct {
-	FormFieldId *string `pulumi:"formFieldId"`
+	FormFieldId          *string `pulumi:"formFieldId"`
+	FormFieldPlacementId string  `pulumi:"formFieldPlacementId"`
 }
 
 // A collection of values returned by getFormFieldPlacementCondition.
 type LookupFormFieldPlacementConditionResult struct {
-	FormFieldId string `pulumi:"formFieldId"`
+	FormFieldId          string `pulumi:"formFieldId"`
+	FormFieldPlacementId string `pulumi:"formFieldPlacementId"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 }
@@ -44,7 +46,8 @@ func LookupFormFieldPlacementConditionOutput(ctx *pulumi.Context, args LookupFor
 
 // A collection of arguments for invoking getFormFieldPlacementCondition.
 type LookupFormFieldPlacementConditionOutputArgs struct {
-	FormFieldId pulumi.StringPtrInput `pulumi:"formFieldId"`
+	FormFieldId          pulumi.StringPtrInput `pulumi:"formFieldId"`
+	FormFieldPlacementId pulumi.StringInput    `pulumi:"formFieldPlacementId"`
 }
 
 func (LookupFormFieldPlacementConditionOutputArgs) ElementType() reflect.Type {
@@ -68,6 +71,10 @@ func (o LookupFormFieldPlacementConditionResultOutput) ToLookupFormFieldPlacemen
 
 func (o LookupFormFieldPlacementConditionResultOutput) FormFieldId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormFieldPlacementConditionResult) string { return v.FormFieldId }).(pulumi.StringOutput)
+}
+
+func (o LookupFormFieldPlacementConditionResultOutput) FormFieldPlacementId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFormFieldPlacementConditionResult) string { return v.FormFieldPlacementId }).(pulumi.StringOutput)
 }
 
 // The ID of this resource.

@@ -15,10 +15,20 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import Functionality using the `id`. For example:
+// Functionality can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/functionality:Functionality my-resource my-resource-slug
+// $ pulumi import rootly:index/functionality:Functionality primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type Functionality struct {
 	pulumi.CustomResourceState
@@ -33,6 +43,8 @@ type Functionality struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Environments associated with this functionality
 	EnvironmentIds pulumi.StringArrayOutput `pulumi:"environmentIds"`
+	// The escalation policy id of the functionality
+	EscalationPolicyId pulumi.StringOutput `pulumi:"escalationPolicyId"`
 	// The external id associated to this functionality
 	ExternalId pulumi.StringOutput `pulumi:"externalId"`
 	// The name of the functionality
@@ -44,13 +56,15 @@ type Functionality struct {
 	// The Opsgenie team id associated to this functionality
 	OpsgenieTeamId pulumi.StringOutput `pulumi:"opsgenieTeamId"`
 	// Owner Teams associated with this functionality
-	OwnersGroupIds pulumi.StringArrayOutput `pulumi:"ownersGroupIds"`
+	OwnerGroupIds pulumi.StringArrayOutput `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this functionality
-	OwnersUserIds pulumi.IntArrayOutput `pulumi:"ownersUserIds"`
+	OwnerUserIds pulumi.IntArrayOutput `pulumi:"ownerUserIds"`
 	// The PagerDuty service id associated to this functionality
 	PagerdutyId pulumi.StringOutput `pulumi:"pagerdutyId"`
 	// Position of the functionality
 	Position pulumi.IntOutput `pulumi:"position"`
+	// Array of property values for this functionality.
+	Properties FunctionalityPropertyArrayOutput `pulumi:"properties"`
 	// The public description of the functionality
 	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
 	// Services associated with this functionality
@@ -105,6 +119,8 @@ type functionalityState struct {
 	Description *string `pulumi:"description"`
 	// Environments associated with this functionality
 	EnvironmentIds []string `pulumi:"environmentIds"`
+	// The escalation policy id of the functionality
+	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
 	// The external id associated to this functionality
 	ExternalId *string `pulumi:"externalId"`
 	// The name of the functionality
@@ -116,13 +132,15 @@ type functionalityState struct {
 	// The Opsgenie team id associated to this functionality
 	OpsgenieTeamId *string `pulumi:"opsgenieTeamId"`
 	// Owner Teams associated with this functionality
-	OwnersGroupIds []string `pulumi:"ownersGroupIds"`
+	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this functionality
-	OwnersUserIds []int `pulumi:"ownersUserIds"`
+	OwnerUserIds []int `pulumi:"ownerUserIds"`
 	// The PagerDuty service id associated to this functionality
 	PagerdutyId *string `pulumi:"pagerdutyId"`
 	// Position of the functionality
 	Position *int `pulumi:"position"`
+	// Array of property values for this functionality.
+	Properties []FunctionalityProperty `pulumi:"properties"`
 	// The public description of the functionality
 	PublicDescription *string `pulumi:"publicDescription"`
 	// Services associated with this functionality
@@ -148,6 +166,8 @@ type FunctionalityState struct {
 	Description pulumi.StringPtrInput
 	// Environments associated with this functionality
 	EnvironmentIds pulumi.StringArrayInput
+	// The escalation policy id of the functionality
+	EscalationPolicyId pulumi.StringPtrInput
 	// The external id associated to this functionality
 	ExternalId pulumi.StringPtrInput
 	// The name of the functionality
@@ -159,13 +179,15 @@ type FunctionalityState struct {
 	// The Opsgenie team id associated to this functionality
 	OpsgenieTeamId pulumi.StringPtrInput
 	// Owner Teams associated with this functionality
-	OwnersGroupIds pulumi.StringArrayInput
+	OwnerGroupIds pulumi.StringArrayInput
 	// Owner Users associated with this functionality
-	OwnersUserIds pulumi.IntArrayInput
+	OwnerUserIds pulumi.IntArrayInput
 	// The PagerDuty service id associated to this functionality
 	PagerdutyId pulumi.StringPtrInput
 	// Position of the functionality
 	Position pulumi.IntPtrInput
+	// Array of property values for this functionality.
+	Properties FunctionalityPropertyArrayInput
 	// The public description of the functionality
 	PublicDescription pulumi.StringPtrInput
 	// Services associated with this functionality
@@ -195,6 +217,8 @@ type functionalityArgs struct {
 	Description *string `pulumi:"description"`
 	// Environments associated with this functionality
 	EnvironmentIds []string `pulumi:"environmentIds"`
+	// The escalation policy id of the functionality
+	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
 	// The external id associated to this functionality
 	ExternalId *string `pulumi:"externalId"`
 	// The name of the functionality
@@ -206,13 +230,15 @@ type functionalityArgs struct {
 	// The Opsgenie team id associated to this functionality
 	OpsgenieTeamId *string `pulumi:"opsgenieTeamId"`
 	// Owner Teams associated with this functionality
-	OwnersGroupIds []string `pulumi:"ownersGroupIds"`
+	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this functionality
-	OwnersUserIds []int `pulumi:"ownersUserIds"`
+	OwnerUserIds []int `pulumi:"ownerUserIds"`
 	// The PagerDuty service id associated to this functionality
 	PagerdutyId *string `pulumi:"pagerdutyId"`
 	// Position of the functionality
 	Position *int `pulumi:"position"`
+	// Array of property values for this functionality.
+	Properties []FunctionalityProperty `pulumi:"properties"`
 	// The public description of the functionality
 	PublicDescription *string `pulumi:"publicDescription"`
 	// Services associated with this functionality
@@ -239,6 +265,8 @@ type FunctionalityArgs struct {
 	Description pulumi.StringPtrInput
 	// Environments associated with this functionality
 	EnvironmentIds pulumi.StringArrayInput
+	// The escalation policy id of the functionality
+	EscalationPolicyId pulumi.StringPtrInput
 	// The external id associated to this functionality
 	ExternalId pulumi.StringPtrInput
 	// The name of the functionality
@@ -250,13 +278,15 @@ type FunctionalityArgs struct {
 	// The Opsgenie team id associated to this functionality
 	OpsgenieTeamId pulumi.StringPtrInput
 	// Owner Teams associated with this functionality
-	OwnersGroupIds pulumi.StringArrayInput
+	OwnerGroupIds pulumi.StringArrayInput
 	// Owner Users associated with this functionality
-	OwnersUserIds pulumi.IntArrayInput
+	OwnerUserIds pulumi.IntArrayInput
 	// The PagerDuty service id associated to this functionality
 	PagerdutyId pulumi.StringPtrInput
 	// Position of the functionality
 	Position pulumi.IntPtrInput
+	// Array of property values for this functionality.
+	Properties FunctionalityPropertyArrayInput
 	// The public description of the functionality
 	PublicDescription pulumi.StringPtrInput
 	// Services associated with this functionality
@@ -383,6 +413,11 @@ func (o FunctionalityOutput) EnvironmentIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringArrayOutput { return v.EnvironmentIds }).(pulumi.StringArrayOutput)
 }
 
+// The escalation policy id of the functionality
+func (o FunctionalityOutput) EscalationPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.EscalationPolicyId }).(pulumi.StringOutput)
+}
+
 // The external id associated to this functionality
 func (o FunctionalityOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
@@ -409,13 +444,13 @@ func (o FunctionalityOutput) OpsgenieTeamId() pulumi.StringOutput {
 }
 
 // Owner Teams associated with this functionality
-func (o FunctionalityOutput) OwnersGroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Functionality) pulumi.StringArrayOutput { return v.OwnersGroupIds }).(pulumi.StringArrayOutput)
+func (o FunctionalityOutput) OwnerGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Functionality) pulumi.StringArrayOutput { return v.OwnerGroupIds }).(pulumi.StringArrayOutput)
 }
 
 // Owner Users associated with this functionality
-func (o FunctionalityOutput) OwnersUserIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *Functionality) pulumi.IntArrayOutput { return v.OwnersUserIds }).(pulumi.IntArrayOutput)
+func (o FunctionalityOutput) OwnerUserIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Functionality) pulumi.IntArrayOutput { return v.OwnerUserIds }).(pulumi.IntArrayOutput)
 }
 
 // The PagerDuty service id associated to this functionality
@@ -426,6 +461,11 @@ func (o FunctionalityOutput) PagerdutyId() pulumi.StringOutput {
 // Position of the functionality
 func (o FunctionalityOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
+}
+
+// Array of property values for this functionality.
+func (o FunctionalityOutput) Properties() FunctionalityPropertyArrayOutput {
+	return o.ApplyT(func(v *Functionality) FunctionalityPropertyArrayOutput { return v.Properties }).(FunctionalityPropertyArrayOutput)
 }
 
 // The public description of the functionality

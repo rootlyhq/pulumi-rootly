@@ -23,14 +23,16 @@ func LookupRetrospectiveProcessGroupStep(ctx *pulumi.Context, args *LookupRetros
 
 // A collection of arguments for invoking getRetrospectiveProcessGroupStep.
 type LookupRetrospectiveProcessGroupStepArgs struct {
-	RetrospectiveStepId *string `pulumi:"retrospectiveStepId"`
+	RetrospectiveProcessGroupId string  `pulumi:"retrospectiveProcessGroupId"`
+	RetrospectiveStepId         *string `pulumi:"retrospectiveStepId"`
 }
 
 // A collection of values returned by getRetrospectiveProcessGroupStep.
 type LookupRetrospectiveProcessGroupStepResult struct {
 	// The ID of this resource.
-	Id                  string `pulumi:"id"`
-	RetrospectiveStepId string `pulumi:"retrospectiveStepId"`
+	Id                          string `pulumi:"id"`
+	RetrospectiveProcessGroupId string `pulumi:"retrospectiveProcessGroupId"`
+	RetrospectiveStepId         string `pulumi:"retrospectiveStepId"`
 }
 
 func LookupRetrospectiveProcessGroupStepOutput(ctx *pulumi.Context, args LookupRetrospectiveProcessGroupStepOutputArgs, opts ...pulumi.InvokeOption) LookupRetrospectiveProcessGroupStepResultOutput {
@@ -44,7 +46,8 @@ func LookupRetrospectiveProcessGroupStepOutput(ctx *pulumi.Context, args LookupR
 
 // A collection of arguments for invoking getRetrospectiveProcessGroupStep.
 type LookupRetrospectiveProcessGroupStepOutputArgs struct {
-	RetrospectiveStepId pulumi.StringPtrInput `pulumi:"retrospectiveStepId"`
+	RetrospectiveProcessGroupId pulumi.StringInput    `pulumi:"retrospectiveProcessGroupId"`
+	RetrospectiveStepId         pulumi.StringPtrInput `pulumi:"retrospectiveStepId"`
 }
 
 func (LookupRetrospectiveProcessGroupStepOutputArgs) ElementType() reflect.Type {
@@ -69,6 +72,10 @@ func (o LookupRetrospectiveProcessGroupStepResultOutput) ToLookupRetrospectivePr
 // The ID of this resource.
 func (o LookupRetrospectiveProcessGroupStepResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRetrospectiveProcessGroupStepResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRetrospectiveProcessGroupStepResultOutput) RetrospectiveProcessGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRetrospectiveProcessGroupStepResult) string { return v.RetrospectiveProcessGroupId }).(pulumi.StringOutput)
 }
 
 func (o LookupRetrospectiveProcessGroupStepResultOutput) RetrospectiveStepId() pulumi.StringOutput {

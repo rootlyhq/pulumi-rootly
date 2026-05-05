@@ -4,11 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export function getFormSetCondition(args?: GetFormSetConditionArgs, opts?: pulumi.InvokeOptions): Promise<GetFormSetConditionResult> {
-    args = args || {};
+export function getFormSetCondition(args: GetFormSetConditionArgs, opts?: pulumi.InvokeOptions): Promise<GetFormSetConditionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getFormSetCondition:getFormSetCondition", {
         "formFieldId": args.formFieldId,
+        "formSetId": args.formSetId,
     }, opts);
 }
 
@@ -17,6 +17,7 @@ export function getFormSetCondition(args?: GetFormSetConditionArgs, opts?: pulum
  */
 export interface GetFormSetConditionArgs {
     formFieldId?: string;
+    formSetId: string;
 }
 
 /**
@@ -24,16 +25,17 @@ export interface GetFormSetConditionArgs {
  */
 export interface GetFormSetConditionResult {
     readonly formFieldId: string;
+    readonly formSetId: string;
     /**
      * The ID of this resource.
      */
     readonly id: string;
 }
-export function getFormSetConditionOutput(args?: GetFormSetConditionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFormSetConditionResult> {
-    args = args || {};
+export function getFormSetConditionOutput(args: GetFormSetConditionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFormSetConditionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getFormSetCondition:getFormSetCondition", {
         "formFieldId": args.formFieldId,
+        "formSetId": args.formSetId,
     }, opts);
 }
 
@@ -42,4 +44,5 @@ export function getFormSetConditionOutput(args?: GetFormSetConditionOutputArgs, 
  */
 export interface GetFormSetConditionOutputArgs {
     formFieldId?: pulumi.Input<string | undefined>;
+    formSetId: pulumi.Input<string>;
 }

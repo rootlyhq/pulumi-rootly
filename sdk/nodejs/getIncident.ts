@@ -12,6 +12,7 @@ export function getIncident(args?: GetIncidentArgs, opts?: pulumi.InvokeOptions)
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getIncident:getIncident", {
         "acknowledgedAt": args.acknowledgedAt,
+        "closedAt": args.closedAt,
         "createdAt": args.createdAt,
         "detectedAt": args.detectedAt,
         "environments": args.environments,
@@ -25,7 +26,9 @@ export function getIncident(args?: GetIncidentArgs, opts?: pulumi.InvokeOptions)
         "services": args.services,
         "severity": args.severity,
         "startedAt": args.startedAt,
+        "status": args.status,
         "updatedAt": args.updatedAt,
+        "user": args.user,
     }, opts);
 }
 
@@ -37,6 +40,10 @@ export interface GetIncidentArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     acknowledgedAt?: {[key: string]: string};
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
+    closedAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
@@ -68,10 +75,12 @@ export interface GetIncidentArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     startedAt?: {[key: string]: string};
+    status?: string;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
     updatedAt?: {[key: string]: string};
+    user?: string;
 }
 
 /**
@@ -82,6 +91,10 @@ export interface GetIncidentResult {
      * Filter by date range using 'lt' and 'gt'.
      */
     readonly acknowledgedAt?: {[key: string]: string};
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
+    readonly closedAt?: {[key: string]: string};
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
@@ -117,10 +130,12 @@ export interface GetIncidentResult {
      * Filter by date range using 'lt' and 'gt'.
      */
     readonly startedAt?: {[key: string]: string};
+    readonly status: string;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
     readonly updatedAt?: {[key: string]: string};
+    readonly user: string;
 }
 /**
  * ## Example Usage
@@ -130,6 +145,7 @@ export function getIncidentOutput(args?: GetIncidentOutputArgs, opts?: pulumi.In
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getIncident:getIncident", {
         "acknowledgedAt": args.acknowledgedAt,
+        "closedAt": args.closedAt,
         "createdAt": args.createdAt,
         "detectedAt": args.detectedAt,
         "environments": args.environments,
@@ -143,7 +159,9 @@ export function getIncidentOutput(args?: GetIncidentOutputArgs, opts?: pulumi.In
         "services": args.services,
         "severity": args.severity,
         "startedAt": args.startedAt,
+        "status": args.status,
         "updatedAt": args.updatedAt,
+        "user": args.user,
     }, opts);
 }
 
@@ -155,6 +173,10 @@ export interface GetIncidentOutputArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     acknowledgedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Filter by date range using 'lt' and 'gt'.
+     */
+    closedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
@@ -186,8 +208,10 @@ export interface GetIncidentOutputArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     startedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
     updatedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    user?: pulumi.Input<string | undefined>;
 }

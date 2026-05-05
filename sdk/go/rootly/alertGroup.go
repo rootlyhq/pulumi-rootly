@@ -15,24 +15,41 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import AlertGroup using the `id`. For example:
+// AlertGroup can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/alertGroup:AlertGroup my-resource my-resource-slug
+// $ pulumi import rootly:index/alertGroup:AlertGroup primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type AlertGroup struct {
 	pulumi.CustomResourceState
 
+	// This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
 	Attributes AlertGroupAttributeArrayOutput `pulumi:"attributes"`
 	// Grouping condition for the alert group
 	ConditionType pulumi.StringOutput `pulumi:"conditionType"`
+	// The conditions for the alert group
+	Conditions AlertGroupConditionArrayOutput `pulumi:"conditions"`
 	// Date or deletion
 	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
 	// The description of the alert group
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Whether the alerts are grouped by title or not. Value must be one of true or false
+	// [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+	//
+	// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 	GroupByAlertTitle pulumi.BoolOutput `pulumi:"groupByAlertTitle"`
-	// Whether the alerts are grouped by urgency or not. Value must be one of true or false
+	// [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+	//
+	// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 	GroupByAlertUrgency pulumi.BoolOutput `pulumi:"groupByAlertUrgency"`
 	// The name of the alert group
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -73,16 +90,23 @@ func GetAlertGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlertGroup resources.
 type alertGroupState struct {
+	// This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
 	Attributes []AlertGroupAttribute `pulumi:"attributes"`
 	// Grouping condition for the alert group
 	ConditionType *string `pulumi:"conditionType"`
+	// The conditions for the alert group
+	Conditions []AlertGroupCondition `pulumi:"conditions"`
 	// Date or deletion
 	DeletedAt *string `pulumi:"deletedAt"`
 	// The description of the alert group
 	Description *string `pulumi:"description"`
-	// Whether the alerts are grouped by title or not. Value must be one of true or false
+	// [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+	//
+	// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 	GroupByAlertTitle *bool `pulumi:"groupByAlertTitle"`
-	// Whether the alerts are grouped by urgency or not. Value must be one of true or false
+	// [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+	//
+	// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 	GroupByAlertUrgency *bool `pulumi:"groupByAlertUrgency"`
 	// The name of the alert group
 	Name *string `pulumi:"name"`
@@ -94,16 +118,23 @@ type alertGroupState struct {
 }
 
 type AlertGroupState struct {
+	// This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
 	Attributes AlertGroupAttributeArrayInput
 	// Grouping condition for the alert group
 	ConditionType pulumi.StringPtrInput
+	// The conditions for the alert group
+	Conditions AlertGroupConditionArrayInput
 	// Date or deletion
 	DeletedAt pulumi.StringPtrInput
 	// The description of the alert group
 	Description pulumi.StringPtrInput
-	// Whether the alerts are grouped by title or not. Value must be one of true or false
+	// [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+	//
+	// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 	GroupByAlertTitle pulumi.BoolPtrInput
-	// Whether the alerts are grouped by urgency or not. Value must be one of true or false
+	// [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+	//
+	// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 	GroupByAlertUrgency pulumi.BoolPtrInput
 	// The name of the alert group
 	Name pulumi.StringPtrInput
@@ -119,16 +150,23 @@ func (AlertGroupState) ElementType() reflect.Type {
 }
 
 type alertGroupArgs struct {
+	// This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
 	Attributes []AlertGroupAttribute `pulumi:"attributes"`
 	// Grouping condition for the alert group
 	ConditionType *string `pulumi:"conditionType"`
+	// The conditions for the alert group
+	Conditions []AlertGroupCondition `pulumi:"conditions"`
 	// Date or deletion
 	DeletedAt *string `pulumi:"deletedAt"`
 	// The description of the alert group
 	Description *string `pulumi:"description"`
-	// Whether the alerts are grouped by title or not. Value must be one of true or false
+	// [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+	//
+	// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 	GroupByAlertTitle *bool `pulumi:"groupByAlertTitle"`
-	// Whether the alerts are grouped by urgency or not. Value must be one of true or false
+	// [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+	//
+	// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 	GroupByAlertUrgency *bool `pulumi:"groupByAlertUrgency"`
 	// The name of the alert group
 	Name *string `pulumi:"name"`
@@ -141,16 +179,23 @@ type alertGroupArgs struct {
 
 // The set of arguments for constructing a AlertGroup resource.
 type AlertGroupArgs struct {
+	// This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
 	Attributes AlertGroupAttributeArrayInput
 	// Grouping condition for the alert group
 	ConditionType pulumi.StringPtrInput
+	// The conditions for the alert group
+	Conditions AlertGroupConditionArrayInput
 	// Date or deletion
 	DeletedAt pulumi.StringPtrInput
 	// The description of the alert group
 	Description pulumi.StringPtrInput
-	// Whether the alerts are grouped by title or not. Value must be one of true or false
+	// [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+	//
+	// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 	GroupByAlertTitle pulumi.BoolPtrInput
-	// Whether the alerts are grouped by urgency or not. Value must be one of true or false
+	// [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+	//
+	// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 	GroupByAlertUrgency pulumi.BoolPtrInput
 	// The name of the alert group
 	Name pulumi.StringPtrInput
@@ -248,6 +293,7 @@ func (o AlertGroupOutput) ToAlertGroupOutputWithContext(ctx context.Context) Ale
 	return o
 }
 
+// This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
 func (o AlertGroupOutput) Attributes() AlertGroupAttributeArrayOutput {
 	return o.ApplyT(func(v *AlertGroup) AlertGroupAttributeArrayOutput { return v.Attributes }).(AlertGroupAttributeArrayOutput)
 }
@@ -255,6 +301,11 @@ func (o AlertGroupOutput) Attributes() AlertGroupAttributeArrayOutput {
 // Grouping condition for the alert group
 func (o AlertGroupOutput) ConditionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertGroup) pulumi.StringOutput { return v.ConditionType }).(pulumi.StringOutput)
+}
+
+// The conditions for the alert group
+func (o AlertGroupOutput) Conditions() AlertGroupConditionArrayOutput {
+	return o.ApplyT(func(v *AlertGroup) AlertGroupConditionArrayOutput { return v.Conditions }).(AlertGroupConditionArrayOutput)
 }
 
 // Date or deletion
@@ -267,12 +318,16 @@ func (o AlertGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Whether the alerts are grouped by title or not. Value must be one of true or false
+// [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+//
+// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 func (o AlertGroupOutput) GroupByAlertTitle() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AlertGroup) pulumi.BoolOutput { return v.GroupByAlertTitle }).(pulumi.BoolOutput)
 }
 
-// Whether the alerts are grouped by urgency or not. Value must be one of true or false
+// [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
+//
+// Deprecated: This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
 func (o AlertGroupOutput) GroupByAlertUrgency() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AlertGroup) pulumi.BoolOutput { return v.GroupByAlertUrgency }).(pulumi.BoolOutput)
 }

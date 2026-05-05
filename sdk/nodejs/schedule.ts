@@ -9,10 +9,20 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.Schedule using the `id`. For example:
+ * rootly.Schedule can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/schedule:Schedule my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/schedule:Schedule primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class Schedule extends pulumi.CustomResource {
@@ -58,15 +68,19 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * The owning teams for this schedules.
      */
-    declare public readonly ownerGroupIds: pulumi.Output<string[]>;
+    declare public readonly ownerGroupIds: pulumi.Output<string[] | undefined>;
     /**
      * ID of user assigned as owner of the schedule
      */
     declare public readonly ownerUserId: pulumi.Output<number>;
     /**
+     * Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+     */
+    declare public readonly slackChannel: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
      */
-    declare public readonly slackUserGroup: pulumi.Output<{[key: string]: string}>;
+    declare public readonly slackUserGroup: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Schedule resource with the given unique name, arguments, and options.
@@ -86,6 +100,7 @@ export class Schedule extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["ownerGroupIds"] = state?.ownerGroupIds;
             resourceInputs["ownerUserId"] = state?.ownerUserId;
+            resourceInputs["slackChannel"] = state?.slackChannel;
             resourceInputs["slackUserGroup"] = state?.slackUserGroup;
         } else {
             const args = argsOrState as ScheduleArgs | undefined;
@@ -94,6 +109,7 @@ export class Schedule extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["ownerGroupIds"] = args?.ownerGroupIds;
             resourceInputs["ownerUserId"] = args?.ownerUserId;
+            resourceInputs["slackChannel"] = args?.slackChannel;
             resourceInputs["slackUserGroup"] = args?.slackUserGroup;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -126,6 +142,10 @@ export interface ScheduleState {
      */
     ownerUserId?: pulumi.Input<number | undefined>;
     /**
+     * Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+     */
+    slackChannel?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
      */
     slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -155,6 +175,10 @@ export interface ScheduleArgs {
      * ID of user assigned as owner of the schedule
      */
     ownerUserId?: pulumi.Input<number | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+     */
+    slackChannel?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
      */

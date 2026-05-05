@@ -11,11 +11,13 @@ export function getTeam(args?: GetTeamArgs, opts?: pulumi.InvokeOptions): Promis
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getTeam:getTeam", {
+        "alertBroadcastEnabled": args.alertBroadcastEnabled,
         "backstageId": args.backstageId,
         "color": args.color,
         "cortexId": args.cortexId,
         "createdAt": args.createdAt,
         "externalId": args.externalId,
+        "incidentBroadcastEnabled": args.incidentBroadcastEnabled,
         "name": args.name,
         "slug": args.slug,
     }, opts);
@@ -25,6 +27,7 @@ export function getTeam(args?: GetTeamArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getTeam.
  */
 export interface GetTeamArgs {
+    alertBroadcastEnabled?: boolean;
     backstageId?: string;
     color?: string;
     cortexId?: string;
@@ -33,6 +36,7 @@ export interface GetTeamArgs {
      */
     createdAt?: {[key: string]: string};
     externalId?: string;
+    incidentBroadcastEnabled?: boolean;
     name?: string;
     slug?: string;
 }
@@ -41,6 +45,7 @@ export interface GetTeamArgs {
  * A collection of values returned by getTeam.
  */
 export interface GetTeamResult {
+    readonly alertBroadcastEnabled: boolean;
     readonly backstageId: string;
     readonly color: string;
     readonly cortexId: string;
@@ -53,6 +58,7 @@ export interface GetTeamResult {
      * The ID of this resource.
      */
     readonly id: string;
+    readonly incidentBroadcastEnabled: boolean;
     readonly name: string;
     readonly slug: string;
 }
@@ -63,11 +69,13 @@ export function getTeamOutput(args?: GetTeamOutputArgs, opts?: pulumi.InvokeOutp
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getTeam:getTeam", {
+        "alertBroadcastEnabled": args.alertBroadcastEnabled,
         "backstageId": args.backstageId,
         "color": args.color,
         "cortexId": args.cortexId,
         "createdAt": args.createdAt,
         "externalId": args.externalId,
+        "incidentBroadcastEnabled": args.incidentBroadcastEnabled,
         "name": args.name,
         "slug": args.slug,
     }, opts);
@@ -77,6 +85,7 @@ export function getTeamOutput(args?: GetTeamOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getTeam.
  */
 export interface GetTeamOutputArgs {
+    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     backstageId?: pulumi.Input<string | undefined>;
     color?: pulumi.Input<string | undefined>;
     cortexId?: pulumi.Input<string | undefined>;
@@ -85,6 +94,7 @@ export interface GetTeamOutputArgs {
      */
     createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     externalId?: pulumi.Input<string | undefined>;
+    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     name?: pulumi.Input<string | undefined>;
     slug?: pulumi.Input<string | undefined>;
 }

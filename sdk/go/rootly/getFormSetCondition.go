@@ -24,11 +24,13 @@ func LookupFormSetCondition(ctx *pulumi.Context, args *LookupFormSetConditionArg
 // A collection of arguments for invoking getFormSetCondition.
 type LookupFormSetConditionArgs struct {
 	FormFieldId *string `pulumi:"formFieldId"`
+	FormSetId   string  `pulumi:"formSetId"`
 }
 
 // A collection of values returned by getFormSetCondition.
 type LookupFormSetConditionResult struct {
 	FormFieldId string `pulumi:"formFieldId"`
+	FormSetId   string `pulumi:"formSetId"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 }
@@ -45,6 +47,7 @@ func LookupFormSetConditionOutput(ctx *pulumi.Context, args LookupFormSetConditi
 // A collection of arguments for invoking getFormSetCondition.
 type LookupFormSetConditionOutputArgs struct {
 	FormFieldId pulumi.StringPtrInput `pulumi:"formFieldId"`
+	FormSetId   pulumi.StringInput    `pulumi:"formSetId"`
 }
 
 func (LookupFormSetConditionOutputArgs) ElementType() reflect.Type {
@@ -68,6 +71,10 @@ func (o LookupFormSetConditionResultOutput) ToLookupFormSetConditionResultOutput
 
 func (o LookupFormSetConditionResultOutput) FormFieldId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormSetConditionResult) string { return v.FormFieldId }).(pulumi.StringOutput)
+}
+
+func (o LookupFormSetConditionResultOutput) FormSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFormSetConditionResult) string { return v.FormSetId }).(pulumi.StringOutput)
 }
 
 // The ID of this resource.

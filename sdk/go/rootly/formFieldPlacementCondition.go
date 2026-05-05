@@ -14,15 +14,25 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import FormFieldPlacementCondition using the `id`. For example:
+// FormFieldPlacementCondition can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/formFieldPlacementCondition:FormFieldPlacementCondition my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/formFieldPlacementCondition:FormFieldPlacementCondition primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type FormFieldPlacementCondition struct {
 	pulumi.CustomResourceState
 
-	// The condition comparison.. Value must be one of `equal`, `isSet`, `isNotSet`.
+	// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 	Comparison pulumi.StringPtrOutput `pulumi:"comparison"`
 	// The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
 	Conditioned pulumi.StringPtrOutput `pulumi:"conditioned"`
@@ -72,7 +82,7 @@ func GetFormFieldPlacementCondition(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FormFieldPlacementCondition resources.
 type formFieldPlacementConditionState struct {
-	// The condition comparison.. Value must be one of `equal`, `isSet`, `isNotSet`.
+	// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 	Comparison *string `pulumi:"comparison"`
 	// The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
 	Conditioned *string `pulumi:"conditioned"`
@@ -87,7 +97,7 @@ type formFieldPlacementConditionState struct {
 }
 
 type FormFieldPlacementConditionState struct {
-	// The condition comparison.. Value must be one of `equal`, `isSet`, `isNotSet`.
+	// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 	Comparison pulumi.StringPtrInput
 	// The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
 	Conditioned pulumi.StringPtrInput
@@ -106,7 +116,7 @@ func (FormFieldPlacementConditionState) ElementType() reflect.Type {
 }
 
 type formFieldPlacementConditionArgs struct {
-	// The condition comparison.. Value must be one of `equal`, `isSet`, `isNotSet`.
+	// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 	Comparison *string `pulumi:"comparison"`
 	// The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
 	Conditioned *string `pulumi:"conditioned"`
@@ -122,7 +132,7 @@ type formFieldPlacementConditionArgs struct {
 
 // The set of arguments for constructing a FormFieldPlacementCondition resource.
 type FormFieldPlacementConditionArgs struct {
-	// The condition comparison.. Value must be one of `equal`, `isSet`, `isNotSet`.
+	// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 	Comparison pulumi.StringPtrInput
 	// The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
 	Conditioned pulumi.StringPtrInput
@@ -223,7 +233,7 @@ func (o FormFieldPlacementConditionOutput) ToFormFieldPlacementConditionOutputWi
 	return o
 }
 
-// The condition comparison.. Value must be one of `equal`, `isSet`, `isNotSet`.
+// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 func (o FormFieldPlacementConditionOutput) Comparison() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FormFieldPlacementCondition) pulumi.StringPtrOutput { return v.Comparison }).(pulumi.StringPtrOutput)
 }

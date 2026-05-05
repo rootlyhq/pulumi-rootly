@@ -26,6 +26,7 @@ func LookupStatusPage(ctx *pulumi.Context, args *LookupStatusPageArgs, opts ...p
 type LookupStatusPageArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt map[string]string `pulumi:"createdAt"`
+	Slug      *string           `pulumi:"slug"`
 }
 
 // A collection of values returned by getStatusPage.
@@ -33,7 +34,8 @@ type LookupStatusPageResult struct {
 	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt map[string]string `pulumi:"createdAt"`
 	// The ID of this resource.
-	Id string `pulumi:"id"`
+	Id   string `pulumi:"id"`
+	Slug string `pulumi:"slug"`
 }
 
 func LookupStatusPageOutput(ctx *pulumi.Context, args LookupStatusPageOutputArgs, opts ...pulumi.InvokeOption) LookupStatusPageResultOutput {
@@ -49,6 +51,7 @@ func LookupStatusPageOutput(ctx *pulumi.Context, args LookupStatusPageOutputArgs
 type LookupStatusPageOutputArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt pulumi.StringMapInput `pulumi:"createdAt"`
+	Slug      pulumi.StringPtrInput `pulumi:"slug"`
 }
 
 func (LookupStatusPageOutputArgs) ElementType() reflect.Type {
@@ -78,6 +81,10 @@ func (o LookupStatusPageResultOutput) CreatedAt() pulumi.StringMapOutput {
 // The ID of this resource.
 func (o LookupStatusPageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStatusPageResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupStatusPageResultOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStatusPageResult) string { return v.Slug }).(pulumi.StringOutput)
 }
 
 func init() {

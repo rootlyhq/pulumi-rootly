@@ -13,10 +13,20 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import WorkflowGroup using the `id`. For example:
+// WorkflowGroup can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/workflowGroup:WorkflowGroup my-resource my-resource-slug
+// $ pulumi import rootly:index/workflowGroup:WorkflowGroup primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type WorkflowGroup struct {
 	pulumi.CustomResourceState
@@ -28,7 +38,7 @@ type WorkflowGroup struct {
 	// An emoji icon displayed next to the workflow group.
 	Icon pulumi.StringOutput `pulumi:"icon"`
 	// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
-	Kind pulumi.StringPtrOutput `pulumi:"kind"`
+	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the workflow group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The position of the workflow group
@@ -242,8 +252,8 @@ func (o WorkflowGroupOutput) Icon() pulumi.StringOutput {
 }
 
 // The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
-func (o WorkflowGroupOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowGroup) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+func (o WorkflowGroupOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkflowGroup) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The name of the workflow group.

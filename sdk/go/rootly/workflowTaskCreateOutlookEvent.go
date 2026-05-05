@@ -16,10 +16,20 @@ import (
 //
 // ## Import
 //
-// Using `pulumi import`, import WorkflowTaskCreateOutlookEvent using the `id`. For example:
+// WorkflowTaskCreateOutlookEvent can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/workflowTaskCreateOutlookEvent:WorkflowTaskCreateOutlookEvent my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/workflowTaskCreateOutlookEvent:WorkflowTaskCreateOutlookEvent primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type WorkflowTaskCreateOutlookEvent struct {
 	pulumi.CustomResourceState

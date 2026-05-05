@@ -110,10 +110,282 @@ func (o AlertGroupAttributeArrayOutput) Index(i pulumi.IntInput) AlertGroupAttri
 	}).(AlertGroupAttributeOutput)
 }
 
+type AlertGroupCondition struct {
+	// The Alert Urgency IDs to check in the condition. Only need to be set when the property field type is 'attribute', the property field name is 'alert*urgency' and the property field condition type is 'is*one*of' or 'is*not*one*of'
+	AlertUrgencyIds []string `pulumi:"alertUrgencyIds"`
+	// The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+	ConditionableId *string `pulumi:"conditionableId"`
+	// The type of the conditionable. Value must be one of `AlertField`.
+	ConditionableType *string `pulumi:"conditionableType"`
+	// The condition type of the property field. Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`, `matchesExistingAlert`.
+	PropertyFieldConditionType *string `pulumi:"propertyFieldConditionType"`
+	// The name of the property field. If the property field type is selected as 'attribute', then the allowed property field names are 'summary' (for Title), 'description', 'alert*urgency' and 'external*url' (for Alert Source URL). If the property field type is selected as 'payload', then the property field name should be supplied in JSON Path syntax.
+	PropertyFieldName *string `pulumi:"propertyFieldName"`
+	// The type of the property field. Value must be one of `attribute`, `payload`, `alertField`.
+	PropertyFieldType *string `pulumi:"propertyFieldType"`
+	// The value of the property field. Can be null if the property field condition type is 'is*one*of' or 'is*not*one_of'
+	PropertyFieldValue *string `pulumi:"propertyFieldValue"`
+	// The values of the property field. Used if the property field condition type is 'is*one*of' or 'is*not*one*of' except for when property field name is 'alert*urgency'
+	PropertyFieldValues []string                   `pulumi:"propertyFieldValues"`
+	Values              []AlertGroupConditionValue `pulumi:"values"`
+}
+
+// AlertGroupConditionInput is an input type that accepts AlertGroupConditionArgs and AlertGroupConditionOutput values.
+// You can construct a concrete instance of `AlertGroupConditionInput` via:
+//
+//	AlertGroupConditionArgs{...}
+type AlertGroupConditionInput interface {
+	pulumi.Input
+
+	ToAlertGroupConditionOutput() AlertGroupConditionOutput
+	ToAlertGroupConditionOutputWithContext(context.Context) AlertGroupConditionOutput
+}
+
+type AlertGroupConditionArgs struct {
+	// The Alert Urgency IDs to check in the condition. Only need to be set when the property field type is 'attribute', the property field name is 'alert*urgency' and the property field condition type is 'is*one*of' or 'is*not*one*of'
+	AlertUrgencyIds pulumi.StringArrayInput `pulumi:"alertUrgencyIds"`
+	// The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+	ConditionableId pulumi.StringPtrInput `pulumi:"conditionableId"`
+	// The type of the conditionable. Value must be one of `AlertField`.
+	ConditionableType pulumi.StringPtrInput `pulumi:"conditionableType"`
+	// The condition type of the property field. Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`, `matchesExistingAlert`.
+	PropertyFieldConditionType pulumi.StringPtrInput `pulumi:"propertyFieldConditionType"`
+	// The name of the property field. If the property field type is selected as 'attribute', then the allowed property field names are 'summary' (for Title), 'description', 'alert*urgency' and 'external*url' (for Alert Source URL). If the property field type is selected as 'payload', then the property field name should be supplied in JSON Path syntax.
+	PropertyFieldName pulumi.StringPtrInput `pulumi:"propertyFieldName"`
+	// The type of the property field. Value must be one of `attribute`, `payload`, `alertField`.
+	PropertyFieldType pulumi.StringPtrInput `pulumi:"propertyFieldType"`
+	// The value of the property field. Can be null if the property field condition type is 'is*one*of' or 'is*not*one_of'
+	PropertyFieldValue pulumi.StringPtrInput `pulumi:"propertyFieldValue"`
+	// The values of the property field. Used if the property field condition type is 'is*one*of' or 'is*not*one*of' except for when property field name is 'alert*urgency'
+	PropertyFieldValues pulumi.StringArrayInput            `pulumi:"propertyFieldValues"`
+	Values              AlertGroupConditionValueArrayInput `pulumi:"values"`
+}
+
+func (AlertGroupConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertGroupCondition)(nil)).Elem()
+}
+
+func (i AlertGroupConditionArgs) ToAlertGroupConditionOutput() AlertGroupConditionOutput {
+	return i.ToAlertGroupConditionOutputWithContext(context.Background())
+}
+
+func (i AlertGroupConditionArgs) ToAlertGroupConditionOutputWithContext(ctx context.Context) AlertGroupConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertGroupConditionOutput)
+}
+
+// AlertGroupConditionArrayInput is an input type that accepts AlertGroupConditionArray and AlertGroupConditionArrayOutput values.
+// You can construct a concrete instance of `AlertGroupConditionArrayInput` via:
+//
+//	AlertGroupConditionArray{ AlertGroupConditionArgs{...} }
+type AlertGroupConditionArrayInput interface {
+	pulumi.Input
+
+	ToAlertGroupConditionArrayOutput() AlertGroupConditionArrayOutput
+	ToAlertGroupConditionArrayOutputWithContext(context.Context) AlertGroupConditionArrayOutput
+}
+
+type AlertGroupConditionArray []AlertGroupConditionInput
+
+func (AlertGroupConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertGroupCondition)(nil)).Elem()
+}
+
+func (i AlertGroupConditionArray) ToAlertGroupConditionArrayOutput() AlertGroupConditionArrayOutput {
+	return i.ToAlertGroupConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AlertGroupConditionArray) ToAlertGroupConditionArrayOutputWithContext(ctx context.Context) AlertGroupConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertGroupConditionArrayOutput)
+}
+
+type AlertGroupConditionOutput struct{ *pulumi.OutputState }
+
+func (AlertGroupConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertGroupCondition)(nil)).Elem()
+}
+
+func (o AlertGroupConditionOutput) ToAlertGroupConditionOutput() AlertGroupConditionOutput {
+	return o
+}
+
+func (o AlertGroupConditionOutput) ToAlertGroupConditionOutputWithContext(ctx context.Context) AlertGroupConditionOutput {
+	return o
+}
+
+// The Alert Urgency IDs to check in the condition. Only need to be set when the property field type is 'attribute', the property field name is 'alert*urgency' and the property field condition type is 'is*one*of' or 'is*not*one*of'
+func (o AlertGroupConditionOutput) AlertUrgencyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertGroupCondition) []string { return v.AlertUrgencyIds }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+func (o AlertGroupConditionOutput) ConditionableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertGroupCondition) *string { return v.ConditionableId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the conditionable. Value must be one of `AlertField`.
+func (o AlertGroupConditionOutput) ConditionableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertGroupCondition) *string { return v.ConditionableType }).(pulumi.StringPtrOutput)
+}
+
+// The condition type of the property field. Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`, `matchesExistingAlert`.
+func (o AlertGroupConditionOutput) PropertyFieldConditionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertGroupCondition) *string { return v.PropertyFieldConditionType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the property field. If the property field type is selected as 'attribute', then the allowed property field names are 'summary' (for Title), 'description', 'alert*urgency' and 'external*url' (for Alert Source URL). If the property field type is selected as 'payload', then the property field name should be supplied in JSON Path syntax.
+func (o AlertGroupConditionOutput) PropertyFieldName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertGroupCondition) *string { return v.PropertyFieldName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the property field. Value must be one of `attribute`, `payload`, `alertField`.
+func (o AlertGroupConditionOutput) PropertyFieldType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertGroupCondition) *string { return v.PropertyFieldType }).(pulumi.StringPtrOutput)
+}
+
+// The value of the property field. Can be null if the property field condition type is 'is*one*of' or 'is*not*one_of'
+func (o AlertGroupConditionOutput) PropertyFieldValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertGroupCondition) *string { return v.PropertyFieldValue }).(pulumi.StringPtrOutput)
+}
+
+// The values of the property field. Used if the property field condition type is 'is*one*of' or 'is*not*one*of' except for when property field name is 'alert*urgency'
+func (o AlertGroupConditionOutput) PropertyFieldValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertGroupCondition) []string { return v.PropertyFieldValues }).(pulumi.StringArrayOutput)
+}
+
+func (o AlertGroupConditionOutput) Values() AlertGroupConditionValueArrayOutput {
+	return o.ApplyT(func(v AlertGroupCondition) []AlertGroupConditionValue { return v.Values }).(AlertGroupConditionValueArrayOutput)
+}
+
+type AlertGroupConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertGroupConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertGroupCondition)(nil)).Elem()
+}
+
+func (o AlertGroupConditionArrayOutput) ToAlertGroupConditionArrayOutput() AlertGroupConditionArrayOutput {
+	return o
+}
+
+func (o AlertGroupConditionArrayOutput) ToAlertGroupConditionArrayOutputWithContext(ctx context.Context) AlertGroupConditionArrayOutput {
+	return o
+}
+
+func (o AlertGroupConditionArrayOutput) Index(i pulumi.IntInput) AlertGroupConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertGroupCondition {
+		return vs[0].([]AlertGroupCondition)[vs[1].(int)]
+	}).(AlertGroupConditionOutput)
+}
+
+type AlertGroupConditionValue struct {
+	// ID of the Alert Urgency to set.
+	RecordId *string `pulumi:"recordId"`
+	// Should be "AlertUrgency".
+	RecordType *string `pulumi:"recordType"`
+}
+
+// AlertGroupConditionValueInput is an input type that accepts AlertGroupConditionValueArgs and AlertGroupConditionValueOutput values.
+// You can construct a concrete instance of `AlertGroupConditionValueInput` via:
+//
+//	AlertGroupConditionValueArgs{...}
+type AlertGroupConditionValueInput interface {
+	pulumi.Input
+
+	ToAlertGroupConditionValueOutput() AlertGroupConditionValueOutput
+	ToAlertGroupConditionValueOutputWithContext(context.Context) AlertGroupConditionValueOutput
+}
+
+type AlertGroupConditionValueArgs struct {
+	// ID of the Alert Urgency to set.
+	RecordId pulumi.StringPtrInput `pulumi:"recordId"`
+	// Should be "AlertUrgency".
+	RecordType pulumi.StringPtrInput `pulumi:"recordType"`
+}
+
+func (AlertGroupConditionValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertGroupConditionValue)(nil)).Elem()
+}
+
+func (i AlertGroupConditionValueArgs) ToAlertGroupConditionValueOutput() AlertGroupConditionValueOutput {
+	return i.ToAlertGroupConditionValueOutputWithContext(context.Background())
+}
+
+func (i AlertGroupConditionValueArgs) ToAlertGroupConditionValueOutputWithContext(ctx context.Context) AlertGroupConditionValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertGroupConditionValueOutput)
+}
+
+// AlertGroupConditionValueArrayInput is an input type that accepts AlertGroupConditionValueArray and AlertGroupConditionValueArrayOutput values.
+// You can construct a concrete instance of `AlertGroupConditionValueArrayInput` via:
+//
+//	AlertGroupConditionValueArray{ AlertGroupConditionValueArgs{...} }
+type AlertGroupConditionValueArrayInput interface {
+	pulumi.Input
+
+	ToAlertGroupConditionValueArrayOutput() AlertGroupConditionValueArrayOutput
+	ToAlertGroupConditionValueArrayOutputWithContext(context.Context) AlertGroupConditionValueArrayOutput
+}
+
+type AlertGroupConditionValueArray []AlertGroupConditionValueInput
+
+func (AlertGroupConditionValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertGroupConditionValue)(nil)).Elem()
+}
+
+func (i AlertGroupConditionValueArray) ToAlertGroupConditionValueArrayOutput() AlertGroupConditionValueArrayOutput {
+	return i.ToAlertGroupConditionValueArrayOutputWithContext(context.Background())
+}
+
+func (i AlertGroupConditionValueArray) ToAlertGroupConditionValueArrayOutputWithContext(ctx context.Context) AlertGroupConditionValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertGroupConditionValueArrayOutput)
+}
+
+type AlertGroupConditionValueOutput struct{ *pulumi.OutputState }
+
+func (AlertGroupConditionValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertGroupConditionValue)(nil)).Elem()
+}
+
+func (o AlertGroupConditionValueOutput) ToAlertGroupConditionValueOutput() AlertGroupConditionValueOutput {
+	return o
+}
+
+func (o AlertGroupConditionValueOutput) ToAlertGroupConditionValueOutputWithContext(ctx context.Context) AlertGroupConditionValueOutput {
+	return o
+}
+
+// ID of the Alert Urgency to set.
+func (o AlertGroupConditionValueOutput) RecordId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertGroupConditionValue) *string { return v.RecordId }).(pulumi.StringPtrOutput)
+}
+
+// Should be "AlertUrgency".
+func (o AlertGroupConditionValueOutput) RecordType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertGroupConditionValue) *string { return v.RecordType }).(pulumi.StringPtrOutput)
+}
+
+type AlertGroupConditionValueArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertGroupConditionValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertGroupConditionValue)(nil)).Elem()
+}
+
+func (o AlertGroupConditionValueArrayOutput) ToAlertGroupConditionValueArrayOutput() AlertGroupConditionValueArrayOutput {
+	return o
+}
+
+func (o AlertGroupConditionValueArrayOutput) ToAlertGroupConditionValueArrayOutputWithContext(ctx context.Context) AlertGroupConditionValueArrayOutput {
+	return o
+}
+
+func (o AlertGroupConditionValueArrayOutput) Index(i pulumi.IntInput) AlertGroupConditionValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertGroupConditionValue {
+		return vs[0].([]AlertGroupConditionValue)[vs[1].(int)]
+	}).(AlertGroupConditionValueOutput)
+}
+
 type AlertGroupTarget struct {
 	// id for the Group, Service or EscalationPolicy
 	TargetId *string `pulumi:"targetId"`
-	// The type of the target.. Value must be one of `Group`, `Service`, `EscalationPolicy`.
+	// The type of the target.. Value must be one of `Group`, `Service`, `Functionality`, `EscalationPolicy`.
 	TargetType *string `pulumi:"targetType"`
 }
 
@@ -131,7 +403,7 @@ type AlertGroupTargetInput interface {
 type AlertGroupTargetArgs struct {
 	// id for the Group, Service or EscalationPolicy
 	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
-	// The type of the target.. Value must be one of `Group`, `Service`, `EscalationPolicy`.
+	// The type of the target.. Value must be one of `Group`, `Service`, `Functionality`, `EscalationPolicy`.
 	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
 }
 
@@ -191,7 +463,7 @@ func (o AlertGroupTargetOutput) TargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertGroupTarget) *string { return v.TargetId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the target.. Value must be one of `Group`, `Service`, `EscalationPolicy`.
+// The type of the target.. Value must be one of `Group`, `Service`, `Functionality`, `EscalationPolicy`.
 func (o AlertGroupTargetOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertGroupTarget) *string { return v.TargetType }).(pulumi.StringPtrOutput)
 }
@@ -214,6 +486,502 @@ func (o AlertGroupTargetArrayOutput) Index(i pulumi.IntInput) AlertGroupTargetOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertGroupTarget {
 		return vs[0].([]AlertGroupTarget)[vs[1].(int)]
 	}).(AlertGroupTargetOutput)
+}
+
+type AlertRouteRule struct {
+	// Must be specified if `fallbackRule` is `false`.
+	ConditionGroups []AlertRouteRuleConditionGroup `pulumi:"conditionGroups"`
+	Destinations    []AlertRouteRuleDestination    `pulumi:"destinations"`
+	// Whether this is a fallback rule. Must be `true` if `conditionGroups` is not specified.
+	FallbackRule *bool `pulumi:"fallbackRule"`
+	// The name of the alert routing rule
+	Name *string `pulumi:"name"`
+	// The position of the alert routing rule for ordering evaluation
+	Position *int `pulumi:"position"`
+}
+
+// AlertRouteRuleInput is an input type that accepts AlertRouteRuleArgs and AlertRouteRuleOutput values.
+// You can construct a concrete instance of `AlertRouteRuleInput` via:
+//
+//	AlertRouteRuleArgs{...}
+type AlertRouteRuleInput interface {
+	pulumi.Input
+
+	ToAlertRouteRuleOutput() AlertRouteRuleOutput
+	ToAlertRouteRuleOutputWithContext(context.Context) AlertRouteRuleOutput
+}
+
+type AlertRouteRuleArgs struct {
+	// Must be specified if `fallbackRule` is `false`.
+	ConditionGroups AlertRouteRuleConditionGroupArrayInput `pulumi:"conditionGroups"`
+	Destinations    AlertRouteRuleDestinationArrayInput    `pulumi:"destinations"`
+	// Whether this is a fallback rule. Must be `true` if `conditionGroups` is not specified.
+	FallbackRule pulumi.BoolPtrInput `pulumi:"fallbackRule"`
+	// The name of the alert routing rule
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The position of the alert routing rule for ordering evaluation
+	Position pulumi.IntPtrInput `pulumi:"position"`
+}
+
+func (AlertRouteRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRouteRule)(nil)).Elem()
+}
+
+func (i AlertRouteRuleArgs) ToAlertRouteRuleOutput() AlertRouteRuleOutput {
+	return i.ToAlertRouteRuleOutputWithContext(context.Background())
+}
+
+func (i AlertRouteRuleArgs) ToAlertRouteRuleOutputWithContext(ctx context.Context) AlertRouteRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRouteRuleOutput)
+}
+
+// AlertRouteRuleArrayInput is an input type that accepts AlertRouteRuleArray and AlertRouteRuleArrayOutput values.
+// You can construct a concrete instance of `AlertRouteRuleArrayInput` via:
+//
+//	AlertRouteRuleArray{ AlertRouteRuleArgs{...} }
+type AlertRouteRuleArrayInput interface {
+	pulumi.Input
+
+	ToAlertRouteRuleArrayOutput() AlertRouteRuleArrayOutput
+	ToAlertRouteRuleArrayOutputWithContext(context.Context) AlertRouteRuleArrayOutput
+}
+
+type AlertRouteRuleArray []AlertRouteRuleInput
+
+func (AlertRouteRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRouteRule)(nil)).Elem()
+}
+
+func (i AlertRouteRuleArray) ToAlertRouteRuleArrayOutput() AlertRouteRuleArrayOutput {
+	return i.ToAlertRouteRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRouteRuleArray) ToAlertRouteRuleArrayOutputWithContext(ctx context.Context) AlertRouteRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRouteRuleArrayOutput)
+}
+
+type AlertRouteRuleOutput struct{ *pulumi.OutputState }
+
+func (AlertRouteRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRouteRule)(nil)).Elem()
+}
+
+func (o AlertRouteRuleOutput) ToAlertRouteRuleOutput() AlertRouteRuleOutput {
+	return o
+}
+
+func (o AlertRouteRuleOutput) ToAlertRouteRuleOutputWithContext(ctx context.Context) AlertRouteRuleOutput {
+	return o
+}
+
+// Must be specified if `fallbackRule` is `false`.
+func (o AlertRouteRuleOutput) ConditionGroups() AlertRouteRuleConditionGroupArrayOutput {
+	return o.ApplyT(func(v AlertRouteRule) []AlertRouteRuleConditionGroup { return v.ConditionGroups }).(AlertRouteRuleConditionGroupArrayOutput)
+}
+
+func (o AlertRouteRuleOutput) Destinations() AlertRouteRuleDestinationArrayOutput {
+	return o.ApplyT(func(v AlertRouteRule) []AlertRouteRuleDestination { return v.Destinations }).(AlertRouteRuleDestinationArrayOutput)
+}
+
+// Whether this is a fallback rule. Must be `true` if `conditionGroups` is not specified.
+func (o AlertRouteRuleOutput) FallbackRule() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlertRouteRule) *bool { return v.FallbackRule }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the alert routing rule
+func (o AlertRouteRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRouteRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The position of the alert routing rule for ordering evaluation
+func (o AlertRouteRuleOutput) Position() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRouteRule) *int { return v.Position }).(pulumi.IntPtrOutput)
+}
+
+type AlertRouteRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRouteRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRouteRule)(nil)).Elem()
+}
+
+func (o AlertRouteRuleArrayOutput) ToAlertRouteRuleArrayOutput() AlertRouteRuleArrayOutput {
+	return o
+}
+
+func (o AlertRouteRuleArrayOutput) ToAlertRouteRuleArrayOutputWithContext(ctx context.Context) AlertRouteRuleArrayOutput {
+	return o
+}
+
+func (o AlertRouteRuleArrayOutput) Index(i pulumi.IntInput) AlertRouteRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRouteRule {
+		return vs[0].([]AlertRouteRule)[vs[1].(int)]
+	}).(AlertRouteRuleOutput)
+}
+
+type AlertRouteRuleConditionGroup struct {
+	Conditions []AlertRouteRuleConditionGroupCondition `pulumi:"conditions"`
+	// The position of the condition group
+	Position *int `pulumi:"position"`
+}
+
+// AlertRouteRuleConditionGroupInput is an input type that accepts AlertRouteRuleConditionGroupArgs and AlertRouteRuleConditionGroupOutput values.
+// You can construct a concrete instance of `AlertRouteRuleConditionGroupInput` via:
+//
+//	AlertRouteRuleConditionGroupArgs{...}
+type AlertRouteRuleConditionGroupInput interface {
+	pulumi.Input
+
+	ToAlertRouteRuleConditionGroupOutput() AlertRouteRuleConditionGroupOutput
+	ToAlertRouteRuleConditionGroupOutputWithContext(context.Context) AlertRouteRuleConditionGroupOutput
+}
+
+type AlertRouteRuleConditionGroupArgs struct {
+	Conditions AlertRouteRuleConditionGroupConditionArrayInput `pulumi:"conditions"`
+	// The position of the condition group
+	Position pulumi.IntPtrInput `pulumi:"position"`
+}
+
+func (AlertRouteRuleConditionGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRouteRuleConditionGroup)(nil)).Elem()
+}
+
+func (i AlertRouteRuleConditionGroupArgs) ToAlertRouteRuleConditionGroupOutput() AlertRouteRuleConditionGroupOutput {
+	return i.ToAlertRouteRuleConditionGroupOutputWithContext(context.Background())
+}
+
+func (i AlertRouteRuleConditionGroupArgs) ToAlertRouteRuleConditionGroupOutputWithContext(ctx context.Context) AlertRouteRuleConditionGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRouteRuleConditionGroupOutput)
+}
+
+// AlertRouteRuleConditionGroupArrayInput is an input type that accepts AlertRouteRuleConditionGroupArray and AlertRouteRuleConditionGroupArrayOutput values.
+// You can construct a concrete instance of `AlertRouteRuleConditionGroupArrayInput` via:
+//
+//	AlertRouteRuleConditionGroupArray{ AlertRouteRuleConditionGroupArgs{...} }
+type AlertRouteRuleConditionGroupArrayInput interface {
+	pulumi.Input
+
+	ToAlertRouteRuleConditionGroupArrayOutput() AlertRouteRuleConditionGroupArrayOutput
+	ToAlertRouteRuleConditionGroupArrayOutputWithContext(context.Context) AlertRouteRuleConditionGroupArrayOutput
+}
+
+type AlertRouteRuleConditionGroupArray []AlertRouteRuleConditionGroupInput
+
+func (AlertRouteRuleConditionGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRouteRuleConditionGroup)(nil)).Elem()
+}
+
+func (i AlertRouteRuleConditionGroupArray) ToAlertRouteRuleConditionGroupArrayOutput() AlertRouteRuleConditionGroupArrayOutput {
+	return i.ToAlertRouteRuleConditionGroupArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRouteRuleConditionGroupArray) ToAlertRouteRuleConditionGroupArrayOutputWithContext(ctx context.Context) AlertRouteRuleConditionGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRouteRuleConditionGroupArrayOutput)
+}
+
+type AlertRouteRuleConditionGroupOutput struct{ *pulumi.OutputState }
+
+func (AlertRouteRuleConditionGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRouteRuleConditionGroup)(nil)).Elem()
+}
+
+func (o AlertRouteRuleConditionGroupOutput) ToAlertRouteRuleConditionGroupOutput() AlertRouteRuleConditionGroupOutput {
+	return o
+}
+
+func (o AlertRouteRuleConditionGroupOutput) ToAlertRouteRuleConditionGroupOutputWithContext(ctx context.Context) AlertRouteRuleConditionGroupOutput {
+	return o
+}
+
+func (o AlertRouteRuleConditionGroupOutput) Conditions() AlertRouteRuleConditionGroupConditionArrayOutput {
+	return o.ApplyT(func(v AlertRouteRuleConditionGroup) []AlertRouteRuleConditionGroupCondition { return v.Conditions }).(AlertRouteRuleConditionGroupConditionArrayOutput)
+}
+
+// The position of the condition group
+func (o AlertRouteRuleConditionGroupOutput) Position() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleConditionGroup) *int { return v.Position }).(pulumi.IntPtrOutput)
+}
+
+type AlertRouteRuleConditionGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRouteRuleConditionGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRouteRuleConditionGroup)(nil)).Elem()
+}
+
+func (o AlertRouteRuleConditionGroupArrayOutput) ToAlertRouteRuleConditionGroupArrayOutput() AlertRouteRuleConditionGroupArrayOutput {
+	return o
+}
+
+func (o AlertRouteRuleConditionGroupArrayOutput) ToAlertRouteRuleConditionGroupArrayOutputWithContext(ctx context.Context) AlertRouteRuleConditionGroupArrayOutput {
+	return o
+}
+
+func (o AlertRouteRuleConditionGroupArrayOutput) Index(i pulumi.IntInput) AlertRouteRuleConditionGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRouteRuleConditionGroup {
+		return vs[0].([]AlertRouteRuleConditionGroup)[vs[1].(int)]
+	}).(AlertRouteRuleConditionGroupOutput)
+}
+
+type AlertRouteRuleConditionGroupCondition struct {
+	// The Alert Urgency IDs to check in the condition
+	AlertUrgencyIds []string `pulumi:"alertUrgencyIds"`
+	// The ID of the conditionable
+	ConditionableId *string `pulumi:"conditionableId"`
+	// The type of the conditionable. Value must be one of `AlertField`.
+	ConditionableType *string `pulumi:"conditionableType"`
+	// Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`.
+	PropertyFieldConditionType *string `pulumi:"propertyFieldConditionType"`
+	// The name of the property field
+	PropertyFieldName *string `pulumi:"propertyFieldName"`
+	// Value must be one of `attribute`, `payload`, `alertField`.
+	PropertyFieldType *string `pulumi:"propertyFieldType"`
+	// The value of the property field
+	PropertyFieldValue  *string  `pulumi:"propertyFieldValue"`
+	PropertyFieldValues []string `pulumi:"propertyFieldValues"`
+}
+
+// AlertRouteRuleConditionGroupConditionInput is an input type that accepts AlertRouteRuleConditionGroupConditionArgs and AlertRouteRuleConditionGroupConditionOutput values.
+// You can construct a concrete instance of `AlertRouteRuleConditionGroupConditionInput` via:
+//
+//	AlertRouteRuleConditionGroupConditionArgs{...}
+type AlertRouteRuleConditionGroupConditionInput interface {
+	pulumi.Input
+
+	ToAlertRouteRuleConditionGroupConditionOutput() AlertRouteRuleConditionGroupConditionOutput
+	ToAlertRouteRuleConditionGroupConditionOutputWithContext(context.Context) AlertRouteRuleConditionGroupConditionOutput
+}
+
+type AlertRouteRuleConditionGroupConditionArgs struct {
+	// The Alert Urgency IDs to check in the condition
+	AlertUrgencyIds pulumi.StringArrayInput `pulumi:"alertUrgencyIds"`
+	// The ID of the conditionable
+	ConditionableId pulumi.StringPtrInput `pulumi:"conditionableId"`
+	// The type of the conditionable. Value must be one of `AlertField`.
+	ConditionableType pulumi.StringPtrInput `pulumi:"conditionableType"`
+	// Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`.
+	PropertyFieldConditionType pulumi.StringPtrInput `pulumi:"propertyFieldConditionType"`
+	// The name of the property field
+	PropertyFieldName pulumi.StringPtrInput `pulumi:"propertyFieldName"`
+	// Value must be one of `attribute`, `payload`, `alertField`.
+	PropertyFieldType pulumi.StringPtrInput `pulumi:"propertyFieldType"`
+	// The value of the property field
+	PropertyFieldValue  pulumi.StringPtrInput   `pulumi:"propertyFieldValue"`
+	PropertyFieldValues pulumi.StringArrayInput `pulumi:"propertyFieldValues"`
+}
+
+func (AlertRouteRuleConditionGroupConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRouteRuleConditionGroupCondition)(nil)).Elem()
+}
+
+func (i AlertRouteRuleConditionGroupConditionArgs) ToAlertRouteRuleConditionGroupConditionOutput() AlertRouteRuleConditionGroupConditionOutput {
+	return i.ToAlertRouteRuleConditionGroupConditionOutputWithContext(context.Background())
+}
+
+func (i AlertRouteRuleConditionGroupConditionArgs) ToAlertRouteRuleConditionGroupConditionOutputWithContext(ctx context.Context) AlertRouteRuleConditionGroupConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRouteRuleConditionGroupConditionOutput)
+}
+
+// AlertRouteRuleConditionGroupConditionArrayInput is an input type that accepts AlertRouteRuleConditionGroupConditionArray and AlertRouteRuleConditionGroupConditionArrayOutput values.
+// You can construct a concrete instance of `AlertRouteRuleConditionGroupConditionArrayInput` via:
+//
+//	AlertRouteRuleConditionGroupConditionArray{ AlertRouteRuleConditionGroupConditionArgs{...} }
+type AlertRouteRuleConditionGroupConditionArrayInput interface {
+	pulumi.Input
+
+	ToAlertRouteRuleConditionGroupConditionArrayOutput() AlertRouteRuleConditionGroupConditionArrayOutput
+	ToAlertRouteRuleConditionGroupConditionArrayOutputWithContext(context.Context) AlertRouteRuleConditionGroupConditionArrayOutput
+}
+
+type AlertRouteRuleConditionGroupConditionArray []AlertRouteRuleConditionGroupConditionInput
+
+func (AlertRouteRuleConditionGroupConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRouteRuleConditionGroupCondition)(nil)).Elem()
+}
+
+func (i AlertRouteRuleConditionGroupConditionArray) ToAlertRouteRuleConditionGroupConditionArrayOutput() AlertRouteRuleConditionGroupConditionArrayOutput {
+	return i.ToAlertRouteRuleConditionGroupConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRouteRuleConditionGroupConditionArray) ToAlertRouteRuleConditionGroupConditionArrayOutputWithContext(ctx context.Context) AlertRouteRuleConditionGroupConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRouteRuleConditionGroupConditionArrayOutput)
+}
+
+type AlertRouteRuleConditionGroupConditionOutput struct{ *pulumi.OutputState }
+
+func (AlertRouteRuleConditionGroupConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRouteRuleConditionGroupCondition)(nil)).Elem()
+}
+
+func (o AlertRouteRuleConditionGroupConditionOutput) ToAlertRouteRuleConditionGroupConditionOutput() AlertRouteRuleConditionGroupConditionOutput {
+	return o
+}
+
+func (o AlertRouteRuleConditionGroupConditionOutput) ToAlertRouteRuleConditionGroupConditionOutputWithContext(ctx context.Context) AlertRouteRuleConditionGroupConditionOutput {
+	return o
+}
+
+// The Alert Urgency IDs to check in the condition
+func (o AlertRouteRuleConditionGroupConditionOutput) AlertUrgencyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRouteRuleConditionGroupCondition) []string { return v.AlertUrgencyIds }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the conditionable
+func (o AlertRouteRuleConditionGroupConditionOutput) ConditionableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleConditionGroupCondition) *string { return v.ConditionableId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the conditionable. Value must be one of `AlertField`.
+func (o AlertRouteRuleConditionGroupConditionOutput) ConditionableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleConditionGroupCondition) *string { return v.ConditionableType }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`.
+func (o AlertRouteRuleConditionGroupConditionOutput) PropertyFieldConditionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleConditionGroupCondition) *string { return v.PropertyFieldConditionType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the property field
+func (o AlertRouteRuleConditionGroupConditionOutput) PropertyFieldName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleConditionGroupCondition) *string { return v.PropertyFieldName }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `attribute`, `payload`, `alertField`.
+func (o AlertRouteRuleConditionGroupConditionOutput) PropertyFieldType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleConditionGroupCondition) *string { return v.PropertyFieldType }).(pulumi.StringPtrOutput)
+}
+
+// The value of the property field
+func (o AlertRouteRuleConditionGroupConditionOutput) PropertyFieldValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleConditionGroupCondition) *string { return v.PropertyFieldValue }).(pulumi.StringPtrOutput)
+}
+
+func (o AlertRouteRuleConditionGroupConditionOutput) PropertyFieldValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRouteRuleConditionGroupCondition) []string { return v.PropertyFieldValues }).(pulumi.StringArrayOutput)
+}
+
+type AlertRouteRuleConditionGroupConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRouteRuleConditionGroupConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRouteRuleConditionGroupCondition)(nil)).Elem()
+}
+
+func (o AlertRouteRuleConditionGroupConditionArrayOutput) ToAlertRouteRuleConditionGroupConditionArrayOutput() AlertRouteRuleConditionGroupConditionArrayOutput {
+	return o
+}
+
+func (o AlertRouteRuleConditionGroupConditionArrayOutput) ToAlertRouteRuleConditionGroupConditionArrayOutputWithContext(ctx context.Context) AlertRouteRuleConditionGroupConditionArrayOutput {
+	return o
+}
+
+func (o AlertRouteRuleConditionGroupConditionArrayOutput) Index(i pulumi.IntInput) AlertRouteRuleConditionGroupConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRouteRuleConditionGroupCondition {
+		return vs[0].([]AlertRouteRuleConditionGroupCondition)[vs[1].(int)]
+	}).(AlertRouteRuleConditionGroupConditionOutput)
+}
+
+type AlertRouteRuleDestination struct {
+	// The ID of the target
+	TargetId *string `pulumi:"targetId"`
+	// The type of the target. Value must be one of `Service`, `Group`, `EscalationPolicy`.
+	TargetType *string `pulumi:"targetType"`
+}
+
+// AlertRouteRuleDestinationInput is an input type that accepts AlertRouteRuleDestinationArgs and AlertRouteRuleDestinationOutput values.
+// You can construct a concrete instance of `AlertRouteRuleDestinationInput` via:
+//
+//	AlertRouteRuleDestinationArgs{...}
+type AlertRouteRuleDestinationInput interface {
+	pulumi.Input
+
+	ToAlertRouteRuleDestinationOutput() AlertRouteRuleDestinationOutput
+	ToAlertRouteRuleDestinationOutputWithContext(context.Context) AlertRouteRuleDestinationOutput
+}
+
+type AlertRouteRuleDestinationArgs struct {
+	// The ID of the target
+	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
+	// The type of the target. Value must be one of `Service`, `Group`, `EscalationPolicy`.
+	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
+}
+
+func (AlertRouteRuleDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRouteRuleDestination)(nil)).Elem()
+}
+
+func (i AlertRouteRuleDestinationArgs) ToAlertRouteRuleDestinationOutput() AlertRouteRuleDestinationOutput {
+	return i.ToAlertRouteRuleDestinationOutputWithContext(context.Background())
+}
+
+func (i AlertRouteRuleDestinationArgs) ToAlertRouteRuleDestinationOutputWithContext(ctx context.Context) AlertRouteRuleDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRouteRuleDestinationOutput)
+}
+
+// AlertRouteRuleDestinationArrayInput is an input type that accepts AlertRouteRuleDestinationArray and AlertRouteRuleDestinationArrayOutput values.
+// You can construct a concrete instance of `AlertRouteRuleDestinationArrayInput` via:
+//
+//	AlertRouteRuleDestinationArray{ AlertRouteRuleDestinationArgs{...} }
+type AlertRouteRuleDestinationArrayInput interface {
+	pulumi.Input
+
+	ToAlertRouteRuleDestinationArrayOutput() AlertRouteRuleDestinationArrayOutput
+	ToAlertRouteRuleDestinationArrayOutputWithContext(context.Context) AlertRouteRuleDestinationArrayOutput
+}
+
+type AlertRouteRuleDestinationArray []AlertRouteRuleDestinationInput
+
+func (AlertRouteRuleDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRouteRuleDestination)(nil)).Elem()
+}
+
+func (i AlertRouteRuleDestinationArray) ToAlertRouteRuleDestinationArrayOutput() AlertRouteRuleDestinationArrayOutput {
+	return i.ToAlertRouteRuleDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRouteRuleDestinationArray) ToAlertRouteRuleDestinationArrayOutputWithContext(ctx context.Context) AlertRouteRuleDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRouteRuleDestinationArrayOutput)
+}
+
+type AlertRouteRuleDestinationOutput struct{ *pulumi.OutputState }
+
+func (AlertRouteRuleDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRouteRuleDestination)(nil)).Elem()
+}
+
+func (o AlertRouteRuleDestinationOutput) ToAlertRouteRuleDestinationOutput() AlertRouteRuleDestinationOutput {
+	return o
+}
+
+func (o AlertRouteRuleDestinationOutput) ToAlertRouteRuleDestinationOutputWithContext(ctx context.Context) AlertRouteRuleDestinationOutput {
+	return o
+}
+
+// The ID of the target
+func (o AlertRouteRuleDestinationOutput) TargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleDestination) *string { return v.TargetId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the target. Value must be one of `Service`, `Group`, `EscalationPolicy`.
+func (o AlertRouteRuleDestinationOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleDestination) *string { return v.TargetType }).(pulumi.StringPtrOutput)
+}
+
+type AlertRouteRuleDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRouteRuleDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRouteRuleDestination)(nil)).Elem()
+}
+
+func (o AlertRouteRuleDestinationArrayOutput) ToAlertRouteRuleDestinationArrayOutput() AlertRouteRuleDestinationArrayOutput {
+	return o
+}
+
+func (o AlertRouteRuleDestinationArrayOutput) ToAlertRouteRuleDestinationArrayOutputWithContext(ctx context.Context) AlertRouteRuleDestinationArrayOutput {
+	return o
+}
+
+func (o AlertRouteRuleDestinationArrayOutput) Index(i pulumi.IntInput) AlertRouteRuleDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRouteRuleDestination {
+		return vs[0].([]AlertRouteRuleDestination)[vs[1].(int)]
+	}).(AlertRouteRuleDestinationOutput)
 }
 
 type AlertRoutingRuleCondition struct {
@@ -349,10 +1117,321 @@ func (o AlertRoutingRuleConditionArrayOutput) Index(i pulumi.IntInput) AlertRout
 	}).(AlertRoutingRuleConditionOutput)
 }
 
+type AlertRoutingRuleConditionGroup struct {
+	// The conditions within this group
+	Conditions []AlertRoutingRuleConditionGroupCondition `pulumi:"conditions"`
+	// Date of creation
+	CreatedAt *string `pulumi:"createdAt"`
+	// Unique ID of the condition group
+	Id *string `pulumi:"id"`
+	// The position of the condition group for ordering
+	Position *int `pulumi:"position"`
+	// Date of last update
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// AlertRoutingRuleConditionGroupInput is an input type that accepts AlertRoutingRuleConditionGroupArgs and AlertRoutingRuleConditionGroupOutput values.
+// You can construct a concrete instance of `AlertRoutingRuleConditionGroupInput` via:
+//
+//	AlertRoutingRuleConditionGroupArgs{...}
+type AlertRoutingRuleConditionGroupInput interface {
+	pulumi.Input
+
+	ToAlertRoutingRuleConditionGroupOutput() AlertRoutingRuleConditionGroupOutput
+	ToAlertRoutingRuleConditionGroupOutputWithContext(context.Context) AlertRoutingRuleConditionGroupOutput
+}
+
+type AlertRoutingRuleConditionGroupArgs struct {
+	// The conditions within this group
+	Conditions AlertRoutingRuleConditionGroupConditionArrayInput `pulumi:"conditions"`
+	// Date of creation
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Unique ID of the condition group
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The position of the condition group for ordering
+	Position pulumi.IntPtrInput `pulumi:"position"`
+	// Date of last update
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (AlertRoutingRuleConditionGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRoutingRuleConditionGroup)(nil)).Elem()
+}
+
+func (i AlertRoutingRuleConditionGroupArgs) ToAlertRoutingRuleConditionGroupOutput() AlertRoutingRuleConditionGroupOutput {
+	return i.ToAlertRoutingRuleConditionGroupOutputWithContext(context.Background())
+}
+
+func (i AlertRoutingRuleConditionGroupArgs) ToAlertRoutingRuleConditionGroupOutputWithContext(ctx context.Context) AlertRoutingRuleConditionGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRoutingRuleConditionGroupOutput)
+}
+
+// AlertRoutingRuleConditionGroupArrayInput is an input type that accepts AlertRoutingRuleConditionGroupArray and AlertRoutingRuleConditionGroupArrayOutput values.
+// You can construct a concrete instance of `AlertRoutingRuleConditionGroupArrayInput` via:
+//
+//	AlertRoutingRuleConditionGroupArray{ AlertRoutingRuleConditionGroupArgs{...} }
+type AlertRoutingRuleConditionGroupArrayInput interface {
+	pulumi.Input
+
+	ToAlertRoutingRuleConditionGroupArrayOutput() AlertRoutingRuleConditionGroupArrayOutput
+	ToAlertRoutingRuleConditionGroupArrayOutputWithContext(context.Context) AlertRoutingRuleConditionGroupArrayOutput
+}
+
+type AlertRoutingRuleConditionGroupArray []AlertRoutingRuleConditionGroupInput
+
+func (AlertRoutingRuleConditionGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRoutingRuleConditionGroup)(nil)).Elem()
+}
+
+func (i AlertRoutingRuleConditionGroupArray) ToAlertRoutingRuleConditionGroupArrayOutput() AlertRoutingRuleConditionGroupArrayOutput {
+	return i.ToAlertRoutingRuleConditionGroupArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRoutingRuleConditionGroupArray) ToAlertRoutingRuleConditionGroupArrayOutputWithContext(ctx context.Context) AlertRoutingRuleConditionGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRoutingRuleConditionGroupArrayOutput)
+}
+
+type AlertRoutingRuleConditionGroupOutput struct{ *pulumi.OutputState }
+
+func (AlertRoutingRuleConditionGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRoutingRuleConditionGroup)(nil)).Elem()
+}
+
+func (o AlertRoutingRuleConditionGroupOutput) ToAlertRoutingRuleConditionGroupOutput() AlertRoutingRuleConditionGroupOutput {
+	return o
+}
+
+func (o AlertRoutingRuleConditionGroupOutput) ToAlertRoutingRuleConditionGroupOutputWithContext(ctx context.Context) AlertRoutingRuleConditionGroupOutput {
+	return o
+}
+
+// The conditions within this group
+func (o AlertRoutingRuleConditionGroupOutput) Conditions() AlertRoutingRuleConditionGroupConditionArrayOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroup) []AlertRoutingRuleConditionGroupCondition { return v.Conditions }).(AlertRoutingRuleConditionGroupConditionArrayOutput)
+}
+
+// Date of creation
+func (o AlertRoutingRuleConditionGroupOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroup) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of the condition group
+func (o AlertRoutingRuleConditionGroupOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The position of the condition group for ordering
+func (o AlertRoutingRuleConditionGroupOutput) Position() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroup) *int { return v.Position }).(pulumi.IntPtrOutput)
+}
+
+// Date of last update
+func (o AlertRoutingRuleConditionGroupOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroup) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type AlertRoutingRuleConditionGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRoutingRuleConditionGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRoutingRuleConditionGroup)(nil)).Elem()
+}
+
+func (o AlertRoutingRuleConditionGroupArrayOutput) ToAlertRoutingRuleConditionGroupArrayOutput() AlertRoutingRuleConditionGroupArrayOutput {
+	return o
+}
+
+func (o AlertRoutingRuleConditionGroupArrayOutput) ToAlertRoutingRuleConditionGroupArrayOutputWithContext(ctx context.Context) AlertRoutingRuleConditionGroupArrayOutput {
+	return o
+}
+
+func (o AlertRoutingRuleConditionGroupArrayOutput) Index(i pulumi.IntInput) AlertRoutingRuleConditionGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRoutingRuleConditionGroup {
+		return vs[0].([]AlertRoutingRuleConditionGroup)[vs[1].(int)]
+	}).(AlertRoutingRuleConditionGroupOutput)
+}
+
+type AlertRoutingRuleConditionGroupCondition struct {
+	// The ID of the conditionable object
+	ConditionableId *string `pulumi:"conditionableId"`
+	// The type of the conditionable object
+	ConditionableType *string `pulumi:"conditionableType"`
+	// Date of creation
+	CreatedAt *string `pulumi:"createdAt"`
+	// Unique ID of the condition
+	Id *string `pulumi:"id"`
+	// The condition type of the property field. Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`.
+	PropertyFieldConditionType *string `pulumi:"propertyFieldConditionType"`
+	// The name of the property field
+	PropertyFieldName *string `pulumi:"propertyFieldName"`
+	// The type of the property field. Value must be one of `attribute`, `payload`.
+	PropertyFieldType *string `pulumi:"propertyFieldType"`
+	// The value of the property field
+	PropertyFieldValue *string `pulumi:"propertyFieldValue"`
+	// The values of the property field
+	PropertyFieldValues []string `pulumi:"propertyFieldValues"`
+	// Date of last update
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// AlertRoutingRuleConditionGroupConditionInput is an input type that accepts AlertRoutingRuleConditionGroupConditionArgs and AlertRoutingRuleConditionGroupConditionOutput values.
+// You can construct a concrete instance of `AlertRoutingRuleConditionGroupConditionInput` via:
+//
+//	AlertRoutingRuleConditionGroupConditionArgs{...}
+type AlertRoutingRuleConditionGroupConditionInput interface {
+	pulumi.Input
+
+	ToAlertRoutingRuleConditionGroupConditionOutput() AlertRoutingRuleConditionGroupConditionOutput
+	ToAlertRoutingRuleConditionGroupConditionOutputWithContext(context.Context) AlertRoutingRuleConditionGroupConditionOutput
+}
+
+type AlertRoutingRuleConditionGroupConditionArgs struct {
+	// The ID of the conditionable object
+	ConditionableId pulumi.StringPtrInput `pulumi:"conditionableId"`
+	// The type of the conditionable object
+	ConditionableType pulumi.StringPtrInput `pulumi:"conditionableType"`
+	// Date of creation
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Unique ID of the condition
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The condition type of the property field. Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`.
+	PropertyFieldConditionType pulumi.StringPtrInput `pulumi:"propertyFieldConditionType"`
+	// The name of the property field
+	PropertyFieldName pulumi.StringPtrInput `pulumi:"propertyFieldName"`
+	// The type of the property field. Value must be one of `attribute`, `payload`.
+	PropertyFieldType pulumi.StringPtrInput `pulumi:"propertyFieldType"`
+	// The value of the property field
+	PropertyFieldValue pulumi.StringPtrInput `pulumi:"propertyFieldValue"`
+	// The values of the property field
+	PropertyFieldValues pulumi.StringArrayInput `pulumi:"propertyFieldValues"`
+	// Date of last update
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (AlertRoutingRuleConditionGroupConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRoutingRuleConditionGroupCondition)(nil)).Elem()
+}
+
+func (i AlertRoutingRuleConditionGroupConditionArgs) ToAlertRoutingRuleConditionGroupConditionOutput() AlertRoutingRuleConditionGroupConditionOutput {
+	return i.ToAlertRoutingRuleConditionGroupConditionOutputWithContext(context.Background())
+}
+
+func (i AlertRoutingRuleConditionGroupConditionArgs) ToAlertRoutingRuleConditionGroupConditionOutputWithContext(ctx context.Context) AlertRoutingRuleConditionGroupConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRoutingRuleConditionGroupConditionOutput)
+}
+
+// AlertRoutingRuleConditionGroupConditionArrayInput is an input type that accepts AlertRoutingRuleConditionGroupConditionArray and AlertRoutingRuleConditionGroupConditionArrayOutput values.
+// You can construct a concrete instance of `AlertRoutingRuleConditionGroupConditionArrayInput` via:
+//
+//	AlertRoutingRuleConditionGroupConditionArray{ AlertRoutingRuleConditionGroupConditionArgs{...} }
+type AlertRoutingRuleConditionGroupConditionArrayInput interface {
+	pulumi.Input
+
+	ToAlertRoutingRuleConditionGroupConditionArrayOutput() AlertRoutingRuleConditionGroupConditionArrayOutput
+	ToAlertRoutingRuleConditionGroupConditionArrayOutputWithContext(context.Context) AlertRoutingRuleConditionGroupConditionArrayOutput
+}
+
+type AlertRoutingRuleConditionGroupConditionArray []AlertRoutingRuleConditionGroupConditionInput
+
+func (AlertRoutingRuleConditionGroupConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRoutingRuleConditionGroupCondition)(nil)).Elem()
+}
+
+func (i AlertRoutingRuleConditionGroupConditionArray) ToAlertRoutingRuleConditionGroupConditionArrayOutput() AlertRoutingRuleConditionGroupConditionArrayOutput {
+	return i.ToAlertRoutingRuleConditionGroupConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AlertRoutingRuleConditionGroupConditionArray) ToAlertRoutingRuleConditionGroupConditionArrayOutputWithContext(ctx context.Context) AlertRoutingRuleConditionGroupConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRoutingRuleConditionGroupConditionArrayOutput)
+}
+
+type AlertRoutingRuleConditionGroupConditionOutput struct{ *pulumi.OutputState }
+
+func (AlertRoutingRuleConditionGroupConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRoutingRuleConditionGroupCondition)(nil)).Elem()
+}
+
+func (o AlertRoutingRuleConditionGroupConditionOutput) ToAlertRoutingRuleConditionGroupConditionOutput() AlertRoutingRuleConditionGroupConditionOutput {
+	return o
+}
+
+func (o AlertRoutingRuleConditionGroupConditionOutput) ToAlertRoutingRuleConditionGroupConditionOutputWithContext(ctx context.Context) AlertRoutingRuleConditionGroupConditionOutput {
+	return o
+}
+
+// The ID of the conditionable object
+func (o AlertRoutingRuleConditionGroupConditionOutput) ConditionableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroupCondition) *string { return v.ConditionableId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the conditionable object
+func (o AlertRoutingRuleConditionGroupConditionOutput) ConditionableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroupCondition) *string { return v.ConditionableType }).(pulumi.StringPtrOutput)
+}
+
+// Date of creation
+func (o AlertRoutingRuleConditionGroupConditionOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroupCondition) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of the condition
+func (o AlertRoutingRuleConditionGroupConditionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroupCondition) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The condition type of the property field. Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`.
+func (o AlertRoutingRuleConditionGroupConditionOutput) PropertyFieldConditionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroupCondition) *string { return v.PropertyFieldConditionType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the property field
+func (o AlertRoutingRuleConditionGroupConditionOutput) PropertyFieldName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroupCondition) *string { return v.PropertyFieldName }).(pulumi.StringPtrOutput)
+}
+
+// The type of the property field. Value must be one of `attribute`, `payload`.
+func (o AlertRoutingRuleConditionGroupConditionOutput) PropertyFieldType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroupCondition) *string { return v.PropertyFieldType }).(pulumi.StringPtrOutput)
+}
+
+// The value of the property field
+func (o AlertRoutingRuleConditionGroupConditionOutput) PropertyFieldValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroupCondition) *string { return v.PropertyFieldValue }).(pulumi.StringPtrOutput)
+}
+
+// The values of the property field
+func (o AlertRoutingRuleConditionGroupConditionOutput) PropertyFieldValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroupCondition) []string { return v.PropertyFieldValues }).(pulumi.StringArrayOutput)
+}
+
+// Date of last update
+func (o AlertRoutingRuleConditionGroupConditionOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRoutingRuleConditionGroupCondition) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type AlertRoutingRuleConditionGroupConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertRoutingRuleConditionGroupConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertRoutingRuleConditionGroupCondition)(nil)).Elem()
+}
+
+func (o AlertRoutingRuleConditionGroupConditionArrayOutput) ToAlertRoutingRuleConditionGroupConditionArrayOutput() AlertRoutingRuleConditionGroupConditionArrayOutput {
+	return o
+}
+
+func (o AlertRoutingRuleConditionGroupConditionArrayOutput) ToAlertRoutingRuleConditionGroupConditionArrayOutputWithContext(ctx context.Context) AlertRoutingRuleConditionGroupConditionArrayOutput {
+	return o
+}
+
+func (o AlertRoutingRuleConditionGroupConditionArrayOutput) Index(i pulumi.IntInput) AlertRoutingRuleConditionGroupConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRoutingRuleConditionGroupCondition {
+		return vs[0].([]AlertRoutingRuleConditionGroupCondition)[vs[1].(int)]
+	}).(AlertRoutingRuleConditionGroupConditionOutput)
+}
+
 type AlertRoutingRuleDestination struct {
 	// The ID of the target
-	TargetId *string `pulumi:"targetId"`
-	// The type of the target. Value must be one of `Group`, `Service`, `EscalationPolicy`.
+	TargetId string `pulumi:"targetId"`
+	// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
 	TargetType *string `pulumi:"targetType"`
 }
 
@@ -369,8 +1448,8 @@ type AlertRoutingRuleDestinationInput interface {
 
 type AlertRoutingRuleDestinationArgs struct {
 	// The ID of the target
-	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
-	// The type of the target. Value must be one of `Group`, `Service`, `EscalationPolicy`.
+	TargetId pulumi.StringInput `pulumi:"targetId"`
+	// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
 	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
 }
 
@@ -452,11 +1531,11 @@ func (o AlertRoutingRuleDestinationOutput) ToAlertRoutingRuleDestinationPtrOutpu
 }
 
 // The ID of the target
-func (o AlertRoutingRuleDestinationOutput) TargetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AlertRoutingRuleDestination) *string { return v.TargetId }).(pulumi.StringPtrOutput)
+func (o AlertRoutingRuleDestinationOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertRoutingRuleDestination) string { return v.TargetId }).(pulumi.StringOutput)
 }
 
-// The type of the target. Value must be one of `Group`, `Service`, `EscalationPolicy`.
+// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
 func (o AlertRoutingRuleDestinationOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertRoutingRuleDestination) *string { return v.TargetType }).(pulumi.StringPtrOutput)
 }
@@ -491,11 +1570,11 @@ func (o AlertRoutingRuleDestinationPtrOutput) TargetId() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return v.TargetId
+		return &v.TargetId
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of the target. Value must be one of `Group`, `Service`, `EscalationPolicy`.
+// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
 func (o AlertRoutingRuleDestinationPtrOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertRoutingRuleDestination) *string {
 		if v == nil {
@@ -505,11 +1584,127 @@ func (o AlertRoutingRuleDestinationPtrOutput) TargetType() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+type AlertsSourceAlertSourceFieldsAttribute struct {
+	// The ID of the alert field
+	AlertFieldId *string `pulumi:"alertFieldId"`
+	// Liquid expression to extract a specific value from the alert's payload for evaluation
+	TemplateBody *string `pulumi:"templateBody"`
+}
+
+// AlertsSourceAlertSourceFieldsAttributeInput is an input type that accepts AlertsSourceAlertSourceFieldsAttributeArgs and AlertsSourceAlertSourceFieldsAttributeOutput values.
+// You can construct a concrete instance of `AlertsSourceAlertSourceFieldsAttributeInput` via:
+//
+//	AlertsSourceAlertSourceFieldsAttributeArgs{...}
+type AlertsSourceAlertSourceFieldsAttributeInput interface {
+	pulumi.Input
+
+	ToAlertsSourceAlertSourceFieldsAttributeOutput() AlertsSourceAlertSourceFieldsAttributeOutput
+	ToAlertsSourceAlertSourceFieldsAttributeOutputWithContext(context.Context) AlertsSourceAlertSourceFieldsAttributeOutput
+}
+
+type AlertsSourceAlertSourceFieldsAttributeArgs struct {
+	// The ID of the alert field
+	AlertFieldId pulumi.StringPtrInput `pulumi:"alertFieldId"`
+	// Liquid expression to extract a specific value from the alert's payload for evaluation
+	TemplateBody pulumi.StringPtrInput `pulumi:"templateBody"`
+}
+
+func (AlertsSourceAlertSourceFieldsAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertsSourceAlertSourceFieldsAttribute)(nil)).Elem()
+}
+
+func (i AlertsSourceAlertSourceFieldsAttributeArgs) ToAlertsSourceAlertSourceFieldsAttributeOutput() AlertsSourceAlertSourceFieldsAttributeOutput {
+	return i.ToAlertsSourceAlertSourceFieldsAttributeOutputWithContext(context.Background())
+}
+
+func (i AlertsSourceAlertSourceFieldsAttributeArgs) ToAlertsSourceAlertSourceFieldsAttributeOutputWithContext(ctx context.Context) AlertsSourceAlertSourceFieldsAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertsSourceAlertSourceFieldsAttributeOutput)
+}
+
+// AlertsSourceAlertSourceFieldsAttributeArrayInput is an input type that accepts AlertsSourceAlertSourceFieldsAttributeArray and AlertsSourceAlertSourceFieldsAttributeArrayOutput values.
+// You can construct a concrete instance of `AlertsSourceAlertSourceFieldsAttributeArrayInput` via:
+//
+//	AlertsSourceAlertSourceFieldsAttributeArray{ AlertsSourceAlertSourceFieldsAttributeArgs{...} }
+type AlertsSourceAlertSourceFieldsAttributeArrayInput interface {
+	pulumi.Input
+
+	ToAlertsSourceAlertSourceFieldsAttributeArrayOutput() AlertsSourceAlertSourceFieldsAttributeArrayOutput
+	ToAlertsSourceAlertSourceFieldsAttributeArrayOutputWithContext(context.Context) AlertsSourceAlertSourceFieldsAttributeArrayOutput
+}
+
+type AlertsSourceAlertSourceFieldsAttributeArray []AlertsSourceAlertSourceFieldsAttributeInput
+
+func (AlertsSourceAlertSourceFieldsAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertsSourceAlertSourceFieldsAttribute)(nil)).Elem()
+}
+
+func (i AlertsSourceAlertSourceFieldsAttributeArray) ToAlertsSourceAlertSourceFieldsAttributeArrayOutput() AlertsSourceAlertSourceFieldsAttributeArrayOutput {
+	return i.ToAlertsSourceAlertSourceFieldsAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i AlertsSourceAlertSourceFieldsAttributeArray) ToAlertsSourceAlertSourceFieldsAttributeArrayOutputWithContext(ctx context.Context) AlertsSourceAlertSourceFieldsAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertsSourceAlertSourceFieldsAttributeArrayOutput)
+}
+
+type AlertsSourceAlertSourceFieldsAttributeOutput struct{ *pulumi.OutputState }
+
+func (AlertsSourceAlertSourceFieldsAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertsSourceAlertSourceFieldsAttribute)(nil)).Elem()
+}
+
+func (o AlertsSourceAlertSourceFieldsAttributeOutput) ToAlertsSourceAlertSourceFieldsAttributeOutput() AlertsSourceAlertSourceFieldsAttributeOutput {
+	return o
+}
+
+func (o AlertsSourceAlertSourceFieldsAttributeOutput) ToAlertsSourceAlertSourceFieldsAttributeOutputWithContext(ctx context.Context) AlertsSourceAlertSourceFieldsAttributeOutput {
+	return o
+}
+
+// The ID of the alert field
+func (o AlertsSourceAlertSourceFieldsAttributeOutput) AlertFieldId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceAlertSourceFieldsAttribute) *string { return v.AlertFieldId }).(pulumi.StringPtrOutput)
+}
+
+// Liquid expression to extract a specific value from the alert's payload for evaluation
+func (o AlertsSourceAlertSourceFieldsAttributeOutput) TemplateBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceAlertSourceFieldsAttribute) *string { return v.TemplateBody }).(pulumi.StringPtrOutput)
+}
+
+type AlertsSourceAlertSourceFieldsAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertsSourceAlertSourceFieldsAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertsSourceAlertSourceFieldsAttribute)(nil)).Elem()
+}
+
+func (o AlertsSourceAlertSourceFieldsAttributeArrayOutput) ToAlertsSourceAlertSourceFieldsAttributeArrayOutput() AlertsSourceAlertSourceFieldsAttributeArrayOutput {
+	return o
+}
+
+func (o AlertsSourceAlertSourceFieldsAttributeArrayOutput) ToAlertsSourceAlertSourceFieldsAttributeArrayOutputWithContext(ctx context.Context) AlertsSourceAlertSourceFieldsAttributeArrayOutput {
+	return o
+}
+
+func (o AlertsSourceAlertSourceFieldsAttributeArrayOutput) Index(i pulumi.IntInput) AlertsSourceAlertSourceFieldsAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertsSourceAlertSourceFieldsAttribute {
+		return vs[0].([]AlertsSourceAlertSourceFieldsAttribute)[vs[1].(int)]
+	}).(AlertsSourceAlertSourceFieldsAttributeOutput)
+}
+
 type AlertsSourceAlertSourceUrgencyRulesAttribute struct {
-	AlertUrgencyId string `pulumi:"alertUrgencyId"`
-	JsonPath       string `pulumi:"jsonPath"`
-	Operator       string `pulumi:"operator"`
-	Value          string `pulumi:"value"`
+	// The ID of the alert urgency
+	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
+	// The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+	ConditionableId *string `pulumi:"conditionableId"`
+	// The type of the conditionable. Value must be one of `AlertField or (empty string)`.
+	ConditionableType *string `pulumi:"conditionableType"`
+	// JSON path expression to extract a specific value from the alert's payload for evaluation
+	JsonPath *string `pulumi:"jsonPath"`
+	// The kind of the conditionable. Value must be one of `payload`, `alertField`.
+	Kind *string `pulumi:"kind"`
+	// Comparison operator used to evaluate the extracted value against the specified condition. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`.
+	Operator *string `pulumi:"operator"`
+	// Value that the extracted payload data is compared to using the specified operator to determine a match
+	Value *string `pulumi:"value"`
 }
 
 // AlertsSourceAlertSourceUrgencyRulesAttributeInput is an input type that accepts AlertsSourceAlertSourceUrgencyRulesAttributeArgs and AlertsSourceAlertSourceUrgencyRulesAttributeOutput values.
@@ -524,10 +1719,20 @@ type AlertsSourceAlertSourceUrgencyRulesAttributeInput interface {
 }
 
 type AlertsSourceAlertSourceUrgencyRulesAttributeArgs struct {
-	AlertUrgencyId pulumi.StringInput `pulumi:"alertUrgencyId"`
-	JsonPath       pulumi.StringInput `pulumi:"jsonPath"`
-	Operator       pulumi.StringInput `pulumi:"operator"`
-	Value          pulumi.StringInput `pulumi:"value"`
+	// The ID of the alert urgency
+	AlertUrgencyId pulumi.StringPtrInput `pulumi:"alertUrgencyId"`
+	// The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+	ConditionableId pulumi.StringPtrInput `pulumi:"conditionableId"`
+	// The type of the conditionable. Value must be one of `AlertField or (empty string)`.
+	ConditionableType pulumi.StringPtrInput `pulumi:"conditionableType"`
+	// JSON path expression to extract a specific value from the alert's payload for evaluation
+	JsonPath pulumi.StringPtrInput `pulumi:"jsonPath"`
+	// The kind of the conditionable. Value must be one of `payload`, `alertField`.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Comparison operator used to evaluate the extracted value against the specified condition. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Value that the extracted payload data is compared to using the specified operator to determine a match
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (AlertsSourceAlertSourceUrgencyRulesAttributeArgs) ElementType() reflect.Type {
@@ -581,20 +1786,39 @@ func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) ToAlertsSourceAlertS
 	return o
 }
 
-func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) AlertUrgencyId() pulumi.StringOutput {
-	return o.ApplyT(func(v AlertsSourceAlertSourceUrgencyRulesAttribute) string { return v.AlertUrgencyId }).(pulumi.StringOutput)
+// The ID of the alert urgency
+func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) AlertUrgencyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceAlertSourceUrgencyRulesAttribute) *string { return v.AlertUrgencyId }).(pulumi.StringPtrOutput)
 }
 
-func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) JsonPath() pulumi.StringOutput {
-	return o.ApplyT(func(v AlertsSourceAlertSourceUrgencyRulesAttribute) string { return v.JsonPath }).(pulumi.StringOutput)
+// The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) ConditionableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceAlertSourceUrgencyRulesAttribute) *string { return v.ConditionableId }).(pulumi.StringPtrOutput)
 }
 
-func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v AlertsSourceAlertSourceUrgencyRulesAttribute) string { return v.Operator }).(pulumi.StringOutput)
+// The type of the conditionable. Value must be one of `AlertField or (empty string)`.
+func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) ConditionableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceAlertSourceUrgencyRulesAttribute) *string { return v.ConditionableType }).(pulumi.StringPtrOutput)
 }
 
-func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v AlertsSourceAlertSourceUrgencyRulesAttribute) string { return v.Value }).(pulumi.StringOutput)
+// JSON path expression to extract a specific value from the alert's payload for evaluation
+func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) JsonPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceAlertSourceUrgencyRulesAttribute) *string { return v.JsonPath }).(pulumi.StringPtrOutput)
+}
+
+// The kind of the conditionable. Value must be one of `payload`, `alertField`.
+func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceAlertSourceUrgencyRulesAttribute) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Comparison operator used to evaluate the extracted value against the specified condition. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`.
+func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceAlertSourceUrgencyRulesAttribute) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Value that the extracted payload data is compared to using the specified operator to determine a match
+func (o AlertsSourceAlertSourceUrgencyRulesAttributeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceAlertSourceUrgencyRulesAttribute) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type AlertsSourceAlertSourceUrgencyRulesAttributeArrayOutput struct{ *pulumi.OutputState }
@@ -618,9 +1842,12 @@ func (o AlertsSourceAlertSourceUrgencyRulesAttributeArrayOutput) Index(i pulumi.
 }
 
 type AlertsSourceAlertTemplateAttributes struct {
+	// The alert description.
 	Description *string `pulumi:"description"`
+	// The alert URL.
 	ExternalUrl *string `pulumi:"externalUrl"`
-	Title       *string `pulumi:"title"`
+	// The alert title.
+	Title *string `pulumi:"title"`
 }
 
 // AlertsSourceAlertTemplateAttributesInput is an input type that accepts AlertsSourceAlertTemplateAttributesArgs and AlertsSourceAlertTemplateAttributesOutput values.
@@ -635,9 +1862,12 @@ type AlertsSourceAlertTemplateAttributesInput interface {
 }
 
 type AlertsSourceAlertTemplateAttributesArgs struct {
+	// The alert description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The alert URL.
 	ExternalUrl pulumi.StringPtrInput `pulumi:"externalUrl"`
-	Title       pulumi.StringPtrInput `pulumi:"title"`
+	// The alert title.
+	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
 func (AlertsSourceAlertTemplateAttributesArgs) ElementType() reflect.Type {
@@ -717,14 +1947,17 @@ func (o AlertsSourceAlertTemplateAttributesOutput) ToAlertsSourceAlertTemplateAt
 	}).(AlertsSourceAlertTemplateAttributesPtrOutput)
 }
 
+// The alert description.
 func (o AlertsSourceAlertTemplateAttributesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertsSourceAlertTemplateAttributes) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The alert URL.
 func (o AlertsSourceAlertTemplateAttributesOutput) ExternalUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertsSourceAlertTemplateAttributes) *string { return v.ExternalUrl }).(pulumi.StringPtrOutput)
 }
 
+// The alert title.
 func (o AlertsSourceAlertTemplateAttributesOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertsSourceAlertTemplateAttributes) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -753,6 +1986,7 @@ func (o AlertsSourceAlertTemplateAttributesPtrOutput) Elem() AlertsSourceAlertTe
 	}).(AlertsSourceAlertTemplateAttributesOutput)
 }
 
+// The alert description.
 func (o AlertsSourceAlertTemplateAttributesPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertsSourceAlertTemplateAttributes) *string {
 		if v == nil {
@@ -762,6 +1996,7 @@ func (o AlertsSourceAlertTemplateAttributesPtrOutput) Description() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The alert URL.
 func (o AlertsSourceAlertTemplateAttributesPtrOutput) ExternalUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertsSourceAlertTemplateAttributes) *string {
 		if v == nil {
@@ -771,6 +2006,7 @@ func (o AlertsSourceAlertTemplateAttributesPtrOutput) ExternalUrl() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The alert title.
 func (o AlertsSourceAlertTemplateAttributesPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertsSourceAlertTemplateAttributes) *string {
 		if v == nil {
@@ -781,11 +2017,21 @@ func (o AlertsSourceAlertTemplateAttributesPtrOutput) Title() pulumi.StringPtrOu
 }
 
 type AlertsSourceResolutionRuleAttributes struct {
-	ConditionType        *string                                                   `pulumi:"conditionType"`
+	// The type of condition to evaluate to apply auto resolution rule. Value must be one of `all`, `any`.
+	ConditionType *string `pulumi:"conditionType"`
+	// List of conditions to evaluate for auto resolution
 	ConditionsAttributes []AlertsSourceResolutionRuleAttributesConditionsAttribute `pulumi:"conditionsAttributes"`
 	Enabled              *bool                                                     `pulumi:"enabled"`
-	IdentifierJsonPath   *string                                                   `pulumi:"identifierJsonPath"`
-	IdentifierValueRegex *string                                                   `pulumi:"identifierValueRegex"`
+	// JSON path expression to extract unique alert identifier used to match triggered alerts with resolving alerts
+	IdentifierJsonPath *string `pulumi:"identifierJsonPath"`
+	// The ID of the identifier matchable. If identifier*matchable*type is AlertField, this is the ID of the alert field.
+	IdentifierMatchableId *string `pulumi:"identifierMatchableId"`
+	// The type of the identifier matchable. Value must be one of `AlertField`.
+	IdentifierMatchableType *string `pulumi:"identifierMatchableType"`
+	// The kind of the identifier reference. Value must be one of `payload`, `alertField`.
+	IdentifierReferenceKind *string `pulumi:"identifierReferenceKind"`
+	// Regex group to further specify the part of the string used as a unique identifier
+	IdentifierValueRegex *string `pulumi:"identifierValueRegex"`
 }
 
 // AlertsSourceResolutionRuleAttributesInput is an input type that accepts AlertsSourceResolutionRuleAttributesArgs and AlertsSourceResolutionRuleAttributesOutput values.
@@ -800,11 +2046,21 @@ type AlertsSourceResolutionRuleAttributesInput interface {
 }
 
 type AlertsSourceResolutionRuleAttributesArgs struct {
-	ConditionType        pulumi.StringPtrInput                                             `pulumi:"conditionType"`
+	// The type of condition to evaluate to apply auto resolution rule. Value must be one of `all`, `any`.
+	ConditionType pulumi.StringPtrInput `pulumi:"conditionType"`
+	// List of conditions to evaluate for auto resolution
 	ConditionsAttributes AlertsSourceResolutionRuleAttributesConditionsAttributeArrayInput `pulumi:"conditionsAttributes"`
 	Enabled              pulumi.BoolPtrInput                                               `pulumi:"enabled"`
-	IdentifierJsonPath   pulumi.StringPtrInput                                             `pulumi:"identifierJsonPath"`
-	IdentifierValueRegex pulumi.StringPtrInput                                             `pulumi:"identifierValueRegex"`
+	// JSON path expression to extract unique alert identifier used to match triggered alerts with resolving alerts
+	IdentifierJsonPath pulumi.StringPtrInput `pulumi:"identifierJsonPath"`
+	// The ID of the identifier matchable. If identifier*matchable*type is AlertField, this is the ID of the alert field.
+	IdentifierMatchableId pulumi.StringPtrInput `pulumi:"identifierMatchableId"`
+	// The type of the identifier matchable. Value must be one of `AlertField`.
+	IdentifierMatchableType pulumi.StringPtrInput `pulumi:"identifierMatchableType"`
+	// The kind of the identifier reference. Value must be one of `payload`, `alertField`.
+	IdentifierReferenceKind pulumi.StringPtrInput `pulumi:"identifierReferenceKind"`
+	// Regex group to further specify the part of the string used as a unique identifier
+	IdentifierValueRegex pulumi.StringPtrInput `pulumi:"identifierValueRegex"`
 }
 
 func (AlertsSourceResolutionRuleAttributesArgs) ElementType() reflect.Type {
@@ -884,10 +2140,12 @@ func (o AlertsSourceResolutionRuleAttributesOutput) ToAlertsSourceResolutionRule
 	}).(AlertsSourceResolutionRuleAttributesPtrOutput)
 }
 
+// The type of condition to evaluate to apply auto resolution rule. Value must be one of `all`, `any`.
 func (o AlertsSourceResolutionRuleAttributesOutput) ConditionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributes) *string { return v.ConditionType }).(pulumi.StringPtrOutput)
 }
 
+// List of conditions to evaluate for auto resolution
 func (o AlertsSourceResolutionRuleAttributesOutput) ConditionsAttributes() AlertsSourceResolutionRuleAttributesConditionsAttributeArrayOutput {
 	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributes) []AlertsSourceResolutionRuleAttributesConditionsAttribute {
 		return v.ConditionsAttributes
@@ -898,10 +2156,27 @@ func (o AlertsSourceResolutionRuleAttributesOutput) Enabled() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributes) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// JSON path expression to extract unique alert identifier used to match triggered alerts with resolving alerts
 func (o AlertsSourceResolutionRuleAttributesOutput) IdentifierJsonPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributes) *string { return v.IdentifierJsonPath }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the identifier matchable. If identifier*matchable*type is AlertField, this is the ID of the alert field.
+func (o AlertsSourceResolutionRuleAttributesOutput) IdentifierMatchableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributes) *string { return v.IdentifierMatchableId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the identifier matchable. Value must be one of `AlertField`.
+func (o AlertsSourceResolutionRuleAttributesOutput) IdentifierMatchableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributes) *string { return v.IdentifierMatchableType }).(pulumi.StringPtrOutput)
+}
+
+// The kind of the identifier reference. Value must be one of `payload`, `alertField`.
+func (o AlertsSourceResolutionRuleAttributesOutput) IdentifierReferenceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributes) *string { return v.IdentifierReferenceKind }).(pulumi.StringPtrOutput)
+}
+
+// Regex group to further specify the part of the string used as a unique identifier
 func (o AlertsSourceResolutionRuleAttributesOutput) IdentifierValueRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributes) *string { return v.IdentifierValueRegex }).(pulumi.StringPtrOutput)
 }
@@ -930,6 +2205,7 @@ func (o AlertsSourceResolutionRuleAttributesPtrOutput) Elem() AlertsSourceResolu
 	}).(AlertsSourceResolutionRuleAttributesOutput)
 }
 
+// The type of condition to evaluate to apply auto resolution rule. Value must be one of `all`, `any`.
 func (o AlertsSourceResolutionRuleAttributesPtrOutput) ConditionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertsSourceResolutionRuleAttributes) *string {
 		if v == nil {
@@ -939,6 +2215,7 @@ func (o AlertsSourceResolutionRuleAttributesPtrOutput) ConditionType() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of conditions to evaluate for auto resolution
 func (o AlertsSourceResolutionRuleAttributesPtrOutput) ConditionsAttributes() AlertsSourceResolutionRuleAttributesConditionsAttributeArrayOutput {
 	return o.ApplyT(func(v *AlertsSourceResolutionRuleAttributes) []AlertsSourceResolutionRuleAttributesConditionsAttribute {
 		if v == nil {
@@ -957,6 +2234,7 @@ func (o AlertsSourceResolutionRuleAttributesPtrOutput) Enabled() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// JSON path expression to extract unique alert identifier used to match triggered alerts with resolving alerts
 func (o AlertsSourceResolutionRuleAttributesPtrOutput) IdentifierJsonPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertsSourceResolutionRuleAttributes) *string {
 		if v == nil {
@@ -966,6 +2244,37 @@ func (o AlertsSourceResolutionRuleAttributesPtrOutput) IdentifierJsonPath() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The ID of the identifier matchable. If identifier*matchable*type is AlertField, this is the ID of the alert field.
+func (o AlertsSourceResolutionRuleAttributesPtrOutput) IdentifierMatchableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertsSourceResolutionRuleAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentifierMatchableId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the identifier matchable. Value must be one of `AlertField`.
+func (o AlertsSourceResolutionRuleAttributesPtrOutput) IdentifierMatchableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertsSourceResolutionRuleAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentifierMatchableType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The kind of the identifier reference. Value must be one of `payload`, `alertField`.
+func (o AlertsSourceResolutionRuleAttributesPtrOutput) IdentifierReferenceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertsSourceResolutionRuleAttributes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentifierReferenceKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Regex group to further specify the part of the string used as a unique identifier
 func (o AlertsSourceResolutionRuleAttributesPtrOutput) IdentifierValueRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertsSourceResolutionRuleAttributes) *string {
 		if v == nil {
@@ -976,9 +2285,18 @@ func (o AlertsSourceResolutionRuleAttributesPtrOutput) IdentifierValueRegex() pu
 }
 
 type AlertsSourceResolutionRuleAttributesConditionsAttribute struct {
-	Field    *string `pulumi:"field"`
+	// The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+	ConditionableId *string `pulumi:"conditionableId"`
+	// The type of the conditionable. Value must be one of `AlertField or (empty string)`.
+	ConditionableType *string `pulumi:"conditionableType"`
+	// JSON path expression to extract a specific value from the alert's payload for evaluation
+	Field *string `pulumi:"field"`
+	// The kind of the conditionable. Value must be one of `payload`, `alertField`.
+	Kind *string `pulumi:"kind"`
+	// Comparison operator used to evaluate the extracted value against the specified condition. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`, `startsWith`, `endsWith`.
 	Operator *string `pulumi:"operator"`
-	Value    *string `pulumi:"value"`
+	// Value that the extracted payload data is compared to using the specified operator to determine a match
+	Value *string `pulumi:"value"`
 }
 
 // AlertsSourceResolutionRuleAttributesConditionsAttributeInput is an input type that accepts AlertsSourceResolutionRuleAttributesConditionsAttributeArgs and AlertsSourceResolutionRuleAttributesConditionsAttributeOutput values.
@@ -993,9 +2311,18 @@ type AlertsSourceResolutionRuleAttributesConditionsAttributeInput interface {
 }
 
 type AlertsSourceResolutionRuleAttributesConditionsAttributeArgs struct {
-	Field    pulumi.StringPtrInput `pulumi:"field"`
+	// The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+	ConditionableId pulumi.StringPtrInput `pulumi:"conditionableId"`
+	// The type of the conditionable. Value must be one of `AlertField or (empty string)`.
+	ConditionableType pulumi.StringPtrInput `pulumi:"conditionableType"`
+	// JSON path expression to extract a specific value from the alert's payload for evaluation
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// The kind of the conditionable. Value must be one of `payload`, `alertField`.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Comparison operator used to evaluate the extracted value against the specified condition. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`, `startsWith`, `endsWith`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	Value    pulumi.StringPtrInput `pulumi:"value"`
+	// Value that the extracted payload data is compared to using the specified operator to determine a match
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (AlertsSourceResolutionRuleAttributesConditionsAttributeArgs) ElementType() reflect.Type {
@@ -1049,14 +2376,32 @@ func (o AlertsSourceResolutionRuleAttributesConditionsAttributeOutput) ToAlertsS
 	return o
 }
 
+// The ID of the conditionable. If conditionableType is AlertField, this is the ID of the alert field.
+func (o AlertsSourceResolutionRuleAttributesConditionsAttributeOutput) ConditionableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributesConditionsAttribute) *string { return v.ConditionableId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the conditionable. Value must be one of `AlertField or (empty string)`.
+func (o AlertsSourceResolutionRuleAttributesConditionsAttributeOutput) ConditionableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributesConditionsAttribute) *string { return v.ConditionableType }).(pulumi.StringPtrOutput)
+}
+
+// JSON path expression to extract a specific value from the alert's payload for evaluation
 func (o AlertsSourceResolutionRuleAttributesConditionsAttributeOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributesConditionsAttribute) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
+// The kind of the conditionable. Value must be one of `payload`, `alertField`.
+func (o AlertsSourceResolutionRuleAttributesConditionsAttributeOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributesConditionsAttribute) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Comparison operator used to evaluate the extracted value against the specified condition. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`, `startsWith`, `endsWith`.
 func (o AlertsSourceResolutionRuleAttributesConditionsAttributeOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributesConditionsAttribute) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
+// Value that the extracted payload data is compared to using the specified operator to determine a match
 func (o AlertsSourceResolutionRuleAttributesConditionsAttributeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertsSourceResolutionRuleAttributesConditionsAttribute) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1082,7 +2427,11 @@ func (o AlertsSourceResolutionRuleAttributesConditionsAttributeArrayOutput) Inde
 }
 
 type AlertsSourceSourceableAttributes struct {
-	AutoResolve             *bool                                                    `pulumi:"autoResolve"`
+	// Set this to false to reject threaded emails. Value must be one of true or false
+	AcceptThreadedEmails *bool `pulumi:"acceptThreadedEmails"`
+	// Set this to true to auto-resolve alerts based on field*mappings*attributes conditions. Value must be one of true or false
+	AutoResolve *bool `pulumi:"autoResolve"`
+	// Specify rules to auto resolve alerts
 	FieldMappingsAttributes []AlertsSourceSourceableAttributesFieldMappingsAttribute `pulumi:"fieldMappingsAttributes"`
 	// This value is matched with the value extracted from alerts payload using JSON path in field*mappings*attributes
 	ResolveState *string `pulumi:"resolveState"`
@@ -1100,7 +2449,11 @@ type AlertsSourceSourceableAttributesInput interface {
 }
 
 type AlertsSourceSourceableAttributesArgs struct {
-	AutoResolve             pulumi.BoolPtrInput                                              `pulumi:"autoResolve"`
+	// Set this to false to reject threaded emails. Value must be one of true or false
+	AcceptThreadedEmails pulumi.BoolPtrInput `pulumi:"acceptThreadedEmails"`
+	// Set this to true to auto-resolve alerts based on field*mappings*attributes conditions. Value must be one of true or false
+	AutoResolve pulumi.BoolPtrInput `pulumi:"autoResolve"`
+	// Specify rules to auto resolve alerts
 	FieldMappingsAttributes AlertsSourceSourceableAttributesFieldMappingsAttributeArrayInput `pulumi:"fieldMappingsAttributes"`
 	// This value is matched with the value extracted from alerts payload using JSON path in field*mappings*attributes
 	ResolveState pulumi.StringPtrInput `pulumi:"resolveState"`
@@ -1183,10 +2536,17 @@ func (o AlertsSourceSourceableAttributesOutput) ToAlertsSourceSourceableAttribut
 	}).(AlertsSourceSourceableAttributesPtrOutput)
 }
 
+// Set this to false to reject threaded emails. Value must be one of true or false
+func (o AlertsSourceSourceableAttributesOutput) AcceptThreadedEmails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlertsSourceSourceableAttributes) *bool { return v.AcceptThreadedEmails }).(pulumi.BoolPtrOutput)
+}
+
+// Set this to true to auto-resolve alerts based on field*mappings*attributes conditions. Value must be one of true or false
 func (o AlertsSourceSourceableAttributesOutput) AutoResolve() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AlertsSourceSourceableAttributes) *bool { return v.AutoResolve }).(pulumi.BoolPtrOutput)
 }
 
+// Specify rules to auto resolve alerts
 func (o AlertsSourceSourceableAttributesOutput) FieldMappingsAttributes() AlertsSourceSourceableAttributesFieldMappingsAttributeArrayOutput {
 	return o.ApplyT(func(v AlertsSourceSourceableAttributes) []AlertsSourceSourceableAttributesFieldMappingsAttribute {
 		return v.FieldMappingsAttributes
@@ -1222,6 +2582,17 @@ func (o AlertsSourceSourceableAttributesPtrOutput) Elem() AlertsSourceSourceable
 	}).(AlertsSourceSourceableAttributesOutput)
 }
 
+// Set this to false to reject threaded emails. Value must be one of true or false
+func (o AlertsSourceSourceableAttributesPtrOutput) AcceptThreadedEmails() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlertsSourceSourceableAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AcceptThreadedEmails
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set this to true to auto-resolve alerts based on field*mappings*attributes conditions. Value must be one of true or false
 func (o AlertsSourceSourceableAttributesPtrOutput) AutoResolve() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertsSourceSourceableAttributes) *bool {
 		if v == nil {
@@ -1231,6 +2602,7 @@ func (o AlertsSourceSourceableAttributesPtrOutput) AutoResolve() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Specify rules to auto resolve alerts
 func (o AlertsSourceSourceableAttributesPtrOutput) FieldMappingsAttributes() AlertsSourceSourceableAttributesFieldMappingsAttributeArrayOutput {
 	return o.ApplyT(func(v *AlertsSourceSourceableAttributes) []AlertsSourceSourceableAttributesFieldMappingsAttribute {
 		if v == nil {
@@ -1251,7 +2623,9 @@ func (o AlertsSourceSourceableAttributesPtrOutput) ResolveState() pulumi.StringP
 }
 
 type AlertsSourceSourceableAttributesFieldMappingsAttribute struct {
-	Field    *string `pulumi:"field"`
+	// Select the field on which the condition to be evaluated. Value must be one of `externalId`, `state`, `alertTitle`, `alertExternalUrl`, `notificationTargetType`, `notificationTargetId`.
+	Field *string `pulumi:"field"`
+	// JSON path expression to extract a specific value from the alert's payload for evaluation
 	JsonPath *string `pulumi:"jsonPath"`
 }
 
@@ -1267,7 +2641,9 @@ type AlertsSourceSourceableAttributesFieldMappingsAttributeInput interface {
 }
 
 type AlertsSourceSourceableAttributesFieldMappingsAttributeArgs struct {
-	Field    pulumi.StringPtrInput `pulumi:"field"`
+	// Select the field on which the condition to be evaluated. Value must be one of `externalId`, `state`, `alertTitle`, `alertExternalUrl`, `notificationTargetType`, `notificationTargetId`.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// JSON path expression to extract a specific value from the alert's payload for evaluation
 	JsonPath pulumi.StringPtrInput `pulumi:"jsonPath"`
 }
 
@@ -1322,10 +2698,12 @@ func (o AlertsSourceSourceableAttributesFieldMappingsAttributeOutput) ToAlertsSo
 	return o
 }
 
+// Select the field on which the condition to be evaluated. Value must be one of `externalId`, `state`, `alertTitle`, `alertExternalUrl`, `notificationTargetType`, `notificationTargetId`.
 func (o AlertsSourceSourceableAttributesFieldMappingsAttributeOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertsSourceSourceableAttributesFieldMappingsAttribute) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
+// JSON path expression to extract a specific value from the alert's payload for evaluation
 func (o AlertsSourceSourceableAttributesFieldMappingsAttributeOutput) JsonPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertsSourceSourceableAttributesFieldMappingsAttribute) *string { return v.JsonPath }).(pulumi.StringPtrOutput)
 }
@@ -1350,10 +2728,1204 @@ func (o AlertsSourceSourceableAttributesFieldMappingsAttributeArrayOutput) Index
 	}).(AlertsSourceSourceableAttributesFieldMappingsAttributeOutput)
 }
 
+type CatalogChecklistTemplateField struct {
+	// ID of the catalog property for custom fields
+	CatalogPropertyId *string `pulumi:"catalogPropertyId"`
+	// Key identifying the field
+	FieldKey *string `pulumi:"fieldKey"`
+	// Source of the field. Value must be one of `builtin`, `custom`.
+	FieldSource *string `pulumi:"fieldSource"`
+}
+
+// CatalogChecklistTemplateFieldInput is an input type that accepts CatalogChecklistTemplateFieldArgs and CatalogChecklistTemplateFieldOutput values.
+// You can construct a concrete instance of `CatalogChecklistTemplateFieldInput` via:
+//
+//	CatalogChecklistTemplateFieldArgs{...}
+type CatalogChecklistTemplateFieldInput interface {
+	pulumi.Input
+
+	ToCatalogChecklistTemplateFieldOutput() CatalogChecklistTemplateFieldOutput
+	ToCatalogChecklistTemplateFieldOutputWithContext(context.Context) CatalogChecklistTemplateFieldOutput
+}
+
+type CatalogChecklistTemplateFieldArgs struct {
+	// ID of the catalog property for custom fields
+	CatalogPropertyId pulumi.StringPtrInput `pulumi:"catalogPropertyId"`
+	// Key identifying the field
+	FieldKey pulumi.StringPtrInput `pulumi:"fieldKey"`
+	// Source of the field. Value must be one of `builtin`, `custom`.
+	FieldSource pulumi.StringPtrInput `pulumi:"fieldSource"`
+}
+
+func (CatalogChecklistTemplateFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogChecklistTemplateField)(nil)).Elem()
+}
+
+func (i CatalogChecklistTemplateFieldArgs) ToCatalogChecklistTemplateFieldOutput() CatalogChecklistTemplateFieldOutput {
+	return i.ToCatalogChecklistTemplateFieldOutputWithContext(context.Background())
+}
+
+func (i CatalogChecklistTemplateFieldArgs) ToCatalogChecklistTemplateFieldOutputWithContext(ctx context.Context) CatalogChecklistTemplateFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogChecklistTemplateFieldOutput)
+}
+
+// CatalogChecklistTemplateFieldArrayInput is an input type that accepts CatalogChecklistTemplateFieldArray and CatalogChecklistTemplateFieldArrayOutput values.
+// You can construct a concrete instance of `CatalogChecklistTemplateFieldArrayInput` via:
+//
+//	CatalogChecklistTemplateFieldArray{ CatalogChecklistTemplateFieldArgs{...} }
+type CatalogChecklistTemplateFieldArrayInput interface {
+	pulumi.Input
+
+	ToCatalogChecklistTemplateFieldArrayOutput() CatalogChecklistTemplateFieldArrayOutput
+	ToCatalogChecklistTemplateFieldArrayOutputWithContext(context.Context) CatalogChecklistTemplateFieldArrayOutput
+}
+
+type CatalogChecklistTemplateFieldArray []CatalogChecklistTemplateFieldInput
+
+func (CatalogChecklistTemplateFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogChecklistTemplateField)(nil)).Elem()
+}
+
+func (i CatalogChecklistTemplateFieldArray) ToCatalogChecklistTemplateFieldArrayOutput() CatalogChecklistTemplateFieldArrayOutput {
+	return i.ToCatalogChecklistTemplateFieldArrayOutputWithContext(context.Background())
+}
+
+func (i CatalogChecklistTemplateFieldArray) ToCatalogChecklistTemplateFieldArrayOutputWithContext(ctx context.Context) CatalogChecklistTemplateFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogChecklistTemplateFieldArrayOutput)
+}
+
+type CatalogChecklistTemplateFieldOutput struct{ *pulumi.OutputState }
+
+func (CatalogChecklistTemplateFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogChecklistTemplateField)(nil)).Elem()
+}
+
+func (o CatalogChecklistTemplateFieldOutput) ToCatalogChecklistTemplateFieldOutput() CatalogChecklistTemplateFieldOutput {
+	return o
+}
+
+func (o CatalogChecklistTemplateFieldOutput) ToCatalogChecklistTemplateFieldOutputWithContext(ctx context.Context) CatalogChecklistTemplateFieldOutput {
+	return o
+}
+
+// ID of the catalog property for custom fields
+func (o CatalogChecklistTemplateFieldOutput) CatalogPropertyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogChecklistTemplateField) *string { return v.CatalogPropertyId }).(pulumi.StringPtrOutput)
+}
+
+// Key identifying the field
+func (o CatalogChecklistTemplateFieldOutput) FieldKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogChecklistTemplateField) *string { return v.FieldKey }).(pulumi.StringPtrOutput)
+}
+
+// Source of the field. Value must be one of `builtin`, `custom`.
+func (o CatalogChecklistTemplateFieldOutput) FieldSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogChecklistTemplateField) *string { return v.FieldSource }).(pulumi.StringPtrOutput)
+}
+
+type CatalogChecklistTemplateFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogChecklistTemplateFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogChecklistTemplateField)(nil)).Elem()
+}
+
+func (o CatalogChecklistTemplateFieldArrayOutput) ToCatalogChecklistTemplateFieldArrayOutput() CatalogChecklistTemplateFieldArrayOutput {
+	return o
+}
+
+func (o CatalogChecklistTemplateFieldArrayOutput) ToCatalogChecklistTemplateFieldArrayOutputWithContext(ctx context.Context) CatalogChecklistTemplateFieldArrayOutput {
+	return o
+}
+
+func (o CatalogChecklistTemplateFieldArrayOutput) Index(i pulumi.IntInput) CatalogChecklistTemplateFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogChecklistTemplateField {
+		return vs[0].([]CatalogChecklistTemplateField)[vs[1].(int)]
+	}).(CatalogChecklistTemplateFieldOutput)
+}
+
+type CatalogChecklistTemplateOwner struct {
+	// User ID for user owners, or field key for field owners
+	Id *string `pulumi:"id"`
+	// Type of owner. Value must be one of `field`, `user`.
+	Type *string `pulumi:"type"`
+}
+
+// CatalogChecklistTemplateOwnerInput is an input type that accepts CatalogChecklistTemplateOwnerArgs and CatalogChecklistTemplateOwnerOutput values.
+// You can construct a concrete instance of `CatalogChecklistTemplateOwnerInput` via:
+//
+//	CatalogChecklistTemplateOwnerArgs{...}
+type CatalogChecklistTemplateOwnerInput interface {
+	pulumi.Input
+
+	ToCatalogChecklistTemplateOwnerOutput() CatalogChecklistTemplateOwnerOutput
+	ToCatalogChecklistTemplateOwnerOutputWithContext(context.Context) CatalogChecklistTemplateOwnerOutput
+}
+
+type CatalogChecklistTemplateOwnerArgs struct {
+	// User ID for user owners, or field key for field owners
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Type of owner. Value must be one of `field`, `user`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CatalogChecklistTemplateOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogChecklistTemplateOwner)(nil)).Elem()
+}
+
+func (i CatalogChecklistTemplateOwnerArgs) ToCatalogChecklistTemplateOwnerOutput() CatalogChecklistTemplateOwnerOutput {
+	return i.ToCatalogChecklistTemplateOwnerOutputWithContext(context.Background())
+}
+
+func (i CatalogChecklistTemplateOwnerArgs) ToCatalogChecklistTemplateOwnerOutputWithContext(ctx context.Context) CatalogChecklistTemplateOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogChecklistTemplateOwnerOutput)
+}
+
+// CatalogChecklistTemplateOwnerArrayInput is an input type that accepts CatalogChecklistTemplateOwnerArray and CatalogChecklistTemplateOwnerArrayOutput values.
+// You can construct a concrete instance of `CatalogChecklistTemplateOwnerArrayInput` via:
+//
+//	CatalogChecklistTemplateOwnerArray{ CatalogChecklistTemplateOwnerArgs{...} }
+type CatalogChecklistTemplateOwnerArrayInput interface {
+	pulumi.Input
+
+	ToCatalogChecklistTemplateOwnerArrayOutput() CatalogChecklistTemplateOwnerArrayOutput
+	ToCatalogChecklistTemplateOwnerArrayOutputWithContext(context.Context) CatalogChecklistTemplateOwnerArrayOutput
+}
+
+type CatalogChecklistTemplateOwnerArray []CatalogChecklistTemplateOwnerInput
+
+func (CatalogChecklistTemplateOwnerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogChecklistTemplateOwner)(nil)).Elem()
+}
+
+func (i CatalogChecklistTemplateOwnerArray) ToCatalogChecklistTemplateOwnerArrayOutput() CatalogChecklistTemplateOwnerArrayOutput {
+	return i.ToCatalogChecklistTemplateOwnerArrayOutputWithContext(context.Background())
+}
+
+func (i CatalogChecklistTemplateOwnerArray) ToCatalogChecklistTemplateOwnerArrayOutputWithContext(ctx context.Context) CatalogChecklistTemplateOwnerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogChecklistTemplateOwnerArrayOutput)
+}
+
+type CatalogChecklistTemplateOwnerOutput struct{ *pulumi.OutputState }
+
+func (CatalogChecklistTemplateOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogChecklistTemplateOwner)(nil)).Elem()
+}
+
+func (o CatalogChecklistTemplateOwnerOutput) ToCatalogChecklistTemplateOwnerOutput() CatalogChecklistTemplateOwnerOutput {
+	return o
+}
+
+func (o CatalogChecklistTemplateOwnerOutput) ToCatalogChecklistTemplateOwnerOutputWithContext(ctx context.Context) CatalogChecklistTemplateOwnerOutput {
+	return o
+}
+
+// User ID for user owners, or field key for field owners
+func (o CatalogChecklistTemplateOwnerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogChecklistTemplateOwner) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Type of owner. Value must be one of `field`, `user`.
+func (o CatalogChecklistTemplateOwnerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogChecklistTemplateOwner) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CatalogChecklistTemplateOwnerArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogChecklistTemplateOwnerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogChecklistTemplateOwner)(nil)).Elem()
+}
+
+func (o CatalogChecklistTemplateOwnerArrayOutput) ToCatalogChecklistTemplateOwnerArrayOutput() CatalogChecklistTemplateOwnerArrayOutput {
+	return o
+}
+
+func (o CatalogChecklistTemplateOwnerArrayOutput) ToCatalogChecklistTemplateOwnerArrayOutputWithContext(ctx context.Context) CatalogChecklistTemplateOwnerArrayOutput {
+	return o
+}
+
+func (o CatalogChecklistTemplateOwnerArrayOutput) Index(i pulumi.IntInput) CatalogChecklistTemplateOwnerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogChecklistTemplateOwner {
+		return vs[0].([]CatalogChecklistTemplateOwner)[vs[1].(int)]
+	}).(CatalogChecklistTemplateOwnerOutput)
+}
+
+type CatalogEntityProperty struct {
+	// Unique ID of the catalog property
+	CatalogPropertyId *string `pulumi:"catalogPropertyId"`
+	// The value for this property
+	Value *string `pulumi:"value"`
+}
+
+// CatalogEntityPropertyInput is an input type that accepts CatalogEntityPropertyArgs and CatalogEntityPropertyOutput values.
+// You can construct a concrete instance of `CatalogEntityPropertyInput` via:
+//
+//	CatalogEntityPropertyArgs{...}
+type CatalogEntityPropertyInput interface {
+	pulumi.Input
+
+	ToCatalogEntityPropertyOutput() CatalogEntityPropertyOutput
+	ToCatalogEntityPropertyOutputWithContext(context.Context) CatalogEntityPropertyOutput
+}
+
+type CatalogEntityPropertyArgs struct {
+	// Unique ID of the catalog property
+	CatalogPropertyId pulumi.StringPtrInput `pulumi:"catalogPropertyId"`
+	// The value for this property
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CatalogEntityPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogEntityProperty)(nil)).Elem()
+}
+
+func (i CatalogEntityPropertyArgs) ToCatalogEntityPropertyOutput() CatalogEntityPropertyOutput {
+	return i.ToCatalogEntityPropertyOutputWithContext(context.Background())
+}
+
+func (i CatalogEntityPropertyArgs) ToCatalogEntityPropertyOutputWithContext(ctx context.Context) CatalogEntityPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntityPropertyOutput)
+}
+
+// CatalogEntityPropertyArrayInput is an input type that accepts CatalogEntityPropertyArray and CatalogEntityPropertyArrayOutput values.
+// You can construct a concrete instance of `CatalogEntityPropertyArrayInput` via:
+//
+//	CatalogEntityPropertyArray{ CatalogEntityPropertyArgs{...} }
+type CatalogEntityPropertyArrayInput interface {
+	pulumi.Input
+
+	ToCatalogEntityPropertyArrayOutput() CatalogEntityPropertyArrayOutput
+	ToCatalogEntityPropertyArrayOutputWithContext(context.Context) CatalogEntityPropertyArrayOutput
+}
+
+type CatalogEntityPropertyArray []CatalogEntityPropertyInput
+
+func (CatalogEntityPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogEntityProperty)(nil)).Elem()
+}
+
+func (i CatalogEntityPropertyArray) ToCatalogEntityPropertyArrayOutput() CatalogEntityPropertyArrayOutput {
+	return i.ToCatalogEntityPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i CatalogEntityPropertyArray) ToCatalogEntityPropertyArrayOutputWithContext(ctx context.Context) CatalogEntityPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogEntityPropertyArrayOutput)
+}
+
+type CatalogEntityPropertyOutput struct{ *pulumi.OutputState }
+
+func (CatalogEntityPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogEntityProperty)(nil)).Elem()
+}
+
+func (o CatalogEntityPropertyOutput) ToCatalogEntityPropertyOutput() CatalogEntityPropertyOutput {
+	return o
+}
+
+func (o CatalogEntityPropertyOutput) ToCatalogEntityPropertyOutputWithContext(ctx context.Context) CatalogEntityPropertyOutput {
+	return o
+}
+
+// Unique ID of the catalog property
+func (o CatalogEntityPropertyOutput) CatalogPropertyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogEntityProperty) *string { return v.CatalogPropertyId }).(pulumi.StringPtrOutput)
+}
+
+// The value for this property
+func (o CatalogEntityPropertyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogEntityProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CatalogEntityPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogEntityPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogEntityProperty)(nil)).Elem()
+}
+
+func (o CatalogEntityPropertyArrayOutput) ToCatalogEntityPropertyArrayOutput() CatalogEntityPropertyArrayOutput {
+	return o
+}
+
+func (o CatalogEntityPropertyArrayOutput) ToCatalogEntityPropertyArrayOutputWithContext(ctx context.Context) CatalogEntityPropertyArrayOutput {
+	return o
+}
+
+func (o CatalogEntityPropertyArrayOutput) Index(i pulumi.IntInput) CatalogEntityPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogEntityProperty {
+		return vs[0].([]CatalogEntityProperty)[vs[1].(int)]
+	}).(CatalogEntityPropertyOutput)
+}
+
+type CauseProperty struct {
+	// Catalog property ID
+	CatalogPropertyId *string `pulumi:"catalogPropertyId"`
+	// The property value
+	Value *string `pulumi:"value"`
+}
+
+// CausePropertyInput is an input type that accepts CausePropertyArgs and CausePropertyOutput values.
+// You can construct a concrete instance of `CausePropertyInput` via:
+//
+//	CausePropertyArgs{...}
+type CausePropertyInput interface {
+	pulumi.Input
+
+	ToCausePropertyOutput() CausePropertyOutput
+	ToCausePropertyOutputWithContext(context.Context) CausePropertyOutput
+}
+
+type CausePropertyArgs struct {
+	// Catalog property ID
+	CatalogPropertyId pulumi.StringPtrInput `pulumi:"catalogPropertyId"`
+	// The property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CausePropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CauseProperty)(nil)).Elem()
+}
+
+func (i CausePropertyArgs) ToCausePropertyOutput() CausePropertyOutput {
+	return i.ToCausePropertyOutputWithContext(context.Background())
+}
+
+func (i CausePropertyArgs) ToCausePropertyOutputWithContext(ctx context.Context) CausePropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CausePropertyOutput)
+}
+
+// CausePropertyArrayInput is an input type that accepts CausePropertyArray and CausePropertyArrayOutput values.
+// You can construct a concrete instance of `CausePropertyArrayInput` via:
+//
+//	CausePropertyArray{ CausePropertyArgs{...} }
+type CausePropertyArrayInput interface {
+	pulumi.Input
+
+	ToCausePropertyArrayOutput() CausePropertyArrayOutput
+	ToCausePropertyArrayOutputWithContext(context.Context) CausePropertyArrayOutput
+}
+
+type CausePropertyArray []CausePropertyInput
+
+func (CausePropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CauseProperty)(nil)).Elem()
+}
+
+func (i CausePropertyArray) ToCausePropertyArrayOutput() CausePropertyArrayOutput {
+	return i.ToCausePropertyArrayOutputWithContext(context.Background())
+}
+
+func (i CausePropertyArray) ToCausePropertyArrayOutputWithContext(ctx context.Context) CausePropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CausePropertyArrayOutput)
+}
+
+type CausePropertyOutput struct{ *pulumi.OutputState }
+
+func (CausePropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CauseProperty)(nil)).Elem()
+}
+
+func (o CausePropertyOutput) ToCausePropertyOutput() CausePropertyOutput {
+	return o
+}
+
+func (o CausePropertyOutput) ToCausePropertyOutputWithContext(ctx context.Context) CausePropertyOutput {
+	return o
+}
+
+// Catalog property ID
+func (o CausePropertyOutput) CatalogPropertyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CauseProperty) *string { return v.CatalogPropertyId }).(pulumi.StringPtrOutput)
+}
+
+// The property value
+func (o CausePropertyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CauseProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CausePropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (CausePropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CauseProperty)(nil)).Elem()
+}
+
+func (o CausePropertyArrayOutput) ToCausePropertyArrayOutput() CausePropertyArrayOutput {
+	return o
+}
+
+func (o CausePropertyArrayOutput) ToCausePropertyArrayOutputWithContext(ctx context.Context) CausePropertyArrayOutput {
+	return o
+}
+
+func (o CausePropertyArrayOutput) Index(i pulumi.IntInput) CausePropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CauseProperty {
+		return vs[0].([]CauseProperty)[vs[1].(int)]
+	}).(CausePropertyOutput)
+}
+
+type CommunicationsGroupCommunicationExternalGroupMember struct {
+	// Email of the external member
+	Email *string `pulumi:"email"`
+	// ID of the external group member
+	Id *string `pulumi:"id"`
+	// Name of the external member
+	Name *string `pulumi:"name"`
+	// Phone number of the external member
+	PhoneNumber *string `pulumi:"phoneNumber"`
+}
+
+// CommunicationsGroupCommunicationExternalGroupMemberInput is an input type that accepts CommunicationsGroupCommunicationExternalGroupMemberArgs and CommunicationsGroupCommunicationExternalGroupMemberOutput values.
+// You can construct a concrete instance of `CommunicationsGroupCommunicationExternalGroupMemberInput` via:
+//
+//	CommunicationsGroupCommunicationExternalGroupMemberArgs{...}
+type CommunicationsGroupCommunicationExternalGroupMemberInput interface {
+	pulumi.Input
+
+	ToCommunicationsGroupCommunicationExternalGroupMemberOutput() CommunicationsGroupCommunicationExternalGroupMemberOutput
+	ToCommunicationsGroupCommunicationExternalGroupMemberOutputWithContext(context.Context) CommunicationsGroupCommunicationExternalGroupMemberOutput
+}
+
+type CommunicationsGroupCommunicationExternalGroupMemberArgs struct {
+	// Email of the external member
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// ID of the external group member
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the external member
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Phone number of the external member
+	PhoneNumber pulumi.StringPtrInput `pulumi:"phoneNumber"`
+}
+
+func (CommunicationsGroupCommunicationExternalGroupMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsGroupCommunicationExternalGroupMember)(nil)).Elem()
+}
+
+func (i CommunicationsGroupCommunicationExternalGroupMemberArgs) ToCommunicationsGroupCommunicationExternalGroupMemberOutput() CommunicationsGroupCommunicationExternalGroupMemberOutput {
+	return i.ToCommunicationsGroupCommunicationExternalGroupMemberOutputWithContext(context.Background())
+}
+
+func (i CommunicationsGroupCommunicationExternalGroupMemberArgs) ToCommunicationsGroupCommunicationExternalGroupMemberOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationExternalGroupMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsGroupCommunicationExternalGroupMemberOutput)
+}
+
+// CommunicationsGroupCommunicationExternalGroupMemberArrayInput is an input type that accepts CommunicationsGroupCommunicationExternalGroupMemberArray and CommunicationsGroupCommunicationExternalGroupMemberArrayOutput values.
+// You can construct a concrete instance of `CommunicationsGroupCommunicationExternalGroupMemberArrayInput` via:
+//
+//	CommunicationsGroupCommunicationExternalGroupMemberArray{ CommunicationsGroupCommunicationExternalGroupMemberArgs{...} }
+type CommunicationsGroupCommunicationExternalGroupMemberArrayInput interface {
+	pulumi.Input
+
+	ToCommunicationsGroupCommunicationExternalGroupMemberArrayOutput() CommunicationsGroupCommunicationExternalGroupMemberArrayOutput
+	ToCommunicationsGroupCommunicationExternalGroupMemberArrayOutputWithContext(context.Context) CommunicationsGroupCommunicationExternalGroupMemberArrayOutput
+}
+
+type CommunicationsGroupCommunicationExternalGroupMemberArray []CommunicationsGroupCommunicationExternalGroupMemberInput
+
+func (CommunicationsGroupCommunicationExternalGroupMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommunicationsGroupCommunicationExternalGroupMember)(nil)).Elem()
+}
+
+func (i CommunicationsGroupCommunicationExternalGroupMemberArray) ToCommunicationsGroupCommunicationExternalGroupMemberArrayOutput() CommunicationsGroupCommunicationExternalGroupMemberArrayOutput {
+	return i.ToCommunicationsGroupCommunicationExternalGroupMemberArrayOutputWithContext(context.Background())
+}
+
+func (i CommunicationsGroupCommunicationExternalGroupMemberArray) ToCommunicationsGroupCommunicationExternalGroupMemberArrayOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationExternalGroupMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsGroupCommunicationExternalGroupMemberArrayOutput)
+}
+
+type CommunicationsGroupCommunicationExternalGroupMemberOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsGroupCommunicationExternalGroupMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsGroupCommunicationExternalGroupMember)(nil)).Elem()
+}
+
+func (o CommunicationsGroupCommunicationExternalGroupMemberOutput) ToCommunicationsGroupCommunicationExternalGroupMemberOutput() CommunicationsGroupCommunicationExternalGroupMemberOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationExternalGroupMemberOutput) ToCommunicationsGroupCommunicationExternalGroupMemberOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationExternalGroupMemberOutput {
+	return o
+}
+
+// Email of the external member
+func (o CommunicationsGroupCommunicationExternalGroupMemberOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationExternalGroupMember) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// ID of the external group member
+func (o CommunicationsGroupCommunicationExternalGroupMemberOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationExternalGroupMember) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the external member
+func (o CommunicationsGroupCommunicationExternalGroupMemberOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationExternalGroupMember) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Phone number of the external member
+func (o CommunicationsGroupCommunicationExternalGroupMemberOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationExternalGroupMember) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+type CommunicationsGroupCommunicationExternalGroupMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsGroupCommunicationExternalGroupMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommunicationsGroupCommunicationExternalGroupMember)(nil)).Elem()
+}
+
+func (o CommunicationsGroupCommunicationExternalGroupMemberArrayOutput) ToCommunicationsGroupCommunicationExternalGroupMemberArrayOutput() CommunicationsGroupCommunicationExternalGroupMemberArrayOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationExternalGroupMemberArrayOutput) ToCommunicationsGroupCommunicationExternalGroupMemberArrayOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationExternalGroupMemberArrayOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationExternalGroupMemberArrayOutput) Index(i pulumi.IntInput) CommunicationsGroupCommunicationExternalGroupMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommunicationsGroupCommunicationExternalGroupMember {
+		return vs[0].([]CommunicationsGroupCommunicationExternalGroupMember)[vs[1].(int)]
+	}).(CommunicationsGroupCommunicationExternalGroupMemberOutput)
+}
+
+type CommunicationsGroupCommunicationGroupCondition struct {
+	// Condition
+	Condition *string `pulumi:"condition"`
+	// ID of the condition
+	Id *string `pulumi:"id"`
+	// Properties
+	Properties []CommunicationsGroupCommunicationGroupConditionProperty `pulumi:"properties"`
+	// Property type. Value must be one of `service`, `severity`, `functionality`, `group`, `incidentType`.
+	PropertyType *string `pulumi:"propertyType"`
+}
+
+// CommunicationsGroupCommunicationGroupConditionInput is an input type that accepts CommunicationsGroupCommunicationGroupConditionArgs and CommunicationsGroupCommunicationGroupConditionOutput values.
+// You can construct a concrete instance of `CommunicationsGroupCommunicationGroupConditionInput` via:
+//
+//	CommunicationsGroupCommunicationGroupConditionArgs{...}
+type CommunicationsGroupCommunicationGroupConditionInput interface {
+	pulumi.Input
+
+	ToCommunicationsGroupCommunicationGroupConditionOutput() CommunicationsGroupCommunicationGroupConditionOutput
+	ToCommunicationsGroupCommunicationGroupConditionOutputWithContext(context.Context) CommunicationsGroupCommunicationGroupConditionOutput
+}
+
+type CommunicationsGroupCommunicationGroupConditionArgs struct {
+	// Condition
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// ID of the condition
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Properties
+	Properties CommunicationsGroupCommunicationGroupConditionPropertyArrayInput `pulumi:"properties"`
+	// Property type. Value must be one of `service`, `severity`, `functionality`, `group`, `incidentType`.
+	PropertyType pulumi.StringPtrInput `pulumi:"propertyType"`
+}
+
+func (CommunicationsGroupCommunicationGroupConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsGroupCommunicationGroupCondition)(nil)).Elem()
+}
+
+func (i CommunicationsGroupCommunicationGroupConditionArgs) ToCommunicationsGroupCommunicationGroupConditionOutput() CommunicationsGroupCommunicationGroupConditionOutput {
+	return i.ToCommunicationsGroupCommunicationGroupConditionOutputWithContext(context.Background())
+}
+
+func (i CommunicationsGroupCommunicationGroupConditionArgs) ToCommunicationsGroupCommunicationGroupConditionOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsGroupCommunicationGroupConditionOutput)
+}
+
+// CommunicationsGroupCommunicationGroupConditionArrayInput is an input type that accepts CommunicationsGroupCommunicationGroupConditionArray and CommunicationsGroupCommunicationGroupConditionArrayOutput values.
+// You can construct a concrete instance of `CommunicationsGroupCommunicationGroupConditionArrayInput` via:
+//
+//	CommunicationsGroupCommunicationGroupConditionArray{ CommunicationsGroupCommunicationGroupConditionArgs{...} }
+type CommunicationsGroupCommunicationGroupConditionArrayInput interface {
+	pulumi.Input
+
+	ToCommunicationsGroupCommunicationGroupConditionArrayOutput() CommunicationsGroupCommunicationGroupConditionArrayOutput
+	ToCommunicationsGroupCommunicationGroupConditionArrayOutputWithContext(context.Context) CommunicationsGroupCommunicationGroupConditionArrayOutput
+}
+
+type CommunicationsGroupCommunicationGroupConditionArray []CommunicationsGroupCommunicationGroupConditionInput
+
+func (CommunicationsGroupCommunicationGroupConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommunicationsGroupCommunicationGroupCondition)(nil)).Elem()
+}
+
+func (i CommunicationsGroupCommunicationGroupConditionArray) ToCommunicationsGroupCommunicationGroupConditionArrayOutput() CommunicationsGroupCommunicationGroupConditionArrayOutput {
+	return i.ToCommunicationsGroupCommunicationGroupConditionArrayOutputWithContext(context.Background())
+}
+
+func (i CommunicationsGroupCommunicationGroupConditionArray) ToCommunicationsGroupCommunicationGroupConditionArrayOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsGroupCommunicationGroupConditionArrayOutput)
+}
+
+type CommunicationsGroupCommunicationGroupConditionOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsGroupCommunicationGroupConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsGroupCommunicationGroupCondition)(nil)).Elem()
+}
+
+func (o CommunicationsGroupCommunicationGroupConditionOutput) ToCommunicationsGroupCommunicationGroupConditionOutput() CommunicationsGroupCommunicationGroupConditionOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationGroupConditionOutput) ToCommunicationsGroupCommunicationGroupConditionOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupConditionOutput {
+	return o
+}
+
+// Condition
+func (o CommunicationsGroupCommunicationGroupConditionOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationGroupCondition) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// ID of the condition
+func (o CommunicationsGroupCommunicationGroupConditionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationGroupCondition) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Properties
+func (o CommunicationsGroupCommunicationGroupConditionOutput) Properties() CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationGroupCondition) []CommunicationsGroupCommunicationGroupConditionProperty {
+		return v.Properties
+	}).(CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput)
+}
+
+// Property type. Value must be one of `service`, `severity`, `functionality`, `group`, `incidentType`.
+func (o CommunicationsGroupCommunicationGroupConditionOutput) PropertyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationGroupCondition) *string { return v.PropertyType }).(pulumi.StringPtrOutput)
+}
+
+type CommunicationsGroupCommunicationGroupConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsGroupCommunicationGroupConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommunicationsGroupCommunicationGroupCondition)(nil)).Elem()
+}
+
+func (o CommunicationsGroupCommunicationGroupConditionArrayOutput) ToCommunicationsGroupCommunicationGroupConditionArrayOutput() CommunicationsGroupCommunicationGroupConditionArrayOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationGroupConditionArrayOutput) ToCommunicationsGroupCommunicationGroupConditionArrayOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupConditionArrayOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationGroupConditionArrayOutput) Index(i pulumi.IntInput) CommunicationsGroupCommunicationGroupConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommunicationsGroupCommunicationGroupCondition {
+		return vs[0].([]CommunicationsGroupCommunicationGroupCondition)[vs[1].(int)]
+	}).(CommunicationsGroupCommunicationGroupConditionOutput)
+}
+
+type CommunicationsGroupCommunicationGroupConditionProperty struct {
+	Id *string `pulumi:"id"`
+	// Deprecated: This field is deprecated and will be removed in a future version
+	Name *string `pulumi:"name"`
+}
+
+// CommunicationsGroupCommunicationGroupConditionPropertyInput is an input type that accepts CommunicationsGroupCommunicationGroupConditionPropertyArgs and CommunicationsGroupCommunicationGroupConditionPropertyOutput values.
+// You can construct a concrete instance of `CommunicationsGroupCommunicationGroupConditionPropertyInput` via:
+//
+//	CommunicationsGroupCommunicationGroupConditionPropertyArgs{...}
+type CommunicationsGroupCommunicationGroupConditionPropertyInput interface {
+	pulumi.Input
+
+	ToCommunicationsGroupCommunicationGroupConditionPropertyOutput() CommunicationsGroupCommunicationGroupConditionPropertyOutput
+	ToCommunicationsGroupCommunicationGroupConditionPropertyOutputWithContext(context.Context) CommunicationsGroupCommunicationGroupConditionPropertyOutput
+}
+
+type CommunicationsGroupCommunicationGroupConditionPropertyArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Deprecated: This field is deprecated and will be removed in a future version
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (CommunicationsGroupCommunicationGroupConditionPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsGroupCommunicationGroupConditionProperty)(nil)).Elem()
+}
+
+func (i CommunicationsGroupCommunicationGroupConditionPropertyArgs) ToCommunicationsGroupCommunicationGroupConditionPropertyOutput() CommunicationsGroupCommunicationGroupConditionPropertyOutput {
+	return i.ToCommunicationsGroupCommunicationGroupConditionPropertyOutputWithContext(context.Background())
+}
+
+func (i CommunicationsGroupCommunicationGroupConditionPropertyArgs) ToCommunicationsGroupCommunicationGroupConditionPropertyOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupConditionPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsGroupCommunicationGroupConditionPropertyOutput)
+}
+
+// CommunicationsGroupCommunicationGroupConditionPropertyArrayInput is an input type that accepts CommunicationsGroupCommunicationGroupConditionPropertyArray and CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput values.
+// You can construct a concrete instance of `CommunicationsGroupCommunicationGroupConditionPropertyArrayInput` via:
+//
+//	CommunicationsGroupCommunicationGroupConditionPropertyArray{ CommunicationsGroupCommunicationGroupConditionPropertyArgs{...} }
+type CommunicationsGroupCommunicationGroupConditionPropertyArrayInput interface {
+	pulumi.Input
+
+	ToCommunicationsGroupCommunicationGroupConditionPropertyArrayOutput() CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput
+	ToCommunicationsGroupCommunicationGroupConditionPropertyArrayOutputWithContext(context.Context) CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput
+}
+
+type CommunicationsGroupCommunicationGroupConditionPropertyArray []CommunicationsGroupCommunicationGroupConditionPropertyInput
+
+func (CommunicationsGroupCommunicationGroupConditionPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommunicationsGroupCommunicationGroupConditionProperty)(nil)).Elem()
+}
+
+func (i CommunicationsGroupCommunicationGroupConditionPropertyArray) ToCommunicationsGroupCommunicationGroupConditionPropertyArrayOutput() CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput {
+	return i.ToCommunicationsGroupCommunicationGroupConditionPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i CommunicationsGroupCommunicationGroupConditionPropertyArray) ToCommunicationsGroupCommunicationGroupConditionPropertyArrayOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput)
+}
+
+type CommunicationsGroupCommunicationGroupConditionPropertyOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsGroupCommunicationGroupConditionPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsGroupCommunicationGroupConditionProperty)(nil)).Elem()
+}
+
+func (o CommunicationsGroupCommunicationGroupConditionPropertyOutput) ToCommunicationsGroupCommunicationGroupConditionPropertyOutput() CommunicationsGroupCommunicationGroupConditionPropertyOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationGroupConditionPropertyOutput) ToCommunicationsGroupCommunicationGroupConditionPropertyOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupConditionPropertyOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationGroupConditionPropertyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationGroupConditionProperty) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: This field is deprecated and will be removed in a future version
+func (o CommunicationsGroupCommunicationGroupConditionPropertyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationGroupConditionProperty) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommunicationsGroupCommunicationGroupConditionProperty)(nil)).Elem()
+}
+
+func (o CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput) ToCommunicationsGroupCommunicationGroupConditionPropertyArrayOutput() CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput) ToCommunicationsGroupCommunicationGroupConditionPropertyArrayOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput) Index(i pulumi.IntInput) CommunicationsGroupCommunicationGroupConditionPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommunicationsGroupCommunicationGroupConditionProperty {
+		return vs[0].([]CommunicationsGroupCommunicationGroupConditionProperty)[vs[1].(int)]
+	}).(CommunicationsGroupCommunicationGroupConditionPropertyOutput)
+}
+
+type CommunicationsGroupCommunicationGroupMember struct {
+	// ID of the group member
+	Id *string `pulumi:"id"`
+	// User ID
+	UserId *int `pulumi:"userId"`
+}
+
+// CommunicationsGroupCommunicationGroupMemberInput is an input type that accepts CommunicationsGroupCommunicationGroupMemberArgs and CommunicationsGroupCommunicationGroupMemberOutput values.
+// You can construct a concrete instance of `CommunicationsGroupCommunicationGroupMemberInput` via:
+//
+//	CommunicationsGroupCommunicationGroupMemberArgs{...}
+type CommunicationsGroupCommunicationGroupMemberInput interface {
+	pulumi.Input
+
+	ToCommunicationsGroupCommunicationGroupMemberOutput() CommunicationsGroupCommunicationGroupMemberOutput
+	ToCommunicationsGroupCommunicationGroupMemberOutputWithContext(context.Context) CommunicationsGroupCommunicationGroupMemberOutput
+}
+
+type CommunicationsGroupCommunicationGroupMemberArgs struct {
+	// ID of the group member
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// User ID
+	UserId pulumi.IntPtrInput `pulumi:"userId"`
+}
+
+func (CommunicationsGroupCommunicationGroupMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsGroupCommunicationGroupMember)(nil)).Elem()
+}
+
+func (i CommunicationsGroupCommunicationGroupMemberArgs) ToCommunicationsGroupCommunicationGroupMemberOutput() CommunicationsGroupCommunicationGroupMemberOutput {
+	return i.ToCommunicationsGroupCommunicationGroupMemberOutputWithContext(context.Background())
+}
+
+func (i CommunicationsGroupCommunicationGroupMemberArgs) ToCommunicationsGroupCommunicationGroupMemberOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsGroupCommunicationGroupMemberOutput)
+}
+
+// CommunicationsGroupCommunicationGroupMemberArrayInput is an input type that accepts CommunicationsGroupCommunicationGroupMemberArray and CommunicationsGroupCommunicationGroupMemberArrayOutput values.
+// You can construct a concrete instance of `CommunicationsGroupCommunicationGroupMemberArrayInput` via:
+//
+//	CommunicationsGroupCommunicationGroupMemberArray{ CommunicationsGroupCommunicationGroupMemberArgs{...} }
+type CommunicationsGroupCommunicationGroupMemberArrayInput interface {
+	pulumi.Input
+
+	ToCommunicationsGroupCommunicationGroupMemberArrayOutput() CommunicationsGroupCommunicationGroupMemberArrayOutput
+	ToCommunicationsGroupCommunicationGroupMemberArrayOutputWithContext(context.Context) CommunicationsGroupCommunicationGroupMemberArrayOutput
+}
+
+type CommunicationsGroupCommunicationGroupMemberArray []CommunicationsGroupCommunicationGroupMemberInput
+
+func (CommunicationsGroupCommunicationGroupMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommunicationsGroupCommunicationGroupMember)(nil)).Elem()
+}
+
+func (i CommunicationsGroupCommunicationGroupMemberArray) ToCommunicationsGroupCommunicationGroupMemberArrayOutput() CommunicationsGroupCommunicationGroupMemberArrayOutput {
+	return i.ToCommunicationsGroupCommunicationGroupMemberArrayOutputWithContext(context.Background())
+}
+
+func (i CommunicationsGroupCommunicationGroupMemberArray) ToCommunicationsGroupCommunicationGroupMemberArrayOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsGroupCommunicationGroupMemberArrayOutput)
+}
+
+type CommunicationsGroupCommunicationGroupMemberOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsGroupCommunicationGroupMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsGroupCommunicationGroupMember)(nil)).Elem()
+}
+
+func (o CommunicationsGroupCommunicationGroupMemberOutput) ToCommunicationsGroupCommunicationGroupMemberOutput() CommunicationsGroupCommunicationGroupMemberOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationGroupMemberOutput) ToCommunicationsGroupCommunicationGroupMemberOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupMemberOutput {
+	return o
+}
+
+// ID of the group member
+func (o CommunicationsGroupCommunicationGroupMemberOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationGroupMember) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// User ID
+func (o CommunicationsGroupCommunicationGroupMemberOutput) UserId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CommunicationsGroupCommunicationGroupMember) *int { return v.UserId }).(pulumi.IntPtrOutput)
+}
+
+type CommunicationsGroupCommunicationGroupMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsGroupCommunicationGroupMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommunicationsGroupCommunicationGroupMember)(nil)).Elem()
+}
+
+func (o CommunicationsGroupCommunicationGroupMemberArrayOutput) ToCommunicationsGroupCommunicationGroupMemberArrayOutput() CommunicationsGroupCommunicationGroupMemberArrayOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationGroupMemberArrayOutput) ToCommunicationsGroupCommunicationGroupMemberArrayOutputWithContext(ctx context.Context) CommunicationsGroupCommunicationGroupMemberArrayOutput {
+	return o
+}
+
+func (o CommunicationsGroupCommunicationGroupMemberArrayOutput) Index(i pulumi.IntInput) CommunicationsGroupCommunicationGroupMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommunicationsGroupCommunicationGroupMember {
+		return vs[0].([]CommunicationsGroupCommunicationGroupMember)[vs[1].(int)]
+	}).(CommunicationsGroupCommunicationGroupMemberOutput)
+}
+
+type CommunicationsTemplateCommunicationTemplateStage struct {
+	// The communication stage ID
+	CommunicationStageId *string `pulumi:"communicationStageId"`
+	// Email body for the stage
+	EmailBody *string `pulumi:"emailBody"`
+	// Email subject for the stage
+	EmailSubject *string `pulumi:"emailSubject"`
+	// ID of the communication template stage
+	Id *string `pulumi:"id"`
+	// Slack content for the stage
+	SlackContent *string `pulumi:"slackContent"`
+	// SMS content for the stage
+	SmsContent *string `pulumi:"smsContent"`
+}
+
+// CommunicationsTemplateCommunicationTemplateStageInput is an input type that accepts CommunicationsTemplateCommunicationTemplateStageArgs and CommunicationsTemplateCommunicationTemplateStageOutput values.
+// You can construct a concrete instance of `CommunicationsTemplateCommunicationTemplateStageInput` via:
+//
+//	CommunicationsTemplateCommunicationTemplateStageArgs{...}
+type CommunicationsTemplateCommunicationTemplateStageInput interface {
+	pulumi.Input
+
+	ToCommunicationsTemplateCommunicationTemplateStageOutput() CommunicationsTemplateCommunicationTemplateStageOutput
+	ToCommunicationsTemplateCommunicationTemplateStageOutputWithContext(context.Context) CommunicationsTemplateCommunicationTemplateStageOutput
+}
+
+type CommunicationsTemplateCommunicationTemplateStageArgs struct {
+	// The communication stage ID
+	CommunicationStageId pulumi.StringPtrInput `pulumi:"communicationStageId"`
+	// Email body for the stage
+	EmailBody pulumi.StringPtrInput `pulumi:"emailBody"`
+	// Email subject for the stage
+	EmailSubject pulumi.StringPtrInput `pulumi:"emailSubject"`
+	// ID of the communication template stage
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Slack content for the stage
+	SlackContent pulumi.StringPtrInput `pulumi:"slackContent"`
+	// SMS content for the stage
+	SmsContent pulumi.StringPtrInput `pulumi:"smsContent"`
+}
+
+func (CommunicationsTemplateCommunicationTemplateStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsTemplateCommunicationTemplateStage)(nil)).Elem()
+}
+
+func (i CommunicationsTemplateCommunicationTemplateStageArgs) ToCommunicationsTemplateCommunicationTemplateStageOutput() CommunicationsTemplateCommunicationTemplateStageOutput {
+	return i.ToCommunicationsTemplateCommunicationTemplateStageOutputWithContext(context.Background())
+}
+
+func (i CommunicationsTemplateCommunicationTemplateStageArgs) ToCommunicationsTemplateCommunicationTemplateStageOutputWithContext(ctx context.Context) CommunicationsTemplateCommunicationTemplateStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsTemplateCommunicationTemplateStageOutput)
+}
+
+// CommunicationsTemplateCommunicationTemplateStageArrayInput is an input type that accepts CommunicationsTemplateCommunicationTemplateStageArray and CommunicationsTemplateCommunicationTemplateStageArrayOutput values.
+// You can construct a concrete instance of `CommunicationsTemplateCommunicationTemplateStageArrayInput` via:
+//
+//	CommunicationsTemplateCommunicationTemplateStageArray{ CommunicationsTemplateCommunicationTemplateStageArgs{...} }
+type CommunicationsTemplateCommunicationTemplateStageArrayInput interface {
+	pulumi.Input
+
+	ToCommunicationsTemplateCommunicationTemplateStageArrayOutput() CommunicationsTemplateCommunicationTemplateStageArrayOutput
+	ToCommunicationsTemplateCommunicationTemplateStageArrayOutputWithContext(context.Context) CommunicationsTemplateCommunicationTemplateStageArrayOutput
+}
+
+type CommunicationsTemplateCommunicationTemplateStageArray []CommunicationsTemplateCommunicationTemplateStageInput
+
+func (CommunicationsTemplateCommunicationTemplateStageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommunicationsTemplateCommunicationTemplateStage)(nil)).Elem()
+}
+
+func (i CommunicationsTemplateCommunicationTemplateStageArray) ToCommunicationsTemplateCommunicationTemplateStageArrayOutput() CommunicationsTemplateCommunicationTemplateStageArrayOutput {
+	return i.ToCommunicationsTemplateCommunicationTemplateStageArrayOutputWithContext(context.Background())
+}
+
+func (i CommunicationsTemplateCommunicationTemplateStageArray) ToCommunicationsTemplateCommunicationTemplateStageArrayOutputWithContext(ctx context.Context) CommunicationsTemplateCommunicationTemplateStageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsTemplateCommunicationTemplateStageArrayOutput)
+}
+
+type CommunicationsTemplateCommunicationTemplateStageOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsTemplateCommunicationTemplateStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsTemplateCommunicationTemplateStage)(nil)).Elem()
+}
+
+func (o CommunicationsTemplateCommunicationTemplateStageOutput) ToCommunicationsTemplateCommunicationTemplateStageOutput() CommunicationsTemplateCommunicationTemplateStageOutput {
+	return o
+}
+
+func (o CommunicationsTemplateCommunicationTemplateStageOutput) ToCommunicationsTemplateCommunicationTemplateStageOutputWithContext(ctx context.Context) CommunicationsTemplateCommunicationTemplateStageOutput {
+	return o
+}
+
+// The communication stage ID
+func (o CommunicationsTemplateCommunicationTemplateStageOutput) CommunicationStageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsTemplateCommunicationTemplateStage) *string { return v.CommunicationStageId }).(pulumi.StringPtrOutput)
+}
+
+// Email body for the stage
+func (o CommunicationsTemplateCommunicationTemplateStageOutput) EmailBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsTemplateCommunicationTemplateStage) *string { return v.EmailBody }).(pulumi.StringPtrOutput)
+}
+
+// Email subject for the stage
+func (o CommunicationsTemplateCommunicationTemplateStageOutput) EmailSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsTemplateCommunicationTemplateStage) *string { return v.EmailSubject }).(pulumi.StringPtrOutput)
+}
+
+// ID of the communication template stage
+func (o CommunicationsTemplateCommunicationTemplateStageOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsTemplateCommunicationTemplateStage) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Slack content for the stage
+func (o CommunicationsTemplateCommunicationTemplateStageOutput) SlackContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsTemplateCommunicationTemplateStage) *string { return v.SlackContent }).(pulumi.StringPtrOutput)
+}
+
+// SMS content for the stage
+func (o CommunicationsTemplateCommunicationTemplateStageOutput) SmsContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsTemplateCommunicationTemplateStage) *string { return v.SmsContent }).(pulumi.StringPtrOutput)
+}
+
+type CommunicationsTemplateCommunicationTemplateStageArrayOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsTemplateCommunicationTemplateStageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommunicationsTemplateCommunicationTemplateStage)(nil)).Elem()
+}
+
+func (o CommunicationsTemplateCommunicationTemplateStageArrayOutput) ToCommunicationsTemplateCommunicationTemplateStageArrayOutput() CommunicationsTemplateCommunicationTemplateStageArrayOutput {
+	return o
+}
+
+func (o CommunicationsTemplateCommunicationTemplateStageArrayOutput) ToCommunicationsTemplateCommunicationTemplateStageArrayOutputWithContext(ctx context.Context) CommunicationsTemplateCommunicationTemplateStageArrayOutput {
+	return o
+}
+
+func (o CommunicationsTemplateCommunicationTemplateStageArrayOutput) Index(i pulumi.IntInput) CommunicationsTemplateCommunicationTemplateStageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommunicationsTemplateCommunicationTemplateStage {
+		return vs[0].([]CommunicationsTemplateCommunicationTemplateStage)[vs[1].(int)]
+	}).(CommunicationsTemplateCommunicationTemplateStageOutput)
+}
+
+type CommunicationsTemplateCommunicationType struct {
+	// ID of the communication type
+	Id *string `pulumi:"id"`
+	// Name of the communication type
+	Name *string `pulumi:"name"`
+}
+
+// CommunicationsTemplateCommunicationTypeInput is an input type that accepts CommunicationsTemplateCommunicationTypeArgs and CommunicationsTemplateCommunicationTypeOutput values.
+// You can construct a concrete instance of `CommunicationsTemplateCommunicationTypeInput` via:
+//
+//	CommunicationsTemplateCommunicationTypeArgs{...}
+type CommunicationsTemplateCommunicationTypeInput interface {
+	pulumi.Input
+
+	ToCommunicationsTemplateCommunicationTypeOutput() CommunicationsTemplateCommunicationTypeOutput
+	ToCommunicationsTemplateCommunicationTypeOutputWithContext(context.Context) CommunicationsTemplateCommunicationTypeOutput
+}
+
+type CommunicationsTemplateCommunicationTypeArgs struct {
+	// ID of the communication type
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the communication type
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (CommunicationsTemplateCommunicationTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsTemplateCommunicationType)(nil)).Elem()
+}
+
+func (i CommunicationsTemplateCommunicationTypeArgs) ToCommunicationsTemplateCommunicationTypeOutput() CommunicationsTemplateCommunicationTypeOutput {
+	return i.ToCommunicationsTemplateCommunicationTypeOutputWithContext(context.Background())
+}
+
+func (i CommunicationsTemplateCommunicationTypeArgs) ToCommunicationsTemplateCommunicationTypeOutputWithContext(ctx context.Context) CommunicationsTemplateCommunicationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsTemplateCommunicationTypeOutput)
+}
+
+func (i CommunicationsTemplateCommunicationTypeArgs) ToCommunicationsTemplateCommunicationTypePtrOutput() CommunicationsTemplateCommunicationTypePtrOutput {
+	return i.ToCommunicationsTemplateCommunicationTypePtrOutputWithContext(context.Background())
+}
+
+func (i CommunicationsTemplateCommunicationTypeArgs) ToCommunicationsTemplateCommunicationTypePtrOutputWithContext(ctx context.Context) CommunicationsTemplateCommunicationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsTemplateCommunicationTypeOutput).ToCommunicationsTemplateCommunicationTypePtrOutputWithContext(ctx)
+}
+
+// CommunicationsTemplateCommunicationTypePtrInput is an input type that accepts CommunicationsTemplateCommunicationTypeArgs, CommunicationsTemplateCommunicationTypePtr and CommunicationsTemplateCommunicationTypePtrOutput values.
+// You can construct a concrete instance of `CommunicationsTemplateCommunicationTypePtrInput` via:
+//
+//	        CommunicationsTemplateCommunicationTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type CommunicationsTemplateCommunicationTypePtrInput interface {
+	pulumi.Input
+
+	ToCommunicationsTemplateCommunicationTypePtrOutput() CommunicationsTemplateCommunicationTypePtrOutput
+	ToCommunicationsTemplateCommunicationTypePtrOutputWithContext(context.Context) CommunicationsTemplateCommunicationTypePtrOutput
+}
+
+type communicationsTemplateCommunicationTypePtrType CommunicationsTemplateCommunicationTypeArgs
+
+func CommunicationsTemplateCommunicationTypePtr(v *CommunicationsTemplateCommunicationTypeArgs) CommunicationsTemplateCommunicationTypePtrInput {
+	return (*communicationsTemplateCommunicationTypePtrType)(v)
+}
+
+func (*communicationsTemplateCommunicationTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommunicationsTemplateCommunicationType)(nil)).Elem()
+}
+
+func (i *communicationsTemplateCommunicationTypePtrType) ToCommunicationsTemplateCommunicationTypePtrOutput() CommunicationsTemplateCommunicationTypePtrOutput {
+	return i.ToCommunicationsTemplateCommunicationTypePtrOutputWithContext(context.Background())
+}
+
+func (i *communicationsTemplateCommunicationTypePtrType) ToCommunicationsTemplateCommunicationTypePtrOutputWithContext(ctx context.Context) CommunicationsTemplateCommunicationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsTemplateCommunicationTypePtrOutput)
+}
+
+type CommunicationsTemplateCommunicationTypeOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsTemplateCommunicationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommunicationsTemplateCommunicationType)(nil)).Elem()
+}
+
+func (o CommunicationsTemplateCommunicationTypeOutput) ToCommunicationsTemplateCommunicationTypeOutput() CommunicationsTemplateCommunicationTypeOutput {
+	return o
+}
+
+func (o CommunicationsTemplateCommunicationTypeOutput) ToCommunicationsTemplateCommunicationTypeOutputWithContext(ctx context.Context) CommunicationsTemplateCommunicationTypeOutput {
+	return o
+}
+
+func (o CommunicationsTemplateCommunicationTypeOutput) ToCommunicationsTemplateCommunicationTypePtrOutput() CommunicationsTemplateCommunicationTypePtrOutput {
+	return o.ToCommunicationsTemplateCommunicationTypePtrOutputWithContext(context.Background())
+}
+
+func (o CommunicationsTemplateCommunicationTypeOutput) ToCommunicationsTemplateCommunicationTypePtrOutputWithContext(ctx context.Context) CommunicationsTemplateCommunicationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommunicationsTemplateCommunicationType) *CommunicationsTemplateCommunicationType {
+		return &v
+	}).(CommunicationsTemplateCommunicationTypePtrOutput)
+}
+
+// ID of the communication type
+func (o CommunicationsTemplateCommunicationTypeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsTemplateCommunicationType) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the communication type
+func (o CommunicationsTemplateCommunicationTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommunicationsTemplateCommunicationType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type CommunicationsTemplateCommunicationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CommunicationsTemplateCommunicationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommunicationsTemplateCommunicationType)(nil)).Elem()
+}
+
+func (o CommunicationsTemplateCommunicationTypePtrOutput) ToCommunicationsTemplateCommunicationTypePtrOutput() CommunicationsTemplateCommunicationTypePtrOutput {
+	return o
+}
+
+func (o CommunicationsTemplateCommunicationTypePtrOutput) ToCommunicationsTemplateCommunicationTypePtrOutputWithContext(ctx context.Context) CommunicationsTemplateCommunicationTypePtrOutput {
+	return o
+}
+
+func (o CommunicationsTemplateCommunicationTypePtrOutput) Elem() CommunicationsTemplateCommunicationTypeOutput {
+	return o.ApplyT(func(v *CommunicationsTemplateCommunicationType) CommunicationsTemplateCommunicationType {
+		if v != nil {
+			return *v
+		}
+		var ret CommunicationsTemplateCommunicationType
+		return ret
+	}).(CommunicationsTemplateCommunicationTypeOutput)
+}
+
+// ID of the communication type
+func (o CommunicationsTemplateCommunicationTypePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommunicationsTemplateCommunicationType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the communication type
+func (o CommunicationsTemplateCommunicationTypePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommunicationsTemplateCommunicationType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type DashboardPanelParams struct {
-	Datasets []DashboardPanelParamsDataset `pulumi:"datasets"`
-	Display  string                        `pulumi:"display"`
-	Legend   *DashboardPanelParamsLegend   `pulumi:"legend"`
+	Datalabels  *DashboardPanelParamsDatalabels `pulumi:"datalabels"`
+	Datasets    []DashboardPanelParamsDataset   `pulumi:"datasets"`
+	Description *string                         `pulumi:"description"`
+	// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `table`, `aggregateValue`.
+	Display     *string                     `pulumi:"display"`
+	Legend      *DashboardPanelParamsLegend `pulumi:"legend"`
+	TableFields []string                    `pulumi:"tableFields"`
 }
 
 // DashboardPanelParamsInput is an input type that accepts DashboardPanelParamsArgs and DashboardPanelParamsOutput values.
@@ -1368,9 +3940,13 @@ type DashboardPanelParamsInput interface {
 }
 
 type DashboardPanelParamsArgs struct {
-	Datasets DashboardPanelParamsDatasetArrayInput `pulumi:"datasets"`
-	Display  pulumi.StringInput                    `pulumi:"display"`
-	Legend   DashboardPanelParamsLegendPtrInput    `pulumi:"legend"`
+	Datalabels  DashboardPanelParamsDatalabelsPtrInput `pulumi:"datalabels"`
+	Datasets    DashboardPanelParamsDatasetArrayInput  `pulumi:"datasets"`
+	Description pulumi.StringPtrInput                  `pulumi:"description"`
+	// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `table`, `aggregateValue`.
+	Display     pulumi.StringPtrInput              `pulumi:"display"`
+	Legend      DashboardPanelParamsLegendPtrInput `pulumi:"legend"`
+	TableFields pulumi.StringArrayInput            `pulumi:"tableFields"`
 }
 
 func (DashboardPanelParamsArgs) ElementType() reflect.Type {
@@ -1450,16 +4026,29 @@ func (o DashboardPanelParamsOutput) ToDashboardPanelParamsPtrOutputWithContext(c
 	}).(DashboardPanelParamsPtrOutput)
 }
 
+func (o DashboardPanelParamsOutput) Datalabels() DashboardPanelParamsDatalabelsPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParams) *DashboardPanelParamsDatalabels { return v.Datalabels }).(DashboardPanelParamsDatalabelsPtrOutput)
+}
+
 func (o DashboardPanelParamsOutput) Datasets() DashboardPanelParamsDatasetArrayOutput {
 	return o.ApplyT(func(v DashboardPanelParams) []DashboardPanelParamsDataset { return v.Datasets }).(DashboardPanelParamsDatasetArrayOutput)
 }
 
-func (o DashboardPanelParamsOutput) Display() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardPanelParams) string { return v.Display }).(pulumi.StringOutput)
+func (o DashboardPanelParamsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParams) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `table`, `aggregateValue`.
+func (o DashboardPanelParamsOutput) Display() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParams) *string { return v.Display }).(pulumi.StringPtrOutput)
 }
 
 func (o DashboardPanelParamsOutput) Legend() DashboardPanelParamsLegendPtrOutput {
 	return o.ApplyT(func(v DashboardPanelParams) *DashboardPanelParamsLegend { return v.Legend }).(DashboardPanelParamsLegendPtrOutput)
+}
+
+func (o DashboardPanelParamsOutput) TableFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DashboardPanelParams) []string { return v.TableFields }).(pulumi.StringArrayOutput)
 }
 
 type DashboardPanelParamsPtrOutput struct{ *pulumi.OutputState }
@@ -1486,6 +4075,15 @@ func (o DashboardPanelParamsPtrOutput) Elem() DashboardPanelParamsOutput {
 	}).(DashboardPanelParamsOutput)
 }
 
+func (o DashboardPanelParamsPtrOutput) Datalabels() DashboardPanelParamsDatalabelsPtrOutput {
+	return o.ApplyT(func(v *DashboardPanelParams) *DashboardPanelParamsDatalabels {
+		if v == nil {
+			return nil
+		}
+		return v.Datalabels
+	}).(DashboardPanelParamsDatalabelsPtrOutput)
+}
+
 func (o DashboardPanelParamsPtrOutput) Datasets() DashboardPanelParamsDatasetArrayOutput {
 	return o.ApplyT(func(v *DashboardPanelParams) []DashboardPanelParamsDataset {
 		if v == nil {
@@ -1495,12 +4093,22 @@ func (o DashboardPanelParamsPtrOutput) Datasets() DashboardPanelParamsDatasetArr
 	}).(DashboardPanelParamsDatasetArrayOutput)
 }
 
+func (o DashboardPanelParamsPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DashboardPanelParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `table`, `aggregateValue`.
 func (o DashboardPanelParamsPtrOutput) Display() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DashboardPanelParams) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Display
+		return v.Display
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1513,12 +4121,155 @@ func (o DashboardPanelParamsPtrOutput) Legend() DashboardPanelParamsLegendPtrOut
 	}).(DashboardPanelParamsLegendPtrOutput)
 }
 
+func (o DashboardPanelParamsPtrOutput) TableFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DashboardPanelParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TableFields
+	}).(pulumi.StringArrayOutput)
+}
+
+type DashboardPanelParamsDatalabels struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// DashboardPanelParamsDatalabelsInput is an input type that accepts DashboardPanelParamsDatalabelsArgs and DashboardPanelParamsDatalabelsOutput values.
+// You can construct a concrete instance of `DashboardPanelParamsDatalabelsInput` via:
+//
+//	DashboardPanelParamsDatalabelsArgs{...}
+type DashboardPanelParamsDatalabelsInput interface {
+	pulumi.Input
+
+	ToDashboardPanelParamsDatalabelsOutput() DashboardPanelParamsDatalabelsOutput
+	ToDashboardPanelParamsDatalabelsOutputWithContext(context.Context) DashboardPanelParamsDatalabelsOutput
+}
+
+type DashboardPanelParamsDatalabelsArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (DashboardPanelParamsDatalabelsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardPanelParamsDatalabels)(nil)).Elem()
+}
+
+func (i DashboardPanelParamsDatalabelsArgs) ToDashboardPanelParamsDatalabelsOutput() DashboardPanelParamsDatalabelsOutput {
+	return i.ToDashboardPanelParamsDatalabelsOutputWithContext(context.Background())
+}
+
+func (i DashboardPanelParamsDatalabelsArgs) ToDashboardPanelParamsDatalabelsOutputWithContext(ctx context.Context) DashboardPanelParamsDatalabelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardPanelParamsDatalabelsOutput)
+}
+
+func (i DashboardPanelParamsDatalabelsArgs) ToDashboardPanelParamsDatalabelsPtrOutput() DashboardPanelParamsDatalabelsPtrOutput {
+	return i.ToDashboardPanelParamsDatalabelsPtrOutputWithContext(context.Background())
+}
+
+func (i DashboardPanelParamsDatalabelsArgs) ToDashboardPanelParamsDatalabelsPtrOutputWithContext(ctx context.Context) DashboardPanelParamsDatalabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardPanelParamsDatalabelsOutput).ToDashboardPanelParamsDatalabelsPtrOutputWithContext(ctx)
+}
+
+// DashboardPanelParamsDatalabelsPtrInput is an input type that accepts DashboardPanelParamsDatalabelsArgs, DashboardPanelParamsDatalabelsPtr and DashboardPanelParamsDatalabelsPtrOutput values.
+// You can construct a concrete instance of `DashboardPanelParamsDatalabelsPtrInput` via:
+//
+//	        DashboardPanelParamsDatalabelsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DashboardPanelParamsDatalabelsPtrInput interface {
+	pulumi.Input
+
+	ToDashboardPanelParamsDatalabelsPtrOutput() DashboardPanelParamsDatalabelsPtrOutput
+	ToDashboardPanelParamsDatalabelsPtrOutputWithContext(context.Context) DashboardPanelParamsDatalabelsPtrOutput
+}
+
+type dashboardPanelParamsDatalabelsPtrType DashboardPanelParamsDatalabelsArgs
+
+func DashboardPanelParamsDatalabelsPtr(v *DashboardPanelParamsDatalabelsArgs) DashboardPanelParamsDatalabelsPtrInput {
+	return (*dashboardPanelParamsDatalabelsPtrType)(v)
+}
+
+func (*dashboardPanelParamsDatalabelsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardPanelParamsDatalabels)(nil)).Elem()
+}
+
+func (i *dashboardPanelParamsDatalabelsPtrType) ToDashboardPanelParamsDatalabelsPtrOutput() DashboardPanelParamsDatalabelsPtrOutput {
+	return i.ToDashboardPanelParamsDatalabelsPtrOutputWithContext(context.Background())
+}
+
+func (i *dashboardPanelParamsDatalabelsPtrType) ToDashboardPanelParamsDatalabelsPtrOutputWithContext(ctx context.Context) DashboardPanelParamsDatalabelsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardPanelParamsDatalabelsPtrOutput)
+}
+
+type DashboardPanelParamsDatalabelsOutput struct{ *pulumi.OutputState }
+
+func (DashboardPanelParamsDatalabelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardPanelParamsDatalabels)(nil)).Elem()
+}
+
+func (o DashboardPanelParamsDatalabelsOutput) ToDashboardPanelParamsDatalabelsOutput() DashboardPanelParamsDatalabelsOutput {
+	return o
+}
+
+func (o DashboardPanelParamsDatalabelsOutput) ToDashboardPanelParamsDatalabelsOutputWithContext(ctx context.Context) DashboardPanelParamsDatalabelsOutput {
+	return o
+}
+
+func (o DashboardPanelParamsDatalabelsOutput) ToDashboardPanelParamsDatalabelsPtrOutput() DashboardPanelParamsDatalabelsPtrOutput {
+	return o.ToDashboardPanelParamsDatalabelsPtrOutputWithContext(context.Background())
+}
+
+func (o DashboardPanelParamsDatalabelsOutput) ToDashboardPanelParamsDatalabelsPtrOutputWithContext(ctx context.Context) DashboardPanelParamsDatalabelsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPanelParamsDatalabels) *DashboardPanelParamsDatalabels {
+		return &v
+	}).(DashboardPanelParamsDatalabelsPtrOutput)
+}
+
+func (o DashboardPanelParamsDatalabelsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParamsDatalabels) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type DashboardPanelParamsDatalabelsPtrOutput struct{ *pulumi.OutputState }
+
+func (DashboardPanelParamsDatalabelsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardPanelParamsDatalabels)(nil)).Elem()
+}
+
+func (o DashboardPanelParamsDatalabelsPtrOutput) ToDashboardPanelParamsDatalabelsPtrOutput() DashboardPanelParamsDatalabelsPtrOutput {
+	return o
+}
+
+func (o DashboardPanelParamsDatalabelsPtrOutput) ToDashboardPanelParamsDatalabelsPtrOutputWithContext(ctx context.Context) DashboardPanelParamsDatalabelsPtrOutput {
+	return o
+}
+
+func (o DashboardPanelParamsDatalabelsPtrOutput) Elem() DashboardPanelParamsDatalabelsOutput {
+	return o.ApplyT(func(v *DashboardPanelParamsDatalabels) DashboardPanelParamsDatalabels {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPanelParamsDatalabels
+		return ret
+	}).(DashboardPanelParamsDatalabelsOutput)
+}
+
+func (o DashboardPanelParamsDatalabelsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DashboardPanelParamsDatalabels) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type DashboardPanelParamsDataset struct {
-	Aggregate  *DashboardPanelParamsDatasetAggregate `pulumi:"aggregate"`
-	Collection string                                `pulumi:"collection"`
-	Filters    []DashboardPanelParamsDatasetFilter   `pulumi:"filters"`
-	GroupBy    *string                               `pulumi:"groupBy"`
-	Name       *string                               `pulumi:"name"`
+	Aggregate *DashboardPanelParamsDatasetAggregate `pulumi:"aggregate"`
+	// Value must be one of `alerts`, `incidents`, `incidentPostMortems`, `incidentActionItems`, `users`.
+	Collection *string                             `pulumi:"collection"`
+	Filters    []DashboardPanelParamsDatasetFilter `pulumi:"filters"`
+	GroupBy    *string                             `pulumi:"groupBy"`
+	Name       *string                             `pulumi:"name"`
 }
 
 // DashboardPanelParamsDatasetInput is an input type that accepts DashboardPanelParamsDatasetArgs and DashboardPanelParamsDatasetOutput values.
@@ -1533,11 +4284,12 @@ type DashboardPanelParamsDatasetInput interface {
 }
 
 type DashboardPanelParamsDatasetArgs struct {
-	Aggregate  DashboardPanelParamsDatasetAggregatePtrInput `pulumi:"aggregate"`
-	Collection pulumi.StringInput                           `pulumi:"collection"`
-	Filters    DashboardPanelParamsDatasetFilterArrayInput  `pulumi:"filters"`
-	GroupBy    pulumi.StringPtrInput                        `pulumi:"groupBy"`
-	Name       pulumi.StringPtrInput                        `pulumi:"name"`
+	Aggregate DashboardPanelParamsDatasetAggregatePtrInput `pulumi:"aggregate"`
+	// Value must be one of `alerts`, `incidents`, `incidentPostMortems`, `incidentActionItems`, `users`.
+	Collection pulumi.StringPtrInput                       `pulumi:"collection"`
+	Filters    DashboardPanelParamsDatasetFilterArrayInput `pulumi:"filters"`
+	GroupBy    pulumi.StringPtrInput                       `pulumi:"groupBy"`
+	Name       pulumi.StringPtrInput                       `pulumi:"name"`
 }
 
 func (DashboardPanelParamsDatasetArgs) ElementType() reflect.Type {
@@ -1595,8 +4347,9 @@ func (o DashboardPanelParamsDatasetOutput) Aggregate() DashboardPanelParamsDatas
 	return o.ApplyT(func(v DashboardPanelParamsDataset) *DashboardPanelParamsDatasetAggregate { return v.Aggregate }).(DashboardPanelParamsDatasetAggregatePtrOutput)
 }
 
-func (o DashboardPanelParamsDatasetOutput) Collection() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardPanelParamsDataset) string { return v.Collection }).(pulumi.StringOutput)
+// Value must be one of `alerts`, `incidents`, `incidentPostMortems`, `incidentActionItems`, `users`.
+func (o DashboardPanelParamsDatasetOutput) Collection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParamsDataset) *string { return v.Collection }).(pulumi.StringPtrOutput)
 }
 
 func (o DashboardPanelParamsDatasetOutput) Filters() DashboardPanelParamsDatasetFilterArrayOutput {
@@ -1632,9 +4385,11 @@ func (o DashboardPanelParamsDatasetArrayOutput) Index(i pulumi.IntInput) Dashboa
 }
 
 type DashboardPanelParamsDatasetAggregate struct {
-	Cumulative bool   `pulumi:"cumulative"`
-	Key        string `pulumi:"key"`
-	Operation  string `pulumi:"operation"`
+	// Value must be one of true or false
+	Cumulative *bool   `pulumi:"cumulative"`
+	Key        *string `pulumi:"key"`
+	// Value must be one of `count`, `sum`, `average`.
+	Operation *string `pulumi:"operation"`
 }
 
 // DashboardPanelParamsDatasetAggregateInput is an input type that accepts DashboardPanelParamsDatasetAggregateArgs and DashboardPanelParamsDatasetAggregateOutput values.
@@ -1649,9 +4404,11 @@ type DashboardPanelParamsDatasetAggregateInput interface {
 }
 
 type DashboardPanelParamsDatasetAggregateArgs struct {
-	Cumulative pulumi.BoolInput   `pulumi:"cumulative"`
-	Key        pulumi.StringInput `pulumi:"key"`
-	Operation  pulumi.StringInput `pulumi:"operation"`
+	// Value must be one of true or false
+	Cumulative pulumi.BoolPtrInput   `pulumi:"cumulative"`
+	Key        pulumi.StringPtrInput `pulumi:"key"`
+	// Value must be one of `count`, `sum`, `average`.
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
 }
 
 func (DashboardPanelParamsDatasetAggregateArgs) ElementType() reflect.Type {
@@ -1731,16 +4488,18 @@ func (o DashboardPanelParamsDatasetAggregateOutput) ToDashboardPanelParamsDatase
 	}).(DashboardPanelParamsDatasetAggregatePtrOutput)
 }
 
-func (o DashboardPanelParamsDatasetAggregateOutput) Cumulative() pulumi.BoolOutput {
-	return o.ApplyT(func(v DashboardPanelParamsDatasetAggregate) bool { return v.Cumulative }).(pulumi.BoolOutput)
+// Value must be one of true or false
+func (o DashboardPanelParamsDatasetAggregateOutput) Cumulative() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParamsDatasetAggregate) *bool { return v.Cumulative }).(pulumi.BoolPtrOutput)
 }
 
-func (o DashboardPanelParamsDatasetAggregateOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardPanelParamsDatasetAggregate) string { return v.Key }).(pulumi.StringOutput)
+func (o DashboardPanelParamsDatasetAggregateOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParamsDatasetAggregate) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-func (o DashboardPanelParamsDatasetAggregateOutput) Operation() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardPanelParamsDatasetAggregate) string { return v.Operation }).(pulumi.StringOutput)
+// Value must be one of `count`, `sum`, `average`.
+func (o DashboardPanelParamsDatasetAggregateOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParamsDatasetAggregate) *string { return v.Operation }).(pulumi.StringPtrOutput)
 }
 
 type DashboardPanelParamsDatasetAggregatePtrOutput struct{ *pulumi.OutputState }
@@ -1767,12 +4526,13 @@ func (o DashboardPanelParamsDatasetAggregatePtrOutput) Elem() DashboardPanelPara
 	}).(DashboardPanelParamsDatasetAggregateOutput)
 }
 
+// Value must be one of true or false
 func (o DashboardPanelParamsDatasetAggregatePtrOutput) Cumulative() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DashboardPanelParamsDatasetAggregate) *bool {
 		if v == nil {
 			return nil
 		}
-		return &v.Cumulative
+		return v.Cumulative
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -1781,21 +4541,23 @@ func (o DashboardPanelParamsDatasetAggregatePtrOutput) Key() pulumi.StringPtrOut
 		if v == nil {
 			return nil
 		}
-		return &v.Key
+		return v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `count`, `sum`, `average`.
 func (o DashboardPanelParamsDatasetAggregatePtrOutput) Operation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DashboardPanelParamsDatasetAggregate) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Operation
+		return v.Operation
 	}).(pulumi.StringPtrOutput)
 }
 
 type DashboardPanelParamsDatasetFilter struct {
-	Operation string                                  `pulumi:"operation"`
+	// Value must be one of `and`, `or`.
+	Operation *string                                 `pulumi:"operation"`
 	Rules     []DashboardPanelParamsDatasetFilterRule `pulumi:"rules"`
 }
 
@@ -1811,7 +4573,8 @@ type DashboardPanelParamsDatasetFilterInput interface {
 }
 
 type DashboardPanelParamsDatasetFilterArgs struct {
-	Operation pulumi.StringInput                              `pulumi:"operation"`
+	// Value must be one of `and`, `or`.
+	Operation pulumi.StringPtrInput                           `pulumi:"operation"`
 	Rules     DashboardPanelParamsDatasetFilterRuleArrayInput `pulumi:"rules"`
 }
 
@@ -1866,8 +4629,9 @@ func (o DashboardPanelParamsDatasetFilterOutput) ToDashboardPanelParamsDatasetFi
 	return o
 }
 
-func (o DashboardPanelParamsDatasetFilterOutput) Operation() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardPanelParamsDatasetFilter) string { return v.Operation }).(pulumi.StringOutput)
+// Value must be one of `and`, `or`.
+func (o DashboardPanelParamsDatasetFilterOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParamsDatasetFilter) *string { return v.Operation }).(pulumi.StringPtrOutput)
 }
 
 func (o DashboardPanelParamsDatasetFilterOutput) Rules() DashboardPanelParamsDatasetFilterRuleArrayOutput {
@@ -1895,10 +4659,12 @@ func (o DashboardPanelParamsDatasetFilterArrayOutput) Index(i pulumi.IntInput) D
 }
 
 type DashboardPanelParamsDatasetFilterRule struct {
-	Condition string `pulumi:"condition"`
-	Key       string `pulumi:"key"`
-	Operation string `pulumi:"operation"`
-	Value     string `pulumi:"value"`
+	// Value must be one of `=`, `!=`, `>=`, `<=`, `exists`, `notExists`, `contains`, `notContains`, `assigned`, `unassigned`.
+	Condition *string `pulumi:"condition"`
+	Key       *string `pulumi:"key"`
+	// Value must be one of `and`, `or`.
+	Operation *string `pulumi:"operation"`
+	Value     *string `pulumi:"value"`
 }
 
 // DashboardPanelParamsDatasetFilterRuleInput is an input type that accepts DashboardPanelParamsDatasetFilterRuleArgs and DashboardPanelParamsDatasetFilterRuleOutput values.
@@ -1913,10 +4679,12 @@ type DashboardPanelParamsDatasetFilterRuleInput interface {
 }
 
 type DashboardPanelParamsDatasetFilterRuleArgs struct {
-	Condition pulumi.StringInput `pulumi:"condition"`
-	Key       pulumi.StringInput `pulumi:"key"`
-	Operation pulumi.StringInput `pulumi:"operation"`
-	Value     pulumi.StringInput `pulumi:"value"`
+	// Value must be one of `=`, `!=`, `>=`, `<=`, `exists`, `notExists`, `contains`, `notContains`, `assigned`, `unassigned`.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	Key       pulumi.StringPtrInput `pulumi:"key"`
+	// Value must be one of `and`, `or`.
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+	Value     pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (DashboardPanelParamsDatasetFilterRuleArgs) ElementType() reflect.Type {
@@ -1970,20 +4738,22 @@ func (o DashboardPanelParamsDatasetFilterRuleOutput) ToDashboardPanelParamsDatas
 	return o
 }
 
-func (o DashboardPanelParamsDatasetFilterRuleOutput) Condition() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardPanelParamsDatasetFilterRule) string { return v.Condition }).(pulumi.StringOutput)
+// Value must be one of `=`, `!=`, `>=`, `<=`, `exists`, `notExists`, `contains`, `notContains`, `assigned`, `unassigned`.
+func (o DashboardPanelParamsDatasetFilterRuleOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParamsDatasetFilterRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
 }
 
-func (o DashboardPanelParamsDatasetFilterRuleOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardPanelParamsDatasetFilterRule) string { return v.Key }).(pulumi.StringOutput)
+func (o DashboardPanelParamsDatasetFilterRuleOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParamsDatasetFilterRule) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-func (o DashboardPanelParamsDatasetFilterRuleOutput) Operation() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardPanelParamsDatasetFilterRule) string { return v.Operation }).(pulumi.StringOutput)
+// Value must be one of `and`, `or`.
+func (o DashboardPanelParamsDatasetFilterRuleOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParamsDatasetFilterRule) *string { return v.Operation }).(pulumi.StringPtrOutput)
 }
 
-func (o DashboardPanelParamsDatasetFilterRuleOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardPanelParamsDatasetFilterRule) string { return v.Value }).(pulumi.StringOutput)
+func (o DashboardPanelParamsDatasetFilterRuleOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParamsDatasetFilterRule) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type DashboardPanelParamsDatasetFilterRuleArrayOutput struct{ *pulumi.OutputState }
@@ -2007,7 +4777,8 @@ func (o DashboardPanelParamsDatasetFilterRuleArrayOutput) Index(i pulumi.IntInpu
 }
 
 type DashboardPanelParamsLegend struct {
-	Groups string `pulumi:"groups"`
+	// Value must be one of `all`, `charted`.
+	Groups *string `pulumi:"groups"`
 }
 
 // DashboardPanelParamsLegendInput is an input type that accepts DashboardPanelParamsLegendArgs and DashboardPanelParamsLegendOutput values.
@@ -2022,7 +4793,8 @@ type DashboardPanelParamsLegendInput interface {
 }
 
 type DashboardPanelParamsLegendArgs struct {
-	Groups pulumi.StringInput `pulumi:"groups"`
+	// Value must be one of `all`, `charted`.
+	Groups pulumi.StringPtrInput `pulumi:"groups"`
 }
 
 func (DashboardPanelParamsLegendArgs) ElementType() reflect.Type {
@@ -2102,8 +4874,9 @@ func (o DashboardPanelParamsLegendOutput) ToDashboardPanelParamsLegendPtrOutputW
 	}).(DashboardPanelParamsLegendPtrOutput)
 }
 
-func (o DashboardPanelParamsLegendOutput) Groups() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardPanelParamsLegend) string { return v.Groups }).(pulumi.StringOutput)
+// Value must be one of `all`, `charted`.
+func (o DashboardPanelParamsLegendOutput) Groups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPanelParamsLegend) *string { return v.Groups }).(pulumi.StringPtrOutput)
 }
 
 type DashboardPanelParamsLegendPtrOutput struct{ *pulumi.OutputState }
@@ -2130,20 +4903,21 @@ func (o DashboardPanelParamsLegendPtrOutput) Elem() DashboardPanelParamsLegendOu
 	}).(DashboardPanelParamsLegendOutput)
 }
 
+// Value must be one of `all`, `charted`.
 func (o DashboardPanelParamsLegendPtrOutput) Groups() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DashboardPanelParamsLegend) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Groups
+		return v.Groups
 	}).(pulumi.StringPtrOutput)
 }
 
 type DashboardPanelPosition struct {
-	H int `pulumi:"h"`
-	W int `pulumi:"w"`
-	X int `pulumi:"x"`
-	Y int `pulumi:"y"`
+	H float64 `pulumi:"h"`
+	W float64 `pulumi:"w"`
+	X float64 `pulumi:"x"`
+	Y float64 `pulumi:"y"`
 }
 
 // DashboardPanelPositionInput is an input type that accepts DashboardPanelPositionArgs and DashboardPanelPositionOutput values.
@@ -2158,10 +4932,10 @@ type DashboardPanelPositionInput interface {
 }
 
 type DashboardPanelPositionArgs struct {
-	H pulumi.IntInput `pulumi:"h"`
-	W pulumi.IntInput `pulumi:"w"`
-	X pulumi.IntInput `pulumi:"x"`
-	Y pulumi.IntInput `pulumi:"y"`
+	H pulumi.Float64Input `pulumi:"h"`
+	W pulumi.Float64Input `pulumi:"w"`
+	X pulumi.Float64Input `pulumi:"x"`
+	Y pulumi.Float64Input `pulumi:"y"`
 }
 
 func (DashboardPanelPositionArgs) ElementType() reflect.Type {
@@ -2241,20 +5015,20 @@ func (o DashboardPanelPositionOutput) ToDashboardPanelPositionPtrOutputWithConte
 	}).(DashboardPanelPositionPtrOutput)
 }
 
-func (o DashboardPanelPositionOutput) H() pulumi.IntOutput {
-	return o.ApplyT(func(v DashboardPanelPosition) int { return v.H }).(pulumi.IntOutput)
+func (o DashboardPanelPositionOutput) H() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardPanelPosition) float64 { return v.H }).(pulumi.Float64Output)
 }
 
-func (o DashboardPanelPositionOutput) W() pulumi.IntOutput {
-	return o.ApplyT(func(v DashboardPanelPosition) int { return v.W }).(pulumi.IntOutput)
+func (o DashboardPanelPositionOutput) W() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardPanelPosition) float64 { return v.W }).(pulumi.Float64Output)
 }
 
-func (o DashboardPanelPositionOutput) X() pulumi.IntOutput {
-	return o.ApplyT(func(v DashboardPanelPosition) int { return v.X }).(pulumi.IntOutput)
+func (o DashboardPanelPositionOutput) X() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardPanelPosition) float64 { return v.X }).(pulumi.Float64Output)
 }
 
-func (o DashboardPanelPositionOutput) Y() pulumi.IntOutput {
-	return o.ApplyT(func(v DashboardPanelPosition) int { return v.Y }).(pulumi.IntOutput)
+func (o DashboardPanelPositionOutput) Y() pulumi.Float64Output {
+	return o.ApplyT(func(v DashboardPanelPosition) float64 { return v.Y }).(pulumi.Float64Output)
 }
 
 type DashboardPanelPositionPtrOutput struct{ *pulumi.OutputState }
@@ -2281,40 +5055,270 @@ func (o DashboardPanelPositionPtrOutput) Elem() DashboardPanelPositionOutput {
 	}).(DashboardPanelPositionOutput)
 }
 
-func (o DashboardPanelPositionPtrOutput) H() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DashboardPanelPosition) *int {
+func (o DashboardPanelPositionPtrOutput) H() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DashboardPanelPosition) *float64 {
 		if v == nil {
 			return nil
 		}
 		return &v.H
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
-func (o DashboardPanelPositionPtrOutput) W() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DashboardPanelPosition) *int {
+func (o DashboardPanelPositionPtrOutput) W() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DashboardPanelPosition) *float64 {
 		if v == nil {
 			return nil
 		}
 		return &v.W
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
-func (o DashboardPanelPositionPtrOutput) X() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DashboardPanelPosition) *int {
+func (o DashboardPanelPositionPtrOutput) X() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DashboardPanelPosition) *float64 {
 		if v == nil {
 			return nil
 		}
 		return &v.X
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
-func (o DashboardPanelPositionPtrOutput) Y() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DashboardPanelPosition) *int {
+func (o DashboardPanelPositionPtrOutput) Y() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DashboardPanelPosition) *float64 {
 		if v == nil {
 			return nil
 		}
 		return &v.Y
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
+}
+
+type EdgeConnectorActionParameter struct {
+	Default     *string  `pulumi:"default"`
+	Description *string  `pulumi:"description"`
+	Name        *string  `pulumi:"name"`
+	Options     []string `pulumi:"options"`
+	Required    *bool    `pulumi:"required"`
+	Type        *string  `pulumi:"type"`
+}
+
+// EdgeConnectorActionParameterInput is an input type that accepts EdgeConnectorActionParameterArgs and EdgeConnectorActionParameterOutput values.
+// You can construct a concrete instance of `EdgeConnectorActionParameterInput` via:
+//
+//	EdgeConnectorActionParameterArgs{...}
+type EdgeConnectorActionParameterInput interface {
+	pulumi.Input
+
+	ToEdgeConnectorActionParameterOutput() EdgeConnectorActionParameterOutput
+	ToEdgeConnectorActionParameterOutputWithContext(context.Context) EdgeConnectorActionParameterOutput
+}
+
+type EdgeConnectorActionParameterArgs struct {
+	Default     pulumi.StringPtrInput   `pulumi:"default"`
+	Description pulumi.StringPtrInput   `pulumi:"description"`
+	Name        pulumi.StringPtrInput   `pulumi:"name"`
+	Options     pulumi.StringArrayInput `pulumi:"options"`
+	Required    pulumi.BoolPtrInput     `pulumi:"required"`
+	Type        pulumi.StringPtrInput   `pulumi:"type"`
+}
+
+func (EdgeConnectorActionParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeConnectorActionParameter)(nil)).Elem()
+}
+
+func (i EdgeConnectorActionParameterArgs) ToEdgeConnectorActionParameterOutput() EdgeConnectorActionParameterOutput {
+	return i.ToEdgeConnectorActionParameterOutputWithContext(context.Background())
+}
+
+func (i EdgeConnectorActionParameterArgs) ToEdgeConnectorActionParameterOutputWithContext(ctx context.Context) EdgeConnectorActionParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeConnectorActionParameterOutput)
+}
+
+// EdgeConnectorActionParameterArrayInput is an input type that accepts EdgeConnectorActionParameterArray and EdgeConnectorActionParameterArrayOutput values.
+// You can construct a concrete instance of `EdgeConnectorActionParameterArrayInput` via:
+//
+//	EdgeConnectorActionParameterArray{ EdgeConnectorActionParameterArgs{...} }
+type EdgeConnectorActionParameterArrayInput interface {
+	pulumi.Input
+
+	ToEdgeConnectorActionParameterArrayOutput() EdgeConnectorActionParameterArrayOutput
+	ToEdgeConnectorActionParameterArrayOutputWithContext(context.Context) EdgeConnectorActionParameterArrayOutput
+}
+
+type EdgeConnectorActionParameterArray []EdgeConnectorActionParameterInput
+
+func (EdgeConnectorActionParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeConnectorActionParameter)(nil)).Elem()
+}
+
+func (i EdgeConnectorActionParameterArray) ToEdgeConnectorActionParameterArrayOutput() EdgeConnectorActionParameterArrayOutput {
+	return i.ToEdgeConnectorActionParameterArrayOutputWithContext(context.Background())
+}
+
+func (i EdgeConnectorActionParameterArray) ToEdgeConnectorActionParameterArrayOutputWithContext(ctx context.Context) EdgeConnectorActionParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeConnectorActionParameterArrayOutput)
+}
+
+type EdgeConnectorActionParameterOutput struct{ *pulumi.OutputState }
+
+func (EdgeConnectorActionParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeConnectorActionParameter)(nil)).Elem()
+}
+
+func (o EdgeConnectorActionParameterOutput) ToEdgeConnectorActionParameterOutput() EdgeConnectorActionParameterOutput {
+	return o
+}
+
+func (o EdgeConnectorActionParameterOutput) ToEdgeConnectorActionParameterOutputWithContext(ctx context.Context) EdgeConnectorActionParameterOutput {
+	return o
+}
+
+func (o EdgeConnectorActionParameterOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeConnectorActionParameter) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeConnectorActionParameterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeConnectorActionParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeConnectorActionParameterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeConnectorActionParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o EdgeConnectorActionParameterOutput) Options() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EdgeConnectorActionParameter) []string { return v.Options }).(pulumi.StringArrayOutput)
+}
+
+func (o EdgeConnectorActionParameterOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EdgeConnectorActionParameter) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o EdgeConnectorActionParameterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeConnectorActionParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type EdgeConnectorActionParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (EdgeConnectorActionParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeConnectorActionParameter)(nil)).Elem()
+}
+
+func (o EdgeConnectorActionParameterArrayOutput) ToEdgeConnectorActionParameterArrayOutput() EdgeConnectorActionParameterArrayOutput {
+	return o
+}
+
+func (o EdgeConnectorActionParameterArrayOutput) ToEdgeConnectorActionParameterArrayOutputWithContext(ctx context.Context) EdgeConnectorActionParameterArrayOutput {
+	return o
+}
+
+func (o EdgeConnectorActionParameterArrayOutput) Index(i pulumi.IntInput) EdgeConnectorActionParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeConnectorActionParameter {
+		return vs[0].([]EdgeConnectorActionParameter)[vs[1].(int)]
+	}).(EdgeConnectorActionParameterOutput)
+}
+
+type EnvironmentProperty struct {
+	// Catalog property ID
+	CatalogPropertyId *string `pulumi:"catalogPropertyId"`
+	// The property value
+	Value *string `pulumi:"value"`
+}
+
+// EnvironmentPropertyInput is an input type that accepts EnvironmentPropertyArgs and EnvironmentPropertyOutput values.
+// You can construct a concrete instance of `EnvironmentPropertyInput` via:
+//
+//	EnvironmentPropertyArgs{...}
+type EnvironmentPropertyInput interface {
+	pulumi.Input
+
+	ToEnvironmentPropertyOutput() EnvironmentPropertyOutput
+	ToEnvironmentPropertyOutputWithContext(context.Context) EnvironmentPropertyOutput
+}
+
+type EnvironmentPropertyArgs struct {
+	// Catalog property ID
+	CatalogPropertyId pulumi.StringPtrInput `pulumi:"catalogPropertyId"`
+	// The property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (EnvironmentPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentProperty)(nil)).Elem()
+}
+
+func (i EnvironmentPropertyArgs) ToEnvironmentPropertyOutput() EnvironmentPropertyOutput {
+	return i.ToEnvironmentPropertyOutputWithContext(context.Background())
+}
+
+func (i EnvironmentPropertyArgs) ToEnvironmentPropertyOutputWithContext(ctx context.Context) EnvironmentPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentPropertyOutput)
+}
+
+// EnvironmentPropertyArrayInput is an input type that accepts EnvironmentPropertyArray and EnvironmentPropertyArrayOutput values.
+// You can construct a concrete instance of `EnvironmentPropertyArrayInput` via:
+//
+//	EnvironmentPropertyArray{ EnvironmentPropertyArgs{...} }
+type EnvironmentPropertyArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentPropertyArrayOutput() EnvironmentPropertyArrayOutput
+	ToEnvironmentPropertyArrayOutputWithContext(context.Context) EnvironmentPropertyArrayOutput
+}
+
+type EnvironmentPropertyArray []EnvironmentPropertyInput
+
+func (EnvironmentPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentProperty)(nil)).Elem()
+}
+
+func (i EnvironmentPropertyArray) ToEnvironmentPropertyArrayOutput() EnvironmentPropertyArrayOutput {
+	return i.ToEnvironmentPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentPropertyArray) ToEnvironmentPropertyArrayOutputWithContext(ctx context.Context) EnvironmentPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentPropertyArrayOutput)
+}
+
+type EnvironmentPropertyOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentProperty)(nil)).Elem()
+}
+
+func (o EnvironmentPropertyOutput) ToEnvironmentPropertyOutput() EnvironmentPropertyOutput {
+	return o
+}
+
+func (o EnvironmentPropertyOutput) ToEnvironmentPropertyOutputWithContext(ctx context.Context) EnvironmentPropertyOutput {
+	return o
+}
+
+// Catalog property ID
+func (o EnvironmentPropertyOutput) CatalogPropertyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentProperty) *string { return v.CatalogPropertyId }).(pulumi.StringPtrOutput)
+}
+
+// The property value
+func (o EnvironmentPropertyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentProperty)(nil)).Elem()
+}
+
+func (o EnvironmentPropertyArrayOutput) ToEnvironmentPropertyArrayOutput() EnvironmentPropertyArrayOutput {
+	return o
+}
+
+func (o EnvironmentPropertyArrayOutput) ToEnvironmentPropertyArrayOutputWithContext(ctx context.Context) EnvironmentPropertyArrayOutput {
+	return o
+}
+
+func (o EnvironmentPropertyArrayOutput) Index(i pulumi.IntInput) EnvironmentPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentProperty {
+		return vs[0].([]EnvironmentProperty)[vs[1].(int)]
+	}).(EnvironmentPropertyOutput)
 }
 
 type EnvironmentSlackAlias struct {
@@ -2645,16 +5649,28 @@ func (o EscalationLevelNotificationTargetParamArrayOutput) Index(i pulumi.IntInp
 }
 
 type EscalationPathRule struct {
+	// The ID of the alert field. Only used with `field` rule type.
+	FieldableId *string `pulumi:"fieldableId"`
+	// The type of the fieldable. Only used with `field` rule type. Value must be one of `AlertField`.
+	FieldableType *string `pulumi:"fieldableType"`
 	// JSON path to extract value from payload
 	JsonPath *string `pulumi:"jsonPath"`
-	// How JSON path value should be matched. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`.
+	// How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`.
 	Operator *string `pulumi:"operator"`
-	// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`.
+	// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`.
 	RuleType *string `pulumi:"ruleType"`
+	// Service ids for which this escalation path should be used. Only used with `service` rule type.
+	ServiceIds []string `pulumi:"serviceIds"`
+	// Time windows during which alerts are deferred. Only used with `deferralWindow` rule type.
+	TimeBlocks []EscalationPathRuleTimeBlock `pulumi:"timeBlocks"`
+	// Time zone for the deferral window (IANA format, e.g. `America/New_York`). Only used with `deferralWindow` rule type.
+	TimeZone *string `pulumi:"timeZone"`
 	// Alert urgency ids for which this escalation path should be used
 	UrgencyIds []string `pulumi:"urgencyIds"`
 	// Value with which JSON path value should be matched
 	Value *string `pulumi:"value"`
+	// Values to match against. Only used with `field` rule type.
+	Values []string `pulumi:"values"`
 	// Whether the escalation path should be used within working hours. Value must be one of true or false
 	WithinWorkingHour *bool `pulumi:"withinWorkingHour"`
 }
@@ -2671,16 +5687,28 @@ type EscalationPathRuleInput interface {
 }
 
 type EscalationPathRuleArgs struct {
+	// The ID of the alert field. Only used with `field` rule type.
+	FieldableId pulumi.StringPtrInput `pulumi:"fieldableId"`
+	// The type of the fieldable. Only used with `field` rule type. Value must be one of `AlertField`.
+	FieldableType pulumi.StringPtrInput `pulumi:"fieldableType"`
 	// JSON path to extract value from payload
 	JsonPath pulumi.StringPtrInput `pulumi:"jsonPath"`
-	// How JSON path value should be matched. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`.
+	// How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`.
+	// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`.
 	RuleType pulumi.StringPtrInput `pulumi:"ruleType"`
+	// Service ids for which this escalation path should be used. Only used with `service` rule type.
+	ServiceIds pulumi.StringArrayInput `pulumi:"serviceIds"`
+	// Time windows during which alerts are deferred. Only used with `deferralWindow` rule type.
+	TimeBlocks EscalationPathRuleTimeBlockArrayInput `pulumi:"timeBlocks"`
+	// Time zone for the deferral window (IANA format, e.g. `America/New_York`). Only used with `deferralWindow` rule type.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 	// Alert urgency ids for which this escalation path should be used
 	UrgencyIds pulumi.StringArrayInput `pulumi:"urgencyIds"`
 	// Value with which JSON path value should be matched
 	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Values to match against. Only used with `field` rule type.
+	Values pulumi.StringArrayInput `pulumi:"values"`
 	// Whether the escalation path should be used within working hours. Value must be one of true or false
 	WithinWorkingHour pulumi.BoolPtrInput `pulumi:"withinWorkingHour"`
 }
@@ -2736,19 +5764,44 @@ func (o EscalationPathRuleOutput) ToEscalationPathRuleOutputWithContext(ctx cont
 	return o
 }
 
+// The ID of the alert field. Only used with `field` rule type.
+func (o EscalationPathRuleOutput) FieldableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EscalationPathRule) *string { return v.FieldableId }).(pulumi.StringPtrOutput)
+}
+
+// The type of the fieldable. Only used with `field` rule type. Value must be one of `AlertField`.
+func (o EscalationPathRuleOutput) FieldableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EscalationPathRule) *string { return v.FieldableType }).(pulumi.StringPtrOutput)
+}
+
 // JSON path to extract value from payload
 func (o EscalationPathRuleOutput) JsonPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EscalationPathRule) *string { return v.JsonPath }).(pulumi.StringPtrOutput)
 }
 
-// How JSON path value should be matched. Value must be one of `is`, `isNot`, `contains`, `doesNotContain`.
+// How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`.
 func (o EscalationPathRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EscalationPathRule) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
-// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`.
+// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`.
 func (o EscalationPathRuleOutput) RuleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EscalationPathRule) *string { return v.RuleType }).(pulumi.StringPtrOutput)
+}
+
+// Service ids for which this escalation path should be used. Only used with `service` rule type.
+func (o EscalationPathRuleOutput) ServiceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EscalationPathRule) []string { return v.ServiceIds }).(pulumi.StringArrayOutput)
+}
+
+// Time windows during which alerts are deferred. Only used with `deferralWindow` rule type.
+func (o EscalationPathRuleOutput) TimeBlocks() EscalationPathRuleTimeBlockArrayOutput {
+	return o.ApplyT(func(v EscalationPathRule) []EscalationPathRuleTimeBlock { return v.TimeBlocks }).(EscalationPathRuleTimeBlockArrayOutput)
+}
+
+// Time zone for the deferral window (IANA format, e.g. `America/New_York`). Only used with `deferralWindow` rule type.
+func (o EscalationPathRuleOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EscalationPathRule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
 // Alert urgency ids for which this escalation path should be used
@@ -2759,6 +5812,11 @@ func (o EscalationPathRuleOutput) UrgencyIds() pulumi.StringArrayOutput {
 // Value with which JSON path value should be matched
 func (o EscalationPathRuleOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EscalationPathRule) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// Values to match against. Only used with `field` rule type.
+func (o EscalationPathRuleOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EscalationPathRule) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // Whether the escalation path should be used within working hours. Value must be one of true or false
@@ -2784,6 +5842,193 @@ func (o EscalationPathRuleArrayOutput) Index(i pulumi.IntInput) EscalationPathRu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EscalationPathRule {
 		return vs[0].([]EscalationPathRule)[vs[1].(int)]
 	}).(EscalationPathRuleOutput)
+}
+
+type EscalationPathRuleTimeBlock struct {
+	// Whether this time block covers the entire day
+	AllDay *bool `pulumi:"allDay"`
+	// Formatted as HH:MM
+	EndTime *string `pulumi:"endTime"`
+	// Whether the time block applies on Friday
+	Friday *bool `pulumi:"friday"`
+	// Whether the time block applies on Monday
+	Monday *bool `pulumi:"monday"`
+	// Position of the time block
+	Position *int `pulumi:"position"`
+	// Whether the time block applies on Saturday
+	Saturday *bool `pulumi:"saturday"`
+	// Formatted as HH:MM
+	StartTime *string `pulumi:"startTime"`
+	// Whether the time block applies on Sunday
+	Sunday *bool `pulumi:"sunday"`
+	// Whether the time block applies on Thursday
+	Thursday *bool `pulumi:"thursday"`
+	// Whether the time block applies on Tuesday
+	Tuesday *bool `pulumi:"tuesday"`
+	// Whether the time block applies on Wednesday
+	Wednesday *bool `pulumi:"wednesday"`
+}
+
+// EscalationPathRuleTimeBlockInput is an input type that accepts EscalationPathRuleTimeBlockArgs and EscalationPathRuleTimeBlockOutput values.
+// You can construct a concrete instance of `EscalationPathRuleTimeBlockInput` via:
+//
+//	EscalationPathRuleTimeBlockArgs{...}
+type EscalationPathRuleTimeBlockInput interface {
+	pulumi.Input
+
+	ToEscalationPathRuleTimeBlockOutput() EscalationPathRuleTimeBlockOutput
+	ToEscalationPathRuleTimeBlockOutputWithContext(context.Context) EscalationPathRuleTimeBlockOutput
+}
+
+type EscalationPathRuleTimeBlockArgs struct {
+	// Whether this time block covers the entire day
+	AllDay pulumi.BoolPtrInput `pulumi:"allDay"`
+	// Formatted as HH:MM
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Whether the time block applies on Friday
+	Friday pulumi.BoolPtrInput `pulumi:"friday"`
+	// Whether the time block applies on Monday
+	Monday pulumi.BoolPtrInput `pulumi:"monday"`
+	// Position of the time block
+	Position pulumi.IntPtrInput `pulumi:"position"`
+	// Whether the time block applies on Saturday
+	Saturday pulumi.BoolPtrInput `pulumi:"saturday"`
+	// Formatted as HH:MM
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Whether the time block applies on Sunday
+	Sunday pulumi.BoolPtrInput `pulumi:"sunday"`
+	// Whether the time block applies on Thursday
+	Thursday pulumi.BoolPtrInput `pulumi:"thursday"`
+	// Whether the time block applies on Tuesday
+	Tuesday pulumi.BoolPtrInput `pulumi:"tuesday"`
+	// Whether the time block applies on Wednesday
+	Wednesday pulumi.BoolPtrInput `pulumi:"wednesday"`
+}
+
+func (EscalationPathRuleTimeBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPathRuleTimeBlock)(nil)).Elem()
+}
+
+func (i EscalationPathRuleTimeBlockArgs) ToEscalationPathRuleTimeBlockOutput() EscalationPathRuleTimeBlockOutput {
+	return i.ToEscalationPathRuleTimeBlockOutputWithContext(context.Background())
+}
+
+func (i EscalationPathRuleTimeBlockArgs) ToEscalationPathRuleTimeBlockOutputWithContext(ctx context.Context) EscalationPathRuleTimeBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPathRuleTimeBlockOutput)
+}
+
+// EscalationPathRuleTimeBlockArrayInput is an input type that accepts EscalationPathRuleTimeBlockArray and EscalationPathRuleTimeBlockArrayOutput values.
+// You can construct a concrete instance of `EscalationPathRuleTimeBlockArrayInput` via:
+//
+//	EscalationPathRuleTimeBlockArray{ EscalationPathRuleTimeBlockArgs{...} }
+type EscalationPathRuleTimeBlockArrayInput interface {
+	pulumi.Input
+
+	ToEscalationPathRuleTimeBlockArrayOutput() EscalationPathRuleTimeBlockArrayOutput
+	ToEscalationPathRuleTimeBlockArrayOutputWithContext(context.Context) EscalationPathRuleTimeBlockArrayOutput
+}
+
+type EscalationPathRuleTimeBlockArray []EscalationPathRuleTimeBlockInput
+
+func (EscalationPathRuleTimeBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EscalationPathRuleTimeBlock)(nil)).Elem()
+}
+
+func (i EscalationPathRuleTimeBlockArray) ToEscalationPathRuleTimeBlockArrayOutput() EscalationPathRuleTimeBlockArrayOutput {
+	return i.ToEscalationPathRuleTimeBlockArrayOutputWithContext(context.Background())
+}
+
+func (i EscalationPathRuleTimeBlockArray) ToEscalationPathRuleTimeBlockArrayOutputWithContext(ctx context.Context) EscalationPathRuleTimeBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EscalationPathRuleTimeBlockArrayOutput)
+}
+
+type EscalationPathRuleTimeBlockOutput struct{ *pulumi.OutputState }
+
+func (EscalationPathRuleTimeBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EscalationPathRuleTimeBlock)(nil)).Elem()
+}
+
+func (o EscalationPathRuleTimeBlockOutput) ToEscalationPathRuleTimeBlockOutput() EscalationPathRuleTimeBlockOutput {
+	return o
+}
+
+func (o EscalationPathRuleTimeBlockOutput) ToEscalationPathRuleTimeBlockOutputWithContext(ctx context.Context) EscalationPathRuleTimeBlockOutput {
+	return o
+}
+
+// Whether this time block covers the entire day
+func (o EscalationPathRuleTimeBlockOutput) AllDay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EscalationPathRuleTimeBlock) *bool { return v.AllDay }).(pulumi.BoolPtrOutput)
+}
+
+// Formatted as HH:MM
+func (o EscalationPathRuleTimeBlockOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EscalationPathRuleTimeBlock) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Whether the time block applies on Friday
+func (o EscalationPathRuleTimeBlockOutput) Friday() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EscalationPathRuleTimeBlock) *bool { return v.Friday }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the time block applies on Monday
+func (o EscalationPathRuleTimeBlockOutput) Monday() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EscalationPathRuleTimeBlock) *bool { return v.Monday }).(pulumi.BoolPtrOutput)
+}
+
+// Position of the time block
+func (o EscalationPathRuleTimeBlockOutput) Position() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EscalationPathRuleTimeBlock) *int { return v.Position }).(pulumi.IntPtrOutput)
+}
+
+// Whether the time block applies on Saturday
+func (o EscalationPathRuleTimeBlockOutput) Saturday() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EscalationPathRuleTimeBlock) *bool { return v.Saturday }).(pulumi.BoolPtrOutput)
+}
+
+// Formatted as HH:MM
+func (o EscalationPathRuleTimeBlockOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EscalationPathRuleTimeBlock) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Whether the time block applies on Sunday
+func (o EscalationPathRuleTimeBlockOutput) Sunday() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EscalationPathRuleTimeBlock) *bool { return v.Sunday }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the time block applies on Thursday
+func (o EscalationPathRuleTimeBlockOutput) Thursday() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EscalationPathRuleTimeBlock) *bool { return v.Thursday }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the time block applies on Tuesday
+func (o EscalationPathRuleTimeBlockOutput) Tuesday() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EscalationPathRuleTimeBlock) *bool { return v.Tuesday }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the time block applies on Wednesday
+func (o EscalationPathRuleTimeBlockOutput) Wednesday() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EscalationPathRuleTimeBlock) *bool { return v.Wednesday }).(pulumi.BoolPtrOutput)
+}
+
+type EscalationPathRuleTimeBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (EscalationPathRuleTimeBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EscalationPathRuleTimeBlock)(nil)).Elem()
+}
+
+func (o EscalationPathRuleTimeBlockArrayOutput) ToEscalationPathRuleTimeBlockArrayOutput() EscalationPathRuleTimeBlockArrayOutput {
+	return o
+}
+
+func (o EscalationPathRuleTimeBlockArrayOutput) ToEscalationPathRuleTimeBlockArrayOutputWithContext(ctx context.Context) EscalationPathRuleTimeBlockArrayOutput {
+	return o
+}
+
+func (o EscalationPathRuleTimeBlockArrayOutput) Index(i pulumi.IntInput) EscalationPathRuleTimeBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EscalationPathRuleTimeBlock {
+		return vs[0].([]EscalationPathRuleTimeBlock)[vs[1].(int)]
+	}).(EscalationPathRuleTimeBlockOutput)
 }
 
 type EscalationPathTimeRestriction struct {
@@ -2917,7 +6162,7 @@ type EscalationPolicyBusinessHours struct {
 	EndTime *string `pulumi:"endTime"`
 	// Start time for business hours (HH:MM)
 	StartTime *string `pulumi:"startTime"`
-	// Time zone for business hours
+	// Time zone for business hours. Value must be one of `International Date Line West`, `Etc/GMT+12`, `American Samoa`, `Pacific/Pago_Pago`, `Midway Island`, `Pacific/Midway`, `Hawaii`, `Pacific/Honolulu`, `Alaska`, `America/Juneau`, `Pacific Time (US & Canada)`, `America/Los_Angeles`, `Tijuana`, `America/Tijuana`, `Arizona`, `America/Phoenix`, `Mazatlan`, `America/Mazatlan`, `Mountain Time (US & Canada)`, `America/Denver`, `Central America`, `America/Guatemala`, `Central Time (US & Canada)`, `America/Chicago`, `Chihuahua`, `America/Chihuahua`, `Guadalajara`, `America/Mexico_City`, `Mexico City`, `America/Mexico_City`, `Monterrey`, `America/Monterrey`, `Saskatchewan`, `America/Regina`, `Bogota`, `America/Bogota`, `Eastern Time (US & Canada)`, `America/New_York`, `Indiana (East)`, `America/Indiana/Indianapolis`, `Lima`, `America/Lima`, `Quito`, `America/Lima`, `Atlantic Time (Canada)`, `America/Halifax`, `Caracas`, `America/Caracas`, `Georgetown`, `America/Guyana`, `La Paz`, `America/La_Paz`, `Puerto Rico`, `America/Puerto_Rico`, `Santiago`, `America/Santiago`, `Newfoundland`, `America/St_Johns`, `Asuncion`, `America/Asuncion`, `Brasilia`, `America/Sao_Paulo`, `Buenos Aires`, `America/Argentina/Buenos_Aires`, `Montevideo`, `America/Montevideo`, `Greenland`, `America/Nuuk`, `Mid-Atlantic`, `Atlantic/South_Georgia`, `Azores`, `Atlantic/Azores`, `Cape Verde Is.`, `Atlantic/Cape_Verde`, `Casablanca`, `Africa/Casablanca`, `Dublin`, `Europe/Dublin`, `Edinburgh`, `Europe/London`, `Lisbon`, `Europe/Lisbon`, `London`, `Europe/London`, `Monrovia`, `Africa/Monrovia`, `UTC`, `Etc/UTC`, `Amsterdam`, `Europe/Amsterdam`, `Belgrade`, `Europe/Belgrade`, `Berlin`, `Europe/Berlin`, `Bern`, `Europe/Zurich`, `Bratislava`, `Europe/Bratislava`, `Brussels`, `Europe/Brussels`, `Budapest`, `Europe/Budapest`, `Copenhagen`, `Europe/Copenhagen`, `Ljubljana`, `Europe/Ljubljana`, `Madrid`, `Europe/Madrid`, `Paris`, `Europe/Paris`, `Prague`, `Europe/Prague`, `Rome`, `Europe/Rome`, `Sarajevo`, `Europe/Sarajevo`, `Skopje`, `Europe/Skopje`, `Stockholm`, `Europe/Stockholm`, `Vienna`, `Europe/Vienna`, `Warsaw`, `Europe/Warsaw`, `West Central Africa`, `Africa/Algiers`, `Zagreb`, `Europe/Zagreb`, `Zurich`, `Europe/Zurich`, `Athens`, `Europe/Athens`, `Bucharest`, `Europe/Bucharest`, `Cairo`, `Africa/Cairo`, `Harare`, `Africa/Harare`, `Helsinki`, `Europe/Helsinki`, `Jerusalem`, `Asia/Jerusalem`, `Kaliningrad`, `Europe/Kaliningrad`, `Kyiv`, `Europe/Kiev`, `Pretoria`, `Africa/Johannesburg`, `Riga`, `Europe/Riga`, `Sofia`, `Europe/Sofia`, `Tallinn`, `Europe/Tallinn`, `Vilnius`, `Europe/Vilnius`, `Baghdad`, `Asia/Baghdad`, `Istanbul`, `Europe/Istanbul`, `Kuwait`, `Asia/Kuwait`, `Minsk`, `Europe/Minsk`, `Moscow`, `Europe/Moscow`, `Nairobi`, `Africa/Nairobi`, `Riyadh`, `Asia/Riyadh`, `St. Petersburg`, `Europe/Moscow`, `Volgograd`, `Europe/Volgograd`, `Tehran`, `Asia/Tehran`, `Abu Dhabi`, `Asia/Muscat`, `Baku`, `Asia/Baku`, `Muscat`, `Asia/Muscat`, `Samara`, `Europe/Samara`, `Tbilisi`, `Asia/Tbilisi`, `Yerevan`, `Asia/Yerevan`, `Kabul`, `Asia/Kabul`, `Almaty`, `Asia/Almaty`, `Astana`, `Asia/Almaty`, `Ekaterinburg`, `Asia/Yekaterinburg`, `Islamabad`, `Asia/Karachi`, `Karachi`, `Asia/Karachi`, `Tashkent`, `Asia/Tashkent`, `Chennai`, `Asia/Kolkata`, `Kolkata`, `Asia/Kolkata`, `Mumbai`, `Asia/Kolkata`, `New Delhi`, `Asia/Kolkata`, `Sri Jayawardenepura`, `Asia/Colombo`, `Kathmandu`, `Asia/Kathmandu`, `Dhaka`, `Asia/Dhaka`, `Urumqi`, `Asia/Urumqi`, `Rangoon`, `Asia/Rangoon`, `Bangkok`, `Asia/Bangkok`, `Hanoi`, `Asia/Bangkok`, `Jakarta`, `Asia/Jakarta`, `Krasnoyarsk`, `Asia/Krasnoyarsk`, `Novosibirsk`, `Asia/Novosibirsk`, `Beijing`, `Asia/Shanghai`, `Chongqing`, `Asia/Chongqing`, `Hong Kong`, `Asia/Hong_Kong`, `Irkutsk`, `Asia/Irkutsk`, `Kuala Lumpur`, `Asia/Kuala_Lumpur`, `Perth`, `Australia/Perth`, `Singapore`, `Asia/Singapore`, `Taipei`, `Asia/Taipei`, `Ulaanbaatar`, `Asia/Ulaanbaatar`, `Osaka`, `Asia/Tokyo`, `Sapporo`, `Asia/Tokyo`, `Seoul`, `Asia/Seoul`, `Tokyo`, `Asia/Tokyo`, `Yakutsk`, `Asia/Yakutsk`, `Adelaide`, `Australia/Adelaide`, `Darwin`, `Australia/Darwin`, `Brisbane`, `Australia/Brisbane`, `Canberra`, `Australia/Canberra`, `Guam`, `Pacific/Guam`, `Hobart`, `Australia/Hobart`, `Melbourne`, `Australia/Melbourne`, `Port Moresby`, `Pacific/Port_Moresby`, `Sydney`, `Australia/Sydney`, `Vladivostok`, `Asia/Vladivostok`, `Magadan`, `Asia/Magadan`, `New Caledonia`, `Pacific/Noumea`, `Solomon Is.`, `Pacific/Guadalcanal`, `Srednekolymsk`, `Asia/Srednekolymsk`, `Auckland`, `Pacific/Auckland`, `Fiji`, `Pacific/Fiji`, `Kamchatka`, `Asia/Kamchatka`, `Marshall Is.`, `Pacific/Majuro`, `Wellington`, `Pacific/Auckland`, `Chatham Is.`, `Pacific/Chatham`, `Nuku'alofa`, `Pacific/Tongatapu`, `Samoa`, `Pacific/Apia`, `Tokelau Is.`, `Pacific/Fakaofo`.
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -2939,7 +6184,7 @@ type EscalationPolicyBusinessHoursArgs struct {
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// Start time for business hours (HH:MM)
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Time zone for business hours
+	// Time zone for business hours. Value must be one of `International Date Line West`, `Etc/GMT+12`, `American Samoa`, `Pacific/Pago_Pago`, `Midway Island`, `Pacific/Midway`, `Hawaii`, `Pacific/Honolulu`, `Alaska`, `America/Juneau`, `Pacific Time (US & Canada)`, `America/Los_Angeles`, `Tijuana`, `America/Tijuana`, `Arizona`, `America/Phoenix`, `Mazatlan`, `America/Mazatlan`, `Mountain Time (US & Canada)`, `America/Denver`, `Central America`, `America/Guatemala`, `Central Time (US & Canada)`, `America/Chicago`, `Chihuahua`, `America/Chihuahua`, `Guadalajara`, `America/Mexico_City`, `Mexico City`, `America/Mexico_City`, `Monterrey`, `America/Monterrey`, `Saskatchewan`, `America/Regina`, `Bogota`, `America/Bogota`, `Eastern Time (US & Canada)`, `America/New_York`, `Indiana (East)`, `America/Indiana/Indianapolis`, `Lima`, `America/Lima`, `Quito`, `America/Lima`, `Atlantic Time (Canada)`, `America/Halifax`, `Caracas`, `America/Caracas`, `Georgetown`, `America/Guyana`, `La Paz`, `America/La_Paz`, `Puerto Rico`, `America/Puerto_Rico`, `Santiago`, `America/Santiago`, `Newfoundland`, `America/St_Johns`, `Asuncion`, `America/Asuncion`, `Brasilia`, `America/Sao_Paulo`, `Buenos Aires`, `America/Argentina/Buenos_Aires`, `Montevideo`, `America/Montevideo`, `Greenland`, `America/Nuuk`, `Mid-Atlantic`, `Atlantic/South_Georgia`, `Azores`, `Atlantic/Azores`, `Cape Verde Is.`, `Atlantic/Cape_Verde`, `Casablanca`, `Africa/Casablanca`, `Dublin`, `Europe/Dublin`, `Edinburgh`, `Europe/London`, `Lisbon`, `Europe/Lisbon`, `London`, `Europe/London`, `Monrovia`, `Africa/Monrovia`, `UTC`, `Etc/UTC`, `Amsterdam`, `Europe/Amsterdam`, `Belgrade`, `Europe/Belgrade`, `Berlin`, `Europe/Berlin`, `Bern`, `Europe/Zurich`, `Bratislava`, `Europe/Bratislava`, `Brussels`, `Europe/Brussels`, `Budapest`, `Europe/Budapest`, `Copenhagen`, `Europe/Copenhagen`, `Ljubljana`, `Europe/Ljubljana`, `Madrid`, `Europe/Madrid`, `Paris`, `Europe/Paris`, `Prague`, `Europe/Prague`, `Rome`, `Europe/Rome`, `Sarajevo`, `Europe/Sarajevo`, `Skopje`, `Europe/Skopje`, `Stockholm`, `Europe/Stockholm`, `Vienna`, `Europe/Vienna`, `Warsaw`, `Europe/Warsaw`, `West Central Africa`, `Africa/Algiers`, `Zagreb`, `Europe/Zagreb`, `Zurich`, `Europe/Zurich`, `Athens`, `Europe/Athens`, `Bucharest`, `Europe/Bucharest`, `Cairo`, `Africa/Cairo`, `Harare`, `Africa/Harare`, `Helsinki`, `Europe/Helsinki`, `Jerusalem`, `Asia/Jerusalem`, `Kaliningrad`, `Europe/Kaliningrad`, `Kyiv`, `Europe/Kiev`, `Pretoria`, `Africa/Johannesburg`, `Riga`, `Europe/Riga`, `Sofia`, `Europe/Sofia`, `Tallinn`, `Europe/Tallinn`, `Vilnius`, `Europe/Vilnius`, `Baghdad`, `Asia/Baghdad`, `Istanbul`, `Europe/Istanbul`, `Kuwait`, `Asia/Kuwait`, `Minsk`, `Europe/Minsk`, `Moscow`, `Europe/Moscow`, `Nairobi`, `Africa/Nairobi`, `Riyadh`, `Asia/Riyadh`, `St. Petersburg`, `Europe/Moscow`, `Volgograd`, `Europe/Volgograd`, `Tehran`, `Asia/Tehran`, `Abu Dhabi`, `Asia/Muscat`, `Baku`, `Asia/Baku`, `Muscat`, `Asia/Muscat`, `Samara`, `Europe/Samara`, `Tbilisi`, `Asia/Tbilisi`, `Yerevan`, `Asia/Yerevan`, `Kabul`, `Asia/Kabul`, `Almaty`, `Asia/Almaty`, `Astana`, `Asia/Almaty`, `Ekaterinburg`, `Asia/Yekaterinburg`, `Islamabad`, `Asia/Karachi`, `Karachi`, `Asia/Karachi`, `Tashkent`, `Asia/Tashkent`, `Chennai`, `Asia/Kolkata`, `Kolkata`, `Asia/Kolkata`, `Mumbai`, `Asia/Kolkata`, `New Delhi`, `Asia/Kolkata`, `Sri Jayawardenepura`, `Asia/Colombo`, `Kathmandu`, `Asia/Kathmandu`, `Dhaka`, `Asia/Dhaka`, `Urumqi`, `Asia/Urumqi`, `Rangoon`, `Asia/Rangoon`, `Bangkok`, `Asia/Bangkok`, `Hanoi`, `Asia/Bangkok`, `Jakarta`, `Asia/Jakarta`, `Krasnoyarsk`, `Asia/Krasnoyarsk`, `Novosibirsk`, `Asia/Novosibirsk`, `Beijing`, `Asia/Shanghai`, `Chongqing`, `Asia/Chongqing`, `Hong Kong`, `Asia/Hong_Kong`, `Irkutsk`, `Asia/Irkutsk`, `Kuala Lumpur`, `Asia/Kuala_Lumpur`, `Perth`, `Australia/Perth`, `Singapore`, `Asia/Singapore`, `Taipei`, `Asia/Taipei`, `Ulaanbaatar`, `Asia/Ulaanbaatar`, `Osaka`, `Asia/Tokyo`, `Sapporo`, `Asia/Tokyo`, `Seoul`, `Asia/Seoul`, `Tokyo`, `Asia/Tokyo`, `Yakutsk`, `Asia/Yakutsk`, `Adelaide`, `Australia/Adelaide`, `Darwin`, `Australia/Darwin`, `Brisbane`, `Australia/Brisbane`, `Canberra`, `Australia/Canberra`, `Guam`, `Pacific/Guam`, `Hobart`, `Australia/Hobart`, `Melbourne`, `Australia/Melbourne`, `Port Moresby`, `Pacific/Port_Moresby`, `Sydney`, `Australia/Sydney`, `Vladivostok`, `Asia/Vladivostok`, `Magadan`, `Asia/Magadan`, `New Caledonia`, `Pacific/Noumea`, `Solomon Is.`, `Pacific/Guadalcanal`, `Srednekolymsk`, `Asia/Srednekolymsk`, `Auckland`, `Pacific/Auckland`, `Fiji`, `Pacific/Fiji`, `Kamchatka`, `Asia/Kamchatka`, `Marshall Is.`, `Pacific/Majuro`, `Wellington`, `Pacific/Auckland`, `Chatham Is.`, `Pacific/Chatham`, `Nuku'alofa`, `Pacific/Tongatapu`, `Samoa`, `Pacific/Apia`, `Tokelau Is.`, `Pacific/Fakaofo`.
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 }
 
@@ -3035,7 +6280,7 @@ func (o EscalationPolicyBusinessHoursOutput) StartTime() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v EscalationPolicyBusinessHours) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// Time zone for business hours
+// Time zone for business hours. Value must be one of `International Date Line West`, `Etc/GMT+12`, `American Samoa`, `Pacific/Pago_Pago`, `Midway Island`, `Pacific/Midway`, `Hawaii`, `Pacific/Honolulu`, `Alaska`, `America/Juneau`, `Pacific Time (US & Canada)`, `America/Los_Angeles`, `Tijuana`, `America/Tijuana`, `Arizona`, `America/Phoenix`, `Mazatlan`, `America/Mazatlan`, `Mountain Time (US & Canada)`, `America/Denver`, `Central America`, `America/Guatemala`, `Central Time (US & Canada)`, `America/Chicago`, `Chihuahua`, `America/Chihuahua`, `Guadalajara`, `America/Mexico_City`, `Mexico City`, `America/Mexico_City`, `Monterrey`, `America/Monterrey`, `Saskatchewan`, `America/Regina`, `Bogota`, `America/Bogota`, `Eastern Time (US & Canada)`, `America/New_York`, `Indiana (East)`, `America/Indiana/Indianapolis`, `Lima`, `America/Lima`, `Quito`, `America/Lima`, `Atlantic Time (Canada)`, `America/Halifax`, `Caracas`, `America/Caracas`, `Georgetown`, `America/Guyana`, `La Paz`, `America/La_Paz`, `Puerto Rico`, `America/Puerto_Rico`, `Santiago`, `America/Santiago`, `Newfoundland`, `America/St_Johns`, `Asuncion`, `America/Asuncion`, `Brasilia`, `America/Sao_Paulo`, `Buenos Aires`, `America/Argentina/Buenos_Aires`, `Montevideo`, `America/Montevideo`, `Greenland`, `America/Nuuk`, `Mid-Atlantic`, `Atlantic/South_Georgia`, `Azores`, `Atlantic/Azores`, `Cape Verde Is.`, `Atlantic/Cape_Verde`, `Casablanca`, `Africa/Casablanca`, `Dublin`, `Europe/Dublin`, `Edinburgh`, `Europe/London`, `Lisbon`, `Europe/Lisbon`, `London`, `Europe/London`, `Monrovia`, `Africa/Monrovia`, `UTC`, `Etc/UTC`, `Amsterdam`, `Europe/Amsterdam`, `Belgrade`, `Europe/Belgrade`, `Berlin`, `Europe/Berlin`, `Bern`, `Europe/Zurich`, `Bratislava`, `Europe/Bratislava`, `Brussels`, `Europe/Brussels`, `Budapest`, `Europe/Budapest`, `Copenhagen`, `Europe/Copenhagen`, `Ljubljana`, `Europe/Ljubljana`, `Madrid`, `Europe/Madrid`, `Paris`, `Europe/Paris`, `Prague`, `Europe/Prague`, `Rome`, `Europe/Rome`, `Sarajevo`, `Europe/Sarajevo`, `Skopje`, `Europe/Skopje`, `Stockholm`, `Europe/Stockholm`, `Vienna`, `Europe/Vienna`, `Warsaw`, `Europe/Warsaw`, `West Central Africa`, `Africa/Algiers`, `Zagreb`, `Europe/Zagreb`, `Zurich`, `Europe/Zurich`, `Athens`, `Europe/Athens`, `Bucharest`, `Europe/Bucharest`, `Cairo`, `Africa/Cairo`, `Harare`, `Africa/Harare`, `Helsinki`, `Europe/Helsinki`, `Jerusalem`, `Asia/Jerusalem`, `Kaliningrad`, `Europe/Kaliningrad`, `Kyiv`, `Europe/Kiev`, `Pretoria`, `Africa/Johannesburg`, `Riga`, `Europe/Riga`, `Sofia`, `Europe/Sofia`, `Tallinn`, `Europe/Tallinn`, `Vilnius`, `Europe/Vilnius`, `Baghdad`, `Asia/Baghdad`, `Istanbul`, `Europe/Istanbul`, `Kuwait`, `Asia/Kuwait`, `Minsk`, `Europe/Minsk`, `Moscow`, `Europe/Moscow`, `Nairobi`, `Africa/Nairobi`, `Riyadh`, `Asia/Riyadh`, `St. Petersburg`, `Europe/Moscow`, `Volgograd`, `Europe/Volgograd`, `Tehran`, `Asia/Tehran`, `Abu Dhabi`, `Asia/Muscat`, `Baku`, `Asia/Baku`, `Muscat`, `Asia/Muscat`, `Samara`, `Europe/Samara`, `Tbilisi`, `Asia/Tbilisi`, `Yerevan`, `Asia/Yerevan`, `Kabul`, `Asia/Kabul`, `Almaty`, `Asia/Almaty`, `Astana`, `Asia/Almaty`, `Ekaterinburg`, `Asia/Yekaterinburg`, `Islamabad`, `Asia/Karachi`, `Karachi`, `Asia/Karachi`, `Tashkent`, `Asia/Tashkent`, `Chennai`, `Asia/Kolkata`, `Kolkata`, `Asia/Kolkata`, `Mumbai`, `Asia/Kolkata`, `New Delhi`, `Asia/Kolkata`, `Sri Jayawardenepura`, `Asia/Colombo`, `Kathmandu`, `Asia/Kathmandu`, `Dhaka`, `Asia/Dhaka`, `Urumqi`, `Asia/Urumqi`, `Rangoon`, `Asia/Rangoon`, `Bangkok`, `Asia/Bangkok`, `Hanoi`, `Asia/Bangkok`, `Jakarta`, `Asia/Jakarta`, `Krasnoyarsk`, `Asia/Krasnoyarsk`, `Novosibirsk`, `Asia/Novosibirsk`, `Beijing`, `Asia/Shanghai`, `Chongqing`, `Asia/Chongqing`, `Hong Kong`, `Asia/Hong_Kong`, `Irkutsk`, `Asia/Irkutsk`, `Kuala Lumpur`, `Asia/Kuala_Lumpur`, `Perth`, `Australia/Perth`, `Singapore`, `Asia/Singapore`, `Taipei`, `Asia/Taipei`, `Ulaanbaatar`, `Asia/Ulaanbaatar`, `Osaka`, `Asia/Tokyo`, `Sapporo`, `Asia/Tokyo`, `Seoul`, `Asia/Seoul`, `Tokyo`, `Asia/Tokyo`, `Yakutsk`, `Asia/Yakutsk`, `Adelaide`, `Australia/Adelaide`, `Darwin`, `Australia/Darwin`, `Brisbane`, `Australia/Brisbane`, `Canberra`, `Australia/Canberra`, `Guam`, `Pacific/Guam`, `Hobart`, `Australia/Hobart`, `Melbourne`, `Australia/Melbourne`, `Port Moresby`, `Pacific/Port_Moresby`, `Sydney`, `Australia/Sydney`, `Vladivostok`, `Asia/Vladivostok`, `Magadan`, `Asia/Magadan`, `New Caledonia`, `Pacific/Noumea`, `Solomon Is.`, `Pacific/Guadalcanal`, `Srednekolymsk`, `Asia/Srednekolymsk`, `Auckland`, `Pacific/Auckland`, `Fiji`, `Pacific/Fiji`, `Kamchatka`, `Asia/Kamchatka`, `Marshall Is.`, `Pacific/Majuro`, `Wellington`, `Pacific/Auckland`, `Chatham Is.`, `Pacific/Chatham`, `Nuku'alofa`, `Pacific/Tongatapu`, `Samoa`, `Pacific/Apia`, `Tokelau Is.`, `Pacific/Fakaofo`.
 func (o EscalationPolicyBusinessHoursOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EscalationPolicyBusinessHours) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -3094,7 +6339,7 @@ func (o EscalationPolicyBusinessHoursPtrOutput) StartTime() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Time zone for business hours
+// Time zone for business hours. Value must be one of `International Date Line West`, `Etc/GMT+12`, `American Samoa`, `Pacific/Pago_Pago`, `Midway Island`, `Pacific/Midway`, `Hawaii`, `Pacific/Honolulu`, `Alaska`, `America/Juneau`, `Pacific Time (US & Canada)`, `America/Los_Angeles`, `Tijuana`, `America/Tijuana`, `Arizona`, `America/Phoenix`, `Mazatlan`, `America/Mazatlan`, `Mountain Time (US & Canada)`, `America/Denver`, `Central America`, `America/Guatemala`, `Central Time (US & Canada)`, `America/Chicago`, `Chihuahua`, `America/Chihuahua`, `Guadalajara`, `America/Mexico_City`, `Mexico City`, `America/Mexico_City`, `Monterrey`, `America/Monterrey`, `Saskatchewan`, `America/Regina`, `Bogota`, `America/Bogota`, `Eastern Time (US & Canada)`, `America/New_York`, `Indiana (East)`, `America/Indiana/Indianapolis`, `Lima`, `America/Lima`, `Quito`, `America/Lima`, `Atlantic Time (Canada)`, `America/Halifax`, `Caracas`, `America/Caracas`, `Georgetown`, `America/Guyana`, `La Paz`, `America/La_Paz`, `Puerto Rico`, `America/Puerto_Rico`, `Santiago`, `America/Santiago`, `Newfoundland`, `America/St_Johns`, `Asuncion`, `America/Asuncion`, `Brasilia`, `America/Sao_Paulo`, `Buenos Aires`, `America/Argentina/Buenos_Aires`, `Montevideo`, `America/Montevideo`, `Greenland`, `America/Nuuk`, `Mid-Atlantic`, `Atlantic/South_Georgia`, `Azores`, `Atlantic/Azores`, `Cape Verde Is.`, `Atlantic/Cape_Verde`, `Casablanca`, `Africa/Casablanca`, `Dublin`, `Europe/Dublin`, `Edinburgh`, `Europe/London`, `Lisbon`, `Europe/Lisbon`, `London`, `Europe/London`, `Monrovia`, `Africa/Monrovia`, `UTC`, `Etc/UTC`, `Amsterdam`, `Europe/Amsterdam`, `Belgrade`, `Europe/Belgrade`, `Berlin`, `Europe/Berlin`, `Bern`, `Europe/Zurich`, `Bratislava`, `Europe/Bratislava`, `Brussels`, `Europe/Brussels`, `Budapest`, `Europe/Budapest`, `Copenhagen`, `Europe/Copenhagen`, `Ljubljana`, `Europe/Ljubljana`, `Madrid`, `Europe/Madrid`, `Paris`, `Europe/Paris`, `Prague`, `Europe/Prague`, `Rome`, `Europe/Rome`, `Sarajevo`, `Europe/Sarajevo`, `Skopje`, `Europe/Skopje`, `Stockholm`, `Europe/Stockholm`, `Vienna`, `Europe/Vienna`, `Warsaw`, `Europe/Warsaw`, `West Central Africa`, `Africa/Algiers`, `Zagreb`, `Europe/Zagreb`, `Zurich`, `Europe/Zurich`, `Athens`, `Europe/Athens`, `Bucharest`, `Europe/Bucharest`, `Cairo`, `Africa/Cairo`, `Harare`, `Africa/Harare`, `Helsinki`, `Europe/Helsinki`, `Jerusalem`, `Asia/Jerusalem`, `Kaliningrad`, `Europe/Kaliningrad`, `Kyiv`, `Europe/Kiev`, `Pretoria`, `Africa/Johannesburg`, `Riga`, `Europe/Riga`, `Sofia`, `Europe/Sofia`, `Tallinn`, `Europe/Tallinn`, `Vilnius`, `Europe/Vilnius`, `Baghdad`, `Asia/Baghdad`, `Istanbul`, `Europe/Istanbul`, `Kuwait`, `Asia/Kuwait`, `Minsk`, `Europe/Minsk`, `Moscow`, `Europe/Moscow`, `Nairobi`, `Africa/Nairobi`, `Riyadh`, `Asia/Riyadh`, `St. Petersburg`, `Europe/Moscow`, `Volgograd`, `Europe/Volgograd`, `Tehran`, `Asia/Tehran`, `Abu Dhabi`, `Asia/Muscat`, `Baku`, `Asia/Baku`, `Muscat`, `Asia/Muscat`, `Samara`, `Europe/Samara`, `Tbilisi`, `Asia/Tbilisi`, `Yerevan`, `Asia/Yerevan`, `Kabul`, `Asia/Kabul`, `Almaty`, `Asia/Almaty`, `Astana`, `Asia/Almaty`, `Ekaterinburg`, `Asia/Yekaterinburg`, `Islamabad`, `Asia/Karachi`, `Karachi`, `Asia/Karachi`, `Tashkent`, `Asia/Tashkent`, `Chennai`, `Asia/Kolkata`, `Kolkata`, `Asia/Kolkata`, `Mumbai`, `Asia/Kolkata`, `New Delhi`, `Asia/Kolkata`, `Sri Jayawardenepura`, `Asia/Colombo`, `Kathmandu`, `Asia/Kathmandu`, `Dhaka`, `Asia/Dhaka`, `Urumqi`, `Asia/Urumqi`, `Rangoon`, `Asia/Rangoon`, `Bangkok`, `Asia/Bangkok`, `Hanoi`, `Asia/Bangkok`, `Jakarta`, `Asia/Jakarta`, `Krasnoyarsk`, `Asia/Krasnoyarsk`, `Novosibirsk`, `Asia/Novosibirsk`, `Beijing`, `Asia/Shanghai`, `Chongqing`, `Asia/Chongqing`, `Hong Kong`, `Asia/Hong_Kong`, `Irkutsk`, `Asia/Irkutsk`, `Kuala Lumpur`, `Asia/Kuala_Lumpur`, `Perth`, `Australia/Perth`, `Singapore`, `Asia/Singapore`, `Taipei`, `Asia/Taipei`, `Ulaanbaatar`, `Asia/Ulaanbaatar`, `Osaka`, `Asia/Tokyo`, `Sapporo`, `Asia/Tokyo`, `Seoul`, `Asia/Seoul`, `Tokyo`, `Asia/Tokyo`, `Yakutsk`, `Asia/Yakutsk`, `Adelaide`, `Australia/Adelaide`, `Darwin`, `Australia/Darwin`, `Brisbane`, `Australia/Brisbane`, `Canberra`, `Australia/Canberra`, `Guam`, `Pacific/Guam`, `Hobart`, `Australia/Hobart`, `Melbourne`, `Australia/Melbourne`, `Port Moresby`, `Pacific/Port_Moresby`, `Sydney`, `Australia/Sydney`, `Vladivostok`, `Asia/Vladivostok`, `Magadan`, `Asia/Magadan`, `New Caledonia`, `Pacific/Noumea`, `Solomon Is.`, `Pacific/Guadalcanal`, `Srednekolymsk`, `Asia/Srednekolymsk`, `Auckland`, `Pacific/Auckland`, `Fiji`, `Pacific/Fiji`, `Kamchatka`, `Asia/Kamchatka`, `Marshall Is.`, `Pacific/Majuro`, `Wellington`, `Pacific/Auckland`, `Chatham Is.`, `Pacific/Chatham`, `Nuku'alofa`, `Pacific/Tongatapu`, `Samoa`, `Pacific/Apia`, `Tokelau Is.`, `Pacific/Fakaofo`.
 func (o EscalationPolicyBusinessHoursPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EscalationPolicyBusinessHours) *string {
 		if v == nil {
@@ -3102,6 +6347,112 @@ func (o EscalationPolicyBusinessHoursPtrOutput) TimeZone() pulumi.StringPtrOutpu
 		}
 		return v.TimeZone
 	}).(pulumi.StringPtrOutput)
+}
+
+type FunctionalityProperty struct {
+	// Catalog property ID
+	CatalogPropertyId *string `pulumi:"catalogPropertyId"`
+	// The property value
+	Value *string `pulumi:"value"`
+}
+
+// FunctionalityPropertyInput is an input type that accepts FunctionalityPropertyArgs and FunctionalityPropertyOutput values.
+// You can construct a concrete instance of `FunctionalityPropertyInput` via:
+//
+//	FunctionalityPropertyArgs{...}
+type FunctionalityPropertyInput interface {
+	pulumi.Input
+
+	ToFunctionalityPropertyOutput() FunctionalityPropertyOutput
+	ToFunctionalityPropertyOutputWithContext(context.Context) FunctionalityPropertyOutput
+}
+
+type FunctionalityPropertyArgs struct {
+	// Catalog property ID
+	CatalogPropertyId pulumi.StringPtrInput `pulumi:"catalogPropertyId"`
+	// The property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (FunctionalityPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionalityProperty)(nil)).Elem()
+}
+
+func (i FunctionalityPropertyArgs) ToFunctionalityPropertyOutput() FunctionalityPropertyOutput {
+	return i.ToFunctionalityPropertyOutputWithContext(context.Background())
+}
+
+func (i FunctionalityPropertyArgs) ToFunctionalityPropertyOutputWithContext(ctx context.Context) FunctionalityPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionalityPropertyOutput)
+}
+
+// FunctionalityPropertyArrayInput is an input type that accepts FunctionalityPropertyArray and FunctionalityPropertyArrayOutput values.
+// You can construct a concrete instance of `FunctionalityPropertyArrayInput` via:
+//
+//	FunctionalityPropertyArray{ FunctionalityPropertyArgs{...} }
+type FunctionalityPropertyArrayInput interface {
+	pulumi.Input
+
+	ToFunctionalityPropertyArrayOutput() FunctionalityPropertyArrayOutput
+	ToFunctionalityPropertyArrayOutputWithContext(context.Context) FunctionalityPropertyArrayOutput
+}
+
+type FunctionalityPropertyArray []FunctionalityPropertyInput
+
+func (FunctionalityPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionalityProperty)(nil)).Elem()
+}
+
+func (i FunctionalityPropertyArray) ToFunctionalityPropertyArrayOutput() FunctionalityPropertyArrayOutput {
+	return i.ToFunctionalityPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i FunctionalityPropertyArray) ToFunctionalityPropertyArrayOutputWithContext(ctx context.Context) FunctionalityPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionalityPropertyArrayOutput)
+}
+
+type FunctionalityPropertyOutput struct{ *pulumi.OutputState }
+
+func (FunctionalityPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionalityProperty)(nil)).Elem()
+}
+
+func (o FunctionalityPropertyOutput) ToFunctionalityPropertyOutput() FunctionalityPropertyOutput {
+	return o
+}
+
+func (o FunctionalityPropertyOutput) ToFunctionalityPropertyOutputWithContext(ctx context.Context) FunctionalityPropertyOutput {
+	return o
+}
+
+// Catalog property ID
+func (o FunctionalityPropertyOutput) CatalogPropertyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionalityProperty) *string { return v.CatalogPropertyId }).(pulumi.StringPtrOutput)
+}
+
+// The property value
+func (o FunctionalityPropertyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FunctionalityProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type FunctionalityPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (FunctionalityPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionalityProperty)(nil)).Elem()
+}
+
+func (o FunctionalityPropertyArrayOutput) ToFunctionalityPropertyArrayOutput() FunctionalityPropertyArrayOutput {
+	return o
+}
+
+func (o FunctionalityPropertyArrayOutput) ToFunctionalityPropertyArrayOutputWithContext(ctx context.Context) FunctionalityPropertyArrayOutput {
+	return o
+}
+
+func (o FunctionalityPropertyArrayOutput) Index(i pulumi.IntInput) FunctionalityPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionalityProperty {
+		return vs[0].([]FunctionalityProperty)[vs[1].(int)]
+	}).(FunctionalityPropertyOutput)
 }
 
 type FunctionalitySlackAlias struct {
@@ -3316,6 +6667,112 @@ func (o FunctionalitySlackChannelArrayOutput) Index(i pulumi.IntInput) Functiona
 	}).(FunctionalitySlackChannelOutput)
 }
 
+type IncidentTypeProperty struct {
+	// Catalog property ID
+	CatalogPropertyId *string `pulumi:"catalogPropertyId"`
+	// The property value
+	Value *string `pulumi:"value"`
+}
+
+// IncidentTypePropertyInput is an input type that accepts IncidentTypePropertyArgs and IncidentTypePropertyOutput values.
+// You can construct a concrete instance of `IncidentTypePropertyInput` via:
+//
+//	IncidentTypePropertyArgs{...}
+type IncidentTypePropertyInput interface {
+	pulumi.Input
+
+	ToIncidentTypePropertyOutput() IncidentTypePropertyOutput
+	ToIncidentTypePropertyOutputWithContext(context.Context) IncidentTypePropertyOutput
+}
+
+type IncidentTypePropertyArgs struct {
+	// Catalog property ID
+	CatalogPropertyId pulumi.StringPtrInput `pulumi:"catalogPropertyId"`
+	// The property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (IncidentTypePropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentTypeProperty)(nil)).Elem()
+}
+
+func (i IncidentTypePropertyArgs) ToIncidentTypePropertyOutput() IncidentTypePropertyOutput {
+	return i.ToIncidentTypePropertyOutputWithContext(context.Background())
+}
+
+func (i IncidentTypePropertyArgs) ToIncidentTypePropertyOutputWithContext(ctx context.Context) IncidentTypePropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentTypePropertyOutput)
+}
+
+// IncidentTypePropertyArrayInput is an input type that accepts IncidentTypePropertyArray and IncidentTypePropertyArrayOutput values.
+// You can construct a concrete instance of `IncidentTypePropertyArrayInput` via:
+//
+//	IncidentTypePropertyArray{ IncidentTypePropertyArgs{...} }
+type IncidentTypePropertyArrayInput interface {
+	pulumi.Input
+
+	ToIncidentTypePropertyArrayOutput() IncidentTypePropertyArrayOutput
+	ToIncidentTypePropertyArrayOutputWithContext(context.Context) IncidentTypePropertyArrayOutput
+}
+
+type IncidentTypePropertyArray []IncidentTypePropertyInput
+
+func (IncidentTypePropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IncidentTypeProperty)(nil)).Elem()
+}
+
+func (i IncidentTypePropertyArray) ToIncidentTypePropertyArrayOutput() IncidentTypePropertyArrayOutput {
+	return i.ToIncidentTypePropertyArrayOutputWithContext(context.Background())
+}
+
+func (i IncidentTypePropertyArray) ToIncidentTypePropertyArrayOutputWithContext(ctx context.Context) IncidentTypePropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IncidentTypePropertyArrayOutput)
+}
+
+type IncidentTypePropertyOutput struct{ *pulumi.OutputState }
+
+func (IncidentTypePropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IncidentTypeProperty)(nil)).Elem()
+}
+
+func (o IncidentTypePropertyOutput) ToIncidentTypePropertyOutput() IncidentTypePropertyOutput {
+	return o
+}
+
+func (o IncidentTypePropertyOutput) ToIncidentTypePropertyOutputWithContext(ctx context.Context) IncidentTypePropertyOutput {
+	return o
+}
+
+// Catalog property ID
+func (o IncidentTypePropertyOutput) CatalogPropertyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentTypeProperty) *string { return v.CatalogPropertyId }).(pulumi.StringPtrOutput)
+}
+
+// The property value
+func (o IncidentTypePropertyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IncidentTypeProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type IncidentTypePropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (IncidentTypePropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IncidentTypeProperty)(nil)).Elem()
+}
+
+func (o IncidentTypePropertyArrayOutput) ToIncidentTypePropertyArrayOutput() IncidentTypePropertyArrayOutput {
+	return o
+}
+
+func (o IncidentTypePropertyArrayOutput) ToIncidentTypePropertyArrayOutputWithContext(ctx context.Context) IncidentTypePropertyArrayOutput {
+	return o
+}
+
+func (o IncidentTypePropertyArrayOutput) Index(i pulumi.IntInput) IncidentTypePropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IncidentTypeProperty {
+		return vs[0].([]IncidentTypeProperty)[vs[1].(int)]
+	}).(IncidentTypePropertyOutput)
+}
+
 type IncidentTypeSlackAlias struct {
 	// Slack alias ID
 	Id *string `pulumi:"id"`
@@ -3526,6 +6983,121 @@ func (o IncidentTypeSlackChannelArrayOutput) Index(i pulumi.IntInput) IncidentTy
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IncidentTypeSlackChannel {
 		return vs[0].([]IncidentTypeSlackChannel)[vs[1].(int)]
 	}).(IncidentTypeSlackChannelOutput)
+}
+
+type LiveCallRouterPagingTarget struct {
+	// This is used in escalation paths to determine who to page
+	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
+	// The ID of paging target
+	Id *string `pulumi:"id"`
+	// The type of the paging target. Value must be one of `service`, `team`, `escalationPolicy`.
+	Type *string `pulumi:"type"`
+}
+
+// LiveCallRouterPagingTargetInput is an input type that accepts LiveCallRouterPagingTargetArgs and LiveCallRouterPagingTargetOutput values.
+// You can construct a concrete instance of `LiveCallRouterPagingTargetInput` via:
+//
+//	LiveCallRouterPagingTargetArgs{...}
+type LiveCallRouterPagingTargetInput interface {
+	pulumi.Input
+
+	ToLiveCallRouterPagingTargetOutput() LiveCallRouterPagingTargetOutput
+	ToLiveCallRouterPagingTargetOutputWithContext(context.Context) LiveCallRouterPagingTargetOutput
+}
+
+type LiveCallRouterPagingTargetArgs struct {
+	// This is used in escalation paths to determine who to page
+	AlertUrgencyId pulumi.StringPtrInput `pulumi:"alertUrgencyId"`
+	// The ID of paging target
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The type of the paging target. Value must be one of `service`, `team`, `escalationPolicy`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (LiveCallRouterPagingTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiveCallRouterPagingTarget)(nil)).Elem()
+}
+
+func (i LiveCallRouterPagingTargetArgs) ToLiveCallRouterPagingTargetOutput() LiveCallRouterPagingTargetOutput {
+	return i.ToLiveCallRouterPagingTargetOutputWithContext(context.Background())
+}
+
+func (i LiveCallRouterPagingTargetArgs) ToLiveCallRouterPagingTargetOutputWithContext(ctx context.Context) LiveCallRouterPagingTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiveCallRouterPagingTargetOutput)
+}
+
+// LiveCallRouterPagingTargetArrayInput is an input type that accepts LiveCallRouterPagingTargetArray and LiveCallRouterPagingTargetArrayOutput values.
+// You can construct a concrete instance of `LiveCallRouterPagingTargetArrayInput` via:
+//
+//	LiveCallRouterPagingTargetArray{ LiveCallRouterPagingTargetArgs{...} }
+type LiveCallRouterPagingTargetArrayInput interface {
+	pulumi.Input
+
+	ToLiveCallRouterPagingTargetArrayOutput() LiveCallRouterPagingTargetArrayOutput
+	ToLiveCallRouterPagingTargetArrayOutputWithContext(context.Context) LiveCallRouterPagingTargetArrayOutput
+}
+
+type LiveCallRouterPagingTargetArray []LiveCallRouterPagingTargetInput
+
+func (LiveCallRouterPagingTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LiveCallRouterPagingTarget)(nil)).Elem()
+}
+
+func (i LiveCallRouterPagingTargetArray) ToLiveCallRouterPagingTargetArrayOutput() LiveCallRouterPagingTargetArrayOutput {
+	return i.ToLiveCallRouterPagingTargetArrayOutputWithContext(context.Background())
+}
+
+func (i LiveCallRouterPagingTargetArray) ToLiveCallRouterPagingTargetArrayOutputWithContext(ctx context.Context) LiveCallRouterPagingTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiveCallRouterPagingTargetArrayOutput)
+}
+
+type LiveCallRouterPagingTargetOutput struct{ *pulumi.OutputState }
+
+func (LiveCallRouterPagingTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiveCallRouterPagingTarget)(nil)).Elem()
+}
+
+func (o LiveCallRouterPagingTargetOutput) ToLiveCallRouterPagingTargetOutput() LiveCallRouterPagingTargetOutput {
+	return o
+}
+
+func (o LiveCallRouterPagingTargetOutput) ToLiveCallRouterPagingTargetOutputWithContext(ctx context.Context) LiveCallRouterPagingTargetOutput {
+	return o
+}
+
+// This is used in escalation paths to determine who to page
+func (o LiveCallRouterPagingTargetOutput) AlertUrgencyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LiveCallRouterPagingTarget) *string { return v.AlertUrgencyId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of paging target
+func (o LiveCallRouterPagingTargetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LiveCallRouterPagingTarget) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The type of the paging target. Value must be one of `service`, `team`, `escalationPolicy`.
+func (o LiveCallRouterPagingTargetOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LiveCallRouterPagingTarget) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type LiveCallRouterPagingTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (LiveCallRouterPagingTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LiveCallRouterPagingTarget)(nil)).Elem()
+}
+
+func (o LiveCallRouterPagingTargetArrayOutput) ToLiveCallRouterPagingTargetArrayOutput() LiveCallRouterPagingTargetArrayOutput {
+	return o
+}
+
+func (o LiveCallRouterPagingTargetArrayOutput) ToLiveCallRouterPagingTargetArrayOutputWithContext(ctx context.Context) LiveCallRouterPagingTargetArrayOutput {
+	return o
+}
+
+func (o LiveCallRouterPagingTargetArrayOutput) Index(i pulumi.IntInput) LiveCallRouterPagingTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LiveCallRouterPagingTarget {
+		return vs[0].([]LiveCallRouterPagingTarget)[vs[1].(int)]
+	}).(LiveCallRouterPagingTargetOutput)
 }
 
 type RetrospectiveProcessRetrospectiveProcessMatchingCriteria struct {
@@ -3913,6 +7485,539 @@ func (o ScheduleRotationActiveTimeAttributeArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduleRotationActiveTimeAttribute {
 		return vs[0].([]ScheduleRotationActiveTimeAttribute)[vs[1].(int)]
 	}).(ScheduleRotationActiveTimeAttributeOutput)
+}
+
+type ScheduleRotationScheduleRotationMember struct {
+	// ID of the member
+	MemberId *string `pulumi:"memberId"`
+	// Type of member. Value must be one of `Schedule` or `User`.
+	MemberType *string `pulumi:"memberType"`
+	// Position of the member in rotation
+	Position *int `pulumi:"position"`
+}
+
+// ScheduleRotationScheduleRotationMemberInput is an input type that accepts ScheduleRotationScheduleRotationMemberArgs and ScheduleRotationScheduleRotationMemberOutput values.
+// You can construct a concrete instance of `ScheduleRotationScheduleRotationMemberInput` via:
+//
+//	ScheduleRotationScheduleRotationMemberArgs{...}
+type ScheduleRotationScheduleRotationMemberInput interface {
+	pulumi.Input
+
+	ToScheduleRotationScheduleRotationMemberOutput() ScheduleRotationScheduleRotationMemberOutput
+	ToScheduleRotationScheduleRotationMemberOutputWithContext(context.Context) ScheduleRotationScheduleRotationMemberOutput
+}
+
+type ScheduleRotationScheduleRotationMemberArgs struct {
+	// ID of the member
+	MemberId pulumi.StringPtrInput `pulumi:"memberId"`
+	// Type of member. Value must be one of `Schedule` or `User`.
+	MemberType pulumi.StringPtrInput `pulumi:"memberType"`
+	// Position of the member in rotation
+	Position pulumi.IntPtrInput `pulumi:"position"`
+}
+
+func (ScheduleRotationScheduleRotationMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleRotationScheduleRotationMember)(nil)).Elem()
+}
+
+func (i ScheduleRotationScheduleRotationMemberArgs) ToScheduleRotationScheduleRotationMemberOutput() ScheduleRotationScheduleRotationMemberOutput {
+	return i.ToScheduleRotationScheduleRotationMemberOutputWithContext(context.Background())
+}
+
+func (i ScheduleRotationScheduleRotationMemberArgs) ToScheduleRotationScheduleRotationMemberOutputWithContext(ctx context.Context) ScheduleRotationScheduleRotationMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleRotationScheduleRotationMemberOutput)
+}
+
+// ScheduleRotationScheduleRotationMemberArrayInput is an input type that accepts ScheduleRotationScheduleRotationMemberArray and ScheduleRotationScheduleRotationMemberArrayOutput values.
+// You can construct a concrete instance of `ScheduleRotationScheduleRotationMemberArrayInput` via:
+//
+//	ScheduleRotationScheduleRotationMemberArray{ ScheduleRotationScheduleRotationMemberArgs{...} }
+type ScheduleRotationScheduleRotationMemberArrayInput interface {
+	pulumi.Input
+
+	ToScheduleRotationScheduleRotationMemberArrayOutput() ScheduleRotationScheduleRotationMemberArrayOutput
+	ToScheduleRotationScheduleRotationMemberArrayOutputWithContext(context.Context) ScheduleRotationScheduleRotationMemberArrayOutput
+}
+
+type ScheduleRotationScheduleRotationMemberArray []ScheduleRotationScheduleRotationMemberInput
+
+func (ScheduleRotationScheduleRotationMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleRotationScheduleRotationMember)(nil)).Elem()
+}
+
+func (i ScheduleRotationScheduleRotationMemberArray) ToScheduleRotationScheduleRotationMemberArrayOutput() ScheduleRotationScheduleRotationMemberArrayOutput {
+	return i.ToScheduleRotationScheduleRotationMemberArrayOutputWithContext(context.Background())
+}
+
+func (i ScheduleRotationScheduleRotationMemberArray) ToScheduleRotationScheduleRotationMemberArrayOutputWithContext(ctx context.Context) ScheduleRotationScheduleRotationMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleRotationScheduleRotationMemberArrayOutput)
+}
+
+type ScheduleRotationScheduleRotationMemberOutput struct{ *pulumi.OutputState }
+
+func (ScheduleRotationScheduleRotationMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleRotationScheduleRotationMember)(nil)).Elem()
+}
+
+func (o ScheduleRotationScheduleRotationMemberOutput) ToScheduleRotationScheduleRotationMemberOutput() ScheduleRotationScheduleRotationMemberOutput {
+	return o
+}
+
+func (o ScheduleRotationScheduleRotationMemberOutput) ToScheduleRotationScheduleRotationMemberOutputWithContext(ctx context.Context) ScheduleRotationScheduleRotationMemberOutput {
+	return o
+}
+
+// ID of the member
+func (o ScheduleRotationScheduleRotationMemberOutput) MemberId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleRotationScheduleRotationMember) *string { return v.MemberId }).(pulumi.StringPtrOutput)
+}
+
+// Type of member. Value must be one of `Schedule` or `User`.
+func (o ScheduleRotationScheduleRotationMemberOutput) MemberType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleRotationScheduleRotationMember) *string { return v.MemberType }).(pulumi.StringPtrOutput)
+}
+
+// Position of the member in rotation
+func (o ScheduleRotationScheduleRotationMemberOutput) Position() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScheduleRotationScheduleRotationMember) *int { return v.Position }).(pulumi.IntPtrOutput)
+}
+
+type ScheduleRotationScheduleRotationMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (ScheduleRotationScheduleRotationMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScheduleRotationScheduleRotationMember)(nil)).Elem()
+}
+
+func (o ScheduleRotationScheduleRotationMemberArrayOutput) ToScheduleRotationScheduleRotationMemberArrayOutput() ScheduleRotationScheduleRotationMemberArrayOutput {
+	return o
+}
+
+func (o ScheduleRotationScheduleRotationMemberArrayOutput) ToScheduleRotationScheduleRotationMemberArrayOutputWithContext(ctx context.Context) ScheduleRotationScheduleRotationMemberArrayOutput {
+	return o
+}
+
+func (o ScheduleRotationScheduleRotationMemberArrayOutput) Index(i pulumi.IntInput) ScheduleRotationScheduleRotationMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduleRotationScheduleRotationMember {
+		return vs[0].([]ScheduleRotationScheduleRotationMember)[vs[1].(int)]
+	}).(ScheduleRotationScheduleRotationMemberOutput)
+}
+
+type ServiceAlertBroadcastChannel struct {
+	// Slack channel ID
+	Id *string `pulumi:"id"`
+	// Slack channel name
+	Name *string `pulumi:"name"`
+}
+
+// ServiceAlertBroadcastChannelInput is an input type that accepts ServiceAlertBroadcastChannelArgs and ServiceAlertBroadcastChannelOutput values.
+// You can construct a concrete instance of `ServiceAlertBroadcastChannelInput` via:
+//
+//	ServiceAlertBroadcastChannelArgs{...}
+type ServiceAlertBroadcastChannelInput interface {
+	pulumi.Input
+
+	ToServiceAlertBroadcastChannelOutput() ServiceAlertBroadcastChannelOutput
+	ToServiceAlertBroadcastChannelOutputWithContext(context.Context) ServiceAlertBroadcastChannelOutput
+}
+
+type ServiceAlertBroadcastChannelArgs struct {
+	// Slack channel ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Slack channel name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ServiceAlertBroadcastChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAlertBroadcastChannel)(nil)).Elem()
+}
+
+func (i ServiceAlertBroadcastChannelArgs) ToServiceAlertBroadcastChannelOutput() ServiceAlertBroadcastChannelOutput {
+	return i.ToServiceAlertBroadcastChannelOutputWithContext(context.Background())
+}
+
+func (i ServiceAlertBroadcastChannelArgs) ToServiceAlertBroadcastChannelOutputWithContext(ctx context.Context) ServiceAlertBroadcastChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAlertBroadcastChannelOutput)
+}
+
+func (i ServiceAlertBroadcastChannelArgs) ToServiceAlertBroadcastChannelPtrOutput() ServiceAlertBroadcastChannelPtrOutput {
+	return i.ToServiceAlertBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceAlertBroadcastChannelArgs) ToServiceAlertBroadcastChannelPtrOutputWithContext(ctx context.Context) ServiceAlertBroadcastChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAlertBroadcastChannelOutput).ToServiceAlertBroadcastChannelPtrOutputWithContext(ctx)
+}
+
+// ServiceAlertBroadcastChannelPtrInput is an input type that accepts ServiceAlertBroadcastChannelArgs, ServiceAlertBroadcastChannelPtr and ServiceAlertBroadcastChannelPtrOutput values.
+// You can construct a concrete instance of `ServiceAlertBroadcastChannelPtrInput` via:
+//
+//	        ServiceAlertBroadcastChannelArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceAlertBroadcastChannelPtrInput interface {
+	pulumi.Input
+
+	ToServiceAlertBroadcastChannelPtrOutput() ServiceAlertBroadcastChannelPtrOutput
+	ToServiceAlertBroadcastChannelPtrOutputWithContext(context.Context) ServiceAlertBroadcastChannelPtrOutput
+}
+
+type serviceAlertBroadcastChannelPtrType ServiceAlertBroadcastChannelArgs
+
+func ServiceAlertBroadcastChannelPtr(v *ServiceAlertBroadcastChannelArgs) ServiceAlertBroadcastChannelPtrInput {
+	return (*serviceAlertBroadcastChannelPtrType)(v)
+}
+
+func (*serviceAlertBroadcastChannelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceAlertBroadcastChannel)(nil)).Elem()
+}
+
+func (i *serviceAlertBroadcastChannelPtrType) ToServiceAlertBroadcastChannelPtrOutput() ServiceAlertBroadcastChannelPtrOutput {
+	return i.ToServiceAlertBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceAlertBroadcastChannelPtrType) ToServiceAlertBroadcastChannelPtrOutputWithContext(ctx context.Context) ServiceAlertBroadcastChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAlertBroadcastChannelPtrOutput)
+}
+
+type ServiceAlertBroadcastChannelOutput struct{ *pulumi.OutputState }
+
+func (ServiceAlertBroadcastChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAlertBroadcastChannel)(nil)).Elem()
+}
+
+func (o ServiceAlertBroadcastChannelOutput) ToServiceAlertBroadcastChannelOutput() ServiceAlertBroadcastChannelOutput {
+	return o
+}
+
+func (o ServiceAlertBroadcastChannelOutput) ToServiceAlertBroadcastChannelOutputWithContext(ctx context.Context) ServiceAlertBroadcastChannelOutput {
+	return o
+}
+
+func (o ServiceAlertBroadcastChannelOutput) ToServiceAlertBroadcastChannelPtrOutput() ServiceAlertBroadcastChannelPtrOutput {
+	return o.ToServiceAlertBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceAlertBroadcastChannelOutput) ToServiceAlertBroadcastChannelPtrOutputWithContext(ctx context.Context) ServiceAlertBroadcastChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceAlertBroadcastChannel) *ServiceAlertBroadcastChannel {
+		return &v
+	}).(ServiceAlertBroadcastChannelPtrOutput)
+}
+
+// Slack channel ID
+func (o ServiceAlertBroadcastChannelOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAlertBroadcastChannel) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name
+func (o ServiceAlertBroadcastChannelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAlertBroadcastChannel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ServiceAlertBroadcastChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceAlertBroadcastChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceAlertBroadcastChannel)(nil)).Elem()
+}
+
+func (o ServiceAlertBroadcastChannelPtrOutput) ToServiceAlertBroadcastChannelPtrOutput() ServiceAlertBroadcastChannelPtrOutput {
+	return o
+}
+
+func (o ServiceAlertBroadcastChannelPtrOutput) ToServiceAlertBroadcastChannelPtrOutputWithContext(ctx context.Context) ServiceAlertBroadcastChannelPtrOutput {
+	return o
+}
+
+func (o ServiceAlertBroadcastChannelPtrOutput) Elem() ServiceAlertBroadcastChannelOutput {
+	return o.ApplyT(func(v *ServiceAlertBroadcastChannel) ServiceAlertBroadcastChannel {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceAlertBroadcastChannel
+		return ret
+	}).(ServiceAlertBroadcastChannelOutput)
+}
+
+// Slack channel ID
+func (o ServiceAlertBroadcastChannelPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceAlertBroadcastChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name
+func (o ServiceAlertBroadcastChannelPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceAlertBroadcastChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceIncidentBroadcastChannel struct {
+	// Slack channel ID
+	Id *string `pulumi:"id"`
+	// Slack channel name
+	Name *string `pulumi:"name"`
+}
+
+// ServiceIncidentBroadcastChannelInput is an input type that accepts ServiceIncidentBroadcastChannelArgs and ServiceIncidentBroadcastChannelOutput values.
+// You can construct a concrete instance of `ServiceIncidentBroadcastChannelInput` via:
+//
+//	ServiceIncidentBroadcastChannelArgs{...}
+type ServiceIncidentBroadcastChannelInput interface {
+	pulumi.Input
+
+	ToServiceIncidentBroadcastChannelOutput() ServiceIncidentBroadcastChannelOutput
+	ToServiceIncidentBroadcastChannelOutputWithContext(context.Context) ServiceIncidentBroadcastChannelOutput
+}
+
+type ServiceIncidentBroadcastChannelArgs struct {
+	// Slack channel ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Slack channel name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ServiceIncidentBroadcastChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIncidentBroadcastChannel)(nil)).Elem()
+}
+
+func (i ServiceIncidentBroadcastChannelArgs) ToServiceIncidentBroadcastChannelOutput() ServiceIncidentBroadcastChannelOutput {
+	return i.ToServiceIncidentBroadcastChannelOutputWithContext(context.Background())
+}
+
+func (i ServiceIncidentBroadcastChannelArgs) ToServiceIncidentBroadcastChannelOutputWithContext(ctx context.Context) ServiceIncidentBroadcastChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIncidentBroadcastChannelOutput)
+}
+
+func (i ServiceIncidentBroadcastChannelArgs) ToServiceIncidentBroadcastChannelPtrOutput() ServiceIncidentBroadcastChannelPtrOutput {
+	return i.ToServiceIncidentBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceIncidentBroadcastChannelArgs) ToServiceIncidentBroadcastChannelPtrOutputWithContext(ctx context.Context) ServiceIncidentBroadcastChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIncidentBroadcastChannelOutput).ToServiceIncidentBroadcastChannelPtrOutputWithContext(ctx)
+}
+
+// ServiceIncidentBroadcastChannelPtrInput is an input type that accepts ServiceIncidentBroadcastChannelArgs, ServiceIncidentBroadcastChannelPtr and ServiceIncidentBroadcastChannelPtrOutput values.
+// You can construct a concrete instance of `ServiceIncidentBroadcastChannelPtrInput` via:
+//
+//	        ServiceIncidentBroadcastChannelArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceIncidentBroadcastChannelPtrInput interface {
+	pulumi.Input
+
+	ToServiceIncidentBroadcastChannelPtrOutput() ServiceIncidentBroadcastChannelPtrOutput
+	ToServiceIncidentBroadcastChannelPtrOutputWithContext(context.Context) ServiceIncidentBroadcastChannelPtrOutput
+}
+
+type serviceIncidentBroadcastChannelPtrType ServiceIncidentBroadcastChannelArgs
+
+func ServiceIncidentBroadcastChannelPtr(v *ServiceIncidentBroadcastChannelArgs) ServiceIncidentBroadcastChannelPtrInput {
+	return (*serviceIncidentBroadcastChannelPtrType)(v)
+}
+
+func (*serviceIncidentBroadcastChannelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIncidentBroadcastChannel)(nil)).Elem()
+}
+
+func (i *serviceIncidentBroadcastChannelPtrType) ToServiceIncidentBroadcastChannelPtrOutput() ServiceIncidentBroadcastChannelPtrOutput {
+	return i.ToServiceIncidentBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIncidentBroadcastChannelPtrType) ToServiceIncidentBroadcastChannelPtrOutputWithContext(ctx context.Context) ServiceIncidentBroadcastChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIncidentBroadcastChannelPtrOutput)
+}
+
+type ServiceIncidentBroadcastChannelOutput struct{ *pulumi.OutputState }
+
+func (ServiceIncidentBroadcastChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIncidentBroadcastChannel)(nil)).Elem()
+}
+
+func (o ServiceIncidentBroadcastChannelOutput) ToServiceIncidentBroadcastChannelOutput() ServiceIncidentBroadcastChannelOutput {
+	return o
+}
+
+func (o ServiceIncidentBroadcastChannelOutput) ToServiceIncidentBroadcastChannelOutputWithContext(ctx context.Context) ServiceIncidentBroadcastChannelOutput {
+	return o
+}
+
+func (o ServiceIncidentBroadcastChannelOutput) ToServiceIncidentBroadcastChannelPtrOutput() ServiceIncidentBroadcastChannelPtrOutput {
+	return o.ToServiceIncidentBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIncidentBroadcastChannelOutput) ToServiceIncidentBroadcastChannelPtrOutputWithContext(ctx context.Context) ServiceIncidentBroadcastChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceIncidentBroadcastChannel) *ServiceIncidentBroadcastChannel {
+		return &v
+	}).(ServiceIncidentBroadcastChannelPtrOutput)
+}
+
+// Slack channel ID
+func (o ServiceIncidentBroadcastChannelOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIncidentBroadcastChannel) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name
+func (o ServiceIncidentBroadcastChannelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIncidentBroadcastChannel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ServiceIncidentBroadcastChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceIncidentBroadcastChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIncidentBroadcastChannel)(nil)).Elem()
+}
+
+func (o ServiceIncidentBroadcastChannelPtrOutput) ToServiceIncidentBroadcastChannelPtrOutput() ServiceIncidentBroadcastChannelPtrOutput {
+	return o
+}
+
+func (o ServiceIncidentBroadcastChannelPtrOutput) ToServiceIncidentBroadcastChannelPtrOutputWithContext(ctx context.Context) ServiceIncidentBroadcastChannelPtrOutput {
+	return o
+}
+
+func (o ServiceIncidentBroadcastChannelPtrOutput) Elem() ServiceIncidentBroadcastChannelOutput {
+	return o.ApplyT(func(v *ServiceIncidentBroadcastChannel) ServiceIncidentBroadcastChannel {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceIncidentBroadcastChannel
+		return ret
+	}).(ServiceIncidentBroadcastChannelOutput)
+}
+
+// Slack channel ID
+func (o ServiceIncidentBroadcastChannelPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIncidentBroadcastChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name
+func (o ServiceIncidentBroadcastChannelPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIncidentBroadcastChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceProperty struct {
+	// Catalog property ID
+	CatalogPropertyId *string `pulumi:"catalogPropertyId"`
+	// The property value
+	Value *string `pulumi:"value"`
+}
+
+// ServicePropertyInput is an input type that accepts ServicePropertyArgs and ServicePropertyOutput values.
+// You can construct a concrete instance of `ServicePropertyInput` via:
+//
+//	ServicePropertyArgs{...}
+type ServicePropertyInput interface {
+	pulumi.Input
+
+	ToServicePropertyOutput() ServicePropertyOutput
+	ToServicePropertyOutputWithContext(context.Context) ServicePropertyOutput
+}
+
+type ServicePropertyArgs struct {
+	// Catalog property ID
+	CatalogPropertyId pulumi.StringPtrInput `pulumi:"catalogPropertyId"`
+	// The property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ServicePropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceProperty)(nil)).Elem()
+}
+
+func (i ServicePropertyArgs) ToServicePropertyOutput() ServicePropertyOutput {
+	return i.ToServicePropertyOutputWithContext(context.Background())
+}
+
+func (i ServicePropertyArgs) ToServicePropertyOutputWithContext(ctx context.Context) ServicePropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePropertyOutput)
+}
+
+// ServicePropertyArrayInput is an input type that accepts ServicePropertyArray and ServicePropertyArrayOutput values.
+// You can construct a concrete instance of `ServicePropertyArrayInput` via:
+//
+//	ServicePropertyArray{ ServicePropertyArgs{...} }
+type ServicePropertyArrayInput interface {
+	pulumi.Input
+
+	ToServicePropertyArrayOutput() ServicePropertyArrayOutput
+	ToServicePropertyArrayOutputWithContext(context.Context) ServicePropertyArrayOutput
+}
+
+type ServicePropertyArray []ServicePropertyInput
+
+func (ServicePropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceProperty)(nil)).Elem()
+}
+
+func (i ServicePropertyArray) ToServicePropertyArrayOutput() ServicePropertyArrayOutput {
+	return i.ToServicePropertyArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePropertyArray) ToServicePropertyArrayOutputWithContext(ctx context.Context) ServicePropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePropertyArrayOutput)
+}
+
+type ServicePropertyOutput struct{ *pulumi.OutputState }
+
+func (ServicePropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceProperty)(nil)).Elem()
+}
+
+func (o ServicePropertyOutput) ToServicePropertyOutput() ServicePropertyOutput {
+	return o
+}
+
+func (o ServicePropertyOutput) ToServicePropertyOutputWithContext(ctx context.Context) ServicePropertyOutput {
+	return o
+}
+
+// Catalog property ID
+func (o ServicePropertyOutput) CatalogPropertyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceProperty) *string { return v.CatalogPropertyId }).(pulumi.StringPtrOutput)
+}
+
+// The property value
+func (o ServicePropertyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ServicePropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceProperty)(nil)).Elem()
+}
+
+func (o ServicePropertyArrayOutput) ToServicePropertyArrayOutput() ServicePropertyArrayOutput {
+	return o
+}
+
+func (o ServicePropertyArrayOutput) ToServicePropertyArrayOutputWithContext(ctx context.Context) ServicePropertyArrayOutput {
+	return o
+}
+
+func (o ServicePropertyArrayOutput) Index(i pulumi.IntInput) ServicePropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProperty {
+		return vs[0].([]ServiceProperty)[vs[1].(int)]
+	}).(ServicePropertyOutput)
 }
 
 type ServiceSlackAlias struct {
@@ -4339,6 +8444,708 @@ func (o SeveritySlackChannelArrayOutput) Index(i pulumi.IntInput) SeveritySlackC
 	}).(SeveritySlackChannelOutput)
 }
 
+type SlaCondition struct {
+	// The type of condition. Value must be one of `SLAs::BuiltInFieldCondition`, `SLAs::CustomFieldCondition`.
+	ConditionableType *string `pulumi:"conditionableType"`
+	// The ID of the form field (for custom field conditions)
+	FormFieldId *string `pulumi:"formFieldId"`
+	// Unique ID of the condition
+	Id *string `pulumi:"id"`
+	// The comparison operator
+	Operator *string `pulumi:"operator"`
+	// The position of the condition
+	Position *int `pulumi:"position"`
+	// The property to evaluate (for built-in field conditions)
+	Property *string `pulumi:"property"`
+	// The values to compare against
+	Values []string `pulumi:"values"`
+}
+
+// SlaConditionInput is an input type that accepts SlaConditionArgs and SlaConditionOutput values.
+// You can construct a concrete instance of `SlaConditionInput` via:
+//
+//	SlaConditionArgs{...}
+type SlaConditionInput interface {
+	pulumi.Input
+
+	ToSlaConditionOutput() SlaConditionOutput
+	ToSlaConditionOutputWithContext(context.Context) SlaConditionOutput
+}
+
+type SlaConditionArgs struct {
+	// The type of condition. Value must be one of `SLAs::BuiltInFieldCondition`, `SLAs::CustomFieldCondition`.
+	ConditionableType pulumi.StringPtrInput `pulumi:"conditionableType"`
+	// The ID of the form field (for custom field conditions)
+	FormFieldId pulumi.StringPtrInput `pulumi:"formFieldId"`
+	// Unique ID of the condition
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The comparison operator
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The position of the condition
+	Position pulumi.IntPtrInput `pulumi:"position"`
+	// The property to evaluate (for built-in field conditions)
+	Property pulumi.StringPtrInput `pulumi:"property"`
+	// The values to compare against
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (SlaConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlaCondition)(nil)).Elem()
+}
+
+func (i SlaConditionArgs) ToSlaConditionOutput() SlaConditionOutput {
+	return i.ToSlaConditionOutputWithContext(context.Background())
+}
+
+func (i SlaConditionArgs) ToSlaConditionOutputWithContext(ctx context.Context) SlaConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlaConditionOutput)
+}
+
+// SlaConditionArrayInput is an input type that accepts SlaConditionArray and SlaConditionArrayOutput values.
+// You can construct a concrete instance of `SlaConditionArrayInput` via:
+//
+//	SlaConditionArray{ SlaConditionArgs{...} }
+type SlaConditionArrayInput interface {
+	pulumi.Input
+
+	ToSlaConditionArrayOutput() SlaConditionArrayOutput
+	ToSlaConditionArrayOutputWithContext(context.Context) SlaConditionArrayOutput
+}
+
+type SlaConditionArray []SlaConditionInput
+
+func (SlaConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlaCondition)(nil)).Elem()
+}
+
+func (i SlaConditionArray) ToSlaConditionArrayOutput() SlaConditionArrayOutput {
+	return i.ToSlaConditionArrayOutputWithContext(context.Background())
+}
+
+func (i SlaConditionArray) ToSlaConditionArrayOutputWithContext(ctx context.Context) SlaConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlaConditionArrayOutput)
+}
+
+type SlaConditionOutput struct{ *pulumi.OutputState }
+
+func (SlaConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlaCondition)(nil)).Elem()
+}
+
+func (o SlaConditionOutput) ToSlaConditionOutput() SlaConditionOutput {
+	return o
+}
+
+func (o SlaConditionOutput) ToSlaConditionOutputWithContext(ctx context.Context) SlaConditionOutput {
+	return o
+}
+
+// The type of condition. Value must be one of `SLAs::BuiltInFieldCondition`, `SLAs::CustomFieldCondition`.
+func (o SlaConditionOutput) ConditionableType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlaCondition) *string { return v.ConditionableType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the form field (for custom field conditions)
+func (o SlaConditionOutput) FormFieldId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlaCondition) *string { return v.FormFieldId }).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of the condition
+func (o SlaConditionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlaCondition) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The comparison operator
+func (o SlaConditionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlaCondition) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// The position of the condition
+func (o SlaConditionOutput) Position() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SlaCondition) *int { return v.Position }).(pulumi.IntPtrOutput)
+}
+
+// The property to evaluate (for built-in field conditions)
+func (o SlaConditionOutput) Property() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlaCondition) *string { return v.Property }).(pulumi.StringPtrOutput)
+}
+
+// The values to compare against
+func (o SlaConditionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SlaCondition) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type SlaConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (SlaConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlaCondition)(nil)).Elem()
+}
+
+func (o SlaConditionArrayOutput) ToSlaConditionArrayOutput() SlaConditionArrayOutput {
+	return o
+}
+
+func (o SlaConditionArrayOutput) ToSlaConditionArrayOutputWithContext(ctx context.Context) SlaConditionArrayOutput {
+	return o
+}
+
+func (o SlaConditionArrayOutput) Index(i pulumi.IntInput) SlaConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SlaCondition {
+		return vs[0].([]SlaCondition)[vs[1].(int)]
+	}).(SlaConditionOutput)
+}
+
+type SlaNotificationConfiguration struct {
+	// Date of creation
+	CreatedAt *string `pulumi:"createdAt"`
+	// Unique ID of the notification configuration
+	Id *string `pulumi:"id"`
+	// Number of days offset from the deadline
+	OffsetDays *int `pulumi:"offsetDays"`
+	// When to send the notification relative to the deadline. Value must be one of `beforeDue`, `whenDue`, `afterDue`.
+	OffsetType *string `pulumi:"offsetType"`
+	// Date of last update
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// SlaNotificationConfigurationInput is an input type that accepts SlaNotificationConfigurationArgs and SlaNotificationConfigurationOutput values.
+// You can construct a concrete instance of `SlaNotificationConfigurationInput` via:
+//
+//	SlaNotificationConfigurationArgs{...}
+type SlaNotificationConfigurationInput interface {
+	pulumi.Input
+
+	ToSlaNotificationConfigurationOutput() SlaNotificationConfigurationOutput
+	ToSlaNotificationConfigurationOutputWithContext(context.Context) SlaNotificationConfigurationOutput
+}
+
+type SlaNotificationConfigurationArgs struct {
+	// Date of creation
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Unique ID of the notification configuration
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Number of days offset from the deadline
+	OffsetDays pulumi.IntPtrInput `pulumi:"offsetDays"`
+	// When to send the notification relative to the deadline. Value must be one of `beforeDue`, `whenDue`, `afterDue`.
+	OffsetType pulumi.StringPtrInput `pulumi:"offsetType"`
+	// Date of last update
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (SlaNotificationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlaNotificationConfiguration)(nil)).Elem()
+}
+
+func (i SlaNotificationConfigurationArgs) ToSlaNotificationConfigurationOutput() SlaNotificationConfigurationOutput {
+	return i.ToSlaNotificationConfigurationOutputWithContext(context.Background())
+}
+
+func (i SlaNotificationConfigurationArgs) ToSlaNotificationConfigurationOutputWithContext(ctx context.Context) SlaNotificationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlaNotificationConfigurationOutput)
+}
+
+// SlaNotificationConfigurationArrayInput is an input type that accepts SlaNotificationConfigurationArray and SlaNotificationConfigurationArrayOutput values.
+// You can construct a concrete instance of `SlaNotificationConfigurationArrayInput` via:
+//
+//	SlaNotificationConfigurationArray{ SlaNotificationConfigurationArgs{...} }
+type SlaNotificationConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToSlaNotificationConfigurationArrayOutput() SlaNotificationConfigurationArrayOutput
+	ToSlaNotificationConfigurationArrayOutputWithContext(context.Context) SlaNotificationConfigurationArrayOutput
+}
+
+type SlaNotificationConfigurationArray []SlaNotificationConfigurationInput
+
+func (SlaNotificationConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlaNotificationConfiguration)(nil)).Elem()
+}
+
+func (i SlaNotificationConfigurationArray) ToSlaNotificationConfigurationArrayOutput() SlaNotificationConfigurationArrayOutput {
+	return i.ToSlaNotificationConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i SlaNotificationConfigurationArray) ToSlaNotificationConfigurationArrayOutputWithContext(ctx context.Context) SlaNotificationConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SlaNotificationConfigurationArrayOutput)
+}
+
+type SlaNotificationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SlaNotificationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SlaNotificationConfiguration)(nil)).Elem()
+}
+
+func (o SlaNotificationConfigurationOutput) ToSlaNotificationConfigurationOutput() SlaNotificationConfigurationOutput {
+	return o
+}
+
+func (o SlaNotificationConfigurationOutput) ToSlaNotificationConfigurationOutputWithContext(ctx context.Context) SlaNotificationConfigurationOutput {
+	return o
+}
+
+// Date of creation
+func (o SlaNotificationConfigurationOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlaNotificationConfiguration) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Unique ID of the notification configuration
+func (o SlaNotificationConfigurationOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlaNotificationConfiguration) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Number of days offset from the deadline
+func (o SlaNotificationConfigurationOutput) OffsetDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SlaNotificationConfiguration) *int { return v.OffsetDays }).(pulumi.IntPtrOutput)
+}
+
+// When to send the notification relative to the deadline. Value must be one of `beforeDue`, `whenDue`, `afterDue`.
+func (o SlaNotificationConfigurationOutput) OffsetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlaNotificationConfiguration) *string { return v.OffsetType }).(pulumi.StringPtrOutput)
+}
+
+// Date of last update
+func (o SlaNotificationConfigurationOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SlaNotificationConfiguration) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type SlaNotificationConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (SlaNotificationConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SlaNotificationConfiguration)(nil)).Elem()
+}
+
+func (o SlaNotificationConfigurationArrayOutput) ToSlaNotificationConfigurationArrayOutput() SlaNotificationConfigurationArrayOutput {
+	return o
+}
+
+func (o SlaNotificationConfigurationArrayOutput) ToSlaNotificationConfigurationArrayOutputWithContext(ctx context.Context) SlaNotificationConfigurationArrayOutput {
+	return o
+}
+
+func (o SlaNotificationConfigurationArrayOutput) Index(i pulumi.IntInput) SlaNotificationConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SlaNotificationConfiguration {
+		return vs[0].([]SlaNotificationConfiguration)[vs[1].(int)]
+	}).(SlaNotificationConfigurationOutput)
+}
+
+type TeamAlertBroadcastChannel struct {
+	// Slack channel ID
+	Id *string `pulumi:"id"`
+	// Slack channel name
+	Name *string `pulumi:"name"`
+}
+
+// TeamAlertBroadcastChannelInput is an input type that accepts TeamAlertBroadcastChannelArgs and TeamAlertBroadcastChannelOutput values.
+// You can construct a concrete instance of `TeamAlertBroadcastChannelInput` via:
+//
+//	TeamAlertBroadcastChannelArgs{...}
+type TeamAlertBroadcastChannelInput interface {
+	pulumi.Input
+
+	ToTeamAlertBroadcastChannelOutput() TeamAlertBroadcastChannelOutput
+	ToTeamAlertBroadcastChannelOutputWithContext(context.Context) TeamAlertBroadcastChannelOutput
+}
+
+type TeamAlertBroadcastChannelArgs struct {
+	// Slack channel ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Slack channel name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (TeamAlertBroadcastChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamAlertBroadcastChannel)(nil)).Elem()
+}
+
+func (i TeamAlertBroadcastChannelArgs) ToTeamAlertBroadcastChannelOutput() TeamAlertBroadcastChannelOutput {
+	return i.ToTeamAlertBroadcastChannelOutputWithContext(context.Background())
+}
+
+func (i TeamAlertBroadcastChannelArgs) ToTeamAlertBroadcastChannelOutputWithContext(ctx context.Context) TeamAlertBroadcastChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamAlertBroadcastChannelOutput)
+}
+
+func (i TeamAlertBroadcastChannelArgs) ToTeamAlertBroadcastChannelPtrOutput() TeamAlertBroadcastChannelPtrOutput {
+	return i.ToTeamAlertBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (i TeamAlertBroadcastChannelArgs) ToTeamAlertBroadcastChannelPtrOutputWithContext(ctx context.Context) TeamAlertBroadcastChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamAlertBroadcastChannelOutput).ToTeamAlertBroadcastChannelPtrOutputWithContext(ctx)
+}
+
+// TeamAlertBroadcastChannelPtrInput is an input type that accepts TeamAlertBroadcastChannelArgs, TeamAlertBroadcastChannelPtr and TeamAlertBroadcastChannelPtrOutput values.
+// You can construct a concrete instance of `TeamAlertBroadcastChannelPtrInput` via:
+//
+//	        TeamAlertBroadcastChannelArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamAlertBroadcastChannelPtrInput interface {
+	pulumi.Input
+
+	ToTeamAlertBroadcastChannelPtrOutput() TeamAlertBroadcastChannelPtrOutput
+	ToTeamAlertBroadcastChannelPtrOutputWithContext(context.Context) TeamAlertBroadcastChannelPtrOutput
+}
+
+type teamAlertBroadcastChannelPtrType TeamAlertBroadcastChannelArgs
+
+func TeamAlertBroadcastChannelPtr(v *TeamAlertBroadcastChannelArgs) TeamAlertBroadcastChannelPtrInput {
+	return (*teamAlertBroadcastChannelPtrType)(v)
+}
+
+func (*teamAlertBroadcastChannelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamAlertBroadcastChannel)(nil)).Elem()
+}
+
+func (i *teamAlertBroadcastChannelPtrType) ToTeamAlertBroadcastChannelPtrOutput() TeamAlertBroadcastChannelPtrOutput {
+	return i.ToTeamAlertBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *teamAlertBroadcastChannelPtrType) ToTeamAlertBroadcastChannelPtrOutputWithContext(ctx context.Context) TeamAlertBroadcastChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamAlertBroadcastChannelPtrOutput)
+}
+
+type TeamAlertBroadcastChannelOutput struct{ *pulumi.OutputState }
+
+func (TeamAlertBroadcastChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamAlertBroadcastChannel)(nil)).Elem()
+}
+
+func (o TeamAlertBroadcastChannelOutput) ToTeamAlertBroadcastChannelOutput() TeamAlertBroadcastChannelOutput {
+	return o
+}
+
+func (o TeamAlertBroadcastChannelOutput) ToTeamAlertBroadcastChannelOutputWithContext(ctx context.Context) TeamAlertBroadcastChannelOutput {
+	return o
+}
+
+func (o TeamAlertBroadcastChannelOutput) ToTeamAlertBroadcastChannelPtrOutput() TeamAlertBroadcastChannelPtrOutput {
+	return o.ToTeamAlertBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (o TeamAlertBroadcastChannelOutput) ToTeamAlertBroadcastChannelPtrOutputWithContext(ctx context.Context) TeamAlertBroadcastChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamAlertBroadcastChannel) *TeamAlertBroadcastChannel {
+		return &v
+	}).(TeamAlertBroadcastChannelPtrOutput)
+}
+
+// Slack channel ID
+func (o TeamAlertBroadcastChannelOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamAlertBroadcastChannel) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name
+func (o TeamAlertBroadcastChannelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamAlertBroadcastChannel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type TeamAlertBroadcastChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamAlertBroadcastChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamAlertBroadcastChannel)(nil)).Elem()
+}
+
+func (o TeamAlertBroadcastChannelPtrOutput) ToTeamAlertBroadcastChannelPtrOutput() TeamAlertBroadcastChannelPtrOutput {
+	return o
+}
+
+func (o TeamAlertBroadcastChannelPtrOutput) ToTeamAlertBroadcastChannelPtrOutputWithContext(ctx context.Context) TeamAlertBroadcastChannelPtrOutput {
+	return o
+}
+
+func (o TeamAlertBroadcastChannelPtrOutput) Elem() TeamAlertBroadcastChannelOutput {
+	return o.ApplyT(func(v *TeamAlertBroadcastChannel) TeamAlertBroadcastChannel {
+		if v != nil {
+			return *v
+		}
+		var ret TeamAlertBroadcastChannel
+		return ret
+	}).(TeamAlertBroadcastChannelOutput)
+}
+
+// Slack channel ID
+func (o TeamAlertBroadcastChannelPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamAlertBroadcastChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name
+func (o TeamAlertBroadcastChannelPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamAlertBroadcastChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type TeamIncidentBroadcastChannel struct {
+	// Slack channel ID
+	Id *string `pulumi:"id"`
+	// Slack channel name
+	Name *string `pulumi:"name"`
+}
+
+// TeamIncidentBroadcastChannelInput is an input type that accepts TeamIncidentBroadcastChannelArgs and TeamIncidentBroadcastChannelOutput values.
+// You can construct a concrete instance of `TeamIncidentBroadcastChannelInput` via:
+//
+//	TeamIncidentBroadcastChannelArgs{...}
+type TeamIncidentBroadcastChannelInput interface {
+	pulumi.Input
+
+	ToTeamIncidentBroadcastChannelOutput() TeamIncidentBroadcastChannelOutput
+	ToTeamIncidentBroadcastChannelOutputWithContext(context.Context) TeamIncidentBroadcastChannelOutput
+}
+
+type TeamIncidentBroadcastChannelArgs struct {
+	// Slack channel ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Slack channel name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (TeamIncidentBroadcastChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamIncidentBroadcastChannel)(nil)).Elem()
+}
+
+func (i TeamIncidentBroadcastChannelArgs) ToTeamIncidentBroadcastChannelOutput() TeamIncidentBroadcastChannelOutput {
+	return i.ToTeamIncidentBroadcastChannelOutputWithContext(context.Background())
+}
+
+func (i TeamIncidentBroadcastChannelArgs) ToTeamIncidentBroadcastChannelOutputWithContext(ctx context.Context) TeamIncidentBroadcastChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamIncidentBroadcastChannelOutput)
+}
+
+func (i TeamIncidentBroadcastChannelArgs) ToTeamIncidentBroadcastChannelPtrOutput() TeamIncidentBroadcastChannelPtrOutput {
+	return i.ToTeamIncidentBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (i TeamIncidentBroadcastChannelArgs) ToTeamIncidentBroadcastChannelPtrOutputWithContext(ctx context.Context) TeamIncidentBroadcastChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamIncidentBroadcastChannelOutput).ToTeamIncidentBroadcastChannelPtrOutputWithContext(ctx)
+}
+
+// TeamIncidentBroadcastChannelPtrInput is an input type that accepts TeamIncidentBroadcastChannelArgs, TeamIncidentBroadcastChannelPtr and TeamIncidentBroadcastChannelPtrOutput values.
+// You can construct a concrete instance of `TeamIncidentBroadcastChannelPtrInput` via:
+//
+//	        TeamIncidentBroadcastChannelArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamIncidentBroadcastChannelPtrInput interface {
+	pulumi.Input
+
+	ToTeamIncidentBroadcastChannelPtrOutput() TeamIncidentBroadcastChannelPtrOutput
+	ToTeamIncidentBroadcastChannelPtrOutputWithContext(context.Context) TeamIncidentBroadcastChannelPtrOutput
+}
+
+type teamIncidentBroadcastChannelPtrType TeamIncidentBroadcastChannelArgs
+
+func TeamIncidentBroadcastChannelPtr(v *TeamIncidentBroadcastChannelArgs) TeamIncidentBroadcastChannelPtrInput {
+	return (*teamIncidentBroadcastChannelPtrType)(v)
+}
+
+func (*teamIncidentBroadcastChannelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamIncidentBroadcastChannel)(nil)).Elem()
+}
+
+func (i *teamIncidentBroadcastChannelPtrType) ToTeamIncidentBroadcastChannelPtrOutput() TeamIncidentBroadcastChannelPtrOutput {
+	return i.ToTeamIncidentBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *teamIncidentBroadcastChannelPtrType) ToTeamIncidentBroadcastChannelPtrOutputWithContext(ctx context.Context) TeamIncidentBroadcastChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamIncidentBroadcastChannelPtrOutput)
+}
+
+type TeamIncidentBroadcastChannelOutput struct{ *pulumi.OutputState }
+
+func (TeamIncidentBroadcastChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamIncidentBroadcastChannel)(nil)).Elem()
+}
+
+func (o TeamIncidentBroadcastChannelOutput) ToTeamIncidentBroadcastChannelOutput() TeamIncidentBroadcastChannelOutput {
+	return o
+}
+
+func (o TeamIncidentBroadcastChannelOutput) ToTeamIncidentBroadcastChannelOutputWithContext(ctx context.Context) TeamIncidentBroadcastChannelOutput {
+	return o
+}
+
+func (o TeamIncidentBroadcastChannelOutput) ToTeamIncidentBroadcastChannelPtrOutput() TeamIncidentBroadcastChannelPtrOutput {
+	return o.ToTeamIncidentBroadcastChannelPtrOutputWithContext(context.Background())
+}
+
+func (o TeamIncidentBroadcastChannelOutput) ToTeamIncidentBroadcastChannelPtrOutputWithContext(ctx context.Context) TeamIncidentBroadcastChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamIncidentBroadcastChannel) *TeamIncidentBroadcastChannel {
+		return &v
+	}).(TeamIncidentBroadcastChannelPtrOutput)
+}
+
+// Slack channel ID
+func (o TeamIncidentBroadcastChannelOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamIncidentBroadcastChannel) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name
+func (o TeamIncidentBroadcastChannelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamIncidentBroadcastChannel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type TeamIncidentBroadcastChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamIncidentBroadcastChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamIncidentBroadcastChannel)(nil)).Elem()
+}
+
+func (o TeamIncidentBroadcastChannelPtrOutput) ToTeamIncidentBroadcastChannelPtrOutput() TeamIncidentBroadcastChannelPtrOutput {
+	return o
+}
+
+func (o TeamIncidentBroadcastChannelPtrOutput) ToTeamIncidentBroadcastChannelPtrOutputWithContext(ctx context.Context) TeamIncidentBroadcastChannelPtrOutput {
+	return o
+}
+
+func (o TeamIncidentBroadcastChannelPtrOutput) Elem() TeamIncidentBroadcastChannelOutput {
+	return o.ApplyT(func(v *TeamIncidentBroadcastChannel) TeamIncidentBroadcastChannel {
+		if v != nil {
+			return *v
+		}
+		var ret TeamIncidentBroadcastChannel
+		return ret
+	}).(TeamIncidentBroadcastChannelOutput)
+}
+
+// Slack channel ID
+func (o TeamIncidentBroadcastChannelPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamIncidentBroadcastChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name
+func (o TeamIncidentBroadcastChannelPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamIncidentBroadcastChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type TeamProperty struct {
+	// Catalog property ID
+	CatalogPropertyId *string `pulumi:"catalogPropertyId"`
+	// The property value
+	Value *string `pulumi:"value"`
+}
+
+// TeamPropertyInput is an input type that accepts TeamPropertyArgs and TeamPropertyOutput values.
+// You can construct a concrete instance of `TeamPropertyInput` via:
+//
+//	TeamPropertyArgs{...}
+type TeamPropertyInput interface {
+	pulumi.Input
+
+	ToTeamPropertyOutput() TeamPropertyOutput
+	ToTeamPropertyOutputWithContext(context.Context) TeamPropertyOutput
+}
+
+type TeamPropertyArgs struct {
+	// Catalog property ID
+	CatalogPropertyId pulumi.StringPtrInput `pulumi:"catalogPropertyId"`
+	// The property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (TeamPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamProperty)(nil)).Elem()
+}
+
+func (i TeamPropertyArgs) ToTeamPropertyOutput() TeamPropertyOutput {
+	return i.ToTeamPropertyOutputWithContext(context.Background())
+}
+
+func (i TeamPropertyArgs) ToTeamPropertyOutputWithContext(ctx context.Context) TeamPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamPropertyOutput)
+}
+
+// TeamPropertyArrayInput is an input type that accepts TeamPropertyArray and TeamPropertyArrayOutput values.
+// You can construct a concrete instance of `TeamPropertyArrayInput` via:
+//
+//	TeamPropertyArray{ TeamPropertyArgs{...} }
+type TeamPropertyArrayInput interface {
+	pulumi.Input
+
+	ToTeamPropertyArrayOutput() TeamPropertyArrayOutput
+	ToTeamPropertyArrayOutputWithContext(context.Context) TeamPropertyArrayOutput
+}
+
+type TeamPropertyArray []TeamPropertyInput
+
+func (TeamPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamProperty)(nil)).Elem()
+}
+
+func (i TeamPropertyArray) ToTeamPropertyArrayOutput() TeamPropertyArrayOutput {
+	return i.ToTeamPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i TeamPropertyArray) ToTeamPropertyArrayOutputWithContext(ctx context.Context) TeamPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamPropertyArrayOutput)
+}
+
+type TeamPropertyOutput struct{ *pulumi.OutputState }
+
+func (TeamPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamProperty)(nil)).Elem()
+}
+
+func (o TeamPropertyOutput) ToTeamPropertyOutput() TeamPropertyOutput {
+	return o
+}
+
+func (o TeamPropertyOutput) ToTeamPropertyOutputWithContext(ctx context.Context) TeamPropertyOutput {
+	return o
+}
+
+// Catalog property ID
+func (o TeamPropertyOutput) CatalogPropertyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamProperty) *string { return v.CatalogPropertyId }).(pulumi.StringPtrOutput)
+}
+
+// The property value
+func (o TeamPropertyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type TeamPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (TeamPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamProperty)(nil)).Elem()
+}
+
+func (o TeamPropertyArrayOutput) ToTeamPropertyArrayOutput() TeamPropertyArrayOutput {
+	return o
+}
+
+func (o TeamPropertyArrayOutput) ToTeamPropertyArrayOutputWithContext(ctx context.Context) TeamPropertyArrayOutput {
+	return o
+}
+
+func (o TeamPropertyArrayOutput) Index(i pulumi.IntInput) TeamPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamProperty {
+		return vs[0].([]TeamProperty)[vs[1].(int)]
+	}).(TeamPropertyOutput)
+}
+
 type TeamSlackAlias struct {
 	// Slack alias ID
 	Id *string `pulumi:"id"`
@@ -4554,13 +9361,13 @@ func (o TeamSlackChannelArrayOutput) Index(i pulumi.IntInput) TeamSlackChannelOu
 type WorkflowActionItemTriggerParams struct {
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	IncidentActionItemCondition *string `pulumi:"incidentActionItemCondition"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionGroup *string `pulumi:"incidentActionItemConditionGroup"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionKind *string `pulumi:"incidentActionItemConditionKind"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionPriority *string `pulumi:"incidentActionItemConditionPriority"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionStatus *string  `pulumi:"incidentActionItemConditionStatus"`
 	IncidentActionItemGroupIds        []string `pulumi:"incidentActionItemGroupIds"`
 	// Value must be one of `task`, `followUp`.
@@ -4573,36 +9380,36 @@ type WorkflowActionItemTriggerParams struct {
 	IncidentCondition               *string `pulumi:"incidentCondition"`
 	IncidentConditionAcknowledgedAt *string `pulumi:"incidentConditionAcknowledgedAt"`
 	IncidentConditionDetectedAt     *string `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment *string `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality *string `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup *string `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles *string `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType *string `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind        *string `pulumi:"incidentConditionKind"`
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
 	IncidentConditionResolvedAt  *string `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService *string `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSeverity  *string `pulumi:"incidentConditionSeverity"`
 	IncidentConditionStartedAt *string `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus *string `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus *string `pulumi:"incidentConditionSubStatus"`
 	IncidentConditionSummary   *string `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionVisibility   *string `pulumi:"incidentConditionVisibility"`
 	IncidentConditionalInactivity *string `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration *string `pulumi:"incidentInactivityDuration"`
-	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 	IncidentKinds []string `pulumi:"incidentKinds"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     []string `pulumi:"incidentStatuses"`
@@ -4627,13 +9434,13 @@ type WorkflowActionItemTriggerParamsInput interface {
 type WorkflowActionItemTriggerParamsArgs struct {
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	IncidentActionItemCondition pulumi.StringPtrInput `pulumi:"incidentActionItemCondition"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionGroup pulumi.StringPtrInput `pulumi:"incidentActionItemConditionGroup"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionKind pulumi.StringPtrInput `pulumi:"incidentActionItemConditionKind"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionPriority pulumi.StringPtrInput `pulumi:"incidentActionItemConditionPriority"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionStatus pulumi.StringPtrInput   `pulumi:"incidentActionItemConditionStatus"`
 	IncidentActionItemGroupIds        pulumi.StringArrayInput `pulumi:"incidentActionItemGroupIds"`
 	// Value must be one of `task`, `followUp`.
@@ -4646,36 +9453,36 @@ type WorkflowActionItemTriggerParamsArgs struct {
 	IncidentCondition               pulumi.StringPtrInput `pulumi:"incidentCondition"`
 	IncidentConditionAcknowledgedAt pulumi.StringPtrInput `pulumi:"incidentConditionAcknowledgedAt"`
 	IncidentConditionDetectedAt     pulumi.StringPtrInput `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment pulumi.StringPtrInput `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality pulumi.StringPtrInput `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup pulumi.StringPtrInput `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles pulumi.StringPtrInput `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType pulumi.StringPtrInput `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind        pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
 	IncidentConditionResolvedAt  pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService pulumi.StringPtrInput `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSeverity  pulumi.StringPtrInput `pulumi:"incidentConditionSeverity"`
 	IncidentConditionStartedAt pulumi.StringPtrInput `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus pulumi.StringPtrInput `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus pulumi.StringPtrInput `pulumi:"incidentConditionSubStatus"`
 	IncidentConditionSummary   pulumi.StringPtrInput `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionVisibility   pulumi.StringPtrInput `pulumi:"incidentConditionVisibility"`
 	IncidentConditionalInactivity pulumi.StringPtrInput `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration pulumi.StringPtrInput `pulumi:"incidentInactivityDuration"`
-	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 	IncidentKinds pulumi.StringArrayInput `pulumi:"incidentKinds"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     pulumi.StringArrayInput `pulumi:"incidentStatuses"`
@@ -4768,22 +9575,22 @@ func (o WorkflowActionItemTriggerParamsOutput) IncidentActionItemCondition() pul
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentActionItemCondition }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentActionItemConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentActionItemConditionGroup }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentActionItemConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentActionItemConditionKind }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentActionItemConditionPriority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentActionItemConditionPriority }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentActionItemConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentActionItemConditionStatus }).(pulumi.StringPtrOutput)
 }
@@ -4820,32 +9627,32 @@ func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionDetectedAt() pul
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionDetectedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionEnvironment }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionFunctionality }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionGroup }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionIncidentRoles }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionIncidentType }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionKind }).(pulumi.StringPtrOutput)
 }
@@ -4858,12 +9665,12 @@ func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionResolvedAt() pul
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionResolvedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionService }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionSeverity }).(pulumi.StringPtrOutput)
 }
@@ -4872,12 +9679,12 @@ func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionStartedAt() pulu
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionStartedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionStatus }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionSubStatus }).(pulumi.StringPtrOutput)
 }
@@ -4886,7 +9693,7 @@ func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionSummary() pulumi
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionSummary }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionVisibility }).(pulumi.StringPtrOutput)
 }
@@ -4900,7 +9707,7 @@ func (o WorkflowActionItemTriggerParamsOutput) IncidentInactivityDuration() pulu
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentInactivityDuration }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentKinds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) []string { return v.IncidentKinds }).(pulumi.StringArrayOutput)
 }
@@ -4958,7 +9765,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemCondition() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -4968,7 +9775,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionGro
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -4978,7 +9785,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionKin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionPriority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -4988,7 +9795,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionPri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5065,7 +9872,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionDetectedAt() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5075,7 +9882,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionEnvironment()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5085,7 +9892,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionFunctionality
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5095,7 +9902,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionGroup() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5105,7 +9912,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionIncidentRoles
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5115,7 +9922,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionIncidentType(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5143,7 +9950,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionResolvedAt() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5153,7 +9960,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionService() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5172,7 +9979,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionStartedAt() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5182,7 +9989,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionStatus() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5201,7 +10008,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionSummary() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -5230,7 +10037,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentInactivityDuration() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentKinds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) []string {
 		if v == nil {
@@ -5282,28 +10089,33 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) Triggers() pulumi.StringArrayO
 type WorkflowAlertTriggerParams struct {
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	AlertCondition *string `pulumi:"alertCondition"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionLabel *string `pulumi:"alertConditionLabel"`
 	// Value must be one of true or false
 	AlertConditionLabelUseRegexp *bool `pulumi:"alertConditionLabelUseRegexp"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionPayload *string `pulumi:"alertConditionPayload"`
 	// Value must be one of true or false
 	AlertConditionPayloadUseRegexp *bool `pulumi:"alertConditionPayloadUseRegexp"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionSource *string `pulumi:"alertConditionSource"`
 	// Value must be one of true or false
 	AlertConditionSourceUseRegexp *bool `pulumi:"alertConditionSourceUseRegexp"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionStatus *string `pulumi:"alertConditionStatus"`
 	// Value must be one of true or false
-	AlertConditionStatusUseRegexp *bool    `pulumi:"alertConditionStatusUseRegexp"`
-	AlertLabels                   []string `pulumi:"alertLabels"`
-	AlertPayloads                 []string `pulumi:"alertPayloads"`
+	AlertConditionStatusUseRegexp *bool `pulumi:"alertConditionStatusUseRegexp"`
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	AlertConditionUrgency  *string                                           `pulumi:"alertConditionUrgency"`
+	AlertFieldConditions   []WorkflowAlertTriggerParamsAlertFieldCondition   `pulumi:"alertFieldConditions"`
+	AlertLabels            []string                                          `pulumi:"alertLabels"`
+	AlertPayloadConditions *WorkflowAlertTriggerParamsAlertPayloadConditions `pulumi:"alertPayloadConditions"`
+	AlertPayloads          []string                                          `pulumi:"alertPayloads"`
 	// You can use jsonpath syntax. eg: $.incident.teams[*]
 	AlertQueryPayload *string  `pulumi:"alertQueryPayload"`
 	AlertSources      []string `pulumi:"alertSources"`
 	AlertStatuses     []string `pulumi:"alertStatuses"`
+	AlertUrgencyIds   []string `pulumi:"alertUrgencyIds"`
 	// Value must be one off `alert`.
 	TriggerType *string `pulumi:"triggerType"`
 	// Actions that trigger the workflow. Value must be one of `alertCreated`, `alertStatusUpdated`.
@@ -5324,28 +10136,33 @@ type WorkflowAlertTriggerParamsInput interface {
 type WorkflowAlertTriggerParamsArgs struct {
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	AlertCondition pulumi.StringPtrInput `pulumi:"alertCondition"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionLabel pulumi.StringPtrInput `pulumi:"alertConditionLabel"`
 	// Value must be one of true or false
 	AlertConditionLabelUseRegexp pulumi.BoolPtrInput `pulumi:"alertConditionLabelUseRegexp"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionPayload pulumi.StringPtrInput `pulumi:"alertConditionPayload"`
 	// Value must be one of true or false
 	AlertConditionPayloadUseRegexp pulumi.BoolPtrInput `pulumi:"alertConditionPayloadUseRegexp"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionSource pulumi.StringPtrInput `pulumi:"alertConditionSource"`
 	// Value must be one of true or false
 	AlertConditionSourceUseRegexp pulumi.BoolPtrInput `pulumi:"alertConditionSourceUseRegexp"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionStatus pulumi.StringPtrInput `pulumi:"alertConditionStatus"`
 	// Value must be one of true or false
-	AlertConditionStatusUseRegexp pulumi.BoolPtrInput     `pulumi:"alertConditionStatusUseRegexp"`
-	AlertLabels                   pulumi.StringArrayInput `pulumi:"alertLabels"`
-	AlertPayloads                 pulumi.StringArrayInput `pulumi:"alertPayloads"`
+	AlertConditionStatusUseRegexp pulumi.BoolPtrInput `pulumi:"alertConditionStatusUseRegexp"`
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	AlertConditionUrgency  pulumi.StringPtrInput                                    `pulumi:"alertConditionUrgency"`
+	AlertFieldConditions   WorkflowAlertTriggerParamsAlertFieldConditionArrayInput  `pulumi:"alertFieldConditions"`
+	AlertLabels            pulumi.StringArrayInput                                  `pulumi:"alertLabels"`
+	AlertPayloadConditions WorkflowAlertTriggerParamsAlertPayloadConditionsPtrInput `pulumi:"alertPayloadConditions"`
+	AlertPayloads          pulumi.StringArrayInput                                  `pulumi:"alertPayloads"`
 	// You can use jsonpath syntax. eg: $.incident.teams[*]
 	AlertQueryPayload pulumi.StringPtrInput   `pulumi:"alertQueryPayload"`
 	AlertSources      pulumi.StringArrayInput `pulumi:"alertSources"`
 	AlertStatuses     pulumi.StringArrayInput `pulumi:"alertStatuses"`
+	AlertUrgencyIds   pulumi.StringArrayInput `pulumi:"alertUrgencyIds"`
 	// Value must be one off `alert`.
 	TriggerType pulumi.StringPtrInput `pulumi:"triggerType"`
 	// Actions that trigger the workflow. Value must be one of `alertCreated`, `alertStatusUpdated`.
@@ -5434,7 +10251,7 @@ func (o WorkflowAlertTriggerParamsOutput) AlertCondition() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertCondition }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsOutput) AlertConditionLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertConditionLabel }).(pulumi.StringPtrOutput)
 }
@@ -5444,7 +10261,7 @@ func (o WorkflowAlertTriggerParamsOutput) AlertConditionLabelUseRegexp() pulumi.
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *bool { return v.AlertConditionLabelUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsOutput) AlertConditionPayload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertConditionPayload }).(pulumi.StringPtrOutput)
 }
@@ -5454,7 +10271,7 @@ func (o WorkflowAlertTriggerParamsOutput) AlertConditionPayloadUseRegexp() pulum
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *bool { return v.AlertConditionPayloadUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsOutput) AlertConditionSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertConditionSource }).(pulumi.StringPtrOutput)
 }
@@ -5464,7 +10281,7 @@ func (o WorkflowAlertTriggerParamsOutput) AlertConditionSourceUseRegexp() pulumi
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *bool { return v.AlertConditionSourceUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsOutput) AlertConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertConditionStatus }).(pulumi.StringPtrOutput)
 }
@@ -5474,8 +10291,25 @@ func (o WorkflowAlertTriggerParamsOutput) AlertConditionStatusUseRegexp() pulumi
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *bool { return v.AlertConditionStatusUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+func (o WorkflowAlertTriggerParamsOutput) AlertConditionUrgency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertConditionUrgency }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowAlertTriggerParamsOutput) AlertFieldConditions() WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParams) []WorkflowAlertTriggerParamsAlertFieldCondition {
+		return v.AlertFieldConditions
+	}).(WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput)
+}
+
 func (o WorkflowAlertTriggerParamsOutput) AlertLabels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) []string { return v.AlertLabels }).(pulumi.StringArrayOutput)
+}
+
+func (o WorkflowAlertTriggerParamsOutput) AlertPayloadConditions() WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParams) *WorkflowAlertTriggerParamsAlertPayloadConditions {
+		return v.AlertPayloadConditions
+	}).(WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput)
 }
 
 func (o WorkflowAlertTriggerParamsOutput) AlertPayloads() pulumi.StringArrayOutput {
@@ -5493,6 +10327,10 @@ func (o WorkflowAlertTriggerParamsOutput) AlertSources() pulumi.StringArrayOutpu
 
 func (o WorkflowAlertTriggerParamsOutput) AlertStatuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) []string { return v.AlertStatuses }).(pulumi.StringArrayOutput)
+}
+
+func (o WorkflowAlertTriggerParamsOutput) AlertUrgencyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParams) []string { return v.AlertUrgencyIds }).(pulumi.StringArrayOutput)
 }
 
 // Value must be one off `alert`.
@@ -5539,7 +10377,7 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertCondition() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
 		if v == nil {
@@ -5559,7 +10397,7 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionLabelUseRegexp() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionPayload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
 		if v == nil {
@@ -5579,7 +10417,7 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionPayloadUseRegexp() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
 		if v == nil {
@@ -5599,7 +10437,7 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionSourceUseRegexp() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
 		if v == nil {
@@ -5619,6 +10457,25 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionStatusUseRegexp() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionUrgency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertConditionUrgency
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowAlertTriggerParamsPtrOutput) AlertFieldConditions() WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput {
+	return o.ApplyT(func(v *WorkflowAlertTriggerParams) []WorkflowAlertTriggerParamsAlertFieldCondition {
+		if v == nil {
+			return nil
+		}
+		return v.AlertFieldConditions
+	}).(WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput)
+}
+
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertLabels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) []string {
 		if v == nil {
@@ -5626,6 +10483,15 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertLabels() pulumi.StringArrayOut
 		}
 		return v.AlertLabels
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o WorkflowAlertTriggerParamsPtrOutput) AlertPayloadConditions() WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput {
+	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *WorkflowAlertTriggerParamsAlertPayloadConditions {
+		if v == nil {
+			return nil
+		}
+		return v.AlertPayloadConditions
+	}).(WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput)
 }
 
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertPayloads() pulumi.StringArrayOutput {
@@ -5665,6 +10531,15 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertStatuses() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o WorkflowAlertTriggerParamsPtrOutput) AlertUrgencyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowAlertTriggerParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AlertUrgencyIds
+	}).(pulumi.StringArrayOutput)
+}
+
 // Value must be one off `alert`.
 func (o WorkflowAlertTriggerParamsPtrOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
@@ -5685,52 +10560,424 @@ func (o WorkflowAlertTriggerParamsPtrOutput) Triggers() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+type WorkflowAlertTriggerParamsAlertFieldCondition struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowAlertTriggerParamsAlertFieldConditionInput is an input type that accepts WorkflowAlertTriggerParamsAlertFieldConditionArgs and WorkflowAlertTriggerParamsAlertFieldConditionOutput values.
+// You can construct a concrete instance of `WorkflowAlertTriggerParamsAlertFieldConditionInput` via:
+//
+//	WorkflowAlertTriggerParamsAlertFieldConditionArgs{...}
+type WorkflowAlertTriggerParamsAlertFieldConditionInput interface {
+	pulumi.Input
+
+	ToWorkflowAlertTriggerParamsAlertFieldConditionOutput() WorkflowAlertTriggerParamsAlertFieldConditionOutput
+	ToWorkflowAlertTriggerParamsAlertFieldConditionOutputWithContext(context.Context) WorkflowAlertTriggerParamsAlertFieldConditionOutput
+}
+
+type WorkflowAlertTriggerParamsAlertFieldConditionArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowAlertTriggerParamsAlertFieldConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowAlertTriggerParamsAlertFieldCondition)(nil)).Elem()
+}
+
+func (i WorkflowAlertTriggerParamsAlertFieldConditionArgs) ToWorkflowAlertTriggerParamsAlertFieldConditionOutput() WorkflowAlertTriggerParamsAlertFieldConditionOutput {
+	return i.ToWorkflowAlertTriggerParamsAlertFieldConditionOutputWithContext(context.Background())
+}
+
+func (i WorkflowAlertTriggerParamsAlertFieldConditionArgs) ToWorkflowAlertTriggerParamsAlertFieldConditionOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertFieldConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowAlertTriggerParamsAlertFieldConditionOutput)
+}
+
+// WorkflowAlertTriggerParamsAlertFieldConditionArrayInput is an input type that accepts WorkflowAlertTriggerParamsAlertFieldConditionArray and WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput values.
+// You can construct a concrete instance of `WorkflowAlertTriggerParamsAlertFieldConditionArrayInput` via:
+//
+//	WorkflowAlertTriggerParamsAlertFieldConditionArray{ WorkflowAlertTriggerParamsAlertFieldConditionArgs{...} }
+type WorkflowAlertTriggerParamsAlertFieldConditionArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowAlertTriggerParamsAlertFieldConditionArrayOutput() WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput
+	ToWorkflowAlertTriggerParamsAlertFieldConditionArrayOutputWithContext(context.Context) WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput
+}
+
+type WorkflowAlertTriggerParamsAlertFieldConditionArray []WorkflowAlertTriggerParamsAlertFieldConditionInput
+
+func (WorkflowAlertTriggerParamsAlertFieldConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowAlertTriggerParamsAlertFieldCondition)(nil)).Elem()
+}
+
+func (i WorkflowAlertTriggerParamsAlertFieldConditionArray) ToWorkflowAlertTriggerParamsAlertFieldConditionArrayOutput() WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput {
+	return i.ToWorkflowAlertTriggerParamsAlertFieldConditionArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowAlertTriggerParamsAlertFieldConditionArray) ToWorkflowAlertTriggerParamsAlertFieldConditionArrayOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput)
+}
+
+type WorkflowAlertTriggerParamsAlertFieldConditionOutput struct{ *pulumi.OutputState }
+
+func (WorkflowAlertTriggerParamsAlertFieldConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowAlertTriggerParamsAlertFieldCondition)(nil)).Elem()
+}
+
+func (o WorkflowAlertTriggerParamsAlertFieldConditionOutput) ToWorkflowAlertTriggerParamsAlertFieldConditionOutput() WorkflowAlertTriggerParamsAlertFieldConditionOutput {
+	return o
+}
+
+func (o WorkflowAlertTriggerParamsAlertFieldConditionOutput) ToWorkflowAlertTriggerParamsAlertFieldConditionOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertFieldConditionOutput {
+	return o
+}
+
+func (o WorkflowAlertTriggerParamsAlertFieldConditionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertFieldCondition) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowAlertTriggerParamsAlertFieldConditionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertFieldCondition) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowAlertTriggerParamsAlertFieldCondition)(nil)).Elem()
+}
+
+func (o WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput) ToWorkflowAlertTriggerParamsAlertFieldConditionArrayOutput() WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput {
+	return o
+}
+
+func (o WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput) ToWorkflowAlertTriggerParamsAlertFieldConditionArrayOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput {
+	return o
+}
+
+func (o WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput) Index(i pulumi.IntInput) WorkflowAlertTriggerParamsAlertFieldConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowAlertTriggerParamsAlertFieldCondition {
+		return vs[0].([]WorkflowAlertTriggerParamsAlertFieldCondition)[vs[1].(int)]
+	}).(WorkflowAlertTriggerParamsAlertFieldConditionOutput)
+}
+
+type WorkflowAlertTriggerParamsAlertPayloadConditions struct {
+	Conditions []WorkflowAlertTriggerParamsAlertPayloadConditionsCondition `pulumi:"conditions"`
+	// Logic operator for conditions. Value must be one of `ALL` or `ANY`.
+	Logic *string `pulumi:"logic"`
+}
+
+// WorkflowAlertTriggerParamsAlertPayloadConditionsInput is an input type that accepts WorkflowAlertTriggerParamsAlertPayloadConditionsArgs and WorkflowAlertTriggerParamsAlertPayloadConditionsOutput values.
+// You can construct a concrete instance of `WorkflowAlertTriggerParamsAlertPayloadConditionsInput` via:
+//
+//	WorkflowAlertTriggerParamsAlertPayloadConditionsArgs{...}
+type WorkflowAlertTriggerParamsAlertPayloadConditionsInput interface {
+	pulumi.Input
+
+	ToWorkflowAlertTriggerParamsAlertPayloadConditionsOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsOutput
+	ToWorkflowAlertTriggerParamsAlertPayloadConditionsOutputWithContext(context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsOutput
+}
+
+type WorkflowAlertTriggerParamsAlertPayloadConditionsArgs struct {
+	Conditions WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayInput `pulumi:"conditions"`
+	// Logic operator for conditions. Value must be one of `ALL` or `ANY`.
+	Logic pulumi.StringPtrInput `pulumi:"logic"`
+}
+
+func (WorkflowAlertTriggerParamsAlertPayloadConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowAlertTriggerParamsAlertPayloadConditions)(nil)).Elem()
+}
+
+func (i WorkflowAlertTriggerParamsAlertPayloadConditionsArgs) ToWorkflowAlertTriggerParamsAlertPayloadConditionsOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsOutput {
+	return i.ToWorkflowAlertTriggerParamsAlertPayloadConditionsOutputWithContext(context.Background())
+}
+
+func (i WorkflowAlertTriggerParamsAlertPayloadConditionsArgs) ToWorkflowAlertTriggerParamsAlertPayloadConditionsOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowAlertTriggerParamsAlertPayloadConditionsOutput)
+}
+
+func (i WorkflowAlertTriggerParamsAlertPayloadConditionsArgs) ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput {
+	return i.ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowAlertTriggerParamsAlertPayloadConditionsArgs) ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowAlertTriggerParamsAlertPayloadConditionsOutput).ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutputWithContext(ctx)
+}
+
+// WorkflowAlertTriggerParamsAlertPayloadConditionsPtrInput is an input type that accepts WorkflowAlertTriggerParamsAlertPayloadConditionsArgs, WorkflowAlertTriggerParamsAlertPayloadConditionsPtr and WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput values.
+// You can construct a concrete instance of `WorkflowAlertTriggerParamsAlertPayloadConditionsPtrInput` via:
+//
+//	        WorkflowAlertTriggerParamsAlertPayloadConditionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowAlertTriggerParamsAlertPayloadConditionsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput
+	ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutputWithContext(context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput
+}
+
+type workflowAlertTriggerParamsAlertPayloadConditionsPtrType WorkflowAlertTriggerParamsAlertPayloadConditionsArgs
+
+func WorkflowAlertTriggerParamsAlertPayloadConditionsPtr(v *WorkflowAlertTriggerParamsAlertPayloadConditionsArgs) WorkflowAlertTriggerParamsAlertPayloadConditionsPtrInput {
+	return (*workflowAlertTriggerParamsAlertPayloadConditionsPtrType)(v)
+}
+
+func (*workflowAlertTriggerParamsAlertPayloadConditionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowAlertTriggerParamsAlertPayloadConditions)(nil)).Elem()
+}
+
+func (i *workflowAlertTriggerParamsAlertPayloadConditionsPtrType) ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput {
+	return i.ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowAlertTriggerParamsAlertPayloadConditionsPtrType) ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput)
+}
+
+type WorkflowAlertTriggerParamsAlertPayloadConditionsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowAlertTriggerParamsAlertPayloadConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowAlertTriggerParamsAlertPayloadConditions)(nil)).Elem()
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsOutput) ToWorkflowAlertTriggerParamsAlertPayloadConditionsOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsOutput {
+	return o
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsOutput) ToWorkflowAlertTriggerParamsAlertPayloadConditionsOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsOutput {
+	return o
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsOutput) ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput {
+	return o.ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsOutput) ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowAlertTriggerParamsAlertPayloadConditions) *WorkflowAlertTriggerParamsAlertPayloadConditions {
+		return &v
+	}).(WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput)
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsOutput) Conditions() WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertPayloadConditions) []WorkflowAlertTriggerParamsAlertPayloadConditionsCondition {
+		return v.Conditions
+	}).(WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput)
+}
+
+// Logic operator for conditions. Value must be one of `ALL` or `ANY`.
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsOutput) Logic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertPayloadConditions) *string { return v.Logic }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowAlertTriggerParamsAlertPayloadConditions)(nil)).Elem()
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput) ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput {
+	return o
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput) ToWorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput {
+	return o
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput) Elem() WorkflowAlertTriggerParamsAlertPayloadConditionsOutput {
+	return o.ApplyT(func(v *WorkflowAlertTriggerParamsAlertPayloadConditions) WorkflowAlertTriggerParamsAlertPayloadConditions {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowAlertTriggerParamsAlertPayloadConditions
+		return ret
+	}).(WorkflowAlertTriggerParamsAlertPayloadConditionsOutput)
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput) Conditions() WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput {
+	return o.ApplyT(func(v *WorkflowAlertTriggerParamsAlertPayloadConditions) []WorkflowAlertTriggerParamsAlertPayloadConditionsCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput)
+}
+
+// Logic operator for conditions. Value must be one of `ALL` or `ANY`.
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput) Logic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowAlertTriggerParamsAlertPayloadConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Logic
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowAlertTriggerParamsAlertPayloadConditionsCondition struct {
+	// Value must be one of `IS`, `IS NOT`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `SET`, `UNSET`.
+	Operator string `pulumi:"operator"`
+	// JSONPath query. eg: $.commonLabels.namespace
+	Query     string   `pulumi:"query"`
+	UseRegexp *bool    `pulumi:"useRegexp"`
+	Values    []string `pulumi:"values"`
+}
+
+// WorkflowAlertTriggerParamsAlertPayloadConditionsConditionInput is an input type that accepts WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArgs and WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput values.
+// You can construct a concrete instance of `WorkflowAlertTriggerParamsAlertPayloadConditionsConditionInput` via:
+//
+//	WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArgs{...}
+type WorkflowAlertTriggerParamsAlertPayloadConditionsConditionInput interface {
+	pulumi.Input
+
+	ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput
+	ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutputWithContext(context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput
+}
+
+type WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArgs struct {
+	// Value must be one of `IS`, `IS NOT`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `SET`, `UNSET`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// JSONPath query. eg: $.commonLabels.namespace
+	Query     pulumi.StringInput      `pulumi:"query"`
+	UseRegexp pulumi.BoolPtrInput     `pulumi:"useRegexp"`
+	Values    pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowAlertTriggerParamsAlertPayloadConditionsCondition)(nil)).Elem()
+}
+
+func (i WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArgs) ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput {
+	return i.ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutputWithContext(context.Background())
+}
+
+func (i WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArgs) ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput)
+}
+
+// WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayInput is an input type that accepts WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArray and WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput values.
+// You can construct a concrete instance of `WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayInput` via:
+//
+//	WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArray{ WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArgs{...} }
+type WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput
+	ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutputWithContext(context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput
+}
+
+type WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArray []WorkflowAlertTriggerParamsAlertPayloadConditionsConditionInput
+
+func (WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowAlertTriggerParamsAlertPayloadConditionsCondition)(nil)).Elem()
+}
+
+func (i WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArray) ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput {
+	return i.ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArray) ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput)
+}
+
+type WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput struct{ *pulumi.OutputState }
+
+func (WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowAlertTriggerParamsAlertPayloadConditionsCondition)(nil)).Elem()
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput) ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput {
+	return o
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput) ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput {
+	return o
+}
+
+// Value must be one of `IS`, `IS NOT`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `SET`, `UNSET`.
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertPayloadConditionsCondition) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// JSONPath query. eg: $.commonLabels.namespace
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertPayloadConditionsCondition) string { return v.Query }).(pulumi.StringOutput)
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput) UseRegexp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertPayloadConditionsCondition) *bool { return v.UseRegexp }).(pulumi.BoolPtrOutput)
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertPayloadConditionsCondition) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowAlertTriggerParamsAlertPayloadConditionsCondition)(nil)).Elem()
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput) ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput() WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput {
+	return o
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput) ToWorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutputWithContext(ctx context.Context) WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput {
+	return o
+}
+
+func (o WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput) Index(i pulumi.IntInput) WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowAlertTriggerParamsAlertPayloadConditionsCondition {
+		return vs[0].([]WorkflowAlertTriggerParamsAlertPayloadConditionsCondition)[vs[1].(int)]
+	}).(WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput)
+}
+
 type WorkflowIncidentTriggerParams struct {
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	IncidentCondition               *string `pulumi:"incidentCondition"`
 	IncidentConditionAcknowledgedAt *string `pulumi:"incidentConditionAcknowledgedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionCause      *string `pulumi:"incidentConditionCause"`
 	IncidentConditionDetectedAt *string `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment *string `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality *string `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup *string `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles *string `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType *string `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind        *string `pulumi:"incidentConditionKind"`
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
 	IncidentConditionResolvedAt  *string `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService *string `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSeverity  *string `pulumi:"incidentConditionSeverity"`
 	IncidentConditionStartedAt *string `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus *string `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus *string `pulumi:"incidentConditionSubStatus"`
 	IncidentConditionSummary   *string `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionVisibility   *string `pulumi:"incidentConditionVisibility"`
 	IncidentConditionalInactivity *string `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration *string `pulumi:"incidentInactivityDuration"`
-	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 	IncidentKinds []string `pulumi:"incidentKinds"`
-	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionCause *string `pulumi:"incidentPostMortemConditionCause"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     []string `pulumi:"incidentStatuses"`
 	IncidentVisibilities []string `pulumi:"incidentVisibilities"`
 	// Value must be one off `incident`.
 	TriggerType *string `pulumi:"triggerType"`
-	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack_channel
+	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
 	Triggers []string `pulumi:"triggers"`
 }
 
@@ -5749,48 +10996,48 @@ type WorkflowIncidentTriggerParamsArgs struct {
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	IncidentCondition               pulumi.StringPtrInput `pulumi:"incidentCondition"`
 	IncidentConditionAcknowledgedAt pulumi.StringPtrInput `pulumi:"incidentConditionAcknowledgedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionCause      pulumi.StringPtrInput `pulumi:"incidentConditionCause"`
 	IncidentConditionDetectedAt pulumi.StringPtrInput `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment pulumi.StringPtrInput `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality pulumi.StringPtrInput `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup pulumi.StringPtrInput `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles pulumi.StringPtrInput `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType pulumi.StringPtrInput `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind        pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
 	IncidentConditionResolvedAt  pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService pulumi.StringPtrInput `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSeverity  pulumi.StringPtrInput `pulumi:"incidentConditionSeverity"`
 	IncidentConditionStartedAt pulumi.StringPtrInput `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus pulumi.StringPtrInput `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus pulumi.StringPtrInput `pulumi:"incidentConditionSubStatus"`
 	IncidentConditionSummary   pulumi.StringPtrInput `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionVisibility   pulumi.StringPtrInput `pulumi:"incidentConditionVisibility"`
 	IncidentConditionalInactivity pulumi.StringPtrInput `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration pulumi.StringPtrInput `pulumi:"incidentInactivityDuration"`
-	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 	IncidentKinds pulumi.StringArrayInput `pulumi:"incidentKinds"`
-	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionCause pulumi.StringPtrInput `pulumi:"incidentPostMortemConditionCause"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     pulumi.StringArrayInput `pulumi:"incidentStatuses"`
 	IncidentVisibilities pulumi.StringArrayInput `pulumi:"incidentVisibilities"`
 	// Value must be one off `incident`.
 	TriggerType pulumi.StringPtrInput `pulumi:"triggerType"`
-	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack_channel
+	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
 	Triggers pulumi.StringArrayInput `pulumi:"triggers"`
 }
 
@@ -5880,7 +11127,7 @@ func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionAcknowledgedAt() p
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionAcknowledgedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionCause }).(pulumi.StringPtrOutput)
 }
@@ -5889,32 +11136,32 @@ func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionDetectedAt() pulum
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionDetectedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionEnvironment }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionFunctionality }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionGroup }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionIncidentRoles }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionIncidentType }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionKind }).(pulumi.StringPtrOutput)
 }
@@ -5927,12 +11174,12 @@ func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionResolvedAt() pulum
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionResolvedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionService }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionSeverity }).(pulumi.StringPtrOutput)
 }
@@ -5941,12 +11188,12 @@ func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionStartedAt() pulumi
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionStartedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionStatus }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionSubStatus }).(pulumi.StringPtrOutput)
 }
@@ -5955,7 +11202,7 @@ func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionSummary() pulumi.S
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionSummary }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionVisibility }).(pulumi.StringPtrOutput)
 }
@@ -5969,12 +11216,12 @@ func (o WorkflowIncidentTriggerParamsOutput) IncidentInactivityDuration() pulumi
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentInactivityDuration }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentKinds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) []string { return v.IncidentKinds }).(pulumi.StringArrayOutput)
 }
 
-// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentPostMortemConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentPostMortemConditionCause }).(pulumi.StringPtrOutput)
 }
@@ -5993,7 +11240,7 @@ func (o WorkflowIncidentTriggerParamsOutput) TriggerType() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.TriggerType }).(pulumi.StringPtrOutput)
 }
 
-// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack_channel
+// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
 func (o WorkflowIncidentTriggerParamsOutput) Triggers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) []string { return v.Triggers }).(pulumi.StringArrayOutput)
 }
@@ -6041,7 +11288,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionAcknowledgedAt(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6060,7 +11307,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionDetectedAt() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6070,7 +11317,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionEnvironment() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6080,7 +11327,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionFunctionality()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6090,7 +11337,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionGroup() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6100,7 +11347,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionIncidentRoles()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6110,7 +11357,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionIncidentType() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6138,7 +11385,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionResolvedAt() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6148,7 +11395,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionService() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6167,7 +11414,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionStartedAt() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6177,7 +11424,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionStatus() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6196,7 +11443,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionSummary() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6225,7 +11472,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentInactivityDuration() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentKinds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) []string {
 		if v == nil {
@@ -6235,7 +11482,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentKinds() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentPostMortemConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -6274,7 +11521,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) TriggerType() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack_channel
+// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
 func (o WorkflowIncidentTriggerParamsPtrOutput) Triggers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) []string {
 		if v == nil {
@@ -6288,45 +11535,45 @@ type WorkflowPostMortemTriggerParams struct {
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	IncidentCondition               *string `pulumi:"incidentCondition"`
 	IncidentConditionAcknowledgedAt *string `pulumi:"incidentConditionAcknowledgedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionCause      *string `pulumi:"incidentConditionCause"`
 	IncidentConditionDetectedAt *string `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment *string `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality *string `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup *string `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles *string `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType *string `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind        *string `pulumi:"incidentConditionKind"`
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
 	IncidentConditionResolvedAt  *string `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService *string `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSeverity  *string `pulumi:"incidentConditionSeverity"`
 	IncidentConditionStartedAt *string `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus *string `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus *string `pulumi:"incidentConditionSubStatus"`
 	IncidentConditionSummary   *string `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionVisibility   *string `pulumi:"incidentConditionVisibility"`
 	IncidentConditionalInactivity *string `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration *string `pulumi:"incidentInactivityDuration"`
-	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 	IncidentKinds []string `pulumi:"incidentKinds"`
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	IncidentPostMortemCondition *string `pulumi:"incidentPostMortemCondition"`
-	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionCause *string `pulumi:"incidentPostMortemConditionCause"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionStatus *string `pulumi:"incidentPostMortemConditionStatus"`
 	// Value must be one of `draft`, `published`.
 	IncidentPostMortemStatuses []string `pulumi:"incidentPostMortemStatuses"`
@@ -6354,45 +11601,45 @@ type WorkflowPostMortemTriggerParamsArgs struct {
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	IncidentCondition               pulumi.StringPtrInput `pulumi:"incidentCondition"`
 	IncidentConditionAcknowledgedAt pulumi.StringPtrInput `pulumi:"incidentConditionAcknowledgedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionCause      pulumi.StringPtrInput `pulumi:"incidentConditionCause"`
 	IncidentConditionDetectedAt pulumi.StringPtrInput `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment pulumi.StringPtrInput `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality pulumi.StringPtrInput `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup pulumi.StringPtrInput `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles pulumi.StringPtrInput `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType pulumi.StringPtrInput `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind        pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
 	IncidentConditionResolvedAt  pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService pulumi.StringPtrInput `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSeverity  pulumi.StringPtrInput `pulumi:"incidentConditionSeverity"`
 	IncidentConditionStartedAt pulumi.StringPtrInput `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus pulumi.StringPtrInput `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus pulumi.StringPtrInput `pulumi:"incidentConditionSubStatus"`
 	IncidentConditionSummary   pulumi.StringPtrInput `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionVisibility   pulumi.StringPtrInput `pulumi:"incidentConditionVisibility"`
 	IncidentConditionalInactivity pulumi.StringPtrInput `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration pulumi.StringPtrInput `pulumi:"incidentInactivityDuration"`
-	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 	IncidentKinds pulumi.StringArrayInput `pulumi:"incidentKinds"`
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	IncidentPostMortemCondition pulumi.StringPtrInput `pulumi:"incidentPostMortemCondition"`
-	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionCause pulumi.StringPtrInput `pulumi:"incidentPostMortemConditionCause"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionStatus pulumi.StringPtrInput `pulumi:"incidentPostMortemConditionStatus"`
 	// Value must be one of `draft`, `published`.
 	IncidentPostMortemStatuses pulumi.StringArrayInput `pulumi:"incidentPostMortemStatuses"`
@@ -6491,7 +11738,7 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionAcknowledgedAt()
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionAcknowledgedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionCause }).(pulumi.StringPtrOutput)
 }
@@ -6500,32 +11747,32 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionDetectedAt() pul
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionDetectedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionEnvironment }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionFunctionality }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionGroup }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionIncidentRoles }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionIncidentType }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionKind }).(pulumi.StringPtrOutput)
 }
@@ -6538,12 +11785,12 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionResolvedAt() pul
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionResolvedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionService }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionSeverity }).(pulumi.StringPtrOutput)
 }
@@ -6552,12 +11799,12 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionStartedAt() pulu
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionStartedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionStatus }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionSubStatus }).(pulumi.StringPtrOutput)
 }
@@ -6566,7 +11813,7 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionSummary() pulumi
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionSummary }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionVisibility }).(pulumi.StringPtrOutput)
 }
@@ -6580,7 +11827,7 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentInactivityDuration() pulu
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentInactivityDuration }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentKinds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) []string { return v.IncidentKinds }).(pulumi.StringArrayOutput)
 }
@@ -6590,12 +11837,12 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentPostMortemCondition() pul
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentPostMortemCondition }).(pulumi.StringPtrOutput)
 }
 
-// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentPostMortemConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentPostMortemConditionCause }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentPostMortemConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentPostMortemConditionStatus }).(pulumi.StringPtrOutput)
 }
@@ -6667,7 +11914,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionAcknowledgedA
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6686,7 +11933,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionDetectedAt() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6696,7 +11943,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionEnvironment()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6706,7 +11953,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionFunctionality
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6716,7 +11963,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionGroup() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6726,7 +11973,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionIncidentRoles
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6736,7 +11983,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionIncidentType(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6764,7 +12011,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionResolvedAt() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6774,7 +12021,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionService() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6793,7 +12040,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionStartedAt() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6803,7 +12050,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionStatus() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6822,7 +12069,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionSummary() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6851,7 +12098,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentInactivityDuration() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`.
+// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentKinds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) []string {
 		if v == nil {
@@ -6871,7 +12118,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentPostMortemCondition() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentPostMortemConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6881,7 +12128,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentPostMortemConditionCau
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentPostMortemConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -6943,15 +12190,15 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) Triggers() pulumi.StringArrayO
 type WorkflowPulseTriggerParams struct {
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	PulseCondition *string `pulumi:"pulseCondition"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionLabel *string `pulumi:"pulseConditionLabel"`
 	// Value must be one of true or false
 	PulseConditionLabelUseRegexp *bool `pulumi:"pulseConditionLabelUseRegexp"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionPayload *string `pulumi:"pulseConditionPayload"`
 	// Value must be one of true or false
 	PulseConditionPayloadUseRegexp *bool `pulumi:"pulseConditionPayloadUseRegexp"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionSource *string `pulumi:"pulseConditionSource"`
 	// Value must be one of true or false
 	PulseConditionSourceUseRegexp *bool    `pulumi:"pulseConditionSourceUseRegexp"`
@@ -6980,15 +12227,15 @@ type WorkflowPulseTriggerParamsInput interface {
 type WorkflowPulseTriggerParamsArgs struct {
 	// Value must be one off `ALL`, `ANY`, `NONE`.
 	PulseCondition pulumi.StringPtrInput `pulumi:"pulseCondition"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionLabel pulumi.StringPtrInput `pulumi:"pulseConditionLabel"`
 	// Value must be one of true or false
 	PulseConditionLabelUseRegexp pulumi.BoolPtrInput `pulumi:"pulseConditionLabelUseRegexp"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionPayload pulumi.StringPtrInput `pulumi:"pulseConditionPayload"`
 	// Value must be one of true or false
 	PulseConditionPayloadUseRegexp pulumi.BoolPtrInput `pulumi:"pulseConditionPayloadUseRegexp"`
-	// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionSource pulumi.StringPtrInput `pulumi:"pulseConditionSource"`
 	// Value must be one of true or false
 	PulseConditionSourceUseRegexp pulumi.BoolPtrInput     `pulumi:"pulseConditionSourceUseRegexp"`
@@ -7085,7 +12332,7 @@ func (o WorkflowPulseTriggerParamsOutput) PulseCondition() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *string { return v.PulseCondition }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsOutput) PulseConditionLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *string { return v.PulseConditionLabel }).(pulumi.StringPtrOutput)
 }
@@ -7095,7 +12342,7 @@ func (o WorkflowPulseTriggerParamsOutput) PulseConditionLabelUseRegexp() pulumi.
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *bool { return v.PulseConditionLabelUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsOutput) PulseConditionPayload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *string { return v.PulseConditionPayload }).(pulumi.StringPtrOutput)
 }
@@ -7105,7 +12352,7 @@ func (o WorkflowPulseTriggerParamsOutput) PulseConditionPayloadUseRegexp() pulum
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *bool { return v.PulseConditionPayloadUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsOutput) PulseConditionSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *string { return v.PulseConditionSource }).(pulumi.StringPtrOutput)
 }
@@ -7176,7 +12423,7 @@ func (o WorkflowPulseTriggerParamsPtrOutput) PulseCondition() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsPtrOutput) PulseConditionLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPulseTriggerParams) *string {
 		if v == nil {
@@ -7196,7 +12443,7 @@ func (o WorkflowPulseTriggerParamsPtrOutput) PulseConditionLabelUseRegexp() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsPtrOutput) PulseConditionPayload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPulseTriggerParams) *string {
 		if v == nil {
@@ -7216,7 +12463,7 @@ func (o WorkflowPulseTriggerParamsPtrOutput) PulseConditionPayloadUseRegexp() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsPtrOutput) PulseConditionSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPulseTriggerParams) *string {
 		if v == nil {
@@ -7925,6 +13172,196 @@ func (o WorkflowTaskAddActionItemTaskParamsPostToSlackChannelArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskAddActionItemTaskParamsPostToSlackChannel {
 		return vs[0].([]WorkflowTaskAddActionItemTaskParamsPostToSlackChannel)[vs[1].(int)]
 	}).(WorkflowTaskAddActionItemTaskParamsPostToSlackChannelOutput)
+}
+
+type WorkflowTaskAddMicrosoftTeamsChatTabTaskParams struct {
+	// Map must contain two fields, `id` and `name`.
+	Chat map[string]string `pulumi:"chat"`
+	// The tab link
+	Link     string  `pulumi:"link"`
+	TaskType *string `pulumi:"taskType"`
+	// The tab title
+	Title string `pulumi:"title"`
+}
+
+// WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsInput is an input type that accepts WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs and WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsInput` via:
+//
+//	WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs{...}
+type WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput() WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput
+	ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutputWithContext(context.Context) WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput
+}
+
+type WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs struct {
+	// Map must contain two fields, `id` and `name`.
+	Chat pulumi.StringMapInput `pulumi:"chat"`
+	// The tab link
+	Link     pulumi.StringInput    `pulumi:"link"`
+	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
+	// The tab title
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskAddMicrosoftTeamsChatTabTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput() WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput {
+	return i.ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput)
+}
+
+func (i WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput() WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput {
+	return i.ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput).ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrInput is an input type that accepts WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs, WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtr and WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput() WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput
+	ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput
+}
+
+type workflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrType WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs
+
+func WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtr(v *WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs) WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrInput {
+	return (*workflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskAddMicrosoftTeamsChatTabTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrType) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput() WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput {
+	return i.ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrType) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput)
+}
+
+type WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskAddMicrosoftTeamsChatTabTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput() WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput() WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput {
+	return o.ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskAddMicrosoftTeamsChatTabTaskParams) *WorkflowTaskAddMicrosoftTeamsChatTabTaskParams {
+		return &v
+	}).(WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput) Chat() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskAddMicrosoftTeamsChatTabTaskParams) map[string]string { return v.Chat }).(pulumi.StringMapOutput)
+}
+
+// The tab link
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput) Link() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskAddMicrosoftTeamsChatTabTaskParams) string { return v.Link }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskAddMicrosoftTeamsChatTabTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// The tab title
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskAddMicrosoftTeamsChatTabTaskParams) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskAddMicrosoftTeamsChatTabTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput() WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput) ToWorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput) Elem() WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskAddMicrosoftTeamsChatTabTaskParams) WorkflowTaskAddMicrosoftTeamsChatTabTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskAddMicrosoftTeamsChatTabTaskParams
+		return ret
+	}).(WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput) Chat() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskAddMicrosoftTeamsChatTabTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Chat
+	}).(pulumi.StringMapOutput)
+}
+
+// The tab link
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput) Link() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskAddMicrosoftTeamsChatTabTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Link
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskAddMicrosoftTeamsChatTabTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tab title
+func (o WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskAddMicrosoftTeamsChatTabTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTaskAddMicrosoftTeamsTabTaskParams struct {
@@ -11263,6 +16700,196 @@ func (o WorkflowTaskCreateAirtableTableRecordTaskParamsPtrOutput) TaskType() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkflowTaskCreateAnthropicChatCompletionTaskParams struct {
+	// Map must contain two fields, `id` and `name`. The Anthropic model. eg: claude-3-5-sonnet-20241022
+	Model map[string]string `pulumi:"model"`
+	// The prompt to send to Anthropic
+	Prompt string `pulumi:"prompt"`
+	// The system prompt to send to Anthropic (optional)
+	SystemPrompt *string `pulumi:"systemPrompt"`
+	TaskType     *string `pulumi:"taskType"`
+}
+
+// WorkflowTaskCreateAnthropicChatCompletionTaskParamsInput is an input type that accepts WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs and WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateAnthropicChatCompletionTaskParamsInput` via:
+//
+//	WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs{...}
+type WorkflowTaskCreateAnthropicChatCompletionTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput() WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput
+	ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsOutputWithContext(context.Context) WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput
+}
+
+type WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs struct {
+	// Map must contain two fields, `id` and `name`. The Anthropic model. eg: claude-3-5-sonnet-20241022
+	Model pulumi.StringMapInput `pulumi:"model"`
+	// The prompt to send to Anthropic
+	Prompt pulumi.StringInput `pulumi:"prompt"`
+	// The system prompt to send to Anthropic (optional)
+	SystemPrompt pulumi.StringPtrInput `pulumi:"systemPrompt"`
+	TaskType     pulumi.StringPtrInput `pulumi:"taskType"`
+}
+
+func (WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateAnthropicChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput() WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput {
+	return i.ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput)
+}
+
+func (i WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput).ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrInput is an input type that accepts WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs, WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtr and WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput
+	ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput
+}
+
+type workflowTaskCreateAnthropicChatCompletionTaskParamsPtrType WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs
+
+func WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtr(v *WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs) WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrInput {
+	return (*workflowTaskCreateAnthropicChatCompletionTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskCreateAnthropicChatCompletionTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateAnthropicChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateAnthropicChatCompletionTaskParamsPtrType) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateAnthropicChatCompletionTaskParamsPtrType) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput)
+}
+
+type WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateAnthropicChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput() WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput {
+	return o.ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateAnthropicChatCompletionTaskParams) *WorkflowTaskCreateAnthropicChatCompletionTaskParams {
+		return &v
+	}).(WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The Anthropic model. eg: claude-3-5-sonnet-20241022
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput) Model() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateAnthropicChatCompletionTaskParams) map[string]string { return v.Model }).(pulumi.StringMapOutput)
+}
+
+// The prompt to send to Anthropic
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput) Prompt() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateAnthropicChatCompletionTaskParams) string { return v.Prompt }).(pulumi.StringOutput)
+}
+
+// The system prompt to send to Anthropic (optional)
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput) SystemPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateAnthropicChatCompletionTaskParams) *string { return v.SystemPrompt }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateAnthropicChatCompletionTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateAnthropicChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput) ToWorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput) Elem() WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateAnthropicChatCompletionTaskParams) WorkflowTaskCreateAnthropicChatCompletionTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateAnthropicChatCompletionTaskParams
+		return ret
+	}).(WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The Anthropic model. eg: claude-3-5-sonnet-20241022
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput) Model() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateAnthropicChatCompletionTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringMapOutput)
+}
+
+// The prompt to send to Anthropic
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateAnthropicChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prompt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The system prompt to send to Anthropic (optional)
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput) SystemPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateAnthropicChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemPrompt
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateAnthropicChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskCreateAsanaSubtaskTaskParams struct {
 	// The assigned user's email
 	AssignUserEmail *string `pulumi:"assignUserEmail"`
@@ -12249,6 +17876,8 @@ func (o WorkflowTaskCreateClickupTaskTaskParamsPtrOutput) Title() pulumi.StringP
 type WorkflowTaskCreateCodaPageTaskParams struct {
 	// The Coda page content
 	Content *string `pulumi:"content"`
+	// Map must contain two fields, `id` and `name`. The Coda doc object with id and name
+	Doc map[string]string `pulumi:"doc"`
 	// The Coda folder id
 	FolderId *string `pulumi:"folderId"`
 	// Value must be one of true or false
@@ -12278,6 +17907,8 @@ type WorkflowTaskCreateCodaPageTaskParamsInput interface {
 type WorkflowTaskCreateCodaPageTaskParamsArgs struct {
 	// The Coda page content
 	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Map must contain two fields, `id` and `name`. The Coda doc object with id and name
+	Doc pulumi.StringMapInput `pulumi:"doc"`
 	// The Coda folder id
 	FolderId pulumi.StringPtrInput `pulumi:"folderId"`
 	// Value must be one of true or false
@@ -12375,6 +18006,11 @@ func (o WorkflowTaskCreateCodaPageTaskParamsOutput) Content() pulumi.StringPtrOu
 	return o.ApplyT(func(v WorkflowTaskCreateCodaPageTaskParams) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// Map must contain two fields, `id` and `name`. The Coda doc object with id and name
+func (o WorkflowTaskCreateCodaPageTaskParamsOutput) Doc() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateCodaPageTaskParams) map[string]string { return v.Doc }).(pulumi.StringMapOutput)
+}
+
 // The Coda folder id
 func (o WorkflowTaskCreateCodaPageTaskParamsOutput) FolderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateCodaPageTaskParams) *string { return v.FolderId }).(pulumi.StringPtrOutput)
@@ -12441,6 +18077,16 @@ func (o WorkflowTaskCreateCodaPageTaskParamsPtrOutput) Content() pulumi.StringPt
 		}
 		return v.Content
 	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The Coda doc object with id and name
+func (o WorkflowTaskCreateCodaPageTaskParamsPtrOutput) Doc() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateCodaPageTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Doc
+	}).(pulumi.StringMapOutput)
 }
 
 // The Coda folder id
@@ -13294,6 +18940,12 @@ func (o WorkflowTaskCreateDropboxPaperPageTaskParamsPtrOutput) Title() pulumi.St
 type WorkflowTaskCreateGithubIssueTaskParams struct {
 	// The issue body
 	Body *string `pulumi:"body"`
+	// Map must contain two fields, `id` and `name`. The issue type
+	IssueType map[string]string `pulumi:"issueType"`
+	// The issue labels
+	Labels []WorkflowTaskCreateGithubIssueTaskParamsLabel `pulumi:"labels"`
+	// The parent issue number for sub-issue linking
+	ParentIssueNumber *string `pulumi:"parentIssueNumber"`
 	// Map must contain two fields, `id` and `name`.
 	Repository map[string]string `pulumi:"repository"`
 	TaskType   *string           `pulumi:"taskType"`
@@ -13315,6 +18967,12 @@ type WorkflowTaskCreateGithubIssueTaskParamsInput interface {
 type WorkflowTaskCreateGithubIssueTaskParamsArgs struct {
 	// The issue body
 	Body pulumi.StringPtrInput `pulumi:"body"`
+	// Map must contain two fields, `id` and `name`. The issue type
+	IssueType pulumi.StringMapInput `pulumi:"issueType"`
+	// The issue labels
+	Labels WorkflowTaskCreateGithubIssueTaskParamsLabelArrayInput `pulumi:"labels"`
+	// The parent issue number for sub-issue linking
+	ParentIssueNumber pulumi.StringPtrInput `pulumi:"parentIssueNumber"`
 	// Map must contain two fields, `id` and `name`.
 	Repository pulumi.StringMapInput `pulumi:"repository"`
 	TaskType   pulumi.StringPtrInput `pulumi:"taskType"`
@@ -13404,6 +19062,23 @@ func (o WorkflowTaskCreateGithubIssueTaskParamsOutput) Body() pulumi.StringPtrOu
 	return o.ApplyT(func(v WorkflowTaskCreateGithubIssueTaskParams) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
+// Map must contain two fields, `id` and `name`. The issue type
+func (o WorkflowTaskCreateGithubIssueTaskParamsOutput) IssueType() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGithubIssueTaskParams) map[string]string { return v.IssueType }).(pulumi.StringMapOutput)
+}
+
+// The issue labels
+func (o WorkflowTaskCreateGithubIssueTaskParamsOutput) Labels() WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGithubIssueTaskParams) []WorkflowTaskCreateGithubIssueTaskParamsLabel {
+		return v.Labels
+	}).(WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput)
+}
+
+// The parent issue number for sub-issue linking
+func (o WorkflowTaskCreateGithubIssueTaskParamsOutput) ParentIssueNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGithubIssueTaskParams) *string { return v.ParentIssueNumber }).(pulumi.StringPtrOutput)
+}
+
 // Map must contain two fields, `id` and `name`.
 func (o WorkflowTaskCreateGithubIssueTaskParamsOutput) Repository() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateGithubIssueTaskParams) map[string]string { return v.Repository }).(pulumi.StringMapOutput)
@@ -13452,6 +19127,36 @@ func (o WorkflowTaskCreateGithubIssueTaskParamsPtrOutput) Body() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Map must contain two fields, `id` and `name`. The issue type
+func (o WorkflowTaskCreateGithubIssueTaskParamsPtrOutput) IssueType() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGithubIssueTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.IssueType
+	}).(pulumi.StringMapOutput)
+}
+
+// The issue labels
+func (o WorkflowTaskCreateGithubIssueTaskParamsPtrOutput) Labels() WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGithubIssueTaskParams) []WorkflowTaskCreateGithubIssueTaskParamsLabel {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput)
+}
+
+// The parent issue number for sub-issue linking
+func (o WorkflowTaskCreateGithubIssueTaskParamsPtrOutput) ParentIssueNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGithubIssueTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ParentIssueNumber
+	}).(pulumi.StringPtrOutput)
+}
+
 // Map must contain two fields, `id` and `name`.
 func (o WorkflowTaskCreateGithubIssueTaskParamsPtrOutput) Repository() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTaskCreateGithubIssueTaskParams) map[string]string {
@@ -13479,6 +19184,106 @@ func (o WorkflowTaskCreateGithubIssueTaskParamsPtrOutput) Title() pulumi.StringP
 		}
 		return &v.Title
 	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskCreateGithubIssueTaskParamsLabel struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskCreateGithubIssueTaskParamsLabelInput is an input type that accepts WorkflowTaskCreateGithubIssueTaskParamsLabelArgs and WorkflowTaskCreateGithubIssueTaskParamsLabelOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateGithubIssueTaskParamsLabelInput` via:
+//
+//	WorkflowTaskCreateGithubIssueTaskParamsLabelArgs{...}
+type WorkflowTaskCreateGithubIssueTaskParamsLabelInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateGithubIssueTaskParamsLabelOutput() WorkflowTaskCreateGithubIssueTaskParamsLabelOutput
+	ToWorkflowTaskCreateGithubIssueTaskParamsLabelOutputWithContext(context.Context) WorkflowTaskCreateGithubIssueTaskParamsLabelOutput
+}
+
+type WorkflowTaskCreateGithubIssueTaskParamsLabelArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskCreateGithubIssueTaskParamsLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateGithubIssueTaskParamsLabel)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateGithubIssueTaskParamsLabelArgs) ToWorkflowTaskCreateGithubIssueTaskParamsLabelOutput() WorkflowTaskCreateGithubIssueTaskParamsLabelOutput {
+	return i.ToWorkflowTaskCreateGithubIssueTaskParamsLabelOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateGithubIssueTaskParamsLabelArgs) ToWorkflowTaskCreateGithubIssueTaskParamsLabelOutputWithContext(ctx context.Context) WorkflowTaskCreateGithubIssueTaskParamsLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateGithubIssueTaskParamsLabelOutput)
+}
+
+// WorkflowTaskCreateGithubIssueTaskParamsLabelArrayInput is an input type that accepts WorkflowTaskCreateGithubIssueTaskParamsLabelArray and WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateGithubIssueTaskParamsLabelArrayInput` via:
+//
+//	WorkflowTaskCreateGithubIssueTaskParamsLabelArray{ WorkflowTaskCreateGithubIssueTaskParamsLabelArgs{...} }
+type WorkflowTaskCreateGithubIssueTaskParamsLabelArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput() WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput
+	ToWorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutputWithContext(context.Context) WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput
+}
+
+type WorkflowTaskCreateGithubIssueTaskParamsLabelArray []WorkflowTaskCreateGithubIssueTaskParamsLabelInput
+
+func (WorkflowTaskCreateGithubIssueTaskParamsLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateGithubIssueTaskParamsLabel)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateGithubIssueTaskParamsLabelArray) ToWorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput() WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput {
+	return i.ToWorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateGithubIssueTaskParamsLabelArray) ToWorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput)
+}
+
+type WorkflowTaskCreateGithubIssueTaskParamsLabelOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateGithubIssueTaskParamsLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateGithubIssueTaskParamsLabel)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateGithubIssueTaskParamsLabelOutput) ToWorkflowTaskCreateGithubIssueTaskParamsLabelOutput() WorkflowTaskCreateGithubIssueTaskParamsLabelOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGithubIssueTaskParamsLabelOutput) ToWorkflowTaskCreateGithubIssueTaskParamsLabelOutputWithContext(ctx context.Context) WorkflowTaskCreateGithubIssueTaskParamsLabelOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGithubIssueTaskParamsLabelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGithubIssueTaskParamsLabel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskCreateGithubIssueTaskParamsLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGithubIssueTaskParamsLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateGithubIssueTaskParamsLabel)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput) ToWorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput() WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput) ToWorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput) Index(i pulumi.IntInput) WorkflowTaskCreateGithubIssueTaskParamsLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskCreateGithubIssueTaskParamsLabel {
+		return vs[0].([]WorkflowTaskCreateGithubIssueTaskParamsLabel)[vs[1].(int)]
+	}).(WorkflowTaskCreateGithubIssueTaskParamsLabelOutput)
 }
 
 type WorkflowTaskCreateGitlabIssueTaskParams struct {
@@ -15079,6 +20884,196 @@ func (o WorkflowTaskCreateGoogleDocsPermissionsTaskParamsPtrOutput) TaskType() p
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams struct {
+	// Map must contain two fields, `id` and `name`. The Gemini model. eg: gemini-2.0-flash
+	Model map[string]string `pulumi:"model"`
+	// The prompt to send to Gemini
+	Prompt string `pulumi:"prompt"`
+	// The system prompt to send to Gemini (optional)
+	SystemPrompt *string `pulumi:"systemPrompt"`
+	TaskType     *string `pulumi:"taskType"`
+}
+
+// WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsInput is an input type that accepts WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs and WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsInput` via:
+//
+//	WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs{...}
+type WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput() WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput
+	ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutputWithContext(context.Context) WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput
+}
+
+type WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs struct {
+	// Map must contain two fields, `id` and `name`. The Gemini model. eg: gemini-2.0-flash
+	Model pulumi.StringMapInput `pulumi:"model"`
+	// The prompt to send to Gemini
+	Prompt pulumi.StringInput `pulumi:"prompt"`
+	// The system prompt to send to Gemini (optional)
+	SystemPrompt pulumi.StringPtrInput `pulumi:"systemPrompt"`
+	TaskType     pulumi.StringPtrInput `pulumi:"taskType"`
+}
+
+func (WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput() WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput {
+	return i.ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput)
+}
+
+func (i WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput).ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrInput is an input type that accepts WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs, WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtr and WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput
+	ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput
+}
+
+type workflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrType WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs
+
+func WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtr(v *WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs) WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrInput {
+	return (*workflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrType) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrType) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput)
+}
+
+type WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput() WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput {
+	return o.ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams) *WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams {
+		return &v
+	}).(WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The Gemini model. eg: gemini-2.0-flash
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput) Model() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams) map[string]string { return v.Model }).(pulumi.StringMapOutput)
+}
+
+// The prompt to send to Gemini
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput) Prompt() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams) string { return v.Prompt }).(pulumi.StringOutput)
+}
+
+// The system prompt to send to Gemini (optional)
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput) SystemPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams) *string { return v.SystemPrompt }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput) ToWorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput) Elem() WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams) WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams
+		return ret
+	}).(WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The Gemini model. eg: gemini-2.0-flash
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput) Model() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringMapOutput)
+}
+
+// The prompt to send to Gemini
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prompt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The system prompt to send to Gemini (optional)
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput) SystemPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemPrompt
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleGeminiChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskCreateGoogleMeetingTaskParams struct {
 	// [DEPRECATED] Sets the video conference type attached to the meeting. Value must be one of `eventHangout`, `eventNamedHangout`, `hangoutsMeet`, `addOn`.
 	ConferenceSolutionKey *string `pulumi:"conferenceSolutionKey"`
@@ -15089,6 +21084,8 @@ type WorkflowTaskCreateGoogleMeetingTaskParams struct {
 	PostToSlackChannels    []WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannel `pulumi:"postToSlackChannels"`
 	// Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
 	RecordMeeting *bool `pulumi:"recordMeeting"`
+	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+	RecordingMode *string `pulumi:"recordingMode"`
 	// [DEPRECATED] The meeting summary
 	Summary  string  `pulumi:"summary"`
 	TaskType *string `pulumi:"taskType"`
@@ -15115,6 +21112,8 @@ type WorkflowTaskCreateGoogleMeetingTaskParamsArgs struct {
 	PostToSlackChannels    WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannelArrayInput `pulumi:"postToSlackChannels"`
 	// Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
 	RecordMeeting pulumi.BoolPtrInput `pulumi:"recordMeeting"`
+	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+	RecordingMode pulumi.StringPtrInput `pulumi:"recordingMode"`
 	// [DEPRECATED] The meeting summary
 	Summary  pulumi.StringInput    `pulumi:"summary"`
 	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
@@ -15223,6 +21222,11 @@ func (o WorkflowTaskCreateGoogleMeetingTaskParamsOutput) RecordMeeting() pulumi.
 	return o.ApplyT(func(v WorkflowTaskCreateGoogleMeetingTaskParams) *bool { return v.RecordMeeting }).(pulumi.BoolPtrOutput)
 }
 
+// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+func (o WorkflowTaskCreateGoogleMeetingTaskParamsOutput) RecordingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleMeetingTaskParams) *string { return v.RecordingMode }).(pulumi.StringPtrOutput)
+}
+
 // [DEPRECATED] The meeting summary
 func (o WorkflowTaskCreateGoogleMeetingTaskParamsOutput) Summary() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateGoogleMeetingTaskParams) string { return v.Summary }).(pulumi.StringOutput)
@@ -15303,6 +21307,16 @@ func (o WorkflowTaskCreateGoogleMeetingTaskParamsPtrOutput) RecordMeeting() pulu
 		}
 		return v.RecordMeeting
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+func (o WorkflowTaskCreateGoogleMeetingTaskParamsPtrOutput) RecordingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleMeetingTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecordingMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // [DEPRECATED] The meeting summary
@@ -15630,14 +21644,17 @@ func (o WorkflowTaskCreateIncidentPostmortemTaskParamsPtrOutput) Title() pulumi.
 }
 
 type WorkflowTaskCreateIncidentTaskParams struct {
-	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
 	CustomFieldsMapping *string  `pulumi:"customFieldsMapping"`
 	EnvironmentIds      []string `pulumi:"environmentIds"`
-	FunctionalityIds    []string `pulumi:"functionalityIds"`
-	GroupIds            []string `pulumi:"groupIds"`
-	IncidentTypeIds     []string `pulumi:"incidentTypeIds"`
+	// Array of functionality UUIDs
+	FunctionalityIds []string `pulumi:"functionalityIds"`
+	// Array of group/team UUIDs
+	GroupIds        []string `pulumi:"groupIds"`
+	IncidentTypeIds []string `pulumi:"incidentTypeIds"`
 	// Value must be one of true or false
-	Private    *bool    `pulumi:"private"`
+	Private *bool `pulumi:"private"`
+	// Array of service UUIDs
 	ServiceIds []string `pulumi:"serviceIds"`
 	SeverityId *string  `pulumi:"severityId"`
 	// The incident summary
@@ -15659,14 +21676,17 @@ type WorkflowTaskCreateIncidentTaskParamsInput interface {
 }
 
 type WorkflowTaskCreateIncidentTaskParamsArgs struct {
-	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
 	CustomFieldsMapping pulumi.StringPtrInput   `pulumi:"customFieldsMapping"`
 	EnvironmentIds      pulumi.StringArrayInput `pulumi:"environmentIds"`
-	FunctionalityIds    pulumi.StringArrayInput `pulumi:"functionalityIds"`
-	GroupIds            pulumi.StringArrayInput `pulumi:"groupIds"`
-	IncidentTypeIds     pulumi.StringArrayInput `pulumi:"incidentTypeIds"`
+	// Array of functionality UUIDs
+	FunctionalityIds pulumi.StringArrayInput `pulumi:"functionalityIds"`
+	// Array of group/team UUIDs
+	GroupIds        pulumi.StringArrayInput `pulumi:"groupIds"`
+	IncidentTypeIds pulumi.StringArrayInput `pulumi:"incidentTypeIds"`
 	// Value must be one of true or false
-	Private    pulumi.BoolPtrInput     `pulumi:"private"`
+	Private pulumi.BoolPtrInput `pulumi:"private"`
+	// Array of service UUIDs
 	ServiceIds pulumi.StringArrayInput `pulumi:"serviceIds"`
 	SeverityId pulumi.StringPtrInput   `pulumi:"severityId"`
 	// The incident summary
@@ -15753,7 +21773,7 @@ func (o WorkflowTaskCreateIncidentTaskParamsOutput) ToWorkflowTaskCreateIncident
 	}).(WorkflowTaskCreateIncidentTaskParamsPtrOutput)
 }
 
-// Custom field mappings. Can contain liquid markup and need to be valid JSON
+// Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
 func (o WorkflowTaskCreateIncidentTaskParamsOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateIncidentTaskParams) *string { return v.CustomFieldsMapping }).(pulumi.StringPtrOutput)
 }
@@ -15762,10 +21782,12 @@ func (o WorkflowTaskCreateIncidentTaskParamsOutput) EnvironmentIds() pulumi.Stri
 	return o.ApplyT(func(v WorkflowTaskCreateIncidentTaskParams) []string { return v.EnvironmentIds }).(pulumi.StringArrayOutput)
 }
 
+// Array of functionality UUIDs
 func (o WorkflowTaskCreateIncidentTaskParamsOutput) FunctionalityIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateIncidentTaskParams) []string { return v.FunctionalityIds }).(pulumi.StringArrayOutput)
 }
 
+// Array of group/team UUIDs
 func (o WorkflowTaskCreateIncidentTaskParamsOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateIncidentTaskParams) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
@@ -15779,6 +21801,7 @@ func (o WorkflowTaskCreateIncidentTaskParamsOutput) Private() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v WorkflowTaskCreateIncidentTaskParams) *bool { return v.Private }).(pulumi.BoolPtrOutput)
 }
 
+// Array of service UUIDs
 func (o WorkflowTaskCreateIncidentTaskParamsOutput) ServiceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateIncidentTaskParams) []string { return v.ServiceIds }).(pulumi.StringArrayOutput)
 }
@@ -15825,7 +21848,7 @@ func (o WorkflowTaskCreateIncidentTaskParamsPtrOutput) Elem() WorkflowTaskCreate
 	}).(WorkflowTaskCreateIncidentTaskParamsOutput)
 }
 
-// Custom field mappings. Can contain liquid markup and need to be valid JSON
+// Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
 func (o WorkflowTaskCreateIncidentTaskParamsPtrOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskCreateIncidentTaskParams) *string {
 		if v == nil {
@@ -15844,6 +21867,7 @@ func (o WorkflowTaskCreateIncidentTaskParamsPtrOutput) EnvironmentIds() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
+// Array of functionality UUIDs
 func (o WorkflowTaskCreateIncidentTaskParamsPtrOutput) FunctionalityIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTaskCreateIncidentTaskParams) []string {
 		if v == nil {
@@ -15853,6 +21877,7 @@ func (o WorkflowTaskCreateIncidentTaskParamsPtrOutput) FunctionalityIds() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
+// Array of group/team UUIDs
 func (o WorkflowTaskCreateIncidentTaskParamsPtrOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTaskCreateIncidentTaskParams) []string {
 		if v == nil {
@@ -15881,6 +21906,7 @@ func (o WorkflowTaskCreateIncidentTaskParamsPtrOutput) Private() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Array of service UUIDs
 func (o WorkflowTaskCreateIncidentTaskParamsPtrOutput) ServiceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTaskCreateIncidentTaskParams) []string {
 		if v == nil {
@@ -16705,6 +22731,683 @@ func (o WorkflowTaskCreateJiraSubtaskTaskParamsPtrOutput) UpdatePayload() pulumi
 		}
 		return v.UpdatePayload
 	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParams struct {
+	// Description field of the alert that is generally used to provide a detailed information about the alert
+	Description *string `pulumi:"description"`
+	// Details payload. Can contain liquid markup and need to be valid JSON
+	Details     *string                                             `pulumi:"details"`
+	Escalations []WorkflowTaskCreateJsmopsAlertTaskParamsEscalation `pulumi:"escalations"`
+	// Message of the alert
+	Message string `pulumi:"message"`
+	// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+	Priority  *string                                           `pulumi:"priority"`
+	Schedules []WorkflowTaskCreateJsmopsAlertTaskParamsSchedule `pulumi:"schedules"`
+	TaskType  *string                                           `pulumi:"taskType"`
+	Teams     []WorkflowTaskCreateJsmopsAlertTaskParamsTeam     `pulumi:"teams"`
+	Users     []WorkflowTaskCreateJsmopsAlertTaskParamsUser     `pulumi:"users"`
+}
+
+// WorkflowTaskCreateJsmopsAlertTaskParamsInput is an input type that accepts WorkflowTaskCreateJsmopsAlertTaskParamsArgs and WorkflowTaskCreateJsmopsAlertTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateJsmopsAlertTaskParamsInput` via:
+//
+//	WorkflowTaskCreateJsmopsAlertTaskParamsArgs{...}
+type WorkflowTaskCreateJsmopsAlertTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsOutput() WorkflowTaskCreateJsmopsAlertTaskParamsOutput
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsOutputWithContext(context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsOutput
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsArgs struct {
+	// Description field of the alert that is generally used to provide a detailed information about the alert
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Details payload. Can contain liquid markup and need to be valid JSON
+	Details     pulumi.StringPtrInput                                       `pulumi:"details"`
+	Escalations WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayInput `pulumi:"escalations"`
+	// Message of the alert
+	Message pulumi.StringInput `pulumi:"message"`
+	// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+	Priority  pulumi.StringPtrInput                                     `pulumi:"priority"`
+	Schedules WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayInput `pulumi:"schedules"`
+	TaskType  pulumi.StringPtrInput                                     `pulumi:"taskType"`
+	Teams     WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayInput     `pulumi:"teams"`
+	Users     WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayInput     `pulumi:"users"`
+}
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsOutput() WorkflowTaskCreateJsmopsAlertTaskParamsOutput {
+	return i.ToWorkflowTaskCreateJsmopsAlertTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateJsmopsAlertTaskParamsOutput)
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput() WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateJsmopsAlertTaskParamsOutput).ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateJsmopsAlertTaskParamsPtrInput is an input type that accepts WorkflowTaskCreateJsmopsAlertTaskParamsArgs, WorkflowTaskCreateJsmopsAlertTaskParamsPtr and WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateJsmopsAlertTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskCreateJsmopsAlertTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateJsmopsAlertTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput() WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput
+}
+
+type workflowTaskCreateJsmopsAlertTaskParamsPtrType WorkflowTaskCreateJsmopsAlertTaskParamsArgs
+
+func WorkflowTaskCreateJsmopsAlertTaskParamsPtr(v *WorkflowTaskCreateJsmopsAlertTaskParamsArgs) WorkflowTaskCreateJsmopsAlertTaskParamsPtrInput {
+	return (*workflowTaskCreateJsmopsAlertTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskCreateJsmopsAlertTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateJsmopsAlertTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateJsmopsAlertTaskParamsPtrType) ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput() WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateJsmopsAlertTaskParamsPtrType) ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsOutput() WorkflowTaskCreateJsmopsAlertTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput() WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput {
+	return o.ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateJsmopsAlertTaskParams) *WorkflowTaskCreateJsmopsAlertTaskParams {
+		return &v
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput)
+}
+
+// Description field of the alert that is generally used to provide a detailed information about the alert
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParams) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Details payload. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParams) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) Escalations() WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParams) []WorkflowTaskCreateJsmopsAlertTaskParamsEscalation {
+		return v.Escalations
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput)
+}
+
+// Message of the alert
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParams) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParams) *string { return v.Priority }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) Schedules() WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParams) []WorkflowTaskCreateJsmopsAlertTaskParamsSchedule {
+		return v.Schedules
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) Teams() WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParams) []WorkflowTaskCreateJsmopsAlertTaskParamsTeam {
+		return v.Teams
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) Users() WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParams) []WorkflowTaskCreateJsmopsAlertTaskParamsUser {
+		return v.Users
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateJsmopsAlertTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput() WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) Elem() WorkflowTaskCreateJsmopsAlertTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJsmopsAlertTaskParams) WorkflowTaskCreateJsmopsAlertTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateJsmopsAlertTaskParams
+		return ret
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsOutput)
+}
+
+// Description field of the alert that is generally used to provide a detailed information about the alert
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJsmopsAlertTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details payload. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJsmopsAlertTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) Escalations() WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJsmopsAlertTaskParams) []WorkflowTaskCreateJsmopsAlertTaskParamsEscalation {
+		if v == nil {
+			return nil
+		}
+		return v.Escalations
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput)
+}
+
+// Message of the alert
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJsmopsAlertTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJsmopsAlertTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) Schedules() WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJsmopsAlertTaskParams) []WorkflowTaskCreateJsmopsAlertTaskParamsSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.Schedules
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJsmopsAlertTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) Teams() WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJsmopsAlertTaskParams) []WorkflowTaskCreateJsmopsAlertTaskParamsTeam {
+		if v == nil {
+			return nil
+		}
+		return v.Teams
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) Users() WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJsmopsAlertTaskParams) []WorkflowTaskCreateJsmopsAlertTaskParamsUser {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsEscalation struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskCreateJsmopsAlertTaskParamsEscalationInput is an input type that accepts WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArgs and WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateJsmopsAlertTaskParamsEscalationInput` via:
+//
+//	WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArgs{...}
+type WorkflowTaskCreateJsmopsAlertTaskParamsEscalationInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput() WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutputWithContext(context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsEscalation)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput() WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput {
+	return i.ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput)
+}
+
+// WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayInput is an input type that accepts WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArray and WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayInput` via:
+//
+//	WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArray{ WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArgs{...} }
+type WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutputWithContext(context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArray []WorkflowTaskCreateJsmopsAlertTaskParamsEscalationInput
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateJsmopsAlertTaskParamsEscalation)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArray) ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput {
+	return i.ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArray) ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsEscalation)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput() WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParamsEscalation) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParamsEscalation) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateJsmopsAlertTaskParamsEscalation)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput) Index(i pulumi.IntInput) WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskCreateJsmopsAlertTaskParamsEscalation {
+		return vs[0].([]WorkflowTaskCreateJsmopsAlertTaskParamsEscalation)[vs[1].(int)]
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsSchedule struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskCreateJsmopsAlertTaskParamsScheduleInput is an input type that accepts WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArgs and WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateJsmopsAlertTaskParamsScheduleInput` via:
+//
+//	WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArgs{...}
+type WorkflowTaskCreateJsmopsAlertTaskParamsScheduleInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput() WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutputWithContext(context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsSchedule)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput() WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput {
+	return i.ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput)
+}
+
+// WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayInput is an input type that accepts WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArray and WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayInput` via:
+//
+//	WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArray{ WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArgs{...} }
+type WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutputWithContext(context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArray []WorkflowTaskCreateJsmopsAlertTaskParamsScheduleInput
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateJsmopsAlertTaskParamsSchedule)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArray) ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput {
+	return i.ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArray) ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsSchedule)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput() WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParamsSchedule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParamsSchedule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateJsmopsAlertTaskParamsSchedule)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput) Index(i pulumi.IntInput) WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskCreateJsmopsAlertTaskParamsSchedule {
+		return vs[0].([]WorkflowTaskCreateJsmopsAlertTaskParamsSchedule)[vs[1].(int)]
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsTeam struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskCreateJsmopsAlertTaskParamsTeamInput is an input type that accepts WorkflowTaskCreateJsmopsAlertTaskParamsTeamArgs and WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateJsmopsAlertTaskParamsTeamInput` via:
+//
+//	WorkflowTaskCreateJsmopsAlertTaskParamsTeamArgs{...}
+type WorkflowTaskCreateJsmopsAlertTaskParamsTeamInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput() WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamOutputWithContext(context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsTeamArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsTeamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsTeam)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsTeamArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput() WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput {
+	return i.ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsTeamArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput)
+}
+
+// WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayInput is an input type that accepts WorkflowTaskCreateJsmopsAlertTaskParamsTeamArray and WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayInput` via:
+//
+//	WorkflowTaskCreateJsmopsAlertTaskParamsTeamArray{ WorkflowTaskCreateJsmopsAlertTaskParamsTeamArgs{...} }
+type WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutputWithContext(context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsTeamArray []WorkflowTaskCreateJsmopsAlertTaskParamsTeamInput
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsTeamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateJsmopsAlertTaskParamsTeam)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsTeamArray) ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput {
+	return i.ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsTeamArray) ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsTeam)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput() WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParamsTeam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParamsTeam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateJsmopsAlertTaskParamsTeam)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput) Index(i pulumi.IntInput) WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskCreateJsmopsAlertTaskParamsTeam {
+		return vs[0].([]WorkflowTaskCreateJsmopsAlertTaskParamsTeam)[vs[1].(int)]
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsUser struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskCreateJsmopsAlertTaskParamsUserInput is an input type that accepts WorkflowTaskCreateJsmopsAlertTaskParamsUserArgs and WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateJsmopsAlertTaskParamsUserInput` via:
+//
+//	WorkflowTaskCreateJsmopsAlertTaskParamsUserArgs{...}
+type WorkflowTaskCreateJsmopsAlertTaskParamsUserInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsUserOutput() WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsUserOutputWithContext(context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsUserArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsUser)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsUserArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsUserOutput() WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput {
+	return i.ToWorkflowTaskCreateJsmopsAlertTaskParamsUserOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsUserArgs) ToWorkflowTaskCreateJsmopsAlertTaskParamsUserOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput)
+}
+
+// WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayInput is an input type that accepts WorkflowTaskCreateJsmopsAlertTaskParamsUserArray and WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayInput` via:
+//
+//	WorkflowTaskCreateJsmopsAlertTaskParamsUserArray{ WorkflowTaskCreateJsmopsAlertTaskParamsUserArgs{...} }
+type WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput
+	ToWorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutputWithContext(context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsUserArray []WorkflowTaskCreateJsmopsAlertTaskParamsUserInput
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateJsmopsAlertTaskParamsUser)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsUserArray) ToWorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput {
+	return i.ToWorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateJsmopsAlertTaskParamsUserArray) ToWorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsUser)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsUserOutput() WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsUserOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParamsUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParamsUser) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateJsmopsAlertTaskParamsUser)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput() WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput) ToWorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput) Index(i pulumi.IntInput) WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskCreateJsmopsAlertTaskParamsUser {
+		return vs[0].([]WorkflowTaskCreateJsmopsAlertTaskParamsUser)[vs[1].(int)]
+	}).(WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput)
 }
 
 type WorkflowTaskCreateLinearIssueCommentTaskParams struct {
@@ -17834,6 +24537,298 @@ func (o WorkflowTaskCreateMicrosoftTeamsChannelTaskParamsPtrOutput) Title() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParams struct {
+	// Type of chat to create. Value must be one of `group`, `oneOnOne`.
+	ChatType *string `pulumi:"chatType"`
+	// Array of members to include in the chat
+	Members  []WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember `pulumi:"members"`
+	TaskType *string                                                `pulumi:"taskType"`
+	// Chat topic (only for group chats)
+	Topic *string `pulumi:"topic"`
+}
+
+// WorkflowTaskCreateMicrosoftTeamsChatTaskParamsInput is an input type that accepts WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs and WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateMicrosoftTeamsChatTaskParamsInput` via:
+//
+//	WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs{...}
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput
+	ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutputWithContext(context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput
+}
+
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs struct {
+	// Type of chat to create. Value must be one of `group`, `oneOnOne`.
+	ChatType pulumi.StringPtrInput `pulumi:"chatType"`
+	// Array of members to include in the chat
+	Members  WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayInput `pulumi:"members"`
+	TaskType pulumi.StringPtrInput                                          `pulumi:"taskType"`
+	// Chat topic (only for group chats)
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsChatTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput {
+	return i.ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput)
+}
+
+func (i WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput).ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrInput is an input type that accepts WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs, WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtr and WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput
+	ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput
+}
+
+type workflowTaskCreateMicrosoftTeamsChatTaskParamsPtrType WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs
+
+func WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtr(v *WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrInput {
+	return (*workflowTaskCreateMicrosoftTeamsChatTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskCreateMicrosoftTeamsChatTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateMicrosoftTeamsChatTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateMicrosoftTeamsChatTaskParamsPtrType) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateMicrosoftTeamsChatTaskParamsPtrType) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput)
+}
+
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsChatTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput {
+	return o.ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateMicrosoftTeamsChatTaskParams) *WorkflowTaskCreateMicrosoftTeamsChatTaskParams {
+		return &v
+	}).(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput)
+}
+
+// Type of chat to create. Value must be one of `group`, `oneOnOne`.
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput) ChatType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMicrosoftTeamsChatTaskParams) *string { return v.ChatType }).(pulumi.StringPtrOutput)
+}
+
+// Array of members to include in the chat
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput) Members() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMicrosoftTeamsChatTaskParams) []WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember {
+		return v.Members
+	}).(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput)
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMicrosoftTeamsChatTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// Chat topic (only for group chats)
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMicrosoftTeamsChatTaskParams) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateMicrosoftTeamsChatTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput) Elem() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMicrosoftTeamsChatTaskParams) WorkflowTaskCreateMicrosoftTeamsChatTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateMicrosoftTeamsChatTaskParams
+		return ret
+	}).(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput)
+}
+
+// Type of chat to create. Value must be one of `group`, `oneOnOne`.
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput) ChatType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMicrosoftTeamsChatTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChatType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of members to include in the chat
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput) Members() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMicrosoftTeamsChatTaskParams) []WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember {
+		if v == nil {
+			return nil
+		}
+		return v.Members
+	}).(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput)
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMicrosoftTeamsChatTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Chat topic (only for group chats)
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMicrosoftTeamsChatTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberInput is an input type that accepts WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArgs and WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberInput` via:
+//
+//	WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArgs{...}
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput
+	ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutputWithContext(context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput
+}
+
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArgs) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput {
+	return i.ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArgs) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutputWithContext(ctx context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput)
+}
+
+// WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayInput is an input type that accepts WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArray and WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayInput` via:
+//
+//	WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArray{ WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArgs{...} }
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput
+	ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutputWithContext(context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput
+}
+
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArray []WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberInput
+
+func (WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArray) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput {
+	return i.ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArray) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput)
+}
+
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutputWithContext(ctx context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput() WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput) ToWorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutputWithContext(ctx context.Context) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput) Index(i pulumi.IntInput) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember {
+		return vs[0].([]WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMember)[vs[1].(int)]
+	}).(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput)
+}
+
 type WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams struct {
 	// The meeting name
 	Name string `pulumi:"name"`
@@ -17842,6 +24837,8 @@ type WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams struct {
 	PostToSlackChannels    []WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannel `pulumi:"postToSlackChannels"`
 	// Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
 	RecordMeeting *bool `pulumi:"recordMeeting"`
+	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+	RecordingMode *string `pulumi:"recordingMode"`
 	// The meeting subject
 	Subject  string  `pulumi:"subject"`
 	TaskType *string `pulumi:"taskType"`
@@ -17866,6 +24863,8 @@ type WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsArgs struct {
 	PostToSlackChannels    WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelArrayInput `pulumi:"postToSlackChannels"`
 	// Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
 	RecordMeeting pulumi.BoolPtrInput `pulumi:"recordMeeting"`
+	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+	RecordingMode pulumi.StringPtrInput `pulumi:"recordingMode"`
 	// The meeting subject
 	Subject  pulumi.StringInput    `pulumi:"subject"`
 	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
@@ -17969,6 +24968,11 @@ func (o WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsOutput) RecordMeeting()
 	return o.ApplyT(func(v WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams) *bool { return v.RecordMeeting }).(pulumi.BoolPtrOutput)
 }
 
+// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+func (o WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsOutput) RecordingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams) *string { return v.RecordingMode }).(pulumi.StringPtrOutput)
+}
+
 // The meeting subject
 func (o WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams) string { return v.Subject }).(pulumi.StringOutput)
@@ -18039,6 +25043,16 @@ func (o WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPtrOutput) RecordMeetin
 		}
 		return v.RecordMeeting
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+func (o WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPtrOutput) RecordingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMicrosoftTeamsMeetingTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecordingMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // The meeting subject
@@ -18158,6 +25172,253 @@ func (o WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelArray
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannel {
 		return vs[0].([]WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannel)[vs[1].(int)]
 	}).(WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelOutput)
+}
+
+type WorkflowTaskCreateMistralChatCompletionTaskParams struct {
+	// Maximum number of tokens to generate
+	MaxTokens *string `pulumi:"maxTokens"`
+	// Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
+	Model map[string]string `pulumi:"model"`
+	// The prompt to send to Mistral
+	Prompt string `pulumi:"prompt"`
+	// The system prompt to send to Mistral (optional)
+	SystemPrompt *string `pulumi:"systemPrompt"`
+	TaskType     *string `pulumi:"taskType"`
+	// Sampling temperature (0.0-1.5). Higher values make output more random.
+	Temperature *int `pulumi:"temperature"`
+	// Nucleus sampling parameter (0.0-1.0)
+	TopP *int `pulumi:"topP"`
+}
+
+// WorkflowTaskCreateMistralChatCompletionTaskParamsInput is an input type that accepts WorkflowTaskCreateMistralChatCompletionTaskParamsArgs and WorkflowTaskCreateMistralChatCompletionTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateMistralChatCompletionTaskParamsInput` via:
+//
+//	WorkflowTaskCreateMistralChatCompletionTaskParamsArgs{...}
+type WorkflowTaskCreateMistralChatCompletionTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateMistralChatCompletionTaskParamsOutput() WorkflowTaskCreateMistralChatCompletionTaskParamsOutput
+	ToWorkflowTaskCreateMistralChatCompletionTaskParamsOutputWithContext(context.Context) WorkflowTaskCreateMistralChatCompletionTaskParamsOutput
+}
+
+type WorkflowTaskCreateMistralChatCompletionTaskParamsArgs struct {
+	// Maximum number of tokens to generate
+	MaxTokens pulumi.StringPtrInput `pulumi:"maxTokens"`
+	// Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
+	Model pulumi.StringMapInput `pulumi:"model"`
+	// The prompt to send to Mistral
+	Prompt pulumi.StringInput `pulumi:"prompt"`
+	// The system prompt to send to Mistral (optional)
+	SystemPrompt pulumi.StringPtrInput `pulumi:"systemPrompt"`
+	TaskType     pulumi.StringPtrInput `pulumi:"taskType"`
+	// Sampling temperature (0.0-1.5). Higher values make output more random.
+	Temperature pulumi.IntPtrInput `pulumi:"temperature"`
+	// Nucleus sampling parameter (0.0-1.0)
+	TopP pulumi.IntPtrInput `pulumi:"topP"`
+}
+
+func (WorkflowTaskCreateMistralChatCompletionTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateMistralChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateMistralChatCompletionTaskParamsArgs) ToWorkflowTaskCreateMistralChatCompletionTaskParamsOutput() WorkflowTaskCreateMistralChatCompletionTaskParamsOutput {
+	return i.ToWorkflowTaskCreateMistralChatCompletionTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateMistralChatCompletionTaskParamsArgs) ToWorkflowTaskCreateMistralChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateMistralChatCompletionTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateMistralChatCompletionTaskParamsOutput)
+}
+
+func (i WorkflowTaskCreateMistralChatCompletionTaskParamsArgs) ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateMistralChatCompletionTaskParamsArgs) ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateMistralChatCompletionTaskParamsOutput).ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateMistralChatCompletionTaskParamsPtrInput is an input type that accepts WorkflowTaskCreateMistralChatCompletionTaskParamsArgs, WorkflowTaskCreateMistralChatCompletionTaskParamsPtr and WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateMistralChatCompletionTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskCreateMistralChatCompletionTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateMistralChatCompletionTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput
+	ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput
+}
+
+type workflowTaskCreateMistralChatCompletionTaskParamsPtrType WorkflowTaskCreateMistralChatCompletionTaskParamsArgs
+
+func WorkflowTaskCreateMistralChatCompletionTaskParamsPtr(v *WorkflowTaskCreateMistralChatCompletionTaskParamsArgs) WorkflowTaskCreateMistralChatCompletionTaskParamsPtrInput {
+	return (*workflowTaskCreateMistralChatCompletionTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskCreateMistralChatCompletionTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateMistralChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateMistralChatCompletionTaskParamsPtrType) ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateMistralChatCompletionTaskParamsPtrType) ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput)
+}
+
+type WorkflowTaskCreateMistralChatCompletionTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateMistralChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) ToWorkflowTaskCreateMistralChatCompletionTaskParamsOutput() WorkflowTaskCreateMistralChatCompletionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) ToWorkflowTaskCreateMistralChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateMistralChatCompletionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput {
+	return o.ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateMistralChatCompletionTaskParams) *WorkflowTaskCreateMistralChatCompletionTaskParams {
+		return &v
+	}).(WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput)
+}
+
+// Maximum number of tokens to generate
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) MaxTokens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) *string { return v.MaxTokens }).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) Model() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) map[string]string { return v.Model }).(pulumi.StringMapOutput)
+}
+
+// The prompt to send to Mistral
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) Prompt() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) string { return v.Prompt }).(pulumi.StringOutput)
+}
+
+// The system prompt to send to Mistral (optional)
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) SystemPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) *string { return v.SystemPrompt }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// Sampling temperature (0.0-1.5). Higher values make output more random.
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) Temperature() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) *int { return v.Temperature }).(pulumi.IntPtrOutput)
+}
+
+// Nucleus sampling parameter (0.0-1.0)
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) TopP() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) *int { return v.TopP }).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateMistralChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) ToWorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) Elem() WorkflowTaskCreateMistralChatCompletionTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) WorkflowTaskCreateMistralChatCompletionTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateMistralChatCompletionTaskParams
+		return ret
+	}).(WorkflowTaskCreateMistralChatCompletionTaskParamsOutput)
+}
+
+// Maximum number of tokens to generate
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) MaxTokens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTokens
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) Model() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringMapOutput)
+}
+
+// The prompt to send to Mistral
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prompt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The system prompt to send to Mistral (optional)
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) SystemPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemPrompt
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sampling temperature (0.0-1.5). Higher values make output more random.
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) Temperature() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Temperature
+	}).(pulumi.IntPtrOutput)
+}
+
+// Nucleus sampling parameter (0.0-1.0)
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) TopP() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TopP
+	}).(pulumi.IntPtrOutput)
 }
 
 type WorkflowTaskCreateMotionTaskTaskParams struct {
@@ -18461,6 +25722,8 @@ func (o WorkflowTaskCreateMotionTaskTaskParamsPtrOutput) Workspace() pulumi.Stri
 }
 
 type WorkflowTaskCreateNotionPageTaskParams struct {
+	// Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+	Content *string `pulumi:"content"`
 	// Value must be one of true or false
 	MarkPostMortemAsPublished *bool `pulumi:"markPostMortemAsPublished"`
 	// Map must contain two fields, `id` and `name`. The parent page id and display name
@@ -18488,6 +25751,8 @@ type WorkflowTaskCreateNotionPageTaskParamsInput interface {
 }
 
 type WorkflowTaskCreateNotionPageTaskParamsArgs struct {
+	// Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+	Content pulumi.StringPtrInput `pulumi:"content"`
 	// Value must be one of true or false
 	MarkPostMortemAsPublished pulumi.BoolPtrInput `pulumi:"markPostMortemAsPublished"`
 	// Map must contain two fields, `id` and `name`. The parent page id and display name
@@ -18580,6 +25845,11 @@ func (o WorkflowTaskCreateNotionPageTaskParamsOutput) ToWorkflowTaskCreateNotion
 	}).(WorkflowTaskCreateNotionPageTaskParamsPtrOutput)
 }
 
+// Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+func (o WorkflowTaskCreateNotionPageTaskParamsOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateNotionPageTaskParams) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
 // Value must be one of true or false
 func (o WorkflowTaskCreateNotionPageTaskParamsOutput) MarkPostMortemAsPublished() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateNotionPageTaskParams) *bool { return v.MarkPostMortemAsPublished }).(pulumi.BoolPtrOutput)
@@ -18636,6 +25906,16 @@ func (o WorkflowTaskCreateNotionPageTaskParamsPtrOutput) Elem() WorkflowTaskCrea
 		var ret WorkflowTaskCreateNotionPageTaskParams
 		return ret
 	}).(WorkflowTaskCreateNotionPageTaskParamsOutput)
+}
+
+// Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+func (o WorkflowTaskCreateNotionPageTaskParamsPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateNotionPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
 }
 
 // Value must be one of true or false
@@ -18705,6 +25985,291 @@ func (o WorkflowTaskCreateNotionPageTaskParamsPtrOutput) Title() pulumi.StringPt
 		}
 		return &v.Title
 	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskCreateOpenaiChatCompletionTaskParams struct {
+	// Maximum number of tokens to generate in the response
+	MaxTokens *string `pulumi:"maxTokens"`
+	// Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
+	Model map[string]string `pulumi:"model"`
+	// The prompt to send to OpenAI
+	Prompt string `pulumi:"prompt"`
+	// Constrains effort on reasoning for GPT-5 and o-series models. Value must be one of `minimal`, `low`, `medium`, `high`.
+	ReasoningEffort *string `pulumi:"reasoningEffort"`
+	// Summary of the reasoning performed by the model for GPT-5 and o-series models. Value must be one of `auto`, `concise`, `detailed`.
+	ReasoningSummary *string `pulumi:"reasoningSummary"`
+	// The system prompt to send to OpenAI (optional)
+	SystemPrompt *string `pulumi:"systemPrompt"`
+	TaskType     *string `pulumi:"taskType"`
+	// Controls randomness in the response. Higher values make output more random
+	Temperature *int `pulumi:"temperature"`
+	// Controls diversity via nucleus sampling. Lower values make output more focused
+	TopP *int `pulumi:"topP"`
+}
+
+// WorkflowTaskCreateOpenaiChatCompletionTaskParamsInput is an input type that accepts WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs and WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateOpenaiChatCompletionTaskParamsInput` via:
+//
+//	WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs{...}
+type WorkflowTaskCreateOpenaiChatCompletionTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput() WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput
+	ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsOutputWithContext(context.Context) WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput
+}
+
+type WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs struct {
+	// Maximum number of tokens to generate in the response
+	MaxTokens pulumi.StringPtrInput `pulumi:"maxTokens"`
+	// Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
+	Model pulumi.StringMapInput `pulumi:"model"`
+	// The prompt to send to OpenAI
+	Prompt pulumi.StringInput `pulumi:"prompt"`
+	// Constrains effort on reasoning for GPT-5 and o-series models. Value must be one of `minimal`, `low`, `medium`, `high`.
+	ReasoningEffort pulumi.StringPtrInput `pulumi:"reasoningEffort"`
+	// Summary of the reasoning performed by the model for GPT-5 and o-series models. Value must be one of `auto`, `concise`, `detailed`.
+	ReasoningSummary pulumi.StringPtrInput `pulumi:"reasoningSummary"`
+	// The system prompt to send to OpenAI (optional)
+	SystemPrompt pulumi.StringPtrInput `pulumi:"systemPrompt"`
+	TaskType     pulumi.StringPtrInput `pulumi:"taskType"`
+	// Controls randomness in the response. Higher values make output more random
+	Temperature pulumi.IntPtrInput `pulumi:"temperature"`
+	// Controls diversity via nucleus sampling. Lower values make output more focused
+	TopP pulumi.IntPtrInput `pulumi:"topP"`
+}
+
+func (WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateOpenaiChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput() WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput {
+	return i.ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput)
+}
+
+func (i WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput).ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrInput is an input type that accepts WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs, WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtr and WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput
+	ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput
+}
+
+type workflowTaskCreateOpenaiChatCompletionTaskParamsPtrType WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs
+
+func WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtr(v *WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs) WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrInput {
+	return (*workflowTaskCreateOpenaiChatCompletionTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskCreateOpenaiChatCompletionTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateOpenaiChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateOpenaiChatCompletionTaskParamsPtrType) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateOpenaiChatCompletionTaskParamsPtrType) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput)
+}
+
+type WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateOpenaiChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput() WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput {
+	return o.ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *WorkflowTaskCreateOpenaiChatCompletionTaskParams {
+		return &v
+	}).(WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput)
+}
+
+// Maximum number of tokens to generate in the response
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) MaxTokens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string { return v.MaxTokens }).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) Model() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) map[string]string { return v.Model }).(pulumi.StringMapOutput)
+}
+
+// The prompt to send to OpenAI
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) Prompt() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) string { return v.Prompt }).(pulumi.StringOutput)
+}
+
+// Constrains effort on reasoning for GPT-5 and o-series models. Value must be one of `minimal`, `low`, `medium`, `high`.
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) ReasoningEffort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string { return v.ReasoningEffort }).(pulumi.StringPtrOutput)
+}
+
+// Summary of the reasoning performed by the model for GPT-5 and o-series models. Value must be one of `auto`, `concise`, `detailed`.
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) ReasoningSummary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string { return v.ReasoningSummary }).(pulumi.StringPtrOutput)
+}
+
+// The system prompt to send to OpenAI (optional)
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) SystemPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string { return v.SystemPrompt }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// Controls randomness in the response. Higher values make output more random
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) Temperature() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *int { return v.Temperature }).(pulumi.IntPtrOutput)
+}
+
+// Controls diversity via nucleus sampling. Lower values make output more focused
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) TopP() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *int { return v.TopP }).(pulumi.IntPtrOutput)
+}
+
+type WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateOpenaiChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) ToWorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) Elem() WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) WorkflowTaskCreateOpenaiChatCompletionTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateOpenaiChatCompletionTaskParams
+		return ret
+	}).(WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput)
+}
+
+// Maximum number of tokens to generate in the response
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) MaxTokens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTokens
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) Model() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringMapOutput)
+}
+
+// The prompt to send to OpenAI
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prompt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Constrains effort on reasoning for GPT-5 and o-series models. Value must be one of `minimal`, `low`, `medium`, `high`.
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) ReasoningEffort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReasoningEffort
+	}).(pulumi.StringPtrOutput)
+}
+
+// Summary of the reasoning performed by the model for GPT-5 and o-series models. Value must be one of `auto`, `concise`, `detailed`.
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) ReasoningSummary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReasoningSummary
+	}).(pulumi.StringPtrOutput)
+}
+
+// The system prompt to send to OpenAI (optional)
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) SystemPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemPrompt
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls randomness in the response. Higher values make output more random
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) Temperature() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Temperature
+	}).(pulumi.IntPtrOutput)
+}
+
+// Controls diversity via nucleus sampling. Lower values make output more focused
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) TopP() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TopP
+	}).(pulumi.IntPtrOutput)
 }
 
 type WorkflowTaskCreateOpsgenieAlertTaskParams struct {
@@ -19393,6 +26958,8 @@ type WorkflowTaskCreateOutlookEventTaskParams struct {
 	DaysUntilMeeting string `pulumi:"daysUntilMeeting"`
 	// The event description
 	Description string `pulumi:"description"`
+	// Enable Microsoft Teams online meeting. Value must be one of true or false
+	EnableOnlineMeeting *bool `pulumi:"enableOnlineMeeting"`
 	// Value must be one of true or false
 	ExcludeWeekends *bool `pulumi:"excludeWeekends"`
 	// Meeting duration in format like '1 hour', '30 minutes'
@@ -19429,6 +26996,8 @@ type WorkflowTaskCreateOutlookEventTaskParamsArgs struct {
 	DaysUntilMeeting pulumi.StringInput `pulumi:"daysUntilMeeting"`
 	// The event description
 	Description pulumi.StringInput `pulumi:"description"`
+	// Enable Microsoft Teams online meeting. Value must be one of true or false
+	EnableOnlineMeeting pulumi.BoolPtrInput `pulumi:"enableOnlineMeeting"`
 	// Value must be one of true or false
 	ExcludeWeekends pulumi.BoolPtrInput `pulumi:"excludeWeekends"`
 	// Meeting duration in format like '1 hour', '30 minutes'
@@ -19542,6 +27111,11 @@ func (o WorkflowTaskCreateOutlookEventTaskParamsOutput) Description() pulumi.Str
 	return o.ApplyT(func(v WorkflowTaskCreateOutlookEventTaskParams) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Enable Microsoft Teams online meeting. Value must be one of true or false
+func (o WorkflowTaskCreateOutlookEventTaskParamsOutput) EnableOnlineMeeting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOutlookEventTaskParams) *bool { return v.EnableOnlineMeeting }).(pulumi.BoolPtrOutput)
+}
+
 // Value must be one of true or false
 func (o WorkflowTaskCreateOutlookEventTaskParamsOutput) ExcludeWeekends() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateOutlookEventTaskParams) *bool { return v.ExcludeWeekends }).(pulumi.BoolPtrOutput)
@@ -19644,6 +27218,16 @@ func (o WorkflowTaskCreateOutlookEventTaskParamsPtrOutput) Description() pulumi.
 		}
 		return &v.Description
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enable Microsoft Teams online meeting. Value must be one of true or false
+func (o WorkflowTaskCreateOutlookEventTaskParamsPtrOutput) EnableOnlineMeeting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOutlookEventTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableOnlineMeeting
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Value must be one of true or false
@@ -21901,6 +29485,177 @@ func (o WorkflowTaskCreateSlackChannelTaskParamsPtrOutput) Workspace() pulumi.St
 	}).(pulumi.StringMapOutput)
 }
 
+type WorkflowTaskCreateSubIncidentTaskParams struct {
+	// The sub incident summary
+	Summary  *string `pulumi:"summary"`
+	TaskType *string `pulumi:"taskType"`
+	// The sub incident title
+	Title string `pulumi:"title"`
+}
+
+// WorkflowTaskCreateSubIncidentTaskParamsInput is an input type that accepts WorkflowTaskCreateSubIncidentTaskParamsArgs and WorkflowTaskCreateSubIncidentTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateSubIncidentTaskParamsInput` via:
+//
+//	WorkflowTaskCreateSubIncidentTaskParamsArgs{...}
+type WorkflowTaskCreateSubIncidentTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateSubIncidentTaskParamsOutput() WorkflowTaskCreateSubIncidentTaskParamsOutput
+	ToWorkflowTaskCreateSubIncidentTaskParamsOutputWithContext(context.Context) WorkflowTaskCreateSubIncidentTaskParamsOutput
+}
+
+type WorkflowTaskCreateSubIncidentTaskParamsArgs struct {
+	// The sub incident summary
+	Summary  pulumi.StringPtrInput `pulumi:"summary"`
+	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
+	// The sub incident title
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (WorkflowTaskCreateSubIncidentTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateSubIncidentTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateSubIncidentTaskParamsArgs) ToWorkflowTaskCreateSubIncidentTaskParamsOutput() WorkflowTaskCreateSubIncidentTaskParamsOutput {
+	return i.ToWorkflowTaskCreateSubIncidentTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateSubIncidentTaskParamsArgs) ToWorkflowTaskCreateSubIncidentTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateSubIncidentTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSubIncidentTaskParamsOutput)
+}
+
+func (i WorkflowTaskCreateSubIncidentTaskParamsArgs) ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutput() WorkflowTaskCreateSubIncidentTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateSubIncidentTaskParamsArgs) ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSubIncidentTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSubIncidentTaskParamsOutput).ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateSubIncidentTaskParamsPtrInput is an input type that accepts WorkflowTaskCreateSubIncidentTaskParamsArgs, WorkflowTaskCreateSubIncidentTaskParamsPtr and WorkflowTaskCreateSubIncidentTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateSubIncidentTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskCreateSubIncidentTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateSubIncidentTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutput() WorkflowTaskCreateSubIncidentTaskParamsPtrOutput
+	ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskCreateSubIncidentTaskParamsPtrOutput
+}
+
+type workflowTaskCreateSubIncidentTaskParamsPtrType WorkflowTaskCreateSubIncidentTaskParamsArgs
+
+func WorkflowTaskCreateSubIncidentTaskParamsPtr(v *WorkflowTaskCreateSubIncidentTaskParamsArgs) WorkflowTaskCreateSubIncidentTaskParamsPtrInput {
+	return (*workflowTaskCreateSubIncidentTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskCreateSubIncidentTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateSubIncidentTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateSubIncidentTaskParamsPtrType) ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutput() WorkflowTaskCreateSubIncidentTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateSubIncidentTaskParamsPtrType) ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSubIncidentTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSubIncidentTaskParamsPtrOutput)
+}
+
+type WorkflowTaskCreateSubIncidentTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateSubIncidentTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateSubIncidentTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) ToWorkflowTaskCreateSubIncidentTaskParamsOutput() WorkflowTaskCreateSubIncidentTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) ToWorkflowTaskCreateSubIncidentTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateSubIncidentTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutput() WorkflowTaskCreateSubIncidentTaskParamsPtrOutput {
+	return o.ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSubIncidentTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateSubIncidentTaskParams) *WorkflowTaskCreateSubIncidentTaskParams {
+		return &v
+	}).(WorkflowTaskCreateSubIncidentTaskParamsPtrOutput)
+}
+
+// The sub incident summary
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSubIncidentTaskParams) *string { return v.Summary }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSubIncidentTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// The sub incident title
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSubIncidentTaskParams) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskCreateSubIncidentTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateSubIncidentTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutput() WorkflowTaskCreateSubIncidentTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) ToWorkflowTaskCreateSubIncidentTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSubIncidentTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) Elem() WorkflowTaskCreateSubIncidentTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSubIncidentTaskParams) WorkflowTaskCreateSubIncidentTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateSubIncidentTaskParams
+		return ret
+	}).(WorkflowTaskCreateSubIncidentTaskParamsOutput)
+}
+
+// The sub incident summary
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) Summary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSubIncidentTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Summary
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSubIncidentTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The sub incident title
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSubIncidentTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskCreateTrelloCardTaskParams struct {
 	// Map must contain two fields, `id` and `name`. The archivation id and display name
 	Archivation map[string]string `pulumi:"archivation"`
@@ -22265,6 +30020,211 @@ func (o WorkflowTaskCreateTrelloCardTaskParamsLabelArrayOutput) Index(i pulumi.I
 	}).(WorkflowTaskCreateTrelloCardTaskParamsLabelOutput)
 }
 
+type WorkflowTaskCreateWatsonxChatCompletionTaskParams struct {
+	// Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
+	Model     map[string]string `pulumi:"model"`
+	ProjectId string            `pulumi:"projectId"`
+	// The prompt to send to WatsonX
+	Prompt string `pulumi:"prompt"`
+	// The system prompt to send to WatsonX (optional)
+	SystemPrompt *string `pulumi:"systemPrompt"`
+	TaskType     *string `pulumi:"taskType"`
+}
+
+// WorkflowTaskCreateWatsonxChatCompletionTaskParamsInput is an input type that accepts WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs and WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateWatsonxChatCompletionTaskParamsInput` via:
+//
+//	WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs{...}
+type WorkflowTaskCreateWatsonxChatCompletionTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput() WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput
+	ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsOutputWithContext(context.Context) WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput
+}
+
+type WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs struct {
+	// Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
+	Model     pulumi.StringMapInput `pulumi:"model"`
+	ProjectId pulumi.StringInput    `pulumi:"projectId"`
+	// The prompt to send to WatsonX
+	Prompt pulumi.StringInput `pulumi:"prompt"`
+	// The system prompt to send to WatsonX (optional)
+	SystemPrompt pulumi.StringPtrInput `pulumi:"systemPrompt"`
+	TaskType     pulumi.StringPtrInput `pulumi:"taskType"`
+}
+
+func (WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateWatsonxChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput() WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput {
+	return i.ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput)
+}
+
+func (i WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput).ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrInput is an input type that accepts WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs, WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtr and WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput
+	ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput
+}
+
+type workflowTaskCreateWatsonxChatCompletionTaskParamsPtrType WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs
+
+func WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtr(v *WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs) WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrInput {
+	return (*workflowTaskCreateWatsonxChatCompletionTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskCreateWatsonxChatCompletionTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateWatsonxChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateWatsonxChatCompletionTaskParamsPtrType) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateWatsonxChatCompletionTaskParamsPtrType) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput)
+}
+
+type WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateWatsonxChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput() WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput {
+	return o.ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateWatsonxChatCompletionTaskParams) *WorkflowTaskCreateWatsonxChatCompletionTaskParams {
+		return &v
+	}).(WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput) Model() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateWatsonxChatCompletionTaskParams) map[string]string { return v.Model }).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateWatsonxChatCompletionTaskParams) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The prompt to send to WatsonX
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput) Prompt() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateWatsonxChatCompletionTaskParams) string { return v.Prompt }).(pulumi.StringOutput)
+}
+
+// The system prompt to send to WatsonX (optional)
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput) SystemPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateWatsonxChatCompletionTaskParams) *string { return v.SystemPrompt }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateWatsonxChatCompletionTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateWatsonxChatCompletionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput() WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput) ToWorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput) Elem() WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateWatsonxChatCompletionTaskParams) WorkflowTaskCreateWatsonxChatCompletionTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateWatsonxChatCompletionTaskParams
+		return ret
+	}).(WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput) Model() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateWatsonxChatCompletionTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateWatsonxChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prompt to send to WatsonX
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput) Prompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateWatsonxChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Prompt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The system prompt to send to WatsonX (optional)
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput) SystemPrompt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateWatsonxChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemPrompt
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateWatsonxChatCompletionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskCreateWebexMeetingTaskParams struct {
 	// The meeting password
 	Password *string `pulumi:"password"`
@@ -22272,7 +30232,9 @@ type WorkflowTaskCreateWebexMeetingTaskParams struct {
 	PostToIncidentTimeline *bool                                                        `pulumi:"postToIncidentTimeline"`
 	PostToSlackChannels    []WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannel `pulumi:"postToSlackChannels"`
 	// Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
-	RecordMeeting *bool   `pulumi:"recordMeeting"`
+	RecordMeeting *bool `pulumi:"recordMeeting"`
+	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+	RecordingMode *string `pulumi:"recordingMode"`
 	TaskType      *string `pulumi:"taskType"`
 	// The meeting topic
 	Topic string `pulumi:"topic"`
@@ -22296,7 +30258,9 @@ type WorkflowTaskCreateWebexMeetingTaskParamsArgs struct {
 	PostToIncidentTimeline pulumi.BoolPtrInput                                                  `pulumi:"postToIncidentTimeline"`
 	PostToSlackChannels    WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannelArrayInput `pulumi:"postToSlackChannels"`
 	// Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
-	RecordMeeting pulumi.BoolPtrInput   `pulumi:"recordMeeting"`
+	RecordMeeting pulumi.BoolPtrInput `pulumi:"recordMeeting"`
+	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+	RecordingMode pulumi.StringPtrInput `pulumi:"recordingMode"`
 	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
 	// The meeting topic
 	Topic pulumi.StringInput `pulumi:"topic"`
@@ -22400,6 +30364,11 @@ func (o WorkflowTaskCreateWebexMeetingTaskParamsOutput) RecordMeeting() pulumi.B
 	return o.ApplyT(func(v WorkflowTaskCreateWebexMeetingTaskParams) *bool { return v.RecordMeeting }).(pulumi.BoolPtrOutput)
 }
 
+// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+func (o WorkflowTaskCreateWebexMeetingTaskParamsOutput) RecordingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateWebexMeetingTaskParams) *string { return v.RecordingMode }).(pulumi.StringPtrOutput)
+}
+
 func (o WorkflowTaskCreateWebexMeetingTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateWebexMeetingTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
@@ -22470,6 +30439,16 @@ func (o WorkflowTaskCreateWebexMeetingTaskParamsPtrOutput) RecordMeeting() pulum
 		}
 		return v.RecordMeeting
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+func (o WorkflowTaskCreateWebexMeetingTaskParamsPtrOutput) RecordingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateWebexMeetingTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecordingMode
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o WorkflowTaskCreateWebexMeetingTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -23078,7 +31057,9 @@ type WorkflowTaskCreateZoomMeetingTaskParams struct {
 	PostToIncidentTimeline *bool                                                       `pulumi:"postToIncidentTimeline"`
 	PostToSlackChannels    []WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel `pulumi:"postToSlackChannels"`
 	// Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
-	RecordMeeting *bool   `pulumi:"recordMeeting"`
+	RecordMeeting *bool `pulumi:"recordMeeting"`
+	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+	RecordingMode *string `pulumi:"recordingMode"`
 	TaskType      *string `pulumi:"taskType"`
 	// The meeting topic
 	Topic string `pulumi:"topic"`
@@ -23107,7 +31088,9 @@ type WorkflowTaskCreateZoomMeetingTaskParamsArgs struct {
 	PostToIncidentTimeline pulumi.BoolPtrInput                                                 `pulumi:"postToIncidentTimeline"`
 	PostToSlackChannels    WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannelArrayInput `pulumi:"postToSlackChannels"`
 	// Rootly AI will record the meeting and automatically generate a transcript and summary from your meeting. Value must be one of true or false
-	RecordMeeting pulumi.BoolPtrInput   `pulumi:"recordMeeting"`
+	RecordMeeting pulumi.BoolPtrInput `pulumi:"recordMeeting"`
+	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+	RecordingMode pulumi.StringPtrInput `pulumi:"recordingMode"`
 	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
 	// The meeting topic
 	Topic pulumi.StringInput `pulumi:"topic"`
@@ -23225,6 +31208,11 @@ func (o WorkflowTaskCreateZoomMeetingTaskParamsOutput) RecordMeeting() pulumi.Bo
 	return o.ApplyT(func(v WorkflowTaskCreateZoomMeetingTaskParams) *bool { return v.RecordMeeting }).(pulumi.BoolPtrOutput)
 }
 
+// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+func (o WorkflowTaskCreateZoomMeetingTaskParamsOutput) RecordingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateZoomMeetingTaskParams) *string { return v.RecordingMode }).(pulumi.StringPtrOutput)
+}
+
 func (o WorkflowTaskCreateZoomMeetingTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateZoomMeetingTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
@@ -23324,6 +31312,16 @@ func (o WorkflowTaskCreateZoomMeetingTaskParamsPtrOutput) RecordMeeting() pulumi
 		}
 		return v.RecordMeeting
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
+func (o WorkflowTaskCreateZoomMeetingTaskParamsPtrOutput) RecordingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateZoomMeetingTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecordingMode
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o WorkflowTaskCreateZoomMeetingTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -23443,363 +31441,6 @@ func (o WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannelArrayOutput) In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel {
 		return vs[0].([]WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannel)[vs[1].(int)]
 	}).(WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannelOutput)
-}
-
-type WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams struct {
-	// Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-4o-mini
-	Model map[string]string `pulumi:"model"`
-	// The prompt to send to OpenAI
-	Prompt   string  `pulumi:"prompt"`
-	TaskType *string `pulumi:"taskType"`
-}
-
-// WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsInput is an input type that accepts WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs and WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput values.
-// You can construct a concrete instance of `WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsInput` via:
-//
-//	WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs{...}
-type WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsInput interface {
-	pulumi.Input
-
-	ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput() WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput
-	ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutputWithContext(context.Context) WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput
-}
-
-type WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs struct {
-	// Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-4o-mini
-	Model pulumi.StringMapInput `pulumi:"model"`
-	// The prompt to send to OpenAI
-	Prompt   pulumi.StringInput    `pulumi:"prompt"`
-	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
-}
-
-func (WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams)(nil)).Elem()
-}
-
-func (i WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput() WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput {
-	return i.ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutputWithContext(context.Background())
-}
-
-func (i WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput)
-}
-
-func (i WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput() WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput {
-	return i.ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(context.Background())
-}
-
-func (i WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput).ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(ctx)
-}
-
-// WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrInput is an input type that accepts WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs, WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtr and WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput values.
-// You can construct a concrete instance of `WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrInput` via:
-//
-//	        WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrInput interface {
-	pulumi.Input
-
-	ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput() WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput
-	ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput
-}
-
-type workflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrType WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs
-
-func WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtr(v *WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs) WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrInput {
-	return (*workflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrType)(v)
-}
-
-func (*workflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams)(nil)).Elem()
-}
-
-func (i *workflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrType) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput() WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput {
-	return i.ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(context.Background())
-}
-
-func (i *workflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrType) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput)
-}
-
-type WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput struct{ *pulumi.OutputState }
-
-func (WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams)(nil)).Elem()
-}
-
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput() WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput {
-	return o
-}
-
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput {
-	return o
-}
-
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput() WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput {
-	return o.ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(context.Background())
-}
-
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams) *WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams {
-		return &v
-	}).(WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput)
-}
-
-// Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-4o-mini
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput) Model() pulumi.StringMapOutput {
-	return o.ApplyT(func(v WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams) map[string]string { return v.Model }).(pulumi.StringMapOutput)
-}
-
-// The prompt to send to OpenAI
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput) Prompt() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams) string { return v.Prompt }).(pulumi.StringOutput)
-}
-
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
-}
-
-type WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams)(nil)).Elem()
-}
-
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput() WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput {
-	return o
-}
-
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput) ToWorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput {
-	return o
-}
-
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput) Elem() WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput {
-	return o.ApplyT(func(v *WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams) WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams {
-		if v != nil {
-			return *v
-		}
-		var ret WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams
-		return ret
-	}).(WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput)
-}
-
-// Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-4o-mini
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput) Model() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Model
-	}).(pulumi.StringMapOutput)
-}
-
-// The prompt to send to OpenAI
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput) Prompt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Prompt
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParams) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TaskType
-	}).(pulumi.StringPtrOutput)
-}
-
-type WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams struct {
-	// Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
-	Model     map[string]string `pulumi:"model"`
-	ProjectId string            `pulumi:"projectId"`
-	// The prompt to send to WatsonX
-	Prompt   string  `pulumi:"prompt"`
-	TaskType *string `pulumi:"taskType"`
-}
-
-// WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsInput is an input type that accepts WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs and WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput values.
-// You can construct a concrete instance of `WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsInput` via:
-//
-//	WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs{...}
-type WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsInput interface {
-	pulumi.Input
-
-	ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput() WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput
-	ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutputWithContext(context.Context) WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput
-}
-
-type WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs struct {
-	// Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
-	Model     pulumi.StringMapInput `pulumi:"model"`
-	ProjectId pulumi.StringInput    `pulumi:"projectId"`
-	// The prompt to send to WatsonX
-	Prompt   pulumi.StringInput    `pulumi:"prompt"`
-	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
-}
-
-func (WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams)(nil)).Elem()
-}
-
-func (i WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput() WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput {
-	return i.ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutputWithContext(context.Background())
-}
-
-func (i WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput)
-}
-
-func (i WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput() WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput {
-	return i.ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(context.Background())
-}
-
-func (i WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput).ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(ctx)
-}
-
-// WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrInput is an input type that accepts WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs, WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtr and WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput values.
-// You can construct a concrete instance of `WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrInput` via:
-//
-//	        WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs{...}
-//
-//	or:
-//
-//	        nil
-type WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrInput interface {
-	pulumi.Input
-
-	ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput() WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput
-	ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput
-}
-
-type workflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrType WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs
-
-func WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtr(v *WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs) WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrInput {
-	return (*workflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrType)(v)
-}
-
-func (*workflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams)(nil)).Elem()
-}
-
-func (i *workflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrType) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput() WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput {
-	return i.ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(context.Background())
-}
-
-func (i *workflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrType) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput)
-}
-
-type WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput struct{ *pulumi.OutputState }
-
-func (WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams)(nil)).Elem()
-}
-
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput() WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput {
-	return o
-}
-
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput {
-	return o
-}
-
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput() WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput {
-	return o.ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(context.Background())
-}
-
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams) *WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams {
-		return &v
-	}).(WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput)
-}
-
-// Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput) Model() pulumi.StringMapOutput {
-	return o.ApplyT(func(v WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams) map[string]string { return v.Model }).(pulumi.StringMapOutput)
-}
-
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams) string { return v.ProjectId }).(pulumi.StringOutput)
-}
-
-// The prompt to send to WatsonX
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput) Prompt() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams) string { return v.Prompt }).(pulumi.StringOutput)
-}
-
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
-}
-
-type WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams)(nil)).Elem()
-}
-
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput() WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput {
-	return o
-}
-
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput) ToWorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput {
-	return o
-}
-
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput) Elem() WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput {
-	return o.ApplyT(func(v *WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams) WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams {
-		if v != nil {
-			return *v
-		}
-		var ret WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams
-		return ret
-	}).(WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput)
-}
-
-// Map must contain two fields, `id` and `name`. The WatsonX model. eg: ibm/granite-3-b8b-instruct
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput) Model() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Model
-	}).(pulumi.StringMapOutput)
-}
-
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProjectId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The prompt to send to WatsonX
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput) Prompt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Prompt
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TaskType
-	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTaskGetAlertsTaskParams struct {
@@ -27541,6 +35182,449 @@ func (o WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannelArrayOutput) I
 	}).(WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannelOutput)
 }
 
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParams struct {
+	// Description field of the incident that is generally used to provide a detailed information about the incident
+	Description *string `pulumi:"description"`
+	// Message of the incident
+	Message *string `pulumi:"message"`
+	// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+	Priority *string                                                `pulumi:"priority"`
+	TaskType *string                                                `pulumi:"taskType"`
+	Teams    []WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam `pulumi:"teams"`
+	// Incident title.
+	Title *string                                                `pulumi:"title"`
+	Users []WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser `pulumi:"users"`
+}
+
+// WorkflowTaskPageJsmopsOnCallRespondersTaskParamsInput is an input type that accepts WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs and WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskPageJsmopsOnCallRespondersTaskParamsInput` via:
+//
+//	WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs{...}
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutputWithContext(context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs struct {
+	// Description field of the incident that is generally used to provide a detailed information about the incident
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Message of the incident
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+	Priority pulumi.StringPtrInput                                          `pulumi:"priority"`
+	TaskType pulumi.StringPtrInput                                          `pulumi:"taskType"`
+	Teams    WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayInput `pulumi:"teams"`
+	// Incident title.
+	Title pulumi.StringPtrInput                                          `pulumi:"title"`
+	Users WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayInput `pulumi:"users"`
+}
+
+func (WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput {
+	return i.ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput)
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput {
+	return i.ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput).ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrInput is an input type that accepts WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs, WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtr and WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput
+}
+
+type workflowTaskPageJsmopsOnCallRespondersTaskParamsPtrType WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs
+
+func WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtr(v *WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrInput {
+	return (*workflowTaskPageJsmopsOnCallRespondersTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskPageJsmopsOnCallRespondersTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskPageJsmopsOnCallRespondersTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskPageJsmopsOnCallRespondersTaskParamsPtrType) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput {
+	return i.ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskPageJsmopsOnCallRespondersTaskParamsPtrType) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput)
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput {
+	return o.ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *WorkflowTaskPageJsmopsOnCallRespondersTaskParams {
+		return &v
+	}).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput)
+}
+
+// Description field of the incident that is generally used to provide a detailed information about the incident
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Message of the incident
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string { return v.Priority }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) Teams() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParams) []WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam {
+		return v.Teams
+	}).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput)
+}
+
+// Incident title.
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) Users() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParams) []WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser {
+		return v.Users
+	}).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput)
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskPageJsmopsOnCallRespondersTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) Elem() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskPageJsmopsOnCallRespondersTaskParams) WorkflowTaskPageJsmopsOnCallRespondersTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskPageJsmopsOnCallRespondersTaskParams
+		return ret
+	}).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput)
+}
+
+// Description field of the incident that is generally used to provide a detailed information about the incident
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message of the incident
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) Teams() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskPageJsmopsOnCallRespondersTaskParams) []WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam {
+		if v == nil {
+			return nil
+		}
+		return v.Teams
+	}).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput)
+}
+
+// Incident title.
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) Users() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskPageJsmopsOnCallRespondersTaskParams) []WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput)
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamInput is an input type that accepts WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArgs and WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput values.
+// You can construct a concrete instance of `WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamInput` via:
+//
+//	WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArgs{...}
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutputWithContext(context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam)(nil)).Elem()
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArgs) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput {
+	return i.ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArgs) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput)
+}
+
+// WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayInput is an input type that accepts WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArray and WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayInput` via:
+//
+//	WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArray{ WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArgs{...} }
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutputWithContext(context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArray []WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamInput
+
+func (WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam)(nil)).Elem()
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArray) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput {
+	return i.ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArray) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput)
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam)(nil)).Elem()
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam)(nil)).Elem()
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput) Index(i pulumi.IntInput) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam {
+		return vs[0].([]WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam)[vs[1].(int)]
+	}).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput)
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserInput is an input type that accepts WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArgs and WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput values.
+// You can construct a concrete instance of `WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserInput` via:
+//
+//	WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArgs{...}
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutputWithContext(context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser)(nil)).Elem()
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArgs) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput {
+	return i.ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArgs) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput)
+}
+
+// WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayInput is an input type that accepts WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArray and WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayInput` via:
+//
+//	WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArray{ WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArgs{...} }
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput
+	ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutputWithContext(context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArray []WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserInput
+
+func (WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser)(nil)).Elem()
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArray) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput {
+	return i.ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArray) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput)
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser)(nil)).Elem()
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser)(nil)).Elem()
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput() WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput) ToWorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutputWithContext(ctx context.Context) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput) Index(i pulumi.IntInput) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser {
+		return vs[0].([]WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUser)[vs[1].(int)]
+	}).(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput)
+}
+
 type WorkflowTaskPageOpsgenieOnCallRespondersTaskParams struct {
 	// Description field of the incident that is generally used to provide a detailed information about the incident
 	Description *string `pulumi:"description"`
@@ -28465,12 +36549,14 @@ func (o WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsUserArrayOutput) Inde
 
 type WorkflowTaskPageRootlyOnCallRespondersTaskParams struct {
 	// Alert urgency ID
-	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
+	AlertUrgencyId string `pulumi:"alertUrgencyId"`
 	// Alert description
 	Description    *string `pulumi:"description"`
 	EscalationNote *string `pulumi:"escalationNote"`
 	// Map must contain two fields, `id` and `name`.
 	EscalationPolicyTarget map[string]string `pulumi:"escalationPolicyTarget"`
+	// Map must contain two fields, `id` and `name`.
+	FunctionalityTarget map[string]string `pulumi:"functionalityTarget"`
 	// Map must contain two fields, `id` and `name`.
 	GroupTarget map[string]string `pulumi:"groupTarget"`
 	// Map must contain two fields, `id` and `name`.
@@ -28495,12 +36581,14 @@ type WorkflowTaskPageRootlyOnCallRespondersTaskParamsInput interface {
 
 type WorkflowTaskPageRootlyOnCallRespondersTaskParamsArgs struct {
 	// Alert urgency ID
-	AlertUrgencyId pulumi.StringPtrInput `pulumi:"alertUrgencyId"`
+	AlertUrgencyId pulumi.StringInput `pulumi:"alertUrgencyId"`
 	// Alert description
 	Description    pulumi.StringPtrInput `pulumi:"description"`
 	EscalationNote pulumi.StringPtrInput `pulumi:"escalationNote"`
 	// Map must contain two fields, `id` and `name`.
 	EscalationPolicyTarget pulumi.StringMapInput `pulumi:"escalationPolicyTarget"`
+	// Map must contain two fields, `id` and `name`.
+	FunctionalityTarget pulumi.StringMapInput `pulumi:"functionalityTarget"`
 	// Map must contain two fields, `id` and `name`.
 	GroupTarget pulumi.StringMapInput `pulumi:"groupTarget"`
 	// Map must contain two fields, `id` and `name`.
@@ -28590,8 +36678,8 @@ func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsOutput) ToWorkflowTaskPa
 }
 
 // Alert urgency ID
-func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsOutput) AlertUrgencyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskPageRootlyOnCallRespondersTaskParams) *string { return v.AlertUrgencyId }).(pulumi.StringPtrOutput)
+func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsOutput) AlertUrgencyId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskPageRootlyOnCallRespondersTaskParams) string { return v.AlertUrgencyId }).(pulumi.StringOutput)
 }
 
 // Alert description
@@ -28607,6 +36695,13 @@ func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsOutput) EscalationNote()
 func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsOutput) EscalationPolicyTarget() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTaskPageRootlyOnCallRespondersTaskParams) map[string]string {
 		return v.EscalationPolicyTarget
+	}).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsOutput) FunctionalityTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskPageRootlyOnCallRespondersTaskParams) map[string]string {
+		return v.FunctionalityTarget
 	}).(pulumi.StringMapOutput)
 }
 
@@ -28664,7 +36759,7 @@ func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsPtrOutput) AlertUrgencyI
 		if v == nil {
 			return nil
 		}
-		return v.AlertUrgencyId
+		return &v.AlertUrgencyId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -28694,6 +36789,16 @@ func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsPtrOutput) EscalationPol
 			return nil
 		}
 		return v.EscalationPolicyTarget
+	}).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsPtrOutput) FunctionalityTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskPageRootlyOnCallRespondersTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.FunctionalityTarget
 	}).(pulumi.StringMapOutput)
 }
 
@@ -29296,7 +37401,7 @@ type WorkflowTaskPublishIncidentTaskParams struct {
 	PublicTitle       string `pulumi:"publicTitle"`
 	// For Statuspage.io integrated pages auto publishes a tweet for your update. Value must be one of true or false
 	ShouldTweet *bool `pulumi:"shouldTweet"`
-	// Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `verifying`, `completed`.
+	// Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `completed`.
 	Status       string `pulumi:"status"`
 	StatusPageId string `pulumi:"statusPageId"`
 	// Map must contain two fields, `id` and `name`.
@@ -29327,7 +37432,7 @@ type WorkflowTaskPublishIncidentTaskParamsArgs struct {
 	PublicTitle       pulumi.StringInput  `pulumi:"publicTitle"`
 	// For Statuspage.io integrated pages auto publishes a tweet for your update. Value must be one of true or false
 	ShouldTweet pulumi.BoolPtrInput `pulumi:"shouldTweet"`
-	// Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `verifying`, `completed`.
+	// Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `completed`.
 	Status       pulumi.StringInput `pulumi:"status"`
 	StatusPageId pulumi.StringInput `pulumi:"statusPageId"`
 	// Map must contain two fields, `id` and `name`.
@@ -29441,7 +37546,7 @@ func (o WorkflowTaskPublishIncidentTaskParamsOutput) ShouldTweet() pulumi.BoolPt
 	return o.ApplyT(func(v WorkflowTaskPublishIncidentTaskParams) *bool { return v.ShouldTweet }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `verifying`, `completed`.
+// Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `completed`.
 func (o WorkflowTaskPublishIncidentTaskParamsOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTaskPublishIncidentTaskParams) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -29542,7 +37647,7 @@ func (o WorkflowTaskPublishIncidentTaskParamsPtrOutput) ShouldTweet() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `verifying`, `completed`.
+// Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `completed`.
 func (o WorkflowTaskPublishIncidentTaskParamsPtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskPublishIncidentTaskParams) *string {
 		if v == nil {
@@ -31466,6 +39571,275 @@ func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsPtrOutput) TaskType() pulu
 		}
 		return v.TaskType
 	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams struct {
+	Chats    []WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat `pulumi:"chats"`
+	TaskType *string                                                   `pulumi:"taskType"`
+	// The message text
+	Text string `pulumi:"text"`
+}
+
+// WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsInput is an input type that accepts WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs and WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsInput` via:
+//
+//	WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs{...}
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput
+	ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutputWithContext(context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput
+}
+
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs struct {
+	Chats    WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayInput `pulumi:"chats"`
+	TaskType pulumi.StringPtrInput                                             `pulumi:"taskType"`
+	// The message text
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+func (WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput {
+	return i.ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput)
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput).ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrInput is an input type that accepts WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs, WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtr and WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput
+	ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput
+}
+
+type workflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrType WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs
+
+func WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtr(v *WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrInput {
+	return (*workflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrType) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrType) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput)
+}
+
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput {
+	return o.ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams) *WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams {
+		return &v
+	}).(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput)
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput) Chats() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams) []WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat {
+		return v.Chats
+	}).(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput)
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// The message text
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput) Elem() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams
+		return ret
+	}).(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput)
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput) Chats() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams) []WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat {
+		if v == nil {
+			return nil
+		}
+		return v.Chats
+	}).(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput)
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The message text
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatInput is an input type that accepts WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArgs and WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatInput` via:
+//
+//	WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArgs{...}
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput
+	ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutputWithContext(context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput
+}
+
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat)(nil)).Elem()
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArgs) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput {
+	return i.ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArgs) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput)
+}
+
+// WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayInput is an input type that accepts WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArray and WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayInput` via:
+//
+//	WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArray{ WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArgs{...} }
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput
+	ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutputWithContext(context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput
+}
+
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArray []WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatInput
+
+func (WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat)(nil)).Elem()
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArray) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput {
+	return i.ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArray) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput)
+}
+
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput() WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput) ToWorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput) Index(i pulumi.IntInput) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat {
+		return vs[0].([]WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChat)[vs[1].(int)]
+	}).(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput)
 }
 
 type WorkflowTaskSendMicrosoftTeamsMessageTaskParams struct {
@@ -36855,14 +45229,725 @@ func (o WorkflowTaskUpdateCodaPageTaskParamsPtrOutput) Title() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkflowTaskUpdateConfluencePageTaskParams struct {
+	// The Confluence page content
+	Content *string `pulumi:"content"`
+	// The Confluence page ID
+	FileId string `pulumi:"fileId"`
+	// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
+	Integration map[string]string `pulumi:"integration"`
+	// Retrospective template to use when updating page, if desired
+	PostMortemTemplateId *string `pulumi:"postMortemTemplateId"`
+	TaskType             *string `pulumi:"taskType"`
+	// Map must contain two fields, `id` and `name`. The Confluence template to use
+	Template map[string]string `pulumi:"template"`
+	// The Confluence page title
+	Title *string `pulumi:"title"`
+}
+
+// WorkflowTaskUpdateConfluencePageTaskParamsInput is an input type that accepts WorkflowTaskUpdateConfluencePageTaskParamsArgs and WorkflowTaskUpdateConfluencePageTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateConfluencePageTaskParamsInput` via:
+//
+//	WorkflowTaskUpdateConfluencePageTaskParamsArgs{...}
+type WorkflowTaskUpdateConfluencePageTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateConfluencePageTaskParamsOutput() WorkflowTaskUpdateConfluencePageTaskParamsOutput
+	ToWorkflowTaskUpdateConfluencePageTaskParamsOutputWithContext(context.Context) WorkflowTaskUpdateConfluencePageTaskParamsOutput
+}
+
+type WorkflowTaskUpdateConfluencePageTaskParamsArgs struct {
+	// The Confluence page content
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The Confluence page ID
+	FileId pulumi.StringInput `pulumi:"fileId"`
+	// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
+	Integration pulumi.StringMapInput `pulumi:"integration"`
+	// Retrospective template to use when updating page, if desired
+	PostMortemTemplateId pulumi.StringPtrInput `pulumi:"postMortemTemplateId"`
+	TaskType             pulumi.StringPtrInput `pulumi:"taskType"`
+	// Map must contain two fields, `id` and `name`. The Confluence template to use
+	Template pulumi.StringMapInput `pulumi:"template"`
+	// The Confluence page title
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (WorkflowTaskUpdateConfluencePageTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateConfluencePageTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskUpdateConfluencePageTaskParamsArgs) ToWorkflowTaskUpdateConfluencePageTaskParamsOutput() WorkflowTaskUpdateConfluencePageTaskParamsOutput {
+	return i.ToWorkflowTaskUpdateConfluencePageTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateConfluencePageTaskParamsArgs) ToWorkflowTaskUpdateConfluencePageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateConfluencePageTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateConfluencePageTaskParamsOutput)
+}
+
+func (i WorkflowTaskUpdateConfluencePageTaskParamsArgs) ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutput() WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateConfluencePageTaskParamsArgs) ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateConfluencePageTaskParamsOutput).ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskUpdateConfluencePageTaskParamsPtrInput is an input type that accepts WorkflowTaskUpdateConfluencePageTaskParamsArgs, WorkflowTaskUpdateConfluencePageTaskParamsPtr and WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateConfluencePageTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskUpdateConfluencePageTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskUpdateConfluencePageTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutput() WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput
+	ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput
+}
+
+type workflowTaskUpdateConfluencePageTaskParamsPtrType WorkflowTaskUpdateConfluencePageTaskParamsArgs
+
+func WorkflowTaskUpdateConfluencePageTaskParamsPtr(v *WorkflowTaskUpdateConfluencePageTaskParamsArgs) WorkflowTaskUpdateConfluencePageTaskParamsPtrInput {
+	return (*workflowTaskUpdateConfluencePageTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskUpdateConfluencePageTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateConfluencePageTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskUpdateConfluencePageTaskParamsPtrType) ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutput() WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskUpdateConfluencePageTaskParamsPtrType) ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput)
+}
+
+type WorkflowTaskUpdateConfluencePageTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateConfluencePageTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateConfluencePageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) ToWorkflowTaskUpdateConfluencePageTaskParamsOutput() WorkflowTaskUpdateConfluencePageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) ToWorkflowTaskUpdateConfluencePageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateConfluencePageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutput() WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput {
+	return o.ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskUpdateConfluencePageTaskParams) *WorkflowTaskUpdateConfluencePageTaskParams {
+		return &v
+	}).(WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput)
+}
+
+// The Confluence page content
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateConfluencePageTaskParams) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// The Confluence page ID
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) FileId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateConfluencePageTaskParams) string { return v.FileId }).(pulumi.StringOutput)
+}
+
+// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) Integration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateConfluencePageTaskParams) map[string]string { return v.Integration }).(pulumi.StringMapOutput)
+}
+
+// Retrospective template to use when updating page, if desired
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) PostMortemTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateConfluencePageTaskParams) *string { return v.PostMortemTemplateId }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateConfluencePageTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The Confluence template to use
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) Template() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateConfluencePageTaskParams) map[string]string { return v.Template }).(pulumi.StringMapOutput)
+}
+
+// The Confluence page title
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateConfluencePageTaskParams) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateConfluencePageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutput() WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) ToWorkflowTaskUpdateConfluencePageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) Elem() WorkflowTaskUpdateConfluencePageTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateConfluencePageTaskParams) WorkflowTaskUpdateConfluencePageTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskUpdateConfluencePageTaskParams
+		return ret
+	}).(WorkflowTaskUpdateConfluencePageTaskParamsOutput)
+}
+
+// The Confluence page content
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateConfluencePageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Confluence page ID
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateConfluencePageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) Integration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateConfluencePageTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Integration
+	}).(pulumi.StringMapOutput)
+}
+
+// Retrospective template to use when updating page, if desired
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) PostMortemTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateConfluencePageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostMortemTemplateId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateConfluencePageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The Confluence template to use
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) Template() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateConfluencePageTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Template
+	}).(pulumi.StringMapOutput)
+}
+
+// The Confluence page title
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateConfluencePageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateDatadogNotebookTaskParams struct {
+	// The Datadog notebook content
+	Content *string `pulumi:"content"`
+	// The Datadog notebook ID
+	FileId string `pulumi:"fileId"`
+	// The notebook type. Value must be one of `postmortem`, `runbook`, `investigation`, `documentation`, `report`.
+	Kind *string `pulumi:"kind"`
+	// Retrospective template to use when updating notebook, if desired
+	PostMortemTemplateId *string `pulumi:"postMortemTemplateId"`
+	TaskType             *string `pulumi:"taskType"`
+	// Map must contain two fields, `id` and `name`. The Datadog notebook template to use
+	Template map[string]string `pulumi:"template"`
+	// The Datadog notebook title
+	Title *string `pulumi:"title"`
+}
+
+// WorkflowTaskUpdateDatadogNotebookTaskParamsInput is an input type that accepts WorkflowTaskUpdateDatadogNotebookTaskParamsArgs and WorkflowTaskUpdateDatadogNotebookTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateDatadogNotebookTaskParamsInput` via:
+//
+//	WorkflowTaskUpdateDatadogNotebookTaskParamsArgs{...}
+type WorkflowTaskUpdateDatadogNotebookTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateDatadogNotebookTaskParamsOutput() WorkflowTaskUpdateDatadogNotebookTaskParamsOutput
+	ToWorkflowTaskUpdateDatadogNotebookTaskParamsOutputWithContext(context.Context) WorkflowTaskUpdateDatadogNotebookTaskParamsOutput
+}
+
+type WorkflowTaskUpdateDatadogNotebookTaskParamsArgs struct {
+	// The Datadog notebook content
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The Datadog notebook ID
+	FileId pulumi.StringInput `pulumi:"fileId"`
+	// The notebook type. Value must be one of `postmortem`, `runbook`, `investigation`, `documentation`, `report`.
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Retrospective template to use when updating notebook, if desired
+	PostMortemTemplateId pulumi.StringPtrInput `pulumi:"postMortemTemplateId"`
+	TaskType             pulumi.StringPtrInput `pulumi:"taskType"`
+	// Map must contain two fields, `id` and `name`. The Datadog notebook template to use
+	Template pulumi.StringMapInput `pulumi:"template"`
+	// The Datadog notebook title
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (WorkflowTaskUpdateDatadogNotebookTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateDatadogNotebookTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskUpdateDatadogNotebookTaskParamsArgs) ToWorkflowTaskUpdateDatadogNotebookTaskParamsOutput() WorkflowTaskUpdateDatadogNotebookTaskParamsOutput {
+	return i.ToWorkflowTaskUpdateDatadogNotebookTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateDatadogNotebookTaskParamsArgs) ToWorkflowTaskUpdateDatadogNotebookTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateDatadogNotebookTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateDatadogNotebookTaskParamsOutput)
+}
+
+func (i WorkflowTaskUpdateDatadogNotebookTaskParamsArgs) ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput() WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateDatadogNotebookTaskParamsArgs) ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateDatadogNotebookTaskParamsOutput).ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskUpdateDatadogNotebookTaskParamsPtrInput is an input type that accepts WorkflowTaskUpdateDatadogNotebookTaskParamsArgs, WorkflowTaskUpdateDatadogNotebookTaskParamsPtr and WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateDatadogNotebookTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskUpdateDatadogNotebookTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskUpdateDatadogNotebookTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput() WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput
+	ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput
+}
+
+type workflowTaskUpdateDatadogNotebookTaskParamsPtrType WorkflowTaskUpdateDatadogNotebookTaskParamsArgs
+
+func WorkflowTaskUpdateDatadogNotebookTaskParamsPtr(v *WorkflowTaskUpdateDatadogNotebookTaskParamsArgs) WorkflowTaskUpdateDatadogNotebookTaskParamsPtrInput {
+	return (*workflowTaskUpdateDatadogNotebookTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskUpdateDatadogNotebookTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateDatadogNotebookTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskUpdateDatadogNotebookTaskParamsPtrType) ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput() WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskUpdateDatadogNotebookTaskParamsPtrType) ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput)
+}
+
+type WorkflowTaskUpdateDatadogNotebookTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateDatadogNotebookTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) ToWorkflowTaskUpdateDatadogNotebookTaskParamsOutput() WorkflowTaskUpdateDatadogNotebookTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) ToWorkflowTaskUpdateDatadogNotebookTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateDatadogNotebookTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput() WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput {
+	return o.ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskUpdateDatadogNotebookTaskParams) *WorkflowTaskUpdateDatadogNotebookTaskParams {
+		return &v
+	}).(WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput)
+}
+
+// The Datadog notebook content
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDatadogNotebookTaskParams) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// The Datadog notebook ID
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) FileId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDatadogNotebookTaskParams) string { return v.FileId }).(pulumi.StringOutput)
+}
+
+// The notebook type. Value must be one of `postmortem`, `runbook`, `investigation`, `documentation`, `report`.
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDatadogNotebookTaskParams) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Retrospective template to use when updating notebook, if desired
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) PostMortemTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDatadogNotebookTaskParams) *string { return v.PostMortemTemplateId }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDatadogNotebookTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The Datadog notebook template to use
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) Template() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDatadogNotebookTaskParams) map[string]string { return v.Template }).(pulumi.StringMapOutput)
+}
+
+// The Datadog notebook title
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDatadogNotebookTaskParams) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateDatadogNotebookTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput) ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput() WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput) ToWorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput) Elem() WorkflowTaskUpdateDatadogNotebookTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDatadogNotebookTaskParams) WorkflowTaskUpdateDatadogNotebookTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskUpdateDatadogNotebookTaskParams
+		return ret
+	}).(WorkflowTaskUpdateDatadogNotebookTaskParamsOutput)
+}
+
+// The Datadog notebook content
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDatadogNotebookTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Datadog notebook ID
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDatadogNotebookTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The notebook type. Value must be one of `postmortem`, `runbook`, `investigation`, `documentation`, `report`.
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDatadogNotebookTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Retrospective template to use when updating notebook, if desired
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput) PostMortemTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDatadogNotebookTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostMortemTemplateId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDatadogNotebookTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The Datadog notebook template to use
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput) Template() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDatadogNotebookTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Template
+	}).(pulumi.StringMapOutput)
+}
+
+// The Datadog notebook title
+func (o WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDatadogNotebookTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateDropboxPaperPageTaskParams struct {
+	// The Dropbox Paper document content
+	Content *string `pulumi:"content"`
+	// The Dropbox Paper document ID
+	FileId string `pulumi:"fileId"`
+	// Retrospective template to use when updating document, if desired
+	PostMortemTemplateId *string `pulumi:"postMortemTemplateId"`
+	TaskType             *string `pulumi:"taskType"`
+	// The Dropbox Paper document title
+	Title *string `pulumi:"title"`
+}
+
+// WorkflowTaskUpdateDropboxPaperPageTaskParamsInput is an input type that accepts WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs and WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateDropboxPaperPageTaskParamsInput` via:
+//
+//	WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs{...}
+type WorkflowTaskUpdateDropboxPaperPageTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateDropboxPaperPageTaskParamsOutput() WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput
+	ToWorkflowTaskUpdateDropboxPaperPageTaskParamsOutputWithContext(context.Context) WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput
+}
+
+type WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs struct {
+	// The Dropbox Paper document content
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The Dropbox Paper document ID
+	FileId pulumi.StringInput `pulumi:"fileId"`
+	// Retrospective template to use when updating document, if desired
+	PostMortemTemplateId pulumi.StringPtrInput `pulumi:"postMortemTemplateId"`
+	TaskType             pulumi.StringPtrInput `pulumi:"taskType"`
+	// The Dropbox Paper document title
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateDropboxPaperPageTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsOutput() WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput {
+	return i.ToWorkflowTaskUpdateDropboxPaperPageTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput)
+}
+
+func (i WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput() WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput).ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrInput is an input type that accepts WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs, WorkflowTaskUpdateDropboxPaperPageTaskParamsPtr and WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput() WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput
+	ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput
+}
+
+type workflowTaskUpdateDropboxPaperPageTaskParamsPtrType WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs
+
+func WorkflowTaskUpdateDropboxPaperPageTaskParamsPtr(v *WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs) WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrInput {
+	return (*workflowTaskUpdateDropboxPaperPageTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskUpdateDropboxPaperPageTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateDropboxPaperPageTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskUpdateDropboxPaperPageTaskParamsPtrType) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput() WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskUpdateDropboxPaperPageTaskParamsPtrType) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput)
+}
+
+type WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateDropboxPaperPageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsOutput() WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput() WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput {
+	return o.ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskUpdateDropboxPaperPageTaskParams) *WorkflowTaskUpdateDropboxPaperPageTaskParams {
+		return &v
+	}).(WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput)
+}
+
+// The Dropbox Paper document content
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDropboxPaperPageTaskParams) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// The Dropbox Paper document ID
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput) FileId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDropboxPaperPageTaskParams) string { return v.FileId }).(pulumi.StringOutput)
+}
+
+// Retrospective template to use when updating document, if desired
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput) PostMortemTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDropboxPaperPageTaskParams) *string { return v.PostMortemTemplateId }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDropboxPaperPageTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// The Dropbox Paper document title
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateDropboxPaperPageTaskParams) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateDropboxPaperPageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput() WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput) ToWorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput) Elem() WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDropboxPaperPageTaskParams) WorkflowTaskUpdateDropboxPaperPageTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskUpdateDropboxPaperPageTaskParams
+		return ret
+	}).(WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput)
+}
+
+// The Dropbox Paper document content
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDropboxPaperPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Dropbox Paper document ID
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDropboxPaperPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Retrospective template to use when updating document, if desired
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput) PostMortemTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDropboxPaperPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostMortemTemplateId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDropboxPaperPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Dropbox Paper document title
+func (o WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateDropboxPaperPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskUpdateGithubIssueTaskParams struct {
 	// The issue body
 	Body *string `pulumi:"body"`
 	// Map must contain two fields, `id` and `name`.
 	Completion map[string]string `pulumi:"completion"`
 	// The issue id
-	IssueId  string  `pulumi:"issueId"`
-	TaskType *string `pulumi:"taskType"`
+	IssueId string `pulumi:"issueId"`
+	// Map must contain two fields, `id` and `name`. The issue type
+	IssueType map[string]string `pulumi:"issueType"`
+	// The issue labels
+	Labels []WorkflowTaskUpdateGithubIssueTaskParamsLabel `pulumi:"labels"`
+	// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+	LabelsMode *string `pulumi:"labelsMode"`
+	// Map must contain two fields, `id` and `name`. The repository (used for loading labels and issue types)
+	Repository map[string]string `pulumi:"repository"`
+	TaskType   *string           `pulumi:"taskType"`
 	// The issue title
 	Title *string `pulumi:"title"`
 }
@@ -36884,8 +45969,16 @@ type WorkflowTaskUpdateGithubIssueTaskParamsArgs struct {
 	// Map must contain two fields, `id` and `name`.
 	Completion pulumi.StringMapInput `pulumi:"completion"`
 	// The issue id
-	IssueId  pulumi.StringInput    `pulumi:"issueId"`
-	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
+	IssueId pulumi.StringInput `pulumi:"issueId"`
+	// Map must contain two fields, `id` and `name`. The issue type
+	IssueType pulumi.StringMapInput `pulumi:"issueType"`
+	// The issue labels
+	Labels WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayInput `pulumi:"labels"`
+	// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+	LabelsMode pulumi.StringPtrInput `pulumi:"labelsMode"`
+	// Map must contain two fields, `id` and `name`. The repository (used for loading labels and issue types)
+	Repository pulumi.StringMapInput `pulumi:"repository"`
+	TaskType   pulumi.StringPtrInput `pulumi:"taskType"`
 	// The issue title
 	Title pulumi.StringPtrInput `pulumi:"title"`
 }
@@ -36982,6 +46075,28 @@ func (o WorkflowTaskUpdateGithubIssueTaskParamsOutput) IssueId() pulumi.StringOu
 	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParams) string { return v.IssueId }).(pulumi.StringOutput)
 }
 
+// Map must contain two fields, `id` and `name`. The issue type
+func (o WorkflowTaskUpdateGithubIssueTaskParamsOutput) IssueType() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParams) map[string]string { return v.IssueType }).(pulumi.StringMapOutput)
+}
+
+// The issue labels
+func (o WorkflowTaskUpdateGithubIssueTaskParamsOutput) Labels() WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParams) []WorkflowTaskUpdateGithubIssueTaskParamsLabel {
+		return v.Labels
+	}).(WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput)
+}
+
+// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+func (o WorkflowTaskUpdateGithubIssueTaskParamsOutput) LabelsMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParams) *string { return v.LabelsMode }).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The repository (used for loading labels and issue types)
+func (o WorkflowTaskUpdateGithubIssueTaskParamsOutput) Repository() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParams) map[string]string { return v.Repository }).(pulumi.StringMapOutput)
+}
+
 func (o WorkflowTaskUpdateGithubIssueTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
@@ -37045,6 +46160,46 @@ func (o WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput) IssueId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Map must contain two fields, `id` and `name`. The issue type
+func (o WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput) IssueType() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGithubIssueTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.IssueType
+	}).(pulumi.StringMapOutput)
+}
+
+// The issue labels
+func (o WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput) Labels() WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGithubIssueTaskParams) []WorkflowTaskUpdateGithubIssueTaskParamsLabel {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput)
+}
+
+// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+func (o WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput) LabelsMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGithubIssueTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LabelsMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. The repository (used for loading labels and issue types)
+func (o WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput) Repository() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGithubIssueTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Repository
+	}).(pulumi.StringMapOutput)
+}
+
 func (o WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskUpdateGithubIssueTaskParams) *string {
 		if v == nil {
@@ -37062,6 +46217,106 @@ func (o WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput) Title() pulumi.StringP
 		}
 		return v.Title
 	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateGithubIssueTaskParamsLabel struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskUpdateGithubIssueTaskParamsLabelInput is an input type that accepts WorkflowTaskUpdateGithubIssueTaskParamsLabelArgs and WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateGithubIssueTaskParamsLabelInput` via:
+//
+//	WorkflowTaskUpdateGithubIssueTaskParamsLabelArgs{...}
+type WorkflowTaskUpdateGithubIssueTaskParamsLabelInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateGithubIssueTaskParamsLabelOutput() WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput
+	ToWorkflowTaskUpdateGithubIssueTaskParamsLabelOutputWithContext(context.Context) WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput
+}
+
+type WorkflowTaskUpdateGithubIssueTaskParamsLabelArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskUpdateGithubIssueTaskParamsLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateGithubIssueTaskParamsLabel)(nil)).Elem()
+}
+
+func (i WorkflowTaskUpdateGithubIssueTaskParamsLabelArgs) ToWorkflowTaskUpdateGithubIssueTaskParamsLabelOutput() WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput {
+	return i.ToWorkflowTaskUpdateGithubIssueTaskParamsLabelOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateGithubIssueTaskParamsLabelArgs) ToWorkflowTaskUpdateGithubIssueTaskParamsLabelOutputWithContext(ctx context.Context) WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput)
+}
+
+// WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayInput is an input type that accepts WorkflowTaskUpdateGithubIssueTaskParamsLabelArray and WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayInput` via:
+//
+//	WorkflowTaskUpdateGithubIssueTaskParamsLabelArray{ WorkflowTaskUpdateGithubIssueTaskParamsLabelArgs{...} }
+type WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput() WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput
+	ToWorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutputWithContext(context.Context) WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput
+}
+
+type WorkflowTaskUpdateGithubIssueTaskParamsLabelArray []WorkflowTaskUpdateGithubIssueTaskParamsLabelInput
+
+func (WorkflowTaskUpdateGithubIssueTaskParamsLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskUpdateGithubIssueTaskParamsLabel)(nil)).Elem()
+}
+
+func (i WorkflowTaskUpdateGithubIssueTaskParamsLabelArray) ToWorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput() WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput {
+	return i.ToWorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateGithubIssueTaskParamsLabelArray) ToWorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutputWithContext(ctx context.Context) WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput)
+}
+
+type WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateGithubIssueTaskParamsLabel)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput) ToWorkflowTaskUpdateGithubIssueTaskParamsLabelOutput() WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput) ToWorkflowTaskUpdateGithubIssueTaskParamsLabelOutputWithContext(ctx context.Context) WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParamsLabel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParamsLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskUpdateGithubIssueTaskParamsLabel)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput) ToWorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput() WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput) ToWorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutputWithContext(ctx context.Context) WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput) Index(i pulumi.IntInput) WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskUpdateGithubIssueTaskParamsLabel {
+		return vs[0].([]WorkflowTaskUpdateGithubIssueTaskParamsLabel)[vs[1].(int)]
+	}).(WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput)
 }
 
 type WorkflowTaskUpdateGitlabIssueTaskParams struct {
@@ -38450,19 +47705,22 @@ type WorkflowTaskUpdateIncidentTaskParams struct {
 	AcknowledgedAt *string `pulumi:"acknowledgedAt"`
 	// Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `motionTaskId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `gitlabIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
 	AttributeToQueryBy *string `pulumi:"attributeToQueryBy"`
-	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
 	CustomFieldsMapping *string  `pulumi:"customFieldsMapping"`
 	DetectedAt          *string  `pulumi:"detectedAt"`
 	EnvironmentIds      []string `pulumi:"environmentIds"`
-	FunctionalityIds    []string `pulumi:"functionalityIds"`
-	GroupIds            []string `pulumi:"groupIds"`
+	// Array of functionality UUIDs
+	FunctionalityIds []string `pulumi:"functionalityIds"`
+	// Array of group/team UUIDs
+	GroupIds []string `pulumi:"groupIds"`
 	// The incident id to update or id of any attribute on the incident
 	IncidentId      string   `pulumi:"incidentId"`
 	IncidentTypeIds []string `pulumi:"incidentTypeIds"`
 	MitigatedAt     *string  `pulumi:"mitigatedAt"`
 	// Value must be one of true or false
-	Private    *bool    `pulumi:"private"`
-	ResolvedAt *string  `pulumi:"resolvedAt"`
+	Private    *bool   `pulumi:"private"`
+	ResolvedAt *string `pulumi:"resolvedAt"`
+	// Array of service UUIDs
 	ServiceIds []string `pulumi:"serviceIds"`
 	SeverityId *string  `pulumi:"severityId"`
 	StartedAt  *string  `pulumi:"startedAt"`
@@ -38489,19 +47747,22 @@ type WorkflowTaskUpdateIncidentTaskParamsArgs struct {
 	AcknowledgedAt pulumi.StringPtrInput `pulumi:"acknowledgedAt"`
 	// Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `motionTaskId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `gitlabIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
 	AttributeToQueryBy pulumi.StringPtrInput `pulumi:"attributeToQueryBy"`
-	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
 	CustomFieldsMapping pulumi.StringPtrInput   `pulumi:"customFieldsMapping"`
 	DetectedAt          pulumi.StringPtrInput   `pulumi:"detectedAt"`
 	EnvironmentIds      pulumi.StringArrayInput `pulumi:"environmentIds"`
-	FunctionalityIds    pulumi.StringArrayInput `pulumi:"functionalityIds"`
-	GroupIds            pulumi.StringArrayInput `pulumi:"groupIds"`
+	// Array of functionality UUIDs
+	FunctionalityIds pulumi.StringArrayInput `pulumi:"functionalityIds"`
+	// Array of group/team UUIDs
+	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
 	// The incident id to update or id of any attribute on the incident
 	IncidentId      pulumi.StringInput      `pulumi:"incidentId"`
 	IncidentTypeIds pulumi.StringArrayInput `pulumi:"incidentTypeIds"`
 	MitigatedAt     pulumi.StringPtrInput   `pulumi:"mitigatedAt"`
 	// Value must be one of true or false
-	Private    pulumi.BoolPtrInput     `pulumi:"private"`
-	ResolvedAt pulumi.StringPtrInput   `pulumi:"resolvedAt"`
+	Private    pulumi.BoolPtrInput   `pulumi:"private"`
+	ResolvedAt pulumi.StringPtrInput `pulumi:"resolvedAt"`
+	// Array of service UUIDs
 	ServiceIds pulumi.StringArrayInput `pulumi:"serviceIds"`
 	SeverityId pulumi.StringPtrInput   `pulumi:"severityId"`
 	StartedAt  pulumi.StringPtrInput   `pulumi:"startedAt"`
@@ -38599,7 +47860,7 @@ func (o WorkflowTaskUpdateIncidentTaskParamsOutput) AttributeToQueryBy() pulumi.
 	return o.ApplyT(func(v WorkflowTaskUpdateIncidentTaskParams) *string { return v.AttributeToQueryBy }).(pulumi.StringPtrOutput)
 }
 
-// Custom field mappings. Can contain liquid markup and need to be valid JSON
+// Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
 func (o WorkflowTaskUpdateIncidentTaskParamsOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateIncidentTaskParams) *string { return v.CustomFieldsMapping }).(pulumi.StringPtrOutput)
 }
@@ -38612,10 +47873,12 @@ func (o WorkflowTaskUpdateIncidentTaskParamsOutput) EnvironmentIds() pulumi.Stri
 	return o.ApplyT(func(v WorkflowTaskUpdateIncidentTaskParams) []string { return v.EnvironmentIds }).(pulumi.StringArrayOutput)
 }
 
+// Array of functionality UUIDs
 func (o WorkflowTaskUpdateIncidentTaskParamsOutput) FunctionalityIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateIncidentTaskParams) []string { return v.FunctionalityIds }).(pulumi.StringArrayOutput)
 }
 
+// Array of group/team UUIDs
 func (o WorkflowTaskUpdateIncidentTaskParamsOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateIncidentTaskParams) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
@@ -38642,6 +47905,7 @@ func (o WorkflowTaskUpdateIncidentTaskParamsOutput) ResolvedAt() pulumi.StringPt
 	return o.ApplyT(func(v WorkflowTaskUpdateIncidentTaskParams) *string { return v.ResolvedAt }).(pulumi.StringPtrOutput)
 }
 
+// Array of service UUIDs
 func (o WorkflowTaskUpdateIncidentTaskParamsOutput) ServiceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateIncidentTaskParams) []string { return v.ServiceIds }).(pulumi.StringArrayOutput)
 }
@@ -38715,7 +47979,7 @@ func (o WorkflowTaskUpdateIncidentTaskParamsPtrOutput) AttributeToQueryBy() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Custom field mappings. Can contain liquid markup and need to be valid JSON
+// Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
 func (o WorkflowTaskUpdateIncidentTaskParamsPtrOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskUpdateIncidentTaskParams) *string {
 		if v == nil {
@@ -38743,6 +48007,7 @@ func (o WorkflowTaskUpdateIncidentTaskParamsPtrOutput) EnvironmentIds() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
+// Array of functionality UUIDs
 func (o WorkflowTaskUpdateIncidentTaskParamsPtrOutput) FunctionalityIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTaskUpdateIncidentTaskParams) []string {
 		if v == nil {
@@ -38752,6 +48017,7 @@ func (o WorkflowTaskUpdateIncidentTaskParamsPtrOutput) FunctionalityIds() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
+// Array of group/team UUIDs
 func (o WorkflowTaskUpdateIncidentTaskParamsPtrOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTaskUpdateIncidentTaskParams) []string {
 		if v == nil {
@@ -38808,6 +48074,7 @@ func (o WorkflowTaskUpdateIncidentTaskParamsPtrOutput) ResolvedAt() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Array of service UUIDs
 func (o WorkflowTaskUpdateIncidentTaskParamsPtrOutput) ServiceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowTaskUpdateIncidentTaskParams) []string {
 		if v == nil {
@@ -38882,6 +48149,8 @@ type WorkflowTaskUpdateJiraIssueTaskParams struct {
 	Description *string `pulumi:"description"`
 	// The due date
 	DueDate *string `pulumi:"dueDate"`
+	// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+	Integration map[string]string `pulumi:"integration"`
 	// The issue id
 	IssueId string `pulumi:"issueId"`
 	// The issue labels
@@ -38921,6 +48190,8 @@ type WorkflowTaskUpdateJiraIssueTaskParamsArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The due date
 	DueDate pulumi.StringPtrInput `pulumi:"dueDate"`
+	// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+	Integration pulumi.StringMapInput `pulumi:"integration"`
 	// The issue id
 	IssueId pulumi.StringInput `pulumi:"issueId"`
 	// The issue labels
@@ -39037,6 +48308,11 @@ func (o WorkflowTaskUpdateJiraIssueTaskParamsOutput) DueDate() pulumi.StringPtrO
 	return o.ApplyT(func(v WorkflowTaskUpdateJiraIssueTaskParams) *string { return v.DueDate }).(pulumi.StringPtrOutput)
 }
 
+// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+func (o WorkflowTaskUpdateJiraIssueTaskParamsOutput) Integration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateJiraIssueTaskParams) map[string]string { return v.Integration }).(pulumi.StringMapOutput)
+}
+
 // The issue id
 func (o WorkflowTaskUpdateJiraIssueTaskParamsOutput) IssueId() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateJiraIssueTaskParams) string { return v.IssueId }).(pulumi.StringOutput)
@@ -39143,6 +48419,16 @@ func (o WorkflowTaskUpdateJiraIssueTaskParamsPtrOutput) DueDate() pulumi.StringP
 		}
 		return v.DueDate
 	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+func (o WorkflowTaskUpdateJiraIssueTaskParamsPtrOutput) Integration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateJiraIssueTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Integration
+	}).(pulumi.StringMapOutput)
 }
 
 // The issue id
@@ -39880,6 +49166,8 @@ func (o WorkflowTaskUpdateMotionTaskTaskParamsPtrOutput) Title() pulumi.StringPt
 }
 
 type WorkflowTaskUpdateNotionPageTaskParams struct {
+	// Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+	Content *string `pulumi:"content"`
 	// The Notion page ID
 	FileId string `pulumi:"fileId"`
 	// Retrospective template to use when creating page task, if desired
@@ -39905,6 +49193,8 @@ type WorkflowTaskUpdateNotionPageTaskParamsInput interface {
 }
 
 type WorkflowTaskUpdateNotionPageTaskParamsArgs struct {
+	// Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The Notion page ID
 	FileId pulumi.StringInput `pulumi:"fileId"`
 	// Retrospective template to use when creating page task, if desired
@@ -39995,6 +49285,11 @@ func (o WorkflowTaskUpdateNotionPageTaskParamsOutput) ToWorkflowTaskUpdateNotion
 	}).(WorkflowTaskUpdateNotionPageTaskParamsPtrOutput)
 }
 
+// Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+func (o WorkflowTaskUpdateNotionPageTaskParamsOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateNotionPageTaskParams) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
 // The Notion page ID
 func (o WorkflowTaskUpdateNotionPageTaskParamsOutput) FileId() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateNotionPageTaskParams) string { return v.FileId }).(pulumi.StringOutput)
@@ -40046,6 +49341,16 @@ func (o WorkflowTaskUpdateNotionPageTaskParamsPtrOutput) Elem() WorkflowTaskUpda
 		var ret WorkflowTaskUpdateNotionPageTaskParams
 		return ret
 	}).(WorkflowTaskUpdateNotionPageTaskParamsOutput)
+}
+
+// Custom page content with liquid templating support. When provided, only this content will be rendered (no default sections)
+func (o WorkflowTaskUpdateNotionPageTaskParamsPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateNotionPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
 }
 
 // The Notion page ID
@@ -40342,7 +49647,7 @@ type WorkflowTaskUpdateOpsgenieIncidentTaskParams struct {
 	Message *string `pulumi:"message"`
 	// The Opsgenie incident ID, this can also be a Rootly incident variable
 	OpsgenieIncidentId string `pulumi:"opsgenieIncidentId"`
-	// Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+	// Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`, ``.
 	Priority *string `pulumi:"priority"`
 	// Value must be one of `resolve`, `open`, `close`, `auto`.
 	Status   *string `pulumi:"status"`
@@ -40367,7 +49672,7 @@ type WorkflowTaskUpdateOpsgenieIncidentTaskParamsArgs struct {
 	Message pulumi.StringPtrInput `pulumi:"message"`
 	// The Opsgenie incident ID, this can also be a Rootly incident variable
 	OpsgenieIncidentId pulumi.StringInput `pulumi:"opsgenieIncidentId"`
-	// Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+	// Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`, ``.
 	Priority pulumi.StringPtrInput `pulumi:"priority"`
 	// Value must be one of `resolve`, `open`, `close`, `auto`.
 	Status   pulumi.StringPtrInput `pulumi:"status"`
@@ -40466,7 +49771,7 @@ func (o WorkflowTaskUpdateOpsgenieIncidentTaskParamsOutput) OpsgenieIncidentId()
 	return o.ApplyT(func(v WorkflowTaskUpdateOpsgenieIncidentTaskParams) string { return v.OpsgenieIncidentId }).(pulumi.StringOutput)
 }
 
-// Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+// Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`, “.
 func (o WorkflowTaskUpdateOpsgenieIncidentTaskParamsOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateOpsgenieIncidentTaskParams) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
@@ -40534,7 +49839,7 @@ func (o WorkflowTaskUpdateOpsgenieIncidentTaskParamsPtrOutput) OpsgenieIncidentI
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+// Value must be one of `P1`, `P2`, `P3`, `P4`, `P5`, `auto`, “.
 func (o WorkflowTaskUpdateOpsgenieIncidentTaskParamsPtrOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskUpdateOpsgenieIncidentTaskParams) *string {
 		if v == nil {
@@ -41310,6 +50615,234 @@ func (o WorkflowTaskUpdatePagertreeAlertTaskParamsUserArrayOutput) Index(i pulum
 	}).(WorkflowTaskUpdatePagertreeAlertTaskParamsUserOutput)
 }
 
+type WorkflowTaskUpdateQuipPageTaskParams struct {
+	// The Quip page content
+	Content *string `pulumi:"content"`
+	// The Quip page ID
+	FileId string `pulumi:"fileId"`
+	// Retrospective template to use when updating page, if desired
+	PostMortemTemplateId *string `pulumi:"postMortemTemplateId"`
+	TaskType             *string `pulumi:"taskType"`
+	// The Quip file ID to use as a template
+	TemplateId *string `pulumi:"templateId"`
+	// The Quip page title
+	Title *string `pulumi:"title"`
+}
+
+// WorkflowTaskUpdateQuipPageTaskParamsInput is an input type that accepts WorkflowTaskUpdateQuipPageTaskParamsArgs and WorkflowTaskUpdateQuipPageTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateQuipPageTaskParamsInput` via:
+//
+//	WorkflowTaskUpdateQuipPageTaskParamsArgs{...}
+type WorkflowTaskUpdateQuipPageTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateQuipPageTaskParamsOutput() WorkflowTaskUpdateQuipPageTaskParamsOutput
+	ToWorkflowTaskUpdateQuipPageTaskParamsOutputWithContext(context.Context) WorkflowTaskUpdateQuipPageTaskParamsOutput
+}
+
+type WorkflowTaskUpdateQuipPageTaskParamsArgs struct {
+	// The Quip page content
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The Quip page ID
+	FileId pulumi.StringInput `pulumi:"fileId"`
+	// Retrospective template to use when updating page, if desired
+	PostMortemTemplateId pulumi.StringPtrInput `pulumi:"postMortemTemplateId"`
+	TaskType             pulumi.StringPtrInput `pulumi:"taskType"`
+	// The Quip file ID to use as a template
+	TemplateId pulumi.StringPtrInput `pulumi:"templateId"`
+	// The Quip page title
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (WorkflowTaskUpdateQuipPageTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateQuipPageTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskUpdateQuipPageTaskParamsArgs) ToWorkflowTaskUpdateQuipPageTaskParamsOutput() WorkflowTaskUpdateQuipPageTaskParamsOutput {
+	return i.ToWorkflowTaskUpdateQuipPageTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateQuipPageTaskParamsArgs) ToWorkflowTaskUpdateQuipPageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateQuipPageTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateQuipPageTaskParamsOutput)
+}
+
+func (i WorkflowTaskUpdateQuipPageTaskParamsArgs) ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutput() WorkflowTaskUpdateQuipPageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateQuipPageTaskParamsArgs) ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateQuipPageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateQuipPageTaskParamsOutput).ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskUpdateQuipPageTaskParamsPtrInput is an input type that accepts WorkflowTaskUpdateQuipPageTaskParamsArgs, WorkflowTaskUpdateQuipPageTaskParamsPtr and WorkflowTaskUpdateQuipPageTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateQuipPageTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskUpdateQuipPageTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskUpdateQuipPageTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutput() WorkflowTaskUpdateQuipPageTaskParamsPtrOutput
+	ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskUpdateQuipPageTaskParamsPtrOutput
+}
+
+type workflowTaskUpdateQuipPageTaskParamsPtrType WorkflowTaskUpdateQuipPageTaskParamsArgs
+
+func WorkflowTaskUpdateQuipPageTaskParamsPtr(v *WorkflowTaskUpdateQuipPageTaskParamsArgs) WorkflowTaskUpdateQuipPageTaskParamsPtrInput {
+	return (*workflowTaskUpdateQuipPageTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskUpdateQuipPageTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateQuipPageTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskUpdateQuipPageTaskParamsPtrType) ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutput() WorkflowTaskUpdateQuipPageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskUpdateQuipPageTaskParamsPtrType) ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateQuipPageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateQuipPageTaskParamsPtrOutput)
+}
+
+type WorkflowTaskUpdateQuipPageTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateQuipPageTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateQuipPageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateQuipPageTaskParamsOutput) ToWorkflowTaskUpdateQuipPageTaskParamsOutput() WorkflowTaskUpdateQuipPageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateQuipPageTaskParamsOutput) ToWorkflowTaskUpdateQuipPageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateQuipPageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateQuipPageTaskParamsOutput) ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutput() WorkflowTaskUpdateQuipPageTaskParamsPtrOutput {
+	return o.ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskUpdateQuipPageTaskParamsOutput) ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateQuipPageTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskUpdateQuipPageTaskParams) *WorkflowTaskUpdateQuipPageTaskParams {
+		return &v
+	}).(WorkflowTaskUpdateQuipPageTaskParamsPtrOutput)
+}
+
+// The Quip page content
+func (o WorkflowTaskUpdateQuipPageTaskParamsOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateQuipPageTaskParams) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// The Quip page ID
+func (o WorkflowTaskUpdateQuipPageTaskParamsOutput) FileId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateQuipPageTaskParams) string { return v.FileId }).(pulumi.StringOutput)
+}
+
+// Retrospective template to use when updating page, if desired
+func (o WorkflowTaskUpdateQuipPageTaskParamsOutput) PostMortemTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateQuipPageTaskParams) *string { return v.PostMortemTemplateId }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskUpdateQuipPageTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateQuipPageTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// The Quip file ID to use as a template
+func (o WorkflowTaskUpdateQuipPageTaskParamsOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateQuipPageTaskParams) *string { return v.TemplateId }).(pulumi.StringPtrOutput)
+}
+
+// The Quip page title
+func (o WorkflowTaskUpdateQuipPageTaskParamsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateQuipPageTaskParams) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateQuipPageTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateQuipPageTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateQuipPageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateQuipPageTaskParamsPtrOutput) ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutput() WorkflowTaskUpdateQuipPageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateQuipPageTaskParamsPtrOutput) ToWorkflowTaskUpdateQuipPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateQuipPageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateQuipPageTaskParamsPtrOutput) Elem() WorkflowTaskUpdateQuipPageTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateQuipPageTaskParams) WorkflowTaskUpdateQuipPageTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskUpdateQuipPageTaskParams
+		return ret
+	}).(WorkflowTaskUpdateQuipPageTaskParamsOutput)
+}
+
+// The Quip page content
+func (o WorkflowTaskUpdateQuipPageTaskParamsPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateQuipPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Quip page ID
+func (o WorkflowTaskUpdateQuipPageTaskParamsPtrOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateQuipPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Retrospective template to use when updating page, if desired
+func (o WorkflowTaskUpdateQuipPageTaskParamsPtrOutput) PostMortemTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateQuipPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostMortemTemplateId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskUpdateQuipPageTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateQuipPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Quip file ID to use as a template
+func (o WorkflowTaskUpdateQuipPageTaskParamsPtrOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateQuipPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Quip page title
+func (o WorkflowTaskUpdateQuipPageTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateQuipPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskUpdateServiceNowIncidentTaskParams struct {
 	// Map must contain two fields, `id` and `name`. The completion id and display name
 	Completion map[string]string `pulumi:"completion"`
@@ -41550,6 +51083,215 @@ func (o WorkflowTaskUpdateServiceNowIncidentTaskParamsPtrOutput) TaskType() pulu
 // The incident title
 func (o WorkflowTaskUpdateServiceNowIncidentTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskUpdateServiceNowIncidentTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateSharepointPageTaskParams struct {
+	// The SharePoint document content
+	Content *string `pulumi:"content"`
+	// The SharePoint file ID
+	FileId string `pulumi:"fileId"`
+	// Retrospective template to use when updating document, if desired
+	PostMortemTemplateId *string `pulumi:"postMortemTemplateId"`
+	TaskType             *string `pulumi:"taskType"`
+	// The SharePoint document title
+	Title *string `pulumi:"title"`
+}
+
+// WorkflowTaskUpdateSharepointPageTaskParamsInput is an input type that accepts WorkflowTaskUpdateSharepointPageTaskParamsArgs and WorkflowTaskUpdateSharepointPageTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateSharepointPageTaskParamsInput` via:
+//
+//	WorkflowTaskUpdateSharepointPageTaskParamsArgs{...}
+type WorkflowTaskUpdateSharepointPageTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateSharepointPageTaskParamsOutput() WorkflowTaskUpdateSharepointPageTaskParamsOutput
+	ToWorkflowTaskUpdateSharepointPageTaskParamsOutputWithContext(context.Context) WorkflowTaskUpdateSharepointPageTaskParamsOutput
+}
+
+type WorkflowTaskUpdateSharepointPageTaskParamsArgs struct {
+	// The SharePoint document content
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The SharePoint file ID
+	FileId pulumi.StringInput `pulumi:"fileId"`
+	// Retrospective template to use when updating document, if desired
+	PostMortemTemplateId pulumi.StringPtrInput `pulumi:"postMortemTemplateId"`
+	TaskType             pulumi.StringPtrInput `pulumi:"taskType"`
+	// The SharePoint document title
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (WorkflowTaskUpdateSharepointPageTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateSharepointPageTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskUpdateSharepointPageTaskParamsArgs) ToWorkflowTaskUpdateSharepointPageTaskParamsOutput() WorkflowTaskUpdateSharepointPageTaskParamsOutput {
+	return i.ToWorkflowTaskUpdateSharepointPageTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateSharepointPageTaskParamsArgs) ToWorkflowTaskUpdateSharepointPageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateSharepointPageTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSharepointPageTaskParamsOutput)
+}
+
+func (i WorkflowTaskUpdateSharepointPageTaskParamsArgs) ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutput() WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateSharepointPageTaskParamsArgs) ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSharepointPageTaskParamsOutput).ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskUpdateSharepointPageTaskParamsPtrInput is an input type that accepts WorkflowTaskUpdateSharepointPageTaskParamsArgs, WorkflowTaskUpdateSharepointPageTaskParamsPtr and WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateSharepointPageTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskUpdateSharepointPageTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskUpdateSharepointPageTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutput() WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput
+	ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput
+}
+
+type workflowTaskUpdateSharepointPageTaskParamsPtrType WorkflowTaskUpdateSharepointPageTaskParamsArgs
+
+func WorkflowTaskUpdateSharepointPageTaskParamsPtr(v *WorkflowTaskUpdateSharepointPageTaskParamsArgs) WorkflowTaskUpdateSharepointPageTaskParamsPtrInput {
+	return (*workflowTaskUpdateSharepointPageTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskUpdateSharepointPageTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateSharepointPageTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskUpdateSharepointPageTaskParamsPtrType) ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutput() WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskUpdateSharepointPageTaskParamsPtrType) ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput)
+}
+
+type WorkflowTaskUpdateSharepointPageTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateSharepointPageTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateSharepointPageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateSharepointPageTaskParamsOutput) ToWorkflowTaskUpdateSharepointPageTaskParamsOutput() WorkflowTaskUpdateSharepointPageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSharepointPageTaskParamsOutput) ToWorkflowTaskUpdateSharepointPageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateSharepointPageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSharepointPageTaskParamsOutput) ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutput() WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput {
+	return o.ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskUpdateSharepointPageTaskParamsOutput) ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskUpdateSharepointPageTaskParams) *WorkflowTaskUpdateSharepointPageTaskParams {
+		return &v
+	}).(WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput)
+}
+
+// The SharePoint document content
+func (o WorkflowTaskUpdateSharepointPageTaskParamsOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSharepointPageTaskParams) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// The SharePoint file ID
+func (o WorkflowTaskUpdateSharepointPageTaskParamsOutput) FileId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSharepointPageTaskParams) string { return v.FileId }).(pulumi.StringOutput)
+}
+
+// Retrospective template to use when updating document, if desired
+func (o WorkflowTaskUpdateSharepointPageTaskParamsOutput) PostMortemTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSharepointPageTaskParams) *string { return v.PostMortemTemplateId }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskUpdateSharepointPageTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSharepointPageTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// The SharePoint document title
+func (o WorkflowTaskUpdateSharepointPageTaskParamsOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSharepointPageTaskParams) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateSharepointPageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput) ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutput() WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput) ToWorkflowTaskUpdateSharepointPageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput) Elem() WorkflowTaskUpdateSharepointPageTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSharepointPageTaskParams) WorkflowTaskUpdateSharepointPageTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskUpdateSharepointPageTaskParams
+		return ret
+	}).(WorkflowTaskUpdateSharepointPageTaskParamsOutput)
+}
+
+// The SharePoint document content
+func (o WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSharepointPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SharePoint file ID
+func (o WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSharepointPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Retrospective template to use when updating document, if desired
+func (o WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput) PostMortemTemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSharepointPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostMortemTemplateId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSharepointPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SharePoint document title
+func (o WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSharepointPageTaskParams) *string {
 		if v == nil {
 			return nil
 		}
@@ -44397,12 +54139,30 @@ func (o GetTeamsTeamArrayOutput) Index(i pulumi.IntInput) GetTeamsTeamOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertGroupAttributeInput)(nil)).Elem(), AlertGroupAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertGroupAttributeArrayInput)(nil)).Elem(), AlertGroupAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertGroupConditionInput)(nil)).Elem(), AlertGroupConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertGroupConditionArrayInput)(nil)).Elem(), AlertGroupConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertGroupConditionValueInput)(nil)).Elem(), AlertGroupConditionValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertGroupConditionValueArrayInput)(nil)).Elem(), AlertGroupConditionValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertGroupTargetInput)(nil)).Elem(), AlertGroupTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertGroupTargetArrayInput)(nil)).Elem(), AlertGroupTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleInput)(nil)).Elem(), AlertRouteRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleArrayInput)(nil)).Elem(), AlertRouteRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleConditionGroupInput)(nil)).Elem(), AlertRouteRuleConditionGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleConditionGroupArrayInput)(nil)).Elem(), AlertRouteRuleConditionGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleConditionGroupConditionInput)(nil)).Elem(), AlertRouteRuleConditionGroupConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleConditionGroupConditionArrayInput)(nil)).Elem(), AlertRouteRuleConditionGroupConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleDestinationInput)(nil)).Elem(), AlertRouteRuleDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleDestinationArrayInput)(nil)).Elem(), AlertRouteRuleDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertRoutingRuleConditionInput)(nil)).Elem(), AlertRoutingRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertRoutingRuleConditionArrayInput)(nil)).Elem(), AlertRoutingRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRoutingRuleConditionGroupInput)(nil)).Elem(), AlertRoutingRuleConditionGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRoutingRuleConditionGroupArrayInput)(nil)).Elem(), AlertRoutingRuleConditionGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRoutingRuleConditionGroupConditionInput)(nil)).Elem(), AlertRoutingRuleConditionGroupConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRoutingRuleConditionGroupConditionArrayInput)(nil)).Elem(), AlertRoutingRuleConditionGroupConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertRoutingRuleDestinationInput)(nil)).Elem(), AlertRoutingRuleDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertRoutingRuleDestinationPtrInput)(nil)).Elem(), AlertRoutingRuleDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertsSourceAlertSourceFieldsAttributeInput)(nil)).Elem(), AlertsSourceAlertSourceFieldsAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertsSourceAlertSourceFieldsAttributeArrayInput)(nil)).Elem(), AlertsSourceAlertSourceFieldsAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertsSourceAlertSourceUrgencyRulesAttributeInput)(nil)).Elem(), AlertsSourceAlertSourceUrgencyRulesAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertsSourceAlertSourceUrgencyRulesAttributeArrayInput)(nil)).Elem(), AlertsSourceAlertSourceUrgencyRulesAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertsSourceAlertTemplateAttributesInput)(nil)).Elem(), AlertsSourceAlertTemplateAttributesArgs{})
@@ -44415,8 +54175,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertsSourceSourceableAttributesPtrInput)(nil)).Elem(), AlertsSourceSourceableAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertsSourceSourceableAttributesFieldMappingsAttributeInput)(nil)).Elem(), AlertsSourceSourceableAttributesFieldMappingsAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertsSourceSourceableAttributesFieldMappingsAttributeArrayInput)(nil)).Elem(), AlertsSourceSourceableAttributesFieldMappingsAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogChecklistTemplateFieldInput)(nil)).Elem(), CatalogChecklistTemplateFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogChecklistTemplateFieldArrayInput)(nil)).Elem(), CatalogChecklistTemplateFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogChecklistTemplateOwnerInput)(nil)).Elem(), CatalogChecklistTemplateOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogChecklistTemplateOwnerArrayInput)(nil)).Elem(), CatalogChecklistTemplateOwnerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogEntityPropertyInput)(nil)).Elem(), CatalogEntityPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CatalogEntityPropertyArrayInput)(nil)).Elem(), CatalogEntityPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CausePropertyInput)(nil)).Elem(), CausePropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CausePropertyArrayInput)(nil)).Elem(), CausePropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsGroupCommunicationExternalGroupMemberInput)(nil)).Elem(), CommunicationsGroupCommunicationExternalGroupMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsGroupCommunicationExternalGroupMemberArrayInput)(nil)).Elem(), CommunicationsGroupCommunicationExternalGroupMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsGroupCommunicationGroupConditionInput)(nil)).Elem(), CommunicationsGroupCommunicationGroupConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsGroupCommunicationGroupConditionArrayInput)(nil)).Elem(), CommunicationsGroupCommunicationGroupConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsGroupCommunicationGroupConditionPropertyInput)(nil)).Elem(), CommunicationsGroupCommunicationGroupConditionPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsGroupCommunicationGroupConditionPropertyArrayInput)(nil)).Elem(), CommunicationsGroupCommunicationGroupConditionPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsGroupCommunicationGroupMemberInput)(nil)).Elem(), CommunicationsGroupCommunicationGroupMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsGroupCommunicationGroupMemberArrayInput)(nil)).Elem(), CommunicationsGroupCommunicationGroupMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsTemplateCommunicationTemplateStageInput)(nil)).Elem(), CommunicationsTemplateCommunicationTemplateStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsTemplateCommunicationTemplateStageArrayInput)(nil)).Elem(), CommunicationsTemplateCommunicationTemplateStageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsTemplateCommunicationTypeInput)(nil)).Elem(), CommunicationsTemplateCommunicationTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommunicationsTemplateCommunicationTypePtrInput)(nil)).Elem(), CommunicationsTemplateCommunicationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelParamsInput)(nil)).Elem(), DashboardPanelParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelParamsPtrInput)(nil)).Elem(), DashboardPanelParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelParamsDatalabelsInput)(nil)).Elem(), DashboardPanelParamsDatalabelsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelParamsDatalabelsPtrInput)(nil)).Elem(), DashboardPanelParamsDatalabelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelParamsDatasetInput)(nil)).Elem(), DashboardPanelParamsDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelParamsDatasetArrayInput)(nil)).Elem(), DashboardPanelParamsDatasetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelParamsDatasetAggregateInput)(nil)).Elem(), DashboardPanelParamsDatasetAggregateArgs{})
@@ -44429,6 +54211,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelParamsLegendPtrInput)(nil)).Elem(), DashboardPanelParamsLegendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelPositionInput)(nil)).Elem(), DashboardPanelPositionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPanelPositionPtrInput)(nil)).Elem(), DashboardPanelPositionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeConnectorActionParameterInput)(nil)).Elem(), EdgeConnectorActionParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeConnectorActionParameterArrayInput)(nil)).Elem(), EdgeConnectorActionParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPropertyInput)(nil)).Elem(), EnvironmentPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPropertyArrayInput)(nil)).Elem(), EnvironmentPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentSlackAliasInput)(nil)).Elem(), EnvironmentSlackAliasArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentSlackAliasArrayInput)(nil)).Elem(), EnvironmentSlackAliasArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentSlackChannelInput)(nil)).Elem(), EnvironmentSlackChannelArgs{})
@@ -44437,24 +54223,40 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EscalationLevelNotificationTargetParamArrayInput)(nil)).Elem(), EscalationLevelNotificationTargetParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPathRuleInput)(nil)).Elem(), EscalationPathRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPathRuleArrayInput)(nil)).Elem(), EscalationPathRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPathRuleTimeBlockInput)(nil)).Elem(), EscalationPathRuleTimeBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPathRuleTimeBlockArrayInput)(nil)).Elem(), EscalationPathRuleTimeBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPathTimeRestrictionInput)(nil)).Elem(), EscalationPathTimeRestrictionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPathTimeRestrictionArrayInput)(nil)).Elem(), EscalationPathTimeRestrictionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyBusinessHoursInput)(nil)).Elem(), EscalationPolicyBusinessHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EscalationPolicyBusinessHoursPtrInput)(nil)).Elem(), EscalationPolicyBusinessHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionalityPropertyInput)(nil)).Elem(), FunctionalityPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FunctionalityPropertyArrayInput)(nil)).Elem(), FunctionalityPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionalitySlackAliasInput)(nil)).Elem(), FunctionalitySlackAliasArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionalitySlackAliasArrayInput)(nil)).Elem(), FunctionalitySlackAliasArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionalitySlackChannelInput)(nil)).Elem(), FunctionalitySlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionalitySlackChannelArrayInput)(nil)).Elem(), FunctionalitySlackChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IncidentTypePropertyInput)(nil)).Elem(), IncidentTypePropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IncidentTypePropertyArrayInput)(nil)).Elem(), IncidentTypePropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IncidentTypeSlackAliasInput)(nil)).Elem(), IncidentTypeSlackAliasArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IncidentTypeSlackAliasArrayInput)(nil)).Elem(), IncidentTypeSlackAliasArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IncidentTypeSlackChannelInput)(nil)).Elem(), IncidentTypeSlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IncidentTypeSlackChannelArrayInput)(nil)).Elem(), IncidentTypeSlackChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiveCallRouterPagingTargetInput)(nil)).Elem(), LiveCallRouterPagingTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LiveCallRouterPagingTargetArrayInput)(nil)).Elem(), LiveCallRouterPagingTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetrospectiveProcessRetrospectiveProcessMatchingCriteriaInput)(nil)).Elem(), RetrospectiveProcessRetrospectiveProcessMatchingCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetrospectiveProcessRetrospectiveProcessMatchingCriteriaPtrInput)(nil)).Elem(), RetrospectiveProcessRetrospectiveProcessMatchingCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationActiveDayActiveTimeAttributeInput)(nil)).Elem(), ScheduleRotationActiveDayActiveTimeAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationActiveDayActiveTimeAttributeArrayInput)(nil)).Elem(), ScheduleRotationActiveDayActiveTimeAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationActiveTimeAttributeInput)(nil)).Elem(), ScheduleRotationActiveTimeAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationActiveTimeAttributeArrayInput)(nil)).Elem(), ScheduleRotationActiveTimeAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationScheduleRotationMemberInput)(nil)).Elem(), ScheduleRotationScheduleRotationMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationScheduleRotationMemberArrayInput)(nil)).Elem(), ScheduleRotationScheduleRotationMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAlertBroadcastChannelInput)(nil)).Elem(), ServiceAlertBroadcastChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAlertBroadcastChannelPtrInput)(nil)).Elem(), ServiceAlertBroadcastChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIncidentBroadcastChannelInput)(nil)).Elem(), ServiceIncidentBroadcastChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIncidentBroadcastChannelPtrInput)(nil)).Elem(), ServiceIncidentBroadcastChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePropertyInput)(nil)).Elem(), ServicePropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePropertyArrayInput)(nil)).Elem(), ServicePropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSlackAliasInput)(nil)).Elem(), ServiceSlackAliasArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSlackAliasArrayInput)(nil)).Elem(), ServiceSlackAliasArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSlackChannelInput)(nil)).Elem(), ServiceSlackChannelArgs{})
@@ -44463,6 +54265,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SeveritySlackAliasArrayInput)(nil)).Elem(), SeveritySlackAliasArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SeveritySlackChannelInput)(nil)).Elem(), SeveritySlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SeveritySlackChannelArrayInput)(nil)).Elem(), SeveritySlackChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlaConditionInput)(nil)).Elem(), SlaConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlaConditionArrayInput)(nil)).Elem(), SlaConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlaNotificationConfigurationInput)(nil)).Elem(), SlaNotificationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SlaNotificationConfigurationArrayInput)(nil)).Elem(), SlaNotificationConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamAlertBroadcastChannelInput)(nil)).Elem(), TeamAlertBroadcastChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamAlertBroadcastChannelPtrInput)(nil)).Elem(), TeamAlertBroadcastChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamIncidentBroadcastChannelInput)(nil)).Elem(), TeamIncidentBroadcastChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamIncidentBroadcastChannelPtrInput)(nil)).Elem(), TeamIncidentBroadcastChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamPropertyInput)(nil)).Elem(), TeamPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamPropertyArrayInput)(nil)).Elem(), TeamPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamSlackAliasInput)(nil)).Elem(), TeamSlackAliasArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamSlackAliasArrayInput)(nil)).Elem(), TeamSlackAliasArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamSlackChannelInput)(nil)).Elem(), TeamSlackChannelArgs{})
@@ -44471,6 +54283,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionItemTriggerParamsPtrInput)(nil)).Elem(), WorkflowActionItemTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsInput)(nil)).Elem(), WorkflowAlertTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsPtrInput)(nil)).Elem(), WorkflowAlertTriggerParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsAlertFieldConditionInput)(nil)).Elem(), WorkflowAlertTriggerParamsAlertFieldConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsAlertFieldConditionArrayInput)(nil)).Elem(), WorkflowAlertTriggerParamsAlertFieldConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsAlertPayloadConditionsInput)(nil)).Elem(), WorkflowAlertTriggerParamsAlertPayloadConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsAlertPayloadConditionsPtrInput)(nil)).Elem(), WorkflowAlertTriggerParamsAlertPayloadConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsAlertPayloadConditionsConditionInput)(nil)).Elem(), WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayInput)(nil)).Elem(), WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowIncidentTriggerParamsInput)(nil)).Elem(), WorkflowIncidentTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowIncidentTriggerParamsPtrInput)(nil)).Elem(), WorkflowIncidentTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowPostMortemTriggerParamsInput)(nil)).Elem(), WorkflowPostMortemTriggerParamsArgs{})
@@ -44483,6 +54301,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddActionItemTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskAddActionItemTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddActionItemTaskParamsPostToSlackChannelInput)(nil)).Elem(), WorkflowTaskAddActionItemTaskParamsPostToSlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddActionItemTaskParamsPostToSlackChannelArrayInput)(nil)).Elem(), WorkflowTaskAddActionItemTaskParamsPostToSlackChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsInput)(nil)).Elem(), WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddMicrosoftTeamsTabTaskParamsInput)(nil)).Elem(), WorkflowTaskAddMicrosoftTeamsTabTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddMicrosoftTeamsTabTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskAddMicrosoftTeamsTabTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddRoleTaskParamsInput)(nil)).Elem(), WorkflowTaskAddRoleTaskParamsArgs{})
@@ -44523,6 +54343,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskChangeSlackChannelPrivacyTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskChangeSlackChannelPrivacyTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateAirtableTableRecordTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateAirtableTableRecordTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateAirtableTableRecordTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateAirtableTableRecordTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateAnthropicChatCompletionTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateAnthropicChatCompletionTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateAsanaSubtaskTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateAsanaSubtaskTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateAsanaSubtaskTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateAsanaSubtaskTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateAsanaTaskTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateAsanaTaskTaskParamsArgs{})
@@ -44541,6 +54363,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateDropboxPaperPageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateDropboxPaperPageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGithubIssueTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateGithubIssueTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGithubIssueTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateGithubIssueTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGithubIssueTaskParamsLabelInput)(nil)).Elem(), WorkflowTaskCreateGithubIssueTaskParamsLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGithubIssueTaskParamsLabelArrayInput)(nil)).Elem(), WorkflowTaskCreateGithubIssueTaskParamsLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGitlabIssueTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateGitlabIssueTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGitlabIssueTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateGitlabIssueTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoToMeetingTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateGoToMeetingTaskParamsArgs{})
@@ -44555,6 +54379,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleDocsPageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateGoogleDocsPageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleDocsPermissionsTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateGoogleDocsPermissionsTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleDocsPermissionsTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateGoogleDocsPermissionsTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleMeetingTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateGoogleMeetingTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleMeetingTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateGoogleMeetingTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannelInput)(nil)).Elem(), WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannelArgs{})
@@ -44567,6 +54393,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJiraIssueTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateJiraIssueTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJiraSubtaskTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateJiraSubtaskTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJiraSubtaskTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateJiraSubtaskTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateJsmopsAlertTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateJsmopsAlertTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsEscalationInput)(nil)).Elem(), WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayInput)(nil)).Elem(), WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsScheduleInput)(nil)).Elem(), WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayInput)(nil)).Elem(), WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsTeamInput)(nil)).Elem(), WorkflowTaskCreateJsmopsAlertTaskParamsTeamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayInput)(nil)).Elem(), WorkflowTaskCreateJsmopsAlertTaskParamsTeamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsUserInput)(nil)).Elem(), WorkflowTaskCreateJsmopsAlertTaskParamsUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayInput)(nil)).Elem(), WorkflowTaskCreateJsmopsAlertTaskParamsUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateLinearIssueCommentTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateLinearIssueCommentTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateLinearIssueCommentTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateLinearIssueCommentTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateLinearIssueTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateLinearIssueTaskParamsArgs{})
@@ -44579,14 +54415,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateLinearSubtaskIssueTaskParamsLabelArrayInput)(nil)).Elem(), WorkflowTaskCreateLinearSubtaskIssueTaskParamsLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsChannelTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateMicrosoftTeamsChannelTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsChannelTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateMicrosoftTeamsChannelTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsChatTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateMicrosoftTeamsChatTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberInput)(nil)).Elem(), WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayInput)(nil)).Elem(), WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelInput)(nil)).Elem(), WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelArrayInput)(nil)).Elem(), WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMistralChatCompletionTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateMistralChatCompletionTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMistralChatCompletionTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateMistralChatCompletionTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMotionTaskTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateMotionTaskTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateMotionTaskTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateMotionTaskTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateNotionPageTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateNotionPageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateNotionPageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateNotionPageTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateOpenaiChatCompletionTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateOpsgenieAlertTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateOpsgenieAlertTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateOpsgenieAlertTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateOpsgenieAlertTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateOpsgenieAlertTaskParamsEscalationInput)(nil)).Elem(), WorkflowTaskCreateOpsgenieAlertTaskParamsEscalationArgs{})
@@ -44621,10 +54465,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateShortcutTaskTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateShortcutTaskTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSlackChannelTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateSlackChannelTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSlackChannelTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateSlackChannelTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSubIncidentTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateSubIncidentTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSubIncidentTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateSubIncidentTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateTrelloCardTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateTrelloCardTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateTrelloCardTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateTrelloCardTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateTrelloCardTaskParamsLabelInput)(nil)).Elem(), WorkflowTaskCreateTrelloCardTaskParamsLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateTrelloCardTaskParamsLabelArrayInput)(nil)).Elem(), WorkflowTaskCreateTrelloCardTaskParamsLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateWatsonxChatCompletionTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateWatsonxChatCompletionTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateWebexMeetingTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateWebexMeetingTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateWebexMeetingTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateWebexMeetingTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannelInput)(nil)).Elem(), WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannelArgs{})
@@ -44637,10 +54485,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateZoomMeetingTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateZoomMeetingTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannelInput)(nil)).Elem(), WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannelArrayInput)(nil)).Elem(), WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannelArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsInput)(nil)).Elem(), WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsInput)(nil)).Elem(), WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskGetAlertsTaskParamsInput)(nil)).Elem(), WorkflowTaskGetAlertsTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskGetAlertsTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskGetAlertsTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskGetAlertsTaskParamsPostToSlackChannelInput)(nil)).Elem(), WorkflowTaskGetAlertsTaskParamsPostToSlackChannelArgs{})
@@ -44685,6 +54529,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannelInput)(nil)).Elem(), WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannelArrayInput)(nil)).Elem(), WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParamsInput)(nil)).Elem(), WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamInput)(nil)).Elem(), WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayInput)(nil)).Elem(), WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserInput)(nil)).Elem(), WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayInput)(nil)).Elem(), WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsInput)(nil)).Elem(), WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsTeamInput)(nil)).Elem(), WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsTeamArgs{})
@@ -44729,6 +54579,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendEmailTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskSendEmailTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsMessageTaskParamsInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsMessageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsMessageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsMessageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsMessageTaskParamsChannelInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsMessageTaskParamsChannelArgs{})
@@ -44791,8 +54645,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateClickupTaskTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateClickupTaskTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateCodaPageTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateCodaPageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateCodaPageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateCodaPageTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateConfluencePageTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateConfluencePageTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateConfluencePageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateConfluencePageTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateDatadogNotebookTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateDatadogNotebookTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateDatadogNotebookTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateDatadogNotebookTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateDropboxPaperPageTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateDropboxPaperPageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGithubIssueTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateGithubIssueTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGithubIssueTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateGithubIssueTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGithubIssueTaskParamsLabelInput)(nil)).Elem(), WorkflowTaskUpdateGithubIssueTaskParamsLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayInput)(nil)).Elem(), WorkflowTaskUpdateGithubIssueTaskParamsLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGitlabIssueTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateGitlabIssueTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGitlabIssueTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateGitlabIssueTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGoogleCalendarEventTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateGoogleCalendarEventTaskParamsArgs{})
@@ -44829,8 +54691,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdatePagertreeAlertTaskParamsTeamArrayInput)(nil)).Elem(), WorkflowTaskUpdatePagertreeAlertTaskParamsTeamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdatePagertreeAlertTaskParamsUserInput)(nil)).Elem(), WorkflowTaskUpdatePagertreeAlertTaskParamsUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdatePagertreeAlertTaskParamsUserArrayInput)(nil)).Elem(), WorkflowTaskUpdatePagertreeAlertTaskParamsUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateQuipPageTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateQuipPageTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateQuipPageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateQuipPageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateServiceNowIncidentTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateServiceNowIncidentTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateServiceNowIncidentTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateServiceNowIncidentTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateSharepointPageTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateSharepointPageTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateSharepointPageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateSharepointPageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateShortcutStoryTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateShortcutStoryTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateShortcutStoryTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateShortcutStoryTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateShortcutTaskTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateShortcutTaskTaskParamsArgs{})
@@ -44869,12 +54735,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamsTeamArrayInput)(nil)).Elem(), GetTeamsTeamArray{})
 	pulumi.RegisterOutputType(AlertGroupAttributeOutput{})
 	pulumi.RegisterOutputType(AlertGroupAttributeArrayOutput{})
+	pulumi.RegisterOutputType(AlertGroupConditionOutput{})
+	pulumi.RegisterOutputType(AlertGroupConditionArrayOutput{})
+	pulumi.RegisterOutputType(AlertGroupConditionValueOutput{})
+	pulumi.RegisterOutputType(AlertGroupConditionValueArrayOutput{})
 	pulumi.RegisterOutputType(AlertGroupTargetOutput{})
 	pulumi.RegisterOutputType(AlertGroupTargetArrayOutput{})
+	pulumi.RegisterOutputType(AlertRouteRuleOutput{})
+	pulumi.RegisterOutputType(AlertRouteRuleArrayOutput{})
+	pulumi.RegisterOutputType(AlertRouteRuleConditionGroupOutput{})
+	pulumi.RegisterOutputType(AlertRouteRuleConditionGroupArrayOutput{})
+	pulumi.RegisterOutputType(AlertRouteRuleConditionGroupConditionOutput{})
+	pulumi.RegisterOutputType(AlertRouteRuleConditionGroupConditionArrayOutput{})
+	pulumi.RegisterOutputType(AlertRouteRuleDestinationOutput{})
+	pulumi.RegisterOutputType(AlertRouteRuleDestinationArrayOutput{})
 	pulumi.RegisterOutputType(AlertRoutingRuleConditionOutput{})
 	pulumi.RegisterOutputType(AlertRoutingRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(AlertRoutingRuleConditionGroupOutput{})
+	pulumi.RegisterOutputType(AlertRoutingRuleConditionGroupArrayOutput{})
+	pulumi.RegisterOutputType(AlertRoutingRuleConditionGroupConditionOutput{})
+	pulumi.RegisterOutputType(AlertRoutingRuleConditionGroupConditionArrayOutput{})
 	pulumi.RegisterOutputType(AlertRoutingRuleDestinationOutput{})
 	pulumi.RegisterOutputType(AlertRoutingRuleDestinationPtrOutput{})
+	pulumi.RegisterOutputType(AlertsSourceAlertSourceFieldsAttributeOutput{})
+	pulumi.RegisterOutputType(AlertsSourceAlertSourceFieldsAttributeArrayOutput{})
 	pulumi.RegisterOutputType(AlertsSourceAlertSourceUrgencyRulesAttributeOutput{})
 	pulumi.RegisterOutputType(AlertsSourceAlertSourceUrgencyRulesAttributeArrayOutput{})
 	pulumi.RegisterOutputType(AlertsSourceAlertTemplateAttributesOutput{})
@@ -44887,8 +54771,30 @@ func init() {
 	pulumi.RegisterOutputType(AlertsSourceSourceableAttributesPtrOutput{})
 	pulumi.RegisterOutputType(AlertsSourceSourceableAttributesFieldMappingsAttributeOutput{})
 	pulumi.RegisterOutputType(AlertsSourceSourceableAttributesFieldMappingsAttributeArrayOutput{})
+	pulumi.RegisterOutputType(CatalogChecklistTemplateFieldOutput{})
+	pulumi.RegisterOutputType(CatalogChecklistTemplateFieldArrayOutput{})
+	pulumi.RegisterOutputType(CatalogChecklistTemplateOwnerOutput{})
+	pulumi.RegisterOutputType(CatalogChecklistTemplateOwnerArrayOutput{})
+	pulumi.RegisterOutputType(CatalogEntityPropertyOutput{})
+	pulumi.RegisterOutputType(CatalogEntityPropertyArrayOutput{})
+	pulumi.RegisterOutputType(CausePropertyOutput{})
+	pulumi.RegisterOutputType(CausePropertyArrayOutput{})
+	pulumi.RegisterOutputType(CommunicationsGroupCommunicationExternalGroupMemberOutput{})
+	pulumi.RegisterOutputType(CommunicationsGroupCommunicationExternalGroupMemberArrayOutput{})
+	pulumi.RegisterOutputType(CommunicationsGroupCommunicationGroupConditionOutput{})
+	pulumi.RegisterOutputType(CommunicationsGroupCommunicationGroupConditionArrayOutput{})
+	pulumi.RegisterOutputType(CommunicationsGroupCommunicationGroupConditionPropertyOutput{})
+	pulumi.RegisterOutputType(CommunicationsGroupCommunicationGroupConditionPropertyArrayOutput{})
+	pulumi.RegisterOutputType(CommunicationsGroupCommunicationGroupMemberOutput{})
+	pulumi.RegisterOutputType(CommunicationsGroupCommunicationGroupMemberArrayOutput{})
+	pulumi.RegisterOutputType(CommunicationsTemplateCommunicationTemplateStageOutput{})
+	pulumi.RegisterOutputType(CommunicationsTemplateCommunicationTemplateStageArrayOutput{})
+	pulumi.RegisterOutputType(CommunicationsTemplateCommunicationTypeOutput{})
+	pulumi.RegisterOutputType(CommunicationsTemplateCommunicationTypePtrOutput{})
 	pulumi.RegisterOutputType(DashboardPanelParamsOutput{})
 	pulumi.RegisterOutputType(DashboardPanelParamsPtrOutput{})
+	pulumi.RegisterOutputType(DashboardPanelParamsDatalabelsOutput{})
+	pulumi.RegisterOutputType(DashboardPanelParamsDatalabelsPtrOutput{})
 	pulumi.RegisterOutputType(DashboardPanelParamsDatasetOutput{})
 	pulumi.RegisterOutputType(DashboardPanelParamsDatasetArrayOutput{})
 	pulumi.RegisterOutputType(DashboardPanelParamsDatasetAggregateOutput{})
@@ -44901,6 +54807,10 @@ func init() {
 	pulumi.RegisterOutputType(DashboardPanelParamsLegendPtrOutput{})
 	pulumi.RegisterOutputType(DashboardPanelPositionOutput{})
 	pulumi.RegisterOutputType(DashboardPanelPositionPtrOutput{})
+	pulumi.RegisterOutputType(EdgeConnectorActionParameterOutput{})
+	pulumi.RegisterOutputType(EdgeConnectorActionParameterArrayOutput{})
+	pulumi.RegisterOutputType(EnvironmentPropertyOutput{})
+	pulumi.RegisterOutputType(EnvironmentPropertyArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentSlackAliasOutput{})
 	pulumi.RegisterOutputType(EnvironmentSlackAliasArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentSlackChannelOutput{})
@@ -44909,24 +54819,40 @@ func init() {
 	pulumi.RegisterOutputType(EscalationLevelNotificationTargetParamArrayOutput{})
 	pulumi.RegisterOutputType(EscalationPathRuleOutput{})
 	pulumi.RegisterOutputType(EscalationPathRuleArrayOutput{})
+	pulumi.RegisterOutputType(EscalationPathRuleTimeBlockOutput{})
+	pulumi.RegisterOutputType(EscalationPathRuleTimeBlockArrayOutput{})
 	pulumi.RegisterOutputType(EscalationPathTimeRestrictionOutput{})
 	pulumi.RegisterOutputType(EscalationPathTimeRestrictionArrayOutput{})
 	pulumi.RegisterOutputType(EscalationPolicyBusinessHoursOutput{})
 	pulumi.RegisterOutputType(EscalationPolicyBusinessHoursPtrOutput{})
+	pulumi.RegisterOutputType(FunctionalityPropertyOutput{})
+	pulumi.RegisterOutputType(FunctionalityPropertyArrayOutput{})
 	pulumi.RegisterOutputType(FunctionalitySlackAliasOutput{})
 	pulumi.RegisterOutputType(FunctionalitySlackAliasArrayOutput{})
 	pulumi.RegisterOutputType(FunctionalitySlackChannelOutput{})
 	pulumi.RegisterOutputType(FunctionalitySlackChannelArrayOutput{})
+	pulumi.RegisterOutputType(IncidentTypePropertyOutput{})
+	pulumi.RegisterOutputType(IncidentTypePropertyArrayOutput{})
 	pulumi.RegisterOutputType(IncidentTypeSlackAliasOutput{})
 	pulumi.RegisterOutputType(IncidentTypeSlackAliasArrayOutput{})
 	pulumi.RegisterOutputType(IncidentTypeSlackChannelOutput{})
 	pulumi.RegisterOutputType(IncidentTypeSlackChannelArrayOutput{})
+	pulumi.RegisterOutputType(LiveCallRouterPagingTargetOutput{})
+	pulumi.RegisterOutputType(LiveCallRouterPagingTargetArrayOutput{})
 	pulumi.RegisterOutputType(RetrospectiveProcessRetrospectiveProcessMatchingCriteriaOutput{})
 	pulumi.RegisterOutputType(RetrospectiveProcessRetrospectiveProcessMatchingCriteriaPtrOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationActiveDayActiveTimeAttributeOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationActiveDayActiveTimeAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationActiveTimeAttributeOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationActiveTimeAttributeArrayOutput{})
+	pulumi.RegisterOutputType(ScheduleRotationScheduleRotationMemberOutput{})
+	pulumi.RegisterOutputType(ScheduleRotationScheduleRotationMemberArrayOutput{})
+	pulumi.RegisterOutputType(ServiceAlertBroadcastChannelOutput{})
+	pulumi.RegisterOutputType(ServiceAlertBroadcastChannelPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIncidentBroadcastChannelOutput{})
+	pulumi.RegisterOutputType(ServiceIncidentBroadcastChannelPtrOutput{})
+	pulumi.RegisterOutputType(ServicePropertyOutput{})
+	pulumi.RegisterOutputType(ServicePropertyArrayOutput{})
 	pulumi.RegisterOutputType(ServiceSlackAliasOutput{})
 	pulumi.RegisterOutputType(ServiceSlackAliasArrayOutput{})
 	pulumi.RegisterOutputType(ServiceSlackChannelOutput{})
@@ -44935,6 +54861,16 @@ func init() {
 	pulumi.RegisterOutputType(SeveritySlackAliasArrayOutput{})
 	pulumi.RegisterOutputType(SeveritySlackChannelOutput{})
 	pulumi.RegisterOutputType(SeveritySlackChannelArrayOutput{})
+	pulumi.RegisterOutputType(SlaConditionOutput{})
+	pulumi.RegisterOutputType(SlaConditionArrayOutput{})
+	pulumi.RegisterOutputType(SlaNotificationConfigurationOutput{})
+	pulumi.RegisterOutputType(SlaNotificationConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(TeamAlertBroadcastChannelOutput{})
+	pulumi.RegisterOutputType(TeamAlertBroadcastChannelPtrOutput{})
+	pulumi.RegisterOutputType(TeamIncidentBroadcastChannelOutput{})
+	pulumi.RegisterOutputType(TeamIncidentBroadcastChannelPtrOutput{})
+	pulumi.RegisterOutputType(TeamPropertyOutput{})
+	pulumi.RegisterOutputType(TeamPropertyArrayOutput{})
 	pulumi.RegisterOutputType(TeamSlackAliasOutput{})
 	pulumi.RegisterOutputType(TeamSlackAliasArrayOutput{})
 	pulumi.RegisterOutputType(TeamSlackChannelOutput{})
@@ -44943,6 +54879,12 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowActionItemTriggerParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsAlertFieldConditionOutput{})
+	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsAlertPayloadConditionsOutput{})
+	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput{})
+	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowIncidentTriggerParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowIncidentTriggerParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowPostMortemTriggerParamsOutput{})
@@ -44955,6 +54897,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskAddActionItemTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAddActionItemTaskParamsPostToSlackChannelOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAddActionItemTaskParamsPostToSlackChannelArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskAddMicrosoftTeamsChatTabTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAddMicrosoftTeamsTabTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAddMicrosoftTeamsTabTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAddRoleTaskParamsOutput{})
@@ -44995,6 +54939,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskChangeSlackChannelPrivacyTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateAirtableTableRecordTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateAirtableTableRecordTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateAnthropicChatCompletionTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateAnthropicChatCompletionTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateAsanaSubtaskTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateAsanaSubtaskTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateAsanaTaskTaskParamsOutput{})
@@ -45013,6 +54959,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskCreateDropboxPaperPageTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGithubIssueTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGithubIssueTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateGithubIssueTaskParamsLabelOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateGithubIssueTaskParamsLabelArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGitlabIssueTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGitlabIssueTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoToMeetingTaskParamsOutput{})
@@ -45027,6 +54975,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleDocsPageTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleDocsPermissionsTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleDocsPermissionsTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleGeminiChatCompletionTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleMeetingTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleMeetingTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannelOutput{})
@@ -45039,6 +54989,16 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskCreateJiraIssueTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateJiraSubtaskTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateJiraSubtaskTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateJsmopsAlertTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateJsmopsAlertTaskParamsEscalationOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateJsmopsAlertTaskParamsScheduleOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateJsmopsAlertTaskParamsTeamOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateJsmopsAlertTaskParamsTeamArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateJsmopsAlertTaskParamsUserOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateJsmopsAlertTaskParamsUserArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateLinearIssueCommentTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateLinearIssueCommentTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateLinearIssueTaskParamsOutput{})
@@ -45051,14 +55011,22 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskCreateLinearSubtaskIssueTaskParamsLabelArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateMicrosoftTeamsChannelTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateMicrosoftTeamsChannelTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateMicrosoftTeamsChatTaskParamsMemberArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateMistralChatCompletionTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateMotionTaskTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateMotionTaskTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateNotionPageTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateNotionPageTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateOpsgenieAlertTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateOpsgenieAlertTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateOpsgenieAlertTaskParamsEscalationOutput{})
@@ -45093,10 +55061,14 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskCreateShortcutTaskTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateSlackChannelTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateSlackChannelTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateSubIncidentTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateSubIncidentTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateTrelloCardTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateTrelloCardTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateTrelloCardTaskParamsLabelOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateTrelloCardTaskParamsLabelArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateWatsonxChatCompletionTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateWatsonxChatCompletionTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateWebexMeetingTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateWebexMeetingTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateWebexMeetingTaskParamsPostToSlackChannelOutput{})
@@ -45109,10 +55081,6 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskCreateZoomMeetingTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannelOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateZoomMeetingTaskParamsPostToSlackChannelArrayOutput{})
-	pulumi.RegisterOutputType(WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsOutput{})
-	pulumi.RegisterOutputType(WorkflowTaskGeniusCreateOpenaiChatCompletionTaskParamsPtrOutput{})
-	pulumi.RegisterOutputType(WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsOutput{})
-	pulumi.RegisterOutputType(WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskGetAlertsTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskGetAlertsTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskGetAlertsTaskParamsPostToSlackChannelOutput{})
@@ -45157,6 +55125,12 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannelOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskInviteToSlackChannelVictorOpsTaskParamsChannelArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskPageJsmopsOnCallRespondersTaskParamsUserArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskPageOpsgenieOnCallRespondersTaskParamsTeamOutput{})
@@ -45201,6 +55175,10 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskSendEmailTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsMessageTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsMessageTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsMessageTaskParamsChannelOutput{})
@@ -45263,8 +55241,16 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskUpdateClickupTaskTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateCodaPageTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateCodaPageTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateConfluencePageTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateDatadogNotebookTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateDatadogNotebookTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateDropboxPaperPageTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateDropboxPaperPageTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateGithubIssueTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateGithubIssueTaskParamsLabelOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateGitlabIssueTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateGitlabIssueTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateGoogleCalendarEventTaskParamsOutput{})
@@ -45301,8 +55287,12 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskUpdatePagertreeAlertTaskParamsTeamArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdatePagertreeAlertTaskParamsUserOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdatePagertreeAlertTaskParamsUserArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateQuipPageTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateQuipPageTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateServiceNowIncidentTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateServiceNowIncidentTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateSharepointPageTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateSharepointPageTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateShortcutStoryTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateShortcutStoryTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateShortcutTaskTaskParamsOutput{})

@@ -14,17 +14,27 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import WorkflowCustomFieldSelection using the `id`. For example:
+// WorkflowCustomFieldSelection can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/workflowCustomFieldSelection:WorkflowCustomFieldSelection my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/workflowCustomFieldSelection:WorkflowCustomFieldSelection primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type WorkflowCustomFieldSelection struct {
 	pulumi.CustomResourceState
 
 	// The custom field for this selection
 	CustomFieldId pulumi.IntOutput `pulumi:"customFieldId"`
-	// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentCondition pulumi.StringPtrOutput   `pulumi:"incidentCondition"`
 	SelectedOptionIds pulumi.IntArrayOutput    `pulumi:"selectedOptionIds"`
 	Values            pulumi.StringArrayOutput `pulumi:"values"`
@@ -67,7 +77,7 @@ func GetWorkflowCustomFieldSelection(ctx *pulumi.Context,
 type workflowCustomFieldSelectionState struct {
 	// The custom field for this selection
 	CustomFieldId *int `pulumi:"customFieldId"`
-	// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentCondition *string  `pulumi:"incidentCondition"`
 	SelectedOptionIds []int    `pulumi:"selectedOptionIds"`
 	Values            []string `pulumi:"values"`
@@ -78,7 +88,7 @@ type workflowCustomFieldSelectionState struct {
 type WorkflowCustomFieldSelectionState struct {
 	// The custom field for this selection
 	CustomFieldId pulumi.IntPtrInput
-	// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentCondition pulumi.StringPtrInput
 	SelectedOptionIds pulumi.IntArrayInput
 	Values            pulumi.StringArrayInput
@@ -93,7 +103,7 @@ func (WorkflowCustomFieldSelectionState) ElementType() reflect.Type {
 type workflowCustomFieldSelectionArgs struct {
 	// The custom field for this selection
 	CustomFieldId int `pulumi:"customFieldId"`
-	// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentCondition *string  `pulumi:"incidentCondition"`
 	SelectedOptionIds []int    `pulumi:"selectedOptionIds"`
 	Values            []string `pulumi:"values"`
@@ -105,7 +115,7 @@ type workflowCustomFieldSelectionArgs struct {
 type WorkflowCustomFieldSelectionArgs struct {
 	// The custom field for this selection
 	CustomFieldId pulumi.IntInput
-	// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentCondition pulumi.StringPtrInput
 	SelectedOptionIds pulumi.IntArrayInput
 	Values            pulumi.StringArrayInput
@@ -205,7 +215,7 @@ func (o WorkflowCustomFieldSelectionOutput) CustomFieldId() pulumi.IntOutput {
 	return o.ApplyT(func(v *WorkflowCustomFieldSelection) pulumi.IntOutput { return v.CustomFieldId }).(pulumi.IntOutput)
 }
 
-// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowCustomFieldSelectionOutput) IncidentCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowCustomFieldSelection) pulumi.StringPtrOutput { return v.IncidentCondition }).(pulumi.StringPtrOutput)
 }

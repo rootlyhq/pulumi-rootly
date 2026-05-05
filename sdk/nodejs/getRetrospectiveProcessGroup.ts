@@ -4,10 +4,10 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export function getRetrospectiveProcessGroup(args?: GetRetrospectiveProcessGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRetrospectiveProcessGroupResult> {
-    args = args || {};
+export function getRetrospectiveProcessGroup(args: GetRetrospectiveProcessGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRetrospectiveProcessGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getRetrospectiveProcessGroup:getRetrospectiveProcessGroup", {
+        "retrospectiveProcessId": args.retrospectiveProcessId,
         "subStatusId": args.subStatusId,
     }, opts);
 }
@@ -16,6 +16,7 @@ export function getRetrospectiveProcessGroup(args?: GetRetrospectiveProcessGroup
  * A collection of arguments for invoking getRetrospectiveProcessGroup.
  */
 export interface GetRetrospectiveProcessGroupArgs {
+    retrospectiveProcessId: string;
     subStatusId?: string;
 }
 
@@ -27,12 +28,13 @@ export interface GetRetrospectiveProcessGroupResult {
      * The ID of this resource.
      */
     readonly id: string;
+    readonly retrospectiveProcessId: string;
     readonly subStatusId: string;
 }
-export function getRetrospectiveProcessGroupOutput(args?: GetRetrospectiveProcessGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRetrospectiveProcessGroupResult> {
-    args = args || {};
+export function getRetrospectiveProcessGroupOutput(args: GetRetrospectiveProcessGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRetrospectiveProcessGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getRetrospectiveProcessGroup:getRetrospectiveProcessGroup", {
+        "retrospectiveProcessId": args.retrospectiveProcessId,
         "subStatusId": args.subStatusId,
     }, opts);
 }
@@ -41,5 +43,6 @@ export function getRetrospectiveProcessGroupOutput(args?: GetRetrospectiveProces
  * A collection of arguments for invoking getRetrospectiveProcessGroup.
  */
 export interface GetRetrospectiveProcessGroupOutputArgs {
+    retrospectiveProcessId: pulumi.Input<string>;
     subStatusId?: pulumi.Input<string | undefined>;
 }

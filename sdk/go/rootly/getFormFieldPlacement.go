@@ -24,7 +24,7 @@ func LookupFormFieldPlacement(ctx *pulumi.Context, args *LookupFormFieldPlacemen
 // A collection of arguments for invoking getFormFieldPlacement.
 type LookupFormFieldPlacementArgs struct {
 	Form        *string `pulumi:"form"`
-	FormFieldId *string `pulumi:"formFieldId"`
+	FormFieldId string  `pulumi:"formFieldId"`
 }
 
 // A collection of values returned by getFormFieldPlacement.
@@ -47,7 +47,7 @@ func LookupFormFieldPlacementOutput(ctx *pulumi.Context, args LookupFormFieldPla
 // A collection of arguments for invoking getFormFieldPlacement.
 type LookupFormFieldPlacementOutputArgs struct {
 	Form        pulumi.StringPtrInput `pulumi:"form"`
-	FormFieldId pulumi.StringPtrInput `pulumi:"formFieldId"`
+	FormFieldId pulumi.StringInput    `pulumi:"formFieldId"`
 }
 
 func (LookupFormFieldPlacementOutputArgs) ElementType() reflect.Type {

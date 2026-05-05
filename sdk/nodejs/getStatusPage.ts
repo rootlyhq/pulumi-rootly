@@ -12,6 +12,7 @@ export function getStatusPage(args?: GetStatusPageArgs, opts?: pulumi.InvokeOpti
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getStatusPage:getStatusPage", {
         "createdAt": args.createdAt,
+        "slug": args.slug,
     }, opts);
 }
 
@@ -23,6 +24,7 @@ export interface GetStatusPageArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     createdAt?: {[key: string]: string};
+    slug?: string;
 }
 
 /**
@@ -37,6 +39,7 @@ export interface GetStatusPageResult {
      * The ID of this resource.
      */
     readonly id: string;
+    readonly slug: string;
 }
 /**
  * ## Example Usage
@@ -46,6 +49,7 @@ export function getStatusPageOutput(args?: GetStatusPageOutputArgs, opts?: pulum
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getStatusPage:getStatusPage", {
         "createdAt": args.createdAt,
+        "slug": args.slug,
     }, opts);
 }
 
@@ -57,4 +61,5 @@ export interface GetStatusPageOutputArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

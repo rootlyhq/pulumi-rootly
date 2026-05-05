@@ -7,19 +7,29 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Manages workflow geniusCreateWatsonxChatCompletion task.
+ * Manages workflow addMicrosoftTeamsChatTab task.
  *
  * ## Import
  *
- * Using `pulumi import`, import rootly.WorkflowTaskGeniusCreateWatsonxChatCompletion using the `id`. For example:
+ * rootly.WorkflowTaskAddMicrosoftTeamsChatTab can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/workflowTaskGeniusCreateWatsonxChatCompletion:WorkflowTaskGeniusCreateWatsonxChatCompletion my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/workflowTaskAddMicrosoftTeamsChatTab:WorkflowTaskAddMicrosoftTeamsChatTab primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
-export class WorkflowTaskGeniusCreateWatsonxChatCompletion extends pulumi.CustomResource {
+export class WorkflowTaskAddMicrosoftTeamsChatTab extends pulumi.CustomResource {
     /**
-     * Get an existing WorkflowTaskGeniusCreateWatsonxChatCompletion resource's state with the given name, ID, and optional extra
+     * Get an existing WorkflowTaskAddMicrosoftTeamsChatTab resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -27,22 +37,22 @@ export class WorkflowTaskGeniusCreateWatsonxChatCompletion extends pulumi.Custom
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkflowTaskGeniusCreateWatsonxChatCompletionState, opts?: pulumi.CustomResourceOptions): WorkflowTaskGeniusCreateWatsonxChatCompletion {
-        return new WorkflowTaskGeniusCreateWatsonxChatCompletion(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkflowTaskAddMicrosoftTeamsChatTabState, opts?: pulumi.CustomResourceOptions): WorkflowTaskAddMicrosoftTeamsChatTab {
+        return new WorkflowTaskAddMicrosoftTeamsChatTab(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'rootly:index/workflowTaskGeniusCreateWatsonxChatCompletion:WorkflowTaskGeniusCreateWatsonxChatCompletion';
+    public static readonly __pulumiType = 'rootly:index/workflowTaskAddMicrosoftTeamsChatTab:WorkflowTaskAddMicrosoftTeamsChatTab';
 
     /**
-     * Returns true if the given object is an instance of WorkflowTaskGeniusCreateWatsonxChatCompletion.  This is designed to work even
+     * Returns true if the given object is an instance of WorkflowTaskAddMicrosoftTeamsChatTab.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is WorkflowTaskGeniusCreateWatsonxChatCompletion {
+    public static isInstance(obj: any): obj is WorkflowTaskAddMicrosoftTeamsChatTab {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === WorkflowTaskGeniusCreateWatsonxChatCompletion.__pulumiType;
+        return obj['__pulumiType'] === WorkflowTaskAddMicrosoftTeamsChatTab.__pulumiType;
     }
 
     /**
@@ -64,25 +74,25 @@ export class WorkflowTaskGeniusCreateWatsonxChatCompletion extends pulumi.Custom
     /**
      * The parameters for this workflow task.
      */
-    declare public readonly taskParams: pulumi.Output<outputs.WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams>;
+    declare public readonly taskParams: pulumi.Output<outputs.WorkflowTaskAddMicrosoftTeamsChatTabTaskParams>;
     /**
      * The ID of the parent workflow
      */
     declare public readonly workflowId: pulumi.Output<string>;
 
     /**
-     * Create a WorkflowTaskGeniusCreateWatsonxChatCompletion resource with the given unique name, arguments, and options.
+     * Create a WorkflowTaskAddMicrosoftTeamsChatTab resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: WorkflowTaskGeniusCreateWatsonxChatCompletionArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: WorkflowTaskGeniusCreateWatsonxChatCompletionArgs | WorkflowTaskGeniusCreateWatsonxChatCompletionState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: WorkflowTaskAddMicrosoftTeamsChatTabArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: WorkflowTaskAddMicrosoftTeamsChatTabArgs | WorkflowTaskAddMicrosoftTeamsChatTabState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as WorkflowTaskGeniusCreateWatsonxChatCompletionState | undefined;
+            const state = argsOrState as WorkflowTaskAddMicrosoftTeamsChatTabState | undefined;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
@@ -90,7 +100,7 @@ export class WorkflowTaskGeniusCreateWatsonxChatCompletion extends pulumi.Custom
             resourceInputs["taskParams"] = state?.taskParams;
             resourceInputs["workflowId"] = state?.workflowId;
         } else {
-            const args = argsOrState as WorkflowTaskGeniusCreateWatsonxChatCompletionArgs | undefined;
+            const args = argsOrState as WorkflowTaskAddMicrosoftTeamsChatTabArgs | undefined;
             if (args?.taskParams === undefined && !opts.urn) {
                 throw new Error("Missing required property 'taskParams'");
             }
@@ -105,14 +115,14 @@ export class WorkflowTaskGeniusCreateWatsonxChatCompletion extends pulumi.Custom
             resourceInputs["workflowId"] = args?.workflowId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(WorkflowTaskGeniusCreateWatsonxChatCompletion.__pulumiType, name, resourceInputs, opts);
+        super(WorkflowTaskAddMicrosoftTeamsChatTab.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering WorkflowTaskGeniusCreateWatsonxChatCompletion resources.
+ * Input properties used for looking up and filtering WorkflowTaskAddMicrosoftTeamsChatTab resources.
  */
-export interface WorkflowTaskGeniusCreateWatsonxChatCompletionState {
+export interface WorkflowTaskAddMicrosoftTeamsChatTabState {
     /**
      * Enable/disable this workflow task
      */
@@ -132,7 +142,7 @@ export interface WorkflowTaskGeniusCreateWatsonxChatCompletionState {
     /**
      * The parameters for this workflow task.
      */
-    taskParams?: pulumi.Input<inputs.WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams | undefined>;
+    taskParams?: pulumi.Input<inputs.WorkflowTaskAddMicrosoftTeamsChatTabTaskParams | undefined>;
     /**
      * The ID of the parent workflow
      */
@@ -140,9 +150,9 @@ export interface WorkflowTaskGeniusCreateWatsonxChatCompletionState {
 }
 
 /**
- * The set of arguments for constructing a WorkflowTaskGeniusCreateWatsonxChatCompletion resource.
+ * The set of arguments for constructing a WorkflowTaskAddMicrosoftTeamsChatTab resource.
  */
-export interface WorkflowTaskGeniusCreateWatsonxChatCompletionArgs {
+export interface WorkflowTaskAddMicrosoftTeamsChatTabArgs {
     /**
      * Enable/disable this workflow task
      */
@@ -162,7 +172,7 @@ export interface WorkflowTaskGeniusCreateWatsonxChatCompletionArgs {
     /**
      * The parameters for this workflow task.
      */
-    taskParams: pulumi.Input<inputs.WorkflowTaskGeniusCreateWatsonxChatCompletionTaskParams>;
+    taskParams: pulumi.Input<inputs.WorkflowTaskAddMicrosoftTeamsChatTabTaskParams>;
     /**
      * The ID of the parent workflow
      */

@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.Role using the `id`. For example:
+ * rootly.Role can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/role:Role my-resource my-resource-slug
+ * $ pulumi import rootly:index/role:Role primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class Role extends pulumi.CustomResource {
@@ -60,6 +70,18 @@ export class Role extends pulumi.CustomResource {
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
+    declare public readonly catalogsPermissions: pulumi.Output<string[]>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    declare public readonly communicationPermissions: pulumi.Output<string[]>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    declare public readonly edgeConnectorPermissions: pulumi.Output<string[]>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
     declare public readonly environmentsPermissions: pulumi.Output<string[]>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
@@ -77,6 +99,10 @@ export class Role extends pulumi.CustomResource {
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
     declare public readonly incidentCausesPermissions: pulumi.Output<string[]>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`, `send`.
+     */
+    declare public readonly incidentCommunicationPermissions: pulumi.Output<string[]>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
@@ -120,6 +146,10 @@ export class Role extends pulumi.CustomResource {
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
+    declare public readonly pagingPermissions: pulumi.Output<string[]>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
     declare public readonly playbooksPermissions: pulumi.Output<string[]>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
@@ -150,6 +180,10 @@ export class Role extends pulumi.CustomResource {
      */
     declare public readonly severitiesPermissions: pulumi.Output<string[]>;
     /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    declare public readonly slasPermissions: pulumi.Output<string[]>;
+    /**
      * The role slug.
      */
     declare public readonly slug: pulumi.Output<string>;
@@ -157,6 +191,10 @@ export class Role extends pulumi.CustomResource {
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
     declare public readonly statusPagesPermissions: pulumi.Output<string[]>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    declare public readonly subStatusesPermissions: pulumi.Output<string[]>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
@@ -183,11 +221,15 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["apiKeysPermissions"] = state?.apiKeysPermissions;
             resourceInputs["auditsPermissions"] = state?.auditsPermissions;
             resourceInputs["billingPermissions"] = state?.billingPermissions;
+            resourceInputs["catalogsPermissions"] = state?.catalogsPermissions;
+            resourceInputs["communicationPermissions"] = state?.communicationPermissions;
+            resourceInputs["edgeConnectorPermissions"] = state?.edgeConnectorPermissions;
             resourceInputs["environmentsPermissions"] = state?.environmentsPermissions;
             resourceInputs["formFieldsPermissions"] = state?.formFieldsPermissions;
             resourceInputs["functionalitiesPermissions"] = state?.functionalitiesPermissions;
             resourceInputs["groupsPermissions"] = state?.groupsPermissions;
             resourceInputs["incidentCausesPermissions"] = state?.incidentCausesPermissions;
+            resourceInputs["incidentCommunicationPermissions"] = state?.incidentCommunicationPermissions;
             resourceInputs["incidentFeedbacksPermissions"] = state?.incidentFeedbacksPermissions;
             resourceInputs["incidentPermissionSetId"] = state?.incidentPermissionSetId;
             resourceInputs["incidentRolesPermissions"] = state?.incidentRolesPermissions;
@@ -198,6 +240,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["isDeletable"] = state?.isDeletable;
             resourceInputs["isEditable"] = state?.isEditable;
             resourceInputs["name"] = state?.name;
+            resourceInputs["pagingPermissions"] = state?.pagingPermissions;
             resourceInputs["playbooksPermissions"] = state?.playbooksPermissions;
             resourceInputs["privateIncidentsPermissions"] = state?.privateIncidentsPermissions;
             resourceInputs["pulsesPermissions"] = state?.pulsesPermissions;
@@ -206,8 +249,10 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["secretsPermissions"] = state?.secretsPermissions;
             resourceInputs["servicesPermissions"] = state?.servicesPermissions;
             resourceInputs["severitiesPermissions"] = state?.severitiesPermissions;
+            resourceInputs["slasPermissions"] = state?.slasPermissions;
             resourceInputs["slug"] = state?.slug;
             resourceInputs["statusPagesPermissions"] = state?.statusPagesPermissions;
+            resourceInputs["subStatusesPermissions"] = state?.subStatusesPermissions;
             resourceInputs["webhooksPermissions"] = state?.webhooksPermissions;
             resourceInputs["workflowsPermissions"] = state?.workflowsPermissions;
         } else {
@@ -216,11 +261,15 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["apiKeysPermissions"] = args?.apiKeysPermissions;
             resourceInputs["auditsPermissions"] = args?.auditsPermissions;
             resourceInputs["billingPermissions"] = args?.billingPermissions;
+            resourceInputs["catalogsPermissions"] = args?.catalogsPermissions;
+            resourceInputs["communicationPermissions"] = args?.communicationPermissions;
+            resourceInputs["edgeConnectorPermissions"] = args?.edgeConnectorPermissions;
             resourceInputs["environmentsPermissions"] = args?.environmentsPermissions;
             resourceInputs["formFieldsPermissions"] = args?.formFieldsPermissions;
             resourceInputs["functionalitiesPermissions"] = args?.functionalitiesPermissions;
             resourceInputs["groupsPermissions"] = args?.groupsPermissions;
             resourceInputs["incidentCausesPermissions"] = args?.incidentCausesPermissions;
+            resourceInputs["incidentCommunicationPermissions"] = args?.incidentCommunicationPermissions;
             resourceInputs["incidentFeedbacksPermissions"] = args?.incidentFeedbacksPermissions;
             resourceInputs["incidentPermissionSetId"] = args?.incidentPermissionSetId;
             resourceInputs["incidentRolesPermissions"] = args?.incidentRolesPermissions;
@@ -231,6 +280,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["isDeletable"] = args?.isDeletable;
             resourceInputs["isEditable"] = args?.isEditable;
             resourceInputs["name"] = args?.name;
+            resourceInputs["pagingPermissions"] = args?.pagingPermissions;
             resourceInputs["playbooksPermissions"] = args?.playbooksPermissions;
             resourceInputs["privateIncidentsPermissions"] = args?.privateIncidentsPermissions;
             resourceInputs["pulsesPermissions"] = args?.pulsesPermissions;
@@ -239,8 +289,10 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["secretsPermissions"] = args?.secretsPermissions;
             resourceInputs["servicesPermissions"] = args?.servicesPermissions;
             resourceInputs["severitiesPermissions"] = args?.severitiesPermissions;
+            resourceInputs["slasPermissions"] = args?.slasPermissions;
             resourceInputs["slug"] = args?.slug;
             resourceInputs["statusPagesPermissions"] = args?.statusPagesPermissions;
+            resourceInputs["subStatusesPermissions"] = args?.subStatusesPermissions;
             resourceInputs["webhooksPermissions"] = args?.webhooksPermissions;
             resourceInputs["workflowsPermissions"] = args?.workflowsPermissions;
         }
@@ -272,6 +324,18 @@ export interface RoleState {
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
+    catalogsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    communicationPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    edgeConnectorPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
     environmentsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
@@ -289,6 +353,10 @@ export interface RoleState {
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
     incidentCausesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`, `send`.
+     */
+    incidentCommunicationPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
@@ -332,6 +400,10 @@ export interface RoleState {
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
+    pagingPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
     playbooksPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
@@ -362,6 +434,10 @@ export interface RoleState {
      */
     severitiesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    slasPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * The role slug.
      */
     slug?: pulumi.Input<string | undefined>;
@@ -369,6 +445,10 @@ export interface RoleState {
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
     statusPagesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    subStatusesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
@@ -402,6 +482,18 @@ export interface RoleArgs {
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
+    catalogsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    communicationPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    edgeConnectorPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
     environmentsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
@@ -419,6 +511,10 @@ export interface RoleArgs {
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
     incidentCausesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`, `send`.
+     */
+    incidentCommunicationPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
@@ -462,6 +558,10 @@ export interface RoleArgs {
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
+    pagingPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
     playbooksPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
@@ -492,6 +592,10 @@ export interface RoleArgs {
      */
     severitiesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    slasPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * The role slug.
      */
     slug?: pulumi.Input<string | undefined>;
@@ -499,6 +603,10 @@ export interface RoleArgs {
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
     statusPagesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    subStatusesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */

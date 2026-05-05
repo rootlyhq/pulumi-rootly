@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.WorkflowCustomFieldSelection using the `id`. For example:
+ * rootly.WorkflowCustomFieldSelection can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/workflowCustomFieldSelection:WorkflowCustomFieldSelection my-resource 00000000-0000-0000-0000-000000000000
+ * $ pulumi import rootly:index/workflowCustomFieldSelection:WorkflowCustomFieldSelection primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class WorkflowCustomFieldSelection extends pulumi.CustomResource {
@@ -46,11 +56,11 @@ export class WorkflowCustomFieldSelection extends pulumi.CustomResource {
      */
     declare public readonly customFieldId: pulumi.Output<number>;
     /**
-     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     declare public readonly incidentCondition: pulumi.Output<string | undefined>;
-    declare public readonly selectedOptionIds: pulumi.Output<number[]>;
-    declare public readonly values: pulumi.Output<string[]>;
+    declare public readonly selectedOptionIds: pulumi.Output<number[] | undefined>;
+    declare public readonly values: pulumi.Output<string[] | undefined>;
     /**
      * The workflow for this selection
      */
@@ -99,7 +109,7 @@ export interface WorkflowCustomFieldSelectionState {
      */
     customFieldId?: pulumi.Input<number | undefined>;
     /**
-     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentCondition?: pulumi.Input<string | undefined>;
     selectedOptionIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
@@ -119,7 +129,7 @@ export interface WorkflowCustomFieldSelectionArgs {
      */
     customFieldId: pulumi.Input<number>;
     /**
-     * The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentCondition?: pulumi.Input<string | undefined>;
     selectedOptionIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;

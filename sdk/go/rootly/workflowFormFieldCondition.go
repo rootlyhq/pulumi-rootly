@@ -14,21 +14,34 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import WorkflowFormFieldCondition using the `id`. For example:
+// WorkflowFormFieldCondition can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/workflowFormFieldCondition:WorkflowFormFieldCondition my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/workflowFormFieldCondition:WorkflowFormFieldCondition primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type WorkflowFormFieldCondition struct {
 	pulumi.CustomResourceState
 
 	// The custom field for this condition
 	FormFieldId pulumi.StringOutput `pulumi:"formFieldId"`
-	// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentCondition        pulumi.StringPtrOutput   `pulumi:"incidentCondition"`
 	SelectedCatalogEntityIds pulumi.StringArrayOutput `pulumi:"selectedCatalogEntityIds"`
+	SelectedCauseIds         pulumi.StringArrayOutput `pulumi:"selectedCauseIds"`
+	SelectedEnvironmentIds   pulumi.StringArrayOutput `pulumi:"selectedEnvironmentIds"`
 	SelectedFunctionalityIds pulumi.StringArrayOutput `pulumi:"selectedFunctionalityIds"`
 	SelectedGroupIds         pulumi.StringArrayOutput `pulumi:"selectedGroupIds"`
+	SelectedIncidentTypeIds  pulumi.StringArrayOutput `pulumi:"selectedIncidentTypeIds"`
 	SelectedOptionIds        pulumi.StringArrayOutput `pulumi:"selectedOptionIds"`
 	SelectedServiceIds       pulumi.StringArrayOutput `pulumi:"selectedServiceIds"`
 	SelectedUserIds          pulumi.IntArrayOutput    `pulumi:"selectedUserIds"`
@@ -72,11 +85,14 @@ func GetWorkflowFormFieldCondition(ctx *pulumi.Context,
 type workflowFormFieldConditionState struct {
 	// The custom field for this condition
 	FormFieldId *string `pulumi:"formFieldId"`
-	// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentCondition        *string  `pulumi:"incidentCondition"`
 	SelectedCatalogEntityIds []string `pulumi:"selectedCatalogEntityIds"`
+	SelectedCauseIds         []string `pulumi:"selectedCauseIds"`
+	SelectedEnvironmentIds   []string `pulumi:"selectedEnvironmentIds"`
 	SelectedFunctionalityIds []string `pulumi:"selectedFunctionalityIds"`
 	SelectedGroupIds         []string `pulumi:"selectedGroupIds"`
+	SelectedIncidentTypeIds  []string `pulumi:"selectedIncidentTypeIds"`
 	SelectedOptionIds        []string `pulumi:"selectedOptionIds"`
 	SelectedServiceIds       []string `pulumi:"selectedServiceIds"`
 	SelectedUserIds          []int    `pulumi:"selectedUserIds"`
@@ -88,11 +104,14 @@ type workflowFormFieldConditionState struct {
 type WorkflowFormFieldConditionState struct {
 	// The custom field for this condition
 	FormFieldId pulumi.StringPtrInput
-	// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentCondition        pulumi.StringPtrInput
 	SelectedCatalogEntityIds pulumi.StringArrayInput
+	SelectedCauseIds         pulumi.StringArrayInput
+	SelectedEnvironmentIds   pulumi.StringArrayInput
 	SelectedFunctionalityIds pulumi.StringArrayInput
 	SelectedGroupIds         pulumi.StringArrayInput
+	SelectedIncidentTypeIds  pulumi.StringArrayInput
 	SelectedOptionIds        pulumi.StringArrayInput
 	SelectedServiceIds       pulumi.StringArrayInput
 	SelectedUserIds          pulumi.IntArrayInput
@@ -108,11 +127,14 @@ func (WorkflowFormFieldConditionState) ElementType() reflect.Type {
 type workflowFormFieldConditionArgs struct {
 	// The custom field for this condition
 	FormFieldId string `pulumi:"formFieldId"`
-	// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentCondition        *string  `pulumi:"incidentCondition"`
 	SelectedCatalogEntityIds []string `pulumi:"selectedCatalogEntityIds"`
+	SelectedCauseIds         []string `pulumi:"selectedCauseIds"`
+	SelectedEnvironmentIds   []string `pulumi:"selectedEnvironmentIds"`
 	SelectedFunctionalityIds []string `pulumi:"selectedFunctionalityIds"`
 	SelectedGroupIds         []string `pulumi:"selectedGroupIds"`
+	SelectedIncidentTypeIds  []string `pulumi:"selectedIncidentTypeIds"`
 	SelectedOptionIds        []string `pulumi:"selectedOptionIds"`
 	SelectedServiceIds       []string `pulumi:"selectedServiceIds"`
 	SelectedUserIds          []int    `pulumi:"selectedUserIds"`
@@ -125,11 +147,14 @@ type workflowFormFieldConditionArgs struct {
 type WorkflowFormFieldConditionArgs struct {
 	// The custom field for this condition
 	FormFieldId pulumi.StringInput
-	// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentCondition        pulumi.StringPtrInput
 	SelectedCatalogEntityIds pulumi.StringArrayInput
+	SelectedCauseIds         pulumi.StringArrayInput
+	SelectedEnvironmentIds   pulumi.StringArrayInput
 	SelectedFunctionalityIds pulumi.StringArrayInput
 	SelectedGroupIds         pulumi.StringArrayInput
+	SelectedIncidentTypeIds  pulumi.StringArrayInput
 	SelectedOptionIds        pulumi.StringArrayInput
 	SelectedServiceIds       pulumi.StringArrayInput
 	SelectedUserIds          pulumi.IntArrayInput
@@ -230,7 +255,7 @@ func (o WorkflowFormFieldConditionOutput) FormFieldId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowFormFieldCondition) pulumi.StringOutput { return v.FormFieldId }).(pulumi.StringOutput)
 }
 
-// The trigger condition. Value must be one of `IS`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowFormFieldConditionOutput) IncidentCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowFormFieldCondition) pulumi.StringPtrOutput { return v.IncidentCondition }).(pulumi.StringPtrOutput)
 }
@@ -239,12 +264,24 @@ func (o WorkflowFormFieldConditionOutput) SelectedCatalogEntityIds() pulumi.Stri
 	return o.ApplyT(func(v *WorkflowFormFieldCondition) pulumi.StringArrayOutput { return v.SelectedCatalogEntityIds }).(pulumi.StringArrayOutput)
 }
 
+func (o WorkflowFormFieldConditionOutput) SelectedCauseIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowFormFieldCondition) pulumi.StringArrayOutput { return v.SelectedCauseIds }).(pulumi.StringArrayOutput)
+}
+
+func (o WorkflowFormFieldConditionOutput) SelectedEnvironmentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowFormFieldCondition) pulumi.StringArrayOutput { return v.SelectedEnvironmentIds }).(pulumi.StringArrayOutput)
+}
+
 func (o WorkflowFormFieldConditionOutput) SelectedFunctionalityIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowFormFieldCondition) pulumi.StringArrayOutput { return v.SelectedFunctionalityIds }).(pulumi.StringArrayOutput)
 }
 
 func (o WorkflowFormFieldConditionOutput) SelectedGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowFormFieldCondition) pulumi.StringArrayOutput { return v.SelectedGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o WorkflowFormFieldConditionOutput) SelectedIncidentTypeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowFormFieldCondition) pulumi.StringArrayOutput { return v.SelectedIncidentTypeIds }).(pulumi.StringArrayOutput)
 }
 
 func (o WorkflowFormFieldConditionOutput) SelectedOptionIds() pulumi.StringArrayOutput {

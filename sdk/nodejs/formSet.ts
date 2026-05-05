@@ -7,10 +7,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Using `pulumi import`, import rootly.FormSet using the `id`. For example:
+ * rootly.FormSet can be imported using the `import` command.
  *
  * ```sh
- * $ pulumi import rootly:index/formSet:FormSet my-resource my-resource-slug
+ * $ pulumi import rootly:index/formSet:FormSet primary a816421c-6ceb-481a-87c4-585e47451f24
+ * ```
+ *
+ * Or using an `import` block.
+ *
+ * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ *
+ * HCL can be generated from the import block using the `-generate-config-out` flag.
+ *
+ * ```sh
+ * pulumi preview -generate-config-out=generated.tf
  * ```
  */
 export class FormSet extends pulumi.CustomResource {

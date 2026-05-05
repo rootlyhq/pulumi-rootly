@@ -23,6 +23,7 @@ func LookupAlertsSource(ctx *pulumi.Context, args *LookupAlertsSourceArgs, opts 
 
 // A collection of arguments for invoking getAlertsSource.
 type LookupAlertsSourceArgs struct {
+	Name       *string `pulumi:"name"`
 	SourceType *string `pulumi:"sourceType"`
 	Status     *string `pulumi:"status"`
 }
@@ -31,6 +32,7 @@ type LookupAlertsSourceArgs struct {
 type LookupAlertsSourceResult struct {
 	// The ID of this resource.
 	Id         string `pulumi:"id"`
+	Name       string `pulumi:"name"`
 	SourceType string `pulumi:"sourceType"`
 	Status     string `pulumi:"status"`
 }
@@ -46,6 +48,7 @@ func LookupAlertsSourceOutput(ctx *pulumi.Context, args LookupAlertsSourceOutput
 
 // A collection of arguments for invoking getAlertsSource.
 type LookupAlertsSourceOutputArgs struct {
+	Name       pulumi.StringPtrInput `pulumi:"name"`
 	SourceType pulumi.StringPtrInput `pulumi:"sourceType"`
 	Status     pulumi.StringPtrInput `pulumi:"status"`
 }
@@ -72,6 +75,10 @@ func (o LookupAlertsSourceResultOutput) ToLookupAlertsSourceResultOutputWithCont
 // The ID of this resource.
 func (o LookupAlertsSourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSourceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupAlertsSourceResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlertsSourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o LookupAlertsSourceResultOutput) SourceType() pulumi.StringOutput {

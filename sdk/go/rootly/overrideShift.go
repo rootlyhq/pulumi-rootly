@@ -14,28 +14,34 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import OverrideShift using the `id`. For example:
+// OverrideShift can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/overrideShift:OverrideShift my-resource 00000000-0000-0000-0000-000000000000
+// $ pulumi import rootly:index/overrideShift:OverrideShift primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type OverrideShift struct {
 	pulumi.CustomResourceState
 
 	// End datetime of shift
 	EndsAt pulumi.StringOutput `pulumi:"endsAt"`
-	// Denotes shift is an override shift. Value must be one of true or false
-	IsOverride pulumi.BoolOutput `pulumi:"isOverride"`
 	// ID of rotation
 	RotationId pulumi.StringOutput `pulumi:"rotationId"`
 	// ID of schedule
 	ScheduleId pulumi.StringOutput `pulumi:"scheduleId"`
-	// Override metadata
-	ShiftOverride pulumi.StringMapOutput `pulumi:"shiftOverride"`
 	// Start datetime of shift
 	StartsAt pulumi.StringOutput `pulumi:"startsAt"`
-	// User metadata
-	User pulumi.StringMapOutput `pulumi:"user"`
+	// Override shift user
+	UserId pulumi.IntOutput `pulumi:"userId"`
 }
 
 // NewOverrideShift registers a new resource with the given unique name, arguments, and options.
@@ -50,6 +56,9 @@ func NewOverrideShift(ctx *pulumi.Context,
 	}
 	if args.StartsAt == nil {
 		return nil, errors.New("invalid value for required argument 'StartsAt'")
+	}
+	if args.UserId == nil {
+		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OverrideShift
@@ -76,35 +85,27 @@ func GetOverrideShift(ctx *pulumi.Context,
 type overrideShiftState struct {
 	// End datetime of shift
 	EndsAt *string `pulumi:"endsAt"`
-	// Denotes shift is an override shift. Value must be one of true or false
-	IsOverride *bool `pulumi:"isOverride"`
 	// ID of rotation
 	RotationId *string `pulumi:"rotationId"`
 	// ID of schedule
 	ScheduleId *string `pulumi:"scheduleId"`
-	// Override metadata
-	ShiftOverride map[string]string `pulumi:"shiftOverride"`
 	// Start datetime of shift
 	StartsAt *string `pulumi:"startsAt"`
-	// User metadata
-	User map[string]string `pulumi:"user"`
+	// Override shift user
+	UserId *int `pulumi:"userId"`
 }
 
 type OverrideShiftState struct {
 	// End datetime of shift
 	EndsAt pulumi.StringPtrInput
-	// Denotes shift is an override shift. Value must be one of true or false
-	IsOverride pulumi.BoolPtrInput
 	// ID of rotation
 	RotationId pulumi.StringPtrInput
 	// ID of schedule
 	ScheduleId pulumi.StringPtrInput
-	// Override metadata
-	ShiftOverride pulumi.StringMapInput
 	// Start datetime of shift
 	StartsAt pulumi.StringPtrInput
-	// User metadata
-	User pulumi.StringMapInput
+	// Override shift user
+	UserId pulumi.IntPtrInput
 }
 
 func (OverrideShiftState) ElementType() reflect.Type {
@@ -114,36 +115,28 @@ func (OverrideShiftState) ElementType() reflect.Type {
 type overrideShiftArgs struct {
 	// End datetime of shift
 	EndsAt string `pulumi:"endsAt"`
-	// Denotes shift is an override shift. Value must be one of true or false
-	IsOverride *bool `pulumi:"isOverride"`
 	// ID of rotation
 	RotationId *string `pulumi:"rotationId"`
 	// ID of schedule
 	ScheduleId *string `pulumi:"scheduleId"`
-	// Override metadata
-	ShiftOverride map[string]string `pulumi:"shiftOverride"`
 	// Start datetime of shift
 	StartsAt string `pulumi:"startsAt"`
-	// User metadata
-	User map[string]string `pulumi:"user"`
+	// Override shift user
+	UserId int `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a OverrideShift resource.
 type OverrideShiftArgs struct {
 	// End datetime of shift
 	EndsAt pulumi.StringInput
-	// Denotes shift is an override shift. Value must be one of true or false
-	IsOverride pulumi.BoolPtrInput
 	// ID of rotation
 	RotationId pulumi.StringPtrInput
 	// ID of schedule
 	ScheduleId pulumi.StringPtrInput
-	// Override metadata
-	ShiftOverride pulumi.StringMapInput
 	// Start datetime of shift
 	StartsAt pulumi.StringInput
-	// User metadata
-	User pulumi.StringMapInput
+	// Override shift user
+	UserId pulumi.IntInput
 }
 
 func (OverrideShiftArgs) ElementType() reflect.Type {
@@ -238,11 +231,6 @@ func (o OverrideShiftOutput) EndsAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *OverrideShift) pulumi.StringOutput { return v.EndsAt }).(pulumi.StringOutput)
 }
 
-// Denotes shift is an override shift. Value must be one of true or false
-func (o OverrideShiftOutput) IsOverride() pulumi.BoolOutput {
-	return o.ApplyT(func(v *OverrideShift) pulumi.BoolOutput { return v.IsOverride }).(pulumi.BoolOutput)
-}
-
 // ID of rotation
 func (o OverrideShiftOutput) RotationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OverrideShift) pulumi.StringOutput { return v.RotationId }).(pulumi.StringOutput)
@@ -253,19 +241,14 @@ func (o OverrideShiftOutput) ScheduleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OverrideShift) pulumi.StringOutput { return v.ScheduleId }).(pulumi.StringOutput)
 }
 
-// Override metadata
-func (o OverrideShiftOutput) ShiftOverride() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *OverrideShift) pulumi.StringMapOutput { return v.ShiftOverride }).(pulumi.StringMapOutput)
-}
-
 // Start datetime of shift
 func (o OverrideShiftOutput) StartsAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *OverrideShift) pulumi.StringOutput { return v.StartsAt }).(pulumi.StringOutput)
 }
 
-// User metadata
-func (o OverrideShiftOutput) User() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *OverrideShift) pulumi.StringMapOutput { return v.User }).(pulumi.StringMapOutput)
+// Override shift user
+func (o OverrideShiftOutput) UserId() pulumi.IntOutput {
+	return o.ApplyT(func(v *OverrideShift) pulumi.IntOutput { return v.UserId }).(pulumi.IntOutput)
 }
 
 type OverrideShiftArrayOutput struct{ *pulumi.OutputState }

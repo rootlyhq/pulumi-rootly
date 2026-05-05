@@ -8,6 +8,7 @@ export function getAlertsSource(args?: GetAlertsSourceArgs, opts?: pulumi.Invoke
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getAlertsSource:getAlertsSource", {
+        "name": args.name,
         "sourceType": args.sourceType,
         "status": args.status,
     }, opts);
@@ -17,6 +18,7 @@ export function getAlertsSource(args?: GetAlertsSourceArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getAlertsSource.
  */
 export interface GetAlertsSourceArgs {
+    name?: string;
     sourceType?: string;
     status?: string;
 }
@@ -29,6 +31,7 @@ export interface GetAlertsSourceResult {
      * The ID of this resource.
      */
     readonly id: string;
+    readonly name: string;
     readonly sourceType: string;
     readonly status: string;
 }
@@ -36,6 +39,7 @@ export function getAlertsSourceOutput(args?: GetAlertsSourceOutputArgs, opts?: p
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getAlertsSource:getAlertsSource", {
+        "name": args.name,
         "sourceType": args.sourceType,
         "status": args.status,
     }, opts);
@@ -45,6 +49,7 @@ export function getAlertsSourceOutput(args?: GetAlertsSourceOutputArgs, opts?: p
  * A collection of arguments for invoking getAlertsSource.
  */
 export interface GetAlertsSourceOutputArgs {
+    name?: pulumi.Input<string | undefined>;
     sourceType?: pulumi.Input<string | undefined>;
     status?: pulumi.Input<string | undefined>;
 }

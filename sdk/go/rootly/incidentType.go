@@ -13,10 +13,20 @@ import (
 
 // ## Import
 //
-// Using `pulumi import`, import IncidentType using the `id`. For example:
+// IncidentType can be imported using the `import` command.
 //
 // ```sh
-// $ pulumi import rootly:index/incidentType:IncidentType my-resource my-resource-slug
+// $ pulumi import rootly:index/incidentType:IncidentType primary a816421c-6ceb-481a-87c4-585e47451f24
+// ```
+//
+// Or using an `import` block.
+//
+// Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+//
+// HCL can be generated from the import block using the `-generate-config-out` flag.
+//
+// ```sh
+// pulumi preview -generate-config-out=generated.tf
 // ```
 type IncidentType struct {
 	pulumi.CustomResourceState
@@ -31,6 +41,8 @@ type IncidentType struct {
 	NotifyEmails pulumi.StringArrayOutput `pulumi:"notifyEmails"`
 	// Position of the incident type
 	Position pulumi.IntOutput `pulumi:"position"`
+	// Array of property values for this incident type.
+	Properties IncidentTypePropertyArrayOutput `pulumi:"properties"`
 	// Slack Aliases associated with this incident type
 	SlackAliases IncidentTypeSlackAliasArrayOutput `pulumi:"slackAliases"`
 	// Slack Channels associated with this incident type
@@ -79,6 +91,8 @@ type incidentTypeState struct {
 	NotifyEmails []string `pulumi:"notifyEmails"`
 	// Position of the incident type
 	Position *int `pulumi:"position"`
+	// Array of property values for this incident type.
+	Properties []IncidentTypeProperty `pulumi:"properties"`
 	// Slack Aliases associated with this incident type
 	SlackAliases []IncidentTypeSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this incident type
@@ -98,6 +112,8 @@ type IncidentTypeState struct {
 	NotifyEmails pulumi.StringArrayInput
 	// Position of the incident type
 	Position pulumi.IntPtrInput
+	// Array of property values for this incident type.
+	Properties IncidentTypePropertyArrayInput
 	// Slack Aliases associated with this incident type
 	SlackAliases IncidentTypeSlackAliasArrayInput
 	// Slack Channels associated with this incident type
@@ -121,6 +137,8 @@ type incidentTypeArgs struct {
 	NotifyEmails []string `pulumi:"notifyEmails"`
 	// Position of the incident type
 	Position *int `pulumi:"position"`
+	// Array of property values for this incident type.
+	Properties []IncidentTypeProperty `pulumi:"properties"`
 	// Slack Aliases associated with this incident type
 	SlackAliases []IncidentTypeSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this incident type
@@ -141,6 +159,8 @@ type IncidentTypeArgs struct {
 	NotifyEmails pulumi.StringArrayInput
 	// Position of the incident type
 	Position pulumi.IntPtrInput
+	// Array of property values for this incident type.
+	Properties IncidentTypePropertyArrayInput
 	// Slack Aliases associated with this incident type
 	SlackAliases IncidentTypeSlackAliasArrayInput
 	// Slack Channels associated with this incident type
@@ -259,6 +279,11 @@ func (o IncidentTypeOutput) NotifyEmails() pulumi.StringArrayOutput {
 // Position of the incident type
 func (o IncidentTypeOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *IncidentType) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
+}
+
+// Array of property values for this incident type.
+func (o IncidentTypeOutput) Properties() IncidentTypePropertyArrayOutput {
+	return o.ApplyT(func(v *IncidentType) IncidentTypePropertyArrayOutput { return v.Properties }).(IncidentTypePropertyArrayOutput)
 }
 
 // Slack Aliases associated with this incident type
