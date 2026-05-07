@@ -12,6 +12,8 @@ import (
 	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
+// ## Example Usage
+//
 // ## Import
 //
 // StatusPage can be imported using the `import` command.
@@ -40,6 +42,8 @@ type StatusPage struct {
 	AuthenticationMethod pulumi.StringPtrOutput `pulumi:"authenticationMethod"`
 	// Authentication password
 	AuthenticationPassword pulumi.StringOutput `pulumi:"authenticationPassword"`
+	// CNAME records mapping external domain names to their DNS target values. Populated asynchronously after setting external*domain*names.
+	CnameRecords pulumi.StringMapOutput `pulumi:"cnameRecords"`
 	// The description of the status page
 	Description pulumi.StringOutput  `pulumi:"description"`
 	Enabled     pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -136,6 +140,8 @@ type statusPageState struct {
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`
 	// Authentication password
 	AuthenticationPassword *string `pulumi:"authenticationPassword"`
+	// CNAME records mapping external domain names to their DNS target values. Populated asynchronously after setting external*domain*names.
+	CnameRecords map[string]string `pulumi:"cnameRecords"`
 	// The description of the status page
 	Description *string `pulumi:"description"`
 	Enabled     *bool   `pulumi:"enabled"`
@@ -200,6 +206,8 @@ type StatusPageState struct {
 	AuthenticationMethod pulumi.StringPtrInput
 	// Authentication password
 	AuthenticationPassword pulumi.StringPtrInput
+	// CNAME records mapping external domain names to their DNS target values. Populated asynchronously after setting external*domain*names.
+	CnameRecords pulumi.StringMapInput
 	// The description of the status page
 	Description pulumi.StringPtrInput
 	Enabled     pulumi.BoolPtrInput
@@ -493,6 +501,11 @@ func (o StatusPageOutput) AuthenticationMethod() pulumi.StringPtrOutput {
 // Authentication password
 func (o StatusPageOutput) AuthenticationPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatusPage) pulumi.StringOutput { return v.AuthenticationPassword }).(pulumi.StringOutput)
+}
+
+// CNAME records mapping external domain names to their DNS target values. Populated asynchronously after setting external*domain*names.
+func (o StatusPageOutput) CnameRecords() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *StatusPage) pulumi.StringMapOutput { return v.CnameRecords }).(pulumi.StringMapOutput)
 }
 
 // The description of the status page

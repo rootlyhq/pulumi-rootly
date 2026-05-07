@@ -716,7 +716,7 @@ export interface EscalationPathRuleTimeBlock {
     /**
      * Whether this time block covers the entire day
      */
-    allDay: boolean;
+    allDay?: boolean;
     /**
      * Formatted as HH:MM
      */
@@ -724,11 +724,11 @@ export interface EscalationPathRuleTimeBlock {
     /**
      * Whether the time block applies on Friday
      */
-    friday: boolean;
+    friday?: boolean;
     /**
      * Whether the time block applies on Monday
      */
-    monday: boolean;
+    monday?: boolean;
     /**
      * Position of the time block
      */
@@ -736,7 +736,7 @@ export interface EscalationPathRuleTimeBlock {
     /**
      * Whether the time block applies on Saturday
      */
-    saturday: boolean;
+    saturday?: boolean;
     /**
      * Formatted as HH:MM
      */
@@ -744,19 +744,19 @@ export interface EscalationPathRuleTimeBlock {
     /**
      * Whether the time block applies on Sunday
      */
-    sunday: boolean;
+    sunday?: boolean;
     /**
      * Whether the time block applies on Thursday
      */
-    thursday: boolean;
+    thursday?: boolean;
     /**
      * Whether the time block applies on Tuesday
      */
-    tuesday: boolean;
+    tuesday?: boolean;
     /**
      * Whether the time block applies on Wednesday
      */
-    wednesday: boolean;
+    wednesday?: boolean;
 }
 
 export interface EscalationPathTimeRestriction {
@@ -889,11 +889,39 @@ export interface GetIncidentTypesIncidentType {
 }
 
 export interface GetServicesService {
+    alertBroadcastChannel: {[key: string]: string};
+    alertBroadcastEnabled: boolean;
+    alertUrgencyId: string;
+    alertsEmailAddress: string;
+    alertsEmailEnabled: boolean;
+    backstageId: string;
     color: string;
+    cortexId: string;
     description: string;
+    environmentIds: string[];
+    escalationPolicyId: string;
+    externalId: string;
+    githubRepositoryBranch: string;
+    githubRepositoryName: string;
+    gitlabRepositoryBranch: string;
+    gitlabRepositoryName: string;
     id: string;
+    incidentBroadcastChannel: {[key: string]: string};
+    incidentBroadcastEnabled: boolean;
+    kubernetesDeploymentName: string;
     name: string;
+    notifyEmails: string[];
+    opsgenieId: string;
+    ownerGroupIds: string[];
+    ownerUserIds: string[];
+    pagerdutyId: string;
+    position: number;
+    properties: string[];
     publicDescription: string;
+    serviceIds: string[];
+    serviceNowCiSysId: string;
+    slackAliases: string[];
+    slackChannels: string[];
     slug: string;
 }
 
@@ -1202,23 +1230,23 @@ export interface TeamSlackChannel {
 
 export interface WorkflowActionItemTriggerParams {
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     incidentActionItemCondition?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionGroup?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionKind?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionPriority?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionStatus?: string;
     incidentActionItemGroupIds: string[];
@@ -1235,59 +1263,80 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentActionItemStatuses: string[];
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     incidentCondition?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionAcknowledgedAt: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionDetectedAt: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionMitigatedAt: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionResolvedAt: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionStartedAt: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionSummary: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: string;
+    /**
+     * Value must be one of `IS`.
+     */
     incidentConditionalInactivity: string;
     /**
      * ex. 10 min, 1h, 3 days, 2 weeks
@@ -1303,7 +1352,7 @@ export interface WorkflowActionItemTriggerParams {
     incidentStatuses: string[];
     incidentVisibilities: string[];
     /**
-     * Value must be one off `actionItem`.
+     * Value must be one of `actionItem`.
      */
     triggerType?: string;
     /**
@@ -1314,11 +1363,11 @@ export interface WorkflowActionItemTriggerParams {
 
 export interface WorkflowAlertTriggerParams {
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     alertCondition?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionLabel?: string;
     /**
@@ -1326,7 +1375,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionLabelUseRegexp: boolean;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionPayload?: string;
     /**
@@ -1334,7 +1383,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionPayloadUseRegexp: boolean;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionSource?: string;
     /**
@@ -1342,7 +1391,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionSourceUseRegexp: boolean;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionStatus?: string;
     /**
@@ -1350,7 +1399,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionStatusUseRegexp: boolean;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionUrgency?: string;
     alertFieldConditions: outputs.WorkflowAlertTriggerParamsAlertFieldCondition[];
@@ -1365,7 +1414,7 @@ export interface WorkflowAlertTriggerParams {
     alertStatuses: string[];
     alertUrgencyIds: string[];
     /**
-     * Value must be one off `alert`.
+     * Value must be one of `alert`.
      */
     triggerType?: string;
     /**
@@ -1402,63 +1451,84 @@ export interface WorkflowAlertTriggerParamsAlertPayloadConditionsCondition {
 
 export interface WorkflowIncidentTriggerParams {
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     incidentCondition?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionAcknowledgedAt: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionCause?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionDetectedAt: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionMitigatedAt: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionResolvedAt: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionStartedAt: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionSummary: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: string;
+    /**
+     * Value must be one of `IS`.
+     */
     incidentConditionalInactivity: string;
     /**
      * ex. 10 min, 1h, 3 days, 2 weeks
@@ -1469,7 +1539,7 @@ export interface WorkflowIncidentTriggerParams {
      */
     incidentKinds: string[];
     /**
-     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionCause?: string;
     /**
@@ -1478,7 +1548,7 @@ export interface WorkflowIncidentTriggerParams {
     incidentStatuses: string[];
     incidentVisibilities: string[];
     /**
-     * Value must be one off `incident`.
+     * Value must be one of `incident`.
      */
     triggerType?: string;
     /**
@@ -1489,63 +1559,84 @@ export interface WorkflowIncidentTriggerParams {
 
 export interface WorkflowPostMortemTriggerParams {
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     incidentCondition?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionAcknowledgedAt: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionCause?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionDetectedAt: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionMitigatedAt: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionResolvedAt: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionStartedAt: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionSummary: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: string;
+    /**
+     * Value must be one of `IS`.
+     */
     incidentConditionalInactivity: string;
     /**
      * ex. 10 min, 1h, 3 days, 2 weeks
@@ -1556,15 +1647,15 @@ export interface WorkflowPostMortemTriggerParams {
      */
     incidentKinds: string[];
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     incidentPostMortemCondition?: string;
     /**
-     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionCause?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionStatus?: string;
     /**
@@ -1577,7 +1668,7 @@ export interface WorkflowPostMortemTriggerParams {
     incidentStatuses: string[];
     incidentVisibilities: string[];
     /**
-     * Value must be one off `postMortem`.
+     * Value must be one of `postMortem`.
      */
     triggerType?: string;
     /**
@@ -1588,11 +1679,11 @@ export interface WorkflowPostMortemTriggerParams {
 
 export interface WorkflowPulseTriggerParams {
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     pulseCondition?: string;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionLabel?: string;
     /**
@@ -1600,7 +1691,7 @@ export interface WorkflowPulseTriggerParams {
      */
     pulseConditionLabelUseRegexp: boolean;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionPayload?: string;
     /**
@@ -1608,7 +1699,7 @@ export interface WorkflowPulseTriggerParams {
      */
     pulseConditionPayloadUseRegexp: boolean;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionSource?: string;
     /**
@@ -1623,7 +1714,7 @@ export interface WorkflowPulseTriggerParams {
     pulseQueryPayload: string;
     pulseSources: string[];
     /**
-     * Value must be one off `pulse`.
+     * Value must be one of `pulse`.
      */
     triggerType?: string;
     /**
@@ -1634,7 +1725,7 @@ export interface WorkflowPulseTriggerParams {
 
 export interface WorkflowSimpleTriggerParams {
     /**
-     * Value must be one off `simple`.
+     * Value must be one of `simple`.
      */
     triggerType?: string;
     /**

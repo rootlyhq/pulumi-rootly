@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
  * ## Import
  *
  * rootly.Role can be imported using the `import` command.
@@ -13,9 +15,15 @@ import * as utilities from "./utilities";
  * $ pulumi import rootly:index/role:Role primary a816421c-6ceb-481a-87c4-585e47451f24
  * ```
  *
+ * You can also import by slug:
+ *
+ * ```sh
+ * $ pulumi import rootly:index/role:Role primary my-role-slug
+ * ```
+ *
  * Or using an `import` block.
  *
- * Locate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.
+ * Locate the resource id by listing roles through the API (`GET /v1/roles`), as role IDs are not visible in the web app.
  *
  * HCL can be generated from the import block using the `-generate-config-out` flag.
  *

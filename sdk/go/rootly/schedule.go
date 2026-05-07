@@ -41,7 +41,7 @@ type Schedule struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The owning teams for this schedules.
 	OwnerGroupIds pulumi.StringArrayOutput `pulumi:"ownerGroupIds"`
-	// ID of user assigned as owner of the schedule
+	// ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
 	OwnerUserId pulumi.IntOutput `pulumi:"ownerUserId"`
 	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
 	SlackChannel pulumi.StringMapOutput `pulumi:"slackChannel"`
@@ -87,7 +87,7 @@ type scheduleState struct {
 	Name *string `pulumi:"name"`
 	// The owning teams for this schedules.
 	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
-	// ID of user assigned as owner of the schedule
+	// ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
 	OwnerUserId *int `pulumi:"ownerUserId"`
 	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
 	SlackChannel map[string]string `pulumi:"slackChannel"`
@@ -104,7 +104,7 @@ type ScheduleState struct {
 	Name pulumi.StringPtrInput
 	// The owning teams for this schedules.
 	OwnerGroupIds pulumi.StringArrayInput
-	// ID of user assigned as owner of the schedule
+	// ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
 	OwnerUserId pulumi.IntPtrInput
 	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
 	SlackChannel pulumi.StringMapInput
@@ -125,7 +125,7 @@ type scheduleArgs struct {
 	Name *string `pulumi:"name"`
 	// The owning teams for this schedules.
 	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
-	// ID of user assigned as owner of the schedule
+	// ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
 	OwnerUserId *int `pulumi:"ownerUserId"`
 	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
 	SlackChannel map[string]string `pulumi:"slackChannel"`
@@ -143,7 +143,7 @@ type ScheduleArgs struct {
 	Name pulumi.StringPtrInput
 	// The owning teams for this schedules.
 	OwnerGroupIds pulumi.StringArrayInput
-	// ID of user assigned as owner of the schedule
+	// ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
 	OwnerUserId pulumi.IntPtrInput
 	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
 	SlackChannel pulumi.StringMapInput
@@ -258,7 +258,7 @@ func (o ScheduleOutput) OwnerGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringArrayOutput { return v.OwnerGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// ID of user assigned as owner of the schedule
+// ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
 func (o ScheduleOutput) OwnerUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.IntOutput { return v.OwnerUserId }).(pulumi.IntOutput)
 }

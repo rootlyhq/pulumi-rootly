@@ -94,7 +94,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Environments associated with this service
      */
-    declare public readonly environmentIds: pulumi.Output<string[] | undefined>;
+    declare public readonly environmentIds: pulumi.Output<string[]>;
     /**
      * The escalation policy id of the service
      */
@@ -146,11 +146,11 @@ export class Service extends pulumi.CustomResource {
     /**
      * Owner Teams associated with this service
      */
-    declare public readonly ownerGroupIds: pulumi.Output<string[] | undefined>;
+    declare public readonly ownerGroupIds: pulumi.Output<string[]>;
     /**
      * Owner Users associated with this service
      */
-    declare public readonly ownerUserIds: pulumi.Output<number[] | undefined>;
+    declare public readonly ownerUserIds: pulumi.Output<number[]>;
     /**
      * The PagerDuty service id associated to this service
      */
@@ -170,7 +170,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Services dependent on this service
      */
-    declare public readonly serviceIds: pulumi.Output<string[] | undefined>;
+    declare public readonly serviceIds: pulumi.Output<string[]>;
     /**
      * The Service Now CI sys id associated to this service
      */

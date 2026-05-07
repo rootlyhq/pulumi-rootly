@@ -9359,15 +9359,15 @@ func (o TeamSlackChannelArrayOutput) Index(i pulumi.IntInput) TeamSlackChannelOu
 }
 
 type WorkflowActionItemTriggerParams struct {
-	// Value must be one off `ALL`, `ANY`, `NONE`.
+	// Value must be one of `ALL`, `ANY`, `NONE`.
 	IncidentActionItemCondition *string `pulumi:"incidentActionItemCondition"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionGroup *string `pulumi:"incidentActionItemConditionGroup"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionKind *string `pulumi:"incidentActionItemConditionKind"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionPriority *string `pulumi:"incidentActionItemConditionPriority"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionStatus *string  `pulumi:"incidentActionItemConditionStatus"`
 	IncidentActionItemGroupIds        []string `pulumi:"incidentActionItemGroupIds"`
 	// Value must be one of `task`, `followUp`.
@@ -9376,36 +9376,43 @@ type WorkflowActionItemTriggerParams struct {
 	IncidentActionItemPriorities []string `pulumi:"incidentActionItemPriorities"`
 	// Value must be one of `open`, `inProgress`, `cancelled`, `done`.
 	IncidentActionItemStatuses []string `pulumi:"incidentActionItemStatuses"`
-	// Value must be one off `ALL`, `ANY`, `NONE`.
-	IncidentCondition               *string `pulumi:"incidentCondition"`
+	// Value must be one of `ALL`, `ANY`, `NONE`.
+	IncidentCondition *string `pulumi:"incidentCondition"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionAcknowledgedAt *string `pulumi:"incidentConditionAcknowledgedAt"`
-	IncidentConditionDetectedAt     *string `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionDetectedAt *string `pulumi:"incidentConditionDetectedAt"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment *string `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality *string `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup *string `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles *string `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType *string `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionKind        *string `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionKind *string `pulumi:"incidentConditionKind"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
-	IncidentConditionResolvedAt  *string `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionResolvedAt *string `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService *string `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionSeverity  *string `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionSeverity *string `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionStartedAt *string `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus *string `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus *string `pulumi:"incidentConditionSubStatus"`
-	IncidentConditionSummary   *string `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionVisibility   *string `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionSummary *string `pulumi:"incidentConditionSummary"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionVisibility *string `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `IS`.
 	IncidentConditionalInactivity *string `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration *string `pulumi:"incidentInactivityDuration"`
@@ -9414,7 +9421,7 @@ type WorkflowActionItemTriggerParams struct {
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     []string `pulumi:"incidentStatuses"`
 	IncidentVisibilities []string `pulumi:"incidentVisibilities"`
-	// Value must be one off `actionItem`.
+	// Value must be one of `actionItem`.
 	TriggerType *string `pulumi:"triggerType"`
 	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*updated, action*item*created, action*item*updated, assigned*user*updated, summary*updated, description*updated, status*updated, priority*updated, due*date*updated, teams*updated, slack*command
 	Triggers []string `pulumi:"triggers"`
@@ -9432,15 +9439,15 @@ type WorkflowActionItemTriggerParamsInput interface {
 }
 
 type WorkflowActionItemTriggerParamsArgs struct {
-	// Value must be one off `ALL`, `ANY`, `NONE`.
+	// Value must be one of `ALL`, `ANY`, `NONE`.
 	IncidentActionItemCondition pulumi.StringPtrInput `pulumi:"incidentActionItemCondition"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionGroup pulumi.StringPtrInput `pulumi:"incidentActionItemConditionGroup"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionKind pulumi.StringPtrInput `pulumi:"incidentActionItemConditionKind"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionPriority pulumi.StringPtrInput `pulumi:"incidentActionItemConditionPriority"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentActionItemConditionStatus pulumi.StringPtrInput   `pulumi:"incidentActionItemConditionStatus"`
 	IncidentActionItemGroupIds        pulumi.StringArrayInput `pulumi:"incidentActionItemGroupIds"`
 	// Value must be one of `task`, `followUp`.
@@ -9449,36 +9456,43 @@ type WorkflowActionItemTriggerParamsArgs struct {
 	IncidentActionItemPriorities pulumi.StringArrayInput `pulumi:"incidentActionItemPriorities"`
 	// Value must be one of `open`, `inProgress`, `cancelled`, `done`.
 	IncidentActionItemStatuses pulumi.StringArrayInput `pulumi:"incidentActionItemStatuses"`
-	// Value must be one off `ALL`, `ANY`, `NONE`.
-	IncidentCondition               pulumi.StringPtrInput `pulumi:"incidentCondition"`
+	// Value must be one of `ALL`, `ANY`, `NONE`.
+	IncidentCondition pulumi.StringPtrInput `pulumi:"incidentCondition"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionAcknowledgedAt pulumi.StringPtrInput `pulumi:"incidentConditionAcknowledgedAt"`
-	IncidentConditionDetectedAt     pulumi.StringPtrInput `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionDetectedAt pulumi.StringPtrInput `pulumi:"incidentConditionDetectedAt"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment pulumi.StringPtrInput `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality pulumi.StringPtrInput `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup pulumi.StringPtrInput `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles pulumi.StringPtrInput `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType pulumi.StringPtrInput `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionKind        pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionKind pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
-	IncidentConditionResolvedAt  pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionResolvedAt pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService pulumi.StringPtrInput `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionSeverity  pulumi.StringPtrInput `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionSeverity pulumi.StringPtrInput `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionStartedAt pulumi.StringPtrInput `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus pulumi.StringPtrInput `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus pulumi.StringPtrInput `pulumi:"incidentConditionSubStatus"`
-	IncidentConditionSummary   pulumi.StringPtrInput `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionVisibility   pulumi.StringPtrInput `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionSummary pulumi.StringPtrInput `pulumi:"incidentConditionSummary"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionVisibility pulumi.StringPtrInput `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `IS`.
 	IncidentConditionalInactivity pulumi.StringPtrInput `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration pulumi.StringPtrInput `pulumi:"incidentInactivityDuration"`
@@ -9487,7 +9501,7 @@ type WorkflowActionItemTriggerParamsArgs struct {
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     pulumi.StringArrayInput `pulumi:"incidentStatuses"`
 	IncidentVisibilities pulumi.StringArrayInput `pulumi:"incidentVisibilities"`
-	// Value must be one off `actionItem`.
+	// Value must be one of `actionItem`.
 	TriggerType pulumi.StringPtrInput `pulumi:"triggerType"`
 	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*updated, action*item*created, action*item*updated, assigned*user*updated, summary*updated, description*updated, status*updated, priority*updated, due*date*updated, teams*updated, slack*command
 	Triggers pulumi.StringArrayInput `pulumi:"triggers"`
@@ -9570,27 +9584,27 @@ func (o WorkflowActionItemTriggerParamsOutput) ToWorkflowActionItemTriggerParams
 	}).(WorkflowActionItemTriggerParamsPtrOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentActionItemCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentActionItemCondition }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentActionItemConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentActionItemConditionGroup }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentActionItemConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentActionItemConditionKind }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentActionItemConditionPriority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentActionItemConditionPriority }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentActionItemConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentActionItemConditionStatus }).(pulumi.StringPtrOutput)
 }
@@ -9614,90 +9628,97 @@ func (o WorkflowActionItemTriggerParamsOutput) IncidentActionItemStatuses() pulu
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) []string { return v.IncidentActionItemStatuses }).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentCondition }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionAcknowledgedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionAcknowledgedAt }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionDetectedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionDetectedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionEnvironment }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionFunctionality }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionGroup }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionIncidentRoles }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionIncidentType }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionKind }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionMitigatedAt }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionResolvedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionResolvedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionService }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionSeverity }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionStartedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionStartedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionStatus }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionSubStatus }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionSummary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionSummary }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionVisibility }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionalInactivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionalInactivity }).(pulumi.StringPtrOutput)
 }
@@ -9721,7 +9742,7 @@ func (o WorkflowActionItemTriggerParamsOutput) IncidentVisibilities() pulumi.Str
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) []string { return v.IncidentVisibilities }).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `actionItem`.
+// Value must be one of `actionItem`.
 func (o WorkflowActionItemTriggerParamsOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.TriggerType }).(pulumi.StringPtrOutput)
 }
@@ -9755,7 +9776,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) Elem() WorkflowActionItemTrigg
 	}).(WorkflowActionItemTriggerParamsOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9765,7 +9786,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemCondition() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9775,7 +9796,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionGro
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9785,7 +9806,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionKin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionPriority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9795,7 +9816,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionPri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9844,7 +9865,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentActionItemStatuses() p
 	}).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9854,6 +9875,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentCondition() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionAcknowledgedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9863,6 +9885,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionAcknowledgedA
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionDetectedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9872,7 +9895,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionDetectedAt() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9882,7 +9905,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionEnvironment()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9892,7 +9915,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionFunctionality
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9902,7 +9925,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionGroup() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9912,7 +9935,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionIncidentRoles
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9922,7 +9945,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionIncidentType(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9932,6 +9955,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionKind() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9941,6 +9965,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionMitigatedAt()
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionResolvedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9950,7 +9975,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionResolvedAt() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9960,7 +9985,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionService() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9970,6 +9995,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionSeverity() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionStartedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9979,7 +10005,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionStartedAt() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9989,7 +10015,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionStatus() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -9999,6 +10025,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionSubStatus() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionSummary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -10008,7 +10035,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionSummary() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -10018,6 +10045,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionVisibility() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionalInactivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -10066,7 +10094,7 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentVisibilities() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `actionItem`.
+// Value must be one of `actionItem`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
 		if v == nil {
@@ -10087,25 +10115,25 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) Triggers() pulumi.StringArrayO
 }
 
 type WorkflowAlertTriggerParams struct {
-	// Value must be one off `ALL`, `ANY`, `NONE`.
+	// Value must be one of `ALL`, `ANY`, `NONE`.
 	AlertCondition *string `pulumi:"alertCondition"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionLabel *string `pulumi:"alertConditionLabel"`
 	// Value must be one of true or false
 	AlertConditionLabelUseRegexp *bool `pulumi:"alertConditionLabelUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionPayload *string `pulumi:"alertConditionPayload"`
 	// Value must be one of true or false
 	AlertConditionPayloadUseRegexp *bool `pulumi:"alertConditionPayloadUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionSource *string `pulumi:"alertConditionSource"`
 	// Value must be one of true or false
 	AlertConditionSourceUseRegexp *bool `pulumi:"alertConditionSourceUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionStatus *string `pulumi:"alertConditionStatus"`
 	// Value must be one of true or false
 	AlertConditionStatusUseRegexp *bool `pulumi:"alertConditionStatusUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionUrgency  *string                                           `pulumi:"alertConditionUrgency"`
 	AlertFieldConditions   []WorkflowAlertTriggerParamsAlertFieldCondition   `pulumi:"alertFieldConditions"`
 	AlertLabels            []string                                          `pulumi:"alertLabels"`
@@ -10116,7 +10144,7 @@ type WorkflowAlertTriggerParams struct {
 	AlertSources      []string `pulumi:"alertSources"`
 	AlertStatuses     []string `pulumi:"alertStatuses"`
 	AlertUrgencyIds   []string `pulumi:"alertUrgencyIds"`
-	// Value must be one off `alert`.
+	// Value must be one of `alert`.
 	TriggerType *string `pulumi:"triggerType"`
 	// Actions that trigger the workflow. Value must be one of `alertCreated`, `alertStatusUpdated`.
 	Triggers []string `pulumi:"triggers"`
@@ -10134,25 +10162,25 @@ type WorkflowAlertTriggerParamsInput interface {
 }
 
 type WorkflowAlertTriggerParamsArgs struct {
-	// Value must be one off `ALL`, `ANY`, `NONE`.
+	// Value must be one of `ALL`, `ANY`, `NONE`.
 	AlertCondition pulumi.StringPtrInput `pulumi:"alertCondition"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionLabel pulumi.StringPtrInput `pulumi:"alertConditionLabel"`
 	// Value must be one of true or false
 	AlertConditionLabelUseRegexp pulumi.BoolPtrInput `pulumi:"alertConditionLabelUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionPayload pulumi.StringPtrInput `pulumi:"alertConditionPayload"`
 	// Value must be one of true or false
 	AlertConditionPayloadUseRegexp pulumi.BoolPtrInput `pulumi:"alertConditionPayloadUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionSource pulumi.StringPtrInput `pulumi:"alertConditionSource"`
 	// Value must be one of true or false
 	AlertConditionSourceUseRegexp pulumi.BoolPtrInput `pulumi:"alertConditionSourceUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionStatus pulumi.StringPtrInput `pulumi:"alertConditionStatus"`
 	// Value must be one of true or false
 	AlertConditionStatusUseRegexp pulumi.BoolPtrInput `pulumi:"alertConditionStatusUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	AlertConditionUrgency  pulumi.StringPtrInput                                    `pulumi:"alertConditionUrgency"`
 	AlertFieldConditions   WorkflowAlertTriggerParamsAlertFieldConditionArrayInput  `pulumi:"alertFieldConditions"`
 	AlertLabels            pulumi.StringArrayInput                                  `pulumi:"alertLabels"`
@@ -10163,7 +10191,7 @@ type WorkflowAlertTriggerParamsArgs struct {
 	AlertSources      pulumi.StringArrayInput `pulumi:"alertSources"`
 	AlertStatuses     pulumi.StringArrayInput `pulumi:"alertStatuses"`
 	AlertUrgencyIds   pulumi.StringArrayInput `pulumi:"alertUrgencyIds"`
-	// Value must be one off `alert`.
+	// Value must be one of `alert`.
 	TriggerType pulumi.StringPtrInput `pulumi:"triggerType"`
 	// Actions that trigger the workflow. Value must be one of `alertCreated`, `alertStatusUpdated`.
 	Triggers pulumi.StringArrayInput `pulumi:"triggers"`
@@ -10246,12 +10274,12 @@ func (o WorkflowAlertTriggerParamsOutput) ToWorkflowAlertTriggerParamsPtrOutputW
 	}).(WorkflowAlertTriggerParamsPtrOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowAlertTriggerParamsOutput) AlertCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertCondition }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsOutput) AlertConditionLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertConditionLabel }).(pulumi.StringPtrOutput)
 }
@@ -10261,7 +10289,7 @@ func (o WorkflowAlertTriggerParamsOutput) AlertConditionLabelUseRegexp() pulumi.
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *bool { return v.AlertConditionLabelUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsOutput) AlertConditionPayload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertConditionPayload }).(pulumi.StringPtrOutput)
 }
@@ -10271,7 +10299,7 @@ func (o WorkflowAlertTriggerParamsOutput) AlertConditionPayloadUseRegexp() pulum
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *bool { return v.AlertConditionPayloadUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsOutput) AlertConditionSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertConditionSource }).(pulumi.StringPtrOutput)
 }
@@ -10281,7 +10309,7 @@ func (o WorkflowAlertTriggerParamsOutput) AlertConditionSourceUseRegexp() pulumi
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *bool { return v.AlertConditionSourceUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsOutput) AlertConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertConditionStatus }).(pulumi.StringPtrOutput)
 }
@@ -10291,7 +10319,7 @@ func (o WorkflowAlertTriggerParamsOutput) AlertConditionStatusUseRegexp() pulumi
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *bool { return v.AlertConditionStatusUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsOutput) AlertConditionUrgency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.AlertConditionUrgency }).(pulumi.StringPtrOutput)
 }
@@ -10333,7 +10361,7 @@ func (o WorkflowAlertTriggerParamsOutput) AlertUrgencyIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) []string { return v.AlertUrgencyIds }).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `alert`.
+// Value must be one of `alert`.
 func (o WorkflowAlertTriggerParamsOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowAlertTriggerParams) *string { return v.TriggerType }).(pulumi.StringPtrOutput)
 }
@@ -10367,7 +10395,7 @@ func (o WorkflowAlertTriggerParamsPtrOutput) Elem() WorkflowAlertTriggerParamsOu
 	}).(WorkflowAlertTriggerParamsOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
 		if v == nil {
@@ -10377,7 +10405,7 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertCondition() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
 		if v == nil {
@@ -10397,7 +10425,7 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionLabelUseRegexp() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionPayload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
 		if v == nil {
@@ -10417,7 +10445,7 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionPayloadUseRegexp() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
 		if v == nil {
@@ -10437,7 +10465,7 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionSourceUseRegexp() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
 		if v == nil {
@@ -10457,7 +10485,7 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionStatusUseRegexp() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowAlertTriggerParamsPtrOutput) AlertConditionUrgency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
 		if v == nil {
@@ -10540,7 +10568,7 @@ func (o WorkflowAlertTriggerParamsPtrOutput) AlertUrgencyIds() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `alert`.
+// Value must be one of `alert`.
 func (o WorkflowAlertTriggerParamsPtrOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowAlertTriggerParams) *string {
 		if v == nil {
@@ -10933,49 +10961,56 @@ func (o WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput) In
 }
 
 type WorkflowIncidentTriggerParams struct {
-	// Value must be one off `ALL`, `ANY`, `NONE`.
-	IncidentCondition               *string `pulumi:"incidentCondition"`
+	// Value must be one of `ALL`, `ANY`, `NONE`.
+	IncidentCondition *string `pulumi:"incidentCondition"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionAcknowledgedAt *string `pulumi:"incidentConditionAcknowledgedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionCause      *string `pulumi:"incidentConditionCause"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionCause *string `pulumi:"incidentConditionCause"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionDetectedAt *string `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment *string `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality *string `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup *string `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles *string `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType *string `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionKind        *string `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionKind *string `pulumi:"incidentConditionKind"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
-	IncidentConditionResolvedAt  *string `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionResolvedAt *string `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService *string `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionSeverity  *string `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionSeverity *string `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionStartedAt *string `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus *string `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus *string `pulumi:"incidentConditionSubStatus"`
-	IncidentConditionSummary   *string `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionVisibility   *string `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionSummary *string `pulumi:"incidentConditionSummary"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionVisibility *string `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `IS`.
 	IncidentConditionalInactivity *string `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration *string `pulumi:"incidentInactivityDuration"`
 	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 	IncidentKinds []string `pulumi:"incidentKinds"`
-	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionCause *string `pulumi:"incidentPostMortemConditionCause"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     []string `pulumi:"incidentStatuses"`
 	IncidentVisibilities []string `pulumi:"incidentVisibilities"`
-	// Value must be one off `incident`.
+	// Value must be one of `incident`.
 	TriggerType *string `pulumi:"triggerType"`
 	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
 	Triggers []string `pulumi:"triggers"`
@@ -10993,49 +11028,56 @@ type WorkflowIncidentTriggerParamsInput interface {
 }
 
 type WorkflowIncidentTriggerParamsArgs struct {
-	// Value must be one off `ALL`, `ANY`, `NONE`.
-	IncidentCondition               pulumi.StringPtrInput `pulumi:"incidentCondition"`
+	// Value must be one of `ALL`, `ANY`, `NONE`.
+	IncidentCondition pulumi.StringPtrInput `pulumi:"incidentCondition"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionAcknowledgedAt pulumi.StringPtrInput `pulumi:"incidentConditionAcknowledgedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionCause      pulumi.StringPtrInput `pulumi:"incidentConditionCause"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionCause pulumi.StringPtrInput `pulumi:"incidentConditionCause"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionDetectedAt pulumi.StringPtrInput `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment pulumi.StringPtrInput `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality pulumi.StringPtrInput `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup pulumi.StringPtrInput `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles pulumi.StringPtrInput `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType pulumi.StringPtrInput `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionKind        pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionKind pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
-	IncidentConditionResolvedAt  pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionResolvedAt pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService pulumi.StringPtrInput `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionSeverity  pulumi.StringPtrInput `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionSeverity pulumi.StringPtrInput `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionStartedAt pulumi.StringPtrInput `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus pulumi.StringPtrInput `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus pulumi.StringPtrInput `pulumi:"incidentConditionSubStatus"`
-	IncidentConditionSummary   pulumi.StringPtrInput `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionVisibility   pulumi.StringPtrInput `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionSummary pulumi.StringPtrInput `pulumi:"incidentConditionSummary"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionVisibility pulumi.StringPtrInput `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `IS`.
 	IncidentConditionalInactivity pulumi.StringPtrInput `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration pulumi.StringPtrInput `pulumi:"incidentInactivityDuration"`
 	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 	IncidentKinds pulumi.StringArrayInput `pulumi:"incidentKinds"`
-	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionCause pulumi.StringPtrInput `pulumi:"incidentPostMortemConditionCause"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     pulumi.StringArrayInput `pulumi:"incidentStatuses"`
 	IncidentVisibilities pulumi.StringArrayInput `pulumi:"incidentVisibilities"`
-	// Value must be one off `incident`.
+	// Value must be one of `incident`.
 	TriggerType pulumi.StringPtrInput `pulumi:"triggerType"`
 	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
 	Triggers pulumi.StringArrayInput `pulumi:"triggers"`
@@ -11118,95 +11160,102 @@ func (o WorkflowIncidentTriggerParamsOutput) ToWorkflowIncidentTriggerParamsPtrO
 	}).(WorkflowIncidentTriggerParamsPtrOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentCondition }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionAcknowledgedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionAcknowledgedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionCause }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionDetectedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionDetectedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionEnvironment }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionFunctionality }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionGroup }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionIncidentRoles }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionIncidentType }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionKind }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionMitigatedAt }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionResolvedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionResolvedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionService }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionSeverity }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionStartedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionStartedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionStatus }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionSubStatus }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionSummary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionSummary }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionVisibility }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionalInactivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionalInactivity }).(pulumi.StringPtrOutput)
 }
@@ -11221,7 +11270,7 @@ func (o WorkflowIncidentTriggerParamsOutput) IncidentKinds() pulumi.StringArrayO
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) []string { return v.IncidentKinds }).(pulumi.StringArrayOutput)
 }
 
-// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentPostMortemConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentPostMortemConditionCause }).(pulumi.StringPtrOutput)
 }
@@ -11235,7 +11284,7 @@ func (o WorkflowIncidentTriggerParamsOutput) IncidentVisibilities() pulumi.Strin
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) []string { return v.IncidentVisibilities }).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `incident`.
+// Value must be one of `incident`.
 func (o WorkflowIncidentTriggerParamsOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.TriggerType }).(pulumi.StringPtrOutput)
 }
@@ -11269,7 +11318,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) Elem() WorkflowIncidentTriggerPa
 	}).(WorkflowIncidentTriggerParamsOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11279,6 +11328,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentCondition() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionAcknowledgedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11288,7 +11338,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionAcknowledgedAt(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11298,6 +11348,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionCause() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionDetectedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11307,7 +11358,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionDetectedAt() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11317,7 +11368,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionEnvironment() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11327,7 +11378,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionFunctionality()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11337,7 +11388,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionGroup() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11347,7 +11398,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionIncidentRoles()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11357,7 +11408,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionIncidentType() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11367,6 +11418,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionKind() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11376,6 +11428,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionMitigatedAt() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionResolvedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11385,7 +11438,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionResolvedAt() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11395,7 +11448,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionService() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11405,6 +11458,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionSeverity() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionStartedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11414,7 +11468,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionStartedAt() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11424,7 +11478,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionStatus() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11434,6 +11488,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionSubStatus() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionSummary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11443,7 +11498,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionSummary() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11453,6 +11508,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionVisibility() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionalInactivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11482,7 +11538,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentKinds() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentPostMortemConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11511,7 +11567,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentVisibilities() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `incident`.
+// Value must be one of `incident`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
 		if v == nil {
@@ -11532,55 +11588,62 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) Triggers() pulumi.StringArrayOut
 }
 
 type WorkflowPostMortemTriggerParams struct {
-	// Value must be one off `ALL`, `ANY`, `NONE`.
-	IncidentCondition               *string `pulumi:"incidentCondition"`
+	// Value must be one of `ALL`, `ANY`, `NONE`.
+	IncidentCondition *string `pulumi:"incidentCondition"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionAcknowledgedAt *string `pulumi:"incidentConditionAcknowledgedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionCause      *string `pulumi:"incidentConditionCause"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionCause *string `pulumi:"incidentConditionCause"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionDetectedAt *string `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment *string `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality *string `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup *string `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles *string `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType *string `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionKind        *string `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionKind *string `pulumi:"incidentConditionKind"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
-	IncidentConditionResolvedAt  *string `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionResolvedAt *string `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService *string `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionSeverity  *string `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionSeverity *string `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionStartedAt *string `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus *string `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus *string `pulumi:"incidentConditionSubStatus"`
-	IncidentConditionSummary   *string `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionVisibility   *string `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionSummary *string `pulumi:"incidentConditionSummary"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionVisibility *string `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `IS`.
 	IncidentConditionalInactivity *string `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration *string `pulumi:"incidentInactivityDuration"`
 	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 	IncidentKinds []string `pulumi:"incidentKinds"`
-	// Value must be one off `ALL`, `ANY`, `NONE`.
+	// Value must be one of `ALL`, `ANY`, `NONE`.
 	IncidentPostMortemCondition *string `pulumi:"incidentPostMortemCondition"`
-	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionCause *string `pulumi:"incidentPostMortemConditionCause"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionStatus *string `pulumi:"incidentPostMortemConditionStatus"`
 	// Value must be one of `draft`, `published`.
 	IncidentPostMortemStatuses []string `pulumi:"incidentPostMortemStatuses"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     []string `pulumi:"incidentStatuses"`
 	IncidentVisibilities []string `pulumi:"incidentVisibilities"`
-	// Value must be one off `postMortem`.
+	// Value must be one of `postMortem`.
 	TriggerType *string `pulumi:"triggerType"`
 	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, post*mortem*created, post*mortem*updated, status*updated, slack_command
 	Triggers []string `pulumi:"triggers"`
@@ -11598,55 +11661,62 @@ type WorkflowPostMortemTriggerParamsInput interface {
 }
 
 type WorkflowPostMortemTriggerParamsArgs struct {
-	// Value must be one off `ALL`, `ANY`, `NONE`.
-	IncidentCondition               pulumi.StringPtrInput `pulumi:"incidentCondition"`
+	// Value must be one of `ALL`, `ANY`, `NONE`.
+	IncidentCondition pulumi.StringPtrInput `pulumi:"incidentCondition"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionAcknowledgedAt pulumi.StringPtrInput `pulumi:"incidentConditionAcknowledgedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionCause      pulumi.StringPtrInput `pulumi:"incidentConditionCause"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionCause pulumi.StringPtrInput `pulumi:"incidentConditionCause"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionDetectedAt pulumi.StringPtrInput `pulumi:"incidentConditionDetectedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionEnvironment pulumi.StringPtrInput `pulumi:"incidentConditionEnvironment"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionFunctionality pulumi.StringPtrInput `pulumi:"incidentConditionFunctionality"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionGroup pulumi.StringPtrInput `pulumi:"incidentConditionGroup"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentRoles pulumi.StringPtrInput `pulumi:"incidentConditionIncidentRoles"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionIncidentType pulumi.StringPtrInput `pulumi:"incidentConditionIncidentType"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionKind        pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionKind pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
-	IncidentConditionResolvedAt  pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionResolvedAt pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService pulumi.StringPtrInput `pulumi:"incidentConditionService"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionSeverity  pulumi.StringPtrInput `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionSeverity pulumi.StringPtrInput `pulumi:"incidentConditionSeverity"`
+	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionStartedAt pulumi.StringPtrInput `pulumi:"incidentConditionStartedAt"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionStatus pulumi.StringPtrInput `pulumi:"incidentConditionStatus"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionSubStatus pulumi.StringPtrInput `pulumi:"incidentConditionSubStatus"`
-	IncidentConditionSummary   pulumi.StringPtrInput `pulumi:"incidentConditionSummary"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
-	IncidentConditionVisibility   pulumi.StringPtrInput `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionSummary pulumi.StringPtrInput `pulumi:"incidentConditionSummary"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionVisibility pulumi.StringPtrInput `pulumi:"incidentConditionVisibility"`
+	// Value must be one of `IS`.
 	IncidentConditionalInactivity pulumi.StringPtrInput `pulumi:"incidentConditionalInactivity"`
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration pulumi.StringPtrInput `pulumi:"incidentInactivityDuration"`
 	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 	IncidentKinds pulumi.StringArrayInput `pulumi:"incidentKinds"`
-	// Value must be one off `ALL`, `ANY`, `NONE`.
+	// Value must be one of `ALL`, `ANY`, `NONE`.
 	IncidentPostMortemCondition pulumi.StringPtrInput `pulumi:"incidentPostMortemCondition"`
-	// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionCause pulumi.StringPtrInput `pulumi:"incidentPostMortemConditionCause"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionStatus pulumi.StringPtrInput `pulumi:"incidentPostMortemConditionStatus"`
 	// Value must be one of `draft`, `published`.
 	IncidentPostMortemStatuses pulumi.StringArrayInput `pulumi:"incidentPostMortemStatuses"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     pulumi.StringArrayInput `pulumi:"incidentStatuses"`
 	IncidentVisibilities pulumi.StringArrayInput `pulumi:"incidentVisibilities"`
-	// Value must be one off `postMortem`.
+	// Value must be one of `postMortem`.
 	TriggerType pulumi.StringPtrInput `pulumi:"triggerType"`
 	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, post*mortem*created, post*mortem*updated, status*updated, slack_command
 	Triggers pulumi.StringArrayInput `pulumi:"triggers"`
@@ -11729,95 +11799,102 @@ func (o WorkflowPostMortemTriggerParamsOutput) ToWorkflowPostMortemTriggerParams
 	}).(WorkflowPostMortemTriggerParamsPtrOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentCondition }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionAcknowledgedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionAcknowledgedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionCause }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionDetectedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionDetectedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionEnvironment }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionFunctionality }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionGroup }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionIncidentRoles }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionIncidentType }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionKind }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionMitigatedAt }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionResolvedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionResolvedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionService }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionSeverity }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionStartedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionStartedAt }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionStatus }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionSubStatus }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionSummary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionSummary }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionVisibility }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionalInactivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionalInactivity }).(pulumi.StringPtrOutput)
 }
@@ -11832,17 +11909,17 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentKinds() pulumi.StringArra
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) []string { return v.IncidentKinds }).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentPostMortemCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentPostMortemCondition }).(pulumi.StringPtrOutput)
 }
 
-// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentPostMortemConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentPostMortemConditionCause }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentPostMortemConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentPostMortemConditionStatus }).(pulumi.StringPtrOutput)
 }
@@ -11861,7 +11938,7 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentVisibilities() pulumi.Str
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) []string { return v.IncidentVisibilities }).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `postMortem`.
+// Value must be one of `postMortem`.
 func (o WorkflowPostMortemTriggerParamsOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.TriggerType }).(pulumi.StringPtrOutput)
 }
@@ -11895,7 +11972,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) Elem() WorkflowPostMortemTrigg
 	}).(WorkflowPostMortemTriggerParamsOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -11905,6 +11982,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentCondition() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionAcknowledgedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -11914,7 +11992,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionAcknowledgedA
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -11924,6 +12002,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionCause() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionDetectedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -11933,7 +12012,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionDetectedAt() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -11943,7 +12022,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionEnvironment()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionFunctionality() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -11953,7 +12032,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionFunctionality
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -11963,7 +12042,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionGroup() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionIncidentRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -11973,7 +12052,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionIncidentRoles
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionIncidentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -11983,7 +12062,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionIncidentType(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -11993,6 +12072,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionKind() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12002,6 +12082,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionMitigatedAt()
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionResolvedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12011,7 +12092,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionResolvedAt() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12021,7 +12102,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionService() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12031,6 +12112,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionSeverity() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionStartedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12040,7 +12122,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionStartedAt() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12050,7 +12132,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionStatus() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionSubStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12060,6 +12142,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionSubStatus() p
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionSummary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12069,7 +12152,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionSummary() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionVisibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12079,6 +12162,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionVisibility() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionalInactivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12108,7 +12192,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentKinds() pulumi.StringA
 	}).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentPostMortemCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12118,7 +12202,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentPostMortemCondition() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentPostMortemConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12128,7 +12212,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentPostMortemConditionCau
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentPostMortemConditionStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12167,7 +12251,7 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentVisibilities() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `postMortem`.
+// Value must be one of `postMortem`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
 		if v == nil {
@@ -12188,17 +12272,17 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) Triggers() pulumi.StringArrayO
 }
 
 type WorkflowPulseTriggerParams struct {
-	// Value must be one off `ALL`, `ANY`, `NONE`.
+	// Value must be one of `ALL`, `ANY`, `NONE`.
 	PulseCondition *string `pulumi:"pulseCondition"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionLabel *string `pulumi:"pulseConditionLabel"`
 	// Value must be one of true or false
 	PulseConditionLabelUseRegexp *bool `pulumi:"pulseConditionLabelUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionPayload *string `pulumi:"pulseConditionPayload"`
 	// Value must be one of true or false
 	PulseConditionPayloadUseRegexp *bool `pulumi:"pulseConditionPayloadUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionSource *string `pulumi:"pulseConditionSource"`
 	// Value must be one of true or false
 	PulseConditionSourceUseRegexp *bool    `pulumi:"pulseConditionSourceUseRegexp"`
@@ -12207,7 +12291,7 @@ type WorkflowPulseTriggerParams struct {
 	// You can use jsonpath syntax. eg: $.incident.teams[*]
 	PulseQueryPayload *string  `pulumi:"pulseQueryPayload"`
 	PulseSources      []string `pulumi:"pulseSources"`
-	// Value must be one off `pulse`.
+	// Value must be one of `pulse`.
 	TriggerType *string `pulumi:"triggerType"`
 	// Actions that trigger the workflow. Value must be one of `pulseCreated`.
 	Triggers []string `pulumi:"triggers"`
@@ -12225,17 +12309,17 @@ type WorkflowPulseTriggerParamsInput interface {
 }
 
 type WorkflowPulseTriggerParamsArgs struct {
-	// Value must be one off `ALL`, `ANY`, `NONE`.
+	// Value must be one of `ALL`, `ANY`, `NONE`.
 	PulseCondition pulumi.StringPtrInput `pulumi:"pulseCondition"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionLabel pulumi.StringPtrInput `pulumi:"pulseConditionLabel"`
 	// Value must be one of true or false
 	PulseConditionLabelUseRegexp pulumi.BoolPtrInput `pulumi:"pulseConditionLabelUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionPayload pulumi.StringPtrInput `pulumi:"pulseConditionPayload"`
 	// Value must be one of true or false
 	PulseConditionPayloadUseRegexp pulumi.BoolPtrInput `pulumi:"pulseConditionPayloadUseRegexp"`
-	// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	PulseConditionSource pulumi.StringPtrInput `pulumi:"pulseConditionSource"`
 	// Value must be one of true or false
 	PulseConditionSourceUseRegexp pulumi.BoolPtrInput     `pulumi:"pulseConditionSourceUseRegexp"`
@@ -12244,7 +12328,7 @@ type WorkflowPulseTriggerParamsArgs struct {
 	// You can use jsonpath syntax. eg: $.incident.teams[*]
 	PulseQueryPayload pulumi.StringPtrInput   `pulumi:"pulseQueryPayload"`
 	PulseSources      pulumi.StringArrayInput `pulumi:"pulseSources"`
-	// Value must be one off `pulse`.
+	// Value must be one of `pulse`.
 	TriggerType pulumi.StringPtrInput `pulumi:"triggerType"`
 	// Actions that trigger the workflow. Value must be one of `pulseCreated`.
 	Triggers pulumi.StringArrayInput `pulumi:"triggers"`
@@ -12327,12 +12411,12 @@ func (o WorkflowPulseTriggerParamsOutput) ToWorkflowPulseTriggerParamsPtrOutputW
 	}).(WorkflowPulseTriggerParamsPtrOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowPulseTriggerParamsOutput) PulseCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *string { return v.PulseCondition }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsOutput) PulseConditionLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *string { return v.PulseConditionLabel }).(pulumi.StringPtrOutput)
 }
@@ -12342,7 +12426,7 @@ func (o WorkflowPulseTriggerParamsOutput) PulseConditionLabelUseRegexp() pulumi.
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *bool { return v.PulseConditionLabelUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsOutput) PulseConditionPayload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *string { return v.PulseConditionPayload }).(pulumi.StringPtrOutput)
 }
@@ -12352,7 +12436,7 @@ func (o WorkflowPulseTriggerParamsOutput) PulseConditionPayloadUseRegexp() pulum
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *bool { return v.PulseConditionPayloadUseRegexp }).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsOutput) PulseConditionSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *string { return v.PulseConditionSource }).(pulumi.StringPtrOutput)
 }
@@ -12379,7 +12463,7 @@ func (o WorkflowPulseTriggerParamsOutput) PulseSources() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) []string { return v.PulseSources }).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `pulse`.
+// Value must be one of `pulse`.
 func (o WorkflowPulseTriggerParamsOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPulseTriggerParams) *string { return v.TriggerType }).(pulumi.StringPtrOutput)
 }
@@ -12413,7 +12497,7 @@ func (o WorkflowPulseTriggerParamsPtrOutput) Elem() WorkflowPulseTriggerParamsOu
 	}).(WorkflowPulseTriggerParamsOutput)
 }
 
-// Value must be one off `ALL`, `ANY`, `NONE`.
+// Value must be one of `ALL`, `ANY`, `NONE`.
 func (o WorkflowPulseTriggerParamsPtrOutput) PulseCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPulseTriggerParams) *string {
 		if v == nil {
@@ -12423,7 +12507,7 @@ func (o WorkflowPulseTriggerParamsPtrOutput) PulseCondition() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsPtrOutput) PulseConditionLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPulseTriggerParams) *string {
 		if v == nil {
@@ -12443,7 +12527,7 @@ func (o WorkflowPulseTriggerParamsPtrOutput) PulseConditionLabelUseRegexp() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsPtrOutput) PulseConditionPayload() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPulseTriggerParams) *string {
 		if v == nil {
@@ -12463,7 +12547,7 @@ func (o WorkflowPulseTriggerParamsPtrOutput) PulseConditionPayloadUseRegexp() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowPulseTriggerParamsPtrOutput) PulseConditionSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPulseTriggerParams) *string {
 		if v == nil {
@@ -12520,7 +12604,7 @@ func (o WorkflowPulseTriggerParamsPtrOutput) PulseSources() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Value must be one off `pulse`.
+// Value must be one of `pulse`.
 func (o WorkflowPulseTriggerParamsPtrOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPulseTriggerParams) *string {
 		if v == nil {
@@ -12541,7 +12625,7 @@ func (o WorkflowPulseTriggerParamsPtrOutput) Triggers() pulumi.StringArrayOutput
 }
 
 type WorkflowSimpleTriggerParams struct {
-	// Value must be one off `simple`.
+	// Value must be one of `simple`.
 	TriggerType *string `pulumi:"triggerType"`
 	// Actions that trigger the workflow. Value must be one of `slackCommand`.
 	Triggers []string `pulumi:"triggers"`
@@ -12559,7 +12643,7 @@ type WorkflowSimpleTriggerParamsInput interface {
 }
 
 type WorkflowSimpleTriggerParamsArgs struct {
-	// Value must be one off `simple`.
+	// Value must be one of `simple`.
 	TriggerType pulumi.StringPtrInput `pulumi:"triggerType"`
 	// Actions that trigger the workflow. Value must be one of `slackCommand`.
 	Triggers pulumi.StringArrayInput `pulumi:"triggers"`
@@ -12642,7 +12726,7 @@ func (o WorkflowSimpleTriggerParamsOutput) ToWorkflowSimpleTriggerParamsPtrOutpu
 	}).(WorkflowSimpleTriggerParamsPtrOutput)
 }
 
-// Value must be one off `simple`.
+// Value must be one of `simple`.
 func (o WorkflowSimpleTriggerParamsOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowSimpleTriggerParams) *string { return v.TriggerType }).(pulumi.StringPtrOutput)
 }
@@ -12676,7 +12760,7 @@ func (o WorkflowSimpleTriggerParamsPtrOutput) Elem() WorkflowSimpleTriggerParams
 	}).(WorkflowSimpleTriggerParamsOutput)
 }
 
-// Value must be one off `simple`.
+// Value must be one of `simple`.
 func (o WorkflowSimpleTriggerParamsPtrOutput) TriggerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowSimpleTriggerParams) *string {
 		if v == nil {
@@ -53771,12 +53855,40 @@ func (o GetIncidentTypesIncidentTypeArrayOutput) Index(i pulumi.IntInput) GetInc
 }
 
 type GetServicesService struct {
-	Color             string `pulumi:"color"`
-	Description       string `pulumi:"description"`
-	Id                string `pulumi:"id"`
-	Name              string `pulumi:"name"`
-	PublicDescription string `pulumi:"publicDescription"`
-	Slug              string `pulumi:"slug"`
+	AlertBroadcastChannel    map[string]string `pulumi:"alertBroadcastChannel"`
+	AlertBroadcastEnabled    bool              `pulumi:"alertBroadcastEnabled"`
+	AlertUrgencyId           string            `pulumi:"alertUrgencyId"`
+	AlertsEmailAddress       string            `pulumi:"alertsEmailAddress"`
+	AlertsEmailEnabled       bool              `pulumi:"alertsEmailEnabled"`
+	BackstageId              string            `pulumi:"backstageId"`
+	Color                    string            `pulumi:"color"`
+	CortexId                 string            `pulumi:"cortexId"`
+	Description              string            `pulumi:"description"`
+	EnvironmentIds           []string          `pulumi:"environmentIds"`
+	EscalationPolicyId       string            `pulumi:"escalationPolicyId"`
+	ExternalId               string            `pulumi:"externalId"`
+	GithubRepositoryBranch   string            `pulumi:"githubRepositoryBranch"`
+	GithubRepositoryName     string            `pulumi:"githubRepositoryName"`
+	GitlabRepositoryBranch   string            `pulumi:"gitlabRepositoryBranch"`
+	GitlabRepositoryName     string            `pulumi:"gitlabRepositoryName"`
+	Id                       string            `pulumi:"id"`
+	IncidentBroadcastChannel map[string]string `pulumi:"incidentBroadcastChannel"`
+	IncidentBroadcastEnabled bool              `pulumi:"incidentBroadcastEnabled"`
+	KubernetesDeploymentName string            `pulumi:"kubernetesDeploymentName"`
+	Name                     string            `pulumi:"name"`
+	NotifyEmails             []string          `pulumi:"notifyEmails"`
+	OpsgenieId               string            `pulumi:"opsgenieId"`
+	OwnerGroupIds            []string          `pulumi:"ownerGroupIds"`
+	OwnerUserIds             []string          `pulumi:"ownerUserIds"`
+	PagerdutyId              string            `pulumi:"pagerdutyId"`
+	Position                 int               `pulumi:"position"`
+	Properties               []string          `pulumi:"properties"`
+	PublicDescription        string            `pulumi:"publicDescription"`
+	ServiceIds               []string          `pulumi:"serviceIds"`
+	ServiceNowCiSysId        string            `pulumi:"serviceNowCiSysId"`
+	SlackAliases             []string          `pulumi:"slackAliases"`
+	SlackChannels            []string          `pulumi:"slackChannels"`
+	Slug                     string            `pulumi:"slug"`
 }
 
 // GetServicesServiceInput is an input type that accepts GetServicesServiceArgs and GetServicesServiceOutput values.
@@ -53791,12 +53903,40 @@ type GetServicesServiceInput interface {
 }
 
 type GetServicesServiceArgs struct {
-	Color             pulumi.StringInput `pulumi:"color"`
-	Description       pulumi.StringInput `pulumi:"description"`
-	Id                pulumi.StringInput `pulumi:"id"`
-	Name              pulumi.StringInput `pulumi:"name"`
-	PublicDescription pulumi.StringInput `pulumi:"publicDescription"`
-	Slug              pulumi.StringInput `pulumi:"slug"`
+	AlertBroadcastChannel    pulumi.StringMapInput   `pulumi:"alertBroadcastChannel"`
+	AlertBroadcastEnabled    pulumi.BoolInput        `pulumi:"alertBroadcastEnabled"`
+	AlertUrgencyId           pulumi.StringInput      `pulumi:"alertUrgencyId"`
+	AlertsEmailAddress       pulumi.StringInput      `pulumi:"alertsEmailAddress"`
+	AlertsEmailEnabled       pulumi.BoolInput        `pulumi:"alertsEmailEnabled"`
+	BackstageId              pulumi.StringInput      `pulumi:"backstageId"`
+	Color                    pulumi.StringInput      `pulumi:"color"`
+	CortexId                 pulumi.StringInput      `pulumi:"cortexId"`
+	Description              pulumi.StringInput      `pulumi:"description"`
+	EnvironmentIds           pulumi.StringArrayInput `pulumi:"environmentIds"`
+	EscalationPolicyId       pulumi.StringInput      `pulumi:"escalationPolicyId"`
+	ExternalId               pulumi.StringInput      `pulumi:"externalId"`
+	GithubRepositoryBranch   pulumi.StringInput      `pulumi:"githubRepositoryBranch"`
+	GithubRepositoryName     pulumi.StringInput      `pulumi:"githubRepositoryName"`
+	GitlabRepositoryBranch   pulumi.StringInput      `pulumi:"gitlabRepositoryBranch"`
+	GitlabRepositoryName     pulumi.StringInput      `pulumi:"gitlabRepositoryName"`
+	Id                       pulumi.StringInput      `pulumi:"id"`
+	IncidentBroadcastChannel pulumi.StringMapInput   `pulumi:"incidentBroadcastChannel"`
+	IncidentBroadcastEnabled pulumi.BoolInput        `pulumi:"incidentBroadcastEnabled"`
+	KubernetesDeploymentName pulumi.StringInput      `pulumi:"kubernetesDeploymentName"`
+	Name                     pulumi.StringInput      `pulumi:"name"`
+	NotifyEmails             pulumi.StringArrayInput `pulumi:"notifyEmails"`
+	OpsgenieId               pulumi.StringInput      `pulumi:"opsgenieId"`
+	OwnerGroupIds            pulumi.StringArrayInput `pulumi:"ownerGroupIds"`
+	OwnerUserIds             pulumi.StringArrayInput `pulumi:"ownerUserIds"`
+	PagerdutyId              pulumi.StringInput      `pulumi:"pagerdutyId"`
+	Position                 pulumi.IntInput         `pulumi:"position"`
+	Properties               pulumi.StringArrayInput `pulumi:"properties"`
+	PublicDescription        pulumi.StringInput      `pulumi:"publicDescription"`
+	ServiceIds               pulumi.StringArrayInput `pulumi:"serviceIds"`
+	ServiceNowCiSysId        pulumi.StringInput      `pulumi:"serviceNowCiSysId"`
+	SlackAliases             pulumi.StringArrayInput `pulumi:"slackAliases"`
+	SlackChannels            pulumi.StringArrayInput `pulumi:"slackChannels"`
+	Slug                     pulumi.StringInput      `pulumi:"slug"`
 }
 
 func (GetServicesServiceArgs) ElementType() reflect.Type {
@@ -53850,24 +53990,136 @@ func (o GetServicesServiceOutput) ToGetServicesServiceOutputWithContext(ctx cont
 	return o
 }
 
+func (o GetServicesServiceOutput) AlertBroadcastChannel() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServicesService) map[string]string { return v.AlertBroadcastChannel }).(pulumi.StringMapOutput)
+}
+
+func (o GetServicesServiceOutput) AlertBroadcastEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicesService) bool { return v.AlertBroadcastEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetServicesServiceOutput) AlertUrgencyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.AlertUrgencyId }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) AlertsEmailAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.AlertsEmailAddress }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) AlertsEmailEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicesService) bool { return v.AlertsEmailEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetServicesServiceOutput) BackstageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.BackstageId }).(pulumi.StringOutput)
+}
+
 func (o GetServicesServiceOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesService) string { return v.Color }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) CortexId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.CortexId }).(pulumi.StringOutput)
 }
 
 func (o GetServicesServiceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesService) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o GetServicesServiceOutput) EnvironmentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.EnvironmentIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicesServiceOutput) EscalationPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.EscalationPolicyId }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) GithubRepositoryBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.GithubRepositoryBranch }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) GithubRepositoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.GithubRepositoryName }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) GitlabRepositoryBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.GitlabRepositoryBranch }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) GitlabRepositoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.GitlabRepositoryName }).(pulumi.StringOutput)
+}
+
 func (o GetServicesServiceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesService) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) IncidentBroadcastChannel() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServicesService) map[string]string { return v.IncidentBroadcastChannel }).(pulumi.StringMapOutput)
+}
+
+func (o GetServicesServiceOutput) IncidentBroadcastEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicesService) bool { return v.IncidentBroadcastEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetServicesServiceOutput) KubernetesDeploymentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.KubernetesDeploymentName }).(pulumi.StringOutput)
 }
 
 func (o GetServicesServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesService) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o GetServicesServiceOutput) NotifyEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.NotifyEmails }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicesServiceOutput) OpsgenieId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.OpsgenieId }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) OwnerGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.OwnerGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicesServiceOutput) OwnerUserIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.OwnerUserIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicesServiceOutput) PagerdutyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.PagerdutyId }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicesService) int { return v.Position }).(pulumi.IntOutput)
+}
+
+func (o GetServicesServiceOutput) Properties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.Properties }).(pulumi.StringArrayOutput)
+}
+
 func (o GetServicesServiceOutput) PublicDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicesService) string { return v.PublicDescription }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) ServiceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.ServiceIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicesServiceOutput) ServiceNowCiSysId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicesService) string { return v.ServiceNowCiSysId }).(pulumi.StringOutput)
+}
+
+func (o GetServicesServiceOutput) SlackAliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.SlackAliases }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicesServiceOutput) SlackChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicesService) []string { return v.SlackChannels }).(pulumi.StringArrayOutput)
 }
 
 func (o GetServicesServiceOutput) Slug() pulumi.StringOutput {

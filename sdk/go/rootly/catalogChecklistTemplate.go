@@ -11,6 +11,8 @@ import (
 	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
+// ## Example Usage
+//
 // ## Import
 //
 // CatalogChecklistTemplate can be imported using the `import` command.
