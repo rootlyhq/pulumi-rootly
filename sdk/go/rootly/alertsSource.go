@@ -70,7 +70,7 @@ type AlertsSource struct {
 	ResolutionRuleAttributes AlertsSourceResolutionRuleAttributesOutput `pulumi:"resolutionRuleAttributes"`
 	// The secret used to authenticate non-email alert sources
 	Secret pulumi.StringOutput `pulumi:"secret"`
-	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
+	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
 	SourceType pulumi.StringPtrOutput `pulumi:"sourceType"`
 	// Provide additional attributes for generic*webhook alerts source
 	SourceableAttributes AlertsSourceSourceableAttributesOutput `pulumi:"sourceableAttributes"`
@@ -143,7 +143,7 @@ type alertsSourceState struct {
 	ResolutionRuleAttributes *AlertsSourceResolutionRuleAttributes `pulumi:"resolutionRuleAttributes"`
 	// The secret used to authenticate non-email alert sources
 	Secret *string `pulumi:"secret"`
-	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
+	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
 	SourceType *string `pulumi:"sourceType"`
 	// Provide additional attributes for generic*webhook alerts source
 	SourceableAttributes *AlertsSourceSourceableAttributes `pulumi:"sourceableAttributes"`
@@ -180,7 +180,7 @@ type AlertsSourceState struct {
 	ResolutionRuleAttributes AlertsSourceResolutionRuleAttributesPtrInput
 	// The secret used to authenticate non-email alert sources
 	Secret pulumi.StringPtrInput
-	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
+	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
 	SourceType pulumi.StringPtrInput
 	// Provide additional attributes for generic*webhook alerts source
 	SourceableAttributes AlertsSourceSourceableAttributesPtrInput
@@ -221,7 +221,7 @@ type alertsSourceArgs struct {
 	ResolutionRuleAttributes *AlertsSourceResolutionRuleAttributes `pulumi:"resolutionRuleAttributes"`
 	// The secret used to authenticate non-email alert sources
 	Secret *string `pulumi:"secret"`
-	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
+	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
 	SourceType *string `pulumi:"sourceType"`
 	// Provide additional attributes for generic*webhook alerts source
 	SourceableAttributes *AlertsSourceSourceableAttributes `pulumi:"sourceableAttributes"`
@@ -259,7 +259,7 @@ type AlertsSourceArgs struct {
 	ResolutionRuleAttributes AlertsSourceResolutionRuleAttributesPtrInput
 	// The secret used to authenticate non-email alert sources
 	Secret pulumi.StringPtrInput
-	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
+	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
 	SourceType pulumi.StringPtrInput
 	// Provide additional attributes for generic*webhook alerts source
 	SourceableAttributes AlertsSourceSourceableAttributesPtrInput
@@ -425,7 +425,7 @@ func (o AlertsSourceOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertsSource) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }
 
-// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
+// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
 func (o AlertsSourceOutput) SourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertsSource) pulumi.StringPtrOutput { return v.SourceType }).(pulumi.StringPtrOutput)
 }

@@ -12,6 +12,8 @@ import (
 	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
+// ## Example Usage
+//
 // ## Import
 //
 // CommunicationsType can be imported using the `import` command.

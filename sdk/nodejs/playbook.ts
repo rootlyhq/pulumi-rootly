@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
  * ## Import
  *
  * rootly.Playbook can be imported using the `import` command.
@@ -54,7 +56,7 @@ export class Playbook extends pulumi.CustomResource {
     /**
      * The Environment IDs to attach to the incident
      */
-    declare public readonly environmentIds: pulumi.Output<string[] | undefined>;
+    declare public readonly environmentIds: pulumi.Output<string[]>;
     /**
      * The external url of the playbook
      */
@@ -62,23 +64,23 @@ export class Playbook extends pulumi.CustomResource {
     /**
      * The Functionality IDs to attach to the incident
      */
-    declare public readonly functionalityIds: pulumi.Output<string[] | undefined>;
+    declare public readonly functionalityIds: pulumi.Output<string[]>;
     /**
      * The Team IDs to attach to the incident
      */
-    declare public readonly groupIds: pulumi.Output<string[] | undefined>;
+    declare public readonly groupIds: pulumi.Output<string[]>;
     /**
      * The Incident Type IDs to attach to the incident
      */
-    declare public readonly incidentTypeIds: pulumi.Output<string[] | undefined>;
+    declare public readonly incidentTypeIds: pulumi.Output<string[]>;
     /**
      * The Service IDs to attach to the incident
      */
-    declare public readonly serviceIds: pulumi.Output<string[] | undefined>;
+    declare public readonly serviceIds: pulumi.Output<string[]>;
     /**
      * The Severity IDs to attach to the incident
      */
-    declare public readonly severityIds: pulumi.Output<string[] | undefined>;
+    declare public readonly severityIds: pulumi.Output<string[]>;
     /**
      * The summary of the playbook
      */

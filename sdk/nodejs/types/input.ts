@@ -1118,23 +1118,23 @@ export interface TeamSlackChannel {
 
 export interface WorkflowActionItemTriggerParams {
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     incidentActionItemCondition?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionGroup?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionKind?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionPriority?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentActionItemConditionStatus?: pulumi.Input<string | undefined>;
     incidentActionItemGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -1151,59 +1151,80 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentActionItemStatuses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     incidentCondition?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionAcknowledgedAt?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionDetectedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionMitigatedAt?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionResolvedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionStartedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionSummary?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `IS`.
+     */
     incidentConditionalInactivity?: pulumi.Input<string | undefined>;
     /**
      * ex. 10 min, 1h, 3 days, 2 weeks
@@ -1219,7 +1240,7 @@ export interface WorkflowActionItemTriggerParams {
     incidentStatuses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentVisibilities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Value must be one off `actionItem`.
+     * Value must be one of `actionItem`.
      */
     triggerType?: pulumi.Input<string | undefined>;
     /**
@@ -1230,11 +1251,11 @@ export interface WorkflowActionItemTriggerParams {
 
 export interface WorkflowAlertTriggerParams {
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     alertCondition?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionLabel?: pulumi.Input<string | undefined>;
     /**
@@ -1242,7 +1263,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionLabelUseRegexp?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionPayload?: pulumi.Input<string | undefined>;
     /**
@@ -1250,7 +1271,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionPayloadUseRegexp?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionSource?: pulumi.Input<string | undefined>;
     /**
@@ -1258,7 +1279,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionSourceUseRegexp?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionStatus?: pulumi.Input<string | undefined>;
     /**
@@ -1266,7 +1287,7 @@ export interface WorkflowAlertTriggerParams {
      */
     alertConditionStatusUseRegexp?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     alertConditionUrgency?: pulumi.Input<string | undefined>;
     alertFieldConditions?: pulumi.Input<pulumi.Input<inputs.WorkflowAlertTriggerParamsAlertFieldCondition>[] | undefined>;
@@ -1281,7 +1302,7 @@ export interface WorkflowAlertTriggerParams {
     alertStatuses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     alertUrgencyIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Value must be one off `alert`.
+     * Value must be one of `alert`.
      */
     triggerType?: pulumi.Input<string | undefined>;
     /**
@@ -1318,63 +1339,84 @@ export interface WorkflowAlertTriggerParamsAlertPayloadConditionsCondition {
 
 export interface WorkflowIncidentTriggerParams {
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     incidentCondition?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionAcknowledgedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionCause?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionDetectedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionMitigatedAt?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionResolvedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionStartedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionSummary?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `IS`.
+     */
     incidentConditionalInactivity?: pulumi.Input<string | undefined>;
     /**
      * ex. 10 min, 1h, 3 days, 2 weeks
@@ -1385,7 +1427,7 @@ export interface WorkflowIncidentTriggerParams {
      */
     incidentKinds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionCause?: pulumi.Input<string | undefined>;
     /**
@@ -1394,7 +1436,7 @@ export interface WorkflowIncidentTriggerParams {
     incidentStatuses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentVisibilities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Value must be one off `incident`.
+     * Value must be one of `incident`.
      */
     triggerType?: pulumi.Input<string | undefined>;
     /**
@@ -1405,63 +1447,84 @@ export interface WorkflowIncidentTriggerParams {
 
 export interface WorkflowPostMortemTriggerParams {
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     incidentCondition?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionAcknowledgedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionCause?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionDetectedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionEnvironment?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionFunctionality?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionGroup?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentRoles?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionIncidentType?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionKind?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionMitigatedAt?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionResolvedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSeverity?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionStartedAt?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionStatus?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionSubStatus?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
     incidentConditionSummary?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionVisibility?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `IS`.
+     */
     incidentConditionalInactivity?: pulumi.Input<string | undefined>;
     /**
      * ex. 10 min, 1h, 3 days, 2 weeks
@@ -1472,15 +1535,15 @@ export interface WorkflowPostMortemTriggerParams {
      */
     incidentKinds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     incidentPostMortemCondition?: pulumi.Input<string | undefined>;
     /**
-     * [DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionCause?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentPostMortemConditionStatus?: pulumi.Input<string | undefined>;
     /**
@@ -1493,7 +1556,7 @@ export interface WorkflowPostMortemTriggerParams {
     incidentStatuses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentVisibilities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Value must be one off `postMortem`.
+     * Value must be one of `postMortem`.
      */
     triggerType?: pulumi.Input<string | undefined>;
     /**
@@ -1504,11 +1567,11 @@ export interface WorkflowPostMortemTriggerParams {
 
 export interface WorkflowPulseTriggerParams {
     /**
-     * Value must be one off `ALL`, `ANY`, `NONE`.
+     * Value must be one of `ALL`, `ANY`, `NONE`.
      */
     pulseCondition?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionLabel?: pulumi.Input<string | undefined>;
     /**
@@ -1516,7 +1579,7 @@ export interface WorkflowPulseTriggerParams {
      */
     pulseConditionLabelUseRegexp?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionPayload?: pulumi.Input<string | undefined>;
     /**
@@ -1524,7 +1587,7 @@ export interface WorkflowPulseTriggerParams {
      */
     pulseConditionPayloadUseRegexp?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     pulseConditionSource?: pulumi.Input<string | undefined>;
     /**
@@ -1539,7 +1602,7 @@ export interface WorkflowPulseTriggerParams {
     pulseQueryPayload?: pulumi.Input<string | undefined>;
     pulseSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Value must be one off `pulse`.
+     * Value must be one of `pulse`.
      */
     triggerType?: pulumi.Input<string | undefined>;
     /**
@@ -1550,7 +1613,7 @@ export interface WorkflowPulseTriggerParams {
 
 export interface WorkflowSimpleTriggerParams {
     /**
-     * Value must be one off `simple`.
+     * Value must be one of `simple`.
      */
     triggerType?: pulumi.Input<string | undefined>;
     /**

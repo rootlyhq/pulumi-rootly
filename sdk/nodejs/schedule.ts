@@ -70,7 +70,7 @@ export class Schedule extends pulumi.CustomResource {
      */
     declare public readonly ownerGroupIds: pulumi.Output<string[] | undefined>;
     /**
-     * ID of user assigned as owner of the schedule
+     * ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
      */
     declare public readonly ownerUserId: pulumi.Output<number>;
     /**
@@ -138,7 +138,7 @@ export interface ScheduleState {
      */
     ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * ID of user assigned as owner of the schedule
+     * ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
      */
     ownerUserId?: pulumi.Input<number | undefined>;
     /**
@@ -172,7 +172,7 @@ export interface ScheduleArgs {
      */
     ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * ID of user assigned as owner of the schedule
+     * ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
      */
     ownerUserId?: pulumi.Input<number | undefined>;
     /**

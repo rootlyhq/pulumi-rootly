@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
  * ## Import
  *
  * rootly.StatusPage can be imported using the `import` command.
@@ -67,6 +69,10 @@ export class StatusPage extends pulumi.CustomResource {
      * Authentication password
      */
     declare public readonly authenticationPassword: pulumi.Output<string>;
+    /**
+     * CNAME records mapping external domain names to their DNS target values. Populated asynchronously after setting external*domain*names.
+     */
+    declare public /*out*/ readonly cnameRecords: pulumi.Output<{[key: string]: string}>;
     /**
      * The description of the status page
      */
@@ -190,6 +196,7 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["authenticationEnabled"] = state?.authenticationEnabled;
             resourceInputs["authenticationMethod"] = state?.authenticationMethod;
             resourceInputs["authenticationPassword"] = state?.authenticationPassword;
+            resourceInputs["cnameRecords"] = state?.cnameRecords;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["externalDomainNames"] = state?.externalDomainNames;
@@ -253,6 +260,7 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["websitePrivacyUrl"] = args?.websitePrivacyUrl;
             resourceInputs["websiteSupportUrl"] = args?.websiteSupportUrl;
             resourceInputs["websiteUrl"] = args?.websiteUrl;
+            resourceInputs["cnameRecords"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StatusPage.__pulumiType, name, resourceInputs, opts);
@@ -279,6 +287,10 @@ export interface StatusPageState {
      * Authentication password
      */
     authenticationPassword?: pulumi.Input<string | undefined>;
+    /**
+     * CNAME records mapping external domain names to their DNS target values. Populated asynchronously after setting external*domain*names.
+     */
+    cnameRecords?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The description of the status page
      */

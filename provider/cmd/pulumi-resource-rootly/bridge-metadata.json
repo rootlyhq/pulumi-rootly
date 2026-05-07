@@ -3521,7 +3521,35 @@
                 "majorVersion": 3,
                 "fields": {
                     "services": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "environment_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "notify_emails": {
+                                    "maxItemsOne": false
+                                },
+                                "owner_group_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "owner_user_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "properties": {
+                                    "maxItemsOne": false
+                                },
+                                "service_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "slack_aliases": {
+                                    "maxItemsOne": false
+                                },
+                                "slack_channels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },

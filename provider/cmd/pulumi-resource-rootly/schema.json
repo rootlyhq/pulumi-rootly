@@ -1380,17 +1380,9 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "allDay",
                         "endTime",
-                        "friday",
-                        "monday",
                         "position",
-                        "saturday",
-                        "startTime",
-                        "sunday",
-                        "thursday",
-                        "tuesday",
-                        "wednesday"
+                        "startTime"
                     ]
                 }
             }
@@ -2040,23 +2032,23 @@
             "properties": {
                 "incidentActionItemCondition": {
                     "type": "string",
-                    "description": "Value must be one off `ALL`, `ANY`, `NONE`.\n"
+                    "description": "Value must be one of `ALL`, `ANY`, `NONE`.\n"
                 },
                 "incidentActionItemConditionGroup": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentActionItemConditionKind": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentActionItemConditionPriority": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentActionItemConditionStatus": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentActionItemGroupIds": {
                     "type": "array",
@@ -2087,72 +2079,79 @@
                 },
                 "incidentCondition": {
                     "type": "string",
-                    "description": "Value must be one off `ALL`, `ANY`, `NONE`.\n"
+                    "description": "Value must be one of `ALL`, `ANY`, `NONE`.\n"
                 },
                 "incidentConditionAcknowledgedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionDetectedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionEnvironment": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionFunctionality": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionGroup": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionIncidentRoles": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionIncidentType": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionKind": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionMitigatedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionResolvedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionService": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionSeverity": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionStartedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionStatus": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionSubStatus": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionSummary": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionVisibility": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionalInactivity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `IS`.\n"
                 },
                 "incidentInactivityDuration": {
                     "type": "string",
@@ -2180,7 +2179,7 @@
                 },
                 "triggerType": {
                     "type": "string",
-                    "description": "Value must be one off \u003cspan pulumi-lang-nodejs=\"`actionItem`\" pulumi-lang-dotnet=\"`ActionItem`\" pulumi-lang-go=\"`actionItem`\" pulumi-lang-python=\"`action_item`\" pulumi-lang-yaml=\"`actionItem`\" pulumi-lang-java=\"`actionItem`\"\u003e`actionItem`\u003c/span\u003e.\n"
+                    "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`actionItem`\" pulumi-lang-dotnet=\"`ActionItem`\" pulumi-lang-go=\"`actionItem`\" pulumi-lang-python=\"`action_item`\" pulumi-lang-yaml=\"`actionItem`\" pulumi-lang-java=\"`actionItem`\"\u003e`actionItem`\u003c/span\u003e.\n"
                 },
                 "triggers": {
                     "type": "array",
@@ -2218,11 +2217,11 @@
             "properties": {
                 "alertCondition": {
                     "type": "string",
-                    "description": "Value must be one off `ALL`, `ANY`, `NONE`.\n"
+                    "description": "Value must be one of `ALL`, `ANY`, `NONE`.\n"
                 },
                 "alertConditionLabel": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "alertConditionLabelUseRegexp": {
                     "type": "boolean",
@@ -2230,7 +2229,7 @@
                 },
                 "alertConditionPayload": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "alertConditionPayloadUseRegexp": {
                     "type": "boolean",
@@ -2238,7 +2237,7 @@
                 },
                 "alertConditionSource": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "alertConditionSourceUseRegexp": {
                     "type": "boolean",
@@ -2246,7 +2245,7 @@
                 },
                 "alertConditionStatus": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "alertConditionStatusUseRegexp": {
                     "type": "boolean",
@@ -2254,7 +2253,7 @@
                 },
                 "alertConditionUrgency": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "alertFieldConditions": {
                     "type": "array",
@@ -2301,7 +2300,7 @@
                 },
                 "triggerType": {
                     "type": "string",
-                    "description": "Value must be one off \u003cspan pulumi-lang-nodejs=\"`alert`\" pulumi-lang-dotnet=\"`Alert`\" pulumi-lang-go=\"`alert`\" pulumi-lang-python=\"`alert`\" pulumi-lang-yaml=\"`alert`\" pulumi-lang-java=\"`alert`\"\u003e`alert`\u003c/span\u003e.\n"
+                    "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`alert`\" pulumi-lang-dotnet=\"`Alert`\" pulumi-lang-go=\"`alert`\" pulumi-lang-python=\"`alert`\" pulumi-lang-yaml=\"`alert`\" pulumi-lang-java=\"`alert`\"\u003e`alert`\u003c/span\u003e.\n"
                 },
                 "triggers": {
                     "type": "array",
@@ -2393,76 +2392,83 @@
             "properties": {
                 "incidentCondition": {
                     "type": "string",
-                    "description": "Value must be one off `ALL`, `ANY`, `NONE`.\n"
+                    "description": "Value must be one of `ALL`, `ANY`, `NONE`.\n"
                 },
                 "incidentConditionAcknowledgedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionCause": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionDetectedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionEnvironment": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionFunctionality": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionGroup": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionIncidentRoles": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionIncidentType": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionKind": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionMitigatedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionResolvedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionService": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionSeverity": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionStartedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionStatus": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionSubStatus": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionSummary": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionVisibility": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionalInactivity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `IS`.\n"
                 },
                 "incidentInactivityDuration": {
                     "type": "string",
@@ -2477,7 +2483,7 @@
                 },
                 "incidentPostMortemConditionCause": {
                     "type": "string",
-                    "description": "[DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "[DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentStatuses": {
                     "type": "array",
@@ -2494,7 +2500,7 @@
                 },
                 "triggerType": {
                     "type": "string",
-                    "description": "Value must be one off \u003cspan pulumi-lang-nodejs=\"`incident`\" pulumi-lang-dotnet=\"`Incident`\" pulumi-lang-go=\"`incident`\" pulumi-lang-python=\"`incident`\" pulumi-lang-yaml=\"`incident`\" pulumi-lang-java=\"`incident`\"\u003e`incident`\u003c/span\u003e.\n"
+                    "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`incident`\" pulumi-lang-dotnet=\"`Incident`\" pulumi-lang-go=\"`incident`\" pulumi-lang-python=\"`incident`\" pulumi-lang-yaml=\"`incident`\" pulumi-lang-java=\"`incident`\"\u003e`incident`\u003c/span\u003e.\n"
                 },
                 "triggers": {
                     "type": "array",
@@ -2528,76 +2534,83 @@
             "properties": {
                 "incidentCondition": {
                     "type": "string",
-                    "description": "Value must be one off `ALL`, `ANY`, `NONE`.\n"
+                    "description": "Value must be one of `ALL`, `ANY`, `NONE`.\n"
                 },
                 "incidentConditionAcknowledgedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionCause": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionDetectedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionEnvironment": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionFunctionality": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionGroup": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionIncidentRoles": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionIncidentType": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionKind": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionMitigatedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionResolvedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionService": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionSeverity": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionStartedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionStatus": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionSubStatus": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionSummary": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionVisibility": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentConditionalInactivity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Value must be one of `IS`.\n"
                 },
                 "incidentInactivityDuration": {
                     "type": "string",
@@ -2612,15 +2625,15 @@
                 },
                 "incidentPostMortemCondition": {
                     "type": "string",
-                    "description": "Value must be one off `ALL`, `ANY`, `NONE`.\n"
+                    "description": "Value must be one of `ALL`, `ANY`, `NONE`.\n"
                 },
                 "incidentPostMortemConditionCause": {
                     "type": "string",
-                    "description": "[DEPRECATED] Use incident*condition*cause instead. Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "[DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentPostMortemConditionStatus": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "incidentPostMortemStatuses": {
                     "type": "array",
@@ -2644,7 +2657,7 @@
                 },
                 "triggerType": {
                     "type": "string",
-                    "description": "Value must be one off \u003cspan pulumi-lang-nodejs=\"`postMortem`\" pulumi-lang-dotnet=\"`PostMortem`\" pulumi-lang-go=\"`postMortem`\" pulumi-lang-python=\"`post_mortem`\" pulumi-lang-yaml=\"`postMortem`\" pulumi-lang-java=\"`postMortem`\"\u003e`postMortem`\u003c/span\u003e.\n"
+                    "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`postMortem`\" pulumi-lang-dotnet=\"`PostMortem`\" pulumi-lang-go=\"`postMortem`\" pulumi-lang-python=\"`post_mortem`\" pulumi-lang-yaml=\"`postMortem`\" pulumi-lang-java=\"`postMortem`\"\u003e`postMortem`\u003c/span\u003e.\n"
                 },
                 "triggers": {
                     "type": "array",
@@ -2679,11 +2692,11 @@
             "properties": {
                 "pulseCondition": {
                     "type": "string",
-                    "description": "Value must be one off `ALL`, `ANY`, `NONE`.\n"
+                    "description": "Value must be one of `ALL`, `ANY`, `NONE`.\n"
                 },
                 "pulseConditionLabel": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "pulseConditionLabelUseRegexp": {
                     "type": "boolean",
@@ -2691,7 +2704,7 @@
                 },
                 "pulseConditionPayload": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "pulseConditionPayloadUseRegexp": {
                     "type": "boolean",
@@ -2699,7 +2712,7 @@
                 },
                 "pulseConditionSource": {
                     "type": "string",
-                    "description": "Value must be one off `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
                 "pulseConditionSourceUseRegexp": {
                     "type": "boolean",
@@ -2729,7 +2742,7 @@
                 },
                 "triggerType": {
                     "type": "string",
-                    "description": "Value must be one off \u003cspan pulumi-lang-nodejs=\"`pulse`\" pulumi-lang-dotnet=\"`Pulse`\" pulumi-lang-go=\"`pulse`\" pulumi-lang-python=\"`pulse`\" pulumi-lang-yaml=\"`pulse`\" pulumi-lang-java=\"`pulse`\"\u003e`pulse`\u003c/span\u003e.\n"
+                    "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`pulse`\" pulumi-lang-dotnet=\"`Pulse`\" pulumi-lang-go=\"`pulse`\" pulumi-lang-python=\"`pulse`\" pulumi-lang-yaml=\"`pulse`\" pulumi-lang-java=\"`pulse`\"\u003e`pulse`\u003c/span\u003e.\n"
                 },
                 "triggers": {
                     "type": "array",
@@ -2759,7 +2772,7 @@
             "properties": {
                 "triggerType": {
                     "type": "string",
-                    "description": "Value must be one off \u003cspan pulumi-lang-nodejs=\"`simple`\" pulumi-lang-dotnet=\"`Simple`\" pulumi-lang-go=\"`simple`\" pulumi-lang-python=\"`simple`\" pulumi-lang-yaml=\"`simple`\" pulumi-lang-java=\"`simple`\"\u003e`simple`\u003c/span\u003e.\n"
+                    "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`simple`\" pulumi-lang-dotnet=\"`Simple`\" pulumi-lang-go=\"`simple`\" pulumi-lang-python=\"`simple`\" pulumi-lang-yaml=\"`simple`\" pulumi-lang-java=\"`simple`\"\u003e`simple`\u003c/span\u003e.\n"
                 },
                 "triggers": {
                     "type": "array",
@@ -9536,20 +9549,134 @@
         },
         "rootly:index/getServicesService:getServicesService": {
             "properties": {
+                "alertBroadcastChannel": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "alertBroadcastEnabled": {
+                    "type": "boolean"
+                },
+                "alertUrgencyId": {
+                    "type": "string"
+                },
+                "alertsEmailAddress": {
+                    "type": "string"
+                },
+                "alertsEmailEnabled": {
+                    "type": "boolean"
+                },
+                "backstageId": {
+                    "type": "string"
+                },
                 "color": {
+                    "type": "string"
+                },
+                "cortexId": {
                     "type": "string"
                 },
                 "description": {
                     "type": "string"
                 },
+                "environmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "escalationPolicyId": {
+                    "type": "string"
+                },
+                "externalId": {
+                    "type": "string"
+                },
+                "githubRepositoryBranch": {
+                    "type": "string"
+                },
+                "githubRepositoryName": {
+                    "type": "string"
+                },
+                "gitlabRepositoryBranch": {
+                    "type": "string"
+                },
+                "gitlabRepositoryName": {
+                    "type": "string"
+                },
                 "id": {
+                    "type": "string"
+                },
+                "incidentBroadcastChannel": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "incidentBroadcastEnabled": {
+                    "type": "boolean"
+                },
+                "kubernetesDeploymentName": {
                     "type": "string"
                 },
                 "name": {
                     "type": "string"
                 },
+                "notifyEmails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "opsgenieId": {
+                    "type": "string"
+                },
+                "ownerGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ownerUserIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "pagerdutyId": {
+                    "type": "string"
+                },
+                "position": {
+                    "type": "integer"
+                },
+                "properties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "publicDescription": {
                     "type": "string"
+                },
+                "serviceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "serviceNowCiSysId": {
+                    "type": "string"
+                },
+                "slackAliases": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "slackChannels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "slug": {
                     "type": "string"
@@ -9557,11 +9684,39 @@
             },
             "type": "object",
             "required": [
+                "alertBroadcastChannel",
+                "alertBroadcastEnabled",
+                "alertUrgencyId",
+                "alertsEmailAddress",
+                "alertsEmailEnabled",
+                "backstageId",
                 "color",
+                "cortexId",
                 "description",
+                "environmentIds",
+                "escalationPolicyId",
+                "externalId",
+                "githubRepositoryBranch",
+                "githubRepositoryName",
+                "gitlabRepositoryBranch",
+                "gitlabRepositoryName",
                 "id",
+                "incidentBroadcastChannel",
+                "incidentBroadcastEnabled",
+                "kubernetesDeploymentName",
                 "name",
+                "notifyEmails",
+                "opsgenieId",
+                "ownerGroupIds",
+                "ownerUserIds",
+                "pagerdutyId",
+                "position",
+                "properties",
                 "publicDescription",
+                "serviceIds",
+                "serviceNowCiSysId",
+                "slackAliases",
+                "slackChannels",
                 "slug"
             ],
             "language": {
@@ -9669,7 +9824,7 @@
     },
     "resources": {
         "rootly:index/alertField:AlertField": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.AlertField \" pulumi-lang-dotnet=\"\nrootly.AlertField \" pulumi-lang-go=\"\nAlertField \" pulumi-lang-python=\"\nAlertField \" pulumi-lang-yaml=\"\nrootly.AlertField \" pulumi-lang-java=\"\nrootly.AlertField \"\u003e\nrootly.AlertField \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/alertField:AlertField primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_alert_field\" \"cloud_region\" {\n  label = \"Cloud Region\"\n  kind  = \"select\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.AlertField \" pulumi-lang-dotnet=\"\nrootly.AlertField \" pulumi-lang-go=\"\nAlertField \" pulumi-lang-python=\"\nAlertField \" pulumi-lang-yaml=\"\nrootly.AlertField \" pulumi-lang-java=\"\nrootly.AlertField \"\u003e\nrootly.AlertField \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/alertField:AlertField primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "kind": {
                     "type": "string",
@@ -10003,7 +10158,7 @@
             }
         },
         "rootly:index/alertRoutingRule:AlertRoutingRule": {
-            "description": "*Note: If you are an advanced alert routing user, you should use the Alert Routes resource/data source instead of this one. If you don't know whether you are an advanced alert routing user, please contact Rootly customer support.*\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.AlertRoutingRule \" pulumi-lang-dotnet=\"\nrootly.AlertRoutingRule \" pulumi-lang-go=\"\nAlertRoutingRule \" pulumi-lang-python=\"\nAlertRoutingRule \" pulumi-lang-yaml=\"\nrootly.AlertRoutingRule \" pulumi-lang-java=\"\nrootly.AlertRoutingRule \"\u003e\nrootly.AlertRoutingRule \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/alertRoutingRule:AlertRoutingRule primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "*Note: If you are an advanced alert routing user, you should use the Alert Routes resource/data source instead of this one. If you don't know whether you are an advanced alert routing user, please contact Rootly customer support.*\n\n## Example Usage\n\n```shell\nresource \"rootly_alert_routing_rule\" \"production_alerts\" {\n  name = \"Route production alerts\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.AlertRoutingRule \" pulumi-lang-dotnet=\"\nrootly.AlertRoutingRule \" pulumi-lang-go=\"\nAlertRoutingRule \" pulumi-lang-python=\"\nAlertRoutingRule \" pulumi-lang-yaml=\"\nrootly.AlertRoutingRule \" pulumi-lang-java=\"\nrootly.AlertRoutingRule \"\u003e\nrootly.AlertRoutingRule \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/alertRoutingRule:AlertRoutingRule primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "alertsSourceId": {
                     "type": "string",
@@ -10137,7 +10292,7 @@
             }
         },
         "rootly:index/alertUrgency:AlertUrgency": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.AlertUrgency \" pulumi-lang-dotnet=\"\nrootly.AlertUrgency \" pulumi-lang-go=\"\nAlertUrgency \" pulumi-lang-python=\"\nAlertUrgency \" pulumi-lang-yaml=\"\nrootly.AlertUrgency \" pulumi-lang-java=\"\nrootly.AlertUrgency \"\u003e\nrootly.AlertUrgency \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/alertUrgency:AlertUrgency primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_alert_urgency\" \"critical\" {\n  name        = \"Critical\"\n  description = \"Requires immediate attention — pages on-call\"\n}\n\nresource \"rootly_alert_urgency\" \"warning\" {\n  name        = \"Warning\"\n  description = \"Should be investigated within 30 minutes\"\n}\n\nresource \"rootly_alert_urgency\" \"informational\" {\n  name        = \"Informational\"\n  description = \"No immediate action required\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.AlertUrgency \" pulumi-lang-dotnet=\"\nrootly.AlertUrgency \" pulumi-lang-go=\"\nAlertUrgency \" pulumi-lang-python=\"\nAlertUrgency \" pulumi-lang-yaml=\"\nrootly.AlertUrgency \" pulumi-lang-java=\"\nrootly.AlertUrgency \"\u003e\nrootly.AlertUrgency \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/alertUrgency:AlertUrgency primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -10260,7 +10415,7 @@
                 },
                 "sourceType": {
                     "type": "string",
-                    "description": "The alert source type. Value must be one of \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appDynamics`\" pulumi-lang-dotnet=\"`AppDynamics`\" pulumi-lang-go=\"`appDynamics`\" pulumi-lang-python=\"`app_dynamics`\" pulumi-lang-yaml=\"`appDynamics`\" pulumi-lang-java=\"`appDynamics`\"\u003e`appDynamics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catchpoint`\" pulumi-lang-dotnet=\"`Catchpoint`\" pulumi-lang-go=\"`catchpoint`\" pulumi-lang-python=\"`catchpoint`\" pulumi-lang-yaml=\"`catchpoint`\" pulumi-lang-java=\"`catchpoint`\"\u003e`catchpoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`datadog`\" pulumi-lang-dotnet=\"`Datadog`\" pulumi-lang-go=\"`datadog`\" pulumi-lang-python=\"`datadog`\" pulumi-lang-yaml=\"`datadog`\" pulumi-lang-java=\"`datadog`\"\u003e`datadog`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`alertmanager`\" pulumi-lang-dotnet=\"`Alertmanager`\" pulumi-lang-go=\"`alertmanager`\" pulumi-lang-python=\"`alertmanager`\" pulumi-lang-yaml=\"`alertmanager`\" pulumi-lang-java=\"`alertmanager`\"\u003e`alertmanager`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleCloud`\" pulumi-lang-dotnet=\"`GoogleCloud`\" pulumi-lang-go=\"`googleCloud`\" pulumi-lang-python=\"`google_cloud`\" pulumi-lang-yaml=\"`googleCloud`\" pulumi-lang-java=\"`googleCloud`\"\u003e`googleCloud`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`grafana`\" pulumi-lang-dotnet=\"`Grafana`\" pulumi-lang-go=\"`grafana`\" pulumi-lang-python=\"`grafana`\" pulumi-lang-yaml=\"`grafana`\" pulumi-lang-java=\"`grafana`\"\u003e`grafana`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`genericWebhook`\" pulumi-lang-dotnet=\"`GenericWebhook`\" pulumi-lang-go=\"`genericWebhook`\" pulumi-lang-python=\"`generic_webhook`\" pulumi-lang-yaml=\"`genericWebhook`\" pulumi-lang-java=\"`genericWebhook`\"\u003e`genericWebhook`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudWatch`\" pulumi-lang-dotnet=\"`CloudWatch`\" pulumi-lang-go=\"`cloudWatch`\" pulumi-lang-python=\"`cloud_watch`\" pulumi-lang-yaml=\"`cloudWatch`\" pulumi-lang-java=\"`cloudWatch`\"\u003e`cloudWatch`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`checkly`\" pulumi-lang-dotnet=\"`Checkly`\" pulumi-lang-go=\"`checkly`\" pulumi-lang-python=\"`checkly`\" pulumi-lang-yaml=\"`checkly`\" pulumi-lang-java=\"`checkly`\"\u003e`checkly`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`azure`\" pulumi-lang-dotnet=\"`Azure`\" pulumi-lang-go=\"`azure`\" pulumi-lang-python=\"`azure`\" pulumi-lang-yaml=\"`azure`\" pulumi-lang-java=\"`azure`\"\u003e`azure`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newRelic`\" pulumi-lang-dotnet=\"`NewRelic`\" pulumi-lang-go=\"`newRelic`\" pulumi-lang-python=\"`new_relic`\" pulumi-lang-yaml=\"`newRelic`\" pulumi-lang-java=\"`newRelic`\"\u003e`newRelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`splunk`\" pulumi-lang-dotnet=\"`Splunk`\" pulumi-lang-go=\"`splunk`\" pulumi-lang-python=\"`splunk`\" pulumi-lang-yaml=\"`splunk`\" pulumi-lang-java=\"`splunk`\"\u003e`splunk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`chronosphere`\" pulumi-lang-dotnet=\"`Chronosphere`\" pulumi-lang-go=\"`chronosphere`\" pulumi-lang-python=\"`chronosphere`\" pulumi-lang-yaml=\"`chronosphere`\" pulumi-lang-java=\"`chronosphere`\"\u003e`chronosphere`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appOptics`\" pulumi-lang-dotnet=\"`AppOptics`\" pulumi-lang-go=\"`appOptics`\" pulumi-lang-python=\"`app_optics`\" pulumi-lang-yaml=\"`appOptics`\" pulumi-lang-java=\"`appOptics`\"\u003e`appOptics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`bugSnag`\" pulumi-lang-dotnet=\"`BugSnag`\" pulumi-lang-go=\"`bugSnag`\" pulumi-lang-python=\"`bug_snag`\" pulumi-lang-yaml=\"`bugSnag`\" pulumi-lang-java=\"`bugSnag`\"\u003e`bugSnag`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`honeycomb`\" pulumi-lang-dotnet=\"`Honeycomb`\" pulumi-lang-go=\"`honeycomb`\" pulumi-lang-python=\"`honeycomb`\" pulumi-lang-yaml=\"`honeycomb`\" pulumi-lang-java=\"`honeycomb`\"\u003e`honeycomb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`monteCarlo`\" pulumi-lang-dotnet=\"`MonteCarlo`\" pulumi-lang-go=\"`monteCarlo`\" pulumi-lang-python=\"`monte_carlo`\" pulumi-lang-yaml=\"`monteCarlo`\" pulumi-lang-java=\"`monteCarlo`\"\u003e`monteCarlo`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nagios`\" pulumi-lang-dotnet=\"`Nagios`\" pulumi-lang-go=\"`nagios`\" pulumi-lang-python=\"`nagios`\" pulumi-lang-yaml=\"`nagios`\" pulumi-lang-java=\"`nagios`\"\u003e`nagios`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`prtg`\" pulumi-lang-dotnet=\"`Prtg`\" pulumi-lang-go=\"`prtg`\" pulumi-lang-python=\"`prtg`\" pulumi-lang-yaml=\"`prtg`\" pulumi-lang-java=\"`prtg`\"\u003e`prtg`\u003c/span\u003e.\n"
+                    "description": "The alert source type. Value must be one of \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appDynamics`\" pulumi-lang-dotnet=\"`AppDynamics`\" pulumi-lang-go=\"`appDynamics`\" pulumi-lang-python=\"`app_dynamics`\" pulumi-lang-yaml=\"`appDynamics`\" pulumi-lang-java=\"`appDynamics`\"\u003e`appDynamics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catchpoint`\" pulumi-lang-dotnet=\"`Catchpoint`\" pulumi-lang-go=\"`catchpoint`\" pulumi-lang-python=\"`catchpoint`\" pulumi-lang-yaml=\"`catchpoint`\" pulumi-lang-java=\"`catchpoint`\"\u003e`catchpoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`datadog`\" pulumi-lang-dotnet=\"`Datadog`\" pulumi-lang-go=\"`datadog`\" pulumi-lang-python=\"`datadog`\" pulumi-lang-yaml=\"`datadog`\" pulumi-lang-java=\"`datadog`\"\u003e`datadog`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dynatrace`\" pulumi-lang-dotnet=\"`Dynatrace`\" pulumi-lang-go=\"`dynatrace`\" pulumi-lang-python=\"`dynatrace`\" pulumi-lang-yaml=\"`dynatrace`\" pulumi-lang-java=\"`dynatrace`\"\u003e`dynatrace`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`alertmanager`\" pulumi-lang-dotnet=\"`Alertmanager`\" pulumi-lang-go=\"`alertmanager`\" pulumi-lang-python=\"`alertmanager`\" pulumi-lang-yaml=\"`alertmanager`\" pulumi-lang-java=\"`alertmanager`\"\u003e`alertmanager`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleCloud`\" pulumi-lang-dotnet=\"`GoogleCloud`\" pulumi-lang-go=\"`googleCloud`\" pulumi-lang-python=\"`google_cloud`\" pulumi-lang-yaml=\"`googleCloud`\" pulumi-lang-java=\"`googleCloud`\"\u003e`googleCloud`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`grafana`\" pulumi-lang-dotnet=\"`Grafana`\" pulumi-lang-go=\"`grafana`\" pulumi-lang-python=\"`grafana`\" pulumi-lang-yaml=\"`grafana`\" pulumi-lang-java=\"`grafana`\"\u003e`grafana`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`genericWebhook`\" pulumi-lang-dotnet=\"`GenericWebhook`\" pulumi-lang-go=\"`genericWebhook`\" pulumi-lang-python=\"`generic_webhook`\" pulumi-lang-yaml=\"`genericWebhook`\" pulumi-lang-java=\"`genericWebhook`\"\u003e`genericWebhook`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudWatch`\" pulumi-lang-dotnet=\"`CloudWatch`\" pulumi-lang-go=\"`cloudWatch`\" pulumi-lang-python=\"`cloud_watch`\" pulumi-lang-yaml=\"`cloudWatch`\" pulumi-lang-java=\"`cloudWatch`\"\u003e`cloudWatch`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`awsSns`\" pulumi-lang-dotnet=\"`AwsSns`\" pulumi-lang-go=\"`awsSns`\" pulumi-lang-python=\"`aws_sns`\" pulumi-lang-yaml=\"`awsSns`\" pulumi-lang-java=\"`awsSns`\"\u003e`awsSns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`checkly`\" pulumi-lang-dotnet=\"`Checkly`\" pulumi-lang-go=\"`checkly`\" pulumi-lang-python=\"`checkly`\" pulumi-lang-yaml=\"`checkly`\" pulumi-lang-java=\"`checkly`\"\u003e`checkly`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`azure`\" pulumi-lang-dotnet=\"`Azure`\" pulumi-lang-go=\"`azure`\" pulumi-lang-python=\"`azure`\" pulumi-lang-yaml=\"`azure`\" pulumi-lang-java=\"`azure`\"\u003e`azure`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newRelic`\" pulumi-lang-dotnet=\"`NewRelic`\" pulumi-lang-go=\"`newRelic`\" pulumi-lang-python=\"`new_relic`\" pulumi-lang-yaml=\"`newRelic`\" pulumi-lang-java=\"`newRelic`\"\u003e`newRelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`splunk`\" pulumi-lang-dotnet=\"`Splunk`\" pulumi-lang-go=\"`splunk`\" pulumi-lang-python=\"`splunk`\" pulumi-lang-yaml=\"`splunk`\" pulumi-lang-java=\"`splunk`\"\u003e`splunk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`chronosphere`\" pulumi-lang-dotnet=\"`Chronosphere`\" pulumi-lang-go=\"`chronosphere`\" pulumi-lang-python=\"`chronosphere`\" pulumi-lang-yaml=\"`chronosphere`\" pulumi-lang-java=\"`chronosphere`\"\u003e`chronosphere`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appOptics`\" pulumi-lang-dotnet=\"`AppOptics`\" pulumi-lang-go=\"`appOptics`\" pulumi-lang-python=\"`app_optics`\" pulumi-lang-yaml=\"`appOptics`\" pulumi-lang-java=\"`appOptics`\"\u003e`appOptics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`bugSnag`\" pulumi-lang-dotnet=\"`BugSnag`\" pulumi-lang-go=\"`bugSnag`\" pulumi-lang-python=\"`bug_snag`\" pulumi-lang-yaml=\"`bugSnag`\" pulumi-lang-java=\"`bugSnag`\"\u003e`bugSnag`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`honeycomb`\" pulumi-lang-dotnet=\"`Honeycomb`\" pulumi-lang-go=\"`honeycomb`\" pulumi-lang-python=\"`honeycomb`\" pulumi-lang-yaml=\"`honeycomb`\" pulumi-lang-java=\"`honeycomb`\"\u003e`honeycomb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`monteCarlo`\" pulumi-lang-dotnet=\"`MonteCarlo`\" pulumi-lang-go=\"`monteCarlo`\" pulumi-lang-python=\"`monte_carlo`\" pulumi-lang-yaml=\"`monteCarlo`\" pulumi-lang-java=\"`monteCarlo`\"\u003e`monteCarlo`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nagios`\" pulumi-lang-dotnet=\"`Nagios`\" pulumi-lang-go=\"`nagios`\" pulumi-lang-python=\"`nagios`\" pulumi-lang-yaml=\"`nagios`\" pulumi-lang-java=\"`nagios`\"\u003e`nagios`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`prtg`\" pulumi-lang-dotnet=\"`Prtg`\" pulumi-lang-go=\"`prtg`\" pulumi-lang-python=\"`prtg`\" pulumi-lang-yaml=\"`prtg`\" pulumi-lang-java=\"`prtg`\"\u003e`prtg`\u003c/span\u003e.\n"
                 },
                 "sourceableAttributes": {
                     "$ref": "#/types/rootly:index/AlertsSourceSourceableAttributes:AlertsSourceSourceableAttributes",
@@ -10356,7 +10511,7 @@
                 },
                 "sourceType": {
                     "type": "string",
-                    "description": "The alert source type. Value must be one of \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appDynamics`\" pulumi-lang-dotnet=\"`AppDynamics`\" pulumi-lang-go=\"`appDynamics`\" pulumi-lang-python=\"`app_dynamics`\" pulumi-lang-yaml=\"`appDynamics`\" pulumi-lang-java=\"`appDynamics`\"\u003e`appDynamics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catchpoint`\" pulumi-lang-dotnet=\"`Catchpoint`\" pulumi-lang-go=\"`catchpoint`\" pulumi-lang-python=\"`catchpoint`\" pulumi-lang-yaml=\"`catchpoint`\" pulumi-lang-java=\"`catchpoint`\"\u003e`catchpoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`datadog`\" pulumi-lang-dotnet=\"`Datadog`\" pulumi-lang-go=\"`datadog`\" pulumi-lang-python=\"`datadog`\" pulumi-lang-yaml=\"`datadog`\" pulumi-lang-java=\"`datadog`\"\u003e`datadog`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`alertmanager`\" pulumi-lang-dotnet=\"`Alertmanager`\" pulumi-lang-go=\"`alertmanager`\" pulumi-lang-python=\"`alertmanager`\" pulumi-lang-yaml=\"`alertmanager`\" pulumi-lang-java=\"`alertmanager`\"\u003e`alertmanager`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleCloud`\" pulumi-lang-dotnet=\"`GoogleCloud`\" pulumi-lang-go=\"`googleCloud`\" pulumi-lang-python=\"`google_cloud`\" pulumi-lang-yaml=\"`googleCloud`\" pulumi-lang-java=\"`googleCloud`\"\u003e`googleCloud`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`grafana`\" pulumi-lang-dotnet=\"`Grafana`\" pulumi-lang-go=\"`grafana`\" pulumi-lang-python=\"`grafana`\" pulumi-lang-yaml=\"`grafana`\" pulumi-lang-java=\"`grafana`\"\u003e`grafana`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`genericWebhook`\" pulumi-lang-dotnet=\"`GenericWebhook`\" pulumi-lang-go=\"`genericWebhook`\" pulumi-lang-python=\"`generic_webhook`\" pulumi-lang-yaml=\"`genericWebhook`\" pulumi-lang-java=\"`genericWebhook`\"\u003e`genericWebhook`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudWatch`\" pulumi-lang-dotnet=\"`CloudWatch`\" pulumi-lang-go=\"`cloudWatch`\" pulumi-lang-python=\"`cloud_watch`\" pulumi-lang-yaml=\"`cloudWatch`\" pulumi-lang-java=\"`cloudWatch`\"\u003e`cloudWatch`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`checkly`\" pulumi-lang-dotnet=\"`Checkly`\" pulumi-lang-go=\"`checkly`\" pulumi-lang-python=\"`checkly`\" pulumi-lang-yaml=\"`checkly`\" pulumi-lang-java=\"`checkly`\"\u003e`checkly`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`azure`\" pulumi-lang-dotnet=\"`Azure`\" pulumi-lang-go=\"`azure`\" pulumi-lang-python=\"`azure`\" pulumi-lang-yaml=\"`azure`\" pulumi-lang-java=\"`azure`\"\u003e`azure`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newRelic`\" pulumi-lang-dotnet=\"`NewRelic`\" pulumi-lang-go=\"`newRelic`\" pulumi-lang-python=\"`new_relic`\" pulumi-lang-yaml=\"`newRelic`\" pulumi-lang-java=\"`newRelic`\"\u003e`newRelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`splunk`\" pulumi-lang-dotnet=\"`Splunk`\" pulumi-lang-go=\"`splunk`\" pulumi-lang-python=\"`splunk`\" pulumi-lang-yaml=\"`splunk`\" pulumi-lang-java=\"`splunk`\"\u003e`splunk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`chronosphere`\" pulumi-lang-dotnet=\"`Chronosphere`\" pulumi-lang-go=\"`chronosphere`\" pulumi-lang-python=\"`chronosphere`\" pulumi-lang-yaml=\"`chronosphere`\" pulumi-lang-java=\"`chronosphere`\"\u003e`chronosphere`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appOptics`\" pulumi-lang-dotnet=\"`AppOptics`\" pulumi-lang-go=\"`appOptics`\" pulumi-lang-python=\"`app_optics`\" pulumi-lang-yaml=\"`appOptics`\" pulumi-lang-java=\"`appOptics`\"\u003e`appOptics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`bugSnag`\" pulumi-lang-dotnet=\"`BugSnag`\" pulumi-lang-go=\"`bugSnag`\" pulumi-lang-python=\"`bug_snag`\" pulumi-lang-yaml=\"`bugSnag`\" pulumi-lang-java=\"`bugSnag`\"\u003e`bugSnag`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`honeycomb`\" pulumi-lang-dotnet=\"`Honeycomb`\" pulumi-lang-go=\"`honeycomb`\" pulumi-lang-python=\"`honeycomb`\" pulumi-lang-yaml=\"`honeycomb`\" pulumi-lang-java=\"`honeycomb`\"\u003e`honeycomb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`monteCarlo`\" pulumi-lang-dotnet=\"`MonteCarlo`\" pulumi-lang-go=\"`monteCarlo`\" pulumi-lang-python=\"`monte_carlo`\" pulumi-lang-yaml=\"`monteCarlo`\" pulumi-lang-java=\"`monteCarlo`\"\u003e`monteCarlo`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nagios`\" pulumi-lang-dotnet=\"`Nagios`\" pulumi-lang-go=\"`nagios`\" pulumi-lang-python=\"`nagios`\" pulumi-lang-yaml=\"`nagios`\" pulumi-lang-java=\"`nagios`\"\u003e`nagios`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`prtg`\" pulumi-lang-dotnet=\"`Prtg`\" pulumi-lang-go=\"`prtg`\" pulumi-lang-python=\"`prtg`\" pulumi-lang-yaml=\"`prtg`\" pulumi-lang-java=\"`prtg`\"\u003e`prtg`\u003c/span\u003e.\n",
+                    "description": "The alert source type. Value must be one of \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appDynamics`\" pulumi-lang-dotnet=\"`AppDynamics`\" pulumi-lang-go=\"`appDynamics`\" pulumi-lang-python=\"`app_dynamics`\" pulumi-lang-yaml=\"`appDynamics`\" pulumi-lang-java=\"`appDynamics`\"\u003e`appDynamics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catchpoint`\" pulumi-lang-dotnet=\"`Catchpoint`\" pulumi-lang-go=\"`catchpoint`\" pulumi-lang-python=\"`catchpoint`\" pulumi-lang-yaml=\"`catchpoint`\" pulumi-lang-java=\"`catchpoint`\"\u003e`catchpoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`datadog`\" pulumi-lang-dotnet=\"`Datadog`\" pulumi-lang-go=\"`datadog`\" pulumi-lang-python=\"`datadog`\" pulumi-lang-yaml=\"`datadog`\" pulumi-lang-java=\"`datadog`\"\u003e`datadog`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dynatrace`\" pulumi-lang-dotnet=\"`Dynatrace`\" pulumi-lang-go=\"`dynatrace`\" pulumi-lang-python=\"`dynatrace`\" pulumi-lang-yaml=\"`dynatrace`\" pulumi-lang-java=\"`dynatrace`\"\u003e`dynatrace`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`alertmanager`\" pulumi-lang-dotnet=\"`Alertmanager`\" pulumi-lang-go=\"`alertmanager`\" pulumi-lang-python=\"`alertmanager`\" pulumi-lang-yaml=\"`alertmanager`\" pulumi-lang-java=\"`alertmanager`\"\u003e`alertmanager`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleCloud`\" pulumi-lang-dotnet=\"`GoogleCloud`\" pulumi-lang-go=\"`googleCloud`\" pulumi-lang-python=\"`google_cloud`\" pulumi-lang-yaml=\"`googleCloud`\" pulumi-lang-java=\"`googleCloud`\"\u003e`googleCloud`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`grafana`\" pulumi-lang-dotnet=\"`Grafana`\" pulumi-lang-go=\"`grafana`\" pulumi-lang-python=\"`grafana`\" pulumi-lang-yaml=\"`grafana`\" pulumi-lang-java=\"`grafana`\"\u003e`grafana`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`genericWebhook`\" pulumi-lang-dotnet=\"`GenericWebhook`\" pulumi-lang-go=\"`genericWebhook`\" pulumi-lang-python=\"`generic_webhook`\" pulumi-lang-yaml=\"`genericWebhook`\" pulumi-lang-java=\"`genericWebhook`\"\u003e`genericWebhook`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudWatch`\" pulumi-lang-dotnet=\"`CloudWatch`\" pulumi-lang-go=\"`cloudWatch`\" pulumi-lang-python=\"`cloud_watch`\" pulumi-lang-yaml=\"`cloudWatch`\" pulumi-lang-java=\"`cloudWatch`\"\u003e`cloudWatch`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`awsSns`\" pulumi-lang-dotnet=\"`AwsSns`\" pulumi-lang-go=\"`awsSns`\" pulumi-lang-python=\"`aws_sns`\" pulumi-lang-yaml=\"`awsSns`\" pulumi-lang-java=\"`awsSns`\"\u003e`awsSns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`checkly`\" pulumi-lang-dotnet=\"`Checkly`\" pulumi-lang-go=\"`checkly`\" pulumi-lang-python=\"`checkly`\" pulumi-lang-yaml=\"`checkly`\" pulumi-lang-java=\"`checkly`\"\u003e`checkly`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`azure`\" pulumi-lang-dotnet=\"`Azure`\" pulumi-lang-go=\"`azure`\" pulumi-lang-python=\"`azure`\" pulumi-lang-yaml=\"`azure`\" pulumi-lang-java=\"`azure`\"\u003e`azure`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newRelic`\" pulumi-lang-dotnet=\"`NewRelic`\" pulumi-lang-go=\"`newRelic`\" pulumi-lang-python=\"`new_relic`\" pulumi-lang-yaml=\"`newRelic`\" pulumi-lang-java=\"`newRelic`\"\u003e`newRelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`splunk`\" pulumi-lang-dotnet=\"`Splunk`\" pulumi-lang-go=\"`splunk`\" pulumi-lang-python=\"`splunk`\" pulumi-lang-yaml=\"`splunk`\" pulumi-lang-java=\"`splunk`\"\u003e`splunk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`chronosphere`\" pulumi-lang-dotnet=\"`Chronosphere`\" pulumi-lang-go=\"`chronosphere`\" pulumi-lang-python=\"`chronosphere`\" pulumi-lang-yaml=\"`chronosphere`\" pulumi-lang-java=\"`chronosphere`\"\u003e`chronosphere`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appOptics`\" pulumi-lang-dotnet=\"`AppOptics`\" pulumi-lang-go=\"`appOptics`\" pulumi-lang-python=\"`app_optics`\" pulumi-lang-yaml=\"`appOptics`\" pulumi-lang-java=\"`appOptics`\"\u003e`appOptics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`bugSnag`\" pulumi-lang-dotnet=\"`BugSnag`\" pulumi-lang-go=\"`bugSnag`\" pulumi-lang-python=\"`bug_snag`\" pulumi-lang-yaml=\"`bugSnag`\" pulumi-lang-java=\"`bugSnag`\"\u003e`bugSnag`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`honeycomb`\" pulumi-lang-dotnet=\"`Honeycomb`\" pulumi-lang-go=\"`honeycomb`\" pulumi-lang-python=\"`honeycomb`\" pulumi-lang-yaml=\"`honeycomb`\" pulumi-lang-java=\"`honeycomb`\"\u003e`honeycomb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`monteCarlo`\" pulumi-lang-dotnet=\"`MonteCarlo`\" pulumi-lang-go=\"`monteCarlo`\" pulumi-lang-python=\"`monte_carlo`\" pulumi-lang-yaml=\"`monteCarlo`\" pulumi-lang-java=\"`monteCarlo`\"\u003e`monteCarlo`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nagios`\" pulumi-lang-dotnet=\"`Nagios`\" pulumi-lang-go=\"`nagios`\" pulumi-lang-python=\"`nagios`\" pulumi-lang-yaml=\"`nagios`\" pulumi-lang-java=\"`nagios`\"\u003e`nagios`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`prtg`\" pulumi-lang-dotnet=\"`Prtg`\" pulumi-lang-go=\"`prtg`\" pulumi-lang-python=\"`prtg`\" pulumi-lang-yaml=\"`prtg`\" pulumi-lang-java=\"`prtg`\"\u003e`prtg`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 },
                 "sourceableAttributes": {
@@ -10439,7 +10594,7 @@
                     },
                     "sourceType": {
                         "type": "string",
-                        "description": "The alert source type. Value must be one of \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appDynamics`\" pulumi-lang-dotnet=\"`AppDynamics`\" pulumi-lang-go=\"`appDynamics`\" pulumi-lang-python=\"`app_dynamics`\" pulumi-lang-yaml=\"`appDynamics`\" pulumi-lang-java=\"`appDynamics`\"\u003e`appDynamics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catchpoint`\" pulumi-lang-dotnet=\"`Catchpoint`\" pulumi-lang-go=\"`catchpoint`\" pulumi-lang-python=\"`catchpoint`\" pulumi-lang-yaml=\"`catchpoint`\" pulumi-lang-java=\"`catchpoint`\"\u003e`catchpoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`datadog`\" pulumi-lang-dotnet=\"`Datadog`\" pulumi-lang-go=\"`datadog`\" pulumi-lang-python=\"`datadog`\" pulumi-lang-yaml=\"`datadog`\" pulumi-lang-java=\"`datadog`\"\u003e`datadog`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`alertmanager`\" pulumi-lang-dotnet=\"`Alertmanager`\" pulumi-lang-go=\"`alertmanager`\" pulumi-lang-python=\"`alertmanager`\" pulumi-lang-yaml=\"`alertmanager`\" pulumi-lang-java=\"`alertmanager`\"\u003e`alertmanager`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleCloud`\" pulumi-lang-dotnet=\"`GoogleCloud`\" pulumi-lang-go=\"`googleCloud`\" pulumi-lang-python=\"`google_cloud`\" pulumi-lang-yaml=\"`googleCloud`\" pulumi-lang-java=\"`googleCloud`\"\u003e`googleCloud`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`grafana`\" pulumi-lang-dotnet=\"`Grafana`\" pulumi-lang-go=\"`grafana`\" pulumi-lang-python=\"`grafana`\" pulumi-lang-yaml=\"`grafana`\" pulumi-lang-java=\"`grafana`\"\u003e`grafana`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`genericWebhook`\" pulumi-lang-dotnet=\"`GenericWebhook`\" pulumi-lang-go=\"`genericWebhook`\" pulumi-lang-python=\"`generic_webhook`\" pulumi-lang-yaml=\"`genericWebhook`\" pulumi-lang-java=\"`genericWebhook`\"\u003e`genericWebhook`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudWatch`\" pulumi-lang-dotnet=\"`CloudWatch`\" pulumi-lang-go=\"`cloudWatch`\" pulumi-lang-python=\"`cloud_watch`\" pulumi-lang-yaml=\"`cloudWatch`\" pulumi-lang-java=\"`cloudWatch`\"\u003e`cloudWatch`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`checkly`\" pulumi-lang-dotnet=\"`Checkly`\" pulumi-lang-go=\"`checkly`\" pulumi-lang-python=\"`checkly`\" pulumi-lang-yaml=\"`checkly`\" pulumi-lang-java=\"`checkly`\"\u003e`checkly`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`azure`\" pulumi-lang-dotnet=\"`Azure`\" pulumi-lang-go=\"`azure`\" pulumi-lang-python=\"`azure`\" pulumi-lang-yaml=\"`azure`\" pulumi-lang-java=\"`azure`\"\u003e`azure`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newRelic`\" pulumi-lang-dotnet=\"`NewRelic`\" pulumi-lang-go=\"`newRelic`\" pulumi-lang-python=\"`new_relic`\" pulumi-lang-yaml=\"`newRelic`\" pulumi-lang-java=\"`newRelic`\"\u003e`newRelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`splunk`\" pulumi-lang-dotnet=\"`Splunk`\" pulumi-lang-go=\"`splunk`\" pulumi-lang-python=\"`splunk`\" pulumi-lang-yaml=\"`splunk`\" pulumi-lang-java=\"`splunk`\"\u003e`splunk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`chronosphere`\" pulumi-lang-dotnet=\"`Chronosphere`\" pulumi-lang-go=\"`chronosphere`\" pulumi-lang-python=\"`chronosphere`\" pulumi-lang-yaml=\"`chronosphere`\" pulumi-lang-java=\"`chronosphere`\"\u003e`chronosphere`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appOptics`\" pulumi-lang-dotnet=\"`AppOptics`\" pulumi-lang-go=\"`appOptics`\" pulumi-lang-python=\"`app_optics`\" pulumi-lang-yaml=\"`appOptics`\" pulumi-lang-java=\"`appOptics`\"\u003e`appOptics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`bugSnag`\" pulumi-lang-dotnet=\"`BugSnag`\" pulumi-lang-go=\"`bugSnag`\" pulumi-lang-python=\"`bug_snag`\" pulumi-lang-yaml=\"`bugSnag`\" pulumi-lang-java=\"`bugSnag`\"\u003e`bugSnag`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`honeycomb`\" pulumi-lang-dotnet=\"`Honeycomb`\" pulumi-lang-go=\"`honeycomb`\" pulumi-lang-python=\"`honeycomb`\" pulumi-lang-yaml=\"`honeycomb`\" pulumi-lang-java=\"`honeycomb`\"\u003e`honeycomb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`monteCarlo`\" pulumi-lang-dotnet=\"`MonteCarlo`\" pulumi-lang-go=\"`monteCarlo`\" pulumi-lang-python=\"`monte_carlo`\" pulumi-lang-yaml=\"`monteCarlo`\" pulumi-lang-java=\"`monteCarlo`\"\u003e`monteCarlo`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nagios`\" pulumi-lang-dotnet=\"`Nagios`\" pulumi-lang-go=\"`nagios`\" pulumi-lang-python=\"`nagios`\" pulumi-lang-yaml=\"`nagios`\" pulumi-lang-java=\"`nagios`\"\u003e`nagios`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`prtg`\" pulumi-lang-dotnet=\"`Prtg`\" pulumi-lang-go=\"`prtg`\" pulumi-lang-python=\"`prtg`\" pulumi-lang-yaml=\"`prtg`\" pulumi-lang-java=\"`prtg`\"\u003e`prtg`\u003c/span\u003e.\n",
+                        "description": "The alert source type. Value must be one of \u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appDynamics`\" pulumi-lang-dotnet=\"`AppDynamics`\" pulumi-lang-go=\"`appDynamics`\" pulumi-lang-python=\"`app_dynamics`\" pulumi-lang-yaml=\"`appDynamics`\" pulumi-lang-java=\"`appDynamics`\"\u003e`appDynamics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catchpoint`\" pulumi-lang-dotnet=\"`Catchpoint`\" pulumi-lang-go=\"`catchpoint`\" pulumi-lang-python=\"`catchpoint`\" pulumi-lang-yaml=\"`catchpoint`\" pulumi-lang-java=\"`catchpoint`\"\u003e`catchpoint`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`datadog`\" pulumi-lang-dotnet=\"`Datadog`\" pulumi-lang-go=\"`datadog`\" pulumi-lang-python=\"`datadog`\" pulumi-lang-yaml=\"`datadog`\" pulumi-lang-java=\"`datadog`\"\u003e`datadog`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`dynatrace`\" pulumi-lang-dotnet=\"`Dynatrace`\" pulumi-lang-go=\"`dynatrace`\" pulumi-lang-python=\"`dynatrace`\" pulumi-lang-yaml=\"`dynatrace`\" pulumi-lang-java=\"`dynatrace`\"\u003e`dynatrace`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`alertmanager`\" pulumi-lang-dotnet=\"`Alertmanager`\" pulumi-lang-go=\"`alertmanager`\" pulumi-lang-python=\"`alertmanager`\" pulumi-lang-yaml=\"`alertmanager`\" pulumi-lang-java=\"`alertmanager`\"\u003e`alertmanager`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleCloud`\" pulumi-lang-dotnet=\"`GoogleCloud`\" pulumi-lang-go=\"`googleCloud`\" pulumi-lang-python=\"`google_cloud`\" pulumi-lang-yaml=\"`googleCloud`\" pulumi-lang-java=\"`googleCloud`\"\u003e`googleCloud`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`grafana`\" pulumi-lang-dotnet=\"`Grafana`\" pulumi-lang-go=\"`grafana`\" pulumi-lang-python=\"`grafana`\" pulumi-lang-yaml=\"`grafana`\" pulumi-lang-java=\"`grafana`\"\u003e`grafana`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sentry`\" pulumi-lang-dotnet=\"`Sentry`\" pulumi-lang-go=\"`sentry`\" pulumi-lang-python=\"`sentry`\" pulumi-lang-yaml=\"`sentry`\" pulumi-lang-java=\"`sentry`\"\u003e`sentry`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`genericWebhook`\" pulumi-lang-dotnet=\"`GenericWebhook`\" pulumi-lang-go=\"`genericWebhook`\" pulumi-lang-python=\"`generic_webhook`\" pulumi-lang-yaml=\"`genericWebhook`\" pulumi-lang-java=\"`genericWebhook`\"\u003e`genericWebhook`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cloudWatch`\" pulumi-lang-dotnet=\"`CloudWatch`\" pulumi-lang-go=\"`cloudWatch`\" pulumi-lang-python=\"`cloud_watch`\" pulumi-lang-yaml=\"`cloudWatch`\" pulumi-lang-java=\"`cloudWatch`\"\u003e`cloudWatch`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`awsSns`\" pulumi-lang-dotnet=\"`AwsSns`\" pulumi-lang-go=\"`awsSns`\" pulumi-lang-python=\"`aws_sns`\" pulumi-lang-yaml=\"`awsSns`\" pulumi-lang-java=\"`awsSns`\"\u003e`awsSns`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`checkly`\" pulumi-lang-dotnet=\"`Checkly`\" pulumi-lang-go=\"`checkly`\" pulumi-lang-python=\"`checkly`\" pulumi-lang-yaml=\"`checkly`\" pulumi-lang-java=\"`checkly`\"\u003e`checkly`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`azure`\" pulumi-lang-dotnet=\"`Azure`\" pulumi-lang-go=\"`azure`\" pulumi-lang-python=\"`azure`\" pulumi-lang-yaml=\"`azure`\" pulumi-lang-java=\"`azure`\"\u003e`azure`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`newRelic`\" pulumi-lang-dotnet=\"`NewRelic`\" pulumi-lang-go=\"`newRelic`\" pulumi-lang-python=\"`new_relic`\" pulumi-lang-yaml=\"`newRelic`\" pulumi-lang-java=\"`newRelic`\"\u003e`newRelic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`splunk`\" pulumi-lang-dotnet=\"`Splunk`\" pulumi-lang-go=\"`splunk`\" pulumi-lang-python=\"`splunk`\" pulumi-lang-yaml=\"`splunk`\" pulumi-lang-java=\"`splunk`\"\u003e`splunk`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`chronosphere`\" pulumi-lang-dotnet=\"`Chronosphere`\" pulumi-lang-go=\"`chronosphere`\" pulumi-lang-python=\"`chronosphere`\" pulumi-lang-yaml=\"`chronosphere`\" pulumi-lang-java=\"`chronosphere`\"\u003e`chronosphere`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`appOptics`\" pulumi-lang-dotnet=\"`AppOptics`\" pulumi-lang-go=\"`appOptics`\" pulumi-lang-python=\"`app_optics`\" pulumi-lang-yaml=\"`appOptics`\" pulumi-lang-java=\"`appOptics`\"\u003e`appOptics`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`bugSnag`\" pulumi-lang-dotnet=\"`BugSnag`\" pulumi-lang-go=\"`bugSnag`\" pulumi-lang-python=\"`bug_snag`\" pulumi-lang-yaml=\"`bugSnag`\" pulumi-lang-java=\"`bugSnag`\"\u003e`bugSnag`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`honeycomb`\" pulumi-lang-dotnet=\"`Honeycomb`\" pulumi-lang-go=\"`honeycomb`\" pulumi-lang-python=\"`honeycomb`\" pulumi-lang-yaml=\"`honeycomb`\" pulumi-lang-java=\"`honeycomb`\"\u003e`honeycomb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`monteCarlo`\" pulumi-lang-dotnet=\"`MonteCarlo`\" pulumi-lang-go=\"`monteCarlo`\" pulumi-lang-python=\"`monte_carlo`\" pulumi-lang-yaml=\"`monteCarlo`\" pulumi-lang-java=\"`monteCarlo`\"\u003e`monteCarlo`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nagios`\" pulumi-lang-dotnet=\"`Nagios`\" pulumi-lang-go=\"`nagios`\" pulumi-lang-python=\"`nagios`\" pulumi-lang-yaml=\"`nagios`\" pulumi-lang-java=\"`nagios`\"\u003e`nagios`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`prtg`\" pulumi-lang-dotnet=\"`Prtg`\" pulumi-lang-go=\"`prtg`\" pulumi-lang-python=\"`prtg`\" pulumi-lang-yaml=\"`prtg`\" pulumi-lang-java=\"`prtg`\"\u003e`prtg`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     },
                     "sourceableAttributes": {
@@ -10459,7 +10614,7 @@
             }
         },
         "rootly:index/apiKey:ApiKey": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.ApiKey \" pulumi-lang-dotnet=\"\nrootly.ApiKey \" pulumi-lang-go=\"\nApiKey \" pulumi-lang-python=\"\nApiKey \" pulumi-lang-yaml=\"\nrootly.ApiKey \" pulumi-lang-java=\"\nrootly.ApiKey \"\u003e\nrootly.ApiKey \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/apiKey:ApiKey primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_api_key\" \"ci_pipeline\" {\n  name       = \"CI Pipeline\"\n  expires_at = \"2027-01-01T00:00:00Z\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.ApiKey \" pulumi-lang-dotnet=\"\nrootly.ApiKey \" pulumi-lang-go=\"\nApiKey \" pulumi-lang-python=\"\nApiKey \" pulumi-lang-yaml=\"\nrootly.ApiKey \" pulumi-lang-java=\"\nrootly.ApiKey \"\u003e\nrootly.ApiKey \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/apiKey:ApiKey primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -10672,7 +10827,7 @@
             }
         },
         "rootly:index/catalog:Catalog": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Catalog \" pulumi-lang-dotnet=\"\nrootly.Catalog \" pulumi-lang-go=\"\nCatalog \" pulumi-lang-python=\"\nCatalog \" pulumi-lang-yaml=\"\nrootly.Catalog \" pulumi-lang-java=\"\nrootly.Catalog \"\u003e\nrootly.Catalog \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/catalog:Catalog primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_catalog\" \"customer_tier\" {\n  name        = \"Customer Tier\"\n  description = \"Customer pricing tiers\"\n  kind        = \"service\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Catalog \" pulumi-lang-dotnet=\"\nrootly.Catalog \" pulumi-lang-go=\"\nCatalog \" pulumi-lang-python=\"\nCatalog \" pulumi-lang-yaml=\"\nrootly.Catalog \" pulumi-lang-java=\"\nrootly.Catalog \"\u003e\nrootly.Catalog \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/catalog:Catalog primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string"
@@ -10732,7 +10887,7 @@
             }
         },
         "rootly:index/catalogChecklistTemplate:CatalogChecklistTemplate": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CatalogChecklistTemplate \" pulumi-lang-dotnet=\"\nrootly.CatalogChecklistTemplate \" pulumi-lang-go=\"\nCatalogChecklistTemplate \" pulumi-lang-python=\"\nCatalogChecklistTemplate \" pulumi-lang-yaml=\"\nrootly.CatalogChecklistTemplate \" pulumi-lang-java=\"\nrootly.CatalogChecklistTemplate \"\u003e\nrootly.CatalogChecklistTemplate \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/catalogChecklistTemplate:CatalogChecklistTemplate primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_catalog_checklist_template\" \"production_readiness\" {\n  catalog_id = rootly_catalog.customer_tier.id\n  name       = \"Production Readiness\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CatalogChecklistTemplate \" pulumi-lang-dotnet=\"\nrootly.CatalogChecklistTemplate \" pulumi-lang-go=\"\nCatalogChecklistTemplate \" pulumi-lang-python=\"\nCatalogChecklistTemplate \" pulumi-lang-yaml=\"\nrootly.CatalogChecklistTemplate \" pulumi-lang-java=\"\nrootly.CatalogChecklistTemplate \"\u003e\nrootly.CatalogChecklistTemplate \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/catalogChecklistTemplate:CatalogChecklistTemplate primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "catalogType": {
                     "type": "string",
@@ -10865,7 +11020,7 @@
             }
         },
         "rootly:index/catalogEntity:CatalogEntity": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CatalogEntity \" pulumi-lang-dotnet=\"\nrootly.CatalogEntity \" pulumi-lang-go=\"\nCatalogEntity \" pulumi-lang-python=\"\nCatalogEntity \" pulumi-lang-yaml=\"\nrootly.CatalogEntity \" pulumi-lang-java=\"\nrootly.CatalogEntity \"\u003e\nrootly.CatalogEntity \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/catalogEntity:CatalogEntity primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_catalog_entity\" \"enterprise_tier\" {\n  catalog_id  = rootly_catalog.customer_tier.id\n  name        = \"Enterprise\"\n  description = \"Enterprise customer tier\"\n}\n\nresource \"rootly_catalog_entity\" \"growth_tier\" {\n  catalog_id  = rootly_catalog.customer_tier.id\n  name        = \"Growth\"\n  description = \"Growth customer tier\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CatalogEntity \" pulumi-lang-dotnet=\"\nrootly.CatalogEntity \" pulumi-lang-go=\"\nCatalogEntity \" pulumi-lang-python=\"\nCatalogEntity \" pulumi-lang-yaml=\"\nrootly.CatalogEntity \" pulumi-lang-java=\"\nrootly.CatalogEntity \"\u003e\nrootly.CatalogEntity \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/catalogEntity:CatalogEntity primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "backstageId": {
                     "type": "string",
@@ -10962,7 +11117,7 @@
             }
         },
         "rootly:index/catalogProperty:CatalogProperty": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CatalogProperty \" pulumi-lang-dotnet=\"\nrootly.CatalogProperty \" pulumi-lang-go=\"\nCatalogProperty \" pulumi-lang-python=\"\nCatalogProperty \" pulumi-lang-yaml=\"\nrootly.CatalogProperty \" pulumi-lang-java=\"\nrootly.CatalogProperty \"\u003e\nrootly.CatalogProperty \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/catalogProperty:CatalogProperty primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_catalog_property\" \"support_level\" {\n  catalog_id = rootly_catalog.customer_tier.id\n  name       = \"Support Level\"\n  kind       = \"select\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CatalogProperty \" pulumi-lang-dotnet=\"\nrootly.CatalogProperty \" pulumi-lang-go=\"\nCatalogProperty \" pulumi-lang-python=\"\nCatalogProperty \" pulumi-lang-yaml=\"\nrootly.CatalogProperty \" pulumi-lang-java=\"\nrootly.CatalogProperty \"\u003e\nrootly.CatalogProperty \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/catalogProperty:CatalogProperty primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "catalogId": {
                     "type": "string"
@@ -11072,7 +11227,7 @@
             }
         },
         "rootly:index/cause:Cause": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Cause \" pulumi-lang-dotnet=\"\nrootly.Cause \" pulumi-lang-go=\"\nCause \" pulumi-lang-python=\"\nCause \" pulumi-lang-yaml=\"\nrootly.Cause \" pulumi-lang-java=\"\nrootly.Cause \"\u003e\nrootly.Cause \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/cause:Cause primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_cause\" \"bad_deploy\" {\n  name        = \"Bad Deploy\"\n  description = \"Incident caused by a faulty deployment\"\n}\n\nresource \"rootly_cause\" \"infrastructure_failure\" {\n  name        = \"Infrastructure Failure\"\n  description = \"Hardware or cloud provider issue\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Cause \" pulumi-lang-dotnet=\"\nrootly.Cause \" pulumi-lang-go=\"\nCause \" pulumi-lang-python=\"\nCause \" pulumi-lang-yaml=\"\nrootly.Cause \" pulumi-lang-java=\"\nrootly.Cause \"\u003e\nrootly.Cause \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/cause:Cause primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -11160,7 +11315,7 @@
             }
         },
         "rootly:index/communicationsGroup:CommunicationsGroup": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CommunicationsGroup \" pulumi-lang-dotnet=\"\nrootly.CommunicationsGroup \" pulumi-lang-go=\"\nCommunicationsGroup \" pulumi-lang-python=\"\nCommunicationsGroup \" pulumi-lang-yaml=\"\nrootly.CommunicationsGroup \" pulumi-lang-java=\"\nrootly.CommunicationsGroup \"\u003e\nrootly.CommunicationsGroup \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/communicationsGroup:CommunicationsGroup primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_communications_group\" \"executive_stakeholders\" {\n  name = \"Executive Stakeholders\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CommunicationsGroup \" pulumi-lang-dotnet=\"\nrootly.CommunicationsGroup \" pulumi-lang-go=\"\nCommunicationsGroup \" pulumi-lang-python=\"\nCommunicationsGroup \" pulumi-lang-yaml=\"\nrootly.CommunicationsGroup \" pulumi-lang-java=\"\nrootly.CommunicationsGroup \"\u003e\nrootly.CommunicationsGroup \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/communicationsGroup:CommunicationsGroup primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "communicationExternalGroupMembers": {
                     "type": "array",
@@ -11344,7 +11499,7 @@
             }
         },
         "rootly:index/communicationsStage:CommunicationsStage": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CommunicationsStage \" pulumi-lang-dotnet=\"\nrootly.CommunicationsStage \" pulumi-lang-go=\"\nCommunicationsStage \" pulumi-lang-python=\"\nCommunicationsStage \" pulumi-lang-yaml=\"\nrootly.CommunicationsStage \" pulumi-lang-java=\"\nrootly.CommunicationsStage \"\u003e\nrootly.CommunicationsStage \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/communicationsStage:CommunicationsStage primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_communications_stage\" \"initial_notification\" {\n  name     = \"Initial Notification\"\n  position = 1\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CommunicationsStage \" pulumi-lang-dotnet=\"\nrootly.CommunicationsStage \" pulumi-lang-go=\"\nCommunicationsStage \" pulumi-lang-python=\"\nCommunicationsStage \" pulumi-lang-yaml=\"\nrootly.CommunicationsStage \" pulumi-lang-java=\"\nrootly.CommunicationsStage \"\u003e\nrootly.CommunicationsStage \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/communicationsStage:CommunicationsStage primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -11411,7 +11566,7 @@
             }
         },
         "rootly:index/communicationsTemplate:CommunicationsTemplate": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CommunicationsTemplate \" pulumi-lang-dotnet=\"\nrootly.CommunicationsTemplate \" pulumi-lang-go=\"\nCommunicationsTemplate \" pulumi-lang-python=\"\nCommunicationsTemplate \" pulumi-lang-yaml=\"\nrootly.CommunicationsTemplate \" pulumi-lang-java=\"\nrootly.CommunicationsTemplate \"\u003e\nrootly.CommunicationsTemplate \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/communicationsTemplate:CommunicationsTemplate primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_communications_template\" \"status_update\" {\n  name = \"Incident Status Update\"\n  body = \"**Incident:** {{ incident.title }}\\n**Status:** {{ incident.status }}\\n**Summary:** {{ incident.summary }}\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CommunicationsTemplate \" pulumi-lang-dotnet=\"\nrootly.CommunicationsTemplate \" pulumi-lang-go=\"\nCommunicationsTemplate \" pulumi-lang-python=\"\nCommunicationsTemplate \" pulumi-lang-yaml=\"\nrootly.CommunicationsTemplate \" pulumi-lang-java=\"\nrootly.CommunicationsTemplate \"\u003e\nrootly.CommunicationsTemplate \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/communicationsTemplate:CommunicationsTemplate primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "communicationTemplateStages": {
                     "type": "array",
@@ -11528,7 +11683,7 @@
             }
         },
         "rootly:index/communicationsType:CommunicationsType": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CommunicationsType \" pulumi-lang-dotnet=\"\nrootly.CommunicationsType \" pulumi-lang-go=\"\nCommunicationsType \" pulumi-lang-python=\"\nCommunicationsType \" pulumi-lang-yaml=\"\nrootly.CommunicationsType \" pulumi-lang-java=\"\nrootly.CommunicationsType \"\u003e\nrootly.CommunicationsType \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/communicationsType:CommunicationsType primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_communications_type\" \"slack_notification\" {\n  name = \"Slack Notification\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CommunicationsType \" pulumi-lang-dotnet=\"\nrootly.CommunicationsType \" pulumi-lang-go=\"\nCommunicationsType \" pulumi-lang-python=\"\nCommunicationsType \" pulumi-lang-yaml=\"\nrootly.CommunicationsType \" pulumi-lang-java=\"\nrootly.CommunicationsType \"\u003e\nrootly.CommunicationsType \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/communicationsType:CommunicationsType primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "color": {
                     "type": "string",
@@ -11611,7 +11766,7 @@
             }
         },
         "rootly:index/customField:CustomField": {
-            "description": "DEPRECATED: Please use \u003cspan pulumi-lang-nodejs=\"`rootly.FormField`\" pulumi-lang-dotnet=\"`rootly.FormField`\" pulumi-lang-go=\"`FormField`\" pulumi-lang-python=\"`FormField`\" pulumi-lang-yaml=\"`rootly.FormField`\" pulumi-lang-java=\"`rootly.FormField`\"\u003e`rootly.FormField`\u003c/span\u003e resource instead.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CustomField \" pulumi-lang-dotnet=\"\nrootly.CustomField \" pulumi-lang-go=\"\nCustomField \" pulumi-lang-python=\"\nCustomField \" pulumi-lang-yaml=\"\nrootly.CustomField \" pulumi-lang-java=\"\nrootly.CustomField \"\u003e\nrootly.CustomField \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/customField:CustomField primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "DEPRECATED: Please use \u003cspan pulumi-lang-nodejs=\"`rootly.FormField`\" pulumi-lang-dotnet=\"`rootly.FormField`\" pulumi-lang-go=\"`FormField`\" pulumi-lang-python=\"`FormField`\" pulumi-lang-yaml=\"`rootly.FormField`\" pulumi-lang-java=\"`rootly.FormField`\"\u003e`rootly.FormField`\u003c/span\u003e resource instead.\n\n## Example Usage\n\n```shell\nresource \"rootly_custom_field\" \"affected_region\" {\n  label   = \"Affected Region\"\n  kind    = \"select\"\n  enabled = true\n  shown   = [\"incident_form\", \"incident_post_mortem\"]\n}\n\nresource \"rootly_custom_field_option\" \"us_east_1\" {\n  custom_field_id = rootly_custom_field.affected_region.id\n  value           = \"us-east-1\"\n  color           = \"#047BF8\"\n}\n\nresource \"rootly_custom_field_option\" \"eu_west_1\" {\n  custom_field_id = rootly_custom_field.affected_region.id\n  value           = \"eu-west-1\"\n  color           = \"#FFA500\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CustomField \" pulumi-lang-dotnet=\"\nrootly.CustomField \" pulumi-lang-go=\"\nCustomField \" pulumi-lang-python=\"\nCustomField \" pulumi-lang-yaml=\"\nrootly.CustomField \" pulumi-lang-java=\"\nrootly.CustomField \"\u003e\nrootly.CustomField \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/customField:CustomField primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "default": {
                     "type": "string",
@@ -11754,7 +11909,7 @@
             }
         },
         "rootly:index/customFieldOption:CustomFieldOption": {
-            "description": "DEPRECATED: Please use \u003cspan pulumi-lang-nodejs=\"`rootly.FormField`\" pulumi-lang-dotnet=\"`rootly.FormField`\" pulumi-lang-go=\"`FormField`\" pulumi-lang-python=\"`FormField`\" pulumi-lang-yaml=\"`rootly.FormField`\" pulumi-lang-java=\"`rootly.FormField`\"\u003e`rootly.FormField`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`rootly.FormFieldOption`\" pulumi-lang-dotnet=\"`rootly.FormFieldOption`\" pulumi-lang-go=\"`FormFieldOption`\" pulumi-lang-python=\"`FormFieldOption`\" pulumi-lang-yaml=\"`rootly.FormFieldOption`\" pulumi-lang-java=\"`rootly.FormFieldOption`\"\u003e`rootly.FormFieldOption`\u003c/span\u003e resources instead.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CustomFieldOption \" pulumi-lang-dotnet=\"\nrootly.CustomFieldOption \" pulumi-lang-go=\"\nCustomFieldOption \" pulumi-lang-python=\"\nCustomFieldOption \" pulumi-lang-yaml=\"\nrootly.CustomFieldOption \" pulumi-lang-java=\"\nrootly.CustomFieldOption \"\u003e\nrootly.CustomFieldOption \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/customFieldOption:CustomFieldOption primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "DEPRECATED: Please use \u003cspan pulumi-lang-nodejs=\"`rootly.FormField`\" pulumi-lang-dotnet=\"`rootly.FormField`\" pulumi-lang-go=\"`FormField`\" pulumi-lang-python=\"`FormField`\" pulumi-lang-yaml=\"`rootly.FormField`\" pulumi-lang-java=\"`rootly.FormField`\"\u003e`rootly.FormField`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`rootly.FormFieldOption`\" pulumi-lang-dotnet=\"`rootly.FormFieldOption`\" pulumi-lang-go=\"`FormFieldOption`\" pulumi-lang-python=\"`FormFieldOption`\" pulumi-lang-yaml=\"`rootly.FormFieldOption`\" pulumi-lang-java=\"`rootly.FormFieldOption`\"\u003e`rootly.FormFieldOption`\u003c/span\u003e resources instead.\n\n## Example Usage\n\n```shell\nresource \"rootly_custom_field_option\" \"us_west_2\" {\n  custom_field_id = rootly_custom_field.affected_region.id\n  value           = \"us-west-2\"\n  color           = \"#00AA00\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.CustomFieldOption \" pulumi-lang-dotnet=\"\nrootly.CustomFieldOption \" pulumi-lang-go=\"\nCustomFieldOption \" pulumi-lang-python=\"\nCustomFieldOption \" pulumi-lang-yaml=\"\nrootly.CustomFieldOption \" pulumi-lang-java=\"\nrootly.CustomFieldOption \"\u003e\nrootly.CustomFieldOption \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/customFieldOption:CustomFieldOption primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "color": {
                     "type": "string",
@@ -12049,7 +12204,7 @@
             }
         },
         "rootly:index/edgeConnector:EdgeConnector": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.EdgeConnector \" pulumi-lang-dotnet=\"\nrootly.EdgeConnector \" pulumi-lang-go=\"\nEdgeConnector \" pulumi-lang-python=\"\nEdgeConnector \" pulumi-lang-yaml=\"\nrootly.EdgeConnector \" pulumi-lang-java=\"\nrootly.EdgeConnector \"\u003e\nrootly.EdgeConnector \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/edgeConnector:EdgeConnector primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_edge_connector\" \"us_east_datacenter\" {\n  name = \"US-East Datacenter\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.EdgeConnector \" pulumi-lang-dotnet=\"\nrootly.EdgeConnector \" pulumi-lang-go=\"\nEdgeConnector \" pulumi-lang-python=\"\nEdgeConnector \" pulumi-lang-yaml=\"\nrootly.EdgeConnector \" pulumi-lang-java=\"\nrootly.EdgeConnector \"\u003e\nrootly.EdgeConnector \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/edgeConnector:EdgeConnector primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "createdAt": {
                     "type": "string"
@@ -13797,14 +13952,18 @@
                 "color",
                 "cortexId",
                 "description",
+                "environmentIds",
                 "escalationPolicyId",
                 "externalId",
                 "name",
                 "opsgenieId",
                 "opsgenieTeamId",
+                "ownerGroupIds",
+                "ownerUserIds",
                 "pagerdutyId",
                 "position",
                 "publicDescription",
+                "serviceIds",
                 "serviceNowCiSysId",
                 "slug"
             ],
@@ -14042,7 +14201,7 @@
             }
         },
         "rootly:index/heartbeat:Heartbeat": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Heartbeat \" pulumi-lang-dotnet=\"\nrootly.Heartbeat \" pulumi-lang-go=\"\nHeartbeat \" pulumi-lang-python=\"\nHeartbeat \" pulumi-lang-yaml=\"\nrootly.Heartbeat \" pulumi-lang-java=\"\nrootly.Heartbeat \"\u003e\nrootly.Heartbeat \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/heartbeat:Heartbeat primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_heartbeat\" \"nightly_backup\" {\n  name                     = \"nightly-db-backup\"\n  description              = \"Nightly database backup cron job\"\n  interval                 = 24\n  interval_unit            = \"hours\"\n  alert_summary            = \"Nightly backup missed\"\n  notification_target_type = \"Service\"\n  notification_target_id   = rootly_service.elasticsearch_prod.id\n  enabled                  = true\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Heartbeat \" pulumi-lang-dotnet=\"\nrootly.Heartbeat \" pulumi-lang-go=\"\nHeartbeat \" pulumi-lang-python=\"\nHeartbeat \" pulumi-lang-yaml=\"\nrootly.Heartbeat \" pulumi-lang-java=\"\nrootly.Heartbeat \"\u003e\nrootly.Heartbeat \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/heartbeat:Heartbeat primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "alertDescription": {
                     "type": "string",
@@ -14495,7 +14654,7 @@
             }
         },
         "rootly:index/incidentRole:IncidentRole": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.IncidentRole \" pulumi-lang-dotnet=\"\nrootly.IncidentRole \" pulumi-lang-go=\"\nIncidentRole \" pulumi-lang-python=\"\nIncidentRole \" pulumi-lang-yaml=\"\nrootly.IncidentRole \" pulumi-lang-java=\"\nrootly.IncidentRole \"\u003e\nrootly.IncidentRole \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/incidentRole:IncidentRole primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_incident_role\" \"incident_commander\" {\n  name        = \"Incident Commander\"\n  summary     = \"Leads the incident response\"\n  description = \"Coordinates response, delegates tasks, makes decisions\"\n  enabled     = true\n}\n\nresource \"rootly_incident_role\" \"communications_lead\" {\n  name     = \"Communications Lead\"\n  summary  = \"Manages stakeholder communications\"\n  optional = true\n  enabled  = true\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.IncidentRole \" pulumi-lang-dotnet=\"\nrootly.IncidentRole \" pulumi-lang-go=\"\nIncidentRole \" pulumi-lang-python=\"\nIncidentRole \" pulumi-lang-yaml=\"\nrootly.IncidentRole \" pulumi-lang-java=\"\nrootly.IncidentRole \"\u003e\nrootly.IncidentRole \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/incidentRole:IncidentRole primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "allowMultiUserAssignment": {
                     "type": "boolean",
@@ -14610,7 +14769,7 @@
             }
         },
         "rootly:index/incidentRoleTask:IncidentRoleTask": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.IncidentRoleTask \" pulumi-lang-dotnet=\"\nrootly.IncidentRoleTask \" pulumi-lang-go=\"\nIncidentRoleTask \" pulumi-lang-python=\"\nIncidentRoleTask \" pulumi-lang-yaml=\"\nrootly.IncidentRoleTask \" pulumi-lang-java=\"\nrootly.IncidentRoleTask \"\u003e\nrootly.IncidentRoleTask \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/incidentRoleTask:IncidentRoleTask primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_incident_role_task\" \"open_war_room\" {\n  incident_role_id = rootly_incident_role.incident_commander.id\n  task             = \"Open a war room and invite responders\"\n  priority         = \"high\"\n}\n\nresource \"rootly_incident_role_task\" \"send_status_update\" {\n  incident_role_id = rootly_incident_role.communications_lead.id\n  task             = \"Send initial status update to stakeholders\"\n  priority         = \"high\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.IncidentRoleTask \" pulumi-lang-dotnet=\"\nrootly.IncidentRoleTask \" pulumi-lang-go=\"\nIncidentRoleTask \" pulumi-lang-python=\"\nIncidentRoleTask \" pulumi-lang-yaml=\"\nrootly.IncidentRoleTask \" pulumi-lang-java=\"\nrootly.IncidentRoleTask \"\u003e\nrootly.IncidentRoleTask \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/incidentRoleTask:IncidentRoleTask primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -14678,7 +14837,7 @@
             }
         },
         "rootly:index/incidentSubStatus:IncidentSubStatus": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.IncidentSubStatus \" pulumi-lang-dotnet=\"\nrootly.IncidentSubStatus \" pulumi-lang-go=\"\nIncidentSubStatus \" pulumi-lang-python=\"\nIncidentSubStatus \" pulumi-lang-yaml=\"\nrootly.IncidentSubStatus \" pulumi-lang-java=\"\nrootly.IncidentSubStatus \"\u003e\nrootly.IncidentSubStatus \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/incidentSubStatus:IncidentSubStatus primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_incident_sub_status\" \"investigating\" {\n  incident_id   = data.rootly_incident.outage.id\n  sub_status_id = rootly_sub_status.investigating.id\n  assigned_at   = \"2026-06-01T00:00:00Z\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.IncidentSubStatus \" pulumi-lang-dotnet=\"\nrootly.IncidentSubStatus \" pulumi-lang-go=\"\nIncidentSubStatus \" pulumi-lang-python=\"\nIncidentSubStatus \" pulumi-lang-yaml=\"\nrootly.IncidentSubStatus \" pulumi-lang-java=\"\nrootly.IncidentSubStatus \"\u003e\nrootly.IncidentSubStatus \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/incidentSubStatus:IncidentSubStatus primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "assignedAt": {
                     "type": "string"
@@ -14742,7 +14901,7 @@
             }
         },
         "rootly:index/incidentType:IncidentType": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.IncidentType \" pulumi-lang-dotnet=\"\nrootly.IncidentType \" pulumi-lang-go=\"\nIncidentType \" pulumi-lang-python=\"\nIncidentType \" pulumi-lang-yaml=\"\nrootly.IncidentType \" pulumi-lang-java=\"\nrootly.IncidentType \"\u003e\nrootly.IncidentType \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/incidentType:IncidentType primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_incident_type\" \"security_breach\" {\n  name        = \"Security Breach\"\n  description = \"Unauthorized access or data exposure incidents\"\n  color       = \"#FF0000\"\n}\n\nresource \"rootly_incident_type\" \"service_degradation\" {\n  name        = \"Service Degradation\"\n  description = \"Partial or full service outage affecting customers\"\n  color       = \"#FFA500\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.IncidentType \" pulumi-lang-dotnet=\"\nrootly.IncidentType \" pulumi-lang-go=\"\nIncidentType \" pulumi-lang-python=\"\nIncidentType \" pulumi-lang-yaml=\"\nrootly.IncidentType \" pulumi-lang-java=\"\nrootly.IncidentType \"\u003e\nrootly.IncidentType \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/incidentType:IncidentType primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "color": {
                     "type": "string",
@@ -15153,7 +15312,7 @@
             }
         },
         "rootly:index/onCallRole:OnCallRole": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.OnCallRole \" pulumi-lang-dotnet=\"\nrootly.OnCallRole \" pulumi-lang-go=\"\nOnCallRole \" pulumi-lang-python=\"\nOnCallRole \" pulumi-lang-yaml=\"\nrootly.OnCallRole \" pulumi-lang-java=\"\nrootly.OnCallRole \"\u003e\nrootly.OnCallRole \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/onCallRole:OnCallRole primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_on_call_role\" \"custom\" {\n  name = \"Custom On-Call Role\"\n\n  alerts_permissions = [\n    \"create\",\n    \"update\",\n    \"read\",\n  ]\n  escalation_policies_permissions = [\n    \"create\",\n    \"read\",\n    \"update\",\n    \"delete\",\n  ]\n  schedules_permissions = [\n    \"read\",\n    \"update\",\n  ]\n  schedule_override_permissions = [\n    \"create\",\n    \"update\",\n  ]\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.OnCallRole \" pulumi-lang-dotnet=\"\nrootly.OnCallRole \" pulumi-lang-go=\"\nOnCallRole \" pulumi-lang-python=\"\nOnCallRole \" pulumi-lang-yaml=\"\nrootly.OnCallRole \" pulumi-lang-java=\"\nrootly.OnCallRole \"\u003e\nrootly.OnCallRole \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/onCallRole:OnCallRole primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nYou can also import by slug:\n\n```sh\n$ pulumi import rootly:index/onCallRole:OnCallRole primary my-oncall-role-slug\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id by listing on-call roles through the API (`GET /v1/on_call_roles`), as role IDs are not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "alertFieldsPermissions": {
                     "type": "array",
@@ -15690,7 +15849,7 @@
             }
         },
         "rootly:index/onCallShadow:OnCallShadow": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.OnCallShadow \" pulumi-lang-dotnet=\"\nrootly.OnCallShadow \" pulumi-lang-go=\"\nOnCallShadow \" pulumi-lang-python=\"\nOnCallShadow \" pulumi-lang-yaml=\"\nrootly.OnCallShadow \" pulumi-lang-java=\"\nrootly.OnCallShadow \"\u003e\nrootly.OnCallShadow \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/onCallShadow:OnCallShadow primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_on_call_shadow\" \"new_hire_shadow\" {\n  schedule_id     = rootly_schedule.primary_oncall.id\n  shadow_user_id  = data.rootly_user.new_hire.id\n  shadowable_id   = data.rootly_user.senior_engineer.id\n  shadowable_type = \"User\"\n  starts_at       = \"2026-06-01T00:00:00Z\"\n  ends_at         = \"2026-06-14T00:00:00Z\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.OnCallShadow \" pulumi-lang-dotnet=\"\nrootly.OnCallShadow \" pulumi-lang-go=\"\nOnCallShadow \" pulumi-lang-python=\"\nOnCallShadow \" pulumi-lang-yaml=\"\nrootly.OnCallShadow \" pulumi-lang-java=\"\nrootly.OnCallShadow \"\u003e\nrootly.OnCallShadow \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/onCallShadow:OnCallShadow primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "endsAt": {
                     "type": "string",
@@ -15881,7 +16040,7 @@
             }
         },
         "rootly:index/playbook:Playbook": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Playbook \" pulumi-lang-dotnet=\"\nrootly.Playbook \" pulumi-lang-go=\"\nPlaybook \" pulumi-lang-python=\"\nPlaybook \" pulumi-lang-yaml=\"\nrootly.Playbook \" pulumi-lang-java=\"\nrootly.Playbook \"\u003e\nrootly.Playbook \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/playbook:Playbook primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_playbook\" \"database_outage\" {\n  title        = \"Database Outage Response\"\n  summary      = \"Steps to follow when a database outage occurs\"\n  severity_ids = [rootly_severity.sev0.id, rootly_severity.sev1.id]\n  service_ids  = [rootly_service.elasticsearch_prod.id]\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Playbook \" pulumi-lang-dotnet=\"\nrootly.Playbook \" pulumi-lang-go=\"\nPlaybook \" pulumi-lang-python=\"\nPlaybook \" pulumi-lang-yaml=\"\nrootly.Playbook \" pulumi-lang-java=\"\nrootly.Playbook \"\u003e\nrootly.Playbook \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/playbook:Playbook primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "environmentIds": {
                     "type": "array",
@@ -15939,7 +16098,13 @@
                 }
             },
             "required": [
+                "environmentIds",
                 "externalUrl",
+                "functionalityIds",
+                "groupIds",
+                "incidentTypeIds",
+                "serviceIds",
+                "severityIds",
                 "summary",
                 "title"
             ],
@@ -16064,7 +16229,7 @@
             }
         },
         "rootly:index/playbookTask:PlaybookTask": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.PlaybookTask \" pulumi-lang-dotnet=\"\nrootly.PlaybookTask \" pulumi-lang-go=\"\nPlaybookTask \" pulumi-lang-python=\"\nPlaybookTask \" pulumi-lang-yaml=\"\nrootly.PlaybookTask \" pulumi-lang-java=\"\nrootly.PlaybookTask \"\u003e\nrootly.PlaybookTask \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/playbookTask:PlaybookTask primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_playbook_task\" \"check_dashboards\" {\n  playbook_id = rootly_playbook.database_outage.id\n  task        = \"Check Grafana dashboards for anomalies\"\n}\n\nresource \"rootly_playbook_task\" \"notify_dba\" {\n  playbook_id = rootly_playbook.database_outage.id\n  task        = \"Notify DBA on-call via Slack\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.PlaybookTask \" pulumi-lang-dotnet=\"\nrootly.PlaybookTask \" pulumi-lang-go=\"\nPlaybookTask \" pulumi-lang-python=\"\nPlaybookTask \" pulumi-lang-yaml=\"\nrootly.PlaybookTask \" pulumi-lang-java=\"\nrootly.PlaybookTask \"\u003e\nrootly.PlaybookTask \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/playbookTask:PlaybookTask primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -16133,7 +16298,7 @@
             }
         },
         "rootly:index/postMortemTemplate:PostMortemTemplate": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.PostMortemTemplate \" pulumi-lang-dotnet=\"\nrootly.PostMortemTemplate \" pulumi-lang-go=\"\nPostMortemTemplate \" pulumi-lang-python=\"\nPostMortemTemplate \" pulumi-lang-yaml=\"\nrootly.PostMortemTemplate \" pulumi-lang-java=\"\nrootly.PostMortemTemplate \"\u003e\nrootly.PostMortemTemplate \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/postMortemTemplate:PostMortemTemplate primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_post_mortem_template\" \"default\" {\n  name    = \"Standard Post-Mortem\"\n  default = true\n  format  = \"markdown\"\n  content = \u003c\u003c-EOT\n## Incident Summary\n{{ incident.title }}\n\n## Timeline\n{{ incident.timeline }}\n\n## Root Cause\n_To be filled in_\n\n## Action Items\n{{ incident.action_items }}\nEOT\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.PostMortemTemplate \" pulumi-lang-dotnet=\"\nrootly.PostMortemTemplate \" pulumi-lang-go=\"\nPostMortemTemplate \" pulumi-lang-python=\"\nPostMortemTemplate \" pulumi-lang-yaml=\"\nrootly.PostMortemTemplate \" pulumi-lang-java=\"\nrootly.PostMortemTemplate \"\u003e\nrootly.PostMortemTemplate \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/postMortemTemplate:PostMortemTemplate primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "content": {
                     "type": "string",
@@ -16597,7 +16762,7 @@
             }
         },
         "rootly:index/role:Role": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Role \" pulumi-lang-dotnet=\"\nrootly.Role \" pulumi-lang-go=\"\nRole \" pulumi-lang-python=\"\nRole \" pulumi-lang-yaml=\"\nrootly.Role \" pulumi-lang-java=\"\nrootly.Role \"\u003e\nrootly.Role \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/role:Role primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_role\" \"custom\" {\n  name = \"Custom Rootly Role\"\n\n  incidents_permissions = [\n    \"read\",\n    \"update\",\n  ]\n  incident_feedbacks_permissions = [\n    \"create\",\n    \"read\",\n  ]\n  services_permissions = [\n    \"read\",\n  ]\n  severities_permissions = [\n    \"read\",\n  ]\n\n  is_editable  = true\n  is_deletable = true\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Role \" pulumi-lang-dotnet=\"\nrootly.Role \" pulumi-lang-go=\"\nRole \" pulumi-lang-python=\"\nRole \" pulumi-lang-yaml=\"\nrootly.Role \" pulumi-lang-java=\"\nrootly.Role \"\u003e\nrootly.Role \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/role:Role primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nYou can also import by slug:\n\n```sh\n$ pulumi import rootly:index/role:Role primary my-role-slug\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id by listing roles through the API (`GET /v1/roles`), as role IDs are not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "alertsPermissions": {
                     "type": "array",
@@ -17426,7 +17591,7 @@
                 },
                 "ownerUserId": {
                     "type": "integer",
-                    "description": "ID of user assigned as owner of the schedule\n"
+                    "description": "ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.\n"
                 },
                 "slackChannel": {
                     "type": "object",
@@ -17471,7 +17636,7 @@
                 },
                 "ownerUserId": {
                     "type": "integer",
-                    "description": "ID of user assigned as owner of the schedule\n"
+                    "description": "ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.\n"
                 },
                 "slackChannel": {
                     "type": "object",
@@ -17512,7 +17677,7 @@
                     },
                     "ownerUserId": {
                         "type": "integer",
-                        "description": "ID of user assigned as owner of the schedule\n"
+                        "description": "ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.\n"
                     },
                     "slackChannel": {
                         "type": "object",
@@ -17877,7 +18042,7 @@
             }
         },
         "rootly:index/secret:Secret": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Secret \" pulumi-lang-dotnet=\"\nrootly.Secret \" pulumi-lang-go=\"\nSecret \" pulumi-lang-python=\"\nSecret \" pulumi-lang-yaml=\"\nrootly.Secret \" pulumi-lang-java=\"\nrootly.Secret \"\u003e\nrootly.Secret \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/secret:Secret primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_secret\" \"pagerduty_api_token\" {\n  name   = \"pagerduty_api_token\"\n  secret = var.pagerduty_api_token\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Secret \" pulumi-lang-dotnet=\"\nrootly.Secret \" pulumi-lang-go=\"\nSecret \" pulumi-lang-python=\"\nSecret \" pulumi-lang-yaml=\"\nrootly.Secret \" pulumi-lang-java=\"\nrootly.Secret \"\u003e\nrootly.Secret \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/secret:Secret primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "hashicorpVaultMount": {
                     "type": "string",
@@ -18126,6 +18291,7 @@
                 "alertsEmailEnabled",
                 "color",
                 "description",
+                "environmentIds",
                 "escalationPolicyId",
                 "githubRepositoryBranch",
                 "githubRepositoryName",
@@ -18135,8 +18301,11 @@
                 "incidentBroadcastEnabled",
                 "kubernetesDeploymentName",
                 "name",
+                "ownerGroupIds",
+                "ownerUserIds",
                 "position",
                 "publicDescription",
+                "serviceIds",
                 "slug"
             ],
             "inputProperties": {
@@ -18885,7 +19054,7 @@
             }
         },
         "rootly:index/statusPage:StatusPage": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.StatusPage \" pulumi-lang-dotnet=\"\nrootly.StatusPage \" pulumi-lang-go=\"\nStatusPage \" pulumi-lang-python=\"\nStatusPage \" pulumi-lang-yaml=\"\nrootly.StatusPage \" pulumi-lang-java=\"\nrootly.StatusPage \"\u003e\nrootly.StatusPage \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/statusPage:StatusPage primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_status_page\" \"public\" {\n  title                 = \"Acme Status\"\n  public_title          = \"Acme System Status\"\n  description           = \"Current status of Acme services\"\n  success_message       = \"All Systems Operational\"\n  failure_message       = \"Degraded Performance\"\n  show_uptime           = true\n  show_uptime_last_days = 90\n  service_ids           = [rootly_service.elasticsearch_prod.id]\n  functionality_ids     = [rootly_functionality.checkout.id]\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.StatusPage \" pulumi-lang-dotnet=\"\nrootly.StatusPage \" pulumi-lang-go=\"\nStatusPage \" pulumi-lang-python=\"\nStatusPage \" pulumi-lang-yaml=\"\nrootly.StatusPage \" pulumi-lang-java=\"\nrootly.StatusPage \"\u003e\nrootly.StatusPage \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/statusPage:StatusPage primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "allowSearchEngineIndex": {
                     "type": "boolean",
@@ -18902,6 +19071,13 @@
                 "authenticationPassword": {
                     "type": "string",
                     "description": "Authentication password\n"
+                },
+                "cnameRecords": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "CNAME records mapping external domain names to their DNS target values. Populated asynchronously after setting external*domain*names.\n"
                 },
                 "description": {
                     "type": "string",
@@ -19027,6 +19203,7 @@
                 "allowSearchEngineIndex",
                 "authenticationEnabled",
                 "authenticationPassword",
+                "cnameRecords",
                 "description",
                 "failureMessage",
                 "footerColor",
@@ -19208,6 +19385,13 @@
                     "authenticationPassword": {
                         "type": "string",
                         "description": "Authentication password\n"
+                    },
+                    "cnameRecords": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "CNAME records mapping external domain names to their DNS target values. Populated asynchronously after setting external*domain*names.\n"
                     },
                     "description": {
                         "type": "string",
@@ -19463,7 +19647,7 @@
             }
         },
         "rootly:index/subStatus:SubStatus": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.SubStatus \" pulumi-lang-dotnet=\"\nrootly.SubStatus \" pulumi-lang-go=\"\nSubStatus \" pulumi-lang-python=\"\nSubStatus \" pulumi-lang-yaml=\"\nrootly.SubStatus \" pulumi-lang-java=\"\nrootly.SubStatus \"\u003e\nrootly.SubStatus \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/subStatus:SubStatus primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_sub_status\" \"investigating\" {\n  name          = \"Investigating\"\n  parent_status = \"started\"\n  description   = \"Responders are investigating\"\n}\n\nresource \"rootly_sub_status\" \"fix_in_progress\" {\n  name          = \"Fix In Progress\"\n  parent_status = \"started\"\n  description   = \"A fix is being implemented\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.SubStatus \" pulumi-lang-dotnet=\"\nrootly.SubStatus \" pulumi-lang-go=\"\nSubStatus \" pulumi-lang-python=\"\nSubStatus \" pulumi-lang-yaml=\"\nrootly.SubStatus \" pulumi-lang-java=\"\nrootly.SubStatus \"\u003e\nrootly.SubStatus \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/subStatus:SubStatus primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string"
@@ -19930,7 +20114,7 @@
             }
         },
         "rootly:index/webhooksEndpoint:WebhooksEndpoint": {
-            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WebhooksEndpoint \" pulumi-lang-dotnet=\"\nrootly.WebhooksEndpoint \" pulumi-lang-go=\"\nWebhooksEndpoint \" pulumi-lang-python=\"\nWebhooksEndpoint \" pulumi-lang-yaml=\"\nrootly.WebhooksEndpoint \" pulumi-lang-java=\"\nrootly.WebhooksEndpoint \"\u003e\nrootly.WebhooksEndpoint \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/webhooksEndpoint:WebhooksEndpoint primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_webhooks_endpoint\" \"datadog_events\" {\n  name        = \"Datadog Events\"\n  url         = \"https://app.datadoghq.com/api/v1/events\"\n  enabled     = true\n  event_types = [\"incident.created\", \"incident.resolved\"]\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WebhooksEndpoint \" pulumi-lang-dotnet=\"\nrootly.WebhooksEndpoint \" pulumi-lang-go=\"\nWebhooksEndpoint \" pulumi-lang-python=\"\nWebhooksEndpoint \" pulumi-lang-yaml=\"\nrootly.WebhooksEndpoint \" pulumi-lang-java=\"\nrootly.WebhooksEndpoint \"\u003e\nrootly.WebhooksEndpoint \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/webhooksEndpoint:WebhooksEndpoint primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "enabled": {
                     "type": "boolean"
@@ -19940,7 +20124,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`.\n"
+                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -19974,7 +20158,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`.\n"
+                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -20007,7 +20191,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`.\n"
+                        "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.\n"
                     },
                     "name": {
                         "type": "string",

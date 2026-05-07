@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * DEPRECATED: Please use `rootly.FormField` and `rootly.FormFieldOption` resources instead.
  *
+ * ## Example Usage
+ *
  * ## Import
  *
  * rootly.CustomFieldOption can be imported using the `import` command.

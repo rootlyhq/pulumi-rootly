@@ -119,7 +119,7 @@ export class AlertsSource extends pulumi.CustomResource {
      */
     declare public readonly secret: pulumi.Output<string>;
     /**
-     * The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
+     * The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
      */
     declare public readonly sourceType: pulumi.Output<string | undefined>;
     /**
@@ -249,7 +249,7 @@ export interface AlertsSourceState {
      */
     secret?: pulumi.Input<string | undefined>;
     /**
-     * The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
+     * The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
      */
     sourceType?: pulumi.Input<string | undefined>;
     /**
@@ -323,7 +323,7 @@ export interface AlertsSourceArgs {
      */
     secret?: pulumi.Input<string | undefined>;
     /**
-     * The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
+     * The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
      */
     sourceType?: pulumi.Input<string | undefined>;
     /**
