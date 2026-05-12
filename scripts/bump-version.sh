@@ -110,14 +110,22 @@ check_git_status() {
 create_and_push_tag() {
     local version="$1"
     local tag="v$version"
-    
+    local sdk_tag="sdk/v$version"
+
     print_info "Creating git tag: $tag"
     git tag -a "$tag" -m "Release $tag"
-    
-    print_info "Pushing tag to origin..."
-    git push origin "$tag"
-    
-    print_success "Tag $tag created and pushed successfully!"
+
+    # The Go SDK lives in ./sdk with its own go.mod. For consumers to fetch
+    # it via `go get github.com/rootlyhq/pulumi-rootly/sdk/v<major>`, Go
+    # requires a tag named `sdk/v<version>` pointing at the same commit
+    # (semantic import versioning for nested modules).
+    print_info "Creating Go submodule tag: $sdk_tag"
+    git tag -a "$sdk_tag" -m "Release $sdk_tag"
+
+    print_info "Pushing tags to origin..."
+    git push origin "$tag" "$sdk_tag"
+
+    print_success "Tags $tag and $sdk_tag created and pushed successfully!"
 }
 
 # Function to show version information
