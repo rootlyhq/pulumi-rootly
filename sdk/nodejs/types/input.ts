@@ -136,7 +136,7 @@ export interface AlertRouteRuleDestination {
      */
     targetId?: pulumi.Input<string | undefined>;
     /**
-     * The type of the target. Value must be one of `Service`, `Group`, `EscalationPolicy`.
+     * The type of the target. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
      */
     targetType?: pulumi.Input<string | undefined>;
 }
@@ -3598,6 +3598,14 @@ export interface WorkflowTaskHttpClientTaskParams {
      */
     postToIncidentTimeline?: pulumi.Input<boolean | undefined>;
     postToSlackChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskHttpClientTaskParamsPostToSlackChannel>[] | undefined>;
+    /**
+     * Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<string | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<string | undefined>;
     /**
      * HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
      */

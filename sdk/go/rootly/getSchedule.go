@@ -34,8 +34,16 @@ type LookupScheduleResult struct {
 	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt map[string]string `pulumi:"createdAt"`
 	// The ID of this resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	Id                                 string `pulumi:"id"`
+	IncludeShadowsInSlackNotifications bool   `pulumi:"includeShadowsInSlackNotifications"`
+	Name                               string `pulumi:"name"`
+	ShiftReportDayOfWeek               string `pulumi:"shiftReportDayOfWeek"`
+	ShiftReportEnabled                 bool   `pulumi:"shiftReportEnabled"`
+	ShiftReportTimeOfDay               string `pulumi:"shiftReportTimeOfDay"`
+	ShiftReportTimeZone                string `pulumi:"shiftReportTimeZone"`
+	ShiftStartNotificationsEnabled     bool   `pulumi:"shiftStartNotificationsEnabled"`
+	ShiftUpdateNotificationsEnabled    bool   `pulumi:"shiftUpdateNotificationsEnabled"`
+	SyncLinearEnabled                  bool   `pulumi:"syncLinearEnabled"`
 }
 
 func LookupScheduleOutput(ctx *pulumi.Context, args LookupScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupScheduleResultOutput {
@@ -83,8 +91,40 @@ func (o LookupScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o LookupScheduleResultOutput) IncludeShadowsInSlackNotifications() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupScheduleResult) bool { return v.IncludeShadowsInSlackNotifications }).(pulumi.BoolOutput)
+}
+
 func (o LookupScheduleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupScheduleResultOutput) ShiftReportDayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScheduleResult) string { return v.ShiftReportDayOfWeek }).(pulumi.StringOutput)
+}
+
+func (o LookupScheduleResultOutput) ShiftReportEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupScheduleResult) bool { return v.ShiftReportEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupScheduleResultOutput) ShiftReportTimeOfDay() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScheduleResult) string { return v.ShiftReportTimeOfDay }).(pulumi.StringOutput)
+}
+
+func (o LookupScheduleResultOutput) ShiftReportTimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScheduleResult) string { return v.ShiftReportTimeZone }).(pulumi.StringOutput)
+}
+
+func (o LookupScheduleResultOutput) ShiftStartNotificationsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupScheduleResult) bool { return v.ShiftStartNotificationsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupScheduleResultOutput) ShiftUpdateNotificationsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupScheduleResult) bool { return v.ShiftUpdateNotificationsEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupScheduleResultOutput) SyncLinearEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupScheduleResult) bool { return v.SyncLinearEnabled }).(pulumi.BoolOutput)
 }
 
 func init() {

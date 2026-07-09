@@ -881,7 +881,7 @@ func (o AlertRouteRuleConditionGroupConditionArrayOutput) Index(i pulumi.IntInpu
 type AlertRouteRuleDestination struct {
 	// The ID of the target
 	TargetId *string `pulumi:"targetId"`
-	// The type of the target. Value must be one of `Service`, `Group`, `EscalationPolicy`.
+	// The type of the target. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
 	TargetType *string `pulumi:"targetType"`
 }
 
@@ -899,7 +899,7 @@ type AlertRouteRuleDestinationInput interface {
 type AlertRouteRuleDestinationArgs struct {
 	// The ID of the target
 	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
-	// The type of the target. Value must be one of `Service`, `Group`, `EscalationPolicy`.
+	// The type of the target. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
 	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
 }
 
@@ -959,7 +959,7 @@ func (o AlertRouteRuleDestinationOutput) TargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertRouteRuleDestination) *string { return v.TargetId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the target. Value must be one of `Service`, `Group`, `EscalationPolicy`.
+// The type of the target. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
 func (o AlertRouteRuleDestinationOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertRouteRuleDestination) *string { return v.TargetType }).(pulumi.StringPtrOutput)
 }
@@ -33078,6 +33078,10 @@ type WorkflowTaskHttpClientTaskParams struct {
 	// Value must be one of true or false
 	PostToIncidentTimeline *bool                                                `pulumi:"postToIncidentTimeline"`
 	PostToSlackChannels    []WorkflowTaskHttpClientTaskParamsPostToSlackChannel `pulumi:"postToSlackChannels"`
+	// Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
+	RetryCount *string `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *string `pulumi:"retryWaitTime"`
 	// HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
 	SucceedOnStatus string  `pulumi:"succeedOnStatus"`
 	TaskType        *string `pulumi:"taskType"`
@@ -33110,6 +33114,10 @@ type WorkflowTaskHttpClientTaskParamsArgs struct {
 	// Value must be one of true or false
 	PostToIncidentTimeline pulumi.BoolPtrInput                                          `pulumi:"postToIncidentTimeline"`
 	PostToSlackChannels    WorkflowTaskHttpClientTaskParamsPostToSlackChannelArrayInput `pulumi:"postToSlackChannels"`
+	// Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
+	RetryCount pulumi.StringPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.StringPtrInput `pulumi:"retryWaitTime"`
 	// HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
 	SucceedOnStatus pulumi.StringInput    `pulumi:"succeedOnStatus"`
 	TaskType        pulumi.StringPtrInput `pulumi:"taskType"`
@@ -33233,6 +33241,16 @@ func (o WorkflowTaskHttpClientTaskParamsOutput) PostToSlackChannels() WorkflowTa
 	}).(WorkflowTaskHttpClientTaskParamsPostToSlackChannelArrayOutput)
 }
 
+// Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
+func (o WorkflowTaskHttpClientTaskParamsOutput) RetryCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskHttpClientTaskParams) *string { return v.RetryCount }).(pulumi.StringPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskHttpClientTaskParamsOutput) RetryWaitTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskHttpClientTaskParams) *string { return v.RetryWaitTime }).(pulumi.StringPtrOutput)
+}
+
 // HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
 func (o WorkflowTaskHttpClientTaskParamsOutput) SucceedOnStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTaskHttpClientTaskParams) string { return v.SucceedOnStatus }).(pulumi.StringOutput)
@@ -33346,6 +33364,26 @@ func (o WorkflowTaskHttpClientTaskParamsPtrOutput) PostToSlackChannels() Workflo
 		}
 		return v.PostToSlackChannels
 	}).(WorkflowTaskHttpClientTaskParamsPostToSlackChannelArrayOutput)
+}
+
+// Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
+func (o WorkflowTaskHttpClientTaskParamsPtrOutput) RetryCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskHttpClientTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskHttpClientTaskParamsPtrOutput) RetryWaitTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskHttpClientTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.StringPtrOutput)
 }
 
 // HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]

@@ -39,8 +39,8 @@ type LiveCallRouter struct {
 	// The audio instructions callers will hear when they call this number, prompting them to select from available options to route their call
 	CallingTreePrompt pulumi.StringOutput `pulumi:"callingTreePrompt"`
 	// The country code of the live*call*router. Value must be one of `AU`, `CA`, `DE`, `NL`, `NZ`, `GB`, `US`.
-	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
-	Enabled     pulumi.BoolPtrOutput   `pulumi:"enabled"`
+	CountryCode pulumi.StringOutput  `pulumi:"countryCode"`
+	Enabled     pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// This overrides the delay (seconds) in escalation levels
 	EscalationLevelDelayInSeconds pulumi.IntOutput       `pulumi:"escalationLevelDelayInSeconds"`
 	EscalationPolicyTriggerParams pulumi.StringMapOutput `pulumi:"escalationPolicyTriggerParams"`
@@ -50,10 +50,10 @@ type LiveCallRouter struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Paging targets that callers can select from when this live call router is configured as a phone tree.
 	PagingTargets LiveCallRouterPagingTargetArrayOutput `pulumi:"pagingTargets"`
-	// You can select a phone number using generate*phone*number API and pass that phone number here to register
+	// You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register
 	PhoneNumber pulumi.StringOutput `pulumi:"phoneNumber"`
 	// The phone type of the live*call*router. Value must be one of `local`, `tollFree`, `mobile`.
-	PhoneType pulumi.StringPtrOutput `pulumi:"phoneType"`
+	PhoneType pulumi.StringOutput `pulumi:"phoneType"`
 	// The delay (seconds) after which the caller in redirected to voicemail
 	SentToVoicemailDelay pulumi.IntOutput `pulumi:"sentToVoicemailDelay"`
 	// This overrides the delay (seconds) in escalation levels. Value must be one of true or false
@@ -73,11 +73,20 @@ func NewLiveCallRouter(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.CountryCode == nil {
+		return nil, errors.New("invalid value for required argument 'CountryCode'")
+	}
 	if args.PagingTargets == nil {
 		return nil, errors.New("invalid value for required argument 'PagingTargets'")
 	}
 	if args.PhoneNumber == nil {
 		return nil, errors.New("invalid value for required argument 'PhoneNumber'")
+	}
+	if args.PhoneType == nil {
+		return nil, errors.New("invalid value for required argument 'PhoneType'")
+	}
+	if args.VoicemailGreeting == nil {
+		return nil, errors.New("invalid value for required argument 'VoicemailGreeting'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LiveCallRouter
@@ -120,7 +129,7 @@ type liveCallRouterState struct {
 	Name *string `pulumi:"name"`
 	// Paging targets that callers can select from when this live call router is configured as a phone tree.
 	PagingTargets []LiveCallRouterPagingTarget `pulumi:"pagingTargets"`
-	// You can select a phone number using generate*phone*number API and pass that phone number here to register
+	// You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register
 	PhoneNumber *string `pulumi:"phoneNumber"`
 	// The phone type of the live*call*router. Value must be one of `local`, `tollFree`, `mobile`.
 	PhoneType *string `pulumi:"phoneType"`
@@ -155,7 +164,7 @@ type LiveCallRouterState struct {
 	Name pulumi.StringPtrInput
 	// Paging targets that callers can select from when this live call router is configured as a phone tree.
 	PagingTargets LiveCallRouterPagingTargetArrayInput
-	// You can select a phone number using generate*phone*number API and pass that phone number here to register
+	// You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register
 	PhoneNumber pulumi.StringPtrInput
 	// The phone type of the live*call*router. Value must be one of `local`, `tollFree`, `mobile`.
 	PhoneType pulumi.StringPtrInput
@@ -183,8 +192,8 @@ type liveCallRouterArgs struct {
 	// The audio instructions callers will hear when they call this number, prompting them to select from available options to route their call
 	CallingTreePrompt *string `pulumi:"callingTreePrompt"`
 	// The country code of the live*call*router. Value must be one of `AU`, `CA`, `DE`, `NL`, `NZ`, `GB`, `US`.
-	CountryCode *string `pulumi:"countryCode"`
-	Enabled     *bool   `pulumi:"enabled"`
+	CountryCode string `pulumi:"countryCode"`
+	Enabled     *bool  `pulumi:"enabled"`
 	// This overrides the delay (seconds) in escalation levels
 	EscalationLevelDelayInSeconds *int              `pulumi:"escalationLevelDelayInSeconds"`
 	EscalationPolicyTriggerParams map[string]string `pulumi:"escalationPolicyTriggerParams"`
@@ -194,10 +203,10 @@ type liveCallRouterArgs struct {
 	Name *string `pulumi:"name"`
 	// Paging targets that callers can select from when this live call router is configured as a phone tree.
 	PagingTargets []LiveCallRouterPagingTarget `pulumi:"pagingTargets"`
-	// You can select a phone number using generate*phone*number API and pass that phone number here to register
+	// You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register
 	PhoneNumber string `pulumi:"phoneNumber"`
 	// The phone type of the live*call*router. Value must be one of `local`, `tollFree`, `mobile`.
-	PhoneType *string `pulumi:"phoneType"`
+	PhoneType string `pulumi:"phoneType"`
 	// The delay (seconds) after which the caller in redirected to voicemail
 	SentToVoicemailDelay *int `pulumi:"sentToVoicemailDelay"`
 	// This overrides the delay (seconds) in escalation levels. Value must be one of true or false
@@ -205,7 +214,7 @@ type liveCallRouterArgs struct {
 	// This prompts the caller to choose voicemail or connect live. Value must be one of true or false
 	ShouldRedirectToVoicemailOnNoAnswer *bool `pulumi:"shouldRedirectToVoicemailOnNoAnswer"`
 	// The voicemail greeting of the live*call*router
-	VoicemailGreeting *string `pulumi:"voicemailGreeting"`
+	VoicemailGreeting string `pulumi:"voicemailGreeting"`
 	// The waiting music URL of the live*call*router. Value must be one of `https://storage.rootly.com/twilio/voicemail/ClockworkWaltz.mp3`, `https://storage.rootly.com/twilio/voicemail/ith_brahms-116-4.mp3`, `https://storage.rootly.com/twilio/voicemail/Mellotroniac_-_Flight_Of_Young_Hearts_Flute.mp3`, `https://storage.rootly.com/twilio/voicemail/BusyStrings.mp3`, `https://storage.rootly.com/twilio/voicemail/oldDog_-_endless_goodbye_%28instr.%29.mp3`, `https://storage.rootly.com/twilio/voicemail/MARKOVICHAMP-Borghestral.mp3`, `https://storage.rootly.com/twilio/voicemail/ith_chopin-15-2.mp3`.
 	WaitingMusicUrl *string `pulumi:"waitingMusicUrl"`
 }
@@ -219,7 +228,7 @@ type LiveCallRouterArgs struct {
 	// The audio instructions callers will hear when they call this number, prompting them to select from available options to route their call
 	CallingTreePrompt pulumi.StringPtrInput
 	// The country code of the live*call*router. Value must be one of `AU`, `CA`, `DE`, `NL`, `NZ`, `GB`, `US`.
-	CountryCode pulumi.StringPtrInput
+	CountryCode pulumi.StringInput
 	Enabled     pulumi.BoolPtrInput
 	// This overrides the delay (seconds) in escalation levels
 	EscalationLevelDelayInSeconds pulumi.IntPtrInput
@@ -230,10 +239,10 @@ type LiveCallRouterArgs struct {
 	Name pulumi.StringPtrInput
 	// Paging targets that callers can select from when this live call router is configured as a phone tree.
 	PagingTargets LiveCallRouterPagingTargetArrayInput
-	// You can select a phone number using generate*phone*number API and pass that phone number here to register
+	// You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register
 	PhoneNumber pulumi.StringInput
 	// The phone type of the live*call*router. Value must be one of `local`, `tollFree`, `mobile`.
-	PhoneType pulumi.StringPtrInput
+	PhoneType pulumi.StringInput
 	// The delay (seconds) after which the caller in redirected to voicemail
 	SentToVoicemailDelay pulumi.IntPtrInput
 	// This overrides the delay (seconds) in escalation levels. Value must be one of true or false
@@ -241,7 +250,7 @@ type LiveCallRouterArgs struct {
 	// This prompts the caller to choose voicemail or connect live. Value must be one of true or false
 	ShouldRedirectToVoicemailOnNoAnswer pulumi.BoolPtrInput
 	// The voicemail greeting of the live*call*router
-	VoicemailGreeting pulumi.StringPtrInput
+	VoicemailGreeting pulumi.StringInput
 	// The waiting music URL of the live*call*router. Value must be one of `https://storage.rootly.com/twilio/voicemail/ClockworkWaltz.mp3`, `https://storage.rootly.com/twilio/voicemail/ith_brahms-116-4.mp3`, `https://storage.rootly.com/twilio/voicemail/Mellotroniac_-_Flight_Of_Young_Hearts_Flute.mp3`, `https://storage.rootly.com/twilio/voicemail/BusyStrings.mp3`, `https://storage.rootly.com/twilio/voicemail/oldDog_-_endless_goodbye_%28instr.%29.mp3`, `https://storage.rootly.com/twilio/voicemail/MARKOVICHAMP-Borghestral.mp3`, `https://storage.rootly.com/twilio/voicemail/ith_chopin-15-2.mp3`.
 	WaitingMusicUrl pulumi.StringPtrInput
 }
@@ -349,8 +358,8 @@ func (o LiveCallRouterOutput) CallingTreePrompt() pulumi.StringOutput {
 }
 
 // The country code of the live*call*router. Value must be one of `AU`, `CA`, `DE`, `NL`, `NZ`, `GB`, `US`.
-func (o LiveCallRouterOutput) CountryCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LiveCallRouter) pulumi.StringPtrOutput { return v.CountryCode }).(pulumi.StringPtrOutput)
+func (o LiveCallRouterOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *LiveCallRouter) pulumi.StringOutput { return v.CountryCode }).(pulumi.StringOutput)
 }
 
 func (o LiveCallRouterOutput) Enabled() pulumi.BoolPtrOutput {
@@ -381,14 +390,14 @@ func (o LiveCallRouterOutput) PagingTargets() LiveCallRouterPagingTargetArrayOut
 	return o.ApplyT(func(v *LiveCallRouter) LiveCallRouterPagingTargetArrayOutput { return v.PagingTargets }).(LiveCallRouterPagingTargetArrayOutput)
 }
 
-// You can select a phone number using generate*phone*number API and pass that phone number here to register
+// You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register
 func (o LiveCallRouterOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *LiveCallRouter) pulumi.StringOutput { return v.PhoneNumber }).(pulumi.StringOutput)
 }
 
 // The phone type of the live*call*router. Value must be one of `local`, `tollFree`, `mobile`.
-func (o LiveCallRouterOutput) PhoneType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LiveCallRouter) pulumi.StringPtrOutput { return v.PhoneType }).(pulumi.StringPtrOutput)
+func (o LiveCallRouterOutput) PhoneType() pulumi.StringOutput {
+	return o.ApplyT(func(v *LiveCallRouter) pulumi.StringOutput { return v.PhoneType }).(pulumi.StringOutput)
 }
 
 // The delay (seconds) after which the caller in redirected to voicemail

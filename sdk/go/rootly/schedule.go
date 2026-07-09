@@ -37,16 +37,32 @@ type Schedule struct {
 	AllTimeCoverage pulumi.BoolOutput `pulumi:"allTimeCoverage"`
 	// The description of the schedule
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+	IncludeShadowsInSlackNotifications pulumi.BoolOutput `pulumi:"includeShadowsInSlackNotifications"`
 	// The name of the schedule
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The owning teams for this schedules.
 	OwnerGroupIds pulumi.StringArrayOutput `pulumi:"ownerGroupIds"`
 	// ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
 	OwnerUserId pulumi.IntOutput `pulumi:"ownerUserId"`
+	// Day of week the weekly shift summary is sent. Value must be one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+	ShiftReportDayOfWeek pulumi.StringOutput `pulumi:"shiftReportDayOfWeek"`
+	// Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftReportEnabled pulumi.BoolOutput `pulumi:"shiftReportEnabled"`
+	// Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.
+	ShiftReportTimeOfDay pulumi.StringOutput `pulumi:"shiftReportTimeOfDay"`
+	// IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).
+	ShiftReportTimeZone pulumi.StringOutput `pulumi:"shiftReportTimeZone"`
+	// Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftStartNotificationsEnabled pulumi.BoolOutput `pulumi:"shiftStartNotificationsEnabled"`
+	// Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftUpdateNotificationsEnabled pulumi.BoolOutput `pulumi:"shiftUpdateNotificationsEnabled"`
 	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
 	SlackChannel pulumi.StringMapOutput `pulumi:"slackChannel"`
 	// Map must contain two fields, `id` and `name`. Synced slack group of the schedule
 	SlackUserGroup pulumi.StringMapOutput `pulumi:"slackUserGroup"`
+	// Whether the schedule is synced with Linear. Value must be one of true or false
+	SyncLinearEnabled pulumi.BoolOutput `pulumi:"syncLinearEnabled"`
 }
 
 // NewSchedule registers a new resource with the given unique name, arguments, and options.
@@ -83,16 +99,32 @@ type scheduleState struct {
 	AllTimeCoverage *bool `pulumi:"allTimeCoverage"`
 	// The description of the schedule
 	Description *string `pulumi:"description"`
+	// Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+	IncludeShadowsInSlackNotifications *bool `pulumi:"includeShadowsInSlackNotifications"`
 	// The name of the schedule
 	Name *string `pulumi:"name"`
 	// The owning teams for this schedules.
 	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
 	OwnerUserId *int `pulumi:"ownerUserId"`
+	// Day of week the weekly shift summary is sent. Value must be one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+	ShiftReportDayOfWeek *string `pulumi:"shiftReportDayOfWeek"`
+	// Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftReportEnabled *bool `pulumi:"shiftReportEnabled"`
+	// Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.
+	ShiftReportTimeOfDay *string `pulumi:"shiftReportTimeOfDay"`
+	// IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).
+	ShiftReportTimeZone *string `pulumi:"shiftReportTimeZone"`
+	// Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftStartNotificationsEnabled *bool `pulumi:"shiftStartNotificationsEnabled"`
+	// Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftUpdateNotificationsEnabled *bool `pulumi:"shiftUpdateNotificationsEnabled"`
 	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
 	SlackChannel map[string]string `pulumi:"slackChannel"`
 	// Map must contain two fields, `id` and `name`. Synced slack group of the schedule
 	SlackUserGroup map[string]string `pulumi:"slackUserGroup"`
+	// Whether the schedule is synced with Linear. Value must be one of true or false
+	SyncLinearEnabled *bool `pulumi:"syncLinearEnabled"`
 }
 
 type ScheduleState struct {
@@ -100,16 +132,32 @@ type ScheduleState struct {
 	AllTimeCoverage pulumi.BoolPtrInput
 	// The description of the schedule
 	Description pulumi.StringPtrInput
+	// Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+	IncludeShadowsInSlackNotifications pulumi.BoolPtrInput
 	// The name of the schedule
 	Name pulumi.StringPtrInput
 	// The owning teams for this schedules.
 	OwnerGroupIds pulumi.StringArrayInput
 	// ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
 	OwnerUserId pulumi.IntPtrInput
+	// Day of week the weekly shift summary is sent. Value must be one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+	ShiftReportDayOfWeek pulumi.StringPtrInput
+	// Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftReportEnabled pulumi.BoolPtrInput
+	// Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.
+	ShiftReportTimeOfDay pulumi.StringPtrInput
+	// IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).
+	ShiftReportTimeZone pulumi.StringPtrInput
+	// Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftStartNotificationsEnabled pulumi.BoolPtrInput
+	// Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftUpdateNotificationsEnabled pulumi.BoolPtrInput
 	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
 	SlackChannel pulumi.StringMapInput
 	// Map must contain two fields, `id` and `name`. Synced slack group of the schedule
 	SlackUserGroup pulumi.StringMapInput
+	// Whether the schedule is synced with Linear. Value must be one of true or false
+	SyncLinearEnabled pulumi.BoolPtrInput
 }
 
 func (ScheduleState) ElementType() reflect.Type {
@@ -121,16 +169,32 @@ type scheduleArgs struct {
 	AllTimeCoverage *bool `pulumi:"allTimeCoverage"`
 	// The description of the schedule
 	Description *string `pulumi:"description"`
+	// Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+	IncludeShadowsInSlackNotifications *bool `pulumi:"includeShadowsInSlackNotifications"`
 	// The name of the schedule
 	Name *string `pulumi:"name"`
 	// The owning teams for this schedules.
 	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
 	OwnerUserId *int `pulumi:"ownerUserId"`
+	// Day of week the weekly shift summary is sent. Value must be one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+	ShiftReportDayOfWeek *string `pulumi:"shiftReportDayOfWeek"`
+	// Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftReportEnabled *bool `pulumi:"shiftReportEnabled"`
+	// Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.
+	ShiftReportTimeOfDay *string `pulumi:"shiftReportTimeOfDay"`
+	// IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).
+	ShiftReportTimeZone *string `pulumi:"shiftReportTimeZone"`
+	// Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftStartNotificationsEnabled *bool `pulumi:"shiftStartNotificationsEnabled"`
+	// Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftUpdateNotificationsEnabled *bool `pulumi:"shiftUpdateNotificationsEnabled"`
 	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
 	SlackChannel map[string]string `pulumi:"slackChannel"`
 	// Map must contain two fields, `id` and `name`. Synced slack group of the schedule
 	SlackUserGroup map[string]string `pulumi:"slackUserGroup"`
+	// Whether the schedule is synced with Linear. Value must be one of true or false
+	SyncLinearEnabled *bool `pulumi:"syncLinearEnabled"`
 }
 
 // The set of arguments for constructing a Schedule resource.
@@ -139,16 +203,32 @@ type ScheduleArgs struct {
 	AllTimeCoverage pulumi.BoolPtrInput
 	// The description of the schedule
 	Description pulumi.StringPtrInput
+	// Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+	IncludeShadowsInSlackNotifications pulumi.BoolPtrInput
 	// The name of the schedule
 	Name pulumi.StringPtrInput
 	// The owning teams for this schedules.
 	OwnerGroupIds pulumi.StringArrayInput
 	// ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
 	OwnerUserId pulumi.IntPtrInput
+	// Day of week the weekly shift summary is sent. Value must be one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+	ShiftReportDayOfWeek pulumi.StringPtrInput
+	// Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftReportEnabled pulumi.BoolPtrInput
+	// Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.
+	ShiftReportTimeOfDay pulumi.StringPtrInput
+	// IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).
+	ShiftReportTimeZone pulumi.StringPtrInput
+	// Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftStartNotificationsEnabled pulumi.BoolPtrInput
+	// Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+	ShiftUpdateNotificationsEnabled pulumi.BoolPtrInput
 	// Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
 	SlackChannel pulumi.StringMapInput
 	// Map must contain two fields, `id` and `name`. Synced slack group of the schedule
 	SlackUserGroup pulumi.StringMapInput
+	// Whether the schedule is synced with Linear. Value must be one of true or false
+	SyncLinearEnabled pulumi.BoolPtrInput
 }
 
 func (ScheduleArgs) ElementType() reflect.Type {
@@ -248,6 +328,11 @@ func (o ScheduleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+func (o ScheduleOutput) IncludeShadowsInSlackNotifications() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.BoolOutput { return v.IncludeShadowsInSlackNotifications }).(pulumi.BoolOutput)
+}
+
 // The name of the schedule
 func (o ScheduleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -263,6 +348,36 @@ func (o ScheduleOutput) OwnerUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.IntOutput { return v.OwnerUserId }).(pulumi.IntOutput)
 }
 
+// Day of week the weekly shift summary is sent. Value must be one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+func (o ScheduleOutput) ShiftReportDayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.ShiftReportDayOfWeek }).(pulumi.StringOutput)
+}
+
+// Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+func (o ScheduleOutput) ShiftReportEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.BoolOutput { return v.ShiftReportEnabled }).(pulumi.BoolOutput)
+}
+
+// Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.
+func (o ScheduleOutput) ShiftReportTimeOfDay() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.ShiftReportTimeOfDay }).(pulumi.StringOutput)
+}
+
+// IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).
+func (o ScheduleOutput) ShiftReportTimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.ShiftReportTimeZone }).(pulumi.StringOutput)
+}
+
+// Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+func (o ScheduleOutput) ShiftStartNotificationsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.BoolOutput { return v.ShiftStartNotificationsEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+func (o ScheduleOutput) ShiftUpdateNotificationsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.BoolOutput { return v.ShiftUpdateNotificationsEnabled }).(pulumi.BoolOutput)
+}
+
 // Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
 func (o ScheduleOutput) SlackChannel() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringMapOutput { return v.SlackChannel }).(pulumi.StringMapOutput)
@@ -271,6 +386,11 @@ func (o ScheduleOutput) SlackChannel() pulumi.StringMapOutput {
 // Map must contain two fields, `id` and `name`. Synced slack group of the schedule
 func (o ScheduleOutput) SlackUserGroup() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringMapOutput { return v.SlackUserGroup }).(pulumi.StringMapOutput)
+}
+
+// Whether the schedule is synced with Linear. Value must be one of true or false
+func (o ScheduleOutput) SyncLinearEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.BoolOutput { return v.SyncLinearEnabled }).(pulumi.BoolOutput)
 }
 
 type ScheduleArrayOutput struct{ *pulumi.OutputState }

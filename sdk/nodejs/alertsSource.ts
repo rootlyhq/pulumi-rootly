@@ -73,7 +73,7 @@ export class AlertsSource extends pulumi.CustomResource {
     /**
      * List of rules that define the conditions under which the alert urgency will be set automatically based on the alert payload
      */
-    declare public readonly alertSourceUrgencyRulesAttributes: pulumi.Output<outputs.AlertsSourceAlertSourceUrgencyRulesAttribute[]>;
+    declare public readonly alertSourceUrgencyRulesAttributes: pulumi.Output<outputs.AlertsSourceAlertSourceUrgencyRulesAttribute[] | undefined>;
     /**
      * Note that when alert fields are enabled at the team level, alert template attributes cannot be provided. Use `alertSourceFieldsAttributes` instead.
      */

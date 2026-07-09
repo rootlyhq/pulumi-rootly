@@ -301,7 +301,7 @@
                 },
                 "targetType": {
                     "type": "string",
-                    "description": "The type of the target. Value must be one of `Service`, `Group`, `EscalationPolicy`.\n"
+                    "description": "The type of the target. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.\n"
                 }
             },
             "type": "object",
@@ -6186,6 +6186,14 @@
                         "$ref": "#/types/rootly:index/WorkflowTaskHttpClientTaskParamsPostToSlackChannel:WorkflowTaskHttpClientTaskParamsPostToSlackChannel"
                     }
                 },
+                "retryCount": {
+                    "type": "string",
+                    "description": "Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.\n"
+                },
+                "retryWaitTime": {
+                    "type": "string",
+                    "description": "Seconds to wait before each retry (1-15). Retry-After header is honored when present and \u003c= 90s, taking the larger of retry*wait*time and the header value.\n"
+                },
                 "succeedOnStatus": {
                     "type": "string",
                     "description": "HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]\n"
@@ -10432,7 +10440,6 @@
             },
             "required": [
                 "alertSourceFieldsAttributes",
-                "alertSourceUrgencyRulesAttributes",
                 "alertTemplateAttributes",
                 "alertUrgencyId",
                 "deduplicateAlertsByKey",
@@ -15113,7 +15120,7 @@
                 },
                 "phoneNumber": {
                     "type": "string",
-                    "description": "You can select a phone number using generate*phone*number API and pass that phone number here to register\n"
+                    "description": "You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register\n"
                 },
                 "phoneType": {
                     "type": "string",
@@ -15144,11 +15151,13 @@
                 "alertUrgencyId",
                 "callerGreeting",
                 "callingTreePrompt",
+                "countryCode",
                 "escalationLevelDelayInSeconds",
                 "escalationPolicyTriggerParams",
                 "name",
                 "pagingTargets",
                 "phoneNumber",
+                "phoneType",
                 "sentToVoicemailDelay",
                 "shouldAutoResolveAlertOnCallEnd",
                 "shouldRedirectToVoicemailOnNoAnswer",
@@ -15201,7 +15210,7 @@
                 },
                 "phoneNumber": {
                     "type": "string",
-                    "description": "You can select a phone number using generate*phone*number API and pass that phone number here to register\n"
+                    "description": "You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register\n"
                 },
                 "phoneType": {
                     "type": "string",
@@ -15229,8 +15238,11 @@
                 }
             },
             "requiredInputs": [
+                "countryCode",
                 "pagingTargets",
-                "phoneNumber"
+                "phoneNumber",
+                "phoneType",
+                "voicemailGreeting"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering LiveCallRouter resources.\n",
@@ -15281,7 +15293,7 @@
                     },
                     "phoneNumber": {
                         "type": "string",
-                        "description": "You can select a phone number using generate*phone*number API and pass that phone number here to register\n"
+                        "description": "You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register\n"
                     },
                     "phoneType": {
                         "type": "string",
@@ -17578,6 +17590,10 @@
                     "type": "string",
                     "description": "The description of the schedule\n"
                 },
+                "includeShadowsInSlackNotifications": {
+                    "type": "boolean",
+                    "description": "Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the schedule\n"
@@ -17593,6 +17609,30 @@
                     "type": "integer",
                     "description": "ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.\n"
                 },
+                "shiftReportDayOfWeek": {
+                    "type": "string",
+                    "description": "Day of week the weekly shift summary is sent. Value must be one of \u003cspan pulumi-lang-nodejs=\"`monday`\" pulumi-lang-dotnet=\"`Monday`\" pulumi-lang-go=\"`monday`\" pulumi-lang-python=\"`monday`\" pulumi-lang-yaml=\"`monday`\" pulumi-lang-java=\"`monday`\"\u003e`monday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tuesday`\" pulumi-lang-dotnet=\"`Tuesday`\" pulumi-lang-go=\"`tuesday`\" pulumi-lang-python=\"`tuesday`\" pulumi-lang-yaml=\"`tuesday`\" pulumi-lang-java=\"`tuesday`\"\u003e`tuesday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wednesday`\" pulumi-lang-dotnet=\"`Wednesday`\" pulumi-lang-go=\"`wednesday`\" pulumi-lang-python=\"`wednesday`\" pulumi-lang-yaml=\"`wednesday`\" pulumi-lang-java=\"`wednesday`\"\u003e`wednesday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`thursday`\" pulumi-lang-dotnet=\"`Thursday`\" pulumi-lang-go=\"`thursday`\" pulumi-lang-python=\"`thursday`\" pulumi-lang-yaml=\"`thursday`\" pulumi-lang-java=\"`thursday`\"\u003e`thursday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`friday`\" pulumi-lang-dotnet=\"`Friday`\" pulumi-lang-go=\"`friday`\" pulumi-lang-python=\"`friday`\" pulumi-lang-yaml=\"`friday`\" pulumi-lang-java=\"`friday`\"\u003e`friday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`saturday`\" pulumi-lang-dotnet=\"`Saturday`\" pulumi-lang-go=\"`saturday`\" pulumi-lang-python=\"`saturday`\" pulumi-lang-yaml=\"`saturday`\" pulumi-lang-java=\"`saturday`\"\u003e`saturday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sunday`\" pulumi-lang-dotnet=\"`Sunday`\" pulumi-lang-go=\"`sunday`\" pulumi-lang-python=\"`sunday`\" pulumi-lang-yaml=\"`sunday`\" pulumi-lang-java=\"`sunday`\"\u003e`sunday`\u003c/span\u003e.\n"
+                },
+                "shiftReportEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the weekly shift summary report is sent. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                },
+                "shiftReportTimeOfDay": {
+                    "type": "string",
+                    "description": "Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.\n"
+                },
+                "shiftReportTimeZone": {
+                    "type": "string",
+                    "description": "IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).\n"
+                },
+                "shiftStartNotificationsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to send a Slack message every time a new shift begins. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                },
+                "shiftUpdateNotificationsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                },
                 "slackChannel": {
                     "type": "object",
                     "additionalProperties": {
@@ -17606,13 +17646,25 @@
                         "type": "string"
                     },
                     "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e. Synced slack group of the schedule\n"
+                },
+                "syncLinearEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the schedule is synced with Linear. Value must be one of true or false\n"
                 }
             },
             "required": [
                 "allTimeCoverage",
                 "description",
+                "includeShadowsInSlackNotifications",
                 "name",
-                "ownerUserId"
+                "ownerUserId",
+                "shiftReportDayOfWeek",
+                "shiftReportEnabled",
+                "shiftReportTimeOfDay",
+                "shiftReportTimeZone",
+                "shiftStartNotificationsEnabled",
+                "shiftUpdateNotificationsEnabled",
+                "syncLinearEnabled"
             ],
             "inputProperties": {
                 "allTimeCoverage": {
@@ -17623,6 +17675,10 @@
                     "type": "string",
                     "description": "The description of the schedule\n"
                 },
+                "includeShadowsInSlackNotifications": {
+                    "type": "boolean",
+                    "description": "Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name of the schedule\n"
@@ -17638,6 +17694,30 @@
                     "type": "integer",
                     "description": "ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.\n"
                 },
+                "shiftReportDayOfWeek": {
+                    "type": "string",
+                    "description": "Day of week the weekly shift summary is sent. Value must be one of \u003cspan pulumi-lang-nodejs=\"`monday`\" pulumi-lang-dotnet=\"`Monday`\" pulumi-lang-go=\"`monday`\" pulumi-lang-python=\"`monday`\" pulumi-lang-yaml=\"`monday`\" pulumi-lang-java=\"`monday`\"\u003e`monday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tuesday`\" pulumi-lang-dotnet=\"`Tuesday`\" pulumi-lang-go=\"`tuesday`\" pulumi-lang-python=\"`tuesday`\" pulumi-lang-yaml=\"`tuesday`\" pulumi-lang-java=\"`tuesday`\"\u003e`tuesday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wednesday`\" pulumi-lang-dotnet=\"`Wednesday`\" pulumi-lang-go=\"`wednesday`\" pulumi-lang-python=\"`wednesday`\" pulumi-lang-yaml=\"`wednesday`\" pulumi-lang-java=\"`wednesday`\"\u003e`wednesday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`thursday`\" pulumi-lang-dotnet=\"`Thursday`\" pulumi-lang-go=\"`thursday`\" pulumi-lang-python=\"`thursday`\" pulumi-lang-yaml=\"`thursday`\" pulumi-lang-java=\"`thursday`\"\u003e`thursday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`friday`\" pulumi-lang-dotnet=\"`Friday`\" pulumi-lang-go=\"`friday`\" pulumi-lang-python=\"`friday`\" pulumi-lang-yaml=\"`friday`\" pulumi-lang-java=\"`friday`\"\u003e`friday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`saturday`\" pulumi-lang-dotnet=\"`Saturday`\" pulumi-lang-go=\"`saturday`\" pulumi-lang-python=\"`saturday`\" pulumi-lang-yaml=\"`saturday`\" pulumi-lang-java=\"`saturday`\"\u003e`saturday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sunday`\" pulumi-lang-dotnet=\"`Sunday`\" pulumi-lang-go=\"`sunday`\" pulumi-lang-python=\"`sunday`\" pulumi-lang-yaml=\"`sunday`\" pulumi-lang-java=\"`sunday`\"\u003e`sunday`\u003c/span\u003e.\n"
+                },
+                "shiftReportEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the weekly shift summary report is sent. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                },
+                "shiftReportTimeOfDay": {
+                    "type": "string",
+                    "description": "Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.\n"
+                },
+                "shiftReportTimeZone": {
+                    "type": "string",
+                    "description": "IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).\n"
+                },
+                "shiftStartNotificationsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to send a Slack message every time a new shift begins. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                },
+                "shiftUpdateNotificationsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                },
                 "slackChannel": {
                     "type": "object",
                     "additionalProperties": {
@@ -17651,6 +17731,10 @@
                         "type": "string"
                     },
                     "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e. Synced slack group of the schedule\n"
+                },
+                "syncLinearEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the schedule is synced with Linear. Value must be one of true or false\n"
                 }
             },
             "stateInputs": {
@@ -17663,6 +17747,10 @@
                     "description": {
                         "type": "string",
                         "description": "The description of the schedule\n"
+                    },
+                    "includeShadowsInSlackNotifications": {
+                        "type": "boolean",
+                        "description": "Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false\n"
                     },
                     "name": {
                         "type": "string",
@@ -17679,6 +17767,30 @@
                         "type": "integer",
                         "description": "ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.\n"
                     },
+                    "shiftReportDayOfWeek": {
+                        "type": "string",
+                        "description": "Day of week the weekly shift summary is sent. Value must be one of \u003cspan pulumi-lang-nodejs=\"`monday`\" pulumi-lang-dotnet=\"`Monday`\" pulumi-lang-go=\"`monday`\" pulumi-lang-python=\"`monday`\" pulumi-lang-yaml=\"`monday`\" pulumi-lang-java=\"`monday`\"\u003e`monday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tuesday`\" pulumi-lang-dotnet=\"`Tuesday`\" pulumi-lang-go=\"`tuesday`\" pulumi-lang-python=\"`tuesday`\" pulumi-lang-yaml=\"`tuesday`\" pulumi-lang-java=\"`tuesday`\"\u003e`tuesday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wednesday`\" pulumi-lang-dotnet=\"`Wednesday`\" pulumi-lang-go=\"`wednesday`\" pulumi-lang-python=\"`wednesday`\" pulumi-lang-yaml=\"`wednesday`\" pulumi-lang-java=\"`wednesday`\"\u003e`wednesday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`thursday`\" pulumi-lang-dotnet=\"`Thursday`\" pulumi-lang-go=\"`thursday`\" pulumi-lang-python=\"`thursday`\" pulumi-lang-yaml=\"`thursday`\" pulumi-lang-java=\"`thursday`\"\u003e`thursday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`friday`\" pulumi-lang-dotnet=\"`Friday`\" pulumi-lang-go=\"`friday`\" pulumi-lang-python=\"`friday`\" pulumi-lang-yaml=\"`friday`\" pulumi-lang-java=\"`friday`\"\u003e`friday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`saturday`\" pulumi-lang-dotnet=\"`Saturday`\" pulumi-lang-go=\"`saturday`\" pulumi-lang-python=\"`saturday`\" pulumi-lang-yaml=\"`saturday`\" pulumi-lang-java=\"`saturday`\"\u003e`saturday`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sunday`\" pulumi-lang-dotnet=\"`Sunday`\" pulumi-lang-go=\"`sunday`\" pulumi-lang-python=\"`sunday`\" pulumi-lang-yaml=\"`sunday`\" pulumi-lang-java=\"`sunday`\"\u003e`sunday`\u003c/span\u003e.\n"
+                    },
+                    "shiftReportEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the weekly shift summary report is sent. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                    },
+                    "shiftReportTimeOfDay": {
+                        "type": "string",
+                        "description": "Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.\n"
+                    },
+                    "shiftReportTimeZone": {
+                        "type": "string",
+                        "description": "IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).\n"
+                    },
+                    "shiftStartNotificationsEnabled": {
+                        "type": "boolean",
+                        "description": "Whether to send a Slack message every time a new shift begins. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                    },
+                    "shiftUpdateNotificationsEnabled": {
+                        "type": "boolean",
+                        "description": "Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                    },
                     "slackChannel": {
                         "type": "object",
                         "additionalProperties": {
@@ -17692,13 +17804,17 @@
                             "type": "string"
                         },
                         "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e. Synced slack group of the schedule\n"
+                    },
+                    "syncLinearEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the schedule is synced with Linear. Value must be one of true or false\n"
                     }
                 },
                 "type": "object"
             }
         },
         "rootly:index/scheduleRotation:ScheduleRotation": {
-            "description": "## Example Usage\n\n```shell\ndata \"rootly_user\" \"john\" {\n  email = \"demo@rootly.com\"\n}\n\ndata \"rootly_user\" \"jane\" {\n  email = \"demo1@rootly.com\"\n}\n\ndata \"rootly_alert_urgency\" \"low\" {\n  name = \"Low\"\n}\n\nresource \"rootly_team\" \"sre\" {\n  name     = \"SREs On-Call\"\n  user_ids = [data.rootly_user.john.id, data.rootly_user.jane.id]\n}\n\nresource \"rootly_schedule\" \"primary\" {\n  name              = \"Primary On-Call Schedule\"\n  owner_user_id     = data.rootly_user.john.id\n  all_time_coverage = false\n}\n\nresource \"rootly_schedule_rotation\" \"weekdays\" {\n  schedule_id     = rootly_schedule.primary.id\n  name            = \"weekdays\"\n  active_all_week = false\n  active_days = [\n    \"M\",\n    \"T\",\n    \"W\",\n    \"R\",\n    \"F\",\n  ]\n  active_time_type = \"custom\"\n  position         = 1\n  schedule_rotationable_attributes = {\n    handoff_time = \"10:00\"\n  }\n  schedule_rotationable_type = \"ScheduleDailyRotation\"\n  time_zone                  = \"America/Toronto\"\n}\n\n# Define active days for the weekday rotation\n# Monday\nresource \"rootly_schedule_rotation_active_day\" \"m1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"M\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Tuesday\nresource \"rootly_schedule_rotation_active_day\" \"t1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"T\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Wednesday\nresource \"rootly_schedule_rotation_active_day\" \"w1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"W\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Thursday\nresource \"rootly_schedule_rotation_active_day\" \"th1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"R\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Friday\nresource \"rootly_schedule_rotation_active_day\" \"f1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"F\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n\nresource \"rootly_schedule_rotation_user\" \"john\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 1\n  user_id              = data.rootly_user.john.id\n}\n\nresource \"rootly_schedule_rotation_user\" \"jane\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 2\n  user_id              = data.rootly_user.jane.id\n}\n\nresource \"rootly_escalation_policy\" \"primary\" {\n  name      = \"Primary\"\n  group_ids = [rootly_team.sre.id]\n}\n\nresource \"rootly_escalation_path\" \"default\" {\n  name                 = \"Default\"\n  default              = true\n  escalation_policy_id = rootly_escalation_policy.primary.id\n}\n\nresource \"rootly_escalation_path\" \"ignore\" {\n  name                 = \"Ignore\"\n  default              = false\n  escalation_policy_id = rootly_escalation_policy.primary.id\n  rules {\n    rule_type   = \"alert_urgency\"\n    urgency_ids = [data.rootly_alert_urgency.low.id]\n  }\n}\n\nresource \"rootly_escalation_level\" \"first\" {\n  escalation_policy_path_id = rootly_escalation_path.default.id\n  escalation_policy_id      = rootly_escalation_policy.primary.id\n  position                  = 1\n  notification_target_params {\n    team_members = \"all\"\n    type         = \"slack_channel\"\n    id           = \"C06D4QHLAUE\"\n  }\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n\n# cycle-based round-robin everyone on the schedule\nresource \"rootly_escalation_level\" \"second\" {\n  escalation_policy_path_id                       = rootly_escalation_path.default.id\n  escalation_policy_id                            = rootly_escalation_policy.primary.id\n  position                                        = 2\n  delay                                           = 5\n  paging_strategy_configuration_strategy          = \"cycle\"\n  paging_strategy_configuration_schedule_strategy = \"everyone\"\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.ScheduleRotation \" pulumi-lang-dotnet=\"\nrootly.ScheduleRotation \" pulumi-lang-go=\"\nScheduleRotation \" pulumi-lang-python=\"\nScheduleRotation \" pulumi-lang-yaml=\"\nrootly.ScheduleRotation \" pulumi-lang-java=\"\nrootly.ScheduleRotation \"\u003e\nrootly.ScheduleRotation \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/scheduleRotation:ScheduleRotation primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\ndata \"rootly_user\" \"john\" {\n  email = \"demo@rootly.com\"\n}\n\ndata \"rootly_user\" \"jane\" {\n  email = \"demo1@rootly.com\"\n}\n\ndata \"rootly_alert_urgency\" \"low\" {\n  name = \"Low\"\n}\n\nresource \"rootly_team\" \"sre\" {\n  name     = \"SREs On-Call\"\n  user_ids = [data.rootly_user.john.id, data.rootly_user.jane.id]\n}\n\nresource \"rootly_schedule\" \"primary\" {\n  name              = \"Primary On-Call Schedule\"\n  owner_user_id     = data.rootly_user.john.id\n  all_time_coverage = false\n}\n\nresource \"rootly_schedule_rotation\" \"weekdays\" {\n  schedule_id     = rootly_schedule.primary.id\n  name            = \"weekdays\"\n  active_all_week = false\n  active_days = [\n    \"M\",\n    \"T\",\n    \"W\",\n    \"R\",\n    \"F\",\n  ]\n  active_time_type = \"custom\"\n  position         = 1\n  schedule_rotationable_attributes = {\n    handoff_time = \"10:00\"\n  }\n  schedule_rotationable_type = \"ScheduleDailyRotation\"\n  time_zone                  = \"America/Toronto\"\n\n  schedule_rotation_members {\n    member_type = \"User\"\n    member_id   = data.rootly_user.john.id\n    position    = 1\n  }\n\n  schedule_rotation_members {\n    member_type = \"User\"\n    member_id   = data.rootly_user.jane.id\n    position    = 2\n  }\n}\n\n# Define active days for the weekday rotation\n# Monday\nresource \"rootly_schedule_rotation_active_day\" \"m1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"M\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Tuesday\nresource \"rootly_schedule_rotation_active_day\" \"t1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"T\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Wednesday\nresource \"rootly_schedule_rotation_active_day\" \"w1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"W\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Thursday\nresource \"rootly_schedule_rotation_active_day\" \"th1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"R\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Friday\nresource \"rootly_schedule_rotation_active_day\" \"f1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"F\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n\nresource \"rootly_escalation_policy\" \"primary\" {\n  name      = \"Primary\"\n  group_ids = [rootly_team.sre.id]\n}\n\nresource \"rootly_escalation_path\" \"default\" {\n  name                 = \"Default\"\n  default              = true\n  escalation_policy_id = rootly_escalation_policy.primary.id\n}\n\nresource \"rootly_escalation_path\" \"ignore\" {\n  name                 = \"Ignore\"\n  default              = false\n  escalation_policy_id = rootly_escalation_policy.primary.id\n  rules {\n    rule_type   = \"alert_urgency\"\n    urgency_ids = [data.rootly_alert_urgency.low.id]\n  }\n}\n\nresource \"rootly_escalation_level\" \"first\" {\n  escalation_policy_path_id = rootly_escalation_path.default.id\n  escalation_policy_id      = rootly_escalation_policy.primary.id\n  position                  = 1\n  notification_target_params {\n    team_members = \"all\"\n    type         = \"slack_channel\"\n    id           = \"C06D4QHLAUE\"\n  }\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n\n# cycle-based round-robin everyone on the schedule\nresource \"rootly_escalation_level\" \"second\" {\n  escalation_policy_path_id                       = rootly_escalation_path.default.id\n  escalation_policy_id                            = rootly_escalation_policy.primary.id\n  position                                        = 2\n  delay                                           = 5\n  paging_strategy_configuration_strategy          = \"cycle\"\n  paging_strategy_configuration_schedule_strategy = \"everyone\"\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.ScheduleRotation \" pulumi-lang-dotnet=\"\nrootly.ScheduleRotation \" pulumi-lang-go=\"\nScheduleRotation \" pulumi-lang-python=\"\nScheduleRotation \" pulumi-lang-yaml=\"\nrootly.ScheduleRotation \" pulumi-lang-java=\"\nrootly.ScheduleRotation \"\u003e\nrootly.ScheduleRotation \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/scheduleRotation:ScheduleRotation primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "activeAllWeek": {
                     "type": "boolean",
@@ -17986,7 +18102,7 @@
             }
         },
         "rootly:index/scheduleRotationUser:ScheduleRotationUser": {
-            "description": "## Example Usage\n\n```shell\ndata \"rootly_user\" \"john\" {\n  email = \"demo@rootly.com\"\n}\n\ndata \"rootly_user\" \"jane\" {\n  email = \"demo1@rootly.com\"\n}\n\ndata \"rootly_alert_urgency\" \"low\" {\n  name = \"Low\"\n}\n\nresource \"rootly_team\" \"sre\" {\n  name     = \"SREs On-Call\"\n  user_ids = [data.rootly_user.john.id, data.rootly_user.jane.id]\n}\n\nresource \"rootly_schedule\" \"primary\" {\n  name              = \"Primary On-Call Schedule\"\n  owner_user_id     = data.rootly_user.john.id\n  all_time_coverage = false\n}\n\nresource \"rootly_schedule_rotation\" \"weekdays\" {\n  schedule_id     = rootly_schedule.primary.id\n  name            = \"weekdays\"\n  active_all_week = false\n  active_days = [\n    \"M\",\n    \"T\",\n    \"W\",\n    \"R\",\n    \"F\",\n  ]\n  active_time_type = \"custom\"\n  position         = 1\n  schedule_rotationable_attributes = {\n    handoff_time = \"10:00\"\n  }\n  schedule_rotationable_type = \"ScheduleDailyRotation\"\n  time_zone                  = \"America/Toronto\"\n}\n\n# Define active days for the weekday rotation\n# Monday\nresource \"rootly_schedule_rotation_active_day\" \"m1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"M\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Tuesday\nresource \"rootly_schedule_rotation_active_day\" \"t1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"T\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Wednesday\nresource \"rootly_schedule_rotation_active_day\" \"w1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"W\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Thursday\nresource \"rootly_schedule_rotation_active_day\" \"th1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"R\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Friday\nresource \"rootly_schedule_rotation_active_day\" \"f1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"F\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n\nresource \"rootly_schedule_rotation_user\" \"john\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 1\n  user_id              = data.rootly_user.john.id\n}\n\nresource \"rootly_schedule_rotation_user\" \"jane\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 2\n  user_id              = data.rootly_user.jane.id\n}\n\nresource \"rootly_escalation_policy\" \"primary\" {\n  name      = \"Primary\"\n  group_ids = [rootly_team.sre.id]\n}\n\nresource \"rootly_escalation_path\" \"default\" {\n  name                 = \"Default\"\n  default              = true\n  escalation_policy_id = rootly_escalation_policy.primary.id\n}\n\nresource \"rootly_escalation_path\" \"ignore\" {\n  name                 = \"Ignore\"\n  default              = false\n  escalation_policy_id = rootly_escalation_policy.primary.id\n  rules {\n    rule_type   = \"alert_urgency\"\n    urgency_ids = [data.rootly_alert_urgency.low.id]\n  }\n}\n\nresource \"rootly_escalation_level\" \"first\" {\n  escalation_policy_path_id = rootly_escalation_path.default.id\n  escalation_policy_id      = rootly_escalation_policy.primary.id\n  position                  = 1\n  notification_target_params {\n    team_members = \"all\"\n    type         = \"slack_channel\"\n    id           = \"C06D4QHLAUE\"\n  }\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n\n# cycle-based round-robin everyone on the schedule\nresource \"rootly_escalation_level\" \"second\" {\n  escalation_policy_path_id                       = rootly_escalation_path.default.id\n  escalation_policy_id                            = rootly_escalation_policy.primary.id\n  position                                        = 2\n  delay                                           = 5\n  paging_strategy_configuration_strategy          = \"cycle\"\n  paging_strategy_configuration_schedule_strategy = \"everyone\"\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.ScheduleRotationUser \" pulumi-lang-dotnet=\"\nrootly.ScheduleRotationUser \" pulumi-lang-go=\"\nScheduleRotationUser \" pulumi-lang-python=\"\nScheduleRotationUser \" pulumi-lang-yaml=\"\nrootly.ScheduleRotationUser \" pulumi-lang-java=\"\nrootly.ScheduleRotationUser \"\u003e\nrootly.ScheduleRotationUser \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/scheduleRotationUser:ScheduleRotationUser primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "This resource is deprecated. Please use the \u003cspan pulumi-lang-nodejs=\"`scheduleRotationMembers`\" pulumi-lang-dotnet=\"`ScheduleRotationMembers`\" pulumi-lang-go=\"`scheduleRotationMembers`\" pulumi-lang-python=\"`schedule_rotation_members`\" pulumi-lang-yaml=\"`scheduleRotationMembers`\" pulumi-lang-java=\"`scheduleRotationMembers`\"\u003e`scheduleRotationMembers`\u003c/span\u003e attribute within the \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotation`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotation`\" pulumi-lang-go=\"`ScheduleRotation`\" pulumi-lang-python=\"`ScheduleRotation`\" pulumi-lang-yaml=\"`rootly.ScheduleRotation`\" pulumi-lang-java=\"`rootly.ScheduleRotation`\"\u003e`rootly.ScheduleRotation`\u003c/span\u003e resource instead. This resource will be removed in the next major version.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.ScheduleRotationUser \" pulumi-lang-dotnet=\"\nrootly.ScheduleRotationUser \" pulumi-lang-go=\"\nScheduleRotationUser \" pulumi-lang-python=\"\nScheduleRotationUser \" pulumi-lang-yaml=\"\nrootly.ScheduleRotationUser \" pulumi-lang-java=\"\nrootly.ScheduleRotationUser \"\u003e\nrootly.ScheduleRotationUser \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/scheduleRotationUser:ScheduleRotationUser primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "position": {
                     "type": "integer",
@@ -20124,7 +20240,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.\n"
+                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -20158,7 +20274,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.\n"
+                    "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.\n"
                 },
                 "name": {
                     "type": "string",
@@ -20191,7 +20307,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.\n"
+                        "description": "Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.\n"
                     },
                     "name": {
                         "type": "string",
@@ -37533,6 +37649,44 @@
                 "type": "object"
             }
         },
+        "rootly:index/getEscalationPath:getEscalationPath": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getEscalationPath.\n",
+                "properties": {
+                    "escalationPolicyId": {
+                        "type": "string"
+                    },
+                    "pathType": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "escalationPolicyId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getEscalationPath.\n",
+                "properties": {
+                    "escalationPolicyId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The ID of this resource.\n",
+                        "type": "string"
+                    },
+                    "pathType": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "escalationPolicyId",
+                    "id",
+                    "pathType"
+                ],
+                "type": "object"
+            }
+        },
         "rootly:index/getEscalationPolicy:getEscalationPolicy": {
             "description": "## Example Usage\n\n```shell\ndata \"rootly_escalation_policy\" \"my-escalation-policy\" {\n  name = \"my-escalation-policy\"\n}\n```\n",
             "inputs": {
@@ -39078,13 +39232,45 @@
                         "description": "The ID of this resource.\n",
                         "type": "string"
                     },
+                    "includeShadowsInSlackNotifications": {
+                        "type": "boolean"
+                    },
                     "name": {
                         "type": "string"
+                    },
+                    "shiftReportDayOfWeek": {
+                        "type": "string"
+                    },
+                    "shiftReportEnabled": {
+                        "type": "boolean"
+                    },
+                    "shiftReportTimeOfDay": {
+                        "type": "string"
+                    },
+                    "shiftReportTimeZone": {
+                        "type": "string"
+                    },
+                    "shiftStartNotificationsEnabled": {
+                        "type": "boolean"
+                    },
+                    "shiftUpdateNotificationsEnabled": {
+                        "type": "boolean"
+                    },
+                    "syncLinearEnabled": {
+                        "type": "boolean"
                     }
                 },
                 "required": [
                     "id",
-                    "name"
+                    "includeShadowsInSlackNotifications",
+                    "name",
+                    "shiftReportDayOfWeek",
+                    "shiftReportEnabled",
+                    "shiftReportTimeOfDay",
+                    "shiftReportTimeZone",
+                    "shiftStartNotificationsEnabled",
+                    "shiftUpdateNotificationsEnabled",
+                    "syncLinearEnabled"
                 ],
                 "type": "object"
             }

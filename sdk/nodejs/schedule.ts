@@ -62,6 +62,10 @@ export class Schedule extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
+     * Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+     */
+    declare public readonly includeShadowsInSlackNotifications: pulumi.Output<boolean>;
+    /**
      * The name of the schedule
      */
     declare public readonly name: pulumi.Output<string>;
@@ -74,6 +78,30 @@ export class Schedule extends pulumi.CustomResource {
      */
     declare public readonly ownerUserId: pulumi.Output<number>;
     /**
+     * Day of week the weekly shift summary is sent. Value must be one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+     */
+    declare public readonly shiftReportDayOfWeek: pulumi.Output<string>;
+    /**
+     * Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+     */
+    declare public readonly shiftReportEnabled: pulumi.Output<boolean>;
+    /**
+     * Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.
+     */
+    declare public readonly shiftReportTimeOfDay: pulumi.Output<string>;
+    /**
+     * IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).
+     */
+    declare public readonly shiftReportTimeZone: pulumi.Output<string>;
+    /**
+     * Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+     */
+    declare public readonly shiftStartNotificationsEnabled: pulumi.Output<boolean>;
+    /**
+     * Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+     */
+    declare public readonly shiftUpdateNotificationsEnabled: pulumi.Output<boolean>;
+    /**
      * Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
      */
     declare public readonly slackChannel: pulumi.Output<{[key: string]: string} | undefined>;
@@ -81,6 +109,10 @@ export class Schedule extends pulumi.CustomResource {
      * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
      */
     declare public readonly slackUserGroup: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Whether the schedule is synced with Linear. Value must be one of true or false
+     */
+    declare public readonly syncLinearEnabled: pulumi.Output<boolean>;
 
     /**
      * Create a Schedule resource with the given unique name, arguments, and options.
@@ -97,20 +129,36 @@ export class Schedule extends pulumi.CustomResource {
             const state = argsOrState as ScheduleState | undefined;
             resourceInputs["allTimeCoverage"] = state?.allTimeCoverage;
             resourceInputs["description"] = state?.description;
+            resourceInputs["includeShadowsInSlackNotifications"] = state?.includeShadowsInSlackNotifications;
             resourceInputs["name"] = state?.name;
             resourceInputs["ownerGroupIds"] = state?.ownerGroupIds;
             resourceInputs["ownerUserId"] = state?.ownerUserId;
+            resourceInputs["shiftReportDayOfWeek"] = state?.shiftReportDayOfWeek;
+            resourceInputs["shiftReportEnabled"] = state?.shiftReportEnabled;
+            resourceInputs["shiftReportTimeOfDay"] = state?.shiftReportTimeOfDay;
+            resourceInputs["shiftReportTimeZone"] = state?.shiftReportTimeZone;
+            resourceInputs["shiftStartNotificationsEnabled"] = state?.shiftStartNotificationsEnabled;
+            resourceInputs["shiftUpdateNotificationsEnabled"] = state?.shiftUpdateNotificationsEnabled;
             resourceInputs["slackChannel"] = state?.slackChannel;
             resourceInputs["slackUserGroup"] = state?.slackUserGroup;
+            resourceInputs["syncLinearEnabled"] = state?.syncLinearEnabled;
         } else {
             const args = argsOrState as ScheduleArgs | undefined;
             resourceInputs["allTimeCoverage"] = args?.allTimeCoverage;
             resourceInputs["description"] = args?.description;
+            resourceInputs["includeShadowsInSlackNotifications"] = args?.includeShadowsInSlackNotifications;
             resourceInputs["name"] = args?.name;
             resourceInputs["ownerGroupIds"] = args?.ownerGroupIds;
             resourceInputs["ownerUserId"] = args?.ownerUserId;
+            resourceInputs["shiftReportDayOfWeek"] = args?.shiftReportDayOfWeek;
+            resourceInputs["shiftReportEnabled"] = args?.shiftReportEnabled;
+            resourceInputs["shiftReportTimeOfDay"] = args?.shiftReportTimeOfDay;
+            resourceInputs["shiftReportTimeZone"] = args?.shiftReportTimeZone;
+            resourceInputs["shiftStartNotificationsEnabled"] = args?.shiftStartNotificationsEnabled;
+            resourceInputs["shiftUpdateNotificationsEnabled"] = args?.shiftUpdateNotificationsEnabled;
             resourceInputs["slackChannel"] = args?.slackChannel;
             resourceInputs["slackUserGroup"] = args?.slackUserGroup;
+            resourceInputs["syncLinearEnabled"] = args?.syncLinearEnabled;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Schedule.__pulumiType, name, resourceInputs, opts);
@@ -130,6 +178,10 @@ export interface ScheduleState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+     */
+    includeShadowsInSlackNotifications?: pulumi.Input<boolean | undefined>;
+    /**
      * The name of the schedule
      */
     name?: pulumi.Input<string | undefined>;
@@ -142,6 +194,30 @@ export interface ScheduleState {
      */
     ownerUserId?: pulumi.Input<number | undefined>;
     /**
+     * Day of week the weekly shift summary is sent. Value must be one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+     */
+    shiftReportDayOfWeek?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+     */
+    shiftReportEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.
+     */
+    shiftReportTimeOfDay?: pulumi.Input<string | undefined>;
+    /**
+     * IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).
+     */
+    shiftReportTimeZone?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+     */
+    shiftStartNotificationsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+     */
+    shiftUpdateNotificationsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
      */
     slackChannel?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -149,6 +225,10 @@ export interface ScheduleState {
      * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
      */
     slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether the schedule is synced with Linear. Value must be one of true or false
+     */
+    syncLinearEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -164,6 +244,10 @@ export interface ScheduleArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+     */
+    includeShadowsInSlackNotifications?: pulumi.Input<boolean | undefined>;
+    /**
      * The name of the schedule
      */
     name?: pulumi.Input<string | undefined>;
@@ -176,6 +260,30 @@ export interface ScheduleArgs {
      */
     ownerUserId?: pulumi.Input<number | undefined>;
     /**
+     * Day of week the weekly shift summary is sent. Value must be one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
+     */
+    shiftReportDayOfWeek?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+     */
+    shiftReportEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.
+     */
+    shiftReportTimeOfDay?: pulumi.Input<string | undefined>;
+    /**
+     * IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).
+     */
+    shiftReportTimeZone?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+     */
+    shiftStartNotificationsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+     */
+    shiftUpdateNotificationsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
      */
     slackChannel?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -183,4 +291,8 @@ export interface ScheduleArgs {
      * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
      */
     slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether the schedule is synced with Linear. Value must be one of true or false
+     */
+    syncLinearEnabled?: pulumi.Input<boolean | undefined>;
 }

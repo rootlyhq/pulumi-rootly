@@ -12,7 +12,7 @@ import (
 	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
 
-// ## Example Usage
+// This resource is deprecated. Please use the `scheduleRotationMembers` attribute within the `ScheduleRotation` resource instead. This resource will be removed in the next major version.
 //
 // ## Import
 //

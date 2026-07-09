@@ -136,7 +136,7 @@ export interface AlertRouteRuleDestination {
      */
     targetId: string;
     /**
-     * The type of the target. Value must be one of `Service`, `Group`, `EscalationPolicy`.
+     * The type of the target. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
      */
     targetType?: string;
 }
@@ -3710,6 +3710,14 @@ export interface WorkflowTaskHttpClientTaskParams {
      */
     postToIncidentTimeline?: boolean;
     postToSlackChannels?: outputs.WorkflowTaskHttpClientTaskParamsPostToSlackChannel[];
+    /**
+     * Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
+     */
+    retryCount?: string;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: string;
     /**
      * HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
      */

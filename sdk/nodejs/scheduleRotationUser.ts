@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
+ * This resource is deprecated. Please use the `scheduleRotationMembers` attribute within the `rootly.ScheduleRotation` resource instead. This resource will be removed in the next major version.
  *
  * ## Import
  *
