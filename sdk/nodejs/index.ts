@@ -300,6 +300,11 @@ export const getEnvironments: typeof import("./getEnvironments").getEnvironments
 export const getEnvironmentsOutput: typeof import("./getEnvironments").getEnvironmentsOutput = null as any;
 utilities.lazyLoad(exports, ["getEnvironments","getEnvironmentsOutput"], () => require("./getEnvironments"));
 
+export { GetEscalationPathArgs, GetEscalationPathResult, GetEscalationPathOutputArgs } from "./getEscalationPath";
+export const getEscalationPath: typeof import("./getEscalationPath").getEscalationPath = null as any;
+export const getEscalationPathOutput: typeof import("./getEscalationPath").getEscalationPathOutput = null as any;
+utilities.lazyLoad(exports, ["getEscalationPath","getEscalationPathOutput"], () => require("./getEscalationPath"));
+
 export { GetEscalationPolicyArgs, GetEscalationPolicyResult, GetEscalationPolicyOutputArgs } from "./getEscalationPolicy";
 export const getEscalationPolicy: typeof import("./getEscalationPolicy").getEscalationPolicy = null as any;
 export const getEscalationPolicyOutput: typeof import("./getEscalationPolicy").getEscalationPolicyOutput = null as any;

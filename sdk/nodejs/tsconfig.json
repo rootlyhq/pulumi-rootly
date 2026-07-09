@@ -80,6 +80,7 @@
         "getCustomForm.ts",
         "getEnvironment.ts",
         "getEnvironments.ts",
+        "getEscalationPath.ts",
         "getEscalationPolicy.ts",
         "getFormField.ts",
         "getFormFieldOption.ts",

@@ -68,7 +68,7 @@ export class LiveCallRouter extends pulumi.CustomResource {
     /**
      * The country code of the live*call*router. Value must be one of `AU`, `CA`, `DE`, `NL`, `NZ`, `GB`, `US`.
      */
-    declare public readonly countryCode: pulumi.Output<string | undefined>;
+    declare public readonly countryCode: pulumi.Output<string>;
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * This overrides the delay (seconds) in escalation levels
@@ -88,13 +88,13 @@ export class LiveCallRouter extends pulumi.CustomResource {
      */
     declare public readonly pagingTargets: pulumi.Output<outputs.LiveCallRouterPagingTarget[]>;
     /**
-     * You can select a phone number using generate*phone*number API and pass that phone number here to register
+     * You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register
      */
     declare public readonly phoneNumber: pulumi.Output<string>;
     /**
      * The phone type of the live*call*router. Value must be one of `local`, `tollFree`, `mobile`.
      */
-    declare public readonly phoneType: pulumi.Output<string | undefined>;
+    declare public readonly phoneType: pulumi.Output<string>;
     /**
      * The delay (seconds) after which the caller in redirected to voicemail
      */
@@ -148,11 +148,20 @@ export class LiveCallRouter extends pulumi.CustomResource {
             resourceInputs["waitingMusicUrl"] = state?.waitingMusicUrl;
         } else {
             const args = argsOrState as LiveCallRouterArgs | undefined;
+            if (args?.countryCode === undefined && !opts.urn) {
+                throw new Error("Missing required property 'countryCode'");
+            }
             if (args?.pagingTargets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pagingTargets'");
             }
             if (args?.phoneNumber === undefined && !opts.urn) {
                 throw new Error("Missing required property 'phoneNumber'");
+            }
+            if (args?.phoneType === undefined && !opts.urn) {
+                throw new Error("Missing required property 'phoneType'");
+            }
+            if (args?.voicemailGreeting === undefined && !opts.urn) {
+                throw new Error("Missing required property 'voicemailGreeting'");
             }
             resourceInputs["alertUrgencyId"] = args?.alertUrgencyId;
             resourceInputs["callerGreeting"] = args?.callerGreeting;
@@ -216,7 +225,7 @@ export interface LiveCallRouterState {
      */
     pagingTargets?: pulumi.Input<pulumi.Input<inputs.LiveCallRouterPagingTarget>[] | undefined>;
     /**
-     * You can select a phone number using generate*phone*number API and pass that phone number here to register
+     * You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register
      */
     phoneNumber?: pulumi.Input<string | undefined>;
     /**
@@ -264,7 +273,7 @@ export interface LiveCallRouterArgs {
     /**
      * The country code of the live*call*router. Value must be one of `AU`, `CA`, `DE`, `NL`, `NZ`, `GB`, `US`.
      */
-    countryCode?: pulumi.Input<string | undefined>;
+    countryCode: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean | undefined>;
     /**
      * This overrides the delay (seconds) in escalation levels
@@ -284,13 +293,13 @@ export interface LiveCallRouterArgs {
      */
     pagingTargets: pulumi.Input<pulumi.Input<inputs.LiveCallRouterPagingTarget>[]>;
     /**
-     * You can select a phone number using generate*phone*number API and pass that phone number here to register
+     * You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register
      */
     phoneNumber: pulumi.Input<string>;
     /**
      * The phone type of the live*call*router. Value must be one of `local`, `tollFree`, `mobile`.
      */
-    phoneType?: pulumi.Input<string | undefined>;
+    phoneType: pulumi.Input<string>;
     /**
      * The delay (seconds) after which the caller in redirected to voicemail
      */
@@ -306,7 +315,7 @@ export interface LiveCallRouterArgs {
     /**
      * The voicemail greeting of the live*call*router
      */
-    voicemailGreeting?: pulumi.Input<string | undefined>;
+    voicemailGreeting: pulumi.Input<string>;
     /**
      * The waiting music URL of the live*call*router. Value must be one of `https://storage.rootly.com/twilio/voicemail/ClockworkWaltz.mp3`, `https://storage.rootly.com/twilio/voicemail/ith_brahms-116-4.mp3`, `https://storage.rootly.com/twilio/voicemail/Mellotroniac_-_Flight_Of_Young_Hearts_Flute.mp3`, `https://storage.rootly.com/twilio/voicemail/BusyStrings.mp3`, `https://storage.rootly.com/twilio/voicemail/oldDog_-_endless_goodbye_%28instr.%29.mp3`, `https://storage.rootly.com/twilio/voicemail/MARKOVICHAMP-Borghestral.mp3`, `https://storage.rootly.com/twilio/voicemail/ith_chopin-15-2.mp3`.
      */

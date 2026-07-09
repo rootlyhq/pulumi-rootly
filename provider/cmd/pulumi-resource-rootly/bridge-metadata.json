@@ -3367,6 +3367,10 @@
                     }
                 }
             },
+            "rootly_escalation_path": {
+                "current": "rootly:index/getEscalationPath:getEscalationPath",
+                "majorVersion": 3
+            },
             "rootly_escalation_policy": {
                 "current": "rootly:index/getEscalationPolicy:getEscalationPolicy",
                 "majorVersion": 3

@@ -39,7 +39,15 @@ export interface GetScheduleResult {
      * The ID of this resource.
      */
     readonly id: string;
+    readonly includeShadowsInSlackNotifications: boolean;
     readonly name: string;
+    readonly shiftReportDayOfWeek: string;
+    readonly shiftReportEnabled: boolean;
+    readonly shiftReportTimeOfDay: string;
+    readonly shiftReportTimeZone: string;
+    readonly shiftStartNotificationsEnabled: boolean;
+    readonly shiftUpdateNotificationsEnabled: boolean;
+    readonly syncLinearEnabled: boolean;
 }
 /**
  * ## Example Usage
