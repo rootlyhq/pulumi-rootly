@@ -64,6 +64,14 @@ export class CatalogEntity extends pulumi.CustomResource {
      */
     declare public readonly catalogId: pulumi.Output<string>;
     declare public readonly description: pulumi.Output<string>;
+    /**
+     * An external identifier for this catalog entity. Must be unique within the catalog.
+     */
+    declare public readonly externalId: pulumi.Output<string>;
+    /**
+     * Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    declare public /*out*/ readonly managedBy: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
     /**
      * Default position of the item when displayed in a list.
@@ -81,7 +89,7 @@ export class CatalogEntity extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: CatalogEntityArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: CatalogEntityArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CatalogEntityArgs | CatalogEntityState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -90,17 +98,24 @@ export class CatalogEntity extends pulumi.CustomResource {
             resourceInputs["backstageId"] = state?.backstageId;
             resourceInputs["catalogId"] = state?.catalogId;
             resourceInputs["description"] = state?.description;
+            resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
             resourceInputs["properties"] = state?.properties;
         } else {
             const args = argsOrState as CatalogEntityArgs | undefined;
+            if (args?.catalogId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'catalogId'");
+            }
             resourceInputs["backstageId"] = args?.backstageId;
             resourceInputs["catalogId"] = args?.catalogId;
             resourceInputs["description"] = args?.description;
+            resourceInputs["externalId"] = args?.externalId;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["managedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CatalogEntity.__pulumiType, name, resourceInputs, opts);
@@ -120,6 +135,14 @@ export interface CatalogEntityState {
      */
     catalogId?: pulumi.Input<string | undefined>;
     description?: pulumi.Input<string | undefined>;
+    /**
+     * An external identifier for this catalog entity. Must be unique within the catalog.
+     */
+    externalId?: pulumi.Input<string | undefined>;
+    /**
+     * Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    managedBy?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
     /**
      * Default position of the item when displayed in a list.
@@ -142,8 +165,12 @@ export interface CatalogEntityArgs {
     /**
      * The ID of the parent catalog
      */
-    catalogId?: pulumi.Input<string | undefined>;
+    catalogId: pulumi.Input<string>;
     description?: pulumi.Input<string | undefined>;
+    /**
+     * An external identifier for this catalog entity. Must be unique within the catalog.
+     */
+    externalId?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
     /**
      * Default position of the item when displayed in a list.

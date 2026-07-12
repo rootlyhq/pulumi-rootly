@@ -86,6 +86,9 @@ export class IncidentRoleTask extends pulumi.CustomResource {
             resourceInputs["task"] = state?.task;
         } else {
             const args = argsOrState as IncidentRoleTaskArgs | undefined;
+            if (args?.incidentRoleId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'incidentRoleId'");
+            }
             if (args?.task === undefined && !opts.urn) {
                 throw new Error("Missing required property 'task'");
             }
@@ -126,7 +129,7 @@ export interface IncidentRoleTaskArgs {
      * The description of incident task
      */
     description?: pulumi.Input<string | undefined>;
-    incidentRoleId?: pulumi.Input<string | undefined>;
+    incidentRoleId: pulumi.Input<string>;
     /**
      * The priority of the incident task. Value must be one of `high`, `medium`, `low`.
      */

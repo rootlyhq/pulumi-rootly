@@ -51,6 +51,9 @@ func NewIncidentSubStatus(ctx *pulumi.Context,
 	if args.AssignedAt == nil {
 		return nil, errors.New("invalid value for required argument 'AssignedAt'")
 	}
+	if args.IncidentId == nil {
+		return nil, errors.New("invalid value for required argument 'IncidentId'")
+	}
 	if args.SubStatusId == nil {
 		return nil, errors.New("invalid value for required argument 'SubStatusId'")
 	}
@@ -97,9 +100,9 @@ func (IncidentSubStatusState) ElementType() reflect.Type {
 }
 
 type incidentSubStatusArgs struct {
-	AssignedAt       string  `pulumi:"assignedAt"`
-	AssignedByUserId *int    `pulumi:"assignedByUserId"`
-	IncidentId       *string `pulumi:"incidentId"`
+	AssignedAt       string `pulumi:"assignedAt"`
+	AssignedByUserId *int   `pulumi:"assignedByUserId"`
+	IncidentId       string `pulumi:"incidentId"`
 	// Note: To change an incident's sub-status, use the PATCH /incidents/:id endpoint and set the sub*status*id attribute. This endpoint is for modifying the timestamp of when an incident's sub-status was assigned.
 	SubStatusId string `pulumi:"subStatusId"`
 }
@@ -108,7 +111,7 @@ type incidentSubStatusArgs struct {
 type IncidentSubStatusArgs struct {
 	AssignedAt       pulumi.StringInput
 	AssignedByUserId pulumi.IntPtrInput
-	IncidentId       pulumi.StringPtrInput
+	IncidentId       pulumi.StringInput
 	// Note: To change an incident's sub-status, use the PATCH /incidents/:id endpoint and set the sub*status*id attribute. This endpoint is for modifying the timestamp of when an incident's sub-status was assigned.
 	SubStatusId pulumi.StringInput
 }

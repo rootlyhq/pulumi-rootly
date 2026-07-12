@@ -113,8 +113,6 @@ type causeArgs struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this cause.
 	Properties []CauseProperty `pulumi:"properties"`
-	// The slug of the cause
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a Cause resource.
@@ -127,8 +125,6 @@ type CauseArgs struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this cause.
 	Properties CausePropertyArrayInput
-	// The slug of the cause
-	Slug pulumi.StringPtrInput
 }
 
 func (CauseArgs) ElementType() reflect.Type {

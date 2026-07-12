@@ -54,6 +54,18 @@ export class AlertUrgency extends pulumi.CustomResource {
     }
 
     /**
+     * Unique ID of the alert urgency
+     */
+    declare public readonly alertUrgencyId: pulumi.Output<string>;
+    /**
+     * The color associated with this urgency level
+     */
+    declare public readonly color: pulumi.Output<string>;
+    /**
+     * Date of deletion
+     */
+    declare public readonly deletedAt: pulumi.Output<string>;
+    /**
      * The description of the alert urgency
      */
     declare public readonly description: pulumi.Output<string>;
@@ -65,6 +77,14 @@ export class AlertUrgency extends pulumi.CustomResource {
      * Position of the alert urgency
      */
     declare public readonly position: pulumi.Output<number>;
+    /**
+     * The ID of the team this urgency belongs to
+     */
+    declare public readonly teamId: pulumi.Output<number>;
+    /**
+     * The urgency level
+     */
+    declare public readonly urgency: pulumi.Output<string>;
 
     /**
      * Create a AlertUrgency resource with the given unique name, arguments, and options.
@@ -79,17 +99,27 @@ export class AlertUrgency extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertUrgencyState | undefined;
+            resourceInputs["alertUrgencyId"] = state?.alertUrgencyId;
+            resourceInputs["color"] = state?.color;
+            resourceInputs["deletedAt"] = state?.deletedAt;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
+            resourceInputs["teamId"] = state?.teamId;
+            resourceInputs["urgency"] = state?.urgency;
         } else {
             const args = argsOrState as AlertUrgencyArgs | undefined;
             if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
+            resourceInputs["alertUrgencyId"] = args?.alertUrgencyId;
+            resourceInputs["color"] = args?.color;
+            resourceInputs["deletedAt"] = args?.deletedAt;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
+            resourceInputs["teamId"] = args?.teamId;
+            resourceInputs["urgency"] = args?.urgency;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlertUrgency.__pulumiType, name, resourceInputs, opts);
@@ -100,6 +130,18 @@ export class AlertUrgency extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlertUrgency resources.
  */
 export interface AlertUrgencyState {
+    /**
+     * Unique ID of the alert urgency
+     */
+    alertUrgencyId?: pulumi.Input<string | undefined>;
+    /**
+     * The color associated with this urgency level
+     */
+    color?: pulumi.Input<string | undefined>;
+    /**
+     * Date of deletion
+     */
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the alert urgency
      */
@@ -112,12 +154,32 @@ export interface AlertUrgencyState {
      * Position of the alert urgency
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * The ID of the team this urgency belongs to
+     */
+    teamId?: pulumi.Input<number | undefined>;
+    /**
+     * The urgency level
+     */
+    urgency?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a AlertUrgency resource.
  */
 export interface AlertUrgencyArgs {
+    /**
+     * Unique ID of the alert urgency
+     */
+    alertUrgencyId?: pulumi.Input<string | undefined>;
+    /**
+     * The color associated with this urgency level
+     */
+    color?: pulumi.Input<string | undefined>;
+    /**
+     * Date of deletion
+     */
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the alert urgency
      */
@@ -130,4 +192,12 @@ export interface AlertUrgencyArgs {
      * Position of the alert urgency
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * The ID of the team this urgency belongs to
+     */
+    teamId?: pulumi.Input<number | undefined>;
+    /**
+     * The urgency level
+     */
+    urgency?: pulumi.Input<string | undefined>;
 }

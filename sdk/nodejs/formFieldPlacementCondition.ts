@@ -100,6 +100,9 @@ export class FormFieldPlacementCondition extends pulumi.CustomResource {
             if (args?.formFieldId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'formFieldId'");
             }
+            if (args?.formFieldPlacementId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'formFieldPlacementId'");
+            }
             if (args?.values === undefined && !opts.urn) {
                 throw new Error("Missing required property 'values'");
             }
@@ -164,7 +167,7 @@ export interface FormFieldPlacementConditionArgs {
     /**
      * The form field placement this condition applies.
      */
-    formFieldPlacementId?: pulumi.Input<string | undefined>;
+    formFieldPlacementId: pulumi.Input<string>;
     /**
      * The condition position.
      */

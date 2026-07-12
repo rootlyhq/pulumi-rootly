@@ -73,6 +73,9 @@ export class RetrospectiveProcessGroupStep extends pulumi.CustomResource {
             resourceInputs["retrospectiveStepId"] = state?.retrospectiveStepId;
         } else {
             const args = argsOrState as RetrospectiveProcessGroupStepArgs | undefined;
+            if (args?.retrospectiveProcessGroupId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'retrospectiveProcessGroupId'");
+            }
             if (args?.retrospectiveStepId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'retrospectiveStepId'");
             }
@@ -99,6 +102,6 @@ export interface RetrospectiveProcessGroupStepState {
  */
 export interface RetrospectiveProcessGroupStepArgs {
     position?: pulumi.Input<number | undefined>;
-    retrospectiveProcessGroupId?: pulumi.Input<string | undefined>;
+    retrospectiveProcessGroupId: pulumi.Input<string>;
     retrospectiveStepId: pulumi.Input<string>;
 }

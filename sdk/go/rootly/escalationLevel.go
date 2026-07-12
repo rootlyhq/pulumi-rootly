@@ -57,6 +57,9 @@ func NewEscalationLevel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.EscalationPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'EscalationPolicyId'")
+	}
 	if args.NotificationTargetParams == nil {
 		return nil, errors.New("invalid value for required argument 'NotificationTargetParams'")
 	}
@@ -127,7 +130,7 @@ type escalationLevelArgs struct {
 	// Delay before notifying targets in the next Escalation Level.
 	Delay *int `pulumi:"delay"`
 	// The ID of the escalation policy
-	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
+	EscalationPolicyId string `pulumi:"escalationPolicyId"`
 	// The ID of the dynamic escalation policy path the level will belong to. If nothing is specified it will add the level to your default path.
 	EscalationPolicyPathId *string `pulumi:"escalationPolicyPathId"`
 	// Escalation level's notification targets
@@ -145,7 +148,7 @@ type EscalationLevelArgs struct {
 	// Delay before notifying targets in the next Escalation Level.
 	Delay pulumi.IntPtrInput
 	// The ID of the escalation policy
-	EscalationPolicyId pulumi.StringPtrInput
+	EscalationPolicyId pulumi.StringInput
 	// The ID of the dynamic escalation policy path the level will belong to. If nothing is specified it will add the level to your default path.
 	EscalationPolicyPathId pulumi.StringPtrInput
 	// Escalation level's notification targets

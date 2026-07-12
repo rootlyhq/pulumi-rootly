@@ -60,6 +60,9 @@ func NewFormFieldPlacement(ctx *pulumi.Context,
 	if args.Form == nil {
 		return nil, errors.New("invalid value for required argument 'Form'")
 	}
+	if args.FormFieldId == nil {
+		return nil, errors.New("invalid value for required argument 'FormFieldId'")
+	}
 	if args.FormSetId == nil {
 		return nil, errors.New("invalid value for required argument 'FormSetId'")
 	}
@@ -131,7 +134,7 @@ type formFieldPlacementArgs struct {
 	// The form this field is placed on.
 	Form string `pulumi:"form"`
 	// The form field that is placed.
-	FormFieldId *string `pulumi:"formFieldId"`
+	FormFieldId string `pulumi:"formFieldId"`
 	// The form set this field is placed in.
 	FormSetId string `pulumi:"formSetId"`
 	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
@@ -151,7 +154,7 @@ type FormFieldPlacementArgs struct {
 	// The form this field is placed on.
 	Form pulumi.StringInput
 	// The form field that is placed.
-	FormFieldId pulumi.StringPtrInput
+	FormFieldId pulumi.StringInput
 	// The form set this field is placed in.
 	FormSetId pulumi.StringInput
 	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false

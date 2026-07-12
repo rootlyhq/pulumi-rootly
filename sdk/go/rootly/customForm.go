@@ -107,8 +107,6 @@ type customFormArgs struct {
 	Enabled     *bool   `pulumi:"enabled"`
 	// The name of the custom form.
 	Name *string `pulumi:"name"`
-	// The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a CustomForm resource.
@@ -119,8 +117,6 @@ type CustomFormArgs struct {
 	Enabled     pulumi.BoolPtrInput
 	// The name of the custom form.
 	Name pulumi.StringPtrInput
-	// The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
-	Slug pulumi.StringPtrInput
 }
 
 func (CustomFormArgs) ElementType() reflect.Type {

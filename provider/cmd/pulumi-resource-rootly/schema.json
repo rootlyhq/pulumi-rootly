@@ -2028,6 +2028,25 @@
                 }
             }
         },
+        "rootly:index/WebhooksEndpointCustomHeader:WebhooksEndpointCustomHeader": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name",
+                        "value"
+                    ]
+                }
+            }
+        },
         "rootly:index/WorkflowActionItemTriggerParams:WorkflowActionItemTriggerParams": {
             "properties": {
                 "incidentActionItemCondition": {
@@ -2113,6 +2132,14 @@
                     "type": "string",
                     "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
+                "incidentConditionLabel": {
+                    "type": "string",
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                },
+                "incidentConditionLabelUseRegexp": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
                 "incidentConditionMitigatedAt": {
                     "type": "string",
                     "description": "Value must be one of `SET`, `UNSET`.\n"
@@ -2164,6 +2191,12 @@
                     },
                     "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`test`\" pulumi-lang-dotnet=\"`Test`\" pulumi-lang-go=\"`test`\" pulumi-lang-python=\"`test`\" pulumi-lang-yaml=\"`test`\" pulumi-lang-java=\"`test`\"\u003e`test`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`testSub`\" pulumi-lang-dotnet=\"`TestSub`\" pulumi-lang-go=\"`testSub`\" pulumi-lang-python=\"`test_sub`\" pulumi-lang-yaml=\"`testSub`\" pulumi-lang-java=\"`testSub`\"\u003e`testSub`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`example`\" pulumi-lang-dotnet=\"`Example`\" pulumi-lang-go=\"`example`\" pulumi-lang-python=\"`example`\" pulumi-lang-yaml=\"`example`\" pulumi-lang-java=\"`example`\"\u003e`example`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`exampleSub`\" pulumi-lang-dotnet=\"`ExampleSub`\" pulumi-lang-go=\"`exampleSub`\" pulumi-lang-python=\"`example_sub`\" pulumi-lang-yaml=\"`exampleSub`\" pulumi-lang-java=\"`exampleSub`\"\u003e`exampleSub`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`normal`\" pulumi-lang-dotnet=\"`Normal`\" pulumi-lang-go=\"`normal`\" pulumi-lang-python=\"`normal`\" pulumi-lang-yaml=\"`normal`\" pulumi-lang-java=\"`normal`\"\u003e`normal`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`normalSub`\" pulumi-lang-dotnet=\"`NormalSub`\" pulumi-lang-go=\"`normalSub`\" pulumi-lang-python=\"`normal_sub`\" pulumi-lang-yaml=\"`normalSub`\" pulumi-lang-java=\"`normalSub`\"\u003e`normalSub`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backfilled`\" pulumi-lang-dotnet=\"`Backfilled`\" pulumi-lang-go=\"`backfilled`\" pulumi-lang-python=\"`backfilled`\" pulumi-lang-yaml=\"`backfilled`\" pulumi-lang-java=\"`backfilled`\"\u003e`backfilled`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`scheduled`\" pulumi-lang-dotnet=\"`Scheduled`\" pulumi-lang-go=\"`scheduled`\" pulumi-lang-python=\"`scheduled`\" pulumi-lang-yaml=\"`scheduled`\" pulumi-lang-java=\"`scheduled`\"\u003e`scheduled`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`scheduledSub`\" pulumi-lang-dotnet=\"`ScheduledSub`\" pulumi-lang-go=\"`scheduledSub`\" pulumi-lang-python=\"`scheduled_sub`\" pulumi-lang-yaml=\"`scheduledSub`\" pulumi-lang-java=\"`scheduledSub`\"\u003e`scheduledSub`\u003c/span\u003e.\n"
                 },
+                "incidentLabels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "incidentStatuses": {
                     "type": "array",
                     "items": {
@@ -2199,6 +2232,7 @@
                         "incidentActionItemStatuses",
                         "incidentConditionAcknowledgedAt",
                         "incidentConditionDetectedAt",
+                        "incidentConditionLabelUseRegexp",
                         "incidentConditionMitigatedAt",
                         "incidentConditionResolvedAt",
                         "incidentConditionStartedAt",
@@ -2206,6 +2240,7 @@
                         "incidentConditionalInactivity",
                         "incidentInactivityDuration",
                         "incidentKinds",
+                        "incidentLabels",
                         "incidentStatuses",
                         "incidentVisibilities",
                         "triggers"
@@ -2430,6 +2465,14 @@
                     "type": "string",
                     "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
+                "incidentConditionLabel": {
+                    "type": "string",
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                },
+                "incidentConditionLabelUseRegexp": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
                 "incidentConditionMitigatedAt": {
                     "type": "string",
                     "description": "Value must be one of `SET`, `UNSET`.\n"
@@ -2481,6 +2524,12 @@
                     },
                     "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`test`\" pulumi-lang-dotnet=\"`Test`\" pulumi-lang-go=\"`test`\" pulumi-lang-python=\"`test`\" pulumi-lang-yaml=\"`test`\" pulumi-lang-java=\"`test`\"\u003e`test`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`testSub`\" pulumi-lang-dotnet=\"`TestSub`\" pulumi-lang-go=\"`testSub`\" pulumi-lang-python=\"`test_sub`\" pulumi-lang-yaml=\"`testSub`\" pulumi-lang-java=\"`testSub`\"\u003e`testSub`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`example`\" pulumi-lang-dotnet=\"`Example`\" pulumi-lang-go=\"`example`\" pulumi-lang-python=\"`example`\" pulumi-lang-yaml=\"`example`\" pulumi-lang-java=\"`example`\"\u003e`example`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`exampleSub`\" pulumi-lang-dotnet=\"`ExampleSub`\" pulumi-lang-go=\"`exampleSub`\" pulumi-lang-python=\"`example_sub`\" pulumi-lang-yaml=\"`exampleSub`\" pulumi-lang-java=\"`exampleSub`\"\u003e`exampleSub`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`normal`\" pulumi-lang-dotnet=\"`Normal`\" pulumi-lang-go=\"`normal`\" pulumi-lang-python=\"`normal`\" pulumi-lang-yaml=\"`normal`\" pulumi-lang-java=\"`normal`\"\u003e`normal`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`normalSub`\" pulumi-lang-dotnet=\"`NormalSub`\" pulumi-lang-go=\"`normalSub`\" pulumi-lang-python=\"`normal_sub`\" pulumi-lang-yaml=\"`normalSub`\" pulumi-lang-java=\"`normalSub`\"\u003e`normalSub`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backfilled`\" pulumi-lang-dotnet=\"`Backfilled`\" pulumi-lang-go=\"`backfilled`\" pulumi-lang-python=\"`backfilled`\" pulumi-lang-yaml=\"`backfilled`\" pulumi-lang-java=\"`backfilled`\"\u003e`backfilled`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`scheduled`\" pulumi-lang-dotnet=\"`Scheduled`\" pulumi-lang-go=\"`scheduled`\" pulumi-lang-python=\"`scheduled`\" pulumi-lang-yaml=\"`scheduled`\" pulumi-lang-java=\"`scheduled`\"\u003e`scheduled`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`scheduledSub`\" pulumi-lang-dotnet=\"`ScheduledSub`\" pulumi-lang-go=\"`scheduledSub`\" pulumi-lang-python=\"`scheduled_sub`\" pulumi-lang-yaml=\"`scheduledSub`\" pulumi-lang-java=\"`scheduledSub`\"\u003e`scheduledSub`\u003c/span\u003e.\n"
                 },
+                "incidentLabels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "incidentPostMortemConditionCause": {
                     "type": "string",
                     "description": "[DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
@@ -2507,7 +2556,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Actions that trigger the workflow. One of custom*fields.\\n\\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel\n"
+                    "description": "Actions that trigger the workflow. One of custom*fields.\\n\\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created\n"
                 }
             },
             "type": "object",
@@ -2516,6 +2565,7 @@
                     "requiredOutputs": [
                         "incidentConditionAcknowledgedAt",
                         "incidentConditionDetectedAt",
+                        "incidentConditionLabelUseRegexp",
                         "incidentConditionMitigatedAt",
                         "incidentConditionResolvedAt",
                         "incidentConditionStartedAt",
@@ -2523,6 +2573,7 @@
                         "incidentConditionalInactivity",
                         "incidentInactivityDuration",
                         "incidentKinds",
+                        "incidentLabels",
                         "incidentStatuses",
                         "incidentVisibilities",
                         "triggers"
@@ -2572,6 +2623,14 @@
                     "type": "string",
                     "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
                 },
+                "incidentConditionLabel": {
+                    "type": "string",
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                },
+                "incidentConditionLabelUseRegexp": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
                 "incidentConditionMitigatedAt": {
                     "type": "string",
                     "description": "Value must be one of `SET`, `UNSET`.\n"
@@ -2622,6 +2681,12 @@
                         "type": "string"
                     },
                     "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`test`\" pulumi-lang-dotnet=\"`Test`\" pulumi-lang-go=\"`test`\" pulumi-lang-python=\"`test`\" pulumi-lang-yaml=\"`test`\" pulumi-lang-java=\"`test`\"\u003e`test`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`testSub`\" pulumi-lang-dotnet=\"`TestSub`\" pulumi-lang-go=\"`testSub`\" pulumi-lang-python=\"`test_sub`\" pulumi-lang-yaml=\"`testSub`\" pulumi-lang-java=\"`testSub`\"\u003e`testSub`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`example`\" pulumi-lang-dotnet=\"`Example`\" pulumi-lang-go=\"`example`\" pulumi-lang-python=\"`example`\" pulumi-lang-yaml=\"`example`\" pulumi-lang-java=\"`example`\"\u003e`example`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`exampleSub`\" pulumi-lang-dotnet=\"`ExampleSub`\" pulumi-lang-go=\"`exampleSub`\" pulumi-lang-python=\"`example_sub`\" pulumi-lang-yaml=\"`exampleSub`\" pulumi-lang-java=\"`exampleSub`\"\u003e`exampleSub`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`normal`\" pulumi-lang-dotnet=\"`Normal`\" pulumi-lang-go=\"`normal`\" pulumi-lang-python=\"`normal`\" pulumi-lang-yaml=\"`normal`\" pulumi-lang-java=\"`normal`\"\u003e`normal`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`normalSub`\" pulumi-lang-dotnet=\"`NormalSub`\" pulumi-lang-go=\"`normalSub`\" pulumi-lang-python=\"`normal_sub`\" pulumi-lang-yaml=\"`normalSub`\" pulumi-lang-java=\"`normalSub`\"\u003e`normalSub`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backfilled`\" pulumi-lang-dotnet=\"`Backfilled`\" pulumi-lang-go=\"`backfilled`\" pulumi-lang-python=\"`backfilled`\" pulumi-lang-yaml=\"`backfilled`\" pulumi-lang-java=\"`backfilled`\"\u003e`backfilled`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`scheduled`\" pulumi-lang-dotnet=\"`Scheduled`\" pulumi-lang-go=\"`scheduled`\" pulumi-lang-python=\"`scheduled`\" pulumi-lang-yaml=\"`scheduled`\" pulumi-lang-java=\"`scheduled`\"\u003e`scheduled`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`scheduledSub`\" pulumi-lang-dotnet=\"`ScheduledSub`\" pulumi-lang-go=\"`scheduledSub`\" pulumi-lang-python=\"`scheduled_sub`\" pulumi-lang-yaml=\"`scheduledSub`\" pulumi-lang-java=\"`scheduledSub`\"\u003e`scheduledSub`\u003c/span\u003e.\n"
+                },
+                "incidentLabels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "incidentPostMortemCondition": {
                     "type": "string",
@@ -2673,6 +2738,7 @@
                     "requiredOutputs": [
                         "incidentConditionAcknowledgedAt",
                         "incidentConditionDetectedAt",
+                        "incidentConditionLabelUseRegexp",
                         "incidentConditionMitigatedAt",
                         "incidentConditionResolvedAt",
                         "incidentConditionStartedAt",
@@ -2680,6 +2746,7 @@
                         "incidentConditionalInactivity",
                         "incidentInactivityDuration",
                         "incidentKinds",
+                        "incidentLabels",
                         "incidentPostMortemStatuses",
                         "incidentStatuses",
                         "incidentVisibilities",
@@ -3057,6 +3124,38 @@
                 "name"
             ]
         },
+        "rootly:index/WorkflowTaskArchiveGoogleChatSpacesTaskParams:WorkflowTaskArchiveGoogleChatSpacesTaskParams": {
+            "properties": {
+                "spaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace:WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace"
+                    }
+                },
+                "taskType": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "spaces"
+            ]
+        },
+        "rootly:index/WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace:WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "rootly:index/WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParams:WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParams": {
             "properties": {
                 "channels": {
@@ -3345,6 +3444,28 @@
                 "phoneNumbers"
             ]
         },
+        "rootly:index/WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams:WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams": {
+            "properties": {
+                "audience": {
+                    "type": "string",
+                    "description": "Target audience resource name (e.g. audiences/default). Leave blank to make private.\n"
+                },
+                "space": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "taskType": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "space"
+            ]
+        },
         "rootly:index/WorkflowTaskChangeSlackChannelPrivacyTaskParams:WorkflowTaskChangeSlackChannelPrivacyTaskParams": {
             "properties": {
                 "channel": {
@@ -3364,6 +3485,7 @@
             },
             "type": "object",
             "required": [
+                "channel",
                 "privacy"
             ]
         },
@@ -3661,6 +3783,18 @@
                     "type": "string",
                     "description": "The page content\n"
                 },
+                "createAsLiveDoc": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
+                "includeOverview": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
+                "includeTimeline": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
                 "integration": {
                     "type": "object",
                     "additionalProperties": {
@@ -3789,6 +3923,10 @@
                 "body": {
                     "type": "string",
                     "description": "The issue body\n"
+                },
+                "customFieldsMapping": {
+                    "type": "string",
+                    "description": "Custom field mappings. Can contain liquid markup and need to be valid JSON\n"
                 },
                 "issueType": {
                     "type": "object",
@@ -4029,6 +4167,27 @@
                 "name"
             ]
         },
+        "rootly:index/WorkflowTaskCreateGoogleChatSpaceTaskParams:WorkflowTaskCreateGoogleChatSpaceTaskParams": {
+            "properties": {
+                "audience": {
+                    "type": "string",
+                    "description": "Target audience resource name (e.g. audiences/default). Leave blank for private space.\n"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "taskType": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "title"
+            ]
+        },
         "rootly:index/WorkflowTaskCreateGoogleDocsPageTaskParams:WorkflowTaskCreateGoogleDocsPageTaskParams": {
             "properties": {
                 "content": {
@@ -4041,6 +4200,14 @@
                         "type": "string"
                     },
                     "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "includeOverview": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
+                "includeTimeline": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
                 },
                 "markPostMortemAsPublished": {
                     "type": "boolean",
@@ -4464,7 +4631,7 @@
                 },
                 "priority": {
                     "type": "string",
-                    "description": "Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\"\u003e`auto`\u003c/span\u003e.\n"
+                    "description": "Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\"\u003e`auto`\u003c/span\u003e.\n"
                 },
                 "schedules": {
                     "type": "array",
@@ -4579,6 +4746,10 @@
                     "type": "string",
                     "description": "The assigned user's email\n"
                 },
+                "customFieldsMapping": {
+                    "type": "string",
+                    "description": "Custom field mappings. Can contain liquid markup and need to be valid JSON\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The issue description\n"
@@ -4652,6 +4823,10 @@
                 "assignUserEmail": {
                     "type": "string",
                     "description": "The assigned user's email\n"
+                },
+                "customFieldsMapping": {
+                    "type": "string",
+                    "description": "Custom field mappings. Can contain liquid markup and need to be valid JSON\n"
                 },
                 "description": {
                     "type": "string",
@@ -4738,6 +4913,7 @@
             },
             "type": "object",
             "required": [
+                "team",
                 "title"
             ]
         },
@@ -5816,6 +5992,10 @@
                     "type": "string",
                     "description": "The email to use if creating as email\n"
                 },
+                "enableZoomBotAutoJoin": {
+                    "type": "boolean",
+                    "description": "Allow the Rootly bot to start recording without waiting for host approval. Value must be one of true or false\n"
+                },
                 "password": {
                     "type": "string",
                     "description": "The meeting password\n"
@@ -6227,6 +6407,90 @@
                 "name"
             ]
         },
+        "rootly:index/WorkflowTaskInviteToGoogleChatSpaceTaskParams:WorkflowTaskInviteToGoogleChatSpaceTaskParams": {
+            "properties": {
+                "emails": {
+                    "type": "string",
+                    "description": "Comma separated list of emails to invite\n"
+                },
+                "space": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "taskType": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "emails",
+                "space"
+            ]
+        },
+        "rootly:index/WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams:WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams": {
+            "properties": {
+                "channel": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "escalationPolicyTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "groupTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "scheduleTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "serviceTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "taskType": {
+                    "type": "string"
+                },
+                "team": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "userTarget": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "channel",
+                "team"
+            ]
+        },
         "rootly:index/WorkflowTaskInviteToMicrosoftTeamsChannelTaskParams:WorkflowTaskInviteToMicrosoftTeamsChannelTaskParams": {
             "properties": {
                 "channel": {
@@ -6533,7 +6797,7 @@
                 },
                 "priority": {
                     "type": "string",
-                    "description": "Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\"\u003e`auto`\u003c/span\u003e.\n"
+                    "description": "Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\"\u003e`auto`\u003c/span\u003e.\n"
                 },
                 "taskType": {
                     "type": "string"
@@ -6737,6 +7001,10 @@
                 "alertUrgencyId": {
                     "type": "string",
                     "description": "Alert urgency ID\n"
+                },
+                "createNewAlert": {
+                    "type": "boolean",
+                    "description": "When true, always create a new alert instead of re-paging the alert that triggered the workflow. Value must be one of true or false\n"
                 },
                 "description": {
                     "type": "string",
@@ -6990,6 +7258,28 @@
                 "value"
             ]
         },
+        "rootly:index/WorkflowTaskRenameGoogleChatSpaceTaskParams:WorkflowTaskRenameGoogleChatSpaceTaskParams": {
+            "properties": {
+                "space": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "taskType": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "space",
+                "title"
+            ]
+        },
         "rootly:index/WorkflowTaskRenameMicrosoftTeamsChannelTaskParams:WorkflowTaskRenameMicrosoftTeamsChannelTaskParams": {
             "properties": {
                 "channel": {
@@ -7191,11 +7481,93 @@
                 "tos"
             ]
         },
+        "rootly:index/WorkflowTaskSendGoogleChatAttachmentsTaskParams:WorkflowTaskSendGoogleChatAttachmentsTaskParams": {
+            "properties": {
+                "attachments": {
+                    "type": "string"
+                },
+                "spaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace:WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace"
+                    }
+                },
+                "taskType": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "attachments",
+                "spaces"
+            ]
+        },
+        "rootly:index/WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace:WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "rootly:index/WorkflowTaskSendGoogleChatMessageTaskParams:WorkflowTaskSendGoogleChatMessageTaskParams": {
+            "properties": {
+                "spaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskSendGoogleChatMessageTaskParamsSpace:WorkflowTaskSendGoogleChatMessageTaskParamsSpace"
+                    }
+                },
+                "taskType": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                },
+                "threadKey": {
+                    "type": "string",
+                    "description": "Thread key to reply within a thread. Messages with the same thread key are grouped together\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "spaces",
+                "text"
+            ]
+        },
+        "rootly:index/WorkflowTaskSendGoogleChatMessageTaskParamsSpace:WorkflowTaskSendGoogleChatMessageTaskParamsSpace": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ]
+        },
         "rootly:index/WorkflowTaskSendMicrosoftTeamsBlocksTaskParams:WorkflowTaskSendMicrosoftTeamsBlocksTaskParams": {
             "properties": {
                 "attachments": {
                     "type": "string",
                     "description": "Support liquid markup. Needs to be a valid JSON string after liquid is parsed\n"
+                },
+                "channels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel:WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel"
+                    }
                 },
                 "taskType": {
                     "type": "string"
@@ -7204,6 +7576,21 @@
             "type": "object",
             "required": [
                 "attachments"
+            ]
+        },
+        "rootly:index/WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel:WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
             ]
         },
         "rootly:index/WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams:WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams": {
@@ -8100,6 +8487,14 @@
                     "type": "string",
                     "description": "The Confluence page ID\n"
                 },
+                "includeOverview": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
+                "includeTimeline": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
                 "integration": {
                     "type": "object",
                     "additionalProperties": {
@@ -8208,6 +8603,10 @@
                         "type": "string"
                     },
                     "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "customFieldsMapping": {
+                    "type": "string",
+                    "description": "Custom field mappings. Can contain liquid markup and need to be valid JSON\n"
                 },
                 "issueId": {
                     "type": "string",
@@ -8404,6 +8803,29 @@
                 "name"
             ]
         },
+        "rootly:index/WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams:WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The space description. Supports liquid markup\n"
+                },
+                "space": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                },
+                "taskType": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "space"
+            ]
+        },
         "rootly:index/WorkflowTaskUpdateGoogleDocsPageTaskParams:WorkflowTaskUpdateGoogleDocsPageTaskParams": {
             "properties": {
                 "content": {
@@ -8413,6 +8835,14 @@
                 "fileId": {
                     "type": "string",
                     "description": "The Google Doc file ID\n"
+                },
+                "includeOverview": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
+                },
+                "includeTimeline": {
+                    "type": "boolean",
+                    "description": "Value must be one of true or false\n"
                 },
                 "postMortemTemplateId": {
                     "type": "string",
@@ -8644,6 +9074,10 @@
                 "assignUserEmail": {
                     "type": "string",
                     "description": "The assigned user's email\n"
+                },
+                "customFieldsMapping": {
+                    "type": "string",
+                    "description": "Custom field mappings. Can contain liquid markup and need to be valid JSON\n"
                 },
                 "description": {
                     "type": "string",
@@ -9860,10 +10294,6 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the alert field\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the alert field\n"
                 }
             },
             "stateInputs": {
@@ -10302,6 +10732,18 @@
         "rootly:index/alertUrgency:AlertUrgency": {
             "description": "## Example Usage\n\n```shell\nresource \"rootly_alert_urgency\" \"critical\" {\n  name        = \"Critical\"\n  description = \"Requires immediate attention — pages on-call\"\n}\n\nresource \"rootly_alert_urgency\" \"warning\" {\n  name        = \"Warning\"\n  description = \"Should be investigated within 30 minutes\"\n}\n\nresource \"rootly_alert_urgency\" \"informational\" {\n  name        = \"Informational\"\n  description = \"No immediate action required\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.AlertUrgency \" pulumi-lang-dotnet=\"\nrootly.AlertUrgency \" pulumi-lang-go=\"\nAlertUrgency \" pulumi-lang-python=\"\nAlertUrgency \" pulumi-lang-yaml=\"\nrootly.AlertUrgency \" pulumi-lang-java=\"\nrootly.AlertUrgency \"\u003e\nrootly.AlertUrgency \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/alertUrgency:AlertUrgency primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
+                "alertUrgencyId": {
+                    "type": "string",
+                    "description": "Unique ID of the alert urgency\n"
+                },
+                "color": {
+                    "type": "string",
+                    "description": "The color associated with this urgency level\n"
+                },
+                "deletedAt": {
+                    "type": "string",
+                    "description": "Date of deletion\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the alert urgency\n"
@@ -10313,14 +10755,39 @@
                 "position": {
                     "type": "integer",
                     "description": "Position of the alert urgency\n"
+                },
+                "teamId": {
+                    "type": "integer",
+                    "description": "The ID of the team this urgency belongs to\n"
+                },
+                "urgency": {
+                    "type": "string",
+                    "description": "The urgency level\n"
                 }
             },
             "required": [
+                "color",
+                "deletedAt",
                 "description",
+                "alertUrgencyId",
                 "name",
-                "position"
+                "position",
+                "teamId",
+                "urgency"
             ],
             "inputProperties": {
+                "alertUrgencyId": {
+                    "type": "string",
+                    "description": "Unique ID of the alert urgency\n"
+                },
+                "color": {
+                    "type": "string",
+                    "description": "The color associated with this urgency level\n"
+                },
+                "deletedAt": {
+                    "type": "string",
+                    "description": "Date of deletion\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the alert urgency\n"
@@ -10332,6 +10799,14 @@
                 "position": {
                     "type": "integer",
                     "description": "Position of the alert urgency\n"
+                },
+                "teamId": {
+                    "type": "integer",
+                    "description": "The ID of the team this urgency belongs to\n"
+                },
+                "urgency": {
+                    "type": "string",
+                    "description": "The urgency level\n"
                 }
             },
             "requiredInputs": [
@@ -10340,6 +10815,18 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AlertUrgency resources.\n",
                 "properties": {
+                    "alertUrgencyId": {
+                        "type": "string",
+                        "description": "Unique ID of the alert urgency\n"
+                    },
+                    "color": {
+                        "type": "string",
+                        "description": "The color associated with this urgency level\n"
+                    },
+                    "deletedAt": {
+                        "type": "string",
+                        "description": "Date of deletion\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "The description of the alert urgency\n"
@@ -10351,6 +10838,14 @@
                     "position": {
                         "type": "integer",
                         "description": "Position of the alert urgency\n"
+                    },
+                    "teamId": {
+                        "type": "integer",
+                        "description": "The ID of the team this urgency belongs to\n"
+                    },
+                    "urgency": {
+                        "type": "string",
+                        "description": "The urgency level\n"
                     }
                 },
                 "type": "object"
@@ -10839,9 +11334,17 @@
                 "description": {
                     "type": "string"
                 },
+                "externalId": {
+                    "type": "string",
+                    "description": "An external identifier for this catalog. Must be unique within the team.\n"
+                },
                 "icon": {
                     "type": "string",
                     "description": "Value must be one of `globe-alt`, `server-stack`, \u003cspan pulumi-lang-nodejs=\"`users`\" pulumi-lang-dotnet=\"`Users`\" pulumi-lang-go=\"`users`\" pulumi-lang-python=\"`users`\" pulumi-lang-yaml=\"`users`\" pulumi-lang-java=\"`users`\"\u003e`users`\u003c/span\u003e, `user-group`, `chart-bar`, \u003cspan pulumi-lang-nodejs=\"`shapes`\" pulumi-lang-dotnet=\"`Shapes`\" pulumi-lang-go=\"`shapes`\" pulumi-lang-python=\"`shapes`\" pulumi-lang-yaml=\"`shapes`\" pulumi-lang-java=\"`shapes`\"\u003e`shapes`\u003c/span\u003e, `light-bulb`, `cursor-arrow-ripple`.\n"
+                },
+                "managedBy": {
+                    "type": "string",
+                    "description": "Which source manages this resource (read-only).. Value must be one of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`adminWeb`\" pulumi-lang-dotnet=\"`AdminWeb`\" pulumi-lang-go=\"`adminWeb`\" pulumi-lang-python=\"`admin_web`\" pulumi-lang-yaml=\"`adminWeb`\" pulumi-lang-java=\"`adminWeb`\"\u003e`adminWeb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`api`\" pulumi-lang-dotnet=\"`Api`\" pulumi-lang-go=\"`api`\" pulumi-lang-python=\"`api`\" pulumi-lang-yaml=\"`api`\" pulumi-lang-java=\"`api`\"\u003e`api`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`terraform`\" pulumi-lang-dotnet=\"`Terraform`\" pulumi-lang-go=\"`terraform`\" pulumi-lang-python=\"`terraform`\" pulumi-lang-yaml=\"`terraform`\" pulumi-lang-java=\"`terraform`\"\u003e`terraform`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pulumi`\" pulumi-lang-dotnet=\"`Pulumi`\" pulumi-lang-go=\"`pulumi`\" pulumi-lang-python=\"`pulumi`\" pulumi-lang-yaml=\"`pulumi`\" pulumi-lang-java=\"`pulumi`\"\u003e`pulumi`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backstage`\" pulumi-lang-dotnet=\"`Backstage`\" pulumi-lang-go=\"`backstage`\" pulumi-lang-python=\"`backstage`\" pulumi-lang-yaml=\"`backstage`\" pulumi-lang-java=\"`backstage`\"\u003e`backstage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catalogSync`\" pulumi-lang-dotnet=\"`CatalogSync`\" pulumi-lang-go=\"`catalogSync`\" pulumi-lang-python=\"`catalog_sync`\" pulumi-lang-yaml=\"`catalogSync`\" pulumi-lang-java=\"`catalogSync`\"\u003e`catalogSync`\u003c/span\u003e.\n"
                 },
                 "name": {
                     "type": "string"
@@ -10853,12 +11356,18 @@
             },
             "required": [
                 "description",
+                "externalId",
+                "managedBy",
                 "name",
                 "position"
             ],
             "inputProperties": {
                 "description": {
                     "type": "string"
+                },
+                "externalId": {
+                    "type": "string",
+                    "description": "An external identifier for this catalog. Must be unique within the team.\n"
                 },
                 "icon": {
                     "type": "string",
@@ -10878,9 +11387,17 @@
                     "description": {
                         "type": "string"
                     },
+                    "externalId": {
+                        "type": "string",
+                        "description": "An external identifier for this catalog. Must be unique within the team.\n"
+                    },
                     "icon": {
                         "type": "string",
                         "description": "Value must be one of `globe-alt`, `server-stack`, \u003cspan pulumi-lang-nodejs=\"`users`\" pulumi-lang-dotnet=\"`Users`\" pulumi-lang-go=\"`users`\" pulumi-lang-python=\"`users`\" pulumi-lang-yaml=\"`users`\" pulumi-lang-java=\"`users`\"\u003e`users`\u003c/span\u003e, `user-group`, `chart-bar`, \u003cspan pulumi-lang-nodejs=\"`shapes`\" pulumi-lang-dotnet=\"`Shapes`\" pulumi-lang-go=\"`shapes`\" pulumi-lang-python=\"`shapes`\" pulumi-lang-yaml=\"`shapes`\" pulumi-lang-java=\"`shapes`\"\u003e`shapes`\u003c/span\u003e, `light-bulb`, `cursor-arrow-ripple`.\n"
+                    },
+                    "managedBy": {
+                        "type": "string",
+                        "description": "Which source manages this resource (read-only).. Value must be one of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`adminWeb`\" pulumi-lang-dotnet=\"`AdminWeb`\" pulumi-lang-go=\"`adminWeb`\" pulumi-lang-python=\"`admin_web`\" pulumi-lang-yaml=\"`adminWeb`\" pulumi-lang-java=\"`adminWeb`\"\u003e`adminWeb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`api`\" pulumi-lang-dotnet=\"`Api`\" pulumi-lang-go=\"`api`\" pulumi-lang-python=\"`api`\" pulumi-lang-yaml=\"`api`\" pulumi-lang-java=\"`api`\"\u003e`api`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`terraform`\" pulumi-lang-dotnet=\"`Terraform`\" pulumi-lang-go=\"`terraform`\" pulumi-lang-python=\"`terraform`\" pulumi-lang-yaml=\"`terraform`\" pulumi-lang-java=\"`terraform`\"\u003e`terraform`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pulumi`\" pulumi-lang-dotnet=\"`Pulumi`\" pulumi-lang-go=\"`pulumi`\" pulumi-lang-python=\"`pulumi`\" pulumi-lang-yaml=\"`pulumi`\" pulumi-lang-java=\"`pulumi`\"\u003e`pulumi`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backstage`\" pulumi-lang-dotnet=\"`Backstage`\" pulumi-lang-go=\"`backstage`\" pulumi-lang-python=\"`backstage`\" pulumi-lang-yaml=\"`backstage`\" pulumi-lang-java=\"`backstage`\"\u003e`backstage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catalogSync`\" pulumi-lang-dotnet=\"`CatalogSync`\" pulumi-lang-go=\"`catalogSync`\" pulumi-lang-python=\"`catalog_sync`\" pulumi-lang-yaml=\"`catalogSync`\" pulumi-lang-java=\"`catalogSync`\"\u003e`catalogSync`\u003c/span\u003e.\n"
                     },
                     "name": {
                         "type": "string"
@@ -10975,10 +11492,6 @@
                 "scopeType": {
                     "type": "string",
                     "description": "The scope type. Value must be one of `Team`, `Catalog`.\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the checklist template\n"
                 }
             },
             "stateInputs": {
@@ -11040,6 +11553,14 @@
                 "description": {
                     "type": "string"
                 },
+                "externalId": {
+                    "type": "string",
+                    "description": "An external identifier for this catalog entity. Must be unique within the catalog.\n"
+                },
+                "managedBy": {
+                    "type": "string",
+                    "description": "Which source manages this resource (read-only).. Value must be one of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`adminWeb`\" pulumi-lang-dotnet=\"`AdminWeb`\" pulumi-lang-go=\"`adminWeb`\" pulumi-lang-python=\"`admin_web`\" pulumi-lang-yaml=\"`adminWeb`\" pulumi-lang-java=\"`adminWeb`\"\u003e`adminWeb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`api`\" pulumi-lang-dotnet=\"`Api`\" pulumi-lang-go=\"`api`\" pulumi-lang-python=\"`api`\" pulumi-lang-yaml=\"`api`\" pulumi-lang-java=\"`api`\"\u003e`api`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`terraform`\" pulumi-lang-dotnet=\"`Terraform`\" pulumi-lang-go=\"`terraform`\" pulumi-lang-python=\"`terraform`\" pulumi-lang-yaml=\"`terraform`\" pulumi-lang-java=\"`terraform`\"\u003e`terraform`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pulumi`\" pulumi-lang-dotnet=\"`Pulumi`\" pulumi-lang-go=\"`pulumi`\" pulumi-lang-python=\"`pulumi`\" pulumi-lang-yaml=\"`pulumi`\" pulumi-lang-java=\"`pulumi`\"\u003e`pulumi`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backstage`\" pulumi-lang-dotnet=\"`Backstage`\" pulumi-lang-go=\"`backstage`\" pulumi-lang-python=\"`backstage`\" pulumi-lang-yaml=\"`backstage`\" pulumi-lang-java=\"`backstage`\"\u003e`backstage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catalogSync`\" pulumi-lang-dotnet=\"`CatalogSync`\" pulumi-lang-go=\"`catalogSync`\" pulumi-lang-python=\"`catalog_sync`\" pulumi-lang-yaml=\"`catalogSync`\" pulumi-lang-java=\"`catalogSync`\"\u003e`catalogSync`\u003c/span\u003e.\n"
+                },
                 "name": {
                     "type": "string"
                 },
@@ -11059,6 +11580,8 @@
                 "backstageId",
                 "catalogId",
                 "description",
+                "externalId",
+                "managedBy",
                 "name",
                 "position"
             ],
@@ -11075,6 +11598,10 @@
                 "description": {
                     "type": "string"
                 },
+                "externalId": {
+                    "type": "string",
+                    "description": "An external identifier for this catalog entity. Must be unique within the catalog.\n"
+                },
                 "name": {
                     "type": "string"
                 },
@@ -11090,6 +11617,9 @@
                     "description": "Array of property values for this catalog entity\n"
                 }
             },
+            "requiredInputs": [
+                "catalogId"
+            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering CatalogEntity resources.\n",
                 "properties": {
@@ -11104,6 +11634,14 @@
                     },
                     "description": {
                         "type": "string"
+                    },
+                    "externalId": {
+                        "type": "string",
+                        "description": "An external identifier for this catalog entity. Must be unique within the catalog.\n"
+                    },
+                    "managedBy": {
+                        "type": "string",
+                        "description": "Which source manages this resource (read-only).. Value must be one of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`adminWeb`\" pulumi-lang-dotnet=\"`AdminWeb`\" pulumi-lang-go=\"`adminWeb`\" pulumi-lang-python=\"`admin_web`\" pulumi-lang-yaml=\"`adminWeb`\" pulumi-lang-java=\"`adminWeb`\"\u003e`adminWeb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`api`\" pulumi-lang-dotnet=\"`Api`\" pulumi-lang-go=\"`api`\" pulumi-lang-python=\"`api`\" pulumi-lang-yaml=\"`api`\" pulumi-lang-java=\"`api`\"\u003e`api`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`terraform`\" pulumi-lang-dotnet=\"`Terraform`\" pulumi-lang-go=\"`terraform`\" pulumi-lang-python=\"`terraform`\" pulumi-lang-yaml=\"`terraform`\" pulumi-lang-java=\"`terraform`\"\u003e`terraform`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pulumi`\" pulumi-lang-dotnet=\"`Pulumi`\" pulumi-lang-go=\"`pulumi`\" pulumi-lang-python=\"`pulumi`\" pulumi-lang-yaml=\"`pulumi`\" pulumi-lang-java=\"`pulumi`\"\u003e`pulumi`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backstage`\" pulumi-lang-dotnet=\"`Backstage`\" pulumi-lang-go=\"`backstage`\" pulumi-lang-python=\"`backstage`\" pulumi-lang-yaml=\"`backstage`\" pulumi-lang-java=\"`backstage`\"\u003e`backstage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catalogSync`\" pulumi-lang-dotnet=\"`CatalogSync`\" pulumi-lang-go=\"`catalogSync`\" pulumi-lang-python=\"`catalog_sync`\" pulumi-lang-yaml=\"`catalogSync`\" pulumi-lang-java=\"`catalogSync`\"\u003e`catalogSync`\u003c/span\u003e.\n"
                     },
                     "name": {
                         "type": "string"
@@ -11285,10 +11823,6 @@
                         "$ref": "#/types/rootly:index/CauseProperty:CauseProperty"
                     },
                     "description": "Array of property values for this cause.\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the cause\n"
                 }
             },
             "stateInputs": {
@@ -11543,10 +12077,6 @@
                 "position": {
                     "type": "integer",
                     "description": "Position of the communications stage\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the communications stage\n"
                 }
             },
             "stateInputs": {
@@ -11736,10 +12266,6 @@
                 "position": {
                     "type": "integer",
                     "description": "Position of the communications type\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the communications type\n"
                 }
             },
             "requiredInputs": [
@@ -12039,10 +12565,6 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the custom form.\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.\n"
                 }
             },
             "requiredInputs": [
@@ -12559,10 +13081,6 @@
                         "$ref": "#/types/rootly:index/EnvironmentSlackChannel:EnvironmentSlackChannel"
                     },
                     "description": "Slack Channels associated with this environment\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the environment\n"
                 }
             },
             "stateInputs": {
@@ -12697,6 +13215,7 @@
                 }
             },
             "requiredInputs": [
+                "escalationPolicyId",
                 "notificationTargetParams",
                 "position"
             ],
@@ -13214,10 +13733,6 @@
                         "type": "string"
                     }
                 },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the form field\n"
-                },
                 "valueKind": {
                     "type": "string",
                     "description": "The value kind of the form field. Value must be one of \u003cspan pulumi-lang-nodejs=\"`inherit`\" pulumi-lang-dotnet=\"`Inherit`\" pulumi-lang-go=\"`inherit`\" pulumi-lang-python=\"`inherit`\" pulumi-lang-yaml=\"`inherit`\" pulumi-lang-java=\"`inherit`\"\u003e`inherit`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`group`\" pulumi-lang-dotnet=\"`Group`\" pulumi-lang-go=\"`group`\" pulumi-lang-python=\"`group`\" pulumi-lang-yaml=\"`group`\" pulumi-lang-java=\"`group`\"\u003e`group`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`service`\" pulumi-lang-dotnet=\"`Service`\" pulumi-lang-go=\"`service`\" pulumi-lang-python=\"`service`\" pulumi-lang-yaml=\"`service`\" pulumi-lang-java=\"`service`\"\u003e`service`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`functionality`\" pulumi-lang-dotnet=\"`Functionality`\" pulumi-lang-go=\"`functionality`\" pulumi-lang-python=\"`functionality`\" pulumi-lang-yaml=\"`functionality`\" pulumi-lang-java=\"`functionality`\"\u003e`functionality`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catalogEntity`\" pulumi-lang-dotnet=\"`CatalogEntity`\" pulumi-lang-go=\"`catalogEntity`\" pulumi-lang-python=\"`catalog_entity`\" pulumi-lang-yaml=\"`catalogEntity`\" pulumi-lang-java=\"`catalogEntity`\"\u003e`catalogEntity`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`environment`\" pulumi-lang-dotnet=\"`Environment`\" pulumi-lang-go=\"`environment`\" pulumi-lang-python=\"`environment`\" pulumi-lang-yaml=\"`environment`\" pulumi-lang-java=\"`environment`\"\u003e`environment`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cause`\" pulumi-lang-dotnet=\"`Cause`\" pulumi-lang-go=\"`cause`\" pulumi-lang-python=\"`cause`\" pulumi-lang-yaml=\"`cause`\" pulumi-lang-java=\"`cause`\"\u003e`cause`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`incidentType`\" pulumi-lang-dotnet=\"`IncidentType`\" pulumi-lang-go=\"`incidentType`\" pulumi-lang-python=\"`incident_type`\" pulumi-lang-yaml=\"`incidentType`\" pulumi-lang-java=\"`incidentType`\"\u003e`incidentType`\u003c/span\u003e.\n"
@@ -13471,6 +13986,7 @@
             },
             "requiredInputs": [
                 "form",
+                "formFieldId",
                 "formSetId"
             ],
             "stateInputs": {
@@ -13582,6 +14098,7 @@
             },
             "requiredInputs": [
                 "formFieldId",
+                "formFieldPlacementId",
                 "values"
             ],
             "stateInputs": {
@@ -13686,7 +14203,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The forms included in the form set. Add custom forms using the custom form's \u003cspan pulumi-lang-nodejs=\"`slug`\" pulumi-lang-dotnet=\"`Slug`\" pulumi-lang-go=\"`slug`\" pulumi-lang-python=\"`slug`\" pulumi-lang-yaml=\"`slug`\" pulumi-lang-java=\"`slug`\"\u003e`slug`\u003c/span\u003e field. Or choose a built-in form: \u003cspan pulumi-lang-nodejs=\"`webNewIncidentForm`\" pulumi-lang-dotnet=\"`WebNewIncidentForm`\" pulumi-lang-go=\"`webNewIncidentForm`\" pulumi-lang-python=\"`web_new_incident_form`\" pulumi-lang-yaml=\"`webNewIncidentForm`\" pulumi-lang-java=\"`webNewIncidentForm`\"\u003e`webNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateIncidentForm`\" pulumi-lang-go=\"`webUpdateIncidentForm`\" pulumi-lang-python=\"`web_update_incident_form`\" pulumi-lang-yaml=\"`webUpdateIncidentForm`\" pulumi-lang-java=\"`webUpdateIncidentForm`\"\u003e`webUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentPostMortemForm`\" pulumi-lang-dotnet=\"`WebIncidentPostMortemForm`\" pulumi-lang-go=\"`webIncidentPostMortemForm`\" pulumi-lang-python=\"`web_incident_post_mortem_form`\" pulumi-lang-yaml=\"`webIncidentPostMortemForm`\" pulumi-lang-java=\"`webIncidentPostMortemForm`\"\u003e`webIncidentPostMortemForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentMitigationForm`\" pulumi-lang-dotnet=\"`WebIncidentMitigationForm`\" pulumi-lang-go=\"`webIncidentMitigationForm`\" pulumi-lang-python=\"`web_incident_mitigation_form`\" pulumi-lang-yaml=\"`webIncidentMitigationForm`\" pulumi-lang-java=\"`webIncidentMitigationForm`\"\u003e`webIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentResolutionForm`\" pulumi-lang-dotnet=\"`WebIncidentResolutionForm`\" pulumi-lang-go=\"`webIncidentResolutionForm`\" pulumi-lang-python=\"`web_incident_resolution_form`\" pulumi-lang-yaml=\"`webIncidentResolutionForm`\" pulumi-lang-java=\"`webIncidentResolutionForm`\"\u003e`webIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentCancellationForm`\" pulumi-lang-dotnet=\"`WebIncidentCancellationForm`\" pulumi-lang-go=\"`webIncidentCancellationForm`\" pulumi-lang-python=\"`web_incident_cancellation_form`\" pulumi-lang-yaml=\"`webIncidentCancellationForm`\" pulumi-lang-java=\"`webIncidentCancellationForm`\"\u003e`webIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebScheduledIncidentForm`\" pulumi-lang-go=\"`webScheduledIncidentForm`\" pulumi-lang-python=\"`web_scheduled_incident_form`\" pulumi-lang-yaml=\"`webScheduledIncidentForm`\" pulumi-lang-java=\"`webScheduledIncidentForm`\"\u003e`webScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`web_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`webUpdateScheduledIncidentForm`\"\u003e`webUpdateScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackNewIncidentForm`\" pulumi-lang-dotnet=\"`SlackNewIncidentForm`\" pulumi-lang-go=\"`slackNewIncidentForm`\" pulumi-lang-python=\"`slack_new_incident_form`\" pulumi-lang-yaml=\"`slackNewIncidentForm`\" pulumi-lang-java=\"`slackNewIncidentForm`\"\u003e`slackNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentForm`\" pulumi-lang-go=\"`slackUpdateIncidentForm`\" pulumi-lang-python=\"`slack_update_incident_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentForm`\" pulumi-lang-java=\"`slackUpdateIncidentForm`\"\u003e`slackUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentStatusForm`\" pulumi-lang-go=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-python=\"`slack_update_incident_status_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-java=\"`slackUpdateIncidentStatusForm`\"\u003e`slackUpdateIncidentStatusForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentMitigationForm`\" pulumi-lang-dotnet=\"`SlackIncidentMitigationForm`\" pulumi-lang-go=\"`slackIncidentMitigationForm`\" pulumi-lang-python=\"`slack_incident_mitigation_form`\" pulumi-lang-yaml=\"`slackIncidentMitigationForm`\" pulumi-lang-java=\"`slackIncidentMitigationForm`\"\u003e`slackIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentResolutionForm`\" pulumi-lang-dotnet=\"`SlackIncidentResolutionForm`\" pulumi-lang-go=\"`slackIncidentResolutionForm`\" pulumi-lang-python=\"`slack_incident_resolution_form`\" pulumi-lang-yaml=\"`slackIncidentResolutionForm`\" pulumi-lang-java=\"`slackIncidentResolutionForm`\"\u003e`slackIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentCancellationForm`\" pulumi-lang-dotnet=\"`SlackIncidentCancellationForm`\" pulumi-lang-go=\"`slackIncidentCancellationForm`\" pulumi-lang-python=\"`slack_incident_cancellation_form`\" pulumi-lang-yaml=\"`slackIncidentCancellationForm`\" pulumi-lang-java=\"`slackIncidentCancellationForm`\"\u003e`slackIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackScheduledIncidentForm`\" pulumi-lang-go=\"`slackScheduledIncidentForm`\" pulumi-lang-python=\"`slack_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackScheduledIncidentForm`\" pulumi-lang-java=\"`slackScheduledIncidentForm`\"\u003e`slackScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`slack_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`slackUpdateScheduledIncidentForm`\"\u003e`slackUpdateScheduledIncidentForm`\u003c/span\u003e\n"
+                    "description": "The forms included in the form set. Add custom forms using the custom form's \u003cspan pulumi-lang-nodejs=\"`slug`\" pulumi-lang-dotnet=\"`Slug`\" pulumi-lang-go=\"`slug`\" pulumi-lang-python=\"`slug`\" pulumi-lang-yaml=\"`slug`\" pulumi-lang-java=\"`slug`\"\u003e`slug`\u003c/span\u003e field. Or choose a built-in form: \u003cspan pulumi-lang-nodejs=\"`webNewIncidentForm`\" pulumi-lang-dotnet=\"`WebNewIncidentForm`\" pulumi-lang-go=\"`webNewIncidentForm`\" pulumi-lang-python=\"`web_new_incident_form`\" pulumi-lang-yaml=\"`webNewIncidentForm`\" pulumi-lang-java=\"`webNewIncidentForm`\"\u003e`webNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateIncidentForm`\" pulumi-lang-go=\"`webUpdateIncidentForm`\" pulumi-lang-python=\"`web_update_incident_form`\" pulumi-lang-yaml=\"`webUpdateIncidentForm`\" pulumi-lang-java=\"`webUpdateIncidentForm`\"\u003e`webUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentPostMortemForm`\" pulumi-lang-dotnet=\"`WebIncidentPostMortemForm`\" pulumi-lang-go=\"`webIncidentPostMortemForm`\" pulumi-lang-python=\"`web_incident_post_mortem_form`\" pulumi-lang-yaml=\"`webIncidentPostMortemForm`\" pulumi-lang-java=\"`webIncidentPostMortemForm`\"\u003e`webIncidentPostMortemForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentMitigationForm`\" pulumi-lang-dotnet=\"`WebIncidentMitigationForm`\" pulumi-lang-go=\"`webIncidentMitigationForm`\" pulumi-lang-python=\"`web_incident_mitigation_form`\" pulumi-lang-yaml=\"`webIncidentMitigationForm`\" pulumi-lang-java=\"`webIncidentMitigationForm`\"\u003e`webIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentResolutionForm`\" pulumi-lang-dotnet=\"`WebIncidentResolutionForm`\" pulumi-lang-go=\"`webIncidentResolutionForm`\" pulumi-lang-python=\"`web_incident_resolution_form`\" pulumi-lang-yaml=\"`webIncidentResolutionForm`\" pulumi-lang-java=\"`webIncidentResolutionForm`\"\u003e`webIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentCancellationForm`\" pulumi-lang-dotnet=\"`WebIncidentCancellationForm`\" pulumi-lang-go=\"`webIncidentCancellationForm`\" pulumi-lang-python=\"`web_incident_cancellation_form`\" pulumi-lang-yaml=\"`webIncidentCancellationForm`\" pulumi-lang-java=\"`webIncidentCancellationForm`\"\u003e`webIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebScheduledIncidentForm`\" pulumi-lang-go=\"`webScheduledIncidentForm`\" pulumi-lang-python=\"`web_scheduled_incident_form`\" pulumi-lang-yaml=\"`webScheduledIncidentForm`\" pulumi-lang-java=\"`webScheduledIncidentForm`\"\u003e`webScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`web_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`webUpdateScheduledIncidentForm`\"\u003e`webUpdateScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackNewIncidentForm`\" pulumi-lang-dotnet=\"`SlackNewIncidentForm`\" pulumi-lang-go=\"`slackNewIncidentForm`\" pulumi-lang-python=\"`slack_new_incident_form`\" pulumi-lang-yaml=\"`slackNewIncidentForm`\" pulumi-lang-java=\"`slackNewIncidentForm`\"\u003e`slackNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentForm`\" pulumi-lang-go=\"`slackUpdateIncidentForm`\" pulumi-lang-python=\"`slack_update_incident_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentForm`\" pulumi-lang-java=\"`slackUpdateIncidentForm`\"\u003e`slackUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentStatusForm`\" pulumi-lang-go=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-python=\"`slack_update_incident_status_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-java=\"`slackUpdateIncidentStatusForm`\"\u003e`slackUpdateIncidentStatusForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentMitigationForm`\" pulumi-lang-dotnet=\"`SlackIncidentMitigationForm`\" pulumi-lang-go=\"`slackIncidentMitigationForm`\" pulumi-lang-python=\"`slack_incident_mitigation_form`\" pulumi-lang-yaml=\"`slackIncidentMitigationForm`\" pulumi-lang-java=\"`slackIncidentMitigationForm`\"\u003e`slackIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentResolutionForm`\" pulumi-lang-dotnet=\"`SlackIncidentResolutionForm`\" pulumi-lang-go=\"`slackIncidentResolutionForm`\" pulumi-lang-python=\"`slack_incident_resolution_form`\" pulumi-lang-yaml=\"`slackIncidentResolutionForm`\" pulumi-lang-java=\"`slackIncidentResolutionForm`\"\u003e`slackIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentCancellationForm`\" pulumi-lang-dotnet=\"`SlackIncidentCancellationForm`\" pulumi-lang-go=\"`slackIncidentCancellationForm`\" pulumi-lang-python=\"`slack_incident_cancellation_form`\" pulumi-lang-yaml=\"`slackIncidentCancellationForm`\" pulumi-lang-java=\"`slackIncidentCancellationForm`\"\u003e`slackIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackScheduledIncidentForm`\" pulumi-lang-go=\"`slackScheduledIncidentForm`\" pulumi-lang-python=\"`slack_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackScheduledIncidentForm`\" pulumi-lang-java=\"`slackScheduledIncidentForm`\"\u003e`slackScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`slack_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`slackUpdateScheduledIncidentForm`\"\u003e`slackUpdateScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleChatNewIncidentForm`\" pulumi-lang-dotnet=\"`GoogleChatNewIncidentForm`\" pulumi-lang-go=\"`googleChatNewIncidentForm`\" pulumi-lang-python=\"`google_chat_new_incident_form`\" pulumi-lang-yaml=\"`googleChatNewIncidentForm`\" pulumi-lang-java=\"`googleChatNewIncidentForm`\"\u003e`googleChatNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleChatUpdateIncidentForm`\" pulumi-lang-dotnet=\"`GoogleChatUpdateIncidentForm`\" pulumi-lang-go=\"`googleChatUpdateIncidentForm`\" pulumi-lang-python=\"`google_chat_update_incident_form`\" pulumi-lang-yaml=\"`googleChatUpdateIncidentForm`\" pulumi-lang-java=\"`googleChatUpdateIncidentForm`\"\u003e`googleChatUpdateIncidentForm`\u003c/span\u003e\n"
                 },
                 "isDefault": {
                     "type": "boolean",
@@ -13713,7 +14230,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The forms included in the form set. Add custom forms using the custom form's \u003cspan pulumi-lang-nodejs=\"`slug`\" pulumi-lang-dotnet=\"`Slug`\" pulumi-lang-go=\"`slug`\" pulumi-lang-python=\"`slug`\" pulumi-lang-yaml=\"`slug`\" pulumi-lang-java=\"`slug`\"\u003e`slug`\u003c/span\u003e field. Or choose a built-in form: \u003cspan pulumi-lang-nodejs=\"`webNewIncidentForm`\" pulumi-lang-dotnet=\"`WebNewIncidentForm`\" pulumi-lang-go=\"`webNewIncidentForm`\" pulumi-lang-python=\"`web_new_incident_form`\" pulumi-lang-yaml=\"`webNewIncidentForm`\" pulumi-lang-java=\"`webNewIncidentForm`\"\u003e`webNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateIncidentForm`\" pulumi-lang-go=\"`webUpdateIncidentForm`\" pulumi-lang-python=\"`web_update_incident_form`\" pulumi-lang-yaml=\"`webUpdateIncidentForm`\" pulumi-lang-java=\"`webUpdateIncidentForm`\"\u003e`webUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentPostMortemForm`\" pulumi-lang-dotnet=\"`WebIncidentPostMortemForm`\" pulumi-lang-go=\"`webIncidentPostMortemForm`\" pulumi-lang-python=\"`web_incident_post_mortem_form`\" pulumi-lang-yaml=\"`webIncidentPostMortemForm`\" pulumi-lang-java=\"`webIncidentPostMortemForm`\"\u003e`webIncidentPostMortemForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentMitigationForm`\" pulumi-lang-dotnet=\"`WebIncidentMitigationForm`\" pulumi-lang-go=\"`webIncidentMitigationForm`\" pulumi-lang-python=\"`web_incident_mitigation_form`\" pulumi-lang-yaml=\"`webIncidentMitigationForm`\" pulumi-lang-java=\"`webIncidentMitigationForm`\"\u003e`webIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentResolutionForm`\" pulumi-lang-dotnet=\"`WebIncidentResolutionForm`\" pulumi-lang-go=\"`webIncidentResolutionForm`\" pulumi-lang-python=\"`web_incident_resolution_form`\" pulumi-lang-yaml=\"`webIncidentResolutionForm`\" pulumi-lang-java=\"`webIncidentResolutionForm`\"\u003e`webIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentCancellationForm`\" pulumi-lang-dotnet=\"`WebIncidentCancellationForm`\" pulumi-lang-go=\"`webIncidentCancellationForm`\" pulumi-lang-python=\"`web_incident_cancellation_form`\" pulumi-lang-yaml=\"`webIncidentCancellationForm`\" pulumi-lang-java=\"`webIncidentCancellationForm`\"\u003e`webIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebScheduledIncidentForm`\" pulumi-lang-go=\"`webScheduledIncidentForm`\" pulumi-lang-python=\"`web_scheduled_incident_form`\" pulumi-lang-yaml=\"`webScheduledIncidentForm`\" pulumi-lang-java=\"`webScheduledIncidentForm`\"\u003e`webScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`web_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`webUpdateScheduledIncidentForm`\"\u003e`webUpdateScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackNewIncidentForm`\" pulumi-lang-dotnet=\"`SlackNewIncidentForm`\" pulumi-lang-go=\"`slackNewIncidentForm`\" pulumi-lang-python=\"`slack_new_incident_form`\" pulumi-lang-yaml=\"`slackNewIncidentForm`\" pulumi-lang-java=\"`slackNewIncidentForm`\"\u003e`slackNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentForm`\" pulumi-lang-go=\"`slackUpdateIncidentForm`\" pulumi-lang-python=\"`slack_update_incident_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentForm`\" pulumi-lang-java=\"`slackUpdateIncidentForm`\"\u003e`slackUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentStatusForm`\" pulumi-lang-go=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-python=\"`slack_update_incident_status_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-java=\"`slackUpdateIncidentStatusForm`\"\u003e`slackUpdateIncidentStatusForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentMitigationForm`\" pulumi-lang-dotnet=\"`SlackIncidentMitigationForm`\" pulumi-lang-go=\"`slackIncidentMitigationForm`\" pulumi-lang-python=\"`slack_incident_mitigation_form`\" pulumi-lang-yaml=\"`slackIncidentMitigationForm`\" pulumi-lang-java=\"`slackIncidentMitigationForm`\"\u003e`slackIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentResolutionForm`\" pulumi-lang-dotnet=\"`SlackIncidentResolutionForm`\" pulumi-lang-go=\"`slackIncidentResolutionForm`\" pulumi-lang-python=\"`slack_incident_resolution_form`\" pulumi-lang-yaml=\"`slackIncidentResolutionForm`\" pulumi-lang-java=\"`slackIncidentResolutionForm`\"\u003e`slackIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentCancellationForm`\" pulumi-lang-dotnet=\"`SlackIncidentCancellationForm`\" pulumi-lang-go=\"`slackIncidentCancellationForm`\" pulumi-lang-python=\"`slack_incident_cancellation_form`\" pulumi-lang-yaml=\"`slackIncidentCancellationForm`\" pulumi-lang-java=\"`slackIncidentCancellationForm`\"\u003e`slackIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackScheduledIncidentForm`\" pulumi-lang-go=\"`slackScheduledIncidentForm`\" pulumi-lang-python=\"`slack_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackScheduledIncidentForm`\" pulumi-lang-java=\"`slackScheduledIncidentForm`\"\u003e`slackScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`slack_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`slackUpdateScheduledIncidentForm`\"\u003e`slackUpdateScheduledIncidentForm`\u003c/span\u003e\n"
+                    "description": "The forms included in the form set. Add custom forms using the custom form's \u003cspan pulumi-lang-nodejs=\"`slug`\" pulumi-lang-dotnet=\"`Slug`\" pulumi-lang-go=\"`slug`\" pulumi-lang-python=\"`slug`\" pulumi-lang-yaml=\"`slug`\" pulumi-lang-java=\"`slug`\"\u003e`slug`\u003c/span\u003e field. Or choose a built-in form: \u003cspan pulumi-lang-nodejs=\"`webNewIncidentForm`\" pulumi-lang-dotnet=\"`WebNewIncidentForm`\" pulumi-lang-go=\"`webNewIncidentForm`\" pulumi-lang-python=\"`web_new_incident_form`\" pulumi-lang-yaml=\"`webNewIncidentForm`\" pulumi-lang-java=\"`webNewIncidentForm`\"\u003e`webNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateIncidentForm`\" pulumi-lang-go=\"`webUpdateIncidentForm`\" pulumi-lang-python=\"`web_update_incident_form`\" pulumi-lang-yaml=\"`webUpdateIncidentForm`\" pulumi-lang-java=\"`webUpdateIncidentForm`\"\u003e`webUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentPostMortemForm`\" pulumi-lang-dotnet=\"`WebIncidentPostMortemForm`\" pulumi-lang-go=\"`webIncidentPostMortemForm`\" pulumi-lang-python=\"`web_incident_post_mortem_form`\" pulumi-lang-yaml=\"`webIncidentPostMortemForm`\" pulumi-lang-java=\"`webIncidentPostMortemForm`\"\u003e`webIncidentPostMortemForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentMitigationForm`\" pulumi-lang-dotnet=\"`WebIncidentMitigationForm`\" pulumi-lang-go=\"`webIncidentMitigationForm`\" pulumi-lang-python=\"`web_incident_mitigation_form`\" pulumi-lang-yaml=\"`webIncidentMitigationForm`\" pulumi-lang-java=\"`webIncidentMitigationForm`\"\u003e`webIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentResolutionForm`\" pulumi-lang-dotnet=\"`WebIncidentResolutionForm`\" pulumi-lang-go=\"`webIncidentResolutionForm`\" pulumi-lang-python=\"`web_incident_resolution_form`\" pulumi-lang-yaml=\"`webIncidentResolutionForm`\" pulumi-lang-java=\"`webIncidentResolutionForm`\"\u003e`webIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentCancellationForm`\" pulumi-lang-dotnet=\"`WebIncidentCancellationForm`\" pulumi-lang-go=\"`webIncidentCancellationForm`\" pulumi-lang-python=\"`web_incident_cancellation_form`\" pulumi-lang-yaml=\"`webIncidentCancellationForm`\" pulumi-lang-java=\"`webIncidentCancellationForm`\"\u003e`webIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebScheduledIncidentForm`\" pulumi-lang-go=\"`webScheduledIncidentForm`\" pulumi-lang-python=\"`web_scheduled_incident_form`\" pulumi-lang-yaml=\"`webScheduledIncidentForm`\" pulumi-lang-java=\"`webScheduledIncidentForm`\"\u003e`webScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`web_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`webUpdateScheduledIncidentForm`\"\u003e`webUpdateScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackNewIncidentForm`\" pulumi-lang-dotnet=\"`SlackNewIncidentForm`\" pulumi-lang-go=\"`slackNewIncidentForm`\" pulumi-lang-python=\"`slack_new_incident_form`\" pulumi-lang-yaml=\"`slackNewIncidentForm`\" pulumi-lang-java=\"`slackNewIncidentForm`\"\u003e`slackNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentForm`\" pulumi-lang-go=\"`slackUpdateIncidentForm`\" pulumi-lang-python=\"`slack_update_incident_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentForm`\" pulumi-lang-java=\"`slackUpdateIncidentForm`\"\u003e`slackUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentStatusForm`\" pulumi-lang-go=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-python=\"`slack_update_incident_status_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-java=\"`slackUpdateIncidentStatusForm`\"\u003e`slackUpdateIncidentStatusForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentMitigationForm`\" pulumi-lang-dotnet=\"`SlackIncidentMitigationForm`\" pulumi-lang-go=\"`slackIncidentMitigationForm`\" pulumi-lang-python=\"`slack_incident_mitigation_form`\" pulumi-lang-yaml=\"`slackIncidentMitigationForm`\" pulumi-lang-java=\"`slackIncidentMitigationForm`\"\u003e`slackIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentResolutionForm`\" pulumi-lang-dotnet=\"`SlackIncidentResolutionForm`\" pulumi-lang-go=\"`slackIncidentResolutionForm`\" pulumi-lang-python=\"`slack_incident_resolution_form`\" pulumi-lang-yaml=\"`slackIncidentResolutionForm`\" pulumi-lang-java=\"`slackIncidentResolutionForm`\"\u003e`slackIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentCancellationForm`\" pulumi-lang-dotnet=\"`SlackIncidentCancellationForm`\" pulumi-lang-go=\"`slackIncidentCancellationForm`\" pulumi-lang-python=\"`slack_incident_cancellation_form`\" pulumi-lang-yaml=\"`slackIncidentCancellationForm`\" pulumi-lang-java=\"`slackIncidentCancellationForm`\"\u003e`slackIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackScheduledIncidentForm`\" pulumi-lang-go=\"`slackScheduledIncidentForm`\" pulumi-lang-python=\"`slack_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackScheduledIncidentForm`\" pulumi-lang-java=\"`slackScheduledIncidentForm`\"\u003e`slackScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`slack_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`slackUpdateScheduledIncidentForm`\"\u003e`slackUpdateScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleChatNewIncidentForm`\" pulumi-lang-dotnet=\"`GoogleChatNewIncidentForm`\" pulumi-lang-go=\"`googleChatNewIncidentForm`\" pulumi-lang-python=\"`google_chat_new_incident_form`\" pulumi-lang-yaml=\"`googleChatNewIncidentForm`\" pulumi-lang-java=\"`googleChatNewIncidentForm`\"\u003e`googleChatNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleChatUpdateIncidentForm`\" pulumi-lang-dotnet=\"`GoogleChatUpdateIncidentForm`\" pulumi-lang-go=\"`googleChatUpdateIncidentForm`\" pulumi-lang-python=\"`google_chat_update_incident_form`\" pulumi-lang-yaml=\"`googleChatUpdateIncidentForm`\" pulumi-lang-java=\"`googleChatUpdateIncidentForm`\"\u003e`googleChatUpdateIncidentForm`\u003c/span\u003e\n"
                 },
                 "isDefault": {
                     "type": "boolean",
@@ -13722,10 +14239,6 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the form set\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the form set\n"
                 }
             },
             "requiredInputs": [
@@ -13739,7 +14252,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The forms included in the form set. Add custom forms using the custom form's \u003cspan pulumi-lang-nodejs=\"`slug`\" pulumi-lang-dotnet=\"`Slug`\" pulumi-lang-go=\"`slug`\" pulumi-lang-python=\"`slug`\" pulumi-lang-yaml=\"`slug`\" pulumi-lang-java=\"`slug`\"\u003e`slug`\u003c/span\u003e field. Or choose a built-in form: \u003cspan pulumi-lang-nodejs=\"`webNewIncidentForm`\" pulumi-lang-dotnet=\"`WebNewIncidentForm`\" pulumi-lang-go=\"`webNewIncidentForm`\" pulumi-lang-python=\"`web_new_incident_form`\" pulumi-lang-yaml=\"`webNewIncidentForm`\" pulumi-lang-java=\"`webNewIncidentForm`\"\u003e`webNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateIncidentForm`\" pulumi-lang-go=\"`webUpdateIncidentForm`\" pulumi-lang-python=\"`web_update_incident_form`\" pulumi-lang-yaml=\"`webUpdateIncidentForm`\" pulumi-lang-java=\"`webUpdateIncidentForm`\"\u003e`webUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentPostMortemForm`\" pulumi-lang-dotnet=\"`WebIncidentPostMortemForm`\" pulumi-lang-go=\"`webIncidentPostMortemForm`\" pulumi-lang-python=\"`web_incident_post_mortem_form`\" pulumi-lang-yaml=\"`webIncidentPostMortemForm`\" pulumi-lang-java=\"`webIncidentPostMortemForm`\"\u003e`webIncidentPostMortemForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentMitigationForm`\" pulumi-lang-dotnet=\"`WebIncidentMitigationForm`\" pulumi-lang-go=\"`webIncidentMitigationForm`\" pulumi-lang-python=\"`web_incident_mitigation_form`\" pulumi-lang-yaml=\"`webIncidentMitigationForm`\" pulumi-lang-java=\"`webIncidentMitigationForm`\"\u003e`webIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentResolutionForm`\" pulumi-lang-dotnet=\"`WebIncidentResolutionForm`\" pulumi-lang-go=\"`webIncidentResolutionForm`\" pulumi-lang-python=\"`web_incident_resolution_form`\" pulumi-lang-yaml=\"`webIncidentResolutionForm`\" pulumi-lang-java=\"`webIncidentResolutionForm`\"\u003e`webIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentCancellationForm`\" pulumi-lang-dotnet=\"`WebIncidentCancellationForm`\" pulumi-lang-go=\"`webIncidentCancellationForm`\" pulumi-lang-python=\"`web_incident_cancellation_form`\" pulumi-lang-yaml=\"`webIncidentCancellationForm`\" pulumi-lang-java=\"`webIncidentCancellationForm`\"\u003e`webIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebScheduledIncidentForm`\" pulumi-lang-go=\"`webScheduledIncidentForm`\" pulumi-lang-python=\"`web_scheduled_incident_form`\" pulumi-lang-yaml=\"`webScheduledIncidentForm`\" pulumi-lang-java=\"`webScheduledIncidentForm`\"\u003e`webScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`web_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`webUpdateScheduledIncidentForm`\"\u003e`webUpdateScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackNewIncidentForm`\" pulumi-lang-dotnet=\"`SlackNewIncidentForm`\" pulumi-lang-go=\"`slackNewIncidentForm`\" pulumi-lang-python=\"`slack_new_incident_form`\" pulumi-lang-yaml=\"`slackNewIncidentForm`\" pulumi-lang-java=\"`slackNewIncidentForm`\"\u003e`slackNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentForm`\" pulumi-lang-go=\"`slackUpdateIncidentForm`\" pulumi-lang-python=\"`slack_update_incident_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentForm`\" pulumi-lang-java=\"`slackUpdateIncidentForm`\"\u003e`slackUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentStatusForm`\" pulumi-lang-go=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-python=\"`slack_update_incident_status_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-java=\"`slackUpdateIncidentStatusForm`\"\u003e`slackUpdateIncidentStatusForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentMitigationForm`\" pulumi-lang-dotnet=\"`SlackIncidentMitigationForm`\" pulumi-lang-go=\"`slackIncidentMitigationForm`\" pulumi-lang-python=\"`slack_incident_mitigation_form`\" pulumi-lang-yaml=\"`slackIncidentMitigationForm`\" pulumi-lang-java=\"`slackIncidentMitigationForm`\"\u003e`slackIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentResolutionForm`\" pulumi-lang-dotnet=\"`SlackIncidentResolutionForm`\" pulumi-lang-go=\"`slackIncidentResolutionForm`\" pulumi-lang-python=\"`slack_incident_resolution_form`\" pulumi-lang-yaml=\"`slackIncidentResolutionForm`\" pulumi-lang-java=\"`slackIncidentResolutionForm`\"\u003e`slackIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentCancellationForm`\" pulumi-lang-dotnet=\"`SlackIncidentCancellationForm`\" pulumi-lang-go=\"`slackIncidentCancellationForm`\" pulumi-lang-python=\"`slack_incident_cancellation_form`\" pulumi-lang-yaml=\"`slackIncidentCancellationForm`\" pulumi-lang-java=\"`slackIncidentCancellationForm`\"\u003e`slackIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackScheduledIncidentForm`\" pulumi-lang-go=\"`slackScheduledIncidentForm`\" pulumi-lang-python=\"`slack_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackScheduledIncidentForm`\" pulumi-lang-java=\"`slackScheduledIncidentForm`\"\u003e`slackScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`slack_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`slackUpdateScheduledIncidentForm`\"\u003e`slackUpdateScheduledIncidentForm`\u003c/span\u003e\n"
+                        "description": "The forms included in the form set. Add custom forms using the custom form's \u003cspan pulumi-lang-nodejs=\"`slug`\" pulumi-lang-dotnet=\"`Slug`\" pulumi-lang-go=\"`slug`\" pulumi-lang-python=\"`slug`\" pulumi-lang-yaml=\"`slug`\" pulumi-lang-java=\"`slug`\"\u003e`slug`\u003c/span\u003e field. Or choose a built-in form: \u003cspan pulumi-lang-nodejs=\"`webNewIncidentForm`\" pulumi-lang-dotnet=\"`WebNewIncidentForm`\" pulumi-lang-go=\"`webNewIncidentForm`\" pulumi-lang-python=\"`web_new_incident_form`\" pulumi-lang-yaml=\"`webNewIncidentForm`\" pulumi-lang-java=\"`webNewIncidentForm`\"\u003e`webNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateIncidentForm`\" pulumi-lang-go=\"`webUpdateIncidentForm`\" pulumi-lang-python=\"`web_update_incident_form`\" pulumi-lang-yaml=\"`webUpdateIncidentForm`\" pulumi-lang-java=\"`webUpdateIncidentForm`\"\u003e`webUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentPostMortemForm`\" pulumi-lang-dotnet=\"`WebIncidentPostMortemForm`\" pulumi-lang-go=\"`webIncidentPostMortemForm`\" pulumi-lang-python=\"`web_incident_post_mortem_form`\" pulumi-lang-yaml=\"`webIncidentPostMortemForm`\" pulumi-lang-java=\"`webIncidentPostMortemForm`\"\u003e`webIncidentPostMortemForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentMitigationForm`\" pulumi-lang-dotnet=\"`WebIncidentMitigationForm`\" pulumi-lang-go=\"`webIncidentMitigationForm`\" pulumi-lang-python=\"`web_incident_mitigation_form`\" pulumi-lang-yaml=\"`webIncidentMitigationForm`\" pulumi-lang-java=\"`webIncidentMitigationForm`\"\u003e`webIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentResolutionForm`\" pulumi-lang-dotnet=\"`WebIncidentResolutionForm`\" pulumi-lang-go=\"`webIncidentResolutionForm`\" pulumi-lang-python=\"`web_incident_resolution_form`\" pulumi-lang-yaml=\"`webIncidentResolutionForm`\" pulumi-lang-java=\"`webIncidentResolutionForm`\"\u003e`webIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webIncidentCancellationForm`\" pulumi-lang-dotnet=\"`WebIncidentCancellationForm`\" pulumi-lang-go=\"`webIncidentCancellationForm`\" pulumi-lang-python=\"`web_incident_cancellation_form`\" pulumi-lang-yaml=\"`webIncidentCancellationForm`\" pulumi-lang-java=\"`webIncidentCancellationForm`\"\u003e`webIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebScheduledIncidentForm`\" pulumi-lang-go=\"`webScheduledIncidentForm`\" pulumi-lang-python=\"`web_scheduled_incident_form`\" pulumi-lang-yaml=\"`webScheduledIncidentForm`\" pulumi-lang-java=\"`webScheduledIncidentForm`\"\u003e`webScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`WebUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`web_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`webUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`webUpdateScheduledIncidentForm`\"\u003e`webUpdateScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackNewIncidentForm`\" pulumi-lang-dotnet=\"`SlackNewIncidentForm`\" pulumi-lang-go=\"`slackNewIncidentForm`\" pulumi-lang-python=\"`slack_new_incident_form`\" pulumi-lang-yaml=\"`slackNewIncidentForm`\" pulumi-lang-java=\"`slackNewIncidentForm`\"\u003e`slackNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentForm`\" pulumi-lang-go=\"`slackUpdateIncidentForm`\" pulumi-lang-python=\"`slack_update_incident_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentForm`\" pulumi-lang-java=\"`slackUpdateIncidentForm`\"\u003e`slackUpdateIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-dotnet=\"`SlackUpdateIncidentStatusForm`\" pulumi-lang-go=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-python=\"`slack_update_incident_status_form`\" pulumi-lang-yaml=\"`slackUpdateIncidentStatusForm`\" pulumi-lang-java=\"`slackUpdateIncidentStatusForm`\"\u003e`slackUpdateIncidentStatusForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentMitigationForm`\" pulumi-lang-dotnet=\"`SlackIncidentMitigationForm`\" pulumi-lang-go=\"`slackIncidentMitigationForm`\" pulumi-lang-python=\"`slack_incident_mitigation_form`\" pulumi-lang-yaml=\"`slackIncidentMitigationForm`\" pulumi-lang-java=\"`slackIncidentMitigationForm`\"\u003e`slackIncidentMitigationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentResolutionForm`\" pulumi-lang-dotnet=\"`SlackIncidentResolutionForm`\" pulumi-lang-go=\"`slackIncidentResolutionForm`\" pulumi-lang-python=\"`slack_incident_resolution_form`\" pulumi-lang-yaml=\"`slackIncidentResolutionForm`\" pulumi-lang-java=\"`slackIncidentResolutionForm`\"\u003e`slackIncidentResolutionForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackIncidentCancellationForm`\" pulumi-lang-dotnet=\"`SlackIncidentCancellationForm`\" pulumi-lang-go=\"`slackIncidentCancellationForm`\" pulumi-lang-python=\"`slack_incident_cancellation_form`\" pulumi-lang-yaml=\"`slackIncidentCancellationForm`\" pulumi-lang-java=\"`slackIncidentCancellationForm`\"\u003e`slackIncidentCancellationForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackScheduledIncidentForm`\" pulumi-lang-go=\"`slackScheduledIncidentForm`\" pulumi-lang-python=\"`slack_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackScheduledIncidentForm`\" pulumi-lang-java=\"`slackScheduledIncidentForm`\"\u003e`slackScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-dotnet=\"`SlackUpdateScheduledIncidentForm`\" pulumi-lang-go=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-python=\"`slack_update_scheduled_incident_form`\" pulumi-lang-yaml=\"`slackUpdateScheduledIncidentForm`\" pulumi-lang-java=\"`slackUpdateScheduledIncidentForm`\"\u003e`slackUpdateScheduledIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleChatNewIncidentForm`\" pulumi-lang-dotnet=\"`GoogleChatNewIncidentForm`\" pulumi-lang-go=\"`googleChatNewIncidentForm`\" pulumi-lang-python=\"`google_chat_new_incident_form`\" pulumi-lang-yaml=\"`googleChatNewIncidentForm`\" pulumi-lang-java=\"`googleChatNewIncidentForm`\"\u003e`googleChatNewIncidentForm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`googleChatUpdateIncidentForm`\" pulumi-lang-dotnet=\"`GoogleChatUpdateIncidentForm`\" pulumi-lang-go=\"`googleChatUpdateIncidentForm`\" pulumi-lang-python=\"`google_chat_update_incident_form`\" pulumi-lang-yaml=\"`googleChatUpdateIncidentForm`\" pulumi-lang-java=\"`googleChatUpdateIncidentForm`\"\u003e`googleChatUpdateIncidentForm`\u003c/span\u003e\n"
                     },
                     "isDefault": {
                         "type": "boolean",
@@ -13809,6 +14322,7 @@
             },
             "requiredInputs": [
                 "formFieldId",
+                "formSetId",
                 "values"
             ],
             "stateInputs": {
@@ -14082,10 +14596,6 @@
                         "$ref": "#/types/rootly:index/FunctionalitySlackChannel:FunctionalitySlackChannel"
                     },
                     "description": "Slack Channels associated with this functionality\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the functionality\n"
                 }
             },
             "stateInputs": {
@@ -14259,6 +14769,13 @@
                     "type": "string",
                     "description": "The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.\n"
                 },
+                "ownerGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of team IDs that own this heartbeat\n"
+                },
                 "pingUrl": {
                     "type": "string",
                     "description": "URL to receive heartbeat pings.\n"
@@ -14337,13 +14854,12 @@
                     "type": "string",
                     "description": "The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.\n"
                 },
-                "pingUrl": {
-                    "type": "string",
-                    "description": "URL to receive heartbeat pings.\n"
-                },
-                "secret": {
-                    "type": "string",
-                    "description": "Secret used as bearer token when pinging heartbeat.\n"
+                "ownerGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of team IDs that own this heartbeat\n"
                 },
                 "status": {
                     "type": "string",
@@ -14406,6 +14922,13 @@
                     "notificationTargetType": {
                         "type": "string",
                         "description": "The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.\n"
+                    },
+                    "ownerGroupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of team IDs that own this heartbeat\n"
                     },
                     "pingUrl": {
                         "type": "string",
@@ -14482,10 +15005,6 @@
                         "type": "string"
                     },
                     "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`create`\" pulumi-lang-dotnet=\"`Create`\" pulumi-lang-go=\"`create`\" pulumi-lang-python=\"`create`\" pulumi-lang-yaml=\"`create`\" pulumi-lang-java=\"`create`\"\u003e`create`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`read`\" pulumi-lang-dotnet=\"`Read`\" pulumi-lang-go=\"`read`\" pulumi-lang-python=\"`read`\" pulumi-lang-yaml=\"`read`\" pulumi-lang-java=\"`read`\"\u003e`read`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`update`\" pulumi-lang-dotnet=\"`Update`\" pulumi-lang-go=\"`update`\" pulumi-lang-python=\"`update`\" pulumi-lang-yaml=\"`update`\" pulumi-lang-java=\"`update`\"\u003e`update`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`delete`\" pulumi-lang-dotnet=\"`Delete`\" pulumi-lang-go=\"`delete`\" pulumi-lang-python=\"`delete`\" pulumi-lang-yaml=\"`delete`\" pulumi-lang-java=\"`delete`\"\u003e`delete`\u003c/span\u003e.\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The incident permission set slug.\n"
                 }
             },
             "stateInputs": {
@@ -14728,10 +15247,6 @@
                     "type": "integer",
                     "description": "Position of the incident role\n"
                 },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the incident role\n"
-                },
                 "summary": {
                     "type": "string",
                     "description": "The summary of the incident role\n"
@@ -14818,6 +15333,7 @@
                 }
             },
             "requiredInputs": [
+                "incidentRoleId",
                 "task"
             ],
             "stateInputs": {
@@ -14884,6 +15400,7 @@
             },
             "requiredInputs": [
                 "assignedAt",
+                "incidentId",
                 "subStatusId"
             ],
             "stateInputs": {
@@ -15010,10 +15527,6 @@
                         "$ref": "#/types/rootly:index/IncidentTypeSlackChannel:IncidentTypeSlackChannel"
                     },
                     "description": "Slack Channels associated with this incident type\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the incident type\n"
                 }
             },
             "stateInputs": {
@@ -15924,6 +16437,7 @@
             },
             "requiredInputs": [
                 "endsAt",
+                "scheduleId",
                 "shadowUserId",
                 "shadowableId",
                 "startsAt"
@@ -16284,6 +16798,7 @@
                 }
             },
             "requiredInputs": [
+                "playbookId",
                 "task"
             ],
             "stateInputs": {
@@ -16583,6 +17098,7 @@
                 }
             },
             "requiredInputs": [
+                "retrospectiveProcessId",
                 "subStatusId"
             ],
             "stateInputs": {
@@ -16633,6 +17149,7 @@
                 }
             },
             "requiredInputs": [
+                "retrospectiveProcessGroupId",
                 "retrospectiveStepId"
             ],
             "stateInputs": {
@@ -17287,10 +17804,6 @@
                         "type": "string"
                     },
                     "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`create`\" pulumi-lang-dotnet=\"`Create`\" pulumi-lang-go=\"`create`\" pulumi-lang-python=\"`create`\" pulumi-lang-yaml=\"`create`\" pulumi-lang-java=\"`create`\"\u003e`create`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`read`\" pulumi-lang-dotnet=\"`Read`\" pulumi-lang-go=\"`read`\" pulumi-lang-python=\"`read`\" pulumi-lang-yaml=\"`read`\" pulumi-lang-java=\"`read`\"\u003e`read`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`update`\" pulumi-lang-dotnet=\"`Update`\" pulumi-lang-go=\"`update`\" pulumi-lang-python=\"`update`\" pulumi-lang-yaml=\"`update`\" pulumi-lang-java=\"`update`\"\u003e`update`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`delete`\" pulumi-lang-dotnet=\"`Delete`\" pulumi-lang-go=\"`delete`\" pulumi-lang-python=\"`delete`\" pulumi-lang-yaml=\"`delete`\" pulumi-lang-java=\"`delete`\"\u003e`delete`\u003c/span\u003e.\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The role slug.\n"
                 },
                 "statusPagesPermissions": {
                     "type": "array",
@@ -18077,7 +18590,8 @@
                 }
             },
             "requiredInputs": [
-                "activeTimeAttributes"
+                "activeTimeAttributes",
+                "scheduleRotationId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ScheduleRotationActiveDay resources.\n",
@@ -18576,10 +19090,6 @@
                         "$ref": "#/types/rootly:index/ServiceSlackChannel:ServiceSlackChannel"
                     },
                     "description": "Slack Channels associated with this service\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the service\n"
                 }
             },
             "stateInputs": {
@@ -18842,10 +19352,6 @@
                         "$ref": "#/types/rootly:index/SeveritySlackChannel:SeveritySlackChannel"
                     },
                     "description": "Slack Channels associated with this severity\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the severity\n"
                 }
             },
             "stateInputs": {
@@ -19718,6 +20224,7 @@
             },
             "requiredInputs": [
                 "body",
+                "statusPageId",
                 "title"
             ],
             "stateInputs": {
@@ -19801,9 +20308,6 @@
                 },
                 "position": {
                     "type": "integer"
-                },
-                "slug": {
-                    "type": "string"
                 }
             },
             "stateInputs": {
@@ -20232,6 +20736,13 @@
         "rootly:index/webhooksEndpoint:WebhooksEndpoint": {
             "description": "## Example Usage\n\n```shell\nresource \"rootly_webhooks_endpoint\" \"datadog_events\" {\n  name        = \"Datadog Events\"\n  url         = \"https://app.datadoghq.com/api/v1/events\"\n  enabled     = true\n  event_types = [\"incident.created\", \"incident.resolved\"]\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WebhooksEndpoint \" pulumi-lang-dotnet=\"\nrootly.WebhooksEndpoint \" pulumi-lang-go=\"\nWebhooksEndpoint \" pulumi-lang-python=\"\nWebhooksEndpoint \" pulumi-lang-yaml=\"\nrootly.WebhooksEndpoint \" pulumi-lang-java=\"\nrootly.WebhooksEndpoint \"\u003e\nrootly.WebhooksEndpoint \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/webhooksEndpoint:WebhooksEndpoint primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
+                "customHeaders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WebhooksEndpointCustomHeader:WebhooksEndpointCustomHeader"
+                    },
+                    "description": "Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.\n"
+                },
                 "enabled": {
                     "type": "boolean"
                 },
@@ -20266,6 +20777,13 @@
                 "url"
             ],
             "inputProperties": {
+                "customHeaders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rootly:index/WebhooksEndpointCustomHeader:WebhooksEndpointCustomHeader"
+                    },
+                    "description": "Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.\n"
+                },
                 "enabled": {
                     "type": "boolean"
                 },
@@ -20284,10 +20802,6 @@
                     "type": "string",
                     "description": "The webhook signing secret used to verify webhook requests.\n"
                 },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the endpoint\n"
-                },
                 "url": {
                     "type": "string",
                     "description": "The URL of the endpoint.\n"
@@ -20299,6 +20813,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering WebhooksEndpoint resources.\n",
                 "properties": {
+                    "customHeaders": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/rootly:index/WebhooksEndpointCustomHeader:WebhooksEndpointCustomHeader"
+                        },
+                        "description": "Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.\n"
+                    },
                     "enabled": {
                         "type": "boolean"
                     },
@@ -20720,6 +21241,245 @@
                     "workflowGroupId": {
                         "type": "string",
                         "description": "The group this workflow belongs to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowActionItemFormFieldCondition:WorkflowActionItemFormFieldCondition": {
+            "description": "\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowActionItemFormFieldCondition \" pulumi-lang-dotnet=\"\nrootly.WorkflowActionItemFormFieldCondition \" pulumi-lang-go=\"\nWorkflowActionItemFormFieldCondition \" pulumi-lang-python=\"\nWorkflowActionItemFormFieldCondition \" pulumi-lang-yaml=\"\nrootly.WorkflowActionItemFormFieldCondition \" pulumi-lang-java=\"\nrootly.WorkflowActionItemFormFieldCondition \"\u003e\nrootly.WorkflowActionItemFormFieldCondition \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowActionItemFormFieldCondition:WorkflowActionItemFormFieldCondition primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "actionItemCondition": {
+                    "type": "string",
+                    "description": "The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                },
+                "formFieldId": {
+                    "type": "string",
+                    "description": "The custom field for this condition\n"
+                },
+                "selectedCatalogEntityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedCauseIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedEnvironmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedFunctionalityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedIncidentTypeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedOptionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedServiceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedUserIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The workflow for this condition\n"
+                }
+            },
+            "required": [
+                "formFieldId",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "actionItemCondition": {
+                    "type": "string",
+                    "description": "The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                },
+                "formFieldId": {
+                    "type": "string",
+                    "description": "The custom field for this condition\n"
+                },
+                "selectedCatalogEntityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedCauseIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedEnvironmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedFunctionalityIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedIncidentTypeIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedOptionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedServiceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "selectedUserIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The workflow for this condition\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "formFieldId",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowActionItemFormFieldCondition resources.\n",
+                "properties": {
+                    "actionItemCondition": {
+                        "type": "string",
+                        "description": "The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                    },
+                    "formFieldId": {
+                        "type": "string",
+                        "description": "The custom field for this condition\n"
+                    },
+                    "selectedCatalogEntityIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "selectedCauseIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "selectedEnvironmentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "selectedFunctionalityIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "selectedGroupIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "selectedIncidentTypeIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "selectedOptionIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "selectedServiceIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "selectedUserIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The workflow for this condition\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -21181,7 +21941,8 @@
                 }
             },
             "requiredInputs": [
-                "customFieldId"
+                "customFieldId",
+                "workflowId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering WorkflowCustomFieldSelection resources.\n",
@@ -21371,7 +22132,8 @@
                 }
             },
             "requiredInputs": [
-                "formFieldId"
+                "formFieldId",
+                "workflowId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering WorkflowFormFieldCondition resources.\n",
@@ -21518,10 +22280,6 @@
                 "position": {
                     "type": "integer",
                     "description": "The position of the workflow group\n"
-                },
-                "slug": {
-                    "type": "string",
-                    "description": "The slug of the workflow group.\n"
                 }
             },
             "stateInputs": {
@@ -23822,6 +24580,103 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowTaskArchiveGoogleChatSpaces:WorkflowTaskArchiveGoogleChatSpaces": {
+            "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" archiveGoogleChatSpaces \" pulumi-lang-dotnet=\" ArchiveGoogleChatSpaces \" pulumi-lang-go=\" archiveGoogleChatSpaces \" pulumi-lang-python=\" archive_google_chat_spaces \" pulumi-lang-yaml=\" archiveGoogleChatSpaces \" pulumi-lang-java=\" archiveGoogleChatSpaces \"\u003e archiveGoogleChatSpaces \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskArchiveGoogleChatSpaces \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskArchiveGoogleChatSpaces \" pulumi-lang-go=\"\nWorkflowTaskArchiveGoogleChatSpaces \" pulumi-lang-python=\"\nWorkflowTaskArchiveGoogleChatSpaces \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskArchiveGoogleChatSpaces \" pulumi-lang-java=\"\nrootly.WorkflowTaskArchiveGoogleChatSpaces \"\u003e\nrootly.WorkflowTaskArchiveGoogleChatSpaces \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskArchiveGoogleChatSpaces:WorkflowTaskArchiveGoogleChatSpaces primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskArchiveGoogleChatSpacesTaskParams:WorkflowTaskArchiveGoogleChatSpacesTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskArchiveGoogleChatSpacesTaskParams:WorkflowTaskArchiveGoogleChatSpacesTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskArchiveGoogleChatSpaces resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskArchiveGoogleChatSpacesTaskParams:WorkflowTaskArchiveGoogleChatSpacesTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowTaskArchiveMicrosoftTeamsChannels:WorkflowTaskArchiveMicrosoftTeamsChannels": {
             "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" archiveMicrosoftTeamsChannels \" pulumi-lang-dotnet=\" ArchiveMicrosoftTeamsChannels \" pulumi-lang-go=\" archiveMicrosoftTeamsChannels \" pulumi-lang-python=\" archive_microsoft_teams_channels \" pulumi-lang-yaml=\" archiveMicrosoftTeamsChannels \" pulumi-lang-java=\" archiveMicrosoftTeamsChannels \"\u003e archiveMicrosoftTeamsChannels \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskArchiveMicrosoftTeamsChannels \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskArchiveMicrosoftTeamsChannels \" pulumi-lang-go=\"\nWorkflowTaskArchiveMicrosoftTeamsChannels \" pulumi-lang-python=\"\nWorkflowTaskArchiveMicrosoftTeamsChannels \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskArchiveMicrosoftTeamsChannels \" pulumi-lang-java=\"\nrootly.WorkflowTaskArchiveMicrosoftTeamsChannels \"\u003e\nrootly.WorkflowTaskArchiveMicrosoftTeamsChannels \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskArchiveMicrosoftTeamsChannels:WorkflowTaskArchiveMicrosoftTeamsChannels primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
@@ -24587,6 +25442,103 @@
                     },
                     "taskParams": {
                         "$ref": "#/types/rootly:index/WorkflowTaskCallPeopleTaskParams:WorkflowTaskCallPeopleTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowTaskChangeGoogleChatSpacePrivacy:WorkflowTaskChangeGoogleChatSpacePrivacy": {
+            "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" changeGoogleChatSpacePrivacy \" pulumi-lang-dotnet=\" ChangeGoogleChatSpacePrivacy \" pulumi-lang-go=\" changeGoogleChatSpacePrivacy \" pulumi-lang-python=\" change_google_chat_space_privacy \" pulumi-lang-yaml=\" changeGoogleChatSpacePrivacy \" pulumi-lang-java=\" changeGoogleChatSpacePrivacy \"\u003e changeGoogleChatSpacePrivacy \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskChangeGoogleChatSpacePrivacy \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskChangeGoogleChatSpacePrivacy \" pulumi-lang-go=\"\nWorkflowTaskChangeGoogleChatSpacePrivacy \" pulumi-lang-python=\"\nWorkflowTaskChangeGoogleChatSpacePrivacy \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskChangeGoogleChatSpacePrivacy \" pulumi-lang-java=\"\nrootly.WorkflowTaskChangeGoogleChatSpacePrivacy \"\u003e\nrootly.WorkflowTaskChangeGoogleChatSpacePrivacy \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskChangeGoogleChatSpacePrivacy:WorkflowTaskChangeGoogleChatSpacePrivacy primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams:WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams:WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskChangeGoogleChatSpacePrivacy resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams:WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams",
                         "description": "The parameters for this workflow task.\n"
                     },
                     "workflowId": {
@@ -25945,6 +26897,103 @@
                     },
                     "taskParams": {
                         "$ref": "#/types/rootly:index/WorkflowTaskCreateGoogleCalendarEventTaskParams:WorkflowTaskCreateGoogleCalendarEventTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowTaskCreateGoogleChatSpace:WorkflowTaskCreateGoogleChatSpace": {
+            "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" createGoogleChatSpace \" pulumi-lang-dotnet=\" CreateGoogleChatSpace \" pulumi-lang-go=\" createGoogleChatSpace \" pulumi-lang-python=\" create_google_chat_space \" pulumi-lang-yaml=\" createGoogleChatSpace \" pulumi-lang-java=\" createGoogleChatSpace \"\u003e createGoogleChatSpace \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskCreateGoogleChatSpace \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskCreateGoogleChatSpace \" pulumi-lang-go=\"\nWorkflowTaskCreateGoogleChatSpace \" pulumi-lang-python=\"\nWorkflowTaskCreateGoogleChatSpace \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskCreateGoogleChatSpace \" pulumi-lang-java=\"\nrootly.WorkflowTaskCreateGoogleChatSpace \"\u003e\nrootly.WorkflowTaskCreateGoogleChatSpace \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskCreateGoogleChatSpace:WorkflowTaskCreateGoogleChatSpace primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreateGoogleChatSpaceTaskParams:WorkflowTaskCreateGoogleChatSpaceTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskCreateGoogleChatSpaceTaskParams:WorkflowTaskCreateGoogleChatSpaceTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskCreateGoogleChatSpace resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskCreateGoogleChatSpaceTaskParams:WorkflowTaskCreateGoogleChatSpaceTaskParams",
                         "description": "The parameters for this workflow task.\n"
                     },
                     "workflowId": {
@@ -29933,6 +30982,103 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowTaskInviteToGoogleChatSpace:WorkflowTaskInviteToGoogleChatSpace": {
+            "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" inviteToGoogleChatSpace \" pulumi-lang-dotnet=\" InviteToGoogleChatSpace \" pulumi-lang-go=\" inviteToGoogleChatSpace \" pulumi-lang-python=\" invite_to_google_chat_space \" pulumi-lang-yaml=\" inviteToGoogleChatSpace \" pulumi-lang-java=\" inviteToGoogleChatSpace \"\u003e inviteToGoogleChatSpace \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskInviteToGoogleChatSpace \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskInviteToGoogleChatSpace \" pulumi-lang-go=\"\nWorkflowTaskInviteToGoogleChatSpace \" pulumi-lang-python=\"\nWorkflowTaskInviteToGoogleChatSpace \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskInviteToGoogleChatSpace \" pulumi-lang-java=\"\nrootly.WorkflowTaskInviteToGoogleChatSpace \"\u003e\nrootly.WorkflowTaskInviteToGoogleChatSpace \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskInviteToGoogleChatSpace:WorkflowTaskInviteToGoogleChatSpace primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskInviteToGoogleChatSpaceTaskParams:WorkflowTaskInviteToGoogleChatSpaceTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskInviteToGoogleChatSpaceTaskParams:WorkflowTaskInviteToGoogleChatSpaceTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskInviteToGoogleChatSpace resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskInviteToGoogleChatSpaceTaskParams:WorkflowTaskInviteToGoogleChatSpaceTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowTaskInviteToMicrosoftTeamsChannel:WorkflowTaskInviteToMicrosoftTeamsChannel": {
             "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" inviteToMicrosoftTeamsChannel \" pulumi-lang-dotnet=\" InviteToMicrosoftTeamsChannel \" pulumi-lang-go=\" inviteToMicrosoftTeamsChannel \" pulumi-lang-python=\" invite_to_microsoft_teams_channel \" pulumi-lang-yaml=\" inviteToMicrosoftTeamsChannel \" pulumi-lang-java=\" inviteToMicrosoftTeamsChannel \"\u003e inviteToMicrosoftTeamsChannel \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskInviteToMicrosoftTeamsChannel \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskInviteToMicrosoftTeamsChannel \" pulumi-lang-go=\"\nWorkflowTaskInviteToMicrosoftTeamsChannel \" pulumi-lang-python=\"\nWorkflowTaskInviteToMicrosoftTeamsChannel \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskInviteToMicrosoftTeamsChannel \" pulumi-lang-java=\"\nrootly.WorkflowTaskInviteToMicrosoftTeamsChannel \"\u003e\nrootly.WorkflowTaskInviteToMicrosoftTeamsChannel \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskInviteToMicrosoftTeamsChannel:WorkflowTaskInviteToMicrosoftTeamsChannel primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
@@ -30019,6 +31165,103 @@
                     },
                     "taskParams": {
                         "$ref": "#/types/rootly:index/WorkflowTaskInviteToMicrosoftTeamsChannelTaskParams:WorkflowTaskInviteToMicrosoftTeamsChannelTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowTaskInviteToMicrosoftTeamsChannelRootly:WorkflowTaskInviteToMicrosoftTeamsChannelRootly": {
+            "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" inviteToMicrosoftTeamsChannelRootly \" pulumi-lang-dotnet=\" InviteToMicrosoftTeamsChannelRootly \" pulumi-lang-go=\" inviteToMicrosoftTeamsChannelRootly \" pulumi-lang-python=\" invite_to_microsoft_teams_channel_rootly \" pulumi-lang-yaml=\" inviteToMicrosoftTeamsChannelRootly \" pulumi-lang-java=\" inviteToMicrosoftTeamsChannelRootly \"\u003e inviteToMicrosoftTeamsChannelRootly \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskInviteToMicrosoftTeamsChannelRootly \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskInviteToMicrosoftTeamsChannelRootly \" pulumi-lang-go=\"\nWorkflowTaskInviteToMicrosoftTeamsChannelRootly \" pulumi-lang-python=\"\nWorkflowTaskInviteToMicrosoftTeamsChannelRootly \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskInviteToMicrosoftTeamsChannelRootly \" pulumi-lang-java=\"\nrootly.WorkflowTaskInviteToMicrosoftTeamsChannelRootly \"\u003e\nrootly.WorkflowTaskInviteToMicrosoftTeamsChannelRootly \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskInviteToMicrosoftTeamsChannelRootly:WorkflowTaskInviteToMicrosoftTeamsChannelRootly primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams:WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams:WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskInviteToMicrosoftTeamsChannelRootly resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams:WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams",
                         "description": "The parameters for this workflow task.\n"
                     },
                     "workflowId": {
@@ -31388,6 +32631,103 @@
                 "type": "object"
             }
         },
+        "rootly:index/workflowTaskRenameGoogleChatSpace:WorkflowTaskRenameGoogleChatSpace": {
+            "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" renameGoogleChatSpace \" pulumi-lang-dotnet=\" RenameGoogleChatSpace \" pulumi-lang-go=\" renameGoogleChatSpace \" pulumi-lang-python=\" rename_google_chat_space \" pulumi-lang-yaml=\" renameGoogleChatSpace \" pulumi-lang-java=\" renameGoogleChatSpace \"\u003e renameGoogleChatSpace \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskRenameGoogleChatSpace \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskRenameGoogleChatSpace \" pulumi-lang-go=\"\nWorkflowTaskRenameGoogleChatSpace \" pulumi-lang-python=\"\nWorkflowTaskRenameGoogleChatSpace \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskRenameGoogleChatSpace \" pulumi-lang-java=\"\nrootly.WorkflowTaskRenameGoogleChatSpace \"\u003e\nrootly.WorkflowTaskRenameGoogleChatSpace \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskRenameGoogleChatSpace:WorkflowTaskRenameGoogleChatSpace primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskRenameGoogleChatSpaceTaskParams:WorkflowTaskRenameGoogleChatSpaceTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskRenameGoogleChatSpaceTaskParams:WorkflowTaskRenameGoogleChatSpaceTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskRenameGoogleChatSpace resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskRenameGoogleChatSpaceTaskParams:WorkflowTaskRenameGoogleChatSpaceTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/workflowTaskRenameMicrosoftTeamsChannel:WorkflowTaskRenameMicrosoftTeamsChannel": {
             "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" renameMicrosoftTeamsChannel \" pulumi-lang-dotnet=\" RenameMicrosoftTeamsChannel \" pulumi-lang-go=\" renameMicrosoftTeamsChannel \" pulumi-lang-python=\" rename_microsoft_teams_channel \" pulumi-lang-yaml=\" renameMicrosoftTeamsChannel \" pulumi-lang-java=\" renameMicrosoftTeamsChannel \"\u003e renameMicrosoftTeamsChannel \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskRenameMicrosoftTeamsChannel \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskRenameMicrosoftTeamsChannel \" pulumi-lang-go=\"\nWorkflowTaskRenameMicrosoftTeamsChannel \" pulumi-lang-python=\"\nWorkflowTaskRenameMicrosoftTeamsChannel \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskRenameMicrosoftTeamsChannel \" pulumi-lang-java=\"\nrootly.WorkflowTaskRenameMicrosoftTeamsChannel \"\u003e\nrootly.WorkflowTaskRenameMicrosoftTeamsChannel \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskRenameMicrosoftTeamsChannel:WorkflowTaskRenameMicrosoftTeamsChannel primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
@@ -31862,6 +33202,200 @@
                     },
                     "taskParams": {
                         "$ref": "#/types/rootly:index/WorkflowTaskSendEmailTaskParams:WorkflowTaskSendEmailTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowTaskSendGoogleChatAttachments:WorkflowTaskSendGoogleChatAttachments": {
+            "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" sendGoogleChatAttachments \" pulumi-lang-dotnet=\" SendGoogleChatAttachments \" pulumi-lang-go=\" sendGoogleChatAttachments \" pulumi-lang-python=\" send_google_chat_attachments \" pulumi-lang-yaml=\" sendGoogleChatAttachments \" pulumi-lang-java=\" sendGoogleChatAttachments \"\u003e sendGoogleChatAttachments \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskSendGoogleChatAttachments \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskSendGoogleChatAttachments \" pulumi-lang-go=\"\nWorkflowTaskSendGoogleChatAttachments \" pulumi-lang-python=\"\nWorkflowTaskSendGoogleChatAttachments \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskSendGoogleChatAttachments \" pulumi-lang-java=\"\nrootly.WorkflowTaskSendGoogleChatAttachments \"\u003e\nrootly.WorkflowTaskSendGoogleChatAttachments \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskSendGoogleChatAttachments:WorkflowTaskSendGoogleChatAttachments primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskSendGoogleChatAttachmentsTaskParams:WorkflowTaskSendGoogleChatAttachmentsTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskSendGoogleChatAttachmentsTaskParams:WorkflowTaskSendGoogleChatAttachmentsTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskSendGoogleChatAttachments resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskSendGoogleChatAttachmentsTaskParams:WorkflowTaskSendGoogleChatAttachmentsTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowTaskSendGoogleChatMessage:WorkflowTaskSendGoogleChatMessage": {
+            "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" sendGoogleChatMessage \" pulumi-lang-dotnet=\" SendGoogleChatMessage \" pulumi-lang-go=\" sendGoogleChatMessage \" pulumi-lang-python=\" send_google_chat_message \" pulumi-lang-yaml=\" sendGoogleChatMessage \" pulumi-lang-java=\" sendGoogleChatMessage \"\u003e sendGoogleChatMessage \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskSendGoogleChatMessage \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskSendGoogleChatMessage \" pulumi-lang-go=\"\nWorkflowTaskSendGoogleChatMessage \" pulumi-lang-python=\"\nWorkflowTaskSendGoogleChatMessage \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskSendGoogleChatMessage \" pulumi-lang-java=\"\nrootly.WorkflowTaskSendGoogleChatMessage \"\u003e\nrootly.WorkflowTaskSendGoogleChatMessage \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskSendGoogleChatMessage:WorkflowTaskSendGoogleChatMessage primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskSendGoogleChatMessageTaskParams:WorkflowTaskSendGoogleChatMessageTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskSendGoogleChatMessageTaskParams:WorkflowTaskSendGoogleChatMessageTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskSendGoogleChatMessage resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskSendGoogleChatMessageTaskParams:WorkflowTaskSendGoogleChatMessageTaskParams",
                         "description": "The parameters for this workflow task.\n"
                     },
                     "workflowId": {
@@ -34287,6 +35821,103 @@
                     },
                     "taskParams": {
                         "$ref": "#/types/rootly:index/WorkflowTaskUpdateGoogleCalendarEventTaskParams:WorkflowTaskUpdateGoogleCalendarEventTaskParams",
+                        "description": "The parameters for this workflow task.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The ID of the parent workflow\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/workflowTaskUpdateGoogleChatSpaceDescription:WorkflowTaskUpdateGoogleChatSpaceDescription": {
+            "description": "Manages workflow\u003cspan pulumi-lang-nodejs=\" updateGoogleChatSpaceDescription \" pulumi-lang-dotnet=\" UpdateGoogleChatSpaceDescription \" pulumi-lang-go=\" updateGoogleChatSpaceDescription \" pulumi-lang-python=\" update_google_chat_space_description \" pulumi-lang-yaml=\" updateGoogleChatSpaceDescription \" pulumi-lang-java=\" updateGoogleChatSpaceDescription \"\u003e updateGoogleChatSpaceDescription \u003c/span\u003etask.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.WorkflowTaskUpdateGoogleChatSpaceDescription \" pulumi-lang-dotnet=\"\nrootly.WorkflowTaskUpdateGoogleChatSpaceDescription \" pulumi-lang-go=\"\nWorkflowTaskUpdateGoogleChatSpaceDescription \" pulumi-lang-python=\"\nWorkflowTaskUpdateGoogleChatSpaceDescription \" pulumi-lang-yaml=\"\nrootly.WorkflowTaskUpdateGoogleChatSpaceDescription \" pulumi-lang-java=\"\nrootly.WorkflowTaskUpdateGoogleChatSpaceDescription \"\u003e\nrootly.WorkflowTaskUpdateGoogleChatSpaceDescription \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/workflowTaskUpdateGoogleChatSpaceDescription:WorkflowTaskUpdateGoogleChatSpaceDescription primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams:WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n"
+                }
+            },
+            "required": [
+                "name",
+                "position",
+                "taskParams",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable/disable this workflow task\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the workflow task\n"
+                },
+                "position": {
+                    "type": "integer",
+                    "description": "The position of the workflow task (1 being top of list)\n"
+                },
+                "skipOnFailure": {
+                    "type": "boolean",
+                    "description": "Skip workflow task if any failures\n"
+                },
+                "taskParams": {
+                    "$ref": "#/types/rootly:index/WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams:WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams",
+                    "description": "The parameters for this workflow task.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The ID of the parent workflow\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "taskParams",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowTaskUpdateGoogleChatSpaceDescription resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Enable/disable this workflow task\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the workflow task\n"
+                    },
+                    "position": {
+                        "type": "integer",
+                        "description": "The position of the workflow task (1 being top of list)\n"
+                    },
+                    "skipOnFailure": {
+                        "type": "boolean",
+                        "description": "Skip workflow task if any failures\n"
+                    },
+                    "taskParams": {
+                        "$ref": "#/types/rootly:index/WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams:WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams",
                         "description": "The parameters for this workflow task.\n"
                     },
                     "workflowId": {
@@ -39039,6 +40670,53 @@
                     }
                 },
                 "required": [
+                    "id",
+                    "name",
+                    "slug"
+                ],
+                "type": "object"
+            }
+        },
+        "rootly:index/getPostMortemTemplate:getPostMortemTemplate": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getPostMortemTemplate.\n",
+                "properties": {
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "slug"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPostMortemTemplate.\n",
+                "properties": {
+                    "content": {
+                        "type": "string"
+                    },
+                    "default": {
+                        "type": "boolean"
+                    },
+                    "format": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The ID of this resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "content",
+                    "default",
+                    "format",
                     "id",
                     "name",
                     "slug"

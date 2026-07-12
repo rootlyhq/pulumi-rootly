@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -53,6 +55,10 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === WebhooksEndpoint.__pulumiType;
     }
 
+    /**
+     * Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
+     */
+    declare public readonly customHeaders: pulumi.Output<outputs.WebhooksEndpointCustomHeader[] | undefined>;
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
@@ -69,7 +75,7 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
     /**
      * The slug of the endpoint
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
     /**
      * The URL of the endpoint.
      */
@@ -88,6 +94,7 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebhooksEndpointState | undefined;
+            resourceInputs["customHeaders"] = state?.customHeaders;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["eventTypes"] = state?.eventTypes;
             resourceInputs["name"] = state?.name;
@@ -99,12 +106,13 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
             if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
+            resourceInputs["customHeaders"] = args?.customHeaders;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["eventTypes"] = args?.eventTypes;
             resourceInputs["name"] = args?.name;
             resourceInputs["secret"] = args?.secret;
-            resourceInputs["slug"] = args?.slug;
             resourceInputs["url"] = args?.url;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WebhooksEndpoint.__pulumiType, name, resourceInputs, opts);
@@ -115,6 +123,10 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WebhooksEndpoint resources.
  */
 export interface WebhooksEndpointState {
+    /**
+     * Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
+     */
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.WebhooksEndpointCustomHeader>[] | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
@@ -142,6 +154,10 @@ export interface WebhooksEndpointState {
  * The set of arguments for constructing a WebhooksEndpoint resource.
  */
 export interface WebhooksEndpointArgs {
+    /**
+     * Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
+     */
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.WebhooksEndpointCustomHeader>[] | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
@@ -155,10 +171,6 @@ export interface WebhooksEndpointArgs {
      * The webhook signing secret used to verify webhook requests.
      */
     secret?: pulumi.Input<string | undefined>;
-    /**
-     * The slug of the endpoint
-     */
-    slug?: pulumi.Input<string | undefined>;
     /**
      * The URL of the endpoint.
      */

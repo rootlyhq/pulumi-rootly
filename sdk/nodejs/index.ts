@@ -425,6 +425,11 @@ export const getOnCallRole: typeof import("./getOnCallRole").getOnCallRole = nul
 export const getOnCallRoleOutput: typeof import("./getOnCallRole").getOnCallRoleOutput = null as any;
 utilities.lazyLoad(exports, ["getOnCallRole","getOnCallRoleOutput"], () => require("./getOnCallRole"));
 
+export { GetPostMortemTemplateArgs, GetPostMortemTemplateResult, GetPostMortemTemplateOutputArgs } from "./getPostMortemTemplate";
+export const getPostMortemTemplate: typeof import("./getPostMortemTemplate").getPostMortemTemplate = null as any;
+export const getPostMortemTemplateOutput: typeof import("./getPostMortemTemplate").getPostMortemTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getPostMortemTemplate","getPostMortemTemplateOutput"], () => require("./getPostMortemTemplate"));
+
 export { GetRetrospectiveConfigurationArgs, GetRetrospectiveConfigurationResult, GetRetrospectiveConfigurationOutputArgs } from "./getRetrospectiveConfiguration";
 export const getRetrospectiveConfiguration: typeof import("./getRetrospectiveConfiguration").getRetrospectiveConfiguration = null as any;
 export const getRetrospectiveConfigurationOutput: typeof import("./getRetrospectiveConfiguration").getRetrospectiveConfigurationOutput = null as any;
@@ -698,6 +703,11 @@ export type WorkflowActionItem = import("./workflowActionItem").WorkflowActionIt
 export const WorkflowActionItem: typeof import("./workflowActionItem").WorkflowActionItem = null as any;
 utilities.lazyLoad(exports, ["WorkflowActionItem"], () => require("./workflowActionItem"));
 
+export { WorkflowActionItemFormFieldConditionArgs, WorkflowActionItemFormFieldConditionState } from "./workflowActionItemFormFieldCondition";
+export type WorkflowActionItemFormFieldCondition = import("./workflowActionItemFormFieldCondition").WorkflowActionItemFormFieldCondition;
+export const WorkflowActionItemFormFieldCondition: typeof import("./workflowActionItemFormFieldCondition").WorkflowActionItemFormFieldCondition = null as any;
+utilities.lazyLoad(exports, ["WorkflowActionItemFormFieldCondition"], () => require("./workflowActionItemFormFieldCondition"));
+
 export { WorkflowAlertArgs, WorkflowAlertState } from "./workflowAlert";
 export type WorkflowAlert = import("./workflowAlert").WorkflowAlert;
 export const WorkflowAlert: typeof import("./workflowAlert").WorkflowAlert = null as any;
@@ -773,6 +783,11 @@ export type WorkflowTaskAddToTimeline = import("./workflowTaskAddToTimeline").Wo
 export const WorkflowTaskAddToTimeline: typeof import("./workflowTaskAddToTimeline").WorkflowTaskAddToTimeline = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskAddToTimeline"], () => require("./workflowTaskAddToTimeline"));
 
+export { WorkflowTaskArchiveGoogleChatSpacesArgs, WorkflowTaskArchiveGoogleChatSpacesState } from "./workflowTaskArchiveGoogleChatSpaces";
+export type WorkflowTaskArchiveGoogleChatSpaces = import("./workflowTaskArchiveGoogleChatSpaces").WorkflowTaskArchiveGoogleChatSpaces;
+export const WorkflowTaskArchiveGoogleChatSpaces: typeof import("./workflowTaskArchiveGoogleChatSpaces").WorkflowTaskArchiveGoogleChatSpaces = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskArchiveGoogleChatSpaces"], () => require("./workflowTaskArchiveGoogleChatSpaces"));
+
 export { WorkflowTaskArchiveMicrosoftTeamsChannelsArgs, WorkflowTaskArchiveMicrosoftTeamsChannelsState } from "./workflowTaskArchiveMicrosoftTeamsChannels";
 export type WorkflowTaskArchiveMicrosoftTeamsChannels = import("./workflowTaskArchiveMicrosoftTeamsChannels").WorkflowTaskArchiveMicrosoftTeamsChannels;
 export const WorkflowTaskArchiveMicrosoftTeamsChannels: typeof import("./workflowTaskArchiveMicrosoftTeamsChannels").WorkflowTaskArchiveMicrosoftTeamsChannels = null as any;
@@ -812,6 +827,11 @@ export { WorkflowTaskCallPeopleArgs, WorkflowTaskCallPeopleState } from "./workf
 export type WorkflowTaskCallPeople = import("./workflowTaskCallPeople").WorkflowTaskCallPeople;
 export const WorkflowTaskCallPeople: typeof import("./workflowTaskCallPeople").WorkflowTaskCallPeople = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCallPeople"], () => require("./workflowTaskCallPeople"));
+
+export { WorkflowTaskChangeGoogleChatSpacePrivacyArgs, WorkflowTaskChangeGoogleChatSpacePrivacyState } from "./workflowTaskChangeGoogleChatSpacePrivacy";
+export type WorkflowTaskChangeGoogleChatSpacePrivacy = import("./workflowTaskChangeGoogleChatSpacePrivacy").WorkflowTaskChangeGoogleChatSpacePrivacy;
+export const WorkflowTaskChangeGoogleChatSpacePrivacy: typeof import("./workflowTaskChangeGoogleChatSpacePrivacy").WorkflowTaskChangeGoogleChatSpacePrivacy = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskChangeGoogleChatSpacePrivacy"], () => require("./workflowTaskChangeGoogleChatSpacePrivacy"));
 
 export { WorkflowTaskChangeSlackChannelPrivacyArgs, WorkflowTaskChangeSlackChannelPrivacyState } from "./workflowTaskChangeSlackChannelPrivacy";
 export type WorkflowTaskChangeSlackChannelPrivacy = import("./workflowTaskChangeSlackChannelPrivacy").WorkflowTaskChangeSlackChannelPrivacy;
@@ -882,6 +902,11 @@ export { WorkflowTaskCreateGoogleCalendarEventArgs, WorkflowTaskCreateGoogleCale
 export type WorkflowTaskCreateGoogleCalendarEvent = import("./workflowTaskCreateGoogleCalendarEvent").WorkflowTaskCreateGoogleCalendarEvent;
 export const WorkflowTaskCreateGoogleCalendarEvent: typeof import("./workflowTaskCreateGoogleCalendarEvent").WorkflowTaskCreateGoogleCalendarEvent = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateGoogleCalendarEvent"], () => require("./workflowTaskCreateGoogleCalendarEvent"));
+
+export { WorkflowTaskCreateGoogleChatSpaceArgs, WorkflowTaskCreateGoogleChatSpaceState } from "./workflowTaskCreateGoogleChatSpace";
+export type WorkflowTaskCreateGoogleChatSpace = import("./workflowTaskCreateGoogleChatSpace").WorkflowTaskCreateGoogleChatSpace;
+export const WorkflowTaskCreateGoogleChatSpace: typeof import("./workflowTaskCreateGoogleChatSpace").WorkflowTaskCreateGoogleChatSpace = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateGoogleChatSpace"], () => require("./workflowTaskCreateGoogleChatSpace"));
 
 export { WorkflowTaskCreateGoogleDocsPageArgs, WorkflowTaskCreateGoogleDocsPageState } from "./workflowTaskCreateGoogleDocsPage";
 export type WorkflowTaskCreateGoogleDocsPage = import("./workflowTaskCreateGoogleDocsPage").WorkflowTaskCreateGoogleDocsPage;
@@ -1088,10 +1113,20 @@ export type WorkflowTaskHttpClient = import("./workflowTaskHttpClient").Workflow
 export const WorkflowTaskHttpClient: typeof import("./workflowTaskHttpClient").WorkflowTaskHttpClient = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskHttpClient"], () => require("./workflowTaskHttpClient"));
 
+export { WorkflowTaskInviteToGoogleChatSpaceArgs, WorkflowTaskInviteToGoogleChatSpaceState } from "./workflowTaskInviteToGoogleChatSpace";
+export type WorkflowTaskInviteToGoogleChatSpace = import("./workflowTaskInviteToGoogleChatSpace").WorkflowTaskInviteToGoogleChatSpace;
+export const WorkflowTaskInviteToGoogleChatSpace: typeof import("./workflowTaskInviteToGoogleChatSpace").WorkflowTaskInviteToGoogleChatSpace = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskInviteToGoogleChatSpace"], () => require("./workflowTaskInviteToGoogleChatSpace"));
+
 export { WorkflowTaskInviteToMicrosoftTeamsChannelArgs, WorkflowTaskInviteToMicrosoftTeamsChannelState } from "./workflowTaskInviteToMicrosoftTeamsChannel";
 export type WorkflowTaskInviteToMicrosoftTeamsChannel = import("./workflowTaskInviteToMicrosoftTeamsChannel").WorkflowTaskInviteToMicrosoftTeamsChannel;
 export const WorkflowTaskInviteToMicrosoftTeamsChannel: typeof import("./workflowTaskInviteToMicrosoftTeamsChannel").WorkflowTaskInviteToMicrosoftTeamsChannel = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskInviteToMicrosoftTeamsChannel"], () => require("./workflowTaskInviteToMicrosoftTeamsChannel"));
+
+export { WorkflowTaskInviteToMicrosoftTeamsChannelRootlyArgs, WorkflowTaskInviteToMicrosoftTeamsChannelRootlyState } from "./workflowTaskInviteToMicrosoftTeamsChannelRootly";
+export type WorkflowTaskInviteToMicrosoftTeamsChannelRootly = import("./workflowTaskInviteToMicrosoftTeamsChannelRootly").WorkflowTaskInviteToMicrosoftTeamsChannelRootly;
+export const WorkflowTaskInviteToMicrosoftTeamsChannelRootly: typeof import("./workflowTaskInviteToMicrosoftTeamsChannelRootly").WorkflowTaskInviteToMicrosoftTeamsChannelRootly = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskInviteToMicrosoftTeamsChannelRootly"], () => require("./workflowTaskInviteToMicrosoftTeamsChannelRootly"));
 
 export { WorkflowTaskInviteToSlackChannelArgs, WorkflowTaskInviteToSlackChannelState } from "./workflowTaskInviteToSlackChannel";
 export type WorkflowTaskInviteToSlackChannel = import("./workflowTaskInviteToSlackChannel").WorkflowTaskInviteToSlackChannel;
@@ -1163,6 +1198,11 @@ export type WorkflowTaskRemoveGoogleDocsPermissions = import("./workflowTaskRemo
 export const WorkflowTaskRemoveGoogleDocsPermissions: typeof import("./workflowTaskRemoveGoogleDocsPermissions").WorkflowTaskRemoveGoogleDocsPermissions = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskRemoveGoogleDocsPermissions"], () => require("./workflowTaskRemoveGoogleDocsPermissions"));
 
+export { WorkflowTaskRenameGoogleChatSpaceArgs, WorkflowTaskRenameGoogleChatSpaceState } from "./workflowTaskRenameGoogleChatSpace";
+export type WorkflowTaskRenameGoogleChatSpace = import("./workflowTaskRenameGoogleChatSpace").WorkflowTaskRenameGoogleChatSpace;
+export const WorkflowTaskRenameGoogleChatSpace: typeof import("./workflowTaskRenameGoogleChatSpace").WorkflowTaskRenameGoogleChatSpace = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskRenameGoogleChatSpace"], () => require("./workflowTaskRenameGoogleChatSpace"));
+
 export { WorkflowTaskRenameMicrosoftTeamsChannelArgs, WorkflowTaskRenameMicrosoftTeamsChannelState } from "./workflowTaskRenameMicrosoftTeamsChannel";
 export type WorkflowTaskRenameMicrosoftTeamsChannel = import("./workflowTaskRenameMicrosoftTeamsChannel").WorkflowTaskRenameMicrosoftTeamsChannel;
 export const WorkflowTaskRenameMicrosoftTeamsChannel: typeof import("./workflowTaskRenameMicrosoftTeamsChannel").WorkflowTaskRenameMicrosoftTeamsChannel = null as any;
@@ -1187,6 +1227,16 @@ export { WorkflowTaskSendEmailArgs, WorkflowTaskSendEmailState } from "./workflo
 export type WorkflowTaskSendEmail = import("./workflowTaskSendEmail").WorkflowTaskSendEmail;
 export const WorkflowTaskSendEmail: typeof import("./workflowTaskSendEmail").WorkflowTaskSendEmail = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskSendEmail"], () => require("./workflowTaskSendEmail"));
+
+export { WorkflowTaskSendGoogleChatAttachmentsArgs, WorkflowTaskSendGoogleChatAttachmentsState } from "./workflowTaskSendGoogleChatAttachments";
+export type WorkflowTaskSendGoogleChatAttachments = import("./workflowTaskSendGoogleChatAttachments").WorkflowTaskSendGoogleChatAttachments;
+export const WorkflowTaskSendGoogleChatAttachments: typeof import("./workflowTaskSendGoogleChatAttachments").WorkflowTaskSendGoogleChatAttachments = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskSendGoogleChatAttachments"], () => require("./workflowTaskSendGoogleChatAttachments"));
+
+export { WorkflowTaskSendGoogleChatMessageArgs, WorkflowTaskSendGoogleChatMessageState } from "./workflowTaskSendGoogleChatMessage";
+export type WorkflowTaskSendGoogleChatMessage = import("./workflowTaskSendGoogleChatMessage").WorkflowTaskSendGoogleChatMessage;
+export const WorkflowTaskSendGoogleChatMessage: typeof import("./workflowTaskSendGoogleChatMessage").WorkflowTaskSendGoogleChatMessage = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskSendGoogleChatMessage"], () => require("./workflowTaskSendGoogleChatMessage"));
 
 export { WorkflowTaskSendMicrosoftTeamsBlocksArgs, WorkflowTaskSendMicrosoftTeamsBlocksState } from "./workflowTaskSendMicrosoftTeamsBlocks";
 export type WorkflowTaskSendMicrosoftTeamsBlocks = import("./workflowTaskSendMicrosoftTeamsBlocks").WorkflowTaskSendMicrosoftTeamsBlocks;
@@ -1312,6 +1362,11 @@ export { WorkflowTaskUpdateGoogleCalendarEventArgs, WorkflowTaskUpdateGoogleCale
 export type WorkflowTaskUpdateGoogleCalendarEvent = import("./workflowTaskUpdateGoogleCalendarEvent").WorkflowTaskUpdateGoogleCalendarEvent;
 export const WorkflowTaskUpdateGoogleCalendarEvent: typeof import("./workflowTaskUpdateGoogleCalendarEvent").WorkflowTaskUpdateGoogleCalendarEvent = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskUpdateGoogleCalendarEvent"], () => require("./workflowTaskUpdateGoogleCalendarEvent"));
+
+export { WorkflowTaskUpdateGoogleChatSpaceDescriptionArgs, WorkflowTaskUpdateGoogleChatSpaceDescriptionState } from "./workflowTaskUpdateGoogleChatSpaceDescription";
+export type WorkflowTaskUpdateGoogleChatSpaceDescription = import("./workflowTaskUpdateGoogleChatSpaceDescription").WorkflowTaskUpdateGoogleChatSpaceDescription;
+export const WorkflowTaskUpdateGoogleChatSpaceDescription: typeof import("./workflowTaskUpdateGoogleChatSpaceDescription").WorkflowTaskUpdateGoogleChatSpaceDescription = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskUpdateGoogleChatSpaceDescription"], () => require("./workflowTaskUpdateGoogleChatSpaceDescription"));
 
 export { WorkflowTaskUpdateGoogleDocsPageArgs, WorkflowTaskUpdateGoogleDocsPageState } from "./workflowTaskUpdateGoogleDocsPage";
 export type WorkflowTaskUpdateGoogleDocsPage = import("./workflowTaskUpdateGoogleDocsPage").WorkflowTaskUpdateGoogleDocsPage;
@@ -1579,6 +1634,8 @@ const _module = {
                 return new WebhooksEndpoint(name, <any>undefined, { urn })
             case "rootly:index/workflowActionItem:WorkflowActionItem":
                 return new WorkflowActionItem(name, <any>undefined, { urn })
+            case "rootly:index/workflowActionItemFormFieldCondition:WorkflowActionItemFormFieldCondition":
+                return new WorkflowActionItemFormFieldCondition(name, <any>undefined, { urn })
             case "rootly:index/workflowAlert:WorkflowAlert":
                 return new WorkflowAlert(name, <any>undefined, { urn })
             case "rootly:index/workflowCustomFieldSelection:WorkflowCustomFieldSelection":
@@ -1609,6 +1666,8 @@ const _module = {
                 return new WorkflowTaskAddTeam(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskAddToTimeline:WorkflowTaskAddToTimeline":
                 return new WorkflowTaskAddToTimeline(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskArchiveGoogleChatSpaces:WorkflowTaskArchiveGoogleChatSpaces":
+                return new WorkflowTaskArchiveGoogleChatSpaces(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskArchiveMicrosoftTeamsChannels:WorkflowTaskArchiveMicrosoftTeamsChannels":
                 return new WorkflowTaskArchiveMicrosoftTeamsChannels(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskArchiveSlackChannels:WorkflowTaskArchiveSlackChannels":
@@ -1625,6 +1684,8 @@ const _module = {
                 return new WorkflowTaskAutoAssignRoleVictorOps(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCallPeople:WorkflowTaskCallPeople":
                 return new WorkflowTaskCallPeople(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskChangeGoogleChatSpacePrivacy:WorkflowTaskChangeGoogleChatSpacePrivacy":
+                return new WorkflowTaskChangeGoogleChatSpacePrivacy(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskChangeSlackChannelPrivacy:WorkflowTaskChangeSlackChannelPrivacy":
                 return new WorkflowTaskChangeSlackChannelPrivacy(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateAirtableTableRecord:WorkflowTaskCreateAirtableTableRecord":
@@ -1653,6 +1714,8 @@ const _module = {
                 return new WorkflowTaskCreateGoToMeeting(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateGoogleCalendarEvent:WorkflowTaskCreateGoogleCalendarEvent":
                 return new WorkflowTaskCreateGoogleCalendarEvent(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateGoogleChatSpace:WorkflowTaskCreateGoogleChatSpace":
+                return new WorkflowTaskCreateGoogleChatSpace(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateGoogleDocsPage:WorkflowTaskCreateGoogleDocsPage":
                 return new WorkflowTaskCreateGoogleDocsPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateGoogleDocsPermissions:WorkflowTaskCreateGoogleDocsPermissions":
@@ -1735,8 +1798,12 @@ const _module = {
                 return new WorkflowTaskGetPulses(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskHttpClient:WorkflowTaskHttpClient":
                 return new WorkflowTaskHttpClient(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskInviteToGoogleChatSpace:WorkflowTaskInviteToGoogleChatSpace":
+                return new WorkflowTaskInviteToGoogleChatSpace(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskInviteToMicrosoftTeamsChannel:WorkflowTaskInviteToMicrosoftTeamsChannel":
                 return new WorkflowTaskInviteToMicrosoftTeamsChannel(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskInviteToMicrosoftTeamsChannelRootly:WorkflowTaskInviteToMicrosoftTeamsChannelRootly":
+                return new WorkflowTaskInviteToMicrosoftTeamsChannelRootly(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskInviteToSlackChannel:WorkflowTaskInviteToSlackChannel":
                 return new WorkflowTaskInviteToSlackChannel(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskInviteToSlackChannelOpsgenie:WorkflowTaskInviteToSlackChannelOpsgenie":
@@ -1765,6 +1832,8 @@ const _module = {
                 return new WorkflowTaskRedisClient(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskRemoveGoogleDocsPermissions:WorkflowTaskRemoveGoogleDocsPermissions":
                 return new WorkflowTaskRemoveGoogleDocsPermissions(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskRenameGoogleChatSpace:WorkflowTaskRenameGoogleChatSpace":
+                return new WorkflowTaskRenameGoogleChatSpace(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskRenameMicrosoftTeamsChannel:WorkflowTaskRenameMicrosoftTeamsChannel":
                 return new WorkflowTaskRenameMicrosoftTeamsChannel(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskRenameSlackChannel:WorkflowTaskRenameSlackChannel":
@@ -1775,6 +1844,10 @@ const _module = {
                 return new WorkflowTaskSendDashboardReport(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskSendEmail:WorkflowTaskSendEmail":
                 return new WorkflowTaskSendEmail(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskSendGoogleChatAttachments:WorkflowTaskSendGoogleChatAttachments":
+                return new WorkflowTaskSendGoogleChatAttachments(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskSendGoogleChatMessage:WorkflowTaskSendGoogleChatMessage":
+                return new WorkflowTaskSendGoogleChatMessage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskSendMicrosoftTeamsBlocks:WorkflowTaskSendMicrosoftTeamsBlocks":
                 return new WorkflowTaskSendMicrosoftTeamsBlocks(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskSendMicrosoftTeamsChatMessage:WorkflowTaskSendMicrosoftTeamsChatMessage":
@@ -1825,6 +1898,8 @@ const _module = {
                 return new WorkflowTaskUpdateGitlabIssue(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateGoogleCalendarEvent:WorkflowTaskUpdateGoogleCalendarEvent":
                 return new WorkflowTaskUpdateGoogleCalendarEvent(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdateGoogleChatSpaceDescription:WorkflowTaskUpdateGoogleChatSpaceDescription":
+                return new WorkflowTaskUpdateGoogleChatSpaceDescription(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateGoogleDocsPage:WorkflowTaskUpdateGoogleDocsPage":
                 return new WorkflowTaskUpdateGoogleDocsPage(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateIncident:WorkflowTaskUpdateIncident":
@@ -1945,6 +2020,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/subStatus", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/team", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/webhooksEndpoint", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowActionItem", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowActionItemFormFieldCondition", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowAlert", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowCustomFieldSelection", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowFormFieldCondition", _module)
@@ -1960,6 +2036,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddRole", _mo
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddSlackBookmark", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddTeam", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAddToTimeline", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskArchiveGoogleChatSpaces", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskArchiveMicrosoftTeamsChannels", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskArchiveSlackChannels", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAttachDatadogDashboards", _module)
@@ -1968,6 +2045,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRol
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRoleRootly", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRoleVictorOps", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCallPeople", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskChangeGoogleChatSpacePrivacy", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskChangeSlackChannelPrivacy", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateAirtableTableRecord", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateAnthropicChatCompletion", _module)
@@ -1982,6 +2060,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGithubI
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGitlabIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoToMeeting", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleCalendarEvent", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleChatSpace", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleDocsPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleDocsPermissions", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateGoogleGeminiChatCompletion", _module)
@@ -2023,7 +2102,9 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetGithubComm
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetGitlabCommits", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskGetPulses", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskHttpClient", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToGoogleChatSpace", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToMicrosoftTeamsChannel", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToMicrosoftTeamsChannelRootly", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannelOpsgenie", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskInviteToSlackChannelPagerduty", _module)
@@ -2038,11 +2119,14 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPrint", _modu
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskPublishIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskRedisClient", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskRemoveGoogleDocsPermissions", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskRenameGoogleChatSpace", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskRenameMicrosoftTeamsChannel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskRenameSlackChannel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskRunCommandHeroku", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendDashboardReport", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendEmail", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendGoogleChatAttachments", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendGoogleChatMessage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendMicrosoftTeamsBlocks", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendMicrosoftTeamsChatMessage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskSendMicrosoftTeamsMessage", _module)
@@ -2068,6 +2152,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateDropbox
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGithubIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGitlabIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGoogleCalendarEvent", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGoogleChatSpaceDescription", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateGoogleDocsPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateIncidentPostmortem", _module)

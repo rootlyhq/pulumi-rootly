@@ -64,7 +64,7 @@ export class CustomForm extends pulumi.CustomResource {
     /**
      * The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a CustomForm resource with the given unique name, arguments, and options.
@@ -93,7 +93,7 @@ export class CustomForm extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["name"] = args?.name;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomForm.__pulumiType, name, resourceInputs, opts);
@@ -134,8 +134,4 @@ export interface CustomFormArgs {
      * The name of the custom form.
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

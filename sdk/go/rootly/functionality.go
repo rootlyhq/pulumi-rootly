@@ -249,8 +249,6 @@ type functionalityArgs struct {
 	SlackAliases []FunctionalitySlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this functionality
 	SlackChannels []FunctionalitySlackChannel `pulumi:"slackChannels"`
-	// The slug of the functionality
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a Functionality resource.
@@ -297,8 +295,6 @@ type FunctionalityArgs struct {
 	SlackAliases FunctionalitySlackAliasArrayInput
 	// Slack Channels associated with this functionality
 	SlackChannels FunctionalitySlackChannelArrayInput
-	// The slug of the functionality
-	Slug pulumi.StringPtrInput
 }
 
 func (FunctionalityArgs) ElementType() reflect.Type {

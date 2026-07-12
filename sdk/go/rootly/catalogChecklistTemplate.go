@@ -137,8 +137,6 @@ type catalogChecklistTemplateArgs struct {
 	ScopeId *string `pulumi:"scopeId"`
 	// The scope type. Value must be one of `Team`, `Catalog`.
 	ScopeType *string `pulumi:"scopeType"`
-	// The slug of the checklist template
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a CatalogChecklistTemplate resource.
@@ -157,8 +155,6 @@ type CatalogChecklistTemplateArgs struct {
 	ScopeId pulumi.StringPtrInput
 	// The scope type. Value must be one of `Team`, `Catalog`.
 	ScopeType pulumi.StringPtrInput
-	// The slug of the checklist template
-	Slug pulumi.StringPtrInput
 }
 
 func (CatalogChecklistTemplateArgs) ElementType() reflect.Type {

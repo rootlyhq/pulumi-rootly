@@ -34,9 +34,13 @@ type Catalog struct {
 	pulumi.CustomResourceState
 
 	Description pulumi.StringOutput `pulumi:"description"`
+	// An external identifier for this catalog. Must be unique within the team.
+	ExternalId pulumi.StringOutput `pulumi:"externalId"`
 	// Value must be one of `globe-alt`, `server-stack`, `users`, `user-group`, `chart-bar`, `shapes`, `light-bulb`, `cursor-arrow-ripple`.
 	Icon pulumi.StringPtrOutput `pulumi:"icon"`
-	Name pulumi.StringOutput    `pulumi:"name"`
+	// Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy pulumi.StringOutput `pulumi:"managedBy"`
+	Name      pulumi.StringOutput `pulumi:"name"`
 	// Default position of the catalog when displayed in a list.
 	Position pulumi.IntOutput `pulumi:"position"`
 }
@@ -72,18 +76,26 @@ func GetCatalog(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Catalog resources.
 type catalogState struct {
 	Description *string `pulumi:"description"`
+	// An external identifier for this catalog. Must be unique within the team.
+	ExternalId *string `pulumi:"externalId"`
 	// Value must be one of `globe-alt`, `server-stack`, `users`, `user-group`, `chart-bar`, `shapes`, `light-bulb`, `cursor-arrow-ripple`.
 	Icon *string `pulumi:"icon"`
-	Name *string `pulumi:"name"`
+	// Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy *string `pulumi:"managedBy"`
+	Name      *string `pulumi:"name"`
 	// Default position of the catalog when displayed in a list.
 	Position *int `pulumi:"position"`
 }
 
 type CatalogState struct {
 	Description pulumi.StringPtrInput
+	// An external identifier for this catalog. Must be unique within the team.
+	ExternalId pulumi.StringPtrInput
 	// Value must be one of `globe-alt`, `server-stack`, `users`, `user-group`, `chart-bar`, `shapes`, `light-bulb`, `cursor-arrow-ripple`.
 	Icon pulumi.StringPtrInput
-	Name pulumi.StringPtrInput
+	// Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
 	// Default position of the catalog when displayed in a list.
 	Position pulumi.IntPtrInput
 }
@@ -94,6 +106,8 @@ func (CatalogState) ElementType() reflect.Type {
 
 type catalogArgs struct {
 	Description *string `pulumi:"description"`
+	// An external identifier for this catalog. Must be unique within the team.
+	ExternalId *string `pulumi:"externalId"`
 	// Value must be one of `globe-alt`, `server-stack`, `users`, `user-group`, `chart-bar`, `shapes`, `light-bulb`, `cursor-arrow-ripple`.
 	Icon *string `pulumi:"icon"`
 	Name *string `pulumi:"name"`
@@ -104,6 +118,8 @@ type catalogArgs struct {
 // The set of arguments for constructing a Catalog resource.
 type CatalogArgs struct {
 	Description pulumi.StringPtrInput
+	// An external identifier for this catalog. Must be unique within the team.
+	ExternalId pulumi.StringPtrInput
 	// Value must be one of `globe-alt`, `server-stack`, `users`, `user-group`, `chart-bar`, `shapes`, `light-bulb`, `cursor-arrow-ripple`.
 	Icon pulumi.StringPtrInput
 	Name pulumi.StringPtrInput
@@ -202,9 +218,19 @@ func (o CatalogOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// An external identifier for this catalog. Must be unique within the team.
+func (o CatalogOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
+}
+
 // Value must be one of `globe-alt`, `server-stack`, `users`, `user-group`, `chart-bar`, `shapes`, `light-bulb`, `cursor-arrow-ripple`.
 func (o CatalogOutput) Icon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringPtrOutput { return v.Icon }).(pulumi.StringPtrOutput)
+}
+
+// Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+func (o CatalogOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.ManagedBy }).(pulumi.StringOutput)
 }
 
 func (o CatalogOutput) Name() pulumi.StringOutput {

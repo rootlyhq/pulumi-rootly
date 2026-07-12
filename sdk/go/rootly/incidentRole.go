@@ -131,8 +131,6 @@ type incidentRoleArgs struct {
 	Optional *bool `pulumi:"optional"`
 	// Position of the incident role
 	Position *int `pulumi:"position"`
-	// The slug of the incident role
-	Slug *string `pulumi:"slug"`
 	// The summary of the incident role
 	Summary *string `pulumi:"summary"`
 }
@@ -150,8 +148,6 @@ type IncidentRoleArgs struct {
 	Optional pulumi.BoolPtrInput
 	// Position of the incident role
 	Position pulumi.IntPtrInput
-	// The slug of the incident role
-	Slug pulumi.StringPtrInput
 	// The summary of the incident role
 	Summary pulumi.StringPtrInput
 }

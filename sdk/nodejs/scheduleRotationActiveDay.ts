@@ -86,6 +86,9 @@ export class ScheduleRotationActiveDay extends pulumi.CustomResource {
             if (args?.activeTimeAttributes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'activeTimeAttributes'");
             }
+            if (args?.scheduleRotationId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'scheduleRotationId'");
+            }
             resourceInputs["activeTimeAttributes"] = args?.activeTimeAttributes;
             resourceInputs["dayName"] = args?.dayName;
             resourceInputs["scheduleRotationId"] = args?.scheduleRotationId;
@@ -122,5 +125,5 @@ export interface ScheduleRotationActiveDayArgs {
      * Schedule rotation day name for which active times to be created. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
     dayName?: pulumi.Input<string | undefined>;
-    scheduleRotationId?: pulumi.Input<string | undefined>;
+    scheduleRotationId: pulumi.Input<string>;
 }

@@ -86,7 +86,7 @@ export class CatalogChecklistTemplate extends pulumi.CustomResource {
     /**
      * The slug of the checklist template
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a CatalogChecklistTemplate resource with the given unique name, arguments, and options.
@@ -118,7 +118,7 @@ export class CatalogChecklistTemplate extends pulumi.CustomResource {
             resourceInputs["owners"] = args?.owners;
             resourceInputs["scopeId"] = args?.scopeId;
             resourceInputs["scopeType"] = args?.scopeType;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CatalogChecklistTemplate.__pulumiType, name, resourceInputs, opts);
@@ -195,8 +195,4 @@ export interface CatalogChecklistTemplateArgs {
      * The scope type. Value must be one of `Team`, `Catalog`.
      */
     scopeType?: pulumi.Input<string | undefined>;
-    /**
-     * The slug of the checklist template
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

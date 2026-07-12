@@ -34,12 +34,22 @@ import (
 type AlertUrgency struct {
 	pulumi.CustomResourceState
 
+	// Unique ID of the alert urgency
+	AlertUrgencyId pulumi.StringOutput `pulumi:"alertUrgencyId"`
+	// The color associated with this urgency level
+	Color pulumi.StringOutput `pulumi:"color"`
+	// Date of deletion
+	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
 	// The description of the alert urgency
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The name of the alert urgency
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Position of the alert urgency
 	Position pulumi.IntOutput `pulumi:"position"`
+	// The ID of the team this urgency belongs to
+	TeamId pulumi.IntOutput `pulumi:"teamId"`
+	// The urgency level
+	Urgency pulumi.StringOutput `pulumi:"urgency"`
 }
 
 // NewAlertUrgency registers a new resource with the given unique name, arguments, and options.
@@ -75,21 +85,41 @@ func GetAlertUrgency(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlertUrgency resources.
 type alertUrgencyState struct {
+	// Unique ID of the alert urgency
+	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
+	// The color associated with this urgency level
+	Color *string `pulumi:"color"`
+	// Date of deletion
+	DeletedAt *string `pulumi:"deletedAt"`
 	// The description of the alert urgency
 	Description *string `pulumi:"description"`
 	// The name of the alert urgency
 	Name *string `pulumi:"name"`
 	// Position of the alert urgency
 	Position *int `pulumi:"position"`
+	// The ID of the team this urgency belongs to
+	TeamId *int `pulumi:"teamId"`
+	// The urgency level
+	Urgency *string `pulumi:"urgency"`
 }
 
 type AlertUrgencyState struct {
+	// Unique ID of the alert urgency
+	AlertUrgencyId pulumi.StringPtrInput
+	// The color associated with this urgency level
+	Color pulumi.StringPtrInput
+	// Date of deletion
+	DeletedAt pulumi.StringPtrInput
 	// The description of the alert urgency
 	Description pulumi.StringPtrInput
 	// The name of the alert urgency
 	Name pulumi.StringPtrInput
 	// Position of the alert urgency
 	Position pulumi.IntPtrInput
+	// The ID of the team this urgency belongs to
+	TeamId pulumi.IntPtrInput
+	// The urgency level
+	Urgency pulumi.StringPtrInput
 }
 
 func (AlertUrgencyState) ElementType() reflect.Type {
@@ -97,22 +127,42 @@ func (AlertUrgencyState) ElementType() reflect.Type {
 }
 
 type alertUrgencyArgs struct {
+	// Unique ID of the alert urgency
+	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
+	// The color associated with this urgency level
+	Color *string `pulumi:"color"`
+	// Date of deletion
+	DeletedAt *string `pulumi:"deletedAt"`
 	// The description of the alert urgency
 	Description string `pulumi:"description"`
 	// The name of the alert urgency
 	Name *string `pulumi:"name"`
 	// Position of the alert urgency
 	Position *int `pulumi:"position"`
+	// The ID of the team this urgency belongs to
+	TeamId *int `pulumi:"teamId"`
+	// The urgency level
+	Urgency *string `pulumi:"urgency"`
 }
 
 // The set of arguments for constructing a AlertUrgency resource.
 type AlertUrgencyArgs struct {
+	// Unique ID of the alert urgency
+	AlertUrgencyId pulumi.StringPtrInput
+	// The color associated with this urgency level
+	Color pulumi.StringPtrInput
+	// Date of deletion
+	DeletedAt pulumi.StringPtrInput
 	// The description of the alert urgency
 	Description pulumi.StringInput
 	// The name of the alert urgency
 	Name pulumi.StringPtrInput
 	// Position of the alert urgency
 	Position pulumi.IntPtrInput
+	// The ID of the team this urgency belongs to
+	TeamId pulumi.IntPtrInput
+	// The urgency level
+	Urgency pulumi.StringPtrInput
 }
 
 func (AlertUrgencyArgs) ElementType() reflect.Type {
@@ -202,6 +252,21 @@ func (o AlertUrgencyOutput) ToAlertUrgencyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Unique ID of the alert urgency
+func (o AlertUrgencyOutput) AlertUrgencyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertUrgency) pulumi.StringOutput { return v.AlertUrgencyId }).(pulumi.StringOutput)
+}
+
+// The color associated with this urgency level
+func (o AlertUrgencyOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertUrgency) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
+}
+
+// Date of deletion
+func (o AlertUrgencyOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertUrgency) pulumi.StringOutput { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
 // The description of the alert urgency
 func (o AlertUrgencyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertUrgency) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -215,6 +280,16 @@ func (o AlertUrgencyOutput) Name() pulumi.StringOutput {
 // Position of the alert urgency
 func (o AlertUrgencyOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *AlertUrgency) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
+}
+
+// The ID of the team this urgency belongs to
+func (o AlertUrgencyOutput) TeamId() pulumi.IntOutput {
+	return o.ApplyT(func(v *AlertUrgency) pulumi.IntOutput { return v.TeamId }).(pulumi.IntOutput)
+}
+
+// The urgency level
+func (o AlertUrgencyOutput) Urgency() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertUrgency) pulumi.StringOutput { return v.Urgency }).(pulumi.StringOutput)
 }
 
 type AlertUrgencyArrayOutput struct{ *pulumi.OutputState }

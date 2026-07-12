@@ -50,6 +50,9 @@ func NewPlaybookTask(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.PlaybookId == nil {
+		return nil, errors.New("invalid value for required argument 'PlaybookId'")
+	}
 	if args.Task == nil {
 		return nil, errors.New("invalid value for required argument 'Task'")
 	}
@@ -102,7 +105,7 @@ func (PlaybookTaskState) ElementType() reflect.Type {
 type playbookTaskArgs struct {
 	// The description of task
 	Description *string `pulumi:"description"`
-	PlaybookId  *string `pulumi:"playbookId"`
+	PlaybookId  string  `pulumi:"playbookId"`
 	// The position of the task
 	Position *int `pulumi:"position"`
 	// The task of the task
@@ -113,7 +116,7 @@ type playbookTaskArgs struct {
 type PlaybookTaskArgs struct {
 	// The description of task
 	Description pulumi.StringPtrInput
-	PlaybookId  pulumi.StringPtrInput
+	PlaybookId  pulumi.StringInput
 	// The position of the task
 	Position pulumi.IntPtrInput
 	// The task of the task

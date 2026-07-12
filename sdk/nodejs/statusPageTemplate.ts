@@ -109,6 +109,9 @@ export class StatusPageTemplate extends pulumi.CustomResource {
             if (args?.body === undefined && !opts.urn) {
                 throw new Error("Missing required property 'body'");
             }
+            if (args?.statusPageId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'statusPageId'");
+            }
             if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
@@ -184,7 +187,7 @@ export interface StatusPageTemplateArgs {
      * Controls if incident subscribers should be notified. Value must be one of true or false
      */
     shouldNotifySubscribers?: pulumi.Input<boolean | undefined>;
-    statusPageId?: pulumi.Input<string | undefined>;
+    statusPageId: pulumi.Input<string>;
     /**
      * Title of the template
      */

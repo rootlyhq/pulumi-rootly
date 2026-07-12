@@ -145,8 +145,6 @@ type environmentArgs struct {
 	SlackAliases []EnvironmentSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this environment
 	SlackChannels []EnvironmentSlackChannel `pulumi:"slackChannels"`
-	// The slug of the environment
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a Environment resource.
@@ -167,8 +165,6 @@ type EnvironmentArgs struct {
 	SlackAliases EnvironmentSlackAliasArrayInput
 	// Slack Channels associated with this environment
 	SlackChannels EnvironmentSlackChannelArrayInput
-	// The slug of the environment
-	Slug pulumi.StringPtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {

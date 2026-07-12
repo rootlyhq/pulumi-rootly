@@ -145,8 +145,6 @@ type severityArgs struct {
 	SlackAliases []SeveritySlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this severity
 	SlackChannels []SeveritySlackChannel `pulumi:"slackChannels"`
-	// The slug of the severity
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a Severity resource.
@@ -167,8 +165,6 @@ type SeverityArgs struct {
 	SlackAliases SeveritySlackAliasArrayInput
 	// Slack Channels associated with this severity
 	SlackChannels SeveritySlackChannelArrayInput
-	// The slug of the severity
-	Slug pulumi.StringPtrInput
 }
 
 func (SeverityArgs) ElementType() reflect.Type {

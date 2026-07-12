@@ -503,7 +503,12 @@
             },
             "rootly_heartbeat": {
                 "current": "rootly:index/heartbeat:Heartbeat",
-                "majorVersion": 3
+                "majorVersion": 3,
+                "fields": {
+                    "owner_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rootly_incident_permission_set": {
                 "current": "rootly:index/incidentPermissionSet:IncidentPermissionSet",
@@ -1001,6 +1006,9 @@
                 "current": "rootly:index/webhooksEndpoint:WebhooksEndpoint",
                 "majorVersion": 3,
                 "fields": {
+                    "custom_headers": {
+                        "maxItemsOne": false
+                    },
                     "event_types": {
                         "maxItemsOne": false
                     }
@@ -1059,6 +1067,9 @@
                                 "incident_kinds": {
                                     "maxItemsOne": false
                                 },
+                                "incident_labels": {
+                                    "maxItemsOne": false
+                                },
                                 "incident_statuses": {
                                     "maxItemsOne": false
                                 },
@@ -1070,6 +1081,42 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "rootly_workflow_action_item_form_field_condition": {
+                "current": "rootly:index/workflowActionItemFormFieldCondition:WorkflowActionItemFormFieldCondition",
+                "majorVersion": 3,
+                "fields": {
+                    "selected_catalog_entity_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_cause_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_environment_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_functionality_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_incident_type_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_option_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_service_ids": {
+                        "maxItemsOne": false
+                    },
+                    "selected_user_ids": {
+                        "maxItemsOne": false
+                    },
+                    "values": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1247,6 +1294,9 @@
                                 "incident_kinds": {
                                     "maxItemsOne": false
                                 },
+                                "incident_labels": {
+                                    "maxItemsOne": false
+                                },
                                 "incident_statuses": {
                                     "maxItemsOne": false
                                 },
@@ -1300,6 +1350,9 @@
                         "elem": {
                             "fields": {
                                 "incident_kinds": {
+                                    "maxItemsOne": false
+                                },
+                                "incident_labels": {
                                     "maxItemsOne": false
                                 },
                                 "incident_post_mortem_statuses": {
@@ -1497,6 +1550,22 @@
                     }
                 }
             },
+            "rootly_workflow_task_archive_google_chat_spaces": {
+                "current": "rootly:index/workflowTaskArchiveGoogleChatSpaces:WorkflowTaskArchiveGoogleChatSpaces",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "spaces": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "rootly_workflow_task_archive_microsoft_teams_channels": {
                 "current": "rootly:index/workflowTaskArchiveMicrosoftTeamsChannels:WorkflowTaskArchiveMicrosoftTeamsChannels",
                 "majorVersion": 3,
@@ -1597,6 +1666,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "rootly_workflow_task_change_google_chat_space_privacy": {
+                "current": "rootly:index/workflowTaskChangeGoogleChatSpacePrivacy:WorkflowTaskChangeGoogleChatSpacePrivacy",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -1764,6 +1842,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "rootly_workflow_task_create_google_chat_space": {
+                "current": "rootly:index/workflowTaskCreateGoogleChatSpace:WorkflowTaskCreateGoogleChatSpace",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -2347,8 +2434,26 @@
                     }
                 }
             },
+            "rootly_workflow_task_invite_to_google_chat_space": {
+                "current": "rootly:index/workflowTaskInviteToGoogleChatSpace:WorkflowTaskInviteToGoogleChatSpace",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "rootly_workflow_task_invite_to_microsoft_teams_channel": {
                 "current": "rootly:index/workflowTaskInviteToMicrosoftTeamsChannel:WorkflowTaskInviteToMicrosoftTeamsChannel",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_invite_to_microsoft_teams_channel_rootly": {
+                "current": "rootly:index/workflowTaskInviteToMicrosoftTeamsChannelRootly:WorkflowTaskInviteToMicrosoftTeamsChannelRootly",
                 "majorVersion": 3,
                 "fields": {
                     "task_params": {
@@ -2567,6 +2672,15 @@
                     }
                 }
             },
+            "rootly_workflow_task_rename_google_chat_space": {
+                "current": "rootly:index/workflowTaskRenameGoogleChatSpace:WorkflowTaskRenameGoogleChatSpace",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "rootly_workflow_task_rename_microsoft_teams_channel": {
                 "current": "rootly:index/workflowTaskRenameMicrosoftTeamsChannel:WorkflowTaskRenameMicrosoftTeamsChannel",
                 "majorVersion": 3,
@@ -2642,12 +2756,51 @@
                     }
                 }
             },
+            "rootly_workflow_task_send_google_chat_attachments": {
+                "current": "rootly:index/workflowTaskSendGoogleChatAttachments:WorkflowTaskSendGoogleChatAttachments",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "spaces": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "rootly_workflow_task_send_google_chat_message": {
+                "current": "rootly:index/workflowTaskSendGoogleChatMessage:WorkflowTaskSendGoogleChatMessage",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "spaces": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "rootly_workflow_task_send_microsoft_teams_blocks": {
                 "current": "rootly:index/workflowTaskSendMicrosoftTeamsBlocks:WorkflowTaskSendMicrosoftTeamsBlocks",
                 "majorVersion": 3,
                 "fields": {
                     "task_params": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "channels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2992,6 +3145,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "rootly_workflow_task_update_google_chat_space_description": {
+                "current": "rootly:index/workflowTaskUpdateGoogleChatSpaceDescription:WorkflowTaskUpdateGoogleChatSpaceDescription",
+                "majorVersion": 3,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -3494,6 +3656,10 @@
             },
             "rootly_on_call_role": {
                 "current": "rootly:index/getOnCallRole:getOnCallRole",
+                "majorVersion": 3
+            },
+            "rootly_post_mortem_template": {
+                "current": "rootly:index/getPostMortemTemplate:getPostMortemTemplate",
                 "majorVersion": 3
             },
             "rootly_retrospective_configuration": {

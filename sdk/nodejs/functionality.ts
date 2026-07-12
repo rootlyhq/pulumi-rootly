@@ -142,7 +142,7 @@ export class Functionality extends pulumi.CustomResource {
     /**
      * The slug of the functionality
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Functionality resource with the given unique name, arguments, and options.
@@ -202,7 +202,7 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["serviceNowCiSysId"] = args?.serviceNowCiSysId;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Functionality.__pulumiType, name, resourceInputs, opts);
@@ -391,8 +391,4 @@ export interface FunctionalityArgs {
      * Slack Channels associated with this functionality
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackChannel>[] | undefined>;
-    /**
-     * The slug of the functionality
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

@@ -52,6 +52,9 @@ func NewWorkflowCustomFieldSelection(ctx *pulumi.Context,
 	if args.CustomFieldId == nil {
 		return nil, errors.New("invalid value for required argument 'CustomFieldId'")
 	}
+	if args.WorkflowId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkflowId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkflowCustomFieldSelection
 	err := ctx.RegisterResource("rootly:index/workflowCustomFieldSelection:WorkflowCustomFieldSelection", name, args, &resource, opts...)
@@ -108,7 +111,7 @@ type workflowCustomFieldSelectionArgs struct {
 	SelectedOptionIds []int    `pulumi:"selectedOptionIds"`
 	Values            []string `pulumi:"values"`
 	// The workflow for this selection
-	WorkflowId *string `pulumi:"workflowId"`
+	WorkflowId string `pulumi:"workflowId"`
 }
 
 // The set of arguments for constructing a WorkflowCustomFieldSelection resource.
@@ -120,7 +123,7 @@ type WorkflowCustomFieldSelectionArgs struct {
 	SelectedOptionIds pulumi.IntArrayInput
 	Values            pulumi.StringArrayInput
 	// The workflow for this selection
-	WorkflowId pulumi.StringPtrInput
+	WorkflowId pulumi.StringInput
 }
 
 func (WorkflowCustomFieldSelectionArgs) ElementType() reflect.Type {

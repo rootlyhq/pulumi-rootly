@@ -111,8 +111,6 @@ type incidentPermissionSetArgs struct {
 	PrivateIncidentPermissions []string `pulumi:"privateIncidentPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PublicIncidentPermissions []string `pulumi:"publicIncidentPermissions"`
-	// The incident permission set slug.
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a IncidentPermissionSet resource.
@@ -125,8 +123,6 @@ type IncidentPermissionSetArgs struct {
 	PrivateIncidentPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PublicIncidentPermissions pulumi.StringArrayInput
-	// The incident permission set slug.
-	Slug pulumi.StringPtrInput
 }
 
 func (IncidentPermissionSetArgs) ElementType() reflect.Type {

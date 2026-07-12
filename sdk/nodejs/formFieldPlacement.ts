@@ -110,6 +110,9 @@ export class FormFieldPlacement extends pulumi.CustomResource {
             if (args?.form === undefined && !opts.urn) {
                 throw new Error("Missing required property 'form'");
             }
+            if (args?.formFieldId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'formFieldId'");
+            }
             if (args?.formSetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'formSetId'");
             }
@@ -176,7 +179,7 @@ export interface FormFieldPlacementArgs {
     /**
      * The form field that is placed.
      */
-    formFieldId?: pulumi.Input<string | undefined>;
+    formFieldId: pulumi.Input<string>;
     /**
      * The form set this field is placed in.
      */

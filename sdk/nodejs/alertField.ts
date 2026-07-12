@@ -64,7 +64,7 @@ export class AlertField extends pulumi.CustomResource {
     /**
      * The slug of the alert field
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a AlertField resource with the given unique name, arguments, and options.
@@ -86,7 +86,7 @@ export class AlertField extends pulumi.CustomResource {
             const args = argsOrState as AlertFieldArgs | undefined;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlertField.__pulumiType, name, resourceInputs, opts);
@@ -123,8 +123,4 @@ export interface AlertFieldArgs {
      * The name of the alert field
      */
     name?: pulumi.Input<string | undefined>;
-    /**
-     * The slug of the alert field
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

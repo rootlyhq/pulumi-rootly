@@ -194,7 +194,7 @@ export class Role extends pulumi.CustomResource {
     /**
      * The role slug.
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
@@ -298,11 +298,11 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["servicesPermissions"] = args?.servicesPermissions;
             resourceInputs["severitiesPermissions"] = args?.severitiesPermissions;
             resourceInputs["slasPermissions"] = args?.slasPermissions;
-            resourceInputs["slug"] = args?.slug;
             resourceInputs["statusPagesPermissions"] = args?.statusPagesPermissions;
             resourceInputs["subStatusesPermissions"] = args?.subStatusesPermissions;
             resourceInputs["webhooksPermissions"] = args?.webhooksPermissions;
             resourceInputs["workflowsPermissions"] = args?.workflowsPermissions;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Role.__pulumiType, name, resourceInputs, opts);
@@ -603,10 +603,6 @@ export interface RoleArgs {
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
     slasPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * The role slug.
-     */
-    slug?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */

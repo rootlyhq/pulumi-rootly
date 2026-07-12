@@ -72,7 +72,7 @@ export class CommunicationsType extends pulumi.CustomResource {
     /**
      * The slug of the communications type
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a CommunicationsType resource with the given unique name, arguments, and options.
@@ -101,7 +101,7 @@ export class CommunicationsType extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CommunicationsType.__pulumiType, name, resourceInputs, opts);
@@ -154,8 +154,4 @@ export interface CommunicationsTypeArgs {
      * Position of the communications type
      */
     position?: pulumi.Input<number | undefined>;
-    /**
-     * The slug of the communications type
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

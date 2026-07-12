@@ -78,7 +78,7 @@ export class WorkflowGroup extends pulumi.CustomResource {
     /**
      * The slug of the workflow group.
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a WorkflowGroup resource with the given unique name, arguments, and options.
@@ -108,7 +108,7 @@ export class WorkflowGroup extends pulumi.CustomResource {
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkflowGroup.__pulumiType, name, resourceInputs, opts);
@@ -177,8 +177,4 @@ export interface WorkflowGroupArgs {
      * The position of the workflow group
      */
     position?: pulumi.Input<number | undefined>;
-    /**
-     * The slug of the workflow group.
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

@@ -375,8 +375,6 @@ type roleArgs struct {
 	SeveritiesPermissions []string `pulumi:"severitiesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SlasPermissions []string `pulumi:"slasPermissions"`
-	// The role slug.
-	Slug *string `pulumi:"slug"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions []string `pulumi:"statusPagesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -455,8 +453,6 @@ type RoleArgs struct {
 	SeveritiesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SlasPermissions pulumi.StringArrayInput
-	// The role slug.
-	Slug pulumi.StringPtrInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.

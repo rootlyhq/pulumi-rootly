@@ -97,8 +97,6 @@ type alertFieldArgs struct {
 	Kind *string `pulumi:"kind"`
 	// The name of the alert field
 	Name *string `pulumi:"name"`
-	// The slug of the alert field
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a AlertField resource.
@@ -107,8 +105,6 @@ type AlertFieldArgs struct {
 	Kind pulumi.StringPtrInput
 	// The name of the alert field
 	Name pulumi.StringPtrInput
-	// The slug of the alert field
-	Slug pulumi.StringPtrInput
 }
 
 func (AlertFieldArgs) ElementType() reflect.Type {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
 )
@@ -38,7 +39,11 @@ type CatalogEntity struct {
 	// The ID of the parent catalog
 	CatalogId   pulumi.StringOutput `pulumi:"catalogId"`
 	Description pulumi.StringOutput `pulumi:"description"`
-	Name        pulumi.StringOutput `pulumi:"name"`
+	// An external identifier for this catalog entity. Must be unique within the catalog.
+	ExternalId pulumi.StringOutput `pulumi:"externalId"`
+	// Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy pulumi.StringOutput `pulumi:"managedBy"`
+	Name      pulumi.StringOutput `pulumi:"name"`
 	// Default position of the item when displayed in a list.
 	Position pulumi.IntOutput `pulumi:"position"`
 	// Array of property values for this catalog entity
@@ -49,9 +54,12 @@ type CatalogEntity struct {
 func NewCatalogEntity(ctx *pulumi.Context,
 	name string, args *CatalogEntityArgs, opts ...pulumi.ResourceOption) (*CatalogEntity, error) {
 	if args == nil {
-		args = &CatalogEntityArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.CatalogId == nil {
+		return nil, errors.New("invalid value for required argument 'CatalogId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CatalogEntity
 	err := ctx.RegisterResource("rootly:index/catalogEntity:CatalogEntity", name, args, &resource, opts...)
@@ -80,7 +88,11 @@ type catalogEntityState struct {
 	// The ID of the parent catalog
 	CatalogId   *string `pulumi:"catalogId"`
 	Description *string `pulumi:"description"`
-	Name        *string `pulumi:"name"`
+	// An external identifier for this catalog entity. Must be unique within the catalog.
+	ExternalId *string `pulumi:"externalId"`
+	// Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy *string `pulumi:"managedBy"`
+	Name      *string `pulumi:"name"`
 	// Default position of the item when displayed in a list.
 	Position *int `pulumi:"position"`
 	// Array of property values for this catalog entity
@@ -93,7 +105,11 @@ type CatalogEntityState struct {
 	// The ID of the parent catalog
 	CatalogId   pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
+	// An external identifier for this catalog entity. Must be unique within the catalog.
+	ExternalId pulumi.StringPtrInput
+	// Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
 	// Default position of the item when displayed in a list.
 	Position pulumi.IntPtrInput
 	// Array of property values for this catalog entity
@@ -108,9 +124,11 @@ type catalogEntityArgs struct {
 	// The Backstage entity ID this catalog entity is linked to.
 	BackstageId *string `pulumi:"backstageId"`
 	// The ID of the parent catalog
-	CatalogId   *string `pulumi:"catalogId"`
+	CatalogId   string  `pulumi:"catalogId"`
 	Description *string `pulumi:"description"`
-	Name        *string `pulumi:"name"`
+	// An external identifier for this catalog entity. Must be unique within the catalog.
+	ExternalId *string `pulumi:"externalId"`
+	Name       *string `pulumi:"name"`
 	// Default position of the item when displayed in a list.
 	Position *int `pulumi:"position"`
 	// Array of property values for this catalog entity
@@ -122,9 +140,11 @@ type CatalogEntityArgs struct {
 	// The Backstage entity ID this catalog entity is linked to.
 	BackstageId pulumi.StringPtrInput
 	// The ID of the parent catalog
-	CatalogId   pulumi.StringPtrInput
+	CatalogId   pulumi.StringInput
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
+	// An external identifier for this catalog entity. Must be unique within the catalog.
+	ExternalId pulumi.StringPtrInput
+	Name       pulumi.StringPtrInput
 	// Default position of the item when displayed in a list.
 	Position pulumi.IntPtrInput
 	// Array of property values for this catalog entity
@@ -230,6 +250,16 @@ func (o CatalogEntityOutput) CatalogId() pulumi.StringOutput {
 
 func (o CatalogEntityOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *CatalogEntity) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// An external identifier for this catalog entity. Must be unique within the catalog.
+func (o CatalogEntityOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogEntity) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+func (o CatalogEntityOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogEntity) pulumi.StringOutput { return v.ManagedBy }).(pulumi.StringOutput)
 }
 
 func (o CatalogEntityOutput) Name() pulumi.StringOutput {

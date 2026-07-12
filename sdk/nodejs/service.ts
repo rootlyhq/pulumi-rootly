@@ -186,7 +186,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * The slug of the service
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -268,7 +268,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["serviceNowCiSysId"] = args?.serviceNowCiSysId;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);
@@ -545,8 +545,4 @@ export interface ServiceArgs {
      * Slack Channels associated with this service
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.ServiceSlackChannel>[] | undefined>;
-    /**
-     * The slug of the service
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

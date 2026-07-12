@@ -90,7 +90,7 @@ export class IncidentType extends pulumi.CustomResource {
     /**
      * The slug of the incident type
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a IncidentType resource with the given unique name, arguments, and options.
@@ -124,7 +124,7 @@ export class IncidentType extends pulumi.CustomResource {
             resourceInputs["properties"] = args?.properties;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IncidentType.__pulumiType, name, resourceInputs, opts);
@@ -209,8 +209,4 @@ export interface IncidentTypeArgs {
      * Slack Channels associated with this incident type
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[] | undefined>;
-    /**
-     * The slug of the incident type
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

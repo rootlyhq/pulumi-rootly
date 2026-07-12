@@ -70,7 +70,7 @@ export class IncidentPermissionSet extends pulumi.CustomResource {
     /**
      * The incident permission set slug.
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a IncidentPermissionSet resource with the given unique name, arguments, and options.
@@ -96,7 +96,7 @@ export class IncidentPermissionSet extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["privateIncidentPermissions"] = args?.privateIncidentPermissions;
             resourceInputs["publicIncidentPermissions"] = args?.publicIncidentPermissions;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IncidentPermissionSet.__pulumiType, name, resourceInputs, opts);
@@ -149,8 +149,4 @@ export interface IncidentPermissionSetArgs {
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
     publicIncidentPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * The incident permission set slug.
-     */
-    slug?: pulumi.Input<string | undefined>;
 }
