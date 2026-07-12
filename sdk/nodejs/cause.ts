@@ -74,7 +74,7 @@ export class Cause extends pulumi.CustomResource {
     /**
      * The slug of the cause
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Cause resource with the given unique name, arguments, and options.
@@ -100,7 +100,7 @@ export class Cause extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
             resourceInputs["properties"] = args?.properties;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cause.__pulumiType, name, resourceInputs, opts);
@@ -153,8 +153,4 @@ export interface CauseArgs {
      * Array of property values for this cause.
      */
     properties?: pulumi.Input<pulumi.Input<inputs.CauseProperty>[] | undefined>;
-    /**
-     * The slug of the cause
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

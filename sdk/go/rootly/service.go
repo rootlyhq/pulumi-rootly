@@ -337,8 +337,6 @@ type serviceArgs struct {
 	SlackAliases []ServiceSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this service
 	SlackChannels []ServiceSlackChannel `pulumi:"slackChannels"`
-	// The slug of the service
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a Service resource.
@@ -407,8 +405,6 @@ type ServiceArgs struct {
 	SlackAliases ServiceSlackAliasArrayInput
 	// Slack Channels associated with this service
 	SlackChannels ServiceSlackChannelArrayInput
-	// The slug of the service
-	Slug pulumi.StringPtrInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {

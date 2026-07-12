@@ -127,8 +127,6 @@ type workflowGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The position of the workflow group
 	Position *int `pulumi:"position"`
-	// The slug of the workflow group.
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a WorkflowGroup resource.
@@ -145,8 +143,6 @@ type WorkflowGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The position of the workflow group
 	Position pulumi.IntPtrInput
-	// The slug of the workflow group.
-	Slug pulumi.StringPtrInput
 }
 
 func (WorkflowGroupArgs) ElementType() reflect.Type {

@@ -86,6 +86,9 @@ export class PlaybookTask extends pulumi.CustomResource {
             resourceInputs["task"] = state?.task;
         } else {
             const args = argsOrState as PlaybookTaskArgs | undefined;
+            if (args?.playbookId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'playbookId'");
+            }
             if (args?.task === undefined && !opts.urn) {
                 throw new Error("Missing required property 'task'");
             }
@@ -126,7 +129,7 @@ export interface PlaybookTaskArgs {
      * The description of task
      */
     description?: pulumi.Input<string | undefined>;
-    playbookId?: pulumi.Input<string | undefined>;
+    playbookId: pulumi.Input<string>;
     /**
      * The position of the task
      */

@@ -98,7 +98,6 @@ type subStatusArgs struct {
 	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus *string `pulumi:"parentStatus"`
 	Position     *int    `pulumi:"position"`
-	Slug         *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a SubStatus resource.
@@ -108,7 +107,6 @@ type SubStatusArgs struct {
 	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus pulumi.StringPtrInput
 	Position     pulumi.IntPtrInput
-	Slug         pulumi.StringPtrInput
 }
 
 func (SubStatusArgs) ElementType() reflect.Type {

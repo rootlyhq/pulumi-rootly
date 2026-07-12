@@ -89,6 +89,9 @@ export class WorkflowCustomFieldSelection extends pulumi.CustomResource {
             if (args?.customFieldId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customFieldId'");
             }
+            if (args?.workflowId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'workflowId'");
+            }
             resourceInputs["customFieldId"] = args?.customFieldId;
             resourceInputs["incidentCondition"] = args?.incidentCondition;
             resourceInputs["selectedOptionIds"] = args?.selectedOptionIds;
@@ -137,5 +140,5 @@ export interface WorkflowCustomFieldSelectionArgs {
     /**
      * The workflow for this selection
      */
-    workflowId?: pulumi.Input<string | undefined>;
+    workflowId: pulumi.Input<string>;
 }

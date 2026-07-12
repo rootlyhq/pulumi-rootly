@@ -84,7 +84,7 @@ export class FormField extends pulumi.CustomResource {
     /**
      * The slug of the form field
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
     /**
      * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
      */
@@ -132,9 +132,9 @@ export class FormField extends pulumi.CustomResource {
             resourceInputs["requireds"] = args?.requireds;
             resourceInputs["showOnIncidentDetails"] = args?.showOnIncidentDetails;
             resourceInputs["showns"] = args?.showns;
-            resourceInputs["slug"] = args?.slug;
             resourceInputs["valueKind"] = args?.valueKind;
             resourceInputs["valueKindCatalogId"] = args?.valueKindCatalogId;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FormField.__pulumiType, name, resourceInputs, opts);
@@ -219,10 +219,6 @@ export interface FormFieldArgs {
      */
     showOnIncidentDetails?: pulumi.Input<boolean | undefined>;
     showns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * The slug of the form field
-     */
-    slug?: pulumi.Input<string | undefined>;
     /**
      * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
      */

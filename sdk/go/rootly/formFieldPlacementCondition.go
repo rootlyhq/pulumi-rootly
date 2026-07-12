@@ -56,6 +56,9 @@ func NewFormFieldPlacementCondition(ctx *pulumi.Context,
 	if args.FormFieldId == nil {
 		return nil, errors.New("invalid value for required argument 'FormFieldId'")
 	}
+	if args.FormFieldPlacementId == nil {
+		return nil, errors.New("invalid value for required argument 'FormFieldPlacementId'")
+	}
 	if args.Values == nil {
 		return nil, errors.New("invalid value for required argument 'Values'")
 	}
@@ -123,7 +126,7 @@ type formFieldPlacementConditionArgs struct {
 	// The condition field.
 	FormFieldId string `pulumi:"formFieldId"`
 	// The form field placement this condition applies.
-	FormFieldPlacementId *string `pulumi:"formFieldPlacementId"`
+	FormFieldPlacementId string `pulumi:"formFieldPlacementId"`
 	// The condition position.
 	Position *int `pulumi:"position"`
 	// The values for comparison.
@@ -139,7 +142,7 @@ type FormFieldPlacementConditionArgs struct {
 	// The condition field.
 	FormFieldId pulumi.StringInput
 	// The form field placement this condition applies.
-	FormFieldPlacementId pulumi.StringPtrInput
+	FormFieldPlacementId pulumi.StringInput
 	// The condition position.
 	Position pulumi.IntPtrInput
 	// The values for comparison.

@@ -83,6 +83,9 @@ export class IncidentSubStatus extends pulumi.CustomResource {
             if (args?.assignedAt === undefined && !opts.urn) {
                 throw new Error("Missing required property 'assignedAt'");
             }
+            if (args?.incidentId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'incidentId'");
+            }
             if (args?.subStatusId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subStatusId'");
             }
@@ -115,7 +118,7 @@ export interface IncidentSubStatusState {
 export interface IncidentSubStatusArgs {
     assignedAt: pulumi.Input<string>;
     assignedByUserId?: pulumi.Input<number | undefined>;
-    incidentId?: pulumi.Input<string | undefined>;
+    incidentId: pulumi.Input<string>;
     /**
      * Note: To change an incident's sub-status, use the PATCH /incidents/:id endpoint and set the sub*status*id attribute. This endpoint is for modifying the timestamp of when an incident's sub-status was assigned.
      */

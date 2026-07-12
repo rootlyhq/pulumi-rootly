@@ -145,8 +145,6 @@ type incidentTypeArgs struct {
 	SlackAliases []IncidentTypeSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this incident type
 	SlackChannels []IncidentTypeSlackChannel `pulumi:"slackChannels"`
-	// The slug of the incident type
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a IncidentType resource.
@@ -167,8 +165,6 @@ type IncidentTypeArgs struct {
 	SlackAliases IncidentTypeSlackAliasArrayInput
 	// Slack Channels associated with this incident type
 	SlackChannels IncidentTypeSlackChannelArrayInput
-	// The slug of the incident type
-	Slug pulumi.StringPtrInput
 }
 
 func (IncidentTypeArgs) ElementType() reflect.Type {

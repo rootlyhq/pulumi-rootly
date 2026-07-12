@@ -50,6 +50,9 @@ func NewIncidentRoleTask(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.IncidentRoleId == nil {
+		return nil, errors.New("invalid value for required argument 'IncidentRoleId'")
+	}
 	if args.Task == nil {
 		return nil, errors.New("invalid value for required argument 'Task'")
 	}
@@ -102,7 +105,7 @@ func (IncidentRoleTaskState) ElementType() reflect.Type {
 type incidentRoleTaskArgs struct {
 	// The description of incident task
 	Description    *string `pulumi:"description"`
-	IncidentRoleId *string `pulumi:"incidentRoleId"`
+	IncidentRoleId string  `pulumi:"incidentRoleId"`
 	// The priority of the incident task. Value must be one of `high`, `medium`, `low`.
 	Priority *string `pulumi:"priority"`
 	// The task of the incident task
@@ -113,7 +116,7 @@ type incidentRoleTaskArgs struct {
 type IncidentRoleTaskArgs struct {
 	// The description of incident task
 	Description    pulumi.StringPtrInput
-	IncidentRoleId pulumi.StringPtrInput
+	IncidentRoleId pulumi.StringInput
 	// The priority of the incident task. Value must be one of `high`, `medium`, `low`.
 	Priority pulumi.StringPtrInput
 	// The task of the incident task

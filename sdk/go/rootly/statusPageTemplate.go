@@ -60,6 +60,9 @@ func NewStatusPageTemplate(ctx *pulumi.Context,
 	if args.Body == nil {
 		return nil, errors.New("invalid value for required argument 'Body'")
 	}
+	if args.StatusPageId == nil {
+		return nil, errors.New("invalid value for required argument 'StatusPageId'")
+	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
@@ -136,8 +139,8 @@ type statusPageTemplateArgs struct {
 	// Position of the workflow task
 	Position *int `pulumi:"position"`
 	// Controls if incident subscribers should be notified. Value must be one of true or false
-	ShouldNotifySubscribers *bool   `pulumi:"shouldNotifySubscribers"`
-	StatusPageId            *string `pulumi:"statusPageId"`
+	ShouldNotifySubscribers *bool  `pulumi:"shouldNotifySubscribers"`
+	StatusPageId            string `pulumi:"statusPageId"`
 	// Title of the template
 	Title string `pulumi:"title"`
 	// Status of the event the template will populate
@@ -157,7 +160,7 @@ type StatusPageTemplateArgs struct {
 	Position pulumi.IntPtrInput
 	// Controls if incident subscribers should be notified. Value must be one of true or false
 	ShouldNotifySubscribers pulumi.BoolPtrInput
-	StatusPageId            pulumi.StringPtrInput
+	StatusPageId            pulumi.StringInput
 	// Title of the template
 	Title pulumi.StringInput
 	// Status of the event the template will populate

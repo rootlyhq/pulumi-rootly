@@ -1116,6 +1116,11 @@ export interface TeamSlackChannel {
     name?: pulumi.Input<string | undefined>;
 }
 
+export interface WebhooksEndpointCustomHeader {
+    name?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
+}
+
 export interface WorkflowActionItemTriggerParams {
     /**
      * Value must be one of `ALL`, `ANY`, `NONE`.
@@ -1187,6 +1192,14 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentConditionKind?: pulumi.Input<string | undefined>;
     /**
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    incidentConditionLabel?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of true or false
+     */
+    incidentConditionLabelUseRegexp?: pulumi.Input<boolean | undefined>;
+    /**
      * Value must be one of `SET`, `UNSET`.
      */
     incidentConditionMitigatedAt?: pulumi.Input<string | undefined>;
@@ -1234,6 +1247,7 @@ export interface WorkflowActionItemTriggerParams {
      * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    incidentLabels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
@@ -1379,6 +1393,14 @@ export interface WorkflowIncidentTriggerParams {
      */
     incidentConditionKind?: pulumi.Input<string | undefined>;
     /**
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    incidentConditionLabel?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of true or false
+     */
+    incidentConditionLabelUseRegexp?: pulumi.Input<boolean | undefined>;
+    /**
      * Value must be one of `SET`, `UNSET`.
      */
     incidentConditionMitigatedAt?: pulumi.Input<string | undefined>;
@@ -1426,6 +1448,7 @@ export interface WorkflowIncidentTriggerParams {
      * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    incidentLabels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
@@ -1440,7 +1463,7 @@ export interface WorkflowIncidentTriggerParams {
      */
     triggerType?: pulumi.Input<string | undefined>;
     /**
-     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
      */
     triggers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -1487,6 +1510,14 @@ export interface WorkflowPostMortemTriggerParams {
      */
     incidentConditionKind?: pulumi.Input<string | undefined>;
     /**
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    incidentConditionLabel?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of true or false
+     */
+    incidentConditionLabelUseRegexp?: pulumi.Input<boolean | undefined>;
+    /**
      * Value must be one of `SET`, `UNSET`.
      */
     incidentConditionMitigatedAt?: pulumi.Input<string | undefined>;
@@ -1534,6 +1565,7 @@ export interface WorkflowPostMortemTriggerParams {
      * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    incidentLabels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `ALL`, `ANY`, `NONE`.
      */
@@ -1786,6 +1818,16 @@ export interface WorkflowTaskAddToTimelineTaskParamsPostToSlackChannel {
     name: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskArchiveGoogleChatSpacesTaskParams {
+    spaces: pulumi.Input<pulumi.Input<inputs.WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace>[]>;
+    taskType?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParams {
     channels: pulumi.Input<pulumi.Input<inputs.WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsChannel>[]>;
     taskType?: pulumi.Input<string | undefined>;
@@ -1915,11 +1957,23 @@ export interface WorkflowTaskCallPeopleTaskParams {
     taskType?: pulumi.Input<string | undefined>;
 }
 
+export interface WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams {
+    /**
+     * Target audience resource name (e.g. audiences/default). Leave blank to make private.
+     */
+    audience?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    space: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    taskType?: pulumi.Input<string | undefined>;
+}
+
 export interface WorkflowTaskChangeSlackChannelPrivacyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    channel: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Value must be one of `private`, `public`.
      */
@@ -2117,6 +2171,18 @@ export interface WorkflowTaskCreateConfluencePageTaskParams {
      */
     content?: pulumi.Input<string | undefined>;
     /**
+     * Value must be one of true or false
+     */
+    createAsLiveDoc?: pulumi.Input<boolean | undefined>;
+    /**
+     * Value must be one of true or false
+     */
+    includeOverview?: pulumi.Input<boolean | undefined>;
+    /**
+     * Value must be one of true or false
+     */
+    includeTimeline?: pulumi.Input<boolean | undefined>;
+    /**
      * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
      */
     integration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -2204,6 +2270,10 @@ export interface WorkflowTaskCreateGithubIssueTaskParams {
      * The issue body
      */
     body?: pulumi.Input<string | undefined>;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: pulumi.Input<string | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. The issue type
      */
@@ -2353,6 +2423,16 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChann
     name: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskCreateGoogleChatSpaceTaskParams {
+    /**
+     * Target audience resource name (e.g. audiences/default). Leave blank for private space.
+     */
+    audience?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    title: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
     /**
      * The page content
@@ -2362,6 +2442,14 @@ export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
      * Map must contain two fields, `id` and `name`.
      */
     drive?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Value must be one of true or false
+     */
+    includeOverview?: pulumi.Input<boolean | undefined>;
+    /**
+     * Value must be one of true or false
+     */
+    includeTimeline?: pulumi.Input<boolean | undefined>;
     /**
      * Value must be one of true or false
      */
@@ -2642,7 +2730,7 @@ export interface WorkflowTaskCreateJsmopsAlertTaskParams {
      */
     message: pulumi.Input<string>;
     /**
-     * Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     * Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
      */
     priority?: pulumi.Input<string | undefined>;
     schedules?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskCreateJsmopsAlertTaskParamsSchedule>[] | undefined>;
@@ -2689,6 +2777,10 @@ export interface WorkflowTaskCreateLinearIssueTaskParams {
      */
     assignUserEmail?: pulumi.Input<string | undefined>;
     /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: pulumi.Input<string | undefined>;
+    /**
      * The issue description
      */
     description?: pulumi.Input<string | undefined>;
@@ -2726,6 +2818,10 @@ export interface WorkflowTaskCreateLinearSubtaskIssueTaskParams {
      * The assigned user's email
      */
     assignUserEmail?: pulumi.Input<string | undefined>;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: pulumi.Input<string | undefined>;
     /**
      * The issue description
      */
@@ -2768,7 +2864,7 @@ export interface WorkflowTaskCreateMicrosoftTeamsChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    team?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    team: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Microsoft Team channel title
      */
@@ -3421,6 +3517,10 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      */
     createAsEmail?: pulumi.Input<string | undefined>;
     /**
+     * Allow the Rootly bot to start recording without waiting for host approval. Value must be one of true or false
+     */
+    enableZoomBotAutoJoin?: pulumi.Input<boolean | undefined>;
+    /**
      * The meeting password
      */
     password?: pulumi.Input<string | undefined>;
@@ -3622,6 +3722,50 @@ export interface WorkflowTaskHttpClientTaskParamsPostToSlackChannel {
     name: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskInviteToGoogleChatSpaceTaskParams {
+    /**
+     * Comma separated list of emails to invite
+     */
+    emails: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    space: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    taskType?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    channel: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    escalationPolicyTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    groupTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    scheduleTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    serviceTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    team: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    userTarget?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+}
+
 export interface WorkflowTaskInviteToMicrosoftTeamsChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
@@ -3752,7 +3896,7 @@ export interface WorkflowTaskPageJsmopsOnCallRespondersTaskParams {
      */
     message?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     * Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
      */
     priority?: pulumi.Input<string | undefined>;
     taskType?: pulumi.Input<string | undefined>;
@@ -3848,6 +3992,10 @@ export interface WorkflowTaskPageRootlyOnCallRespondersTaskParams {
      * Alert urgency ID
      */
     alertUrgencyId: pulumi.Input<string>;
+    /**
+     * When true, always create a new alert instead of re-paging the alert that triggered the workflow. Value must be one of true or false
+     */
+    createNewAlert?: pulumi.Input<boolean | undefined>;
     /**
      * Alert description
      */
@@ -3973,6 +4121,15 @@ export interface WorkflowTaskRemoveGoogleDocsPermissionsTaskParams {
     value: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskRenameGoogleChatSpaceTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    space: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    taskType?: pulumi.Input<string | undefined>;
+    title: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskRenameMicrosoftTeamsChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
@@ -4072,12 +4229,44 @@ export interface WorkflowTaskSendEmailTaskParams {
     tos: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface WorkflowTaskSendGoogleChatAttachmentsTaskParams {
+    attachments: pulumi.Input<string>;
+    spaces: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace>[]>;
+    taskType?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskSendGoogleChatMessageTaskParams {
+    spaces: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendGoogleChatMessageTaskParamsSpace>[]>;
+    taskType?: pulumi.Input<string | undefined>;
+    text: pulumi.Input<string>;
+    /**
+     * Thread key to reply within a thread. Messages with the same thread key are grouped together
+     */
+    threadKey?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskSendGoogleChatMessageTaskParamsSpace {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskSendMicrosoftTeamsBlocksTaskParams {
     /**
      * Support liquid markup. Needs to be a valid JSON string after liquid is parsed
      */
     attachments: pulumi.Input<string>;
+    channels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel>[] | undefined>;
     taskType?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel {
+    id: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams {
@@ -4552,6 +4741,14 @@ export interface WorkflowTaskUpdateConfluencePageTaskParams {
      */
     fileId: pulumi.Input<string>;
     /**
+     * Value must be one of true or false
+     */
+    includeOverview?: pulumi.Input<boolean | undefined>;
+    /**
+     * Value must be one of true or false
+     */
+    includeTimeline?: pulumi.Input<boolean | undefined>;
+    /**
      * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
      */
     integration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -4627,6 +4824,10 @@ export interface WorkflowTaskUpdateGithubIssueTaskParams {
      * Map must contain two fields, `id` and `name`.
      */
     completion: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: pulumi.Input<string | undefined>;
     /**
      * The issue id
      */
@@ -4758,6 +4959,18 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChann
     name: pulumi.Input<string>;
 }
 
+export interface WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams {
+    /**
+     * The space description. Supports liquid markup
+     */
+    description: pulumi.Input<string>;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    space: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    taskType?: pulumi.Input<string | undefined>;
+}
+
 export interface WorkflowTaskUpdateGoogleDocsPageTaskParams {
     /**
      * The Google Doc content
@@ -4767,6 +4980,14 @@ export interface WorkflowTaskUpdateGoogleDocsPageTaskParams {
      * The Google Doc file ID
      */
     fileId: pulumi.Input<string>;
+    /**
+     * Value must be one of true or false
+     */
+    includeOverview?: pulumi.Input<boolean | undefined>;
+    /**
+     * Value must be one of true or false
+     */
+    includeTimeline?: pulumi.Input<boolean | undefined>;
     /**
      * Retrospective template to use when updating page, if desired
      */
@@ -4917,6 +5138,10 @@ export interface WorkflowTaskUpdateLinearIssueTaskParams {
      * The assigned user's email
      */
     assignUserEmail?: pulumi.Input<string | undefined>;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: pulumi.Input<string | undefined>;
     /**
      * The issue description
      */

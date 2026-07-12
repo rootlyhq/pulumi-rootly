@@ -32,7 +32,7 @@ import (
 type FormSet struct {
 	pulumi.CustomResourceState
 
-	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`
+	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`
 	Forms pulumi.StringArrayOutput `pulumi:"forms"`
 	// Whether the form set is default. Value must be one of true or false
 	IsDefault pulumi.BoolOutput `pulumi:"isDefault"`
@@ -75,7 +75,7 @@ func GetFormSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FormSet resources.
 type formSetState struct {
-	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`
+	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`
 	Forms []string `pulumi:"forms"`
 	// Whether the form set is default. Value must be one of true or false
 	IsDefault *bool `pulumi:"isDefault"`
@@ -86,7 +86,7 @@ type formSetState struct {
 }
 
 type FormSetState struct {
-	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`
+	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`
 	Forms pulumi.StringArrayInput
 	// Whether the form set is default. Value must be one of true or false
 	IsDefault pulumi.BoolPtrInput
@@ -101,26 +101,22 @@ func (FormSetState) ElementType() reflect.Type {
 }
 
 type formSetArgs struct {
-	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`
+	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`
 	Forms []string `pulumi:"forms"`
 	// Whether the form set is default. Value must be one of true or false
 	IsDefault *bool `pulumi:"isDefault"`
 	// The name of the form set
 	Name *string `pulumi:"name"`
-	// The slug of the form set
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a FormSet resource.
 type FormSetArgs struct {
-	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`
+	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`
 	Forms pulumi.StringArrayInput
 	// Whether the form set is default. Value must be one of true or false
 	IsDefault pulumi.BoolPtrInput
 	// The name of the form set
 	Name pulumi.StringPtrInput
-	// The slug of the form set
-	Slug pulumi.StringPtrInput
 }
 
 func (FormSetArgs) ElementType() reflect.Type {
@@ -210,7 +206,7 @@ func (o FormSetOutput) ToFormSetOutputWithContext(ctx context.Context) FormSetOu
 	return o
 }
 
-// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`
+// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`
 func (o FormSetOutput) Forms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FormSet) pulumi.StringArrayOutput { return v.Forms }).(pulumi.StringArrayOutput)
 }

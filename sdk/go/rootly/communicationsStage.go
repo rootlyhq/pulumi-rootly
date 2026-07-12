@@ -105,8 +105,6 @@ type communicationsStageArgs struct {
 	Name *string `pulumi:"name"`
 	// Position of the communications stage
 	Position *int `pulumi:"position"`
-	// The slug of the communications stage
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a CommunicationsStage resource.
@@ -117,8 +115,6 @@ type CommunicationsStageArgs struct {
 	Name pulumi.StringPtrInput
 	// Position of the communications stage
 	Position pulumi.IntPtrInput
-	// The slug of the communications stage
-	Slug pulumi.StringPtrInput
 }
 
 func (CommunicationsStageArgs) ElementType() reflect.Type {

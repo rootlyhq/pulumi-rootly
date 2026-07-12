@@ -57,6 +57,8 @@ type Heartbeat struct {
 	NotificationTargetId pulumi.StringOutput `pulumi:"notificationTargetId"`
 	// The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 	NotificationTargetType pulumi.StringPtrOutput `pulumi:"notificationTargetType"`
+	// List of team IDs that own this heartbeat
+	OwnerGroupIds pulumi.StringArrayOutput `pulumi:"ownerGroupIds"`
 	// URL to receive heartbeat pings.
 	PingUrl pulumi.StringOutput `pulumi:"pingUrl"`
 	// Secret used as bearer token when pinging heartbeat.
@@ -127,6 +129,8 @@ type heartbeatState struct {
 	NotificationTargetId *string `pulumi:"notificationTargetId"`
 	// The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 	NotificationTargetType *string `pulumi:"notificationTargetType"`
+	// List of team IDs that own this heartbeat
+	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// URL to receive heartbeat pings.
 	PingUrl *string `pulumi:"pingUrl"`
 	// Secret used as bearer token when pinging heartbeat.
@@ -159,6 +163,8 @@ type HeartbeatState struct {
 	NotificationTargetId pulumi.StringPtrInput
 	// The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 	NotificationTargetType pulumi.StringPtrInput
+	// List of team IDs that own this heartbeat
+	OwnerGroupIds pulumi.StringArrayInput
 	// URL to receive heartbeat pings.
 	PingUrl pulumi.StringPtrInput
 	// Secret used as bearer token when pinging heartbeat.
@@ -195,10 +201,8 @@ type heartbeatArgs struct {
 	NotificationTargetId string  `pulumi:"notificationTargetId"`
 	// The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 	NotificationTargetType *string `pulumi:"notificationTargetType"`
-	// URL to receive heartbeat pings.
-	PingUrl *string `pulumi:"pingUrl"`
-	// Secret used as bearer token when pinging heartbeat.
-	Secret *string `pulumi:"secret"`
+	// List of team IDs that own this heartbeat
+	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// Value must be one of `waiting`, `active`, `expired`.
 	Status *string `pulumi:"status"`
 }
@@ -228,10 +232,8 @@ type HeartbeatArgs struct {
 	NotificationTargetId pulumi.StringInput
 	// The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 	NotificationTargetType pulumi.StringPtrInput
-	// URL to receive heartbeat pings.
-	PingUrl pulumi.StringPtrInput
-	// Secret used as bearer token when pinging heartbeat.
-	Secret pulumi.StringPtrInput
+	// List of team IDs that own this heartbeat
+	OwnerGroupIds pulumi.StringArrayInput
 	// Value must be one of `waiting`, `active`, `expired`.
 	Status pulumi.StringPtrInput
 }
@@ -383,6 +385,11 @@ func (o HeartbeatOutput) NotificationTargetId() pulumi.StringOutput {
 // The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
 func (o HeartbeatOutput) NotificationTargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.StringPtrOutput { return v.NotificationTargetType }).(pulumi.StringPtrOutput)
+}
+
+// List of team IDs that own this heartbeat
+func (o HeartbeatOutput) OwnerGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Heartbeat) pulumi.StringArrayOutput { return v.OwnerGroupIds }).(pulumi.StringArrayOutput)
 }
 
 // URL to receive heartbeat pings.

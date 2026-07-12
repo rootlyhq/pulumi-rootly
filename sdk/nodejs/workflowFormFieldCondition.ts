@@ -105,6 +105,9 @@ export class WorkflowFormFieldCondition extends pulumi.CustomResource {
             if (args?.formFieldId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'formFieldId'");
             }
+            if (args?.workflowId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'workflowId'");
+            }
             resourceInputs["formFieldId"] = args?.formFieldId;
             resourceInputs["incidentCondition"] = args?.incidentCondition;
             resourceInputs["selectedCatalogEntityIds"] = args?.selectedCatalogEntityIds;
@@ -177,5 +180,5 @@ export interface WorkflowFormFieldConditionArgs {
     /**
      * The workflow for this condition
      */
-    workflowId?: pulumi.Input<string | undefined>;
+    workflowId: pulumi.Input<string>;
 }

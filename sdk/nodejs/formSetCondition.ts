@@ -90,6 +90,9 @@ export class FormSetCondition extends pulumi.CustomResource {
             if (args?.formFieldId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'formFieldId'");
             }
+            if (args?.formSetId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'formSetId'");
+            }
             if (args?.values === undefined && !opts.urn) {
                 throw new Error("Missing required property 'values'");
             }
@@ -140,7 +143,7 @@ export interface FormSetConditionArgs {
     /**
      * The form set this condition applies.
      */
-    formSetId?: pulumi.Input<string | undefined>;
+    formSetId: pulumi.Input<string>;
     /**
      * The values for comparison.
      */

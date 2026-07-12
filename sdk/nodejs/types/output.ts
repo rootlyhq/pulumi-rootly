@@ -1228,6 +1228,11 @@ export interface TeamSlackChannel {
     name: string;
 }
 
+export interface WebhooksEndpointCustomHeader {
+    name: string;
+    value: string;
+}
+
 export interface WorkflowActionItemTriggerParams {
     /**
      * Value must be one of `ALL`, `ANY`, `NONE`.
@@ -1299,6 +1304,14 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentConditionKind?: string;
     /**
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    incidentConditionLabel?: string;
+    /**
+     * Value must be one of true or false
+     */
+    incidentConditionLabelUseRegexp: boolean;
+    /**
      * Value must be one of `SET`, `UNSET`.
      */
     incidentConditionMitigatedAt: string;
@@ -1346,6 +1359,7 @@ export interface WorkflowActionItemTriggerParams {
      * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds: string[];
+    incidentLabels: string[];
     /**
      * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
@@ -1491,6 +1505,14 @@ export interface WorkflowIncidentTriggerParams {
      */
     incidentConditionKind?: string;
     /**
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    incidentConditionLabel?: string;
+    /**
+     * Value must be one of true or false
+     */
+    incidentConditionLabelUseRegexp: boolean;
+    /**
      * Value must be one of `SET`, `UNSET`.
      */
     incidentConditionMitigatedAt: string;
@@ -1538,6 +1560,7 @@ export interface WorkflowIncidentTriggerParams {
      * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds: string[];
+    incidentLabels: string[];
     /**
      * [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
@@ -1552,7 +1575,7 @@ export interface WorkflowIncidentTriggerParams {
      */
     triggerType?: string;
     /**
-     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
      */
     triggers: string[];
 }
@@ -1599,6 +1622,14 @@ export interface WorkflowPostMortemTriggerParams {
      */
     incidentConditionKind?: string;
     /**
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    incidentConditionLabel?: string;
+    /**
+     * Value must be one of true or false
+     */
+    incidentConditionLabelUseRegexp: boolean;
+    /**
      * Value must be one of `SET`, `UNSET`.
      */
     incidentConditionMitigatedAt: string;
@@ -1646,6 +1677,7 @@ export interface WorkflowPostMortemTriggerParams {
      * Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
      */
     incidentKinds: string[];
+    incidentLabels: string[];
     /**
      * Value must be one of `ALL`, `ANY`, `NONE`.
      */
@@ -1898,6 +1930,16 @@ export interface WorkflowTaskAddToTimelineTaskParamsPostToSlackChannel {
     name: string;
 }
 
+export interface WorkflowTaskArchiveGoogleChatSpacesTaskParams {
+    spaces: outputs.WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace[];
+    taskType?: string;
+}
+
+export interface WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace {
+    id: string;
+    name: string;
+}
+
 export interface WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParams {
     channels: outputs.WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsChannel[];
     taskType?: string;
@@ -2027,11 +2069,23 @@ export interface WorkflowTaskCallPeopleTaskParams {
     taskType?: string;
 }
 
+export interface WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams {
+    /**
+     * Target audience resource name (e.g. audiences/default). Leave blank to make private.
+     */
+    audience?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    space: {[key: string]: string};
+    taskType?: string;
+}
+
 export interface WorkflowTaskChangeSlackChannelPrivacyTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    channel?: {[key: string]: string};
+    channel: {[key: string]: string};
     /**
      * Value must be one of `private`, `public`.
      */
@@ -2229,6 +2283,18 @@ export interface WorkflowTaskCreateConfluencePageTaskParams {
      */
     content?: string;
     /**
+     * Value must be one of true or false
+     */
+    createAsLiveDoc?: boolean;
+    /**
+     * Value must be one of true or false
+     */
+    includeOverview?: boolean;
+    /**
+     * Value must be one of true or false
+     */
+    includeTimeline?: boolean;
+    /**
      * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
      */
     integration?: {[key: string]: string};
@@ -2316,6 +2382,10 @@ export interface WorkflowTaskCreateGithubIssueTaskParams {
      * The issue body
      */
     body?: string;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: string;
     /**
      * Map must contain two fields, `id` and `name`. The issue type
      */
@@ -2465,6 +2535,16 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChann
     name: string;
 }
 
+export interface WorkflowTaskCreateGoogleChatSpaceTaskParams {
+    /**
+     * Target audience resource name (e.g. audiences/default). Leave blank for private space.
+     */
+    audience?: string;
+    description?: string;
+    taskType?: string;
+    title: string;
+}
+
 export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
     /**
      * The page content
@@ -2474,6 +2554,14 @@ export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
      * Map must contain two fields, `id` and `name`.
      */
     drive?: {[key: string]: string};
+    /**
+     * Value must be one of true or false
+     */
+    includeOverview?: boolean;
+    /**
+     * Value must be one of true or false
+     */
+    includeTimeline?: boolean;
     /**
      * Value must be one of true or false
      */
@@ -2754,7 +2842,7 @@ export interface WorkflowTaskCreateJsmopsAlertTaskParams {
      */
     message: string;
     /**
-     * Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     * Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
      */
     priority?: string;
     schedules?: outputs.WorkflowTaskCreateJsmopsAlertTaskParamsSchedule[];
@@ -2801,6 +2889,10 @@ export interface WorkflowTaskCreateLinearIssueTaskParams {
      */
     assignUserEmail?: string;
     /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: string;
+    /**
      * The issue description
      */
     description?: string;
@@ -2838,6 +2930,10 @@ export interface WorkflowTaskCreateLinearSubtaskIssueTaskParams {
      * The assigned user's email
      */
     assignUserEmail?: string;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: string;
     /**
      * The issue description
      */
@@ -2880,7 +2976,7 @@ export interface WorkflowTaskCreateMicrosoftTeamsChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    team?: {[key: string]: string};
+    team: {[key: string]: string};
     /**
      * Microsoft Team channel title
      */
@@ -3533,6 +3629,10 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      */
     createAsEmail?: string;
     /**
+     * Allow the Rootly bot to start recording without waiting for host approval. Value must be one of true or false
+     */
+    enableZoomBotAutoJoin?: boolean;
+    /**
      * The meeting password
      */
     password?: string;
@@ -3734,6 +3834,50 @@ export interface WorkflowTaskHttpClientTaskParamsPostToSlackChannel {
     name: string;
 }
 
+export interface WorkflowTaskInviteToGoogleChatSpaceTaskParams {
+    /**
+     * Comma separated list of emails to invite
+     */
+    emails: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    space: {[key: string]: string};
+    taskType?: string;
+}
+
+export interface WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    channel: {[key: string]: string};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    escalationPolicyTarget?: {[key: string]: string};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    groupTarget?: {[key: string]: string};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    scheduleTarget?: {[key: string]: string};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    serviceTarget?: {[key: string]: string};
+    taskType?: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    team: {[key: string]: string};
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    userTarget?: {[key: string]: string};
+}
+
 export interface WorkflowTaskInviteToMicrosoftTeamsChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
@@ -3864,7 +4008,7 @@ export interface WorkflowTaskPageJsmopsOnCallRespondersTaskParams {
      */
     message?: string;
     /**
-     * Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+     * Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
      */
     priority?: string;
     taskType?: string;
@@ -3960,6 +4104,10 @@ export interface WorkflowTaskPageRootlyOnCallRespondersTaskParams {
      * Alert urgency ID
      */
     alertUrgencyId: string;
+    /**
+     * When true, always create a new alert instead of re-paging the alert that triggered the workflow. Value must be one of true or false
+     */
+    createNewAlert?: boolean;
     /**
      * Alert description
      */
@@ -4085,6 +4233,15 @@ export interface WorkflowTaskRemoveGoogleDocsPermissionsTaskParams {
     value: string;
 }
 
+export interface WorkflowTaskRenameGoogleChatSpaceTaskParams {
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    space: {[key: string]: string};
+    taskType?: string;
+    title: string;
+}
+
 export interface WorkflowTaskRenameMicrosoftTeamsChannelTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
@@ -4184,12 +4341,44 @@ export interface WorkflowTaskSendEmailTaskParams {
     tos: string[];
 }
 
+export interface WorkflowTaskSendGoogleChatAttachmentsTaskParams {
+    attachments: string;
+    spaces: outputs.WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace[];
+    taskType?: string;
+}
+
+export interface WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace {
+    id: string;
+    name: string;
+}
+
+export interface WorkflowTaskSendGoogleChatMessageTaskParams {
+    spaces: outputs.WorkflowTaskSendGoogleChatMessageTaskParamsSpace[];
+    taskType?: string;
+    text: string;
+    /**
+     * Thread key to reply within a thread. Messages with the same thread key are grouped together
+     */
+    threadKey?: string;
+}
+
+export interface WorkflowTaskSendGoogleChatMessageTaskParamsSpace {
+    id: string;
+    name: string;
+}
+
 export interface WorkflowTaskSendMicrosoftTeamsBlocksTaskParams {
     /**
      * Support liquid markup. Needs to be a valid JSON string after liquid is parsed
      */
     attachments: string;
+    channels?: outputs.WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel[];
     taskType?: string;
+}
+
+export interface WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel {
+    id: string;
+    name: string;
 }
 
 export interface WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams {
@@ -4664,6 +4853,14 @@ export interface WorkflowTaskUpdateConfluencePageTaskParams {
      */
     fileId: string;
     /**
+     * Value must be one of true or false
+     */
+    includeOverview?: boolean;
+    /**
+     * Value must be one of true or false
+     */
+    includeTimeline?: boolean;
+    /**
      * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
      */
     integration?: {[key: string]: string};
@@ -4739,6 +4936,10 @@ export interface WorkflowTaskUpdateGithubIssueTaskParams {
      * Map must contain two fields, `id` and `name`.
      */
     completion: {[key: string]: string};
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: string;
     /**
      * The issue id
      */
@@ -4870,6 +5071,18 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChann
     name: string;
 }
 
+export interface WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams {
+    /**
+     * The space description. Supports liquid markup
+     */
+    description: string;
+    /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    space: {[key: string]: string};
+    taskType?: string;
+}
+
 export interface WorkflowTaskUpdateGoogleDocsPageTaskParams {
     /**
      * The Google Doc content
@@ -4879,6 +5092,14 @@ export interface WorkflowTaskUpdateGoogleDocsPageTaskParams {
      * The Google Doc file ID
      */
     fileId: string;
+    /**
+     * Value must be one of true or false
+     */
+    includeOverview?: boolean;
+    /**
+     * Value must be one of true or false
+     */
+    includeTimeline?: boolean;
     /**
      * Retrospective template to use when updating page, if desired
      */
@@ -5029,6 +5250,10 @@ export interface WorkflowTaskUpdateLinearIssueTaskParams {
      * The assigned user's email
      */
     assignUserEmail?: string;
+    /**
+     * Custom field mappings. Can contain liquid markup and need to be valid JSON
+     */
+    customFieldsMapping?: string;
     /**
      * The issue description
      */

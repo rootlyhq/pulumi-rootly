@@ -117,8 +117,6 @@ type communicationsTypeArgs struct {
 	Name *string `pulumi:"name"`
 	// Position of the communications type
 	Position *int `pulumi:"position"`
-	// The slug of the communications type
-	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a CommunicationsType resource.
@@ -131,8 +129,6 @@ type CommunicationsTypeArgs struct {
 	Name pulumi.StringPtrInput
 	// Position of the communications type
 	Position pulumi.IntPtrInput
-	// The slug of the communications type
-	Slug pulumi.StringPtrInput
 }
 
 func (CommunicationsTypeArgs) ElementType() reflect.Type {

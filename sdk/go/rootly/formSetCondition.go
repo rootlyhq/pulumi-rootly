@@ -52,6 +52,9 @@ func NewFormSetCondition(ctx *pulumi.Context,
 	if args.FormFieldId == nil {
 		return nil, errors.New("invalid value for required argument 'FormFieldId'")
 	}
+	if args.FormSetId == nil {
+		return nil, errors.New("invalid value for required argument 'FormSetId'")
+	}
 	if args.Values == nil {
 		return nil, errors.New("invalid value for required argument 'Values'")
 	}
@@ -109,7 +112,7 @@ type formSetConditionArgs struct {
 	// The form field this condition applies.
 	FormFieldId string `pulumi:"formFieldId"`
 	// The form set this condition applies.
-	FormSetId *string `pulumi:"formSetId"`
+	FormSetId string `pulumi:"formSetId"`
 	// The values for comparison.
 	Values []string `pulumi:"values"`
 }
@@ -121,7 +124,7 @@ type FormSetConditionArgs struct {
 	// The form field this condition applies.
 	FormFieldId pulumi.StringInput
 	// The form set this condition applies.
-	FormSetId pulumi.StringPtrInput
+	FormSetId pulumi.StringInput
 	// The values for comparison.
 	Values pulumi.StringArrayInput
 }

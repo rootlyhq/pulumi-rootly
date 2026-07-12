@@ -51,6 +51,9 @@ func NewScheduleRotationActiveDay(ctx *pulumi.Context,
 	if args.ActiveTimeAttributes == nil {
 		return nil, errors.New("invalid value for required argument 'ActiveTimeAttributes'")
 	}
+	if args.ScheduleRotationId == nil {
+		return nil, errors.New("invalid value for required argument 'ScheduleRotationId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ScheduleRotationActiveDay
 	err := ctx.RegisterResource("rootly:index/scheduleRotationActiveDay:ScheduleRotationActiveDay", name, args, &resource, opts...)
@@ -98,7 +101,7 @@ type scheduleRotationActiveDayArgs struct {
 	ActiveTimeAttributes []ScheduleRotationActiveDayActiveTimeAttribute `pulumi:"activeTimeAttributes"`
 	// Schedule rotation day name for which active times to be created. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
 	DayName            *string `pulumi:"dayName"`
-	ScheduleRotationId *string `pulumi:"scheduleRotationId"`
+	ScheduleRotationId string  `pulumi:"scheduleRotationId"`
 }
 
 // The set of arguments for constructing a ScheduleRotationActiveDay resource.
@@ -107,7 +110,7 @@ type ScheduleRotationActiveDayArgs struct {
 	ActiveTimeAttributes ScheduleRotationActiveDayActiveTimeAttributeArrayInput
 	// Schedule rotation day name for which active times to be created. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
 	DayName            pulumi.StringPtrInput
-	ScheduleRotationId pulumi.StringPtrInput
+	ScheduleRotationId pulumi.StringInput
 }
 
 func (ScheduleRotationActiveDayArgs) ElementType() reflect.Type {

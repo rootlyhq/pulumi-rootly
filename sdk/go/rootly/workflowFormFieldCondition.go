@@ -60,6 +60,9 @@ func NewWorkflowFormFieldCondition(ctx *pulumi.Context,
 	if args.FormFieldId == nil {
 		return nil, errors.New("invalid value for required argument 'FormFieldId'")
 	}
+	if args.WorkflowId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkflowId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkflowFormFieldCondition
 	err := ctx.RegisterResource("rootly:index/workflowFormFieldCondition:WorkflowFormFieldCondition", name, args, &resource, opts...)
@@ -140,7 +143,7 @@ type workflowFormFieldConditionArgs struct {
 	SelectedUserIds          []int    `pulumi:"selectedUserIds"`
 	Values                   []string `pulumi:"values"`
 	// The workflow for this condition
-	WorkflowId *string `pulumi:"workflowId"`
+	WorkflowId string `pulumi:"workflowId"`
 }
 
 // The set of arguments for constructing a WorkflowFormFieldCondition resource.
@@ -160,7 +163,7 @@ type WorkflowFormFieldConditionArgs struct {
 	SelectedUserIds          pulumi.IntArrayInput
 	Values                   pulumi.StringArrayInput
 	// The workflow for this condition
-	WorkflowId pulumi.StringPtrInput
+	WorkflowId pulumi.StringInput
 }
 
 func (WorkflowFormFieldConditionArgs) ElementType() reflect.Type {

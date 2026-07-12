@@ -90,7 +90,7 @@ export class Severity extends pulumi.CustomResource {
     /**
      * The slug of the severity
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Severity resource with the given unique name, arguments, and options.
@@ -124,7 +124,7 @@ export class Severity extends pulumi.CustomResource {
             resourceInputs["severity"] = args?.severity;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Severity.__pulumiType, name, resourceInputs, opts);
@@ -209,8 +209,4 @@ export interface SeverityArgs {
      * Slack Channels associated with this severity
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[] | undefined>;
-    /**
-     * The slug of the severity
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

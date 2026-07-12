@@ -157,8 +157,6 @@ type formFieldArgs struct {
 	// Whether the form field is shown on the incident details panel. Value must be one of true or false
 	ShowOnIncidentDetails *bool    `pulumi:"showOnIncidentDetails"`
 	Showns                []string `pulumi:"showns"`
-	// The slug of the form field
-	Slug *string `pulumi:"slug"`
 	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
 	ValueKind *string `pulumi:"valueKind"`
 	// The ID of the catalog used when valueKind is `catalogEntity`
@@ -183,8 +181,6 @@ type FormFieldArgs struct {
 	// Whether the form field is shown on the incident details panel. Value must be one of true or false
 	ShowOnIncidentDetails pulumi.BoolPtrInput
 	Showns                pulumi.StringArrayInput
-	// The slug of the form field
-	Slug pulumi.StringPtrInput
 	// The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
 	ValueKind pulumi.StringPtrInput
 	// The ID of the catalog used when valueKind is `catalogEntity`

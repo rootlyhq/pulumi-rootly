@@ -44,6 +44,9 @@ func NewRetrospectiveProcessGroupStep(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.RetrospectiveProcessGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'RetrospectiveProcessGroupId'")
+	}
 	if args.RetrospectiveStepId == nil {
 		return nil, errors.New("invalid value for required argument 'RetrospectiveStepId'")
 	}
@@ -86,15 +89,15 @@ func (RetrospectiveProcessGroupStepState) ElementType() reflect.Type {
 }
 
 type retrospectiveProcessGroupStepArgs struct {
-	Position                    *int    `pulumi:"position"`
-	RetrospectiveProcessGroupId *string `pulumi:"retrospectiveProcessGroupId"`
-	RetrospectiveStepId         string  `pulumi:"retrospectiveStepId"`
+	Position                    *int   `pulumi:"position"`
+	RetrospectiveProcessGroupId string `pulumi:"retrospectiveProcessGroupId"`
+	RetrospectiveStepId         string `pulumi:"retrospectiveStepId"`
 }
 
 // The set of arguments for constructing a RetrospectiveProcessGroupStep resource.
 type RetrospectiveProcessGroupStepArgs struct {
 	Position                    pulumi.IntPtrInput
-	RetrospectiveProcessGroupId pulumi.StringPtrInput
+	RetrospectiveProcessGroupId pulumi.StringInput
 	RetrospectiveStepId         pulumi.StringInput
 }
 

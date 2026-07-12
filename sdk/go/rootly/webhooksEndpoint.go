@@ -34,7 +34,9 @@ import (
 type WebhooksEndpoint struct {
 	pulumi.CustomResourceState
 
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
+	CustomHeaders WebhooksEndpointCustomHeaderArrayOutput `pulumi:"customHeaders"`
+	Enabled       pulumi.BoolPtrOutput                    `pulumi:"enabled"`
 	// Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
 	EventTypes pulumi.StringArrayOutput `pulumi:"eventTypes"`
 	// The name of the endpoint
@@ -80,7 +82,9 @@ func GetWebhooksEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebhooksEndpoint resources.
 type webhooksEndpointState struct {
-	Enabled *bool `pulumi:"enabled"`
+	// Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
+	CustomHeaders []WebhooksEndpointCustomHeader `pulumi:"customHeaders"`
+	Enabled       *bool                          `pulumi:"enabled"`
 	// Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
 	EventTypes []string `pulumi:"eventTypes"`
 	// The name of the endpoint
@@ -94,7 +98,9 @@ type webhooksEndpointState struct {
 }
 
 type WebhooksEndpointState struct {
-	Enabled pulumi.BoolPtrInput
+	// Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
+	CustomHeaders WebhooksEndpointCustomHeaderArrayInput
+	Enabled       pulumi.BoolPtrInput
 	// Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
 	EventTypes pulumi.StringArrayInput
 	// The name of the endpoint
@@ -112,30 +118,30 @@ func (WebhooksEndpointState) ElementType() reflect.Type {
 }
 
 type webhooksEndpointArgs struct {
-	Enabled *bool `pulumi:"enabled"`
+	// Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
+	CustomHeaders []WebhooksEndpointCustomHeader `pulumi:"customHeaders"`
+	Enabled       *bool                          `pulumi:"enabled"`
 	// Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
 	EventTypes []string `pulumi:"eventTypes"`
 	// The name of the endpoint
 	Name *string `pulumi:"name"`
 	// The webhook signing secret used to verify webhook requests.
 	Secret *string `pulumi:"secret"`
-	// The slug of the endpoint
-	Slug *string `pulumi:"slug"`
 	// The URL of the endpoint.
 	Url string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a WebhooksEndpoint resource.
 type WebhooksEndpointArgs struct {
-	Enabled pulumi.BoolPtrInput
+	// Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
+	CustomHeaders WebhooksEndpointCustomHeaderArrayInput
+	Enabled       pulumi.BoolPtrInput
 	// Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
 	EventTypes pulumi.StringArrayInput
 	// The name of the endpoint
 	Name pulumi.StringPtrInput
 	// The webhook signing secret used to verify webhook requests.
 	Secret pulumi.StringPtrInput
-	// The slug of the endpoint
-	Slug pulumi.StringPtrInput
 	// The URL of the endpoint.
 	Url pulumi.StringInput
 }
@@ -225,6 +231,11 @@ func (o WebhooksEndpointOutput) ToWebhooksEndpointOutput() WebhooksEndpointOutpu
 
 func (o WebhooksEndpointOutput) ToWebhooksEndpointOutputWithContext(ctx context.Context) WebhooksEndpointOutput {
 	return o
+}
+
+// Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
+func (o WebhooksEndpointOutput) CustomHeaders() WebhooksEndpointCustomHeaderArrayOutput {
+	return o.ApplyT(func(v *WebhooksEndpoint) WebhooksEndpointCustomHeaderArrayOutput { return v.CustomHeaders }).(WebhooksEndpointCustomHeaderArrayOutput)
 }
 
 func (o WebhooksEndpointOutput) Enabled() pulumi.BoolPtrOutput {

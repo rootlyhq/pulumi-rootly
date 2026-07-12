@@ -106,6 +106,9 @@ export class EscalationLevel extends pulumi.CustomResource {
             resourceInputs["position"] = state?.position;
         } else {
             const args = argsOrState as EscalationLevelArgs | undefined;
+            if (args?.escalationPolicyId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'escalationPolicyId'");
+            }
             if (args?.notificationTargetParams === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationTargetParams'");
             }
@@ -170,7 +173,7 @@ export interface EscalationLevelArgs {
     /**
      * The ID of the escalation policy
      */
-    escalationPolicyId?: pulumi.Input<string | undefined>;
+    escalationPolicyId: pulumi.Input<string>;
     /**
      * The ID of the dynamic escalation policy path the level will belong to. If nothing is specified it will add the level to your default path.
      */

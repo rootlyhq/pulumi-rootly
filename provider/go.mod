@@ -8,7 +8,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.128.0
-	github.com/rootlyhq/terraform-provider-rootly/v5 v5.16.1
+	github.com/rootlyhq/terraform-provider-rootly/v5 v5.17.1
 )
 
 require (
@@ -131,7 +131,7 @@ require (
 	github.com/hashicorp/hil v0.0.0-20240516195350-6a7d7e84a38e // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.25.2 // indirect
-	github.com/hashicorp/terraform-json v0.27.3-0.20260213134036-298b8f6b673a // indirect
+	github.com/hashicorp/terraform-json v0.28.0 // indirect
 	github.com/hashicorp/terraform-plugin-docs v0.25.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.31.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect
@@ -214,7 +214,7 @@ require (
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
-	github.com/yuin/goldmark v1.8.2 // indirect
+	github.com/yuin/goldmark v1.8.4 // indirect
 	github.com/yuin/goldmark-meta v1.1.0 // indirect
 	github.com/zclconf/go-cty v1.19.0 // indirect
 	go.abhg.dev/goldmark/frontmatter v0.3.0 // indirect
@@ -238,7 +238,7 @@ require (
 	gocloud.dev v0.39.0 // indirect
 	gocloud.dev/secrets/hashivault v0.39.0 // indirect
 	golang.org/x/crypto v0.54.0 // indirect
-	golang.org/x/exp v0.0.0-20260611194520-c48552f49976 // indirect
+	golang.org/x/exp v0.0.0-20260709172345-9ea1abe57597 // indirect
 	golang.org/x/mod v0.38.0 // indirect
 	golang.org/x/net v0.57.0 // indirect
 	golang.org/x/oauth2 v0.36.0 // indirect

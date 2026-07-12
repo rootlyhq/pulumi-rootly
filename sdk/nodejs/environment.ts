@@ -90,7 +90,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The slug of the environment
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -124,7 +124,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["properties"] = args?.properties;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Environment.__pulumiType, name, resourceInputs, opts);
@@ -209,8 +209,4 @@ export interface EnvironmentArgs {
      * Slack Channels associated with this environment
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[] | undefined>;
-    /**
-     * The slug of the environment
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

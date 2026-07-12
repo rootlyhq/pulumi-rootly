@@ -68,7 +68,7 @@ export class CommunicationsStage extends pulumi.CustomResource {
     /**
      * The slug of the communications stage
      */
-    declare public readonly slug: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
 
     /**
      * Create a CommunicationsStage resource with the given unique name, arguments, and options.
@@ -92,7 +92,7 @@ export class CommunicationsStage extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
-            resourceInputs["slug"] = args?.slug;
+            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CommunicationsStage.__pulumiType, name, resourceInputs, opts);
@@ -137,8 +137,4 @@ export interface CommunicationsStageArgs {
      * Position of the communications stage
      */
     position?: pulumi.Input<number | undefined>;
-    /**
-     * The slug of the communications stage
-     */
-    slug?: pulumi.Input<string | undefined>;
 }

@@ -9358,6 +9358,106 @@ func (o TeamSlackChannelArrayOutput) Index(i pulumi.IntInput) TeamSlackChannelOu
 	}).(TeamSlackChannelOutput)
 }
 
+type WebhooksEndpointCustomHeader struct {
+	Name  *string `pulumi:"name"`
+	Value *string `pulumi:"value"`
+}
+
+// WebhooksEndpointCustomHeaderInput is an input type that accepts WebhooksEndpointCustomHeaderArgs and WebhooksEndpointCustomHeaderOutput values.
+// You can construct a concrete instance of `WebhooksEndpointCustomHeaderInput` via:
+//
+//	WebhooksEndpointCustomHeaderArgs{...}
+type WebhooksEndpointCustomHeaderInput interface {
+	pulumi.Input
+
+	ToWebhooksEndpointCustomHeaderOutput() WebhooksEndpointCustomHeaderOutput
+	ToWebhooksEndpointCustomHeaderOutputWithContext(context.Context) WebhooksEndpointCustomHeaderOutput
+}
+
+type WebhooksEndpointCustomHeaderArgs struct {
+	Name  pulumi.StringPtrInput `pulumi:"name"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (WebhooksEndpointCustomHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhooksEndpointCustomHeader)(nil)).Elem()
+}
+
+func (i WebhooksEndpointCustomHeaderArgs) ToWebhooksEndpointCustomHeaderOutput() WebhooksEndpointCustomHeaderOutput {
+	return i.ToWebhooksEndpointCustomHeaderOutputWithContext(context.Background())
+}
+
+func (i WebhooksEndpointCustomHeaderArgs) ToWebhooksEndpointCustomHeaderOutputWithContext(ctx context.Context) WebhooksEndpointCustomHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhooksEndpointCustomHeaderOutput)
+}
+
+// WebhooksEndpointCustomHeaderArrayInput is an input type that accepts WebhooksEndpointCustomHeaderArray and WebhooksEndpointCustomHeaderArrayOutput values.
+// You can construct a concrete instance of `WebhooksEndpointCustomHeaderArrayInput` via:
+//
+//	WebhooksEndpointCustomHeaderArray{ WebhooksEndpointCustomHeaderArgs{...} }
+type WebhooksEndpointCustomHeaderArrayInput interface {
+	pulumi.Input
+
+	ToWebhooksEndpointCustomHeaderArrayOutput() WebhooksEndpointCustomHeaderArrayOutput
+	ToWebhooksEndpointCustomHeaderArrayOutputWithContext(context.Context) WebhooksEndpointCustomHeaderArrayOutput
+}
+
+type WebhooksEndpointCustomHeaderArray []WebhooksEndpointCustomHeaderInput
+
+func (WebhooksEndpointCustomHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhooksEndpointCustomHeader)(nil)).Elem()
+}
+
+func (i WebhooksEndpointCustomHeaderArray) ToWebhooksEndpointCustomHeaderArrayOutput() WebhooksEndpointCustomHeaderArrayOutput {
+	return i.ToWebhooksEndpointCustomHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i WebhooksEndpointCustomHeaderArray) ToWebhooksEndpointCustomHeaderArrayOutputWithContext(ctx context.Context) WebhooksEndpointCustomHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhooksEndpointCustomHeaderArrayOutput)
+}
+
+type WebhooksEndpointCustomHeaderOutput struct{ *pulumi.OutputState }
+
+func (WebhooksEndpointCustomHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhooksEndpointCustomHeader)(nil)).Elem()
+}
+
+func (o WebhooksEndpointCustomHeaderOutput) ToWebhooksEndpointCustomHeaderOutput() WebhooksEndpointCustomHeaderOutput {
+	return o
+}
+
+func (o WebhooksEndpointCustomHeaderOutput) ToWebhooksEndpointCustomHeaderOutputWithContext(ctx context.Context) WebhooksEndpointCustomHeaderOutput {
+	return o
+}
+
+func (o WebhooksEndpointCustomHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhooksEndpointCustomHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o WebhooksEndpointCustomHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhooksEndpointCustomHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type WebhooksEndpointCustomHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (WebhooksEndpointCustomHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhooksEndpointCustomHeader)(nil)).Elem()
+}
+
+func (o WebhooksEndpointCustomHeaderArrayOutput) ToWebhooksEndpointCustomHeaderArrayOutput() WebhooksEndpointCustomHeaderArrayOutput {
+	return o
+}
+
+func (o WebhooksEndpointCustomHeaderArrayOutput) ToWebhooksEndpointCustomHeaderArrayOutputWithContext(ctx context.Context) WebhooksEndpointCustomHeaderArrayOutput {
+	return o
+}
+
+func (o WebhooksEndpointCustomHeaderArrayOutput) Index(i pulumi.IntInput) WebhooksEndpointCustomHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhooksEndpointCustomHeader {
+		return vs[0].([]WebhooksEndpointCustomHeader)[vs[1].(int)]
+	}).(WebhooksEndpointCustomHeaderOutput)
+}
+
 type WorkflowActionItemTriggerParams struct {
 	// Value must be one of `ALL`, `ANY`, `NONE`.
 	IncidentActionItemCondition *string `pulumi:"incidentActionItemCondition"`
@@ -9394,6 +9494,10 @@ type WorkflowActionItemTriggerParams struct {
 	IncidentConditionIncidentType *string `pulumi:"incidentConditionIncidentType"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind *string `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionLabel *string `pulumi:"incidentConditionLabel"`
+	// Value must be one of true or false
+	IncidentConditionLabelUseRegexp *bool `pulumi:"incidentConditionLabelUseRegexp"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
@@ -9417,7 +9521,8 @@ type WorkflowActionItemTriggerParams struct {
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration *string `pulumi:"incidentInactivityDuration"`
 	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
-	IncidentKinds []string `pulumi:"incidentKinds"`
+	IncidentKinds  []string `pulumi:"incidentKinds"`
+	IncidentLabels []string `pulumi:"incidentLabels"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     []string `pulumi:"incidentStatuses"`
 	IncidentVisibilities []string `pulumi:"incidentVisibilities"`
@@ -9474,6 +9579,10 @@ type WorkflowActionItemTriggerParamsArgs struct {
 	IncidentConditionIncidentType pulumi.StringPtrInput `pulumi:"incidentConditionIncidentType"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionLabel pulumi.StringPtrInput `pulumi:"incidentConditionLabel"`
+	// Value must be one of true or false
+	IncidentConditionLabelUseRegexp pulumi.BoolPtrInput `pulumi:"incidentConditionLabelUseRegexp"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
@@ -9497,7 +9606,8 @@ type WorkflowActionItemTriggerParamsArgs struct {
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration pulumi.StringPtrInput `pulumi:"incidentInactivityDuration"`
 	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
-	IncidentKinds pulumi.StringArrayInput `pulumi:"incidentKinds"`
+	IncidentKinds  pulumi.StringArrayInput `pulumi:"incidentKinds"`
+	IncidentLabels pulumi.StringArrayInput `pulumi:"incidentLabels"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
 	IncidentStatuses     pulumi.StringArrayInput `pulumi:"incidentStatuses"`
 	IncidentVisibilities pulumi.StringArrayInput `pulumi:"incidentVisibilities"`
@@ -9673,6 +9783,16 @@ func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionKind() pulumi.St
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionKind }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionLabel }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionLabelUseRegexp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *bool { return v.IncidentConditionLabelUseRegexp }).(pulumi.BoolPtrOutput)
+}
+
 // Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionMitigatedAt }).(pulumi.StringPtrOutput)
@@ -9731,6 +9851,10 @@ func (o WorkflowActionItemTriggerParamsOutput) IncidentInactivityDuration() pulu
 // Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentKinds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) []string { return v.IncidentKinds }).(pulumi.StringArrayOutput)
+}
+
+func (o WorkflowActionItemTriggerParamsOutput) IncidentLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowActionItemTriggerParams) []string { return v.IncidentLabels }).(pulumi.StringArrayOutput)
 }
 
 // Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
@@ -9955,6 +10079,26 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionKind() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionLabelUseRegexp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionLabelUseRegexp
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
@@ -10072,6 +10216,15 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentKinds() pulumi.StringA
 			return nil
 		}
 		return v.IncidentKinds
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentLabels
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -10981,6 +11134,10 @@ type WorkflowIncidentTriggerParams struct {
 	IncidentConditionIncidentType *string `pulumi:"incidentConditionIncidentType"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind *string `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionLabel *string `pulumi:"incidentConditionLabel"`
+	// Value must be one of true or false
+	IncidentConditionLabelUseRegexp *bool `pulumi:"incidentConditionLabelUseRegexp"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
@@ -11004,7 +11161,8 @@ type WorkflowIncidentTriggerParams struct {
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration *string `pulumi:"incidentInactivityDuration"`
 	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
-	IncidentKinds []string `pulumi:"incidentKinds"`
+	IncidentKinds  []string `pulumi:"incidentKinds"`
+	IncidentLabels []string `pulumi:"incidentLabels"`
 	// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionCause *string `pulumi:"incidentPostMortemConditionCause"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
@@ -11012,7 +11170,7 @@ type WorkflowIncidentTriggerParams struct {
 	IncidentVisibilities []string `pulumi:"incidentVisibilities"`
 	// Value must be one of `incident`.
 	TriggerType *string `pulumi:"triggerType"`
-	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
+	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
 	Triggers []string `pulumi:"triggers"`
 }
 
@@ -11048,6 +11206,10 @@ type WorkflowIncidentTriggerParamsArgs struct {
 	IncidentConditionIncidentType pulumi.StringPtrInput `pulumi:"incidentConditionIncidentType"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionLabel pulumi.StringPtrInput `pulumi:"incidentConditionLabel"`
+	// Value must be one of true or false
+	IncidentConditionLabelUseRegexp pulumi.BoolPtrInput `pulumi:"incidentConditionLabelUseRegexp"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
@@ -11071,7 +11233,8 @@ type WorkflowIncidentTriggerParamsArgs struct {
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration pulumi.StringPtrInput `pulumi:"incidentInactivityDuration"`
 	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
-	IncidentKinds pulumi.StringArrayInput `pulumi:"incidentKinds"`
+	IncidentKinds  pulumi.StringArrayInput `pulumi:"incidentKinds"`
+	IncidentLabels pulumi.StringArrayInput `pulumi:"incidentLabels"`
 	// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentPostMortemConditionCause pulumi.StringPtrInput `pulumi:"incidentPostMortemConditionCause"`
 	// Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
@@ -11079,7 +11242,7 @@ type WorkflowIncidentTriggerParamsArgs struct {
 	IncidentVisibilities pulumi.StringArrayInput `pulumi:"incidentVisibilities"`
 	// Value must be one of `incident`.
 	TriggerType pulumi.StringPtrInput `pulumi:"triggerType"`
-	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
+	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
 	Triggers pulumi.StringArrayInput `pulumi:"triggers"`
 }
 
@@ -11210,6 +11373,16 @@ func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionKind() pulumi.Stri
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionKind }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionLabel }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionLabelUseRegexp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *bool { return v.IncidentConditionLabelUseRegexp }).(pulumi.BoolPtrOutput)
+}
+
 // Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionMitigatedAt }).(pulumi.StringPtrOutput)
@@ -11270,6 +11443,10 @@ func (o WorkflowIncidentTriggerParamsOutput) IncidentKinds() pulumi.StringArrayO
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) []string { return v.IncidentKinds }).(pulumi.StringArrayOutput)
 }
 
+func (o WorkflowIncidentTriggerParamsOutput) IncidentLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowIncidentTriggerParams) []string { return v.IncidentLabels }).(pulumi.StringArrayOutput)
+}
+
 // [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentPostMortemConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentPostMortemConditionCause }).(pulumi.StringPtrOutput)
@@ -11289,7 +11466,7 @@ func (o WorkflowIncidentTriggerParamsOutput) TriggerType() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.TriggerType }).(pulumi.StringPtrOutput)
 }
 
-// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
+// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
 func (o WorkflowIncidentTriggerParamsOutput) Triggers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) []string { return v.Triggers }).(pulumi.StringArrayOutput)
 }
@@ -11418,6 +11595,26 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionKind() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionLabelUseRegexp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionLabelUseRegexp
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Value must be one of `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
@@ -11538,6 +11735,15 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentKinds() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
+func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentLabels
+	}).(pulumi.StringArrayOutput)
+}
+
 // [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentPostMortemConditionCause() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
@@ -11577,7 +11783,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) TriggerType() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel
+// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
 func (o WorkflowIncidentTriggerParamsPtrOutput) Triggers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) []string {
 		if v == nil {
@@ -11608,6 +11814,10 @@ type WorkflowPostMortemTriggerParams struct {
 	IncidentConditionIncidentType *string `pulumi:"incidentConditionIncidentType"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind *string `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionLabel *string `pulumi:"incidentConditionLabel"`
+	// Value must be one of true or false
+	IncidentConditionLabelUseRegexp *bool `pulumi:"incidentConditionLabelUseRegexp"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
@@ -11631,7 +11841,8 @@ type WorkflowPostMortemTriggerParams struct {
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration *string `pulumi:"incidentInactivityDuration"`
 	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
-	IncidentKinds []string `pulumi:"incidentKinds"`
+	IncidentKinds  []string `pulumi:"incidentKinds"`
+	IncidentLabels []string `pulumi:"incidentLabels"`
 	// Value must be one of `ALL`, `ANY`, `NONE`.
 	IncidentPostMortemCondition *string `pulumi:"incidentPostMortemCondition"`
 	// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
@@ -11681,6 +11892,10 @@ type WorkflowPostMortemTriggerParamsArgs struct {
 	IncidentConditionIncidentType pulumi.StringPtrInput `pulumi:"incidentConditionIncidentType"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionKind pulumi.StringPtrInput `pulumi:"incidentConditionKind"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	IncidentConditionLabel pulumi.StringPtrInput `pulumi:"incidentConditionLabel"`
+	// Value must be one of true or false
+	IncidentConditionLabelUseRegexp pulumi.BoolPtrInput `pulumi:"incidentConditionLabelUseRegexp"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
@@ -11704,7 +11919,8 @@ type WorkflowPostMortemTriggerParamsArgs struct {
 	// ex. 10 min, 1h, 3 days, 2 weeks
 	IncidentInactivityDuration pulumi.StringPtrInput `pulumi:"incidentInactivityDuration"`
 	// Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
-	IncidentKinds pulumi.StringArrayInput `pulumi:"incidentKinds"`
+	IncidentKinds  pulumi.StringArrayInput `pulumi:"incidentKinds"`
+	IncidentLabels pulumi.StringArrayInput `pulumi:"incidentLabels"`
 	// Value must be one of `ALL`, `ANY`, `NONE`.
 	IncidentPostMortemCondition pulumi.StringPtrInput `pulumi:"incidentPostMortemCondition"`
 	// [DEPRECATED] Use incident*condition*cause instead. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
@@ -11849,6 +12065,16 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionKind() pulumi.St
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionKind }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionLabel }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionLabelUseRegexp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *bool { return v.IncidentConditionLabelUseRegexp }).(pulumi.BoolPtrOutput)
+}
+
 // Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionMitigatedAt }).(pulumi.StringPtrOutput)
@@ -11907,6 +12133,10 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentInactivityDuration() pulu
 // Value must be one of `test`, `testSub`, `example`, `exampleSub`, `normal`, `normalSub`, `backfilled`, `scheduled`, `scheduledSub`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentKinds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) []string { return v.IncidentKinds }).(pulumi.StringArrayOutput)
+}
+
+func (o WorkflowPostMortemTriggerParamsOutput) IncidentLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) []string { return v.IncidentLabels }).(pulumi.StringArrayOutput)
 }
 
 // Value must be one of `ALL`, `ANY`, `NONE`.
@@ -12072,6 +12302,26 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionKind() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionLabelUseRegexp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionLabelUseRegexp
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionMitigatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
@@ -12189,6 +12439,15 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentKinds() pulumi.StringA
 			return nil
 		}
 		return v.IncidentKinds
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentLabels
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -14534,6 +14793,256 @@ func (o WorkflowTaskAddToTimelineTaskParamsPostToSlackChannelArrayOutput) Index(
 	}).(WorkflowTaskAddToTimelineTaskParamsPostToSlackChannelOutput)
 }
 
+type WorkflowTaskArchiveGoogleChatSpacesTaskParams struct {
+	Spaces   []WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace `pulumi:"spaces"`
+	TaskType *string                                              `pulumi:"taskType"`
+}
+
+// WorkflowTaskArchiveGoogleChatSpacesTaskParamsInput is an input type that accepts WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs and WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskArchiveGoogleChatSpacesTaskParamsInput` via:
+//
+//	WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs{...}
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput
+	ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsOutputWithContext(context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput
+}
+
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs struct {
+	Spaces   WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayInput `pulumi:"spaces"`
+	TaskType pulumi.StringPtrInput                                        `pulumi:"taskType"`
+}
+
+func (WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskArchiveGoogleChatSpacesTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput {
+	return i.ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput)
+}
+
+func (i WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput {
+	return i.ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput).ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrInput is an input type that accepts WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs, WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtr and WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput
+	ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput
+}
+
+type workflowTaskArchiveGoogleChatSpacesTaskParamsPtrType WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs
+
+func WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtr(v *WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs) WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrInput {
+	return (*workflowTaskArchiveGoogleChatSpacesTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskArchiveGoogleChatSpacesTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskArchiveGoogleChatSpacesTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskArchiveGoogleChatSpacesTaskParamsPtrType) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput {
+	return i.ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskArchiveGoogleChatSpacesTaskParamsPtrType) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput)
+}
+
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskArchiveGoogleChatSpacesTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput {
+	return o.ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskArchiveGoogleChatSpacesTaskParams) *WorkflowTaskArchiveGoogleChatSpacesTaskParams {
+		return &v
+	}).(WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput)
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput) Spaces() WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskArchiveGoogleChatSpacesTaskParams) []WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace {
+		return v.Spaces
+	}).(WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput)
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskArchiveGoogleChatSpacesTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskArchiveGoogleChatSpacesTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput) Elem() WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskArchiveGoogleChatSpacesTaskParams) WorkflowTaskArchiveGoogleChatSpacesTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskArchiveGoogleChatSpacesTaskParams
+		return ret
+	}).(WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput)
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput) Spaces() WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskArchiveGoogleChatSpacesTaskParams) []WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace {
+		if v == nil {
+			return nil
+		}
+		return v.Spaces
+	}).(WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput)
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskArchiveGoogleChatSpacesTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceInput is an input type that accepts WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArgs and WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput values.
+// You can construct a concrete instance of `WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceInput` via:
+//
+//	WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArgs{...}
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput
+	ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutputWithContext(context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput
+}
+
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace)(nil)).Elem()
+}
+
+func (i WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArgs) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput {
+	return i.ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArgs) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutputWithContext(ctx context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput)
+}
+
+// WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayInput is an input type that accepts WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArray and WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayInput` via:
+//
+//	WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArray{ WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArgs{...} }
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput
+	ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutputWithContext(context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput
+}
+
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArray []WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceInput
+
+func (WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace)(nil)).Elem()
+}
+
+func (i WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArray) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput {
+	return i.ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArray) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutputWithContext(ctx context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput)
+}
+
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace)(nil)).Elem()
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput {
+	return o
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutputWithContext(ctx context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput {
+	return o
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace)(nil)).Elem()
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput() WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput) ToWorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutputWithContext(ctx context.Context) WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput) Index(i pulumi.IntInput) WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace {
+		return vs[0].([]WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpace)[vs[1].(int)]
+	}).(WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput)
+}
+
 type WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParams struct {
 	Channels []WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsChannel `pulumi:"channels"`
 	TaskType *string                                                      `pulumi:"taskType"`
@@ -16423,6 +16932,177 @@ func (o WorkflowTaskCallPeopleTaskParamsPtrOutput) TaskType() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams struct {
+	// Target audience resource name (e.g. audiences/default). Leave blank to make private.
+	Audience *string `pulumi:"audience"`
+	// Map must contain two fields, `id` and `name`.
+	Space    map[string]string `pulumi:"space"`
+	TaskType *string           `pulumi:"taskType"`
+}
+
+// WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsInput is an input type that accepts WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs and WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsInput` via:
+//
+//	WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs{...}
+type WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput() WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput
+	ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutputWithContext(context.Context) WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput
+}
+
+type WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs struct {
+	// Target audience resource name (e.g. audiences/default). Leave blank to make private.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+	// Map must contain two fields, `id` and `name`.
+	Space    pulumi.StringMapInput `pulumi:"space"`
+	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
+}
+
+func (WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput() WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput {
+	return i.ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput)
+}
+
+func (i WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput() WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput {
+	return i.ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput).ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrInput is an input type that accepts WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs, WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtr and WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput() WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput
+	ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput
+}
+
+type workflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrType WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs
+
+func WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtr(v *WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs) WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrInput {
+	return (*workflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrType) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput() WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput {
+	return i.ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrType) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput)
+}
+
+type WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput() WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput() WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput {
+	return o.ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams) *WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams {
+		return &v
+	}).(WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput)
+}
+
+// Target audience resource name (e.g. audiences/default). Leave blank to make private.
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput) Space() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams) map[string]string { return v.Space }).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput() WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput) ToWorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput) Elem() WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams) WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams
+		return ret
+	}).(WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput)
+}
+
+// Target audience resource name (e.g. audiences/default). Leave blank to make private.
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput) Space() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Space
+	}).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskChangeGoogleChatSpacePrivacyTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskChangeSlackChannelPrivacyTaskParams struct {
 	// Map must contain two fields, `id` and `name`.
 	Channel map[string]string `pulumi:"channel"`
@@ -18247,6 +18927,12 @@ type WorkflowTaskCreateConfluencePageTaskParams struct {
 	Ancestor map[string]string `pulumi:"ancestor"`
 	// The page content
 	Content *string `pulumi:"content"`
+	// Value must be one of true or false
+	CreateAsLiveDoc *bool `pulumi:"createAsLiveDoc"`
+	// Value must be one of true or false
+	IncludeOverview *bool `pulumi:"includeOverview"`
+	// Value must be one of true or false
+	IncludeTimeline *bool `pulumi:"includeTimeline"`
 	// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
 	Integration map[string]string `pulumi:"integration"`
 	// Value must be one of true or false
@@ -18278,6 +18964,12 @@ type WorkflowTaskCreateConfluencePageTaskParamsArgs struct {
 	Ancestor pulumi.StringMapInput `pulumi:"ancestor"`
 	// The page content
 	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Value must be one of true or false
+	CreateAsLiveDoc pulumi.BoolPtrInput `pulumi:"createAsLiveDoc"`
+	// Value must be one of true or false
+	IncludeOverview pulumi.BoolPtrInput `pulumi:"includeOverview"`
+	// Value must be one of true or false
+	IncludeTimeline pulumi.BoolPtrInput `pulumi:"includeTimeline"`
 	// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
 	Integration pulumi.StringMapInput `pulumi:"integration"`
 	// Value must be one of true or false
@@ -18380,6 +19072,21 @@ func (o WorkflowTaskCreateConfluencePageTaskParamsOutput) Content() pulumi.Strin
 	return o.ApplyT(func(v WorkflowTaskCreateConfluencePageTaskParams) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of true or false
+func (o WorkflowTaskCreateConfluencePageTaskParamsOutput) CreateAsLiveDoc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateConfluencePageTaskParams) *bool { return v.CreateAsLiveDoc }).(pulumi.BoolPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskCreateConfluencePageTaskParamsOutput) IncludeOverview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateConfluencePageTaskParams) *bool { return v.IncludeOverview }).(pulumi.BoolPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskCreateConfluencePageTaskParamsOutput) IncludeTimeline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateConfluencePageTaskParams) *bool { return v.IncludeTimeline }).(pulumi.BoolPtrOutput)
+}
+
 // Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
 func (o WorkflowTaskCreateConfluencePageTaskParamsOutput) Integration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateConfluencePageTaskParams) map[string]string { return v.Integration }).(pulumi.StringMapOutput)
@@ -18456,6 +19163,36 @@ func (o WorkflowTaskCreateConfluencePageTaskParamsPtrOutput) Content() pulumi.St
 		}
 		return v.Content
 	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskCreateConfluencePageTaskParamsPtrOutput) CreateAsLiveDoc() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateConfluencePageTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreateAsLiveDoc
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskCreateConfluencePageTaskParamsPtrOutput) IncludeOverview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateConfluencePageTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeOverview
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskCreateConfluencePageTaskParamsPtrOutput) IncludeTimeline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateConfluencePageTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeTimeline
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
@@ -19024,6 +19761,8 @@ func (o WorkflowTaskCreateDropboxPaperPageTaskParamsPtrOutput) Title() pulumi.St
 type WorkflowTaskCreateGithubIssueTaskParams struct {
 	// The issue body
 	Body *string `pulumi:"body"`
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	CustomFieldsMapping *string `pulumi:"customFieldsMapping"`
 	// Map must contain two fields, `id` and `name`. The issue type
 	IssueType map[string]string `pulumi:"issueType"`
 	// The issue labels
@@ -19051,6 +19790,8 @@ type WorkflowTaskCreateGithubIssueTaskParamsInput interface {
 type WorkflowTaskCreateGithubIssueTaskParamsArgs struct {
 	// The issue body
 	Body pulumi.StringPtrInput `pulumi:"body"`
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	CustomFieldsMapping pulumi.StringPtrInput `pulumi:"customFieldsMapping"`
 	// Map must contain two fields, `id` and `name`. The issue type
 	IssueType pulumi.StringMapInput `pulumi:"issueType"`
 	// The issue labels
@@ -19146,6 +19887,11 @@ func (o WorkflowTaskCreateGithubIssueTaskParamsOutput) Body() pulumi.StringPtrOu
 	return o.ApplyT(func(v WorkflowTaskCreateGithubIssueTaskParams) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
+// Custom field mappings. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskCreateGithubIssueTaskParamsOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGithubIssueTaskParams) *string { return v.CustomFieldsMapping }).(pulumi.StringPtrOutput)
+}
+
 // Map must contain two fields, `id` and `name`. The issue type
 func (o WorkflowTaskCreateGithubIssueTaskParamsOutput) IssueType() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateGithubIssueTaskParams) map[string]string { return v.IssueType }).(pulumi.StringMapOutput)
@@ -19208,6 +19954,16 @@ func (o WorkflowTaskCreateGithubIssueTaskParamsPtrOutput) Body() pulumi.StringPt
 			return nil
 		}
 		return v.Body
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom field mappings. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskCreateGithubIssueTaskParamsPtrOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGithubIssueTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFieldsMapping
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20474,11 +21230,197 @@ func (o WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannelArrayOu
 	}).(WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannelOutput)
 }
 
+type WorkflowTaskCreateGoogleChatSpaceTaskParams struct {
+	// Target audience resource name (e.g. audiences/default). Leave blank for private space.
+	Audience    *string `pulumi:"audience"`
+	Description *string `pulumi:"description"`
+	TaskType    *string `pulumi:"taskType"`
+	Title       string  `pulumi:"title"`
+}
+
+// WorkflowTaskCreateGoogleChatSpaceTaskParamsInput is an input type that accepts WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs and WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateGoogleChatSpaceTaskParamsInput` via:
+//
+//	WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs{...}
+type WorkflowTaskCreateGoogleChatSpaceTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateGoogleChatSpaceTaskParamsOutput() WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput
+	ToWorkflowTaskCreateGoogleChatSpaceTaskParamsOutputWithContext(context.Context) WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput
+}
+
+type WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs struct {
+	// Target audience resource name (e.g. audiences/default). Leave blank for private space.
+	Audience    pulumi.StringPtrInput `pulumi:"audience"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	TaskType    pulumi.StringPtrInput `pulumi:"taskType"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsOutput() WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput {
+	return i.ToWorkflowTaskCreateGoogleChatSpaceTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput)
+}
+
+func (i WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput).ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrInput is an input type that accepts WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs, WorkflowTaskCreateGoogleChatSpaceTaskParamsPtr and WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput
+	ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput
+}
+
+type workflowTaskCreateGoogleChatSpaceTaskParamsPtrType WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs
+
+func WorkflowTaskCreateGoogleChatSpaceTaskParamsPtr(v *WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs) WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrInput {
+	return (*workflowTaskCreateGoogleChatSpaceTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskCreateGoogleChatSpaceTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateGoogleChatSpaceTaskParamsPtrType) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateGoogleChatSpaceTaskParamsPtrType) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput)
+}
+
+type WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsOutput() WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput {
+	return o.ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateGoogleChatSpaceTaskParams) *WorkflowTaskCreateGoogleChatSpaceTaskParams {
+		return &v
+	}).(WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput)
+}
+
+// Target audience resource name (e.g. audiences/default). Leave blank for private space.
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleChatSpaceTaskParams) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleChatSpaceTaskParams) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleChatSpaceTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleChatSpaceTaskParams) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput) ToWorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput) Elem() WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleChatSpaceTaskParams) WorkflowTaskCreateGoogleChatSpaceTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateGoogleChatSpaceTaskParams
+		return ret
+	}).(WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput)
+}
+
+// Target audience resource name (e.g. audiences/default). Leave blank for private space.
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleChatSpaceTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleChatSpaceTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleChatSpaceTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleChatSpaceTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskCreateGoogleDocsPageTaskParams struct {
 	// The page content
 	Content *string `pulumi:"content"`
 	// Map must contain two fields, `id` and `name`.
 	Drive map[string]string `pulumi:"drive"`
+	// Value must be one of true or false
+	IncludeOverview *bool `pulumi:"includeOverview"`
+	// Value must be one of true or false
+	IncludeTimeline *bool `pulumi:"includeTimeline"`
 	// Value must be one of true or false
 	MarkPostMortemAsPublished *bool `pulumi:"markPostMortemAsPublished"`
 	// Map must contain two fields, `id` and `name`.
@@ -20510,6 +21452,10 @@ type WorkflowTaskCreateGoogleDocsPageTaskParamsArgs struct {
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// Map must contain two fields, `id` and `name`.
 	Drive pulumi.StringMapInput `pulumi:"drive"`
+	// Value must be one of true or false
+	IncludeOverview pulumi.BoolPtrInput `pulumi:"includeOverview"`
+	// Value must be one of true or false
+	IncludeTimeline pulumi.BoolPtrInput `pulumi:"includeTimeline"`
 	// Value must be one of true or false
 	MarkPostMortemAsPublished pulumi.BoolPtrInput `pulumi:"markPostMortemAsPublished"`
 	// Map must contain two fields, `id` and `name`.
@@ -20613,6 +21559,16 @@ func (o WorkflowTaskCreateGoogleDocsPageTaskParamsOutput) Drive() pulumi.StringM
 }
 
 // Value must be one of true or false
+func (o WorkflowTaskCreateGoogleDocsPageTaskParamsOutput) IncludeOverview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleDocsPageTaskParams) *bool { return v.IncludeOverview }).(pulumi.BoolPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskCreateGoogleDocsPageTaskParamsOutput) IncludeTimeline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleDocsPageTaskParams) *bool { return v.IncludeTimeline }).(pulumi.BoolPtrOutput)
+}
+
+// Value must be one of true or false
 func (o WorkflowTaskCreateGoogleDocsPageTaskParamsOutput) MarkPostMortemAsPublished() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateGoogleDocsPageTaskParams) *bool { return v.MarkPostMortemAsPublished }).(pulumi.BoolPtrOutput)
 }
@@ -20688,6 +21644,26 @@ func (o WorkflowTaskCreateGoogleDocsPageTaskParamsPtrOutput) Drive() pulumi.Stri
 		}
 		return v.Drive
 	}).(pulumi.StringMapOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskCreateGoogleDocsPageTaskParamsPtrOutput) IncludeOverview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleDocsPageTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeOverview
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskCreateGoogleDocsPageTaskParamsPtrOutput) IncludeTimeline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleDocsPageTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeTimeline
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Value must be one of true or false
@@ -22825,7 +23801,7 @@ type WorkflowTaskCreateJsmopsAlertTaskParams struct {
 	Escalations []WorkflowTaskCreateJsmopsAlertTaskParamsEscalation `pulumi:"escalations"`
 	// Message of the alert
 	Message string `pulumi:"message"`
-	// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+	// Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
 	Priority  *string                                           `pulumi:"priority"`
 	Schedules []WorkflowTaskCreateJsmopsAlertTaskParamsSchedule `pulumi:"schedules"`
 	TaskType  *string                                           `pulumi:"taskType"`
@@ -22852,7 +23828,7 @@ type WorkflowTaskCreateJsmopsAlertTaskParamsArgs struct {
 	Escalations WorkflowTaskCreateJsmopsAlertTaskParamsEscalationArrayInput `pulumi:"escalations"`
 	// Message of the alert
 	Message pulumi.StringInput `pulumi:"message"`
-	// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+	// Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
 	Priority  pulumi.StringPtrInput                                     `pulumi:"priority"`
 	Schedules WorkflowTaskCreateJsmopsAlertTaskParamsScheduleArrayInput `pulumi:"schedules"`
 	TaskType  pulumi.StringPtrInput                                     `pulumi:"taskType"`
@@ -22958,7 +23934,7 @@ func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) Message() pulumi.StringOu
 	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParams) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+// Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
 func (o WorkflowTaskCreateJsmopsAlertTaskParamsOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateJsmopsAlertTaskParams) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
@@ -23048,7 +24024,7 @@ func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) Message() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+// Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
 func (o WorkflowTaskCreateJsmopsAlertTaskParamsPtrOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskCreateJsmopsAlertTaskParams) *string {
 		if v == nil {
@@ -23668,6 +24644,8 @@ func (o WorkflowTaskCreateLinearIssueCommentTaskParamsPtrOutput) TaskType() pulu
 type WorkflowTaskCreateLinearIssueTaskParams struct {
 	// The assigned user's email
 	AssignUserEmail *string `pulumi:"assignUserEmail"`
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	CustomFieldsMapping *string `pulumi:"customFieldsMapping"`
 	// The issue description
 	Description *string                                        `pulumi:"description"`
 	Labels      []WorkflowTaskCreateLinearIssueTaskParamsLabel `pulumi:"labels"`
@@ -23698,6 +24676,8 @@ type WorkflowTaskCreateLinearIssueTaskParamsInput interface {
 type WorkflowTaskCreateLinearIssueTaskParamsArgs struct {
 	// The assigned user's email
 	AssignUserEmail pulumi.StringPtrInput `pulumi:"assignUserEmail"`
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	CustomFieldsMapping pulumi.StringPtrInput `pulumi:"customFieldsMapping"`
 	// The issue description
 	Description pulumi.StringPtrInput                                  `pulumi:"description"`
 	Labels      WorkflowTaskCreateLinearIssueTaskParamsLabelArrayInput `pulumi:"labels"`
@@ -23796,6 +24776,11 @@ func (o WorkflowTaskCreateLinearIssueTaskParamsOutput) AssignUserEmail() pulumi.
 	return o.ApplyT(func(v WorkflowTaskCreateLinearIssueTaskParams) *string { return v.AssignUserEmail }).(pulumi.StringPtrOutput)
 }
 
+// Custom field mappings. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskCreateLinearIssueTaskParamsOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateLinearIssueTaskParams) *string { return v.CustomFieldsMapping }).(pulumi.StringPtrOutput)
+}
+
 // The issue description
 func (o WorkflowTaskCreateLinearIssueTaskParamsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateLinearIssueTaskParams) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -23867,6 +24852,16 @@ func (o WorkflowTaskCreateLinearIssueTaskParamsPtrOutput) AssignUserEmail() pulu
 			return nil
 		}
 		return v.AssignUserEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom field mappings. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskCreateLinearIssueTaskParamsPtrOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateLinearIssueTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFieldsMapping
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24051,6 +25046,8 @@ func (o WorkflowTaskCreateLinearIssueTaskParamsLabelArrayOutput) Index(i pulumi.
 type WorkflowTaskCreateLinearSubtaskIssueTaskParams struct {
 	// The assigned user's email
 	AssignUserEmail *string `pulumi:"assignUserEmail"`
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	CustomFieldsMapping *string `pulumi:"customFieldsMapping"`
 	// The issue description
 	Description *string                                               `pulumi:"description"`
 	Labels      []WorkflowTaskCreateLinearSubtaskIssueTaskParamsLabel `pulumi:"labels"`
@@ -24079,6 +25076,8 @@ type WorkflowTaskCreateLinearSubtaskIssueTaskParamsInput interface {
 type WorkflowTaskCreateLinearSubtaskIssueTaskParamsArgs struct {
 	// The assigned user's email
 	AssignUserEmail pulumi.StringPtrInput `pulumi:"assignUserEmail"`
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	CustomFieldsMapping pulumi.StringPtrInput `pulumi:"customFieldsMapping"`
 	// The issue description
 	Description pulumi.StringPtrInput                                         `pulumi:"description"`
 	Labels      WorkflowTaskCreateLinearSubtaskIssueTaskParamsLabelArrayInput `pulumi:"labels"`
@@ -24175,6 +25174,11 @@ func (o WorkflowTaskCreateLinearSubtaskIssueTaskParamsOutput) AssignUserEmail() 
 	return o.ApplyT(func(v WorkflowTaskCreateLinearSubtaskIssueTaskParams) *string { return v.AssignUserEmail }).(pulumi.StringPtrOutput)
 }
 
+// Custom field mappings. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskCreateLinearSubtaskIssueTaskParamsOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateLinearSubtaskIssueTaskParams) *string { return v.CustomFieldsMapping }).(pulumi.StringPtrOutput)
+}
+
 // The issue description
 func (o WorkflowTaskCreateLinearSubtaskIssueTaskParamsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateLinearSubtaskIssueTaskParams) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -24241,6 +25245,16 @@ func (o WorkflowTaskCreateLinearSubtaskIssueTaskParamsPtrOutput) AssignUserEmail
 			return nil
 		}
 		return v.AssignUserEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom field mappings. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskCreateLinearSubtaskIssueTaskParamsPtrOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateLinearSubtaskIssueTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFieldsMapping
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -31135,6 +32149,8 @@ type WorkflowTaskCreateZoomMeetingTaskParams struct {
 	AutoRecording *string `pulumi:"autoRecording"`
 	// The email to use if creating as email
 	CreateAsEmail *string `pulumi:"createAsEmail"`
+	// Allow the Rootly bot to start recording without waiting for host approval. Value must be one of true or false
+	EnableZoomBotAutoJoin *bool `pulumi:"enableZoomBotAutoJoin"`
 	// The meeting password
 	Password *string `pulumi:"password"`
 	// Value must be one of true or false
@@ -31166,6 +32182,8 @@ type WorkflowTaskCreateZoomMeetingTaskParamsArgs struct {
 	AutoRecording pulumi.StringPtrInput `pulumi:"autoRecording"`
 	// The email to use if creating as email
 	CreateAsEmail pulumi.StringPtrInput `pulumi:"createAsEmail"`
+	// Allow the Rootly bot to start recording without waiting for host approval. Value must be one of true or false
+	EnableZoomBotAutoJoin pulumi.BoolPtrInput `pulumi:"enableZoomBotAutoJoin"`
 	// The meeting password
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Value must be one of true or false
@@ -31271,6 +32289,11 @@ func (o WorkflowTaskCreateZoomMeetingTaskParamsOutput) CreateAsEmail() pulumi.St
 	return o.ApplyT(func(v WorkflowTaskCreateZoomMeetingTaskParams) *string { return v.CreateAsEmail }).(pulumi.StringPtrOutput)
 }
 
+// Allow the Rootly bot to start recording without waiting for host approval. Value must be one of true or false
+func (o WorkflowTaskCreateZoomMeetingTaskParamsOutput) EnableZoomBotAutoJoin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateZoomMeetingTaskParams) *bool { return v.EnableZoomBotAutoJoin }).(pulumi.BoolPtrOutput)
+}
+
 // The meeting password
 func (o WorkflowTaskCreateZoomMeetingTaskParamsOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateZoomMeetingTaskParams) *string { return v.Password }).(pulumi.StringPtrOutput)
@@ -31357,6 +32380,16 @@ func (o WorkflowTaskCreateZoomMeetingTaskParamsPtrOutput) CreateAsEmail() pulumi
 		}
 		return v.CreateAsEmail
 	}).(pulumi.StringPtrOutput)
+}
+
+// Allow the Rootly bot to start recording without waiting for host approval. Value must be one of true or false
+func (o WorkflowTaskCreateZoomMeetingTaskParamsPtrOutput) EnableZoomBotAutoJoin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateZoomMeetingTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableZoomBotAutoJoin
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The meeting password
@@ -33515,6 +34548,453 @@ func (o WorkflowTaskHttpClientTaskParamsPostToSlackChannelArrayOutput) Index(i p
 	}).(WorkflowTaskHttpClientTaskParamsPostToSlackChannelOutput)
 }
 
+type WorkflowTaskInviteToGoogleChatSpaceTaskParams struct {
+	// Comma separated list of emails to invite
+	Emails string `pulumi:"emails"`
+	// Map must contain two fields, `id` and `name`.
+	Space    map[string]string `pulumi:"space"`
+	TaskType *string           `pulumi:"taskType"`
+}
+
+// WorkflowTaskInviteToGoogleChatSpaceTaskParamsInput is an input type that accepts WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs and WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskInviteToGoogleChatSpaceTaskParamsInput` via:
+//
+//	WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs{...}
+type WorkflowTaskInviteToGoogleChatSpaceTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput() WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput
+	ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsOutputWithContext(context.Context) WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput
+}
+
+type WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs struct {
+	// Comma separated list of emails to invite
+	Emails pulumi.StringInput `pulumi:"emails"`
+	// Map must contain two fields, `id` and `name`.
+	Space    pulumi.StringMapInput `pulumi:"space"`
+	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
+}
+
+func (WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskInviteToGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput() WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput {
+	return i.ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput)
+}
+
+func (i WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput {
+	return i.ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput).ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrInput is an input type that accepts WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs, WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtr and WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput
+	ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput
+}
+
+type workflowTaskInviteToGoogleChatSpaceTaskParamsPtrType WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs
+
+func WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtr(v *WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs) WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrInput {
+	return (*workflowTaskInviteToGoogleChatSpaceTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskInviteToGoogleChatSpaceTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskInviteToGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskInviteToGoogleChatSpaceTaskParamsPtrType) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput {
+	return i.ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskInviteToGoogleChatSpaceTaskParamsPtrType) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput)
+}
+
+type WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskInviteToGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput() WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput {
+	return o.ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskInviteToGoogleChatSpaceTaskParams) *WorkflowTaskInviteToGoogleChatSpaceTaskParams {
+		return &v
+	}).(WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput)
+}
+
+// Comma separated list of emails to invite
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput) Emails() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskInviteToGoogleChatSpaceTaskParams) string { return v.Emails }).(pulumi.StringOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput) Space() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskInviteToGoogleChatSpaceTaskParams) map[string]string { return v.Space }).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskInviteToGoogleChatSpaceTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskInviteToGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput) ToWorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput) Elem() WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToGoogleChatSpaceTaskParams) WorkflowTaskInviteToGoogleChatSpaceTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskInviteToGoogleChatSpaceTaskParams
+		return ret
+	}).(WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput)
+}
+
+// Comma separated list of emails to invite
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput) Emails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToGoogleChatSpaceTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Emails
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput) Space() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToGoogleChatSpaceTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Space
+	}).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToGoogleChatSpaceTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams struct {
+	// Map must contain two fields, `id` and `name`.
+	Channel map[string]string `pulumi:"channel"`
+	// Map must contain two fields, `id` and `name`.
+	EscalationPolicyTarget map[string]string `pulumi:"escalationPolicyTarget"`
+	// Map must contain two fields, `id` and `name`.
+	GroupTarget map[string]string `pulumi:"groupTarget"`
+	// Map must contain two fields, `id` and `name`.
+	ScheduleTarget map[string]string `pulumi:"scheduleTarget"`
+	// Map must contain two fields, `id` and `name`.
+	ServiceTarget map[string]string `pulumi:"serviceTarget"`
+	TaskType      *string           `pulumi:"taskType"`
+	// Map must contain two fields, `id` and `name`.
+	Team map[string]string `pulumi:"team"`
+	// Map must contain two fields, `id` and `name`.
+	UserTarget map[string]string `pulumi:"userTarget"`
+}
+
+// WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsInput is an input type that accepts WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs and WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsInput` via:
+//
+//	WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs{...}
+type WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput() WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput
+	ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutputWithContext(context.Context) WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput
+}
+
+type WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs struct {
+	// Map must contain two fields, `id` and `name`.
+	Channel pulumi.StringMapInput `pulumi:"channel"`
+	// Map must contain two fields, `id` and `name`.
+	EscalationPolicyTarget pulumi.StringMapInput `pulumi:"escalationPolicyTarget"`
+	// Map must contain two fields, `id` and `name`.
+	GroupTarget pulumi.StringMapInput `pulumi:"groupTarget"`
+	// Map must contain two fields, `id` and `name`.
+	ScheduleTarget pulumi.StringMapInput `pulumi:"scheduleTarget"`
+	// Map must contain two fields, `id` and `name`.
+	ServiceTarget pulumi.StringMapInput `pulumi:"serviceTarget"`
+	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
+	// Map must contain two fields, `id` and `name`.
+	Team pulumi.StringMapInput `pulumi:"team"`
+	// Map must contain two fields, `id` and `name`.
+	UserTarget pulumi.StringMapInput `pulumi:"userTarget"`
+}
+
+func (WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput() WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput {
+	return i.ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput)
+}
+
+func (i WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput() WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput {
+	return i.ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput).ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrInput is an input type that accepts WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs, WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtr and WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput() WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput
+	ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput
+}
+
+type workflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrType WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs
+
+func WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtr(v *WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs) WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrInput {
+	return (*workflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrType) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput() WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput {
+	return i.ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrType) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput)
+}
+
+type WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput() WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput() WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput {
+	return o.ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) *WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams {
+		return &v
+	}).(WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) Channel() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string { return v.Channel }).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) EscalationPolicyTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		return v.EscalationPolicyTarget
+	}).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) GroupTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		return v.GroupTarget
+	}).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) ScheduleTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		return v.ScheduleTarget
+	}).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) ServiceTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		return v.ServiceTarget
+	}).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) Team() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string { return v.Team }).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput) UserTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		return v.UserTarget
+	}).(pulumi.StringMapOutput)
+}
+
+type WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput() WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) ToWorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) Elem() WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams
+		return ret
+	}).(WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) Channel() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Channel
+	}).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) EscalationPolicyTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EscalationPolicyTarget
+	}).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) GroupTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupTarget
+	}).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) ScheduleTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduleTarget
+	}).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) ServiceTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceTarget
+	}).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) Team() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Team
+	}).(pulumi.StringMapOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput) UserTarget() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.UserTarget
+	}).(pulumi.StringMapOutput)
+}
+
 type WorkflowTaskInviteToMicrosoftTeamsChannelTaskParams struct {
 	// Map must contain two fields, `id` and `name`.
 	Channel map[string]string `pulumi:"channel"`
@@ -35309,7 +36789,7 @@ type WorkflowTaskPageJsmopsOnCallRespondersTaskParams struct {
 	Description *string `pulumi:"description"`
 	// Message of the incident
 	Message *string `pulumi:"message"`
-	// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+	// Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
 	Priority *string                                                `pulumi:"priority"`
 	TaskType *string                                                `pulumi:"taskType"`
 	Teams    []WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeam `pulumi:"teams"`
@@ -35334,7 +36814,7 @@ type WorkflowTaskPageJsmopsOnCallRespondersTaskParamsArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Message of the incident
 	Message pulumi.StringPtrInput `pulumi:"message"`
-	// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+	// Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
 	Priority pulumi.StringPtrInput                                          `pulumi:"priority"`
 	TaskType pulumi.StringPtrInput                                          `pulumi:"taskType"`
 	Teams    WorkflowTaskPageJsmopsOnCallRespondersTaskParamsTeamArrayInput `pulumi:"teams"`
@@ -35430,7 +36910,7 @@ func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) Message() pulumi
 	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+// Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
 func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
@@ -35500,7 +36980,7 @@ func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) Message() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `P3`, `P1`, `P2`, `P3`, `P4`, `P5`, `auto`.
+// Value must be one of `P3`, `P1`, `P2`, `P4`, `P5`, `auto`.
 func (o WorkflowTaskPageJsmopsOnCallRespondersTaskParamsPtrOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskPageJsmopsOnCallRespondersTaskParams) *string {
 		if v == nil {
@@ -36672,6 +38152,8 @@ func (o WorkflowTaskPagePagerdutyOnCallRespondersTaskParamsUserArrayOutput) Inde
 type WorkflowTaskPageRootlyOnCallRespondersTaskParams struct {
 	// Alert urgency ID
 	AlertUrgencyId string `pulumi:"alertUrgencyId"`
+	// When true, always create a new alert instead of re-paging the alert that triggered the workflow. Value must be one of true or false
+	CreateNewAlert *bool `pulumi:"createNewAlert"`
 	// Alert description
 	Description    *string `pulumi:"description"`
 	EscalationNote *string `pulumi:"escalationNote"`
@@ -36704,6 +38186,8 @@ type WorkflowTaskPageRootlyOnCallRespondersTaskParamsInput interface {
 type WorkflowTaskPageRootlyOnCallRespondersTaskParamsArgs struct {
 	// Alert urgency ID
 	AlertUrgencyId pulumi.StringInput `pulumi:"alertUrgencyId"`
+	// When true, always create a new alert instead of re-paging the alert that triggered the workflow. Value must be one of true or false
+	CreateNewAlert pulumi.BoolPtrInput `pulumi:"createNewAlert"`
 	// Alert description
 	Description    pulumi.StringPtrInput `pulumi:"description"`
 	EscalationNote pulumi.StringPtrInput `pulumi:"escalationNote"`
@@ -36804,6 +38288,11 @@ func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsOutput) AlertUrgencyId()
 	return o.ApplyT(func(v WorkflowTaskPageRootlyOnCallRespondersTaskParams) string { return v.AlertUrgencyId }).(pulumi.StringOutput)
 }
 
+// When true, always create a new alert instead of re-paging the alert that triggered the workflow. Value must be one of true or false
+func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsOutput) CreateNewAlert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskPageRootlyOnCallRespondersTaskParams) *bool { return v.CreateNewAlert }).(pulumi.BoolPtrOutput)
+}
+
 // Alert description
 func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskPageRootlyOnCallRespondersTaskParams) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -36883,6 +38372,16 @@ func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsPtrOutput) AlertUrgencyI
 		}
 		return &v.AlertUrgencyId
 	}).(pulumi.StringPtrOutput)
+}
+
+// When true, always create a new alert instead of re-paging the alert that triggered the workflow. Value must be one of true or false
+func (o WorkflowTaskPageRootlyOnCallRespondersTaskParamsPtrOutput) CreateNewAlert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskPageRootlyOnCallRespondersTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CreateNewAlert
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Alert description
@@ -38322,6 +39821,173 @@ func (o WorkflowTaskRemoveGoogleDocsPermissionsTaskParamsPtrOutput) Value() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkflowTaskRenameGoogleChatSpaceTaskParams struct {
+	// Map must contain two fields, `id` and `name`.
+	Space    map[string]string `pulumi:"space"`
+	TaskType *string           `pulumi:"taskType"`
+	Title    string            `pulumi:"title"`
+}
+
+// WorkflowTaskRenameGoogleChatSpaceTaskParamsInput is an input type that accepts WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs and WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskRenameGoogleChatSpaceTaskParamsInput` via:
+//
+//	WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs{...}
+type WorkflowTaskRenameGoogleChatSpaceTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskRenameGoogleChatSpaceTaskParamsOutput() WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput
+	ToWorkflowTaskRenameGoogleChatSpaceTaskParamsOutputWithContext(context.Context) WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput
+}
+
+type WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs struct {
+	// Map must contain two fields, `id` and `name`.
+	Space    pulumi.StringMapInput `pulumi:"space"`
+	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
+	Title    pulumi.StringInput    `pulumi:"title"`
+}
+
+func (WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskRenameGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsOutput() WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput {
+	return i.ToWorkflowTaskRenameGoogleChatSpaceTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput)
+}
+
+func (i WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput {
+	return i.ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput).ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrInput is an input type that accepts WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs, WorkflowTaskRenameGoogleChatSpaceTaskParamsPtr and WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput
+	ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput
+}
+
+type workflowTaskRenameGoogleChatSpaceTaskParamsPtrType WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs
+
+func WorkflowTaskRenameGoogleChatSpaceTaskParamsPtr(v *WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs) WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrInput {
+	return (*workflowTaskRenameGoogleChatSpaceTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskRenameGoogleChatSpaceTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskRenameGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskRenameGoogleChatSpaceTaskParamsPtrType) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput {
+	return i.ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskRenameGoogleChatSpaceTaskParamsPtrType) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput)
+}
+
+type WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskRenameGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsOutput() WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput {
+	return o.ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskRenameGoogleChatSpaceTaskParams) *WorkflowTaskRenameGoogleChatSpaceTaskParams {
+		return &v
+	}).(WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput) Space() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskRenameGoogleChatSpaceTaskParams) map[string]string { return v.Space }).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskRenameGoogleChatSpaceTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskRenameGoogleChatSpaceTaskParams) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskRenameGoogleChatSpaceTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput() WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput) ToWorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput) Elem() WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskRenameGoogleChatSpaceTaskParams) WorkflowTaskRenameGoogleChatSpaceTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskRenameGoogleChatSpaceTaskParams
+		return ret
+	}).(WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput) Space() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskRenameGoogleChatSpaceTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Space
+	}).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskRenameGoogleChatSpaceTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskRenameGoogleChatSpaceTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskRenameMicrosoftTeamsChannelTaskParams struct {
 	// Map must contain two fields, `id` and `name`.
 	Channel  map[string]string `pulumi:"channel"`
@@ -39543,10 +41209,560 @@ func (o WorkflowTaskSendEmailTaskParamsPtrOutput) Tos() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
+type WorkflowTaskSendGoogleChatAttachmentsTaskParams struct {
+	Attachments string                                                 `pulumi:"attachments"`
+	Spaces      []WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace `pulumi:"spaces"`
+	TaskType    *string                                                `pulumi:"taskType"`
+}
+
+// WorkflowTaskSendGoogleChatAttachmentsTaskParamsInput is an input type that accepts WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs and WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendGoogleChatAttachmentsTaskParamsInput` via:
+//
+//	WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs{...}
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput
+	ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsOutputWithContext(context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput
+}
+
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs struct {
+	Attachments pulumi.StringInput                                             `pulumi:"attachments"`
+	Spaces      WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayInput `pulumi:"spaces"`
+	TaskType    pulumi.StringPtrInput                                          `pulumi:"taskType"`
+}
+
+func (WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendGoogleChatAttachmentsTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput {
+	return i.ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput)
+}
+
+func (i WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput {
+	return i.ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput).ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrInput is an input type that accepts WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs, WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtr and WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput
+	ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput
+}
+
+type workflowTaskSendGoogleChatAttachmentsTaskParamsPtrType WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs
+
+func WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtr(v *WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs) WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrInput {
+	return (*workflowTaskSendGoogleChatAttachmentsTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskSendGoogleChatAttachmentsTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskSendGoogleChatAttachmentsTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskSendGoogleChatAttachmentsTaskParamsPtrType) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput {
+	return i.ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskSendGoogleChatAttachmentsTaskParamsPtrType) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput)
+}
+
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendGoogleChatAttachmentsTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput {
+	return o.ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskSendGoogleChatAttachmentsTaskParams) *WorkflowTaskSendGoogleChatAttachmentsTaskParams {
+		return &v
+	}).(WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput) Attachments() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskSendGoogleChatAttachmentsTaskParams) string { return v.Attachments }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput) Spaces() WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskSendGoogleChatAttachmentsTaskParams) []WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace {
+		return v.Spaces
+	}).(WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskSendGoogleChatAttachmentsTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskSendGoogleChatAttachmentsTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput) Elem() WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendGoogleChatAttachmentsTaskParams) WorkflowTaskSendGoogleChatAttachmentsTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskSendGoogleChatAttachmentsTaskParams
+		return ret
+	}).(WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput) Attachments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendGoogleChatAttachmentsTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Attachments
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput) Spaces() WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendGoogleChatAttachmentsTaskParams) []WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace {
+		if v == nil {
+			return nil
+		}
+		return v.Spaces
+	}).(WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendGoogleChatAttachmentsTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceInput is an input type that accepts WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArgs and WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceInput` via:
+//
+//	WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArgs{...}
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput
+	ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutputWithContext(context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput
+}
+
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace)(nil)).Elem()
+}
+
+func (i WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArgs) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput {
+	return i.ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArgs) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput)
+}
+
+// WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayInput is an input type that accepts WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArray and WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayInput` via:
+//
+//	WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArray{ WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArgs{...} }
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput
+	ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutputWithContext(context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput
+}
+
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArray []WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceInput
+
+func (WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace)(nil)).Elem()
+}
+
+func (i WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArray) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput {
+	return i.ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArray) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput)
+}
+
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput() WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput) ToWorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput) Index(i pulumi.IntInput) WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace {
+		return vs[0].([]WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpace)[vs[1].(int)]
+	}).(WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput)
+}
+
+type WorkflowTaskSendGoogleChatMessageTaskParams struct {
+	Spaces   []WorkflowTaskSendGoogleChatMessageTaskParamsSpace `pulumi:"spaces"`
+	TaskType *string                                            `pulumi:"taskType"`
+	Text     string                                             `pulumi:"text"`
+	// Thread key to reply within a thread. Messages with the same thread key are grouped together
+	ThreadKey *string `pulumi:"threadKey"`
+}
+
+// WorkflowTaskSendGoogleChatMessageTaskParamsInput is an input type that accepts WorkflowTaskSendGoogleChatMessageTaskParamsArgs and WorkflowTaskSendGoogleChatMessageTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendGoogleChatMessageTaskParamsInput` via:
+//
+//	WorkflowTaskSendGoogleChatMessageTaskParamsArgs{...}
+type WorkflowTaskSendGoogleChatMessageTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendGoogleChatMessageTaskParamsOutput() WorkflowTaskSendGoogleChatMessageTaskParamsOutput
+	ToWorkflowTaskSendGoogleChatMessageTaskParamsOutputWithContext(context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsOutput
+}
+
+type WorkflowTaskSendGoogleChatMessageTaskParamsArgs struct {
+	Spaces   WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayInput `pulumi:"spaces"`
+	TaskType pulumi.StringPtrInput                                      `pulumi:"taskType"`
+	Text     pulumi.StringInput                                         `pulumi:"text"`
+	// Thread key to reply within a thread. Messages with the same thread key are grouped together
+	ThreadKey pulumi.StringPtrInput `pulumi:"threadKey"`
+}
+
+func (WorkflowTaskSendGoogleChatMessageTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendGoogleChatMessageTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskSendGoogleChatMessageTaskParamsArgs) ToWorkflowTaskSendGoogleChatMessageTaskParamsOutput() WorkflowTaskSendGoogleChatMessageTaskParamsOutput {
+	return i.ToWorkflowTaskSendGoogleChatMessageTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendGoogleChatMessageTaskParamsArgs) ToWorkflowTaskSendGoogleChatMessageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendGoogleChatMessageTaskParamsOutput)
+}
+
+func (i WorkflowTaskSendGoogleChatMessageTaskParamsArgs) ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput() WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendGoogleChatMessageTaskParamsArgs) ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendGoogleChatMessageTaskParamsOutput).ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskSendGoogleChatMessageTaskParamsPtrInput is an input type that accepts WorkflowTaskSendGoogleChatMessageTaskParamsArgs, WorkflowTaskSendGoogleChatMessageTaskParamsPtr and WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendGoogleChatMessageTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskSendGoogleChatMessageTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskSendGoogleChatMessageTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput() WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput
+	ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput
+}
+
+type workflowTaskSendGoogleChatMessageTaskParamsPtrType WorkflowTaskSendGoogleChatMessageTaskParamsArgs
+
+func WorkflowTaskSendGoogleChatMessageTaskParamsPtr(v *WorkflowTaskSendGoogleChatMessageTaskParamsArgs) WorkflowTaskSendGoogleChatMessageTaskParamsPtrInput {
+	return (*workflowTaskSendGoogleChatMessageTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskSendGoogleChatMessageTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskSendGoogleChatMessageTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskSendGoogleChatMessageTaskParamsPtrType) ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput() WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput {
+	return i.ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskSendGoogleChatMessageTaskParamsPtrType) ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput)
+}
+
+type WorkflowTaskSendGoogleChatMessageTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendGoogleChatMessageTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendGoogleChatMessageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsOutput) ToWorkflowTaskSendGoogleChatMessageTaskParamsOutput() WorkflowTaskSendGoogleChatMessageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsOutput) ToWorkflowTaskSendGoogleChatMessageTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsOutput) ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput() WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput {
+	return o.ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsOutput) ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskSendGoogleChatMessageTaskParams) *WorkflowTaskSendGoogleChatMessageTaskParams {
+		return &v
+	}).(WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsOutput) Spaces() WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskSendGoogleChatMessageTaskParams) []WorkflowTaskSendGoogleChatMessageTaskParamsSpace {
+		return v.Spaces
+	}).(WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskSendGoogleChatMessageTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskSendGoogleChatMessageTaskParams) string { return v.Text }).(pulumi.StringOutput)
+}
+
+// Thread key to reply within a thread. Messages with the same thread key are grouped together
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsOutput) ThreadKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskSendGoogleChatMessageTaskParams) *string { return v.ThreadKey }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskSendGoogleChatMessageTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput) ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput() WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput) ToWorkflowTaskSendGoogleChatMessageTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput) Elem() WorkflowTaskSendGoogleChatMessageTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendGoogleChatMessageTaskParams) WorkflowTaskSendGoogleChatMessageTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskSendGoogleChatMessageTaskParams
+		return ret
+	}).(WorkflowTaskSendGoogleChatMessageTaskParamsOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput) Spaces() WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendGoogleChatMessageTaskParams) []WorkflowTaskSendGoogleChatMessageTaskParamsSpace {
+		if v == nil {
+			return nil
+		}
+		return v.Spaces
+	}).(WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendGoogleChatMessageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendGoogleChatMessageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+// Thread key to reply within a thread. Messages with the same thread key are grouped together
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput) ThreadKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendGoogleChatMessageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskSendGoogleChatMessageTaskParamsSpace struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskSendGoogleChatMessageTaskParamsSpaceInput is an input type that accepts WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArgs and WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendGoogleChatMessageTaskParamsSpaceInput` via:
+//
+//	WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArgs{...}
+type WorkflowTaskSendGoogleChatMessageTaskParamsSpaceInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput() WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput
+	ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutputWithContext(context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput
+}
+
+type WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendGoogleChatMessageTaskParamsSpace)(nil)).Elem()
+}
+
+func (i WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArgs) ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput() WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput {
+	return i.ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArgs) ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput)
+}
+
+// WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayInput is an input type that accepts WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArray and WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayInput` via:
+//
+//	WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArray{ WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArgs{...} }
+type WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput() WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput
+	ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutputWithContext(context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput
+}
+
+type WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArray []WorkflowTaskSendGoogleChatMessageTaskParamsSpaceInput
+
+func (WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskSendGoogleChatMessageTaskParamsSpace)(nil)).Elem()
+}
+
+func (i WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArray) ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput() WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput {
+	return i.ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArray) ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput)
+}
+
+type WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendGoogleChatMessageTaskParamsSpace)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput) ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput() WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput) ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskSendGoogleChatMessageTaskParamsSpace) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskSendGoogleChatMessageTaskParamsSpace) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskSendGoogleChatMessageTaskParamsSpace)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput) ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput() WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput) ToWorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutputWithContext(ctx context.Context) WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput) Index(i pulumi.IntInput) WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskSendGoogleChatMessageTaskParamsSpace {
+		return vs[0].([]WorkflowTaskSendGoogleChatMessageTaskParamsSpace)[vs[1].(int)]
+	}).(WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput)
+}
+
 type WorkflowTaskSendMicrosoftTeamsBlocksTaskParams struct {
 	// Support liquid markup. Needs to be a valid JSON string after liquid is parsed
-	Attachments string  `pulumi:"attachments"`
-	TaskType    *string `pulumi:"taskType"`
+	Attachments string                                                  `pulumi:"attachments"`
+	Channels    []WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel `pulumi:"channels"`
+	TaskType    *string                                                 `pulumi:"taskType"`
 }
 
 // WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsInput is an input type that accepts WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsArgs and WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsOutput values.
@@ -39562,8 +41778,9 @@ type WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsInput interface {
 
 type WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsArgs struct {
 	// Support liquid markup. Needs to be a valid JSON string after liquid is parsed
-	Attachments pulumi.StringInput    `pulumi:"attachments"`
-	TaskType    pulumi.StringPtrInput `pulumi:"taskType"`
+	Attachments pulumi.StringInput                                              `pulumi:"attachments"`
+	Channels    WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayInput `pulumi:"channels"`
+	TaskType    pulumi.StringPtrInput                                           `pulumi:"taskType"`
 }
 
 func (WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsArgs) ElementType() reflect.Type {
@@ -39648,6 +41865,12 @@ func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsOutput) Attachments() pulu
 	return o.ApplyT(func(v WorkflowTaskSendMicrosoftTeamsBlocksTaskParams) string { return v.Attachments }).(pulumi.StringOutput)
 }
 
+func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsOutput) Channels() WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskSendMicrosoftTeamsBlocksTaskParams) []WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel {
+		return v.Channels
+	}).(WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput)
+}
+
 func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskSendMicrosoftTeamsBlocksTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
@@ -39686,6 +41909,15 @@ func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsPtrOutput) Attachments() p
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsPtrOutput) Channels() WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendMicrosoftTeamsBlocksTaskParams) []WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel {
+		if v == nil {
+			return nil
+		}
+		return v.Channels
+	}).(WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput)
+}
+
 func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskSendMicrosoftTeamsBlocksTaskParams) *string {
 		if v == nil {
@@ -39693,6 +41925,106 @@ func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsPtrOutput) TaskType() pulu
 		}
 		return v.TaskType
 	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel struct {
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelInput is an input type that accepts WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArgs and WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelInput` via:
+//
+//	WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArgs{...}
+type WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput() WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput
+	ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutputWithContext(context.Context) WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput
+}
+
+type WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArgs struct {
+	Id   pulumi.StringInput `pulumi:"id"`
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel)(nil)).Elem()
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArgs) ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput() WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput {
+	return i.ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArgs) ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput)
+}
+
+// WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayInput is an input type that accepts WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArray and WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput values.
+// You can construct a concrete instance of `WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayInput` via:
+//
+//	WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArray{ WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArgs{...} }
+type WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput() WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput
+	ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutputWithContext(context.Context) WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput
+}
+
+type WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArray []WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelInput
+
+func (WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel)(nil)).Elem()
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArray) ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput() WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput {
+	return i.ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArray) ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput)
+}
+
+type WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput) ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput() WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput) ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel)(nil)).Elem()
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput) ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput() WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput) ToWorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutputWithContext(ctx context.Context) WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput) Index(i pulumi.IntInput) WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel {
+		return vs[0].([]WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannel)[vs[1].(int)]
+	}).(WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput)
 }
 
 type WorkflowTaskSendMicrosoftTeamsChatMessageTaskParams struct {
@@ -45356,6 +47688,10 @@ type WorkflowTaskUpdateConfluencePageTaskParams struct {
 	Content *string `pulumi:"content"`
 	// The Confluence page ID
 	FileId string `pulumi:"fileId"`
+	// Value must be one of true or false
+	IncludeOverview *bool `pulumi:"includeOverview"`
+	// Value must be one of true or false
+	IncludeTimeline *bool `pulumi:"includeTimeline"`
 	// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
 	Integration map[string]string `pulumi:"integration"`
 	// Retrospective template to use when updating page, if desired
@@ -45383,6 +47719,10 @@ type WorkflowTaskUpdateConfluencePageTaskParamsArgs struct {
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The Confluence page ID
 	FileId pulumi.StringInput `pulumi:"fileId"`
+	// Value must be one of true or false
+	IncludeOverview pulumi.BoolPtrInput `pulumi:"includeOverview"`
+	// Value must be one of true or false
+	IncludeTimeline pulumi.BoolPtrInput `pulumi:"includeTimeline"`
 	// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
 	Integration pulumi.StringMapInput `pulumi:"integration"`
 	// Retrospective template to use when updating page, if desired
@@ -45481,6 +47821,16 @@ func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) FileId() pulumi.String
 	return o.ApplyT(func(v WorkflowTaskUpdateConfluencePageTaskParams) string { return v.FileId }).(pulumi.StringOutput)
 }
 
+// Value must be one of true or false
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) IncludeOverview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateConfluencePageTaskParams) *bool { return v.IncludeOverview }).(pulumi.BoolPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) IncludeTimeline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateConfluencePageTaskParams) *bool { return v.IncludeTimeline }).(pulumi.BoolPtrOutput)
+}
+
 // Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
 func (o WorkflowTaskUpdateConfluencePageTaskParamsOutput) Integration() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateConfluencePageTaskParams) map[string]string { return v.Integration }).(pulumi.StringMapOutput)
@@ -45547,6 +47897,26 @@ func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) FileId() pulumi.Str
 		}
 		return &v.FileId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) IncludeOverview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateConfluencePageTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeOverview
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskUpdateConfluencePageTaskParamsPtrOutput) IncludeTimeline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateConfluencePageTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeTimeline
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Confluence instance
@@ -46059,6 +48429,8 @@ type WorkflowTaskUpdateGithubIssueTaskParams struct {
 	Body *string `pulumi:"body"`
 	// Map must contain two fields, `id` and `name`.
 	Completion map[string]string `pulumi:"completion"`
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	CustomFieldsMapping *string `pulumi:"customFieldsMapping"`
 	// The issue id
 	IssueId string `pulumi:"issueId"`
 	// Map must contain two fields, `id` and `name`. The issue type
@@ -46090,6 +48462,8 @@ type WorkflowTaskUpdateGithubIssueTaskParamsArgs struct {
 	Body pulumi.StringPtrInput `pulumi:"body"`
 	// Map must contain two fields, `id` and `name`.
 	Completion pulumi.StringMapInput `pulumi:"completion"`
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	CustomFieldsMapping pulumi.StringPtrInput `pulumi:"customFieldsMapping"`
 	// The issue id
 	IssueId pulumi.StringInput `pulumi:"issueId"`
 	// Map must contain two fields, `id` and `name`. The issue type
@@ -46192,6 +48566,11 @@ func (o WorkflowTaskUpdateGithubIssueTaskParamsOutput) Completion() pulumi.Strin
 	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParams) map[string]string { return v.Completion }).(pulumi.StringMapOutput)
 }
 
+// Custom field mappings. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskUpdateGithubIssueTaskParamsOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParams) *string { return v.CustomFieldsMapping }).(pulumi.StringPtrOutput)
+}
+
 // The issue id
 func (o WorkflowTaskUpdateGithubIssueTaskParamsOutput) IssueId() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParams) string { return v.IssueId }).(pulumi.StringOutput)
@@ -46270,6 +48649,16 @@ func (o WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput) Completion() pulumi.St
 		}
 		return v.Completion
 	}).(pulumi.StringMapOutput)
+}
+
+// Custom field mappings. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGithubIssueTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFieldsMapping
+	}).(pulumi.StringPtrOutput)
 }
 
 // The issue id
@@ -47238,11 +49627,186 @@ func (o WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannelArrayOu
 	}).(WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannelOutput)
 }
 
+type WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams struct {
+	// The space description. Supports liquid markup
+	Description string `pulumi:"description"`
+	// Map must contain two fields, `id` and `name`.
+	Space    map[string]string `pulumi:"space"`
+	TaskType *string           `pulumi:"taskType"`
+}
+
+// WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsInput is an input type that accepts WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs and WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsInput` via:
+//
+//	WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs{...}
+type WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput() WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput
+	ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutputWithContext(context.Context) WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput
+}
+
+type WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs struct {
+	// The space description. Supports liquid markup
+	Description pulumi.StringInput `pulumi:"description"`
+	// Map must contain two fields, `id` and `name`.
+	Space    pulumi.StringMapInput `pulumi:"space"`
+	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
+}
+
+func (WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput() WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput {
+	return i.ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput)
+}
+
+func (i WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput() WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput).ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrInput is an input type that accepts WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs, WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtr and WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput() WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput
+	ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput
+}
+
+type workflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrType WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs
+
+func WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtr(v *WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs) WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrInput {
+	return (*workflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrType) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput() WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrType) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput)
+}
+
+type WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput() WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput() WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput {
+	return o.ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams) *WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams {
+		return &v
+	}).(WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput)
+}
+
+// The space description. Supports liquid markup
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput) Space() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams) map[string]string { return v.Space }).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput() WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput) ToWorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput) Elem() WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams) WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams
+		return ret
+	}).(WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput)
+}
+
+// The space description. Supports liquid markup
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput) Space() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Space
+	}).(pulumi.StringMapOutput)
+}
+
+func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskUpdateGoogleDocsPageTaskParams struct {
 	// The Google Doc content
 	Content *string `pulumi:"content"`
 	// The Google Doc file ID
 	FileId string `pulumi:"fileId"`
+	// Value must be one of true or false
+	IncludeOverview *bool `pulumi:"includeOverview"`
+	// Value must be one of true or false
+	IncludeTimeline *bool `pulumi:"includeTimeline"`
 	// Retrospective template to use when updating page, if desired
 	PostMortemTemplateId *string `pulumi:"postMortemTemplateId"`
 	TaskType             *string `pulumi:"taskType"`
@@ -47268,6 +49832,10 @@ type WorkflowTaskUpdateGoogleDocsPageTaskParamsArgs struct {
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The Google Doc file ID
 	FileId pulumi.StringInput `pulumi:"fileId"`
+	// Value must be one of true or false
+	IncludeOverview pulumi.BoolPtrInput `pulumi:"includeOverview"`
+	// Value must be one of true or false
+	IncludeTimeline pulumi.BoolPtrInput `pulumi:"includeTimeline"`
 	// Retrospective template to use when updating page, if desired
 	PostMortemTemplateId pulumi.StringPtrInput `pulumi:"postMortemTemplateId"`
 	TaskType             pulumi.StringPtrInput `pulumi:"taskType"`
@@ -47364,6 +49932,16 @@ func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsOutput) FileId() pulumi.String
 	return o.ApplyT(func(v WorkflowTaskUpdateGoogleDocsPageTaskParams) string { return v.FileId }).(pulumi.StringOutput)
 }
 
+// Value must be one of true or false
+func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsOutput) IncludeOverview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGoogleDocsPageTaskParams) *bool { return v.IncludeOverview }).(pulumi.BoolPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsOutput) IncludeTimeline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGoogleDocsPageTaskParams) *bool { return v.IncludeTimeline }).(pulumi.BoolPtrOutput)
+}
+
 // Retrospective template to use when updating page, if desired
 func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsOutput) PostMortemTemplateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateGoogleDocsPageTaskParams) *string { return v.PostMortemTemplateId }).(pulumi.StringPtrOutput)
@@ -47425,6 +50003,26 @@ func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsPtrOutput) FileId() pulumi.Str
 		}
 		return &v.FileId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsPtrOutput) IncludeOverview() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGoogleDocsPageTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeOverview
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Value must be one of true or false
+func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsPtrOutput) IncludeTimeline() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGoogleDocsPageTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeTimeline
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Retrospective template to use when updating page, if desired
@@ -48645,6 +51243,8 @@ func (o WorkflowTaskUpdateJiraIssueTaskParamsPtrOutput) UpdatePayload() pulumi.S
 type WorkflowTaskUpdateLinearIssueTaskParams struct {
 	// The assigned user's email
 	AssignUserEmail *string `pulumi:"assignUserEmail"`
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	CustomFieldsMapping *string `pulumi:"customFieldsMapping"`
 	// The issue description
 	Description *string `pulumi:"description"`
 	// The issue id
@@ -48675,6 +51275,8 @@ type WorkflowTaskUpdateLinearIssueTaskParamsInput interface {
 type WorkflowTaskUpdateLinearIssueTaskParamsArgs struct {
 	// The assigned user's email
 	AssignUserEmail pulumi.StringPtrInput `pulumi:"assignUserEmail"`
+	// Custom field mappings. Can contain liquid markup and need to be valid JSON
+	CustomFieldsMapping pulumi.StringPtrInput `pulumi:"customFieldsMapping"`
 	// The issue description
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The issue id
@@ -48773,6 +51375,11 @@ func (o WorkflowTaskUpdateLinearIssueTaskParamsOutput) AssignUserEmail() pulumi.
 	return o.ApplyT(func(v WorkflowTaskUpdateLinearIssueTaskParams) *string { return v.AssignUserEmail }).(pulumi.StringPtrOutput)
 }
 
+// Custom field mappings. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskUpdateLinearIssueTaskParamsOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateLinearIssueTaskParams) *string { return v.CustomFieldsMapping }).(pulumi.StringPtrOutput)
+}
+
 // The issue description
 func (o WorkflowTaskUpdateLinearIssueTaskParamsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateLinearIssueTaskParams) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -48844,6 +51451,16 @@ func (o WorkflowTaskUpdateLinearIssueTaskParamsPtrOutput) AssignUserEmail() pulu
 			return nil
 		}
 		return v.AssignUserEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom field mappings. Can contain liquid markup and need to be valid JSON
+func (o WorkflowTaskUpdateLinearIssueTaskParamsPtrOutput) CustomFieldsMapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateLinearIssueTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFieldsMapping
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -54569,6 +57186,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamSlackAliasArrayInput)(nil)).Elem(), TeamSlackAliasArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamSlackChannelInput)(nil)).Elem(), TeamSlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamSlackChannelArrayInput)(nil)).Elem(), TeamSlackChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhooksEndpointCustomHeaderInput)(nil)).Elem(), WebhooksEndpointCustomHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhooksEndpointCustomHeaderArrayInput)(nil)).Elem(), WebhooksEndpointCustomHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionItemTriggerParamsInput)(nil)).Elem(), WorkflowActionItemTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionItemTriggerParamsPtrInput)(nil)).Elem(), WorkflowActionItemTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsInput)(nil)).Elem(), WorkflowAlertTriggerParamsArgs{})
@@ -54605,6 +57224,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddToTimelineTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskAddToTimelineTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddToTimelineTaskParamsPostToSlackChannelInput)(nil)).Elem(), WorkflowTaskAddToTimelineTaskParamsPostToSlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddToTimelineTaskParamsPostToSlackChannelArrayInput)(nil)).Elem(), WorkflowTaskAddToTimelineTaskParamsPostToSlackChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskArchiveGoogleChatSpacesTaskParamsInput)(nil)).Elem(), WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskArchiveGoogleChatSpacesTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceInput)(nil)).Elem(), WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayInput)(nil)).Elem(), WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsInput)(nil)).Elem(), WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsChannelInput)(nil)).Elem(), WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsChannelArgs{})
@@ -54629,6 +57252,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAutoAssignRoleVictorOpsTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskAutoAssignRoleVictorOpsTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCallPeopleTaskParamsInput)(nil)).Elem(), WorkflowTaskCallPeopleTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCallPeopleTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCallPeopleTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsInput)(nil)).Elem(), WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskChangeSlackChannelPrivacyTaskParamsInput)(nil)).Elem(), WorkflowTaskChangeSlackChannelPrivacyTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskChangeSlackChannelPrivacyTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskChangeSlackChannelPrivacyTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateAirtableTableRecordTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateAirtableTableRecordTaskParamsArgs{})
@@ -54665,6 +57290,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleCalendarEventTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateGoogleCalendarEventTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannelInput)(nil)).Elem(), WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannelArrayInput)(nil)).Elem(), WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleChatSpaceTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateGoogleChatSpaceTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleDocsPageTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateGoogleDocsPageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleDocsPageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateGoogleDocsPageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateGoogleDocsPermissionsTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateGoogleDocsPermissionsTaskParamsArgs{})
@@ -54795,6 +57422,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskHttpClientTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskHttpClientTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskHttpClientTaskParamsPostToSlackChannelInput)(nil)).Elem(), WorkflowTaskHttpClientTaskParamsPostToSlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskHttpClientTaskParamsPostToSlackChannelArrayInput)(nil)).Elem(), WorkflowTaskHttpClientTaskParamsPostToSlackChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskInviteToGoogleChatSpaceTaskParamsInput)(nil)).Elem(), WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskInviteToGoogleChatSpaceTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsInput)(nil)).Elem(), WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskInviteToMicrosoftTeamsChannelTaskParamsInput)(nil)).Elem(), WorkflowTaskInviteToMicrosoftTeamsChannelTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskInviteToMicrosoftTeamsChannelTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskInviteToMicrosoftTeamsChannelTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskInviteToSlackChannelOpsgenieTaskParamsInput)(nil)).Elem(), WorkflowTaskInviteToSlackChannelOpsgenieTaskParamsArgs{})
@@ -54855,6 +57486,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskRedisClientTaskParamsPostToSlackChannelArrayInput)(nil)).Elem(), WorkflowTaskRedisClientTaskParamsPostToSlackChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskRemoveGoogleDocsPermissionsTaskParamsInput)(nil)).Elem(), WorkflowTaskRemoveGoogleDocsPermissionsTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskRemoveGoogleDocsPermissionsTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskRemoveGoogleDocsPermissionsTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskRenameGoogleChatSpaceTaskParamsInput)(nil)).Elem(), WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskRenameGoogleChatSpaceTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskRenameMicrosoftTeamsChannelTaskParamsInput)(nil)).Elem(), WorkflowTaskRenameMicrosoftTeamsChannelTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskRenameMicrosoftTeamsChannelTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskRenameMicrosoftTeamsChannelTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskRenameSlackChannelTaskParamsInput)(nil)).Elem(), WorkflowTaskRenameSlackChannelTaskParamsArgs{})
@@ -54867,8 +57500,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendDashboardReportTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskSendDashboardReportTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendEmailTaskParamsInput)(nil)).Elem(), WorkflowTaskSendEmailTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendEmailTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskSendEmailTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendGoogleChatAttachmentsTaskParamsInput)(nil)).Elem(), WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskSendGoogleChatAttachmentsTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceInput)(nil)).Elem(), WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayInput)(nil)).Elem(), WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendGoogleChatMessageTaskParamsInput)(nil)).Elem(), WorkflowTaskSendGoogleChatMessageTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendGoogleChatMessageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskSendGoogleChatMessageTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendGoogleChatMessageTaskParamsSpaceInput)(nil)).Elem(), WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayInput)(nil)).Elem(), WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatInput)(nil)).Elem(), WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatArgs{})
@@ -54951,6 +57594,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGoogleCalendarEventTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateGoogleCalendarEventTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannelInput)(nil)).Elem(), WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannelArrayInput)(nil)).Elem(), WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGoogleDocsPageTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateGoogleDocsPageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateGoogleDocsPageTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateGoogleDocsPageTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateIncidentPostmortemTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateIncidentPostmortemTaskParamsArgs{})
@@ -55165,6 +57810,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamSlackAliasArrayOutput{})
 	pulumi.RegisterOutputType(TeamSlackChannelOutput{})
 	pulumi.RegisterOutputType(TeamSlackChannelArrayOutput{})
+	pulumi.RegisterOutputType(WebhooksEndpointCustomHeaderOutput{})
+	pulumi.RegisterOutputType(WebhooksEndpointCustomHeaderArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowActionItemTriggerParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowActionItemTriggerParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsOutput{})
@@ -55201,6 +57848,10 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskAddToTimelineTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAddToTimelineTaskParamsPostToSlackChannelOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAddToTimelineTaskParamsPostToSlackChannelArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskArchiveGoogleChatSpacesTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskArchiveGoogleChatSpacesTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskArchiveGoogleChatSpacesTaskParamsSpaceArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsChannelOutput{})
@@ -55225,6 +57876,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskAutoAssignRoleVictorOpsTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCallPeopleTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCallPeopleTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskChangeGoogleChatSpacePrivacyTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskChangeSlackChannelPrivacyTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskChangeSlackChannelPrivacyTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateAirtableTableRecordTaskParamsOutput{})
@@ -55261,6 +57914,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleCalendarEventTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannelOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleCalendarEventTaskParamsPostToSlackChannelArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleChatSpaceTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleDocsPageTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleDocsPageTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateGoogleDocsPermissionsTaskParamsOutput{})
@@ -55391,6 +58046,10 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskHttpClientTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskHttpClientTaskParamsPostToSlackChannelOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskHttpClientTaskParamsPostToSlackChannelArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskInviteToGoogleChatSpaceTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskInviteToGoogleChatSpaceTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskInviteToMicrosoftTeamsChannelRootlyTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskInviteToMicrosoftTeamsChannelTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskInviteToMicrosoftTeamsChannelTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskInviteToSlackChannelOpsgenieTaskParamsOutput{})
@@ -55451,6 +58110,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskRedisClientTaskParamsPostToSlackChannelArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskRemoveGoogleDocsPermissionsTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskRemoveGoogleDocsPermissionsTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskRenameGoogleChatSpaceTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskRenameGoogleChatSpaceTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskRenameMicrosoftTeamsChannelTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskRenameMicrosoftTeamsChannelTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskRenameSlackChannelTaskParamsOutput{})
@@ -55463,8 +58124,18 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskSendDashboardReportTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendEmailTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendEmailTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendGoogleChatAttachmentsTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendGoogleChatAttachmentsTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendGoogleChatAttachmentsTaskParamsSpaceArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendGoogleChatMessageTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendGoogleChatMessageTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendGoogleChatMessageTaskParamsSpaceOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendGoogleChatMessageTaskParamsSpaceArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsBlocksTaskParamsChannelArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskSendMicrosoftTeamsChatMessageTaskParamsChatOutput{})
@@ -55547,6 +58218,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskUpdateGoogleCalendarEventTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannelOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateGoogleCalendarEventTaskParamsPostToSlackChannelArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateGoogleDocsPageTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateGoogleDocsPageTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateIncidentPostmortemTaskParamsOutput{})

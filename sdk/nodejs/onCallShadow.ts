@@ -102,6 +102,9 @@ export class OnCallShadow extends pulumi.CustomResource {
             if (args?.endsAt === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endsAt'");
             }
+            if (args?.scheduleId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'scheduleId'");
+            }
             if (args?.shadowUserId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shadowUserId'");
             }
@@ -164,7 +167,7 @@ export interface OnCallShadowArgs {
     /**
      * ID of schedule the shadow shift belongs to
      */
-    scheduleId?: pulumi.Input<string | undefined>;
+    scheduleId: pulumi.Input<string>;
     /**
      * Which user the shadow shift belongs to.
      */

@@ -97,13 +97,17 @@ export class Heartbeat extends pulumi.CustomResource {
      */
     declare public readonly notificationTargetType: pulumi.Output<string | undefined>;
     /**
+     * List of team IDs that own this heartbeat
+     */
+    declare public readonly ownerGroupIds: pulumi.Output<string[] | undefined>;
+    /**
      * URL to receive heartbeat pings.
      */
-    declare public readonly pingUrl: pulumi.Output<string>;
+    declare public /*out*/ readonly pingUrl: pulumi.Output<string>;
     /**
      * Secret used as bearer token when pinging heartbeat.
      */
-    declare public readonly secret: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
     /**
      * Value must be one of `waiting`, `active`, `expired`.
      */
@@ -135,6 +139,7 @@ export class Heartbeat extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["notificationTargetId"] = state?.notificationTargetId;
             resourceInputs["notificationTargetType"] = state?.notificationTargetType;
+            resourceInputs["ownerGroupIds"] = state?.ownerGroupIds;
             resourceInputs["pingUrl"] = state?.pingUrl;
             resourceInputs["secret"] = state?.secret;
             resourceInputs["status"] = state?.status;
@@ -162,9 +167,10 @@ export class Heartbeat extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["notificationTargetId"] = args?.notificationTargetId;
             resourceInputs["notificationTargetType"] = args?.notificationTargetType;
-            resourceInputs["pingUrl"] = args?.pingUrl;
-            resourceInputs["secret"] = args?.secret;
+            resourceInputs["ownerGroupIds"] = args?.ownerGroupIds;
             resourceInputs["status"] = args?.status;
+            resourceInputs["pingUrl"] = undefined /*out*/;
+            resourceInputs["secret"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Heartbeat.__pulumiType, name, resourceInputs, opts);
@@ -218,6 +224,10 @@ export interface HeartbeatState {
      * The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
      */
     notificationTargetType?: pulumi.Input<string | undefined>;
+    /**
+     * List of team IDs that own this heartbeat
+     */
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL to receive heartbeat pings.
      */
@@ -280,13 +290,9 @@ export interface HeartbeatArgs {
      */
     notificationTargetType?: pulumi.Input<string | undefined>;
     /**
-     * URL to receive heartbeat pings.
+     * List of team IDs that own this heartbeat
      */
-    pingUrl?: pulumi.Input<string | undefined>;
-    /**
-     * Secret used as bearer token when pinging heartbeat.
-     */
-    secret?: pulumi.Input<string | undefined>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `waiting`, `active`, `expired`.
      */

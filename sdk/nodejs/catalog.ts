@@ -55,9 +55,17 @@ export class Catalog extends pulumi.CustomResource {
 
     declare public readonly description: pulumi.Output<string>;
     /**
+     * An external identifier for this catalog. Must be unique within the team.
+     */
+    declare public readonly externalId: pulumi.Output<string>;
+    /**
      * Value must be one of `globe-alt`, `server-stack`, `users`, `user-group`, `chart-bar`, `shapes`, `light-bulb`, `cursor-arrow-ripple`.
      */
     declare public readonly icon: pulumi.Output<string | undefined>;
+    /**
+     * Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    declare public /*out*/ readonly managedBy: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
     /**
      * Default position of the catalog when displayed in a list.
@@ -78,15 +86,19 @@ export class Catalog extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CatalogState | undefined;
             resourceInputs["description"] = state?.description;
+            resourceInputs["externalId"] = state?.externalId;
             resourceInputs["icon"] = state?.icon;
+            resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
         } else {
             const args = argsOrState as CatalogArgs | undefined;
             resourceInputs["description"] = args?.description;
+            resourceInputs["externalId"] = args?.externalId;
             resourceInputs["icon"] = args?.icon;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
+            resourceInputs["managedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Catalog.__pulumiType, name, resourceInputs, opts);
@@ -99,9 +111,17 @@ export class Catalog extends pulumi.CustomResource {
 export interface CatalogState {
     description?: pulumi.Input<string | undefined>;
     /**
+     * An external identifier for this catalog. Must be unique within the team.
+     */
+    externalId?: pulumi.Input<string | undefined>;
+    /**
      * Value must be one of `globe-alt`, `server-stack`, `users`, `user-group`, `chart-bar`, `shapes`, `light-bulb`, `cursor-arrow-ripple`.
      */
     icon?: pulumi.Input<string | undefined>;
+    /**
+     * Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    managedBy?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
     /**
      * Default position of the catalog when displayed in a list.
@@ -114,6 +134,10 @@ export interface CatalogState {
  */
 export interface CatalogArgs {
     description?: pulumi.Input<string | undefined>;
+    /**
+     * An external identifier for this catalog. Must be unique within the team.
+     */
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `globe-alt`, `server-stack`, `users`, `user-group`, `chart-bar`, `shapes`, `light-bulb`, `cursor-arrow-ripple`.
      */

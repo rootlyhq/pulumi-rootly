@@ -58,6 +58,9 @@ func NewOnCallShadow(ctx *pulumi.Context,
 	if args.EndsAt == nil {
 		return nil, errors.New("invalid value for required argument 'EndsAt'")
 	}
+	if args.ScheduleId == nil {
+		return nil, errors.New("invalid value for required argument 'ScheduleId'")
+	}
 	if args.ShadowUserId == nil {
 		return nil, errors.New("invalid value for required argument 'ShadowUserId'")
 	}
@@ -127,7 +130,7 @@ type onCallShadowArgs struct {
 	// End datetime for shadow shift
 	EndsAt string `pulumi:"endsAt"`
 	// ID of schedule the shadow shift belongs to
-	ScheduleId *string `pulumi:"scheduleId"`
+	ScheduleId string `pulumi:"scheduleId"`
 	// Which user the shadow shift belongs to.
 	ShadowUserId int `pulumi:"shadowUserId"`
 	// ID of schedule or user the shadow user is shadowing
@@ -143,7 +146,7 @@ type OnCallShadowArgs struct {
 	// End datetime for shadow shift
 	EndsAt pulumi.StringInput
 	// ID of schedule the shadow shift belongs to
-	ScheduleId pulumi.StringPtrInput
+	ScheduleId pulumi.StringInput
 	// Which user the shadow shift belongs to.
 	ShadowUserId pulumi.IntInput
 	// ID of schedule or user the shadow user is shadowing
