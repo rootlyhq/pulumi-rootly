@@ -675,11 +675,11 @@ export interface EscalationPathRule {
      */
     jsonPath: string;
     /**
-     * How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`.
+     * How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`. For `source` rule type: `is`, `isNot`, `isOneOf`, `isNotOneOf`. For `relatedIncidents` rule type: `isSet`, `isNotSet`.
      */
     operator: string;
     /**
-     * The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`.
+     * The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`, `source`, `relatedIncidents`.
      */
     ruleType: string;
     /**
@@ -703,7 +703,7 @@ export interface EscalationPathRule {
      */
     value: string;
     /**
-     * Values to match against. Only used with `field` rule type.
+     * Values to match against. Used with `field` and `source` rule types.
      */
     values?: string[];
     /**
@@ -2219,6 +2219,10 @@ export interface WorkflowTaskCreateClickupTaskTaskParams {
      */
     dueDate?: string;
     /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    list: {[key: string]: string};
+    /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
     priority?: {[key: string]: string};
@@ -2493,7 +2497,7 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParams {
     /**
      * The days until meeting
      */
-    daysUntilMeeting: string;
+    daysUntilMeeting: number;
     /**
      * The event description
      */
@@ -2753,6 +2757,14 @@ export interface WorkflowTaskCreateJiraIssueTaskParams {
      */
     reporterUserEmail?: string;
     /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
+    /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
     status?: {[key: string]: string};
@@ -2808,6 +2820,14 @@ export interface WorkflowTaskCreateJiraSubtaskTaskParams {
      * The reporter user's email
      */
     reporterUserEmail?: string;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
     /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
@@ -3038,7 +3058,7 @@ export interface WorkflowTaskCreateMistralChatCompletionTaskParams {
     /**
      * Maximum number of tokens to generate
      */
-    maxTokens?: string;
+    maxTokens?: number;
     /**
      * Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
      */
@@ -3055,11 +3075,11 @@ export interface WorkflowTaskCreateMistralChatCompletionTaskParams {
     /**
      * Sampling temperature (0.0-1.5). Higher values make output more random.
      */
-    temperature?: number;
+    temperature?: string;
     /**
      * Nucleus sampling parameter (0.0-1.0)
      */
-    topP?: number;
+    topP?: string;
 }
 
 export interface WorkflowTaskCreateMotionTaskTaskParams {
@@ -3135,7 +3155,7 @@ export interface WorkflowTaskCreateOpenaiChatCompletionTaskParams {
     /**
      * Maximum number of tokens to generate in the response
      */
-    maxTokens?: string;
+    maxTokens?: number;
     /**
      * Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
      */
@@ -3160,11 +3180,11 @@ export interface WorkflowTaskCreateOpenaiChatCompletionTaskParams {
     /**
      * Controls randomness in the response. Higher values make output more random
      */
-    temperature?: number;
+    temperature?: string;
     /**
      * Controls diversity via nucleus sampling. Lower values make output more focused
      */
-    topP?: number;
+    topP?: string;
 }
 
 export interface WorkflowTaskCreateOpsgenieAlertTaskParams {
@@ -3223,7 +3243,7 @@ export interface WorkflowTaskCreateOutlookEventTaskParams {
     /**
      * The days until meeting
      */
-    daysUntilMeeting: string;
+    daysUntilMeeting: number;
     /**
      * The event description
      */
@@ -3813,11 +3833,11 @@ export interface WorkflowTaskHttpClientTaskParams {
     /**
      * Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
      */
-    retryCount?: string;
+    retryCount?: number;
     /**
      * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
      */
-    retryWaitTime?: string;
+    retryWaitTime?: number;
     /**
      * HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
      */
@@ -4195,6 +4215,10 @@ export interface WorkflowTaskPublishIncidentTaskParams {
      */
     status: string;
     statusPageId: string;
+    /**
+     * Publishes the update to every listed status page (requires the status-page-v3-limited-bulk-publish feature). When set, it takes precedence over status*page*id and the first entry becomes status*page*id.
+     */
+    statusPageIds?: string[];
     /**
      * Map must contain two fields, `id` and `name`.
      */
@@ -5008,7 +5032,7 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
     /**
      * Days to adjust meeting by
      */
-    adjustmentDays?: string;
+    adjustmentDays?: number;
     /**
      * Emails of attendees
      */
@@ -5231,6 +5255,14 @@ export interface WorkflowTaskUpdateJiraIssueTaskParams {
      */
     reporterUserEmail?: string;
     /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
+    /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
     status?: {[key: string]: string};
@@ -5396,7 +5428,7 @@ export interface WorkflowTaskUpdatePagerdutyIncidentTaskParams {
     /**
      * Escalation level of policy attached to incident
      */
-    escalationLevel?: string;
+    escalationLevel?: number;
     /**
      * Pagerduty incident id
      */
