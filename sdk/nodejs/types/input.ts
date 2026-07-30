@@ -675,11 +675,11 @@ export interface EscalationPathRule {
      */
     jsonPath?: pulumi.Input<string | undefined>;
     /**
-     * How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`.
+     * How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`. For `source` rule type: `is`, `isNot`, `isOneOf`, `isNotOneOf`. For `relatedIncidents` rule type: `isSet`, `isNotSet`.
      */
     operator?: pulumi.Input<string | undefined>;
     /**
-     * The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`.
+     * The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`, `source`, `relatedIncidents`.
      */
     ruleType?: pulumi.Input<string | undefined>;
     /**
@@ -703,7 +703,7 @@ export interface EscalationPathRule {
      */
     value?: pulumi.Input<string | undefined>;
     /**
-     * Values to match against. Only used with `field` rule type.
+     * Values to match against. Used with `field` and `source` rule types.
      */
     values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -2107,6 +2107,10 @@ export interface WorkflowTaskCreateClickupTaskTaskParams {
      */
     dueDate?: pulumi.Input<string | undefined>;
     /**
+     * Map must contain two fields, `id` and `name`.
+     */
+    list: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
     priority?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -2381,7 +2385,7 @@ export interface WorkflowTaskCreateGoogleCalendarEventTaskParams {
     /**
      * The days until meeting
      */
-    daysUntilMeeting: pulumi.Input<string>;
+    daysUntilMeeting: pulumi.Input<number>;
     /**
      * The event description
      */
@@ -2641,6 +2645,14 @@ export interface WorkflowTaskCreateJiraIssueTaskParams {
      */
     reporterUserEmail?: pulumi.Input<string | undefined>;
     /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
+    /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
     status?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -2696,6 +2708,14 @@ export interface WorkflowTaskCreateJiraSubtaskTaskParams {
      * The reporter user's email
      */
     reporterUserEmail?: pulumi.Input<string | undefined>;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
@@ -2926,7 +2946,7 @@ export interface WorkflowTaskCreateMistralChatCompletionTaskParams {
     /**
      * Maximum number of tokens to generate
      */
-    maxTokens?: pulumi.Input<string | undefined>;
+    maxTokens?: pulumi.Input<number | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
      */
@@ -2943,11 +2963,11 @@ export interface WorkflowTaskCreateMistralChatCompletionTaskParams {
     /**
      * Sampling temperature (0.0-1.5). Higher values make output more random.
      */
-    temperature?: pulumi.Input<number | undefined>;
+    temperature?: pulumi.Input<string | undefined>;
     /**
      * Nucleus sampling parameter (0.0-1.0)
      */
-    topP?: pulumi.Input<number | undefined>;
+    topP?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkflowTaskCreateMotionTaskTaskParams {
@@ -3023,7 +3043,7 @@ export interface WorkflowTaskCreateOpenaiChatCompletionTaskParams {
     /**
      * Maximum number of tokens to generate in the response
      */
-    maxTokens?: pulumi.Input<string | undefined>;
+    maxTokens?: pulumi.Input<number | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
      */
@@ -3048,11 +3068,11 @@ export interface WorkflowTaskCreateOpenaiChatCompletionTaskParams {
     /**
      * Controls randomness in the response. Higher values make output more random
      */
-    temperature?: pulumi.Input<number | undefined>;
+    temperature?: pulumi.Input<string | undefined>;
     /**
      * Controls diversity via nucleus sampling. Lower values make output more focused
      */
-    topP?: pulumi.Input<number | undefined>;
+    topP?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkflowTaskCreateOpsgenieAlertTaskParams {
@@ -3111,7 +3131,7 @@ export interface WorkflowTaskCreateOutlookEventTaskParams {
     /**
      * The days until meeting
      */
-    daysUntilMeeting: pulumi.Input<string>;
+    daysUntilMeeting: pulumi.Input<number>;
     /**
      * The event description
      */
@@ -3701,11 +3721,11 @@ export interface WorkflowTaskHttpClientTaskParams {
     /**
      * Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
      */
-    retryCount?: pulumi.Input<string | undefined>;
+    retryCount?: pulumi.Input<number | undefined>;
     /**
      * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
      */
-    retryWaitTime?: pulumi.Input<string | undefined>;
+    retryWaitTime?: pulumi.Input<number | undefined>;
     /**
      * HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
      */
@@ -4083,6 +4103,10 @@ export interface WorkflowTaskPublishIncidentTaskParams {
      */
     status: pulumi.Input<string>;
     statusPageId: pulumi.Input<string>;
+    /**
+     * Publishes the update to every listed status page (requires the status-page-v3-limited-bulk-publish feature). When set, it takes precedence over status*page*id and the first entry becomes status*page*id.
+     */
+    statusPageIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
@@ -4896,7 +4920,7 @@ export interface WorkflowTaskUpdateGoogleCalendarEventTaskParams {
     /**
      * Days to adjust meeting by
      */
-    adjustmentDays?: pulumi.Input<string | undefined>;
+    adjustmentDays?: pulumi.Input<number | undefined>;
     /**
      * Emails of attendees
      */
@@ -5119,6 +5143,14 @@ export interface WorkflowTaskUpdateJiraIssueTaskParams {
      */
     reporterUserEmail?: pulumi.Input<string | undefined>;
     /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
+    /**
      * Map must contain two fields, `id` and `name`. The status id and display name
      */
     status?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -5284,7 +5316,7 @@ export interface WorkflowTaskUpdatePagerdutyIncidentTaskParams {
     /**
      * Escalation level of policy attached to incident
      */
-    escalationLevel?: pulumi.Input<string | undefined>;
+    escalationLevel?: pulumi.Input<number | undefined>;
     /**
      * Pagerduty incident id
      */

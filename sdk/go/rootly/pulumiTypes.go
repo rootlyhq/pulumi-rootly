@@ -5655,9 +5655,9 @@ type EscalationPathRule struct {
 	FieldableType *string `pulumi:"fieldableType"`
 	// JSON path to extract value from payload
 	JsonPath *string `pulumi:"jsonPath"`
-	// How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`.
+	// How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`. For `source` rule type: `is`, `isNot`, `isOneOf`, `isNotOneOf`. For `relatedIncidents` rule type: `isSet`, `isNotSet`.
 	Operator *string `pulumi:"operator"`
-	// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`.
+	// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`, `source`, `relatedIncidents`.
 	RuleType *string `pulumi:"ruleType"`
 	// Service ids for which this escalation path should be used. Only used with `service` rule type.
 	ServiceIds []string `pulumi:"serviceIds"`
@@ -5669,7 +5669,7 @@ type EscalationPathRule struct {
 	UrgencyIds []string `pulumi:"urgencyIds"`
 	// Value with which JSON path value should be matched
 	Value *string `pulumi:"value"`
-	// Values to match against. Only used with `field` rule type.
+	// Values to match against. Used with `field` and `source` rule types.
 	Values []string `pulumi:"values"`
 	// Whether the escalation path should be used within working hours. Value must be one of true or false
 	WithinWorkingHour *bool `pulumi:"withinWorkingHour"`
@@ -5693,9 +5693,9 @@ type EscalationPathRuleArgs struct {
 	FieldableType pulumi.StringPtrInput `pulumi:"fieldableType"`
 	// JSON path to extract value from payload
 	JsonPath pulumi.StringPtrInput `pulumi:"jsonPath"`
-	// How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`.
+	// How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`. For `source` rule type: `is`, `isNot`, `isOneOf`, `isNotOneOf`. For `relatedIncidents` rule type: `isSet`, `isNotSet`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`.
+	// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`, `source`, `relatedIncidents`.
 	RuleType pulumi.StringPtrInput `pulumi:"ruleType"`
 	// Service ids for which this escalation path should be used. Only used with `service` rule type.
 	ServiceIds pulumi.StringArrayInput `pulumi:"serviceIds"`
@@ -5707,7 +5707,7 @@ type EscalationPathRuleArgs struct {
 	UrgencyIds pulumi.StringArrayInput `pulumi:"urgencyIds"`
 	// Value with which JSON path value should be matched
 	Value pulumi.StringPtrInput `pulumi:"value"`
-	// Values to match against. Only used with `field` rule type.
+	// Values to match against. Used with `field` and `source` rule types.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 	// Whether the escalation path should be used within working hours. Value must be one of true or false
 	WithinWorkingHour pulumi.BoolPtrInput `pulumi:"withinWorkingHour"`
@@ -5779,12 +5779,12 @@ func (o EscalationPathRuleOutput) JsonPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EscalationPathRule) *string { return v.JsonPath }).(pulumi.StringPtrOutput)
 }
 
-// How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`.
+// How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`. For `source` rule type: `is`, `isNot`, `isOneOf`, `isNotOneOf`. For `relatedIncidents` rule type: `isSet`, `isNotSet`.
 func (o EscalationPathRuleOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EscalationPathRule) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
-// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`.
+// The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`, `source`, `relatedIncidents`.
 func (o EscalationPathRuleOutput) RuleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EscalationPathRule) *string { return v.RuleType }).(pulumi.StringPtrOutput)
 }
@@ -5814,7 +5814,7 @@ func (o EscalationPathRuleOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EscalationPathRule) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-// Values to match against. Only used with `field` rule type.
+// Values to match against. Used with `field` and `source` rule types.
 func (o EscalationPathRuleOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EscalationPathRule) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -18378,6 +18378,8 @@ type WorkflowTaskCreateClickupTaskTaskParams struct {
 	Description *string `pulumi:"description"`
 	// The due date
 	DueDate *string `pulumi:"dueDate"`
+	// Map must contain two fields, `id` and `name`.
+	List map[string]string `pulumi:"list"`
 	// Map must contain two fields, `id` and `name`. The priority id and display name
 	Priority map[string]string `pulumi:"priority"`
 	// The task tags
@@ -18407,6 +18409,8 @@ type WorkflowTaskCreateClickupTaskTaskParamsArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The due date
 	DueDate pulumi.StringPtrInput `pulumi:"dueDate"`
+	// Map must contain two fields, `id` and `name`.
+	List pulumi.StringMapInput `pulumi:"list"`
 	// Map must contain two fields, `id` and `name`. The priority id and display name
 	Priority pulumi.StringMapInput `pulumi:"priority"`
 	// The task tags
@@ -18510,6 +18514,11 @@ func (o WorkflowTaskCreateClickupTaskTaskParamsOutput) DueDate() pulumi.StringPt
 	return o.ApplyT(func(v WorkflowTaskCreateClickupTaskTaskParams) *string { return v.DueDate }).(pulumi.StringPtrOutput)
 }
 
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskCreateClickupTaskTaskParamsOutput) List() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateClickupTaskTaskParams) map[string]string { return v.List }).(pulumi.StringMapOutput)
+}
+
 // Map must contain two fields, `id` and `name`. The priority id and display name
 func (o WorkflowTaskCreateClickupTaskTaskParamsOutput) Priority() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateClickupTaskTaskParams) map[string]string { return v.Priority }).(pulumi.StringMapOutput)
@@ -18586,6 +18595,16 @@ func (o WorkflowTaskCreateClickupTaskTaskParamsPtrOutput) DueDate() pulumi.Strin
 		}
 		return v.DueDate
 	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`.
+func (o WorkflowTaskCreateClickupTaskTaskParamsPtrOutput) List() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateClickupTaskTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.List
+	}).(pulumi.StringMapOutput)
 }
 
 // Map must contain two fields, `id` and `name`. The priority id and display name
@@ -20712,7 +20731,7 @@ type WorkflowTaskCreateGoogleCalendarEventTaskParams struct {
 	// Sets the video conference type attached to the meeting. Value must be one of `eventHangout`, `eventNamedHangout`, `hangoutsMeet`, `addOn`.
 	ConferenceSolutionKey *string `pulumi:"conferenceSolutionKey"`
 	// The days until meeting
-	DaysUntilMeeting string `pulumi:"daysUntilMeeting"`
+	DaysUntilMeeting int `pulumi:"daysUntilMeeting"`
 	// The event description
 	Description string `pulumi:"description"`
 	// Value must be one of true or false
@@ -20757,7 +20776,7 @@ type WorkflowTaskCreateGoogleCalendarEventTaskParamsArgs struct {
 	// Sets the video conference type attached to the meeting. Value must be one of `eventHangout`, `eventNamedHangout`, `hangoutsMeet`, `addOn`.
 	ConferenceSolutionKey pulumi.StringPtrInput `pulumi:"conferenceSolutionKey"`
 	// The days until meeting
-	DaysUntilMeeting pulumi.StringInput `pulumi:"daysUntilMeeting"`
+	DaysUntilMeeting pulumi.IntInput `pulumi:"daysUntilMeeting"`
 	// The event description
 	Description pulumi.StringInput `pulumi:"description"`
 	// Value must be one of true or false
@@ -20885,8 +20904,8 @@ func (o WorkflowTaskCreateGoogleCalendarEventTaskParamsOutput) ConferenceSolutio
 }
 
 // The days until meeting
-func (o WorkflowTaskCreateGoogleCalendarEventTaskParamsOutput) DaysUntilMeeting() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkflowTaskCreateGoogleCalendarEventTaskParams) string { return v.DaysUntilMeeting }).(pulumi.StringOutput)
+func (o WorkflowTaskCreateGoogleCalendarEventTaskParamsOutput) DaysUntilMeeting() pulumi.IntOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleCalendarEventTaskParams) int { return v.DaysUntilMeeting }).(pulumi.IntOutput)
 }
 
 // The event description
@@ -21023,13 +21042,13 @@ func (o WorkflowTaskCreateGoogleCalendarEventTaskParamsPtrOutput) ConferenceSolu
 }
 
 // The days until meeting
-func (o WorkflowTaskCreateGoogleCalendarEventTaskParamsPtrOutput) DaysUntilMeeting() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskCreateGoogleCalendarEventTaskParams) *string {
+func (o WorkflowTaskCreateGoogleCalendarEventTaskParamsPtrOutput) DaysUntilMeeting() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleCalendarEventTaskParams) *int {
 		if v == nil {
 			return nil
 		}
 		return &v.DaysUntilMeeting
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // The event description
@@ -23035,6 +23054,10 @@ type WorkflowTaskCreateJiraIssueTaskParams struct {
 	ProjectKey string `pulumi:"projectKey"`
 	// The reporter user's email
 	ReporterUserEmail *string `pulumi:"reporterUserEmail"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int `pulumi:"retryWaitTime"`
 	// Map must contain two fields, `id` and `name`. The status id and display name
 	Status   map[string]string `pulumi:"status"`
 	TaskType *string           `pulumi:"taskType"`
@@ -23076,6 +23099,10 @@ type WorkflowTaskCreateJiraIssueTaskParamsArgs struct {
 	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
 	// The reporter user's email
 	ReporterUserEmail pulumi.StringPtrInput `pulumi:"reporterUserEmail"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput `pulumi:"retryWaitTime"`
 	// Map must contain two fields, `id` and `name`. The status id and display name
 	Status   pulumi.StringMapInput `pulumi:"status"`
 	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
@@ -23210,6 +23237,16 @@ func (o WorkflowTaskCreateJiraIssueTaskParamsOutput) ProjectKey() pulumi.StringO
 // The reporter user's email
 func (o WorkflowTaskCreateJiraIssueTaskParamsOutput) ReporterUserEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateJiraIssueTaskParams) *string { return v.ReporterUserEmail }).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateJiraIssueTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJiraIssueTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateJiraIssueTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJiraIssueTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
 }
 
 // Map must contain two fields, `id` and `name`. The status id and display name
@@ -23355,6 +23392,26 @@ func (o WorkflowTaskCreateJiraIssueTaskParamsPtrOutput) ReporterUserEmail() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateJiraIssueTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJiraIssueTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateJiraIssueTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJiraIssueTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
+}
+
 // Map must contain two fields, `id` and `name`. The status id and display name
 func (o WorkflowTaskCreateJiraIssueTaskParamsPtrOutput) Status() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTaskCreateJiraIssueTaskParams) map[string]string {
@@ -23415,6 +23472,10 @@ type WorkflowTaskCreateJiraSubtaskTaskParams struct {
 	ProjectKey string `pulumi:"projectKey"`
 	// The reporter user's email
 	ReporterUserEmail *string `pulumi:"reporterUserEmail"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int `pulumi:"retryWaitTime"`
 	// Map must contain two fields, `id` and `name`. The status id and display name
 	Status map[string]string `pulumi:"status"`
 	// Map must contain two fields, `id` and `name`. The issue type id and display name
@@ -23458,6 +23519,10 @@ type WorkflowTaskCreateJiraSubtaskTaskParamsArgs struct {
 	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
 	// The reporter user's email
 	ReporterUserEmail pulumi.StringPtrInput `pulumi:"reporterUserEmail"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput `pulumi:"retryWaitTime"`
 	// Map must contain two fields, `id` and `name`. The status id and display name
 	Status pulumi.StringMapInput `pulumi:"status"`
 	// Map must contain two fields, `id` and `name`. The issue type id and display name
@@ -23594,6 +23659,16 @@ func (o WorkflowTaskCreateJiraSubtaskTaskParamsOutput) ProjectKey() pulumi.Strin
 // The reporter user's email
 func (o WorkflowTaskCreateJiraSubtaskTaskParamsOutput) ReporterUserEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateJiraSubtaskTaskParams) *string { return v.ReporterUserEmail }).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateJiraSubtaskTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJiraSubtaskTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateJiraSubtaskTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateJiraSubtaskTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
 }
 
 // Map must contain two fields, `id` and `name`. The status id and display name
@@ -23742,6 +23817,26 @@ func (o WorkflowTaskCreateJiraSubtaskTaskParamsPtrOutput) ReporterUserEmail() pu
 		}
 		return v.ReporterUserEmail
 	}).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateJiraSubtaskTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJiraSubtaskTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateJiraSubtaskTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateJiraSubtaskTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
 }
 
 // Map must contain two fields, `id` and `name`. The status id and display name
@@ -26274,7 +26369,7 @@ func (o WorkflowTaskCreateMicrosoftTeamsMeetingTaskParamsPostToSlackChannelArray
 
 type WorkflowTaskCreateMistralChatCompletionTaskParams struct {
 	// Maximum number of tokens to generate
-	MaxTokens *string `pulumi:"maxTokens"`
+	MaxTokens *int `pulumi:"maxTokens"`
 	// Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
 	Model map[string]string `pulumi:"model"`
 	// The prompt to send to Mistral
@@ -26283,9 +26378,9 @@ type WorkflowTaskCreateMistralChatCompletionTaskParams struct {
 	SystemPrompt *string `pulumi:"systemPrompt"`
 	TaskType     *string `pulumi:"taskType"`
 	// Sampling temperature (0.0-1.5). Higher values make output more random.
-	Temperature *int `pulumi:"temperature"`
+	Temperature *string `pulumi:"temperature"`
 	// Nucleus sampling parameter (0.0-1.0)
-	TopP *int `pulumi:"topP"`
+	TopP *string `pulumi:"topP"`
 }
 
 // WorkflowTaskCreateMistralChatCompletionTaskParamsInput is an input type that accepts WorkflowTaskCreateMistralChatCompletionTaskParamsArgs and WorkflowTaskCreateMistralChatCompletionTaskParamsOutput values.
@@ -26301,7 +26396,7 @@ type WorkflowTaskCreateMistralChatCompletionTaskParamsInput interface {
 
 type WorkflowTaskCreateMistralChatCompletionTaskParamsArgs struct {
 	// Maximum number of tokens to generate
-	MaxTokens pulumi.StringPtrInput `pulumi:"maxTokens"`
+	MaxTokens pulumi.IntPtrInput `pulumi:"maxTokens"`
 	// Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
 	Model pulumi.StringMapInput `pulumi:"model"`
 	// The prompt to send to Mistral
@@ -26310,9 +26405,9 @@ type WorkflowTaskCreateMistralChatCompletionTaskParamsArgs struct {
 	SystemPrompt pulumi.StringPtrInput `pulumi:"systemPrompt"`
 	TaskType     pulumi.StringPtrInput `pulumi:"taskType"`
 	// Sampling temperature (0.0-1.5). Higher values make output more random.
-	Temperature pulumi.IntPtrInput `pulumi:"temperature"`
+	Temperature pulumi.StringPtrInput `pulumi:"temperature"`
 	// Nucleus sampling parameter (0.0-1.0)
-	TopP pulumi.IntPtrInput `pulumi:"topP"`
+	TopP pulumi.StringPtrInput `pulumi:"topP"`
 }
 
 func (WorkflowTaskCreateMistralChatCompletionTaskParamsArgs) ElementType() reflect.Type {
@@ -26393,8 +26488,8 @@ func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) ToWorkflowTaskC
 }
 
 // Maximum number of tokens to generate
-func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) MaxTokens() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) *string { return v.MaxTokens }).(pulumi.StringPtrOutput)
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) MaxTokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) *int { return v.MaxTokens }).(pulumi.IntPtrOutput)
 }
 
 // Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
@@ -26417,13 +26512,13 @@ func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) TaskType() pulu
 }
 
 // Sampling temperature (0.0-1.5). Higher values make output more random.
-func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) Temperature() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) *int { return v.Temperature }).(pulumi.IntPtrOutput)
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) Temperature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) *string { return v.Temperature }).(pulumi.StringPtrOutput)
 }
 
 // Nucleus sampling parameter (0.0-1.0)
-func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) TopP() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) *int { return v.TopP }).(pulumi.IntPtrOutput)
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsOutput) TopP() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateMistralChatCompletionTaskParams) *string { return v.TopP }).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput struct{ *pulumi.OutputState }
@@ -26451,13 +26546,13 @@ func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) Elem() Workf
 }
 
 // Maximum number of tokens to generate
-func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) MaxTokens() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *string {
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) MaxTokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *int {
 		if v == nil {
 			return nil
 		}
 		return v.MaxTokens
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Map must contain two fields, `id` and `name`. The Mistral model. eg: mistral-large-latest
@@ -26500,23 +26595,23 @@ func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) TaskType() p
 }
 
 // Sampling temperature (0.0-1.5). Higher values make output more random.
-func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) Temperature() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *int {
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) Temperature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Temperature
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Nucleus sampling parameter (0.0-1.0)
-func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) TopP() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *int {
+func (o WorkflowTaskCreateMistralChatCompletionTaskParamsPtrOutput) TopP() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateMistralChatCompletionTaskParams) *string {
 		if v == nil {
 			return nil
 		}
 		return v.TopP
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTaskCreateMotionTaskTaskParams struct {
@@ -27087,7 +27182,7 @@ func (o WorkflowTaskCreateNotionPageTaskParamsPtrOutput) Title() pulumi.StringPt
 
 type WorkflowTaskCreateOpenaiChatCompletionTaskParams struct {
 	// Maximum number of tokens to generate in the response
-	MaxTokens *string `pulumi:"maxTokens"`
+	MaxTokens *int `pulumi:"maxTokens"`
 	// Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
 	Model map[string]string `pulumi:"model"`
 	// The prompt to send to OpenAI
@@ -27100,9 +27195,9 @@ type WorkflowTaskCreateOpenaiChatCompletionTaskParams struct {
 	SystemPrompt *string `pulumi:"systemPrompt"`
 	TaskType     *string `pulumi:"taskType"`
 	// Controls randomness in the response. Higher values make output more random
-	Temperature *int `pulumi:"temperature"`
+	Temperature *string `pulumi:"temperature"`
 	// Controls diversity via nucleus sampling. Lower values make output more focused
-	TopP *int `pulumi:"topP"`
+	TopP *string `pulumi:"topP"`
 }
 
 // WorkflowTaskCreateOpenaiChatCompletionTaskParamsInput is an input type that accepts WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs and WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput values.
@@ -27118,7 +27213,7 @@ type WorkflowTaskCreateOpenaiChatCompletionTaskParamsInput interface {
 
 type WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs struct {
 	// Maximum number of tokens to generate in the response
-	MaxTokens pulumi.StringPtrInput `pulumi:"maxTokens"`
+	MaxTokens pulumi.IntPtrInput `pulumi:"maxTokens"`
 	// Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
 	Model pulumi.StringMapInput `pulumi:"model"`
 	// The prompt to send to OpenAI
@@ -27131,9 +27226,9 @@ type WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs struct {
 	SystemPrompt pulumi.StringPtrInput `pulumi:"systemPrompt"`
 	TaskType     pulumi.StringPtrInput `pulumi:"taskType"`
 	// Controls randomness in the response. Higher values make output more random
-	Temperature pulumi.IntPtrInput `pulumi:"temperature"`
+	Temperature pulumi.StringPtrInput `pulumi:"temperature"`
 	// Controls diversity via nucleus sampling. Lower values make output more focused
-	TopP pulumi.IntPtrInput `pulumi:"topP"`
+	TopP pulumi.StringPtrInput `pulumi:"topP"`
 }
 
 func (WorkflowTaskCreateOpenaiChatCompletionTaskParamsArgs) ElementType() reflect.Type {
@@ -27214,8 +27309,8 @@ func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) ToWorkflowTaskCr
 }
 
 // Maximum number of tokens to generate in the response
-func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) MaxTokens() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string { return v.MaxTokens }).(pulumi.StringPtrOutput)
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) MaxTokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *int { return v.MaxTokens }).(pulumi.IntPtrOutput)
 }
 
 // Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
@@ -27248,13 +27343,13 @@ func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) TaskType() pulum
 }
 
 // Controls randomness in the response. Higher values make output more random
-func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) Temperature() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *int { return v.Temperature }).(pulumi.IntPtrOutput)
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) Temperature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string { return v.Temperature }).(pulumi.StringPtrOutput)
 }
 
 // Controls diversity via nucleus sampling. Lower values make output more focused
-func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) TopP() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *int { return v.TopP }).(pulumi.IntPtrOutput)
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsOutput) TopP() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string { return v.TopP }).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput struct{ *pulumi.OutputState }
@@ -27282,13 +27377,13 @@ func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) Elem() Workfl
 }
 
 // Maximum number of tokens to generate in the response
-func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) MaxTokens() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string {
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) MaxTokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *int {
 		if v == nil {
 			return nil
 		}
 		return v.MaxTokens
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Map must contain two fields, `id` and `name`. The OpenAI model. eg: gpt-5-nano
@@ -27351,23 +27446,23 @@ func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) TaskType() pu
 }
 
 // Controls randomness in the response. Higher values make output more random
-func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) Temperature() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *int {
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) Temperature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Temperature
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // Controls diversity via nucleus sampling. Lower values make output more focused
-func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) TopP() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *int {
+func (o WorkflowTaskCreateOpenaiChatCompletionTaskParamsPtrOutput) TopP() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOpenaiChatCompletionTaskParams) *string {
 		if v == nil {
 			return nil
 		}
 		return v.TopP
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTaskCreateOpsgenieAlertTaskParams struct {
@@ -28053,7 +28148,7 @@ type WorkflowTaskCreateOutlookEventTaskParams struct {
 	// Map must contain two fields, `id` and `name`.
 	Calendar map[string]string `pulumi:"calendar"`
 	// The days until meeting
-	DaysUntilMeeting string `pulumi:"daysUntilMeeting"`
+	DaysUntilMeeting int `pulumi:"daysUntilMeeting"`
 	// The event description
 	Description string `pulumi:"description"`
 	// Enable Microsoft Teams online meeting. Value must be one of true or false
@@ -28091,7 +28186,7 @@ type WorkflowTaskCreateOutlookEventTaskParamsArgs struct {
 	// Map must contain two fields, `id` and `name`.
 	Calendar pulumi.StringMapInput `pulumi:"calendar"`
 	// The days until meeting
-	DaysUntilMeeting pulumi.StringInput `pulumi:"daysUntilMeeting"`
+	DaysUntilMeeting pulumi.IntInput `pulumi:"daysUntilMeeting"`
 	// The event description
 	Description pulumi.StringInput `pulumi:"description"`
 	// Enable Microsoft Teams online meeting. Value must be one of true or false
@@ -28200,8 +28295,8 @@ func (o WorkflowTaskCreateOutlookEventTaskParamsOutput) Calendar() pulumi.String
 }
 
 // The days until meeting
-func (o WorkflowTaskCreateOutlookEventTaskParamsOutput) DaysUntilMeeting() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkflowTaskCreateOutlookEventTaskParams) string { return v.DaysUntilMeeting }).(pulumi.StringOutput)
+func (o WorkflowTaskCreateOutlookEventTaskParamsOutput) DaysUntilMeeting() pulumi.IntOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateOutlookEventTaskParams) int { return v.DaysUntilMeeting }).(pulumi.IntOutput)
 }
 
 // The event description
@@ -28299,13 +28394,13 @@ func (o WorkflowTaskCreateOutlookEventTaskParamsPtrOutput) Calendar() pulumi.Str
 }
 
 // The days until meeting
-func (o WorkflowTaskCreateOutlookEventTaskParamsPtrOutput) DaysUntilMeeting() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskCreateOutlookEventTaskParams) *string {
+func (o WorkflowTaskCreateOutlookEventTaskParamsPtrOutput) DaysUntilMeeting() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateOutlookEventTaskParams) *int {
 		if v == nil {
 			return nil
 		}
 		return &v.DaysUntilMeeting
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // The event description
@@ -34112,9 +34207,9 @@ type WorkflowTaskHttpClientTaskParams struct {
 	PostToIncidentTimeline *bool                                                `pulumi:"postToIncidentTimeline"`
 	PostToSlackChannels    []WorkflowTaskHttpClientTaskParamsPostToSlackChannel `pulumi:"postToSlackChannels"`
 	// Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
-	RetryCount *string `pulumi:"retryCount"`
+	RetryCount *int `pulumi:"retryCount"`
 	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
-	RetryWaitTime *string `pulumi:"retryWaitTime"`
+	RetryWaitTime *int `pulumi:"retryWaitTime"`
 	// HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
 	SucceedOnStatus string  `pulumi:"succeedOnStatus"`
 	TaskType        *string `pulumi:"taskType"`
@@ -34148,9 +34243,9 @@ type WorkflowTaskHttpClientTaskParamsArgs struct {
 	PostToIncidentTimeline pulumi.BoolPtrInput                                          `pulumi:"postToIncidentTimeline"`
 	PostToSlackChannels    WorkflowTaskHttpClientTaskParamsPostToSlackChannelArrayInput `pulumi:"postToSlackChannels"`
 	// Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
-	RetryCount pulumi.StringPtrInput `pulumi:"retryCount"`
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
 	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
-	RetryWaitTime pulumi.StringPtrInput `pulumi:"retryWaitTime"`
+	RetryWaitTime pulumi.IntPtrInput `pulumi:"retryWaitTime"`
 	// HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
 	SucceedOnStatus pulumi.StringInput    `pulumi:"succeedOnStatus"`
 	TaskType        pulumi.StringPtrInput `pulumi:"taskType"`
@@ -34275,13 +34370,13 @@ func (o WorkflowTaskHttpClientTaskParamsOutput) PostToSlackChannels() WorkflowTa
 }
 
 // Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
-func (o WorkflowTaskHttpClientTaskParamsOutput) RetryCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskHttpClientTaskParams) *string { return v.RetryCount }).(pulumi.StringPtrOutput)
+func (o WorkflowTaskHttpClientTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskHttpClientTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
 }
 
 // Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
-func (o WorkflowTaskHttpClientTaskParamsOutput) RetryWaitTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskHttpClientTaskParams) *string { return v.RetryWaitTime }).(pulumi.StringPtrOutput)
+func (o WorkflowTaskHttpClientTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskHttpClientTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
 }
 
 // HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
@@ -34400,23 +34495,23 @@ func (o WorkflowTaskHttpClientTaskParamsPtrOutput) PostToSlackChannels() Workflo
 }
 
 // Number of times to retry on HTTP 429 responses (0-4). 0 disables retry.
-func (o WorkflowTaskHttpClientTaskParamsPtrOutput) RetryCount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskHttpClientTaskParams) *string {
+func (o WorkflowTaskHttpClientTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskHttpClientTaskParams) *int {
 		if v == nil {
 			return nil
 		}
 		return v.RetryCount
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
-func (o WorkflowTaskHttpClientTaskParamsPtrOutput) RetryWaitTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskHttpClientTaskParams) *string {
+func (o WorkflowTaskHttpClientTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskHttpClientTaskParams) *int {
 		if v == nil {
 			return nil
 		}
 		return v.RetryWaitTime
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // HTTP status code expected. Can be a regular expression. Eg: 200, 200|203, 20[0-3]
@@ -39025,6 +39120,8 @@ type WorkflowTaskPublishIncidentTaskParams struct {
 	// Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `completed`.
 	Status       string `pulumi:"status"`
 	StatusPageId string `pulumi:"statusPageId"`
+	// Publishes the update to every listed status page (requires the status-page-v3-limited-bulk-publish feature). When set, it takes precedence over status*page*id and the first entry becomes status*page*id.
+	StatusPageIds []string `pulumi:"statusPageIds"`
 	// Map must contain two fields, `id` and `name`.
 	StatusPageTemplate map[string]string `pulumi:"statusPageTemplate"`
 	TaskType           *string           `pulumi:"taskType"`
@@ -39056,6 +39153,8 @@ type WorkflowTaskPublishIncidentTaskParamsArgs struct {
 	// Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `scheduled`, `inProgress`, `completed`.
 	Status       pulumi.StringInput `pulumi:"status"`
 	StatusPageId pulumi.StringInput `pulumi:"statusPageId"`
+	// Publishes the update to every listed status page (requires the status-page-v3-limited-bulk-publish feature). When set, it takes precedence over status*page*id and the first entry becomes status*page*id.
+	StatusPageIds pulumi.StringArrayInput `pulumi:"statusPageIds"`
 	// Map must contain two fields, `id` and `name`.
 	StatusPageTemplate pulumi.StringMapInput `pulumi:"statusPageTemplate"`
 	TaskType           pulumi.StringPtrInput `pulumi:"taskType"`
@@ -39176,6 +39275,11 @@ func (o WorkflowTaskPublishIncidentTaskParamsOutput) StatusPageId() pulumi.Strin
 	return o.ApplyT(func(v WorkflowTaskPublishIncidentTaskParams) string { return v.StatusPageId }).(pulumi.StringOutput)
 }
 
+// Publishes the update to every listed status page (requires the status-page-v3-limited-bulk-publish feature). When set, it takes precedence over status*page*id and the first entry becomes status*page*id.
+func (o WorkflowTaskPublishIncidentTaskParamsOutput) StatusPageIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskPublishIncidentTaskParams) []string { return v.StatusPageIds }).(pulumi.StringArrayOutput)
+}
+
 // Map must contain two fields, `id` and `name`.
 func (o WorkflowTaskPublishIncidentTaskParamsOutput) StatusPageTemplate() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTaskPublishIncidentTaskParams) map[string]string { return v.StatusPageTemplate }).(pulumi.StringMapOutput)
@@ -39285,6 +39389,16 @@ func (o WorkflowTaskPublishIncidentTaskParamsPtrOutput) StatusPageId() pulumi.St
 		}
 		return &v.StatusPageId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Publishes the update to every listed status page (requires the status-page-v3-limited-bulk-publish feature). When set, it takes precedence over status*page*id and the first entry becomes status*page*id.
+func (o WorkflowTaskPublishIncidentTaskParamsPtrOutput) StatusPageIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskPublishIncidentTaskParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.StatusPageIds
+	}).(pulumi.StringArrayOutput)
 }
 
 // Map must contain two fields, `id` and `name`.
@@ -49098,7 +49212,7 @@ func (o WorkflowTaskUpdateGitlabIssueTaskParamsPtrOutput) Title() pulumi.StringP
 
 type WorkflowTaskUpdateGoogleCalendarEventTaskParams struct {
 	// Days to adjust meeting by
-	AdjustmentDays *string `pulumi:"adjustmentDays"`
+	AdjustmentDays *int `pulumi:"adjustmentDays"`
 	// Emails of attendees
 	Attendees  []string `pulumi:"attendees"`
 	CalendarId *string  `pulumi:"calendarId"`
@@ -49143,7 +49257,7 @@ type WorkflowTaskUpdateGoogleCalendarEventTaskParamsInput interface {
 
 type WorkflowTaskUpdateGoogleCalendarEventTaskParamsArgs struct {
 	// Days to adjust meeting by
-	AdjustmentDays pulumi.StringPtrInput `pulumi:"adjustmentDays"`
+	AdjustmentDays pulumi.IntPtrInput `pulumi:"adjustmentDays"`
 	// Emails of attendees
 	Attendees  pulumi.StringArrayInput `pulumi:"attendees"`
 	CalendarId pulumi.StringPtrInput   `pulumi:"calendarId"`
@@ -49253,8 +49367,8 @@ func (o WorkflowTaskUpdateGoogleCalendarEventTaskParamsOutput) ToWorkflowTaskUpd
 }
 
 // Days to adjust meeting by
-func (o WorkflowTaskUpdateGoogleCalendarEventTaskParamsOutput) AdjustmentDays() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskUpdateGoogleCalendarEventTaskParams) *string { return v.AdjustmentDays }).(pulumi.StringPtrOutput)
+func (o WorkflowTaskUpdateGoogleCalendarEventTaskParamsOutput) AdjustmentDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGoogleCalendarEventTaskParams) *int { return v.AdjustmentDays }).(pulumi.IntPtrOutput)
 }
 
 // Emails of attendees
@@ -49361,13 +49475,13 @@ func (o WorkflowTaskUpdateGoogleCalendarEventTaskParamsPtrOutput) Elem() Workflo
 }
 
 // Days to adjust meeting by
-func (o WorkflowTaskUpdateGoogleCalendarEventTaskParamsPtrOutput) AdjustmentDays() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskUpdateGoogleCalendarEventTaskParams) *string {
+func (o WorkflowTaskUpdateGoogleCalendarEventTaskParamsPtrOutput) AdjustmentDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGoogleCalendarEventTaskParams) *int {
 		if v == nil {
 			return nil
 		}
 		return v.AdjustmentDays
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Emails of attendees
@@ -50881,6 +50995,10 @@ type WorkflowTaskUpdateJiraIssueTaskParams struct {
 	ProjectKey string `pulumi:"projectKey"`
 	// The reporter user's email
 	ReporterUserEmail *string `pulumi:"reporterUserEmail"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int `pulumi:"retryWaitTime"`
 	// Map must contain two fields, `id` and `name`. The status id and display name
 	Status   map[string]string `pulumi:"status"`
 	TaskType *string           `pulumi:"taskType"`
@@ -50922,6 +51040,10 @@ type WorkflowTaskUpdateJiraIssueTaskParamsArgs struct {
 	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
 	// The reporter user's email
 	ReporterUserEmail pulumi.StringPtrInput `pulumi:"reporterUserEmail"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput `pulumi:"retryWaitTime"`
 	// Map must contain two fields, `id` and `name`. The status id and display name
 	Status   pulumi.StringMapInput `pulumi:"status"`
 	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
@@ -51056,6 +51178,16 @@ func (o WorkflowTaskUpdateJiraIssueTaskParamsOutput) ProjectKey() pulumi.StringO
 // The reporter user's email
 func (o WorkflowTaskUpdateJiraIssueTaskParamsOutput) ReporterUserEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateJiraIssueTaskParams) *string { return v.ReporterUserEmail }).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskUpdateJiraIssueTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateJiraIssueTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskUpdateJiraIssueTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateJiraIssueTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
 }
 
 // Map must contain two fields, `id` and `name`. The status id and display name
@@ -51199,6 +51331,26 @@ func (o WorkflowTaskUpdateJiraIssueTaskParamsPtrOutput) ReporterUserEmail() pulu
 		}
 		return v.ReporterUserEmail
 	}).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskUpdateJiraIssueTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateJiraIssueTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskUpdateJiraIssueTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateJiraIssueTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
 }
 
 // Map must contain two fields, `id` and `name`. The status id and display name
@@ -52609,7 +52761,7 @@ func (o WorkflowTaskUpdateOpsgenieIncidentTaskParamsPtrOutput) TaskType() pulumi
 
 type WorkflowTaskUpdatePagerdutyIncidentTaskParams struct {
 	// Escalation level of policy attached to incident
-	EscalationLevel *string `pulumi:"escalationLevel"`
+	EscalationLevel *int `pulumi:"escalationLevel"`
 	// Pagerduty incident id
 	PagerdutyIncidentId string `pulumi:"pagerdutyIncidentId"`
 	// PagerDuty incident priority, selecting auto will let Rootly auto map our incident severity
@@ -52638,7 +52790,7 @@ type WorkflowTaskUpdatePagerdutyIncidentTaskParamsInput interface {
 
 type WorkflowTaskUpdatePagerdutyIncidentTaskParamsArgs struct {
 	// Escalation level of policy attached to incident
-	EscalationLevel pulumi.StringPtrInput `pulumi:"escalationLevel"`
+	EscalationLevel pulumi.IntPtrInput `pulumi:"escalationLevel"`
 	// Pagerduty incident id
 	PagerdutyIncidentId pulumi.StringInput `pulumi:"pagerdutyIncidentId"`
 	// PagerDuty incident priority, selecting auto will let Rootly auto map our incident severity
@@ -52732,8 +52884,8 @@ func (o WorkflowTaskUpdatePagerdutyIncidentTaskParamsOutput) ToWorkflowTaskUpdat
 }
 
 // Escalation level of policy attached to incident
-func (o WorkflowTaskUpdatePagerdutyIncidentTaskParamsOutput) EscalationLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkflowTaskUpdatePagerdutyIncidentTaskParams) *string { return v.EscalationLevel }).(pulumi.StringPtrOutput)
+func (o WorkflowTaskUpdatePagerdutyIncidentTaskParamsOutput) EscalationLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdatePagerdutyIncidentTaskParams) *int { return v.EscalationLevel }).(pulumi.IntPtrOutput)
 }
 
 // Pagerduty incident id
@@ -52795,13 +52947,13 @@ func (o WorkflowTaskUpdatePagerdutyIncidentTaskParamsPtrOutput) Elem() WorkflowT
 }
 
 // Escalation level of policy attached to incident
-func (o WorkflowTaskUpdatePagerdutyIncidentTaskParamsPtrOutput) EscalationLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkflowTaskUpdatePagerdutyIncidentTaskParams) *string {
+func (o WorkflowTaskUpdatePagerdutyIncidentTaskParamsPtrOutput) EscalationLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdatePagerdutyIncidentTaskParams) *int {
 		if v == nil {
 			return nil
 		}
 		return v.EscalationLevel
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // Pagerduty incident id

@@ -2643,7 +2643,14 @@
                 "majorVersion": 3,
                 "fields": {
                     "task_params": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "status_page_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
