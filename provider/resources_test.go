@@ -93,7 +93,6 @@ func TestMuxedProviderRoutesAPIRequests(t *testing.T) {
 	require.NoError(t, err)
 	_, err = server.Configure(ctx, &pulumirpc.ConfigureRequest{
 		Args: args, AcceptSecrets: true, AcceptResources: true,
-		Variables: map[string]string{"rootly:config:apiHost": api.URL, "rootly:config:apiToken": "test-token"},
 	})
 	require.NoError(t, err)
 	for _, tc := range []struct {
