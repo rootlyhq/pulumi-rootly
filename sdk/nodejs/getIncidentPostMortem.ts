@@ -90,18 +90,18 @@ export interface GetIncidentPostMortemOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    mitigatedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    mitigatedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    resolvedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    resolvedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    startedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    status?: pulumi.Input<string | undefined>;
+    startedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    status?: pulumi.Input<string>;
 }

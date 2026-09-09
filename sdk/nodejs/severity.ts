@@ -89,8 +89,10 @@ export class Severity extends pulumi.CustomResource {
     declare public readonly slackChannels: pulumi.Output<outputs.SeveritySlackChannel[] | undefined>;
     /**
      * The slug of the severity
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Severity resource with the given unique name, arguments, and options.
@@ -124,7 +126,7 @@ export class Severity extends pulumi.CustomResource {
             resourceInputs["severity"] = args?.severity;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Severity.__pulumiType, name, resourceInputs, opts);
@@ -138,39 +140,41 @@ export interface SeverityState {
     /**
      * The hex color of the severity
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * The description of the severity
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the severity
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Emails to attach to the severity
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Position of the severity
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The severity of the severity. Value must be one of `critical`, `high`, `medium`, `low`.
      */
-    severity?: pulumi.Input<string | undefined>;
+    severity?: pulumi.Input<string>;
     /**
      * Slack Aliases associated with this severity
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.SeveritySlackAlias>[] | undefined>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.SeveritySlackAlias>[]>;
     /**
      * Slack Channels associated with this severity
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[] | undefined>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[]>;
     /**
      * The slug of the severity
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
 }
 
 /**
@@ -180,33 +184,39 @@ export interface SeverityArgs {
     /**
      * The hex color of the severity
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * The description of the severity
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the severity
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Emails to attach to the severity
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Position of the severity
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The severity of the severity. Value must be one of `critical`, `high`, `medium`, `low`.
      */
-    severity?: pulumi.Input<string | undefined>;
+    severity?: pulumi.Input<string>;
     /**
      * Slack Aliases associated with this severity
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.SeveritySlackAlias>[] | undefined>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.SeveritySlackAlias>[]>;
     /**
      * Slack Channels associated with this severity
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[] | undefined>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[]>;
+    /**
+     * The slug of the severity
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string>;
 }

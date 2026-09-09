@@ -124,27 +124,27 @@ export interface FormFieldOptionState {
     /**
      * The hex color of the form field option
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * Value must be one of true or false
      */
-    default?: pulumi.Input<boolean | undefined>;
+    default?: pulumi.Input<boolean>;
     /**
      * The ID of the parent custom field
      */
-    formFieldId?: pulumi.Input<string | undefined>;
+    formFieldId?: pulumi.Input<string>;
     /**
      * Unique ID of the form field option
      */
-    formFieldOptionId?: pulumi.Input<string | undefined>;
+    formFieldOptionId?: pulumi.Input<string>;
     /**
      * The position of the form field option
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The value of the form field option
      */
-    value?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -154,11 +154,11 @@ export interface FormFieldOptionArgs {
     /**
      * The hex color of the form field option
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * Value must be one of true or false
      */
-    default?: pulumi.Input<boolean | undefined>;
+    default?: pulumi.Input<boolean>;
     /**
      * The ID of the parent custom field
      */
@@ -166,11 +166,11 @@ export interface FormFieldOptionArgs {
     /**
      * Unique ID of the form field option
      */
-    formFieldOptionId?: pulumi.Input<string | undefined>;
+    formFieldOptionId?: pulumi.Input<string>;
     /**
      * The position of the form field option
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The value of the form field option
      */

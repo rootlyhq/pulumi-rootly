@@ -85,16 +85,16 @@ export function getTeamOutput(args?: GetTeamOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getTeam.
  */
 export interface GetTeamOutputArgs {
-    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
-    backstageId?: pulumi.Input<string | undefined>;
-    color?: pulumi.Input<string | undefined>;
-    cortexId?: pulumi.Input<string | undefined>;
+    alertBroadcastEnabled?: pulumi.Input<boolean>;
+    backstageId?: pulumi.Input<string>;
+    color?: pulumi.Input<string>;
+    cortexId?: pulumi.Input<string>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    externalId?: pulumi.Input<string | undefined>;
-    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
-    name?: pulumi.Input<string | undefined>;
-    slug?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    externalId?: pulumi.Input<string>;
+    incidentBroadcastEnabled?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string>;
+    slug?: pulumi.Input<string>;
 }

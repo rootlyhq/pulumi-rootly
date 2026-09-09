@@ -10,7 +10,7 @@ VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
-VERSION         := $(shell pulumictl get version)
+VERSION         := $(shell pulumictl get version --version-prefix 4.0.0)
 
 TESTPARALLELISM := 4
 
@@ -74,15 +74,17 @@ provider:: tfgen install_plugins # build the provider binary
 
 build_sdks:: install_plugins provider build_nodejs build_go # build all the sdks
 
-build_nodejs:: VERSION := $(shell pulumictl get version)
 build_nodejs:: install_plugins tfgen # build the node sdk
-	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
+	@set -e; lock_dir=$$(mktemp -d); \
+		trap 'rm -rf "$$lock_dir"' EXIT; \
+		if [ -f sdk/nodejs/yarn.lock ]; then cp sdk/nodejs/yarn.lock "$$lock_dir/"; fi; \
+		$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/; \
+		if [ -f "$$lock_dir/yarn.lock" ]; then cp "$$lock_dir/yarn.lock" sdk/nodejs/; fi
 	cd sdk/nodejs/ && \
         $(EXEC)yarn install && \
         $(EXEC)yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
-		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json && \
-		sed -i.bak -e "s/pulumi\/rootly/rootly\/pulumi/g" ./bin/package.json
+		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
 
 
 
@@ -164,4 +166,3 @@ release-minor: version-minor # Bump minor and push tag (triggers CI release)
 release-major: version-major # Bump major and push tag (triggers CI release)
 	@echo "✅ Tag v$$(git describe --tags --abbrev=0) pushed"
 	@echo "🚀 CI will automatically build and publish the release"
-

@@ -114,20 +114,20 @@ export interface CustomFieldOptionState {
     /**
      * The hex color of the custom*field*option
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * The ID of the parent custom field
      */
-    customFieldId?: pulumi.Input<number | undefined>;
-    default?: pulumi.Input<boolean | undefined>;
+    customFieldId?: pulumi.Input<number>;
+    default?: pulumi.Input<boolean>;
     /**
      * The position of the custom*field*option
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The value of the custom*field*option
      */
-    value?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -137,16 +137,16 @@ export interface CustomFieldOptionArgs {
     /**
      * The hex color of the custom*field*option
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * The ID of the parent custom field
      */
-    customFieldId?: pulumi.Input<number | undefined>;
-    default?: pulumi.Input<boolean | undefined>;
+    customFieldId?: pulumi.Input<number>;
+    default?: pulumi.Input<boolean>;
     /**
      * The position of the custom*field*option
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The value of the custom*field*option
      */

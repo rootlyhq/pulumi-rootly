@@ -65,11 +65,11 @@ export function getCustomFormOutput(args?: GetCustomFormOutputArgs, opts?: pulum
  * A collection of arguments for invoking getCustomForm.
  */
 export interface GetCustomFormOutputArgs {
-    command?: pulumi.Input<string | undefined>;
+    command?: pulumi.Input<string>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    name?: pulumi.Input<string | undefined>;
-    slug?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    name?: pulumi.Input<string>;
+    slug?: pulumi.Input<string>;
 }

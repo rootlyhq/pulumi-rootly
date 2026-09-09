@@ -9,7 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Import
@@ -39,6 +39,8 @@ type CustomForm struct {
 	// The name of the custom form.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -82,6 +84,8 @@ type customFormState struct {
 	// The name of the custom form.
 	Name *string `pulumi:"name"`
 	// The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -93,6 +97,8 @@ type CustomFormState struct {
 	// The name of the custom form.
 	Name pulumi.StringPtrInput
 	// The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -107,6 +113,10 @@ type customFormArgs struct {
 	Enabled     *bool   `pulumi:"enabled"`
 	// The name of the custom form.
 	Name *string `pulumi:"name"`
+	// The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a CustomForm resource.
@@ -117,6 +127,10 @@ type CustomFormArgs struct {
 	Enabled     pulumi.BoolPtrInput
 	// The name of the custom form.
 	Name pulumi.StringPtrInput
+	// The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (CustomFormArgs) ElementType() reflect.Type {
@@ -225,6 +239,8 @@ func (o CustomFormOutput) Name() pulumi.StringOutput {
 }
 
 // The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o CustomFormOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomForm) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

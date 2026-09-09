@@ -199,71 +199,71 @@ export interface AlertsSourceState {
     /**
      * List of alert fields to be added to the alert source. Note: This attribute requires the alert field feature to be enabled on your account. Contact Rootly customer support if you need assistance with this feature.
      */
-    alertSourceFieldsAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceFieldsAttribute>[] | undefined>;
+    alertSourceFieldsAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceFieldsAttribute>[]>;
     /**
      * List of rules that define the conditions under which the alert urgency will be set automatically based on the alert payload
      */
-    alertSourceUrgencyRulesAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceUrgencyRulesAttribute>[] | undefined>;
+    alertSourceUrgencyRulesAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceUrgencyRulesAttribute>[]>;
     /**
      * Note that when alert fields are enabled at the team level, alert template attributes cannot be provided. Use `alertSourceFieldsAttributes` instead.
      */
-    alertTemplateAttributes?: pulumi.Input<inputs.AlertsSourceAlertTemplateAttributes | undefined>;
+    alertTemplateAttributes?: pulumi.Input<inputs.AlertsSourceAlertTemplateAttributes>;
     /**
      * ID for the default alert urgency assigned to this alert source
      */
-    alertUrgencyId?: pulumi.Input<string | undefined>;
+    alertUrgencyId?: pulumi.Input<string>;
     /**
      * Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false
      */
-    deduplicateAlertsByKey?: pulumi.Input<boolean | undefined>;
+    deduplicateAlertsByKey?: pulumi.Input<boolean>;
     /**
      * Kind of deduplication key.. Value must be one of `payload`.
      */
-    deduplicationKeyKind?: pulumi.Input<string | undefined>;
+    deduplicationKeyKind?: pulumi.Input<string>;
     /**
      * Path to deduplication key. This is a JSON Path to extract the deduplication key from the request body.
      */
-    deduplicationKeyPath?: pulumi.Input<string | undefined>;
+    deduplicationKeyPath?: pulumi.Input<string>;
     /**
      * Regular expression to extract key from value found at key path.
      */
-    deduplicationKeyRegexp?: pulumi.Input<string | undefined>;
+    deduplicationKeyRegexp?: pulumi.Input<string>;
     /**
      * The email generated for email alert sources
      */
-    email?: pulumi.Input<string | undefined>;
+    email?: pulumi.Input<string>;
     /**
      * The name of the alert source
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * List of team IDs that will own the alert source
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Provide additional attributes for email alerts source
      */
-    resolutionRuleAttributes?: pulumi.Input<inputs.AlertsSourceResolutionRuleAttributes | undefined>;
+    resolutionRuleAttributes?: pulumi.Input<inputs.AlertsSourceResolutionRuleAttributes>;
     /**
      * The secret used to authenticate non-email alert sources
      */
-    secret?: pulumi.Input<string | undefined>;
+    secret?: pulumi.Input<string>;
     /**
      * The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
      */
-    sourceType?: pulumi.Input<string | undefined>;
+    sourceType?: pulumi.Input<string>;
     /**
      * Provide additional attributes for generic*webhook alerts source
      */
-    sourceableAttributes?: pulumi.Input<inputs.AlertsSourceSourceableAttributes | undefined>;
+    sourceableAttributes?: pulumi.Input<inputs.AlertsSourceSourceableAttributes>;
     /**
      * The status of the alert source. Value must be one of `connected`, `setupComplete`, `setupIncomplete`.
      */
-    status?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string>;
     /**
      * The webhook URL generated for non-email alert sources
      */
-    webhookEndpoint?: pulumi.Input<string | undefined>;
+    webhookEndpoint?: pulumi.Input<string>;
 }
 
 /**
@@ -273,69 +273,69 @@ export interface AlertsSourceArgs {
     /**
      * List of alert fields to be added to the alert source. Note: This attribute requires the alert field feature to be enabled on your account. Contact Rootly customer support if you need assistance with this feature.
      */
-    alertSourceFieldsAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceFieldsAttribute>[] | undefined>;
+    alertSourceFieldsAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceFieldsAttribute>[]>;
     /**
      * List of rules that define the conditions under which the alert urgency will be set automatically based on the alert payload
      */
-    alertSourceUrgencyRulesAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceUrgencyRulesAttribute>[] | undefined>;
+    alertSourceUrgencyRulesAttributes?: pulumi.Input<pulumi.Input<inputs.AlertsSourceAlertSourceUrgencyRulesAttribute>[]>;
     /**
      * Note that when alert fields are enabled at the team level, alert template attributes cannot be provided. Use `alertSourceFieldsAttributes` instead.
      */
-    alertTemplateAttributes?: pulumi.Input<inputs.AlertsSourceAlertTemplateAttributes | undefined>;
+    alertTemplateAttributes?: pulumi.Input<inputs.AlertsSourceAlertTemplateAttributes>;
     /**
      * ID for the default alert urgency assigned to this alert source
      */
-    alertUrgencyId?: pulumi.Input<string | undefined>;
+    alertUrgencyId?: pulumi.Input<string>;
     /**
      * Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false
      */
-    deduplicateAlertsByKey?: pulumi.Input<boolean | undefined>;
+    deduplicateAlertsByKey?: pulumi.Input<boolean>;
     /**
      * Kind of deduplication key.. Value must be one of `payload`.
      */
-    deduplicationKeyKind?: pulumi.Input<string | undefined>;
+    deduplicationKeyKind?: pulumi.Input<string>;
     /**
      * Path to deduplication key. This is a JSON Path to extract the deduplication key from the request body.
      */
-    deduplicationKeyPath?: pulumi.Input<string | undefined>;
+    deduplicationKeyPath?: pulumi.Input<string>;
     /**
      * Regular expression to extract key from value found at key path.
      */
-    deduplicationKeyRegexp?: pulumi.Input<string | undefined>;
+    deduplicationKeyRegexp?: pulumi.Input<string>;
     /**
      * The email generated for email alert sources
      */
-    email?: pulumi.Input<string | undefined>;
+    email?: pulumi.Input<string>;
     /**
      * The name of the alert source
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * List of team IDs that will own the alert source
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Provide additional attributes for email alerts source
      */
-    resolutionRuleAttributes?: pulumi.Input<inputs.AlertsSourceResolutionRuleAttributes | undefined>;
+    resolutionRuleAttributes?: pulumi.Input<inputs.AlertsSourceResolutionRuleAttributes>;
     /**
      * The secret used to authenticate non-email alert sources
      */
-    secret?: pulumi.Input<string | undefined>;
+    secret?: pulumi.Input<string>;
     /**
      * The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
      */
-    sourceType?: pulumi.Input<string | undefined>;
+    sourceType?: pulumi.Input<string>;
     /**
      * Provide additional attributes for generic*webhook alerts source
      */
-    sourceableAttributes?: pulumi.Input<inputs.AlertsSourceSourceableAttributes | undefined>;
+    sourceableAttributes?: pulumi.Input<inputs.AlertsSourceSourceableAttributes>;
     /**
      * The status of the alert source. Value must be one of `connected`, `setupComplete`, `setupIncomplete`.
      */
-    status?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string>;
     /**
      * The webhook URL generated for non-email alert sources
      */
-    webhookEndpoint?: pulumi.Input<string | undefined>;
+    webhookEndpoint?: pulumi.Input<string>;
 }

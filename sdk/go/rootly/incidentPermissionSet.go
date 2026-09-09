@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Import
@@ -40,6 +40,8 @@ type IncidentPermissionSet struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PublicIncidentPermissions pulumi.StringArrayOutput `pulumi:"publicIncidentPermissions"`
 	// The incident permission set slug.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -82,6 +84,8 @@ type incidentPermissionSetState struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PublicIncidentPermissions []string `pulumi:"publicIncidentPermissions"`
 	// The incident permission set slug.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -95,6 +99,8 @@ type IncidentPermissionSetState struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PublicIncidentPermissions pulumi.StringArrayInput
 	// The incident permission set slug.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -111,6 +117,10 @@ type incidentPermissionSetArgs struct {
 	PrivateIncidentPermissions []string `pulumi:"privateIncidentPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PublicIncidentPermissions []string `pulumi:"publicIncidentPermissions"`
+	// The incident permission set slug.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a IncidentPermissionSet resource.
@@ -123,6 +133,10 @@ type IncidentPermissionSetArgs struct {
 	PrivateIncidentPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PublicIncidentPermissions pulumi.StringArrayInput
+	// The incident permission set slug.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (IncidentPermissionSetArgs) ElementType() reflect.Type {
@@ -233,6 +247,8 @@ func (o IncidentPermissionSetOutput) PublicIncidentPermissions() pulumi.StringAr
 }
 
 // The incident permission set slug.
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o IncidentPermissionSetOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *IncidentPermissionSet) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

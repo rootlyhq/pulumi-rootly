@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -50,6 +50,8 @@ type Severity struct {
 	// Slack Channels associated with this severity
 	SlackChannels SeveritySlackChannelArrayOutput `pulumi:"slackChannels"`
 	// The slug of the severity
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -100,6 +102,8 @@ type severityState struct {
 	// Slack Channels associated with this severity
 	SlackChannels []SeveritySlackChannel `pulumi:"slackChannels"`
 	// The slug of the severity
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -121,6 +125,8 @@ type SeverityState struct {
 	// Slack Channels associated with this severity
 	SlackChannels SeveritySlackChannelArrayInput
 	// The slug of the severity
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -145,6 +151,10 @@ type severityArgs struct {
 	SlackAliases []SeveritySlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this severity
 	SlackChannels []SeveritySlackChannel `pulumi:"slackChannels"`
+	// The slug of the severity
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a Severity resource.
@@ -165,6 +175,10 @@ type SeverityArgs struct {
 	SlackAliases SeveritySlackAliasArrayInput
 	// Slack Channels associated with this severity
 	SlackChannels SeveritySlackChannelArrayInput
+	// The slug of the severity
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (SeverityArgs) ElementType() reflect.Type {
@@ -295,6 +309,8 @@ func (o SeverityOutput) SlackChannels() SeveritySlackChannelArrayOutput {
 }
 
 // The slug of the severity
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o SeverityOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *Severity) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

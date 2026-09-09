@@ -2,6 +2,11 @@
 
 The Rootly Pulumi Provider enables you to manage [Rootly](https://rootly.com) resources using infrastructure-as-code. Rootly is a comprehensive incident management and workflow automation platform that helps teams respond to and learn from incidents.
 
+## Version 4 upgrade
+
+See the [v4 migration guide](docs/migrating-to-v4.md) for service lookup changes,
+typed schedule rotation attributes, and the new Go SDK import path.
+
 ## Installing
 
 ### Node.js (JavaScript/TypeScript)

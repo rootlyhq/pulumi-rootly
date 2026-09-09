@@ -92,7 +92,9 @@ export class AlertGroup extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The slug of the alert group
+     * [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
     declare public readonly targets: pulumi.Output<outputs.AlertGroupTarget[] | undefined>;
@@ -151,48 +153,50 @@ export interface AlertGroupState {
     /**
      * This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[] | undefined>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[]>;
     /**
      * Grouping condition for the alert group
      */
-    conditionType?: pulumi.Input<string | undefined>;
+    conditionType?: pulumi.Input<string>;
     /**
      * The conditions for the alert group
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.AlertGroupCondition>[] | undefined>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertGroupCondition>[]>;
     /**
      * Date or deletion
      */
-    deletedAt?: pulumi.Input<string | undefined>;
+    deletedAt?: pulumi.Input<string>;
     /**
      * The description of the alert group
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
      *
      * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
-    groupByAlertTitle?: pulumi.Input<boolean | undefined>;
+    groupByAlertTitle?: pulumi.Input<boolean>;
     /**
      * [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
      *
      * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
-    groupByAlertUrgency?: pulumi.Input<boolean | undefined>;
+    groupByAlertUrgency?: pulumi.Input<boolean>;
     /**
      * The name of the alert group
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
-     * The slug of the alert group
+     * [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string | undefined>;
-    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[] | undefined>;
+    slug?: pulumi.Input<string>;
+    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[]>;
     /**
      * Time window for the alert grouping
      */
-    timeWindow?: pulumi.Input<number | undefined>;
+    timeWindow?: pulumi.Input<number>;
 }
 
 /**
@@ -202,46 +206,48 @@ export interface AlertGroupArgs {
     /**
      * This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[] | undefined>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[]>;
     /**
      * Grouping condition for the alert group
      */
-    conditionType?: pulumi.Input<string | undefined>;
+    conditionType?: pulumi.Input<string>;
     /**
      * The conditions for the alert group
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.AlertGroupCondition>[] | undefined>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertGroupCondition>[]>;
     /**
      * Date or deletion
      */
-    deletedAt?: pulumi.Input<string | undefined>;
+    deletedAt?: pulumi.Input<string>;
     /**
      * The description of the alert group
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
      *
      * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
-    groupByAlertTitle?: pulumi.Input<boolean | undefined>;
+    groupByAlertTitle?: pulumi.Input<boolean>;
     /**
      * [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
      *
      * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
-    groupByAlertUrgency?: pulumi.Input<boolean | undefined>;
+    groupByAlertUrgency?: pulumi.Input<boolean>;
     /**
      * The name of the alert group
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
-     * The slug of the alert group
+     * [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string | undefined>;
-    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[] | undefined>;
+    slug?: pulumi.Input<string>;
+    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[]>;
     /**
      * Time window for the alert grouping
      */
-    timeWindow?: pulumi.Input<number | undefined>;
+    timeWindow?: pulumi.Input<number>;
 }

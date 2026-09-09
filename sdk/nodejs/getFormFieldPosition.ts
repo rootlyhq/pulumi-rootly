@@ -43,6 +43,6 @@ export function getFormFieldPositionOutput(args: GetFormFieldPositionOutputArgs,
  * A collection of arguments for invoking getFormFieldPosition.
  */
 export interface GetFormFieldPositionOutputArgs {
-    form?: pulumi.Input<string | undefined>;
+    form?: pulumi.Input<string>;
     formFieldId: pulumi.Input<string>;
 }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupIncidentSubStatus(ctx *pulumi.Context, args *LookupIncidentSubStatusArgs, opts ...pulumi.InvokeOption) (*LookupIncidentSubStatusResult, error) {

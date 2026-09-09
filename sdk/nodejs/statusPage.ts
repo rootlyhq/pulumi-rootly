@@ -93,7 +93,7 @@ export class StatusPage extends pulumi.CustomResource {
     /**
      * Functionalities attached to the status page
      */
-    declare public readonly functionalityIds: pulumi.Output<string[] | undefined>;
+    declare public readonly functionalityIds: pulumi.Output<string[]>;
     /**
      * Google Analytics tracking ID
      */
@@ -141,7 +141,7 @@ export class StatusPage extends pulumi.CustomResource {
     /**
      * Services attached to the status page
      */
-    declare public readonly serviceIds: pulumi.Output<string[] | undefined>;
+    declare public readonly serviceIds: pulumi.Output<string[]>;
     /**
      * Show uptime. Value must be one of true or false
      */
@@ -152,6 +152,8 @@ export class StatusPage extends pulumi.CustomResource {
     declare public readonly showUptimeLastDays: pulumi.Output<number>;
     /**
      * The slug of the status page
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
     /**
@@ -274,128 +276,130 @@ export interface StatusPageState {
     /**
      * Allow search engines to include your public status page in search results. Value must be one of true or false
      */
-    allowSearchEngineIndex?: pulumi.Input<boolean | undefined>;
+    allowSearchEngineIndex?: pulumi.Input<boolean>;
     /**
      * Enable authentication (deprecated - use authenticationMethod instead). Value must be one of true or false
      */
-    authenticationEnabled?: pulumi.Input<boolean | undefined>;
+    authenticationEnabled?: pulumi.Input<boolean>;
     /**
      * Authentication method. Value must be one of `none`, `password`, `saml`.
      */
-    authenticationMethod?: pulumi.Input<string | undefined>;
+    authenticationMethod?: pulumi.Input<string>;
     /**
      * Authentication password
      */
-    authenticationPassword?: pulumi.Input<string | undefined>;
+    authenticationPassword?: pulumi.Input<string>;
     /**
      * CNAME records mapping external domain names to their DNS target values. Populated asynchronously after setting external*domain*names.
      */
-    cnameRecords?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    cnameRecords?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The description of the status page
      */
-    description?: pulumi.Input<string | undefined>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * External domain names attached to the status page
      */
-    externalDomainNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    externalDomainNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Message showing when at least one component is not operational
      */
-    failureMessage?: pulumi.Input<string | undefined>;
+    failureMessage?: pulumi.Input<string>;
     /**
      * The color of the footer. Eg. "#1F2F41"
      */
-    footerColor?: pulumi.Input<string | undefined>;
+    footerColor?: pulumi.Input<string>;
     /**
      * Functionalities attached to the status page
      */
-    functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Google Analytics tracking ID
      */
-    gaTrackingId?: pulumi.Input<string | undefined>;
+    gaTrackingId?: pulumi.Input<string>;
     /**
      * The color of the header. Eg. "#0061F2"
      */
-    headerColor?: pulumi.Input<string | undefined>;
+    headerColor?: pulumi.Input<string>;
     /**
      * Make the status page accessible to the public. Value must be one of true or false
      */
-    public?: pulumi.Input<boolean | undefined>;
+    public?: pulumi.Input<boolean>;
     /**
      * The public description of the status page
      */
-    publicDescription?: pulumi.Input<string | undefined>;
+    publicDescription?: pulumi.Input<string>;
     /**
      * The public title of the status page
      */
-    publicTitle?: pulumi.Input<string | undefined>;
+    publicTitle?: pulumi.Input<string>;
     /**
      * SAML IdP certificate
      */
-    samlIdpCert?: pulumi.Input<string | undefined>;
+    samlIdpCert?: pulumi.Input<string>;
     /**
      * SAML IdP certificate fingerprint
      */
-    samlIdpCertFingerprint?: pulumi.Input<string | undefined>;
+    samlIdpCertFingerprint?: pulumi.Input<string>;
     /**
      * SAML IdP SLO service URL
      */
-    samlIdpSloServiceUrl?: pulumi.Input<string | undefined>;
+    samlIdpSloServiceUrl?: pulumi.Input<string>;
     /**
      * SAML IdP SSO service URL
      */
-    samlIdpSsoServiceUrl?: pulumi.Input<string | undefined>;
+    samlIdpSsoServiceUrl?: pulumi.Input<string>;
     /**
      * SAML name identifier format. Value must be one of `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`, `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`, `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      */
-    samlNameIdentifierFormat?: pulumi.Input<string | undefined>;
+    samlNameIdentifierFormat?: pulumi.Input<string>;
     /**
      * Order of sections on the status page. Value must be a list of `maintenance`, `systemStatus`, `incidents`.
      */
-    sectionOrders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sectionOrders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Services attached to the status page
      */
-    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Show uptime. Value must be one of true or false
      */
-    showUptime?: pulumi.Input<boolean | undefined>;
+    showUptime?: pulumi.Input<boolean>;
     /**
      * Show uptime over x days. Value must be one of `30`, `60`, `90`.
      */
-    showUptimeLastDays?: pulumi.Input<number | undefined>;
+    showUptimeLastDays?: pulumi.Input<number>;
     /**
      * The slug of the status page
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
     /**
      * Message showing when all components are operational
      */
-    successMessage?: pulumi.Input<string | undefined>;
+    successMessage?: pulumi.Input<string>;
     /**
      * A valid IANA time zone name.
      */
-    timeZone?: pulumi.Input<string | undefined>;
+    timeZone?: pulumi.Input<string>;
     /**
      * The title of the status page
      */
-    title?: pulumi.Input<string | undefined>;
+    title?: pulumi.Input<string>;
     /**
      * Website Privacy URL
      */
-    websitePrivacyUrl?: pulumi.Input<string | undefined>;
+    websitePrivacyUrl?: pulumi.Input<string>;
     /**
      * Website Support URL
      */
-    websiteSupportUrl?: pulumi.Input<string | undefined>;
+    websiteSupportUrl?: pulumi.Input<string>;
     /**
      * Website URL
      */
-    websiteUrl?: pulumi.Input<string | undefined>;
+    websiteUrl?: pulumi.Input<string>;
 }
 
 /**
@@ -405,108 +409,110 @@ export interface StatusPageArgs {
     /**
      * Allow search engines to include your public status page in search results. Value must be one of true or false
      */
-    allowSearchEngineIndex?: pulumi.Input<boolean | undefined>;
+    allowSearchEngineIndex?: pulumi.Input<boolean>;
     /**
      * Enable authentication (deprecated - use authenticationMethod instead). Value must be one of true or false
      */
-    authenticationEnabled?: pulumi.Input<boolean | undefined>;
+    authenticationEnabled?: pulumi.Input<boolean>;
     /**
      * Authentication method. Value must be one of `none`, `password`, `saml`.
      */
-    authenticationMethod?: pulumi.Input<string | undefined>;
+    authenticationMethod?: pulumi.Input<string>;
     /**
      * Authentication password
      */
-    authenticationPassword?: pulumi.Input<string | undefined>;
+    authenticationPassword?: pulumi.Input<string>;
     /**
      * The description of the status page
      */
-    description?: pulumi.Input<string | undefined>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * External domain names attached to the status page
      */
-    externalDomainNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    externalDomainNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Message showing when at least one component is not operational
      */
-    failureMessage?: pulumi.Input<string | undefined>;
+    failureMessage?: pulumi.Input<string>;
     /**
      * The color of the footer. Eg. "#1F2F41"
      */
-    footerColor?: pulumi.Input<string | undefined>;
+    footerColor?: pulumi.Input<string>;
     /**
      * Functionalities attached to the status page
      */
-    functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    functionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Google Analytics tracking ID
      */
-    gaTrackingId?: pulumi.Input<string | undefined>;
+    gaTrackingId?: pulumi.Input<string>;
     /**
      * The color of the header. Eg. "#0061F2"
      */
-    headerColor?: pulumi.Input<string | undefined>;
+    headerColor?: pulumi.Input<string>;
     /**
      * Make the status page accessible to the public. Value must be one of true or false
      */
-    public?: pulumi.Input<boolean | undefined>;
+    public?: pulumi.Input<boolean>;
     /**
      * The public description of the status page
      */
-    publicDescription?: pulumi.Input<string | undefined>;
+    publicDescription?: pulumi.Input<string>;
     /**
      * The public title of the status page
      */
-    publicTitle?: pulumi.Input<string | undefined>;
+    publicTitle?: pulumi.Input<string>;
     /**
      * SAML IdP certificate
      */
-    samlIdpCert?: pulumi.Input<string | undefined>;
+    samlIdpCert?: pulumi.Input<string>;
     /**
      * SAML IdP certificate fingerprint
      */
-    samlIdpCertFingerprint?: pulumi.Input<string | undefined>;
+    samlIdpCertFingerprint?: pulumi.Input<string>;
     /**
      * SAML IdP SLO service URL
      */
-    samlIdpSloServiceUrl?: pulumi.Input<string | undefined>;
+    samlIdpSloServiceUrl?: pulumi.Input<string>;
     /**
      * SAML IdP SSO service URL
      */
-    samlIdpSsoServiceUrl?: pulumi.Input<string | undefined>;
+    samlIdpSsoServiceUrl?: pulumi.Input<string>;
     /**
      * SAML name identifier format. Value must be one of `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`, `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`, `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`, `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
      */
-    samlNameIdentifierFormat?: pulumi.Input<string | undefined>;
+    samlNameIdentifierFormat?: pulumi.Input<string>;
     /**
      * Order of sections on the status page. Value must be a list of `maintenance`, `systemStatus`, `incidents`.
      */
-    sectionOrders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sectionOrders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Services attached to the status page
      */
-    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Show uptime. Value must be one of true or false
      */
-    showUptime?: pulumi.Input<boolean | undefined>;
+    showUptime?: pulumi.Input<boolean>;
     /**
      * Show uptime over x days. Value must be one of `30`, `60`, `90`.
      */
-    showUptimeLastDays?: pulumi.Input<number | undefined>;
+    showUptimeLastDays?: pulumi.Input<number>;
     /**
      * The slug of the status page
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
     /**
      * Message showing when all components are operational
      */
-    successMessage?: pulumi.Input<string | undefined>;
+    successMessage?: pulumi.Input<string>;
     /**
      * A valid IANA time zone name.
      */
-    timeZone?: pulumi.Input<string | undefined>;
+    timeZone?: pulumi.Input<string>;
     /**
      * The title of the status page
      */
@@ -514,13 +520,13 @@ export interface StatusPageArgs {
     /**
      * Website Privacy URL
      */
-    websitePrivacyUrl?: pulumi.Input<string | undefined>;
+    websitePrivacyUrl?: pulumi.Input<string>;
     /**
      * Website Support URL
      */
-    websiteSupportUrl?: pulumi.Input<string | undefined>;
+    websiteSupportUrl?: pulumi.Input<string>;
     /**
      * Website URL
      */
-    websiteUrl?: pulumi.Input<string | undefined>;
+    websiteUrl?: pulumi.Input<string>;
 }

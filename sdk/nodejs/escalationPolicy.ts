@@ -126,68 +126,68 @@ export class EscalationPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EscalationPolicy resources.
  */
 export interface EscalationPolicyState {
-    businessHours?: pulumi.Input<inputs.EscalationPolicyBusinessHours | undefined>;
+    businessHours?: pulumi.Input<inputs.EscalationPolicyBusinessHours>;
     /**
      * User who created the escalation policy
      */
-    createdByUserId?: pulumi.Input<number | undefined>;
+    createdByUserId?: pulumi.Input<number>;
     /**
      * The description of the escalation policy
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Associated groups (alerting the group will trigger escalation policy)
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User who updated the escalation policy
      */
-    lastUpdatedByUserId?: pulumi.Input<number | undefined>;
+    lastUpdatedByUserId?: pulumi.Input<number>;
     /**
      * The name of the escalation policy
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The number of times this policy will be executed until someone acknowledges the alert
      */
-    repeatCount?: pulumi.Input<number | undefined>;
+    repeatCount?: pulumi.Input<number>;
     /**
      * Associated services (alerting the service will trigger escalation policy)
      */
-    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
  * The set of arguments for constructing a EscalationPolicy resource.
  */
 export interface EscalationPolicyArgs {
-    businessHours?: pulumi.Input<inputs.EscalationPolicyBusinessHours | undefined>;
+    businessHours?: pulumi.Input<inputs.EscalationPolicyBusinessHours>;
     /**
      * User who created the escalation policy
      */
-    createdByUserId?: pulumi.Input<number | undefined>;
+    createdByUserId?: pulumi.Input<number>;
     /**
      * The description of the escalation policy
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Associated groups (alerting the group will trigger escalation policy)
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User who updated the escalation policy
      */
-    lastUpdatedByUserId?: pulumi.Input<number | undefined>;
+    lastUpdatedByUserId?: pulumi.Input<number>;
     /**
      * The name of the escalation policy
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The number of times this policy will be executed until someone acknowledges the alert
      */
-    repeatCount?: pulumi.Input<number | undefined>;
+    repeatCount?: pulumi.Input<number>;
     /**
      * Associated services (alerting the service will trigger escalation policy)
      */
-    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

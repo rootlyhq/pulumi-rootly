@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -65,6 +65,8 @@ type WorkflowIncident struct {
 	ServiceIds  pulumi.StringArrayOutput `pulumi:"serviceIds"`
 	SeverityIds pulumi.StringArrayOutput `pulumi:"severityIds"`
 	// The slug of the workflow
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug          pulumi.StringOutput                 `pulumi:"slug"`
 	SubStatusIds  pulumi.StringArrayOutput            `pulumi:"subStatusIds"`
 	TriggerParams WorkflowIncidentTriggerParamsOutput `pulumi:"triggerParams"`
@@ -136,6 +138,8 @@ type workflowIncidentState struct {
 	ServiceIds  []string `pulumi:"serviceIds"`
 	SeverityIds []string `pulumi:"severityIds"`
 	// The slug of the workflow
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug          *string                        `pulumi:"slug"`
 	SubStatusIds  []string                       `pulumi:"subStatusIds"`
 	TriggerParams *WorkflowIncidentTriggerParams `pulumi:"triggerParams"`
@@ -178,6 +182,8 @@ type WorkflowIncidentState struct {
 	ServiceIds  pulumi.StringArrayInput
 	SeverityIds pulumi.StringArrayInput
 	// The slug of the workflow
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug          pulumi.StringPtrInput
 	SubStatusIds  pulumi.StringArrayInput
 	TriggerParams WorkflowIncidentTriggerParamsPtrInput
@@ -224,6 +230,8 @@ type workflowIncidentArgs struct {
 	ServiceIds  []string `pulumi:"serviceIds"`
 	SeverityIds []string `pulumi:"severityIds"`
 	// The slug of the workflow
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug          *string                        `pulumi:"slug"`
 	SubStatusIds  []string                       `pulumi:"subStatusIds"`
 	TriggerParams *WorkflowIncidentTriggerParams `pulumi:"triggerParams"`
@@ -267,6 +275,8 @@ type WorkflowIncidentArgs struct {
 	ServiceIds  pulumi.StringArrayInput
 	SeverityIds pulumi.StringArrayInput
 	// The slug of the workflow
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug          pulumi.StringPtrInput
 	SubStatusIds  pulumi.StringArrayInput
 	TriggerParams WorkflowIncidentTriggerParamsPtrInput
@@ -455,6 +465,8 @@ func (o WorkflowIncidentOutput) SeverityIds() pulumi.StringArrayOutput {
 }
 
 // The slug of the workflow
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o WorkflowIncidentOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowIncident) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

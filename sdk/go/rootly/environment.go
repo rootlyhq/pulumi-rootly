@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -37,6 +37,10 @@ type Environment struct {
 	Color pulumi.StringOutput `pulumi:"color"`
 	// The description of the environment
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The external id associated to this environment
+	ExternalId pulumi.StringOutput `pulumi:"externalId"`
+	// How this environment is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy pulumi.StringOutput `pulumi:"managedBy"`
 	// The name of the environment
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Emails attached to the environment
@@ -45,11 +49,15 @@ type Environment struct {
 	Position pulumi.IntOutput `pulumi:"position"`
 	// Array of property values for this environment.
 	Properties EnvironmentPropertyArrayOutput `pulumi:"properties"`
+	// The status page description of the environment
+	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
 	// Slack Aliases associated with this environment
 	SlackAliases EnvironmentSlackAliasArrayOutput `pulumi:"slackAliases"`
 	// Slack Channels associated with this environment
 	SlackChannels EnvironmentSlackChannelArrayOutput `pulumi:"slackChannels"`
 	// The slug of the environment
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -87,6 +95,10 @@ type environmentState struct {
 	Color *string `pulumi:"color"`
 	// The description of the environment
 	Description *string `pulumi:"description"`
+	// The external id associated to this environment
+	ExternalId *string `pulumi:"externalId"`
+	// How this environment is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy *string `pulumi:"managedBy"`
 	// The name of the environment
 	Name *string `pulumi:"name"`
 	// Emails attached to the environment
@@ -95,11 +107,15 @@ type environmentState struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this environment.
 	Properties []EnvironmentProperty `pulumi:"properties"`
+	// The status page description of the environment
+	PublicDescription *string `pulumi:"publicDescription"`
 	// Slack Aliases associated with this environment
 	SlackAliases []EnvironmentSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this environment
 	SlackChannels []EnvironmentSlackChannel `pulumi:"slackChannels"`
 	// The slug of the environment
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -108,6 +124,10 @@ type EnvironmentState struct {
 	Color pulumi.StringPtrInput
 	// The description of the environment
 	Description pulumi.StringPtrInput
+	// The external id associated to this environment
+	ExternalId pulumi.StringPtrInput
+	// How this environment is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy pulumi.StringPtrInput
 	// The name of the environment
 	Name pulumi.StringPtrInput
 	// Emails attached to the environment
@@ -116,11 +136,15 @@ type EnvironmentState struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this environment.
 	Properties EnvironmentPropertyArrayInput
+	// The status page description of the environment
+	PublicDescription pulumi.StringPtrInput
 	// Slack Aliases associated with this environment
 	SlackAliases EnvironmentSlackAliasArrayInput
 	// Slack Channels associated with this environment
 	SlackChannels EnvironmentSlackChannelArrayInput
 	// The slug of the environment
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -133,6 +157,8 @@ type environmentArgs struct {
 	Color *string `pulumi:"color"`
 	// The description of the environment
 	Description *string `pulumi:"description"`
+	// The external id associated to this environment
+	ExternalId *string `pulumi:"externalId"`
 	// The name of the environment
 	Name *string `pulumi:"name"`
 	// Emails attached to the environment
@@ -141,10 +167,16 @@ type environmentArgs struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this environment.
 	Properties []EnvironmentProperty `pulumi:"properties"`
+	// The status page description of the environment
+	PublicDescription *string `pulumi:"publicDescription"`
 	// Slack Aliases associated with this environment
 	SlackAliases []EnvironmentSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this environment
 	SlackChannels []EnvironmentSlackChannel `pulumi:"slackChannels"`
+	// The slug of the environment
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a Environment resource.
@@ -153,6 +185,8 @@ type EnvironmentArgs struct {
 	Color pulumi.StringPtrInput
 	// The description of the environment
 	Description pulumi.StringPtrInput
+	// The external id associated to this environment
+	ExternalId pulumi.StringPtrInput
 	// The name of the environment
 	Name pulumi.StringPtrInput
 	// Emails attached to the environment
@@ -161,10 +195,16 @@ type EnvironmentArgs struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this environment.
 	Properties EnvironmentPropertyArrayInput
+	// The status page description of the environment
+	PublicDescription pulumi.StringPtrInput
 	// Slack Aliases associated with this environment
 	SlackAliases EnvironmentSlackAliasArrayInput
 	// Slack Channels associated with this environment
 	SlackChannels EnvironmentSlackChannelArrayInput
+	// The slug of the environment
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {
@@ -264,6 +304,16 @@ func (o EnvironmentOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// The external id associated to this environment
+func (o EnvironmentOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// How this environment is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+func (o EnvironmentOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ManagedBy }).(pulumi.StringOutput)
+}
+
 // The name of the environment
 func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -284,6 +334,11 @@ func (o EnvironmentOutput) Properties() EnvironmentPropertyArrayOutput {
 	return o.ApplyT(func(v *Environment) EnvironmentPropertyArrayOutput { return v.Properties }).(EnvironmentPropertyArrayOutput)
 }
 
+// The status page description of the environment
+func (o EnvironmentOutput) PublicDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.PublicDescription }).(pulumi.StringOutput)
+}
+
 // Slack Aliases associated with this environment
 func (o EnvironmentOutput) SlackAliases() EnvironmentSlackAliasArrayOutput {
 	return o.ApplyT(func(v *Environment) EnvironmentSlackAliasArrayOutput { return v.SlackAliases }).(EnvironmentSlackAliasArrayOutput)
@@ -295,6 +350,8 @@ func (o EnvironmentOutput) SlackChannels() EnvironmentSlackChannelArrayOutput {
 }
 
 // The slug of the environment
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o EnvironmentOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

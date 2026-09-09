@@ -133,35 +133,35 @@ export interface AlertUrgencyState {
     /**
      * Unique ID of the alert urgency
      */
-    alertUrgencyId?: pulumi.Input<string | undefined>;
+    alertUrgencyId?: pulumi.Input<string>;
     /**
      * The color associated with this urgency level
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * Date of deletion
      */
-    deletedAt?: pulumi.Input<string | undefined>;
+    deletedAt?: pulumi.Input<string>;
     /**
      * The description of the alert urgency
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the alert urgency
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Position of the alert urgency
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The ID of the team this urgency belongs to
      */
-    teamId?: pulumi.Input<number | undefined>;
+    teamId?: pulumi.Input<number>;
     /**
      * The urgency level
      */
-    urgency?: pulumi.Input<string | undefined>;
+    urgency?: pulumi.Input<string>;
 }
 
 /**
@@ -171,15 +171,15 @@ export interface AlertUrgencyArgs {
     /**
      * Unique ID of the alert urgency
      */
-    alertUrgencyId?: pulumi.Input<string | undefined>;
+    alertUrgencyId?: pulumi.Input<string>;
     /**
      * The color associated with this urgency level
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * Date of deletion
      */
-    deletedAt?: pulumi.Input<string | undefined>;
+    deletedAt?: pulumi.Input<string>;
     /**
      * The description of the alert urgency
      */
@@ -187,17 +187,17 @@ export interface AlertUrgencyArgs {
     /**
      * The name of the alert urgency
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Position of the alert urgency
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The ID of the team this urgency belongs to
      */
-    teamId?: pulumi.Input<number | undefined>;
+    teamId?: pulumi.Input<number>;
     /**
      * The urgency level
      */
-    urgency?: pulumi.Input<string | undefined>;
+    urgency?: pulumi.Input<string>;
 }

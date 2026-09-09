@@ -147,6 +147,9 @@ export class Team extends pulumi.CustomResource {
      * Slack Channels associated with this team
      */
     declare public readonly slackChannels: pulumi.Output<outputs.TeamSlackChannel[] | undefined>;
+    /**
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+     */
     declare public readonly slug: pulumi.Output<string>;
     /**
      * The user ids of the members of this team.
@@ -237,104 +240,107 @@ export interface TeamState {
     /**
      * The user ids of the admins of this team. These users must also be present in userIds attribute.
      */
-    adminIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    adminIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
      */
-    alertBroadcastChannel?: pulumi.Input<inputs.TeamAlertBroadcastChannel | undefined>;
+    alertBroadcastChannel?: pulumi.Input<inputs.TeamAlertBroadcastChannel>;
     /**
      * Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
      */
-    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    alertBroadcastEnabled?: pulumi.Input<boolean>;
     /**
      * The alert urgency id of the team
      */
-    alertUrgencyId?: pulumi.Input<string | undefined>;
+    alertUrgencyId?: pulumi.Input<string>;
     /**
      * Auto add members to incident channel when team is attached. Value must be one of true or false
      */
-    autoAddMembersWhenAttached?: pulumi.Input<boolean | undefined>;
+    autoAddMembersWhenAttached?: pulumi.Input<boolean>;
     /**
      * The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
      */
-    backstageId?: pulumi.Input<string | undefined>;
+    backstageId?: pulumi.Input<string>;
     /**
      * The hex color of the team
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * The Cortex group id associated to this team
      */
-    cortexId?: pulumi.Input<string | undefined>;
+    cortexId?: pulumi.Input<string>;
     /**
      * The description of the team
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The external id associated to this team
      */
-    externalId?: pulumi.Input<string | undefined>;
+    externalId?: pulumi.Input<string>;
     /**
      * Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
      */
-    incidentBroadcastChannel?: pulumi.Input<inputs.TeamIncidentBroadcastChannel | undefined>;
+    incidentBroadcastChannel?: pulumi.Input<inputs.TeamIncidentBroadcastChannel>;
     /**
      * Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
      */
-    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    incidentBroadcastEnabled?: pulumi.Input<boolean>;
     /**
      * The name of the team
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Emails to attach to the team
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Opsgenie group id associated to this team
      */
-    opsgenieId?: pulumi.Input<string | undefined>;
+    opsgenieId?: pulumi.Input<string>;
     /**
      * The PagerDuty group id associated to this team
      */
-    pagerdutyId?: pulumi.Input<string | undefined>;
+    pagerdutyId?: pulumi.Input<string>;
     /**
      * The PagerDuty service id associated to this team
      */
-    pagerdutyServiceId?: pulumi.Input<string | undefined>;
+    pagerdutyServiceId?: pulumi.Input<string>;
     /**
      * The PagerTree group id associated to this team
      */
-    pagertreeId?: pulumi.Input<string | undefined>;
+    pagertreeId?: pulumi.Input<string>;
     /**
      * Position of the team
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * Array of property values for this team.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.TeamProperty>[] | undefined>;
+    properties?: pulumi.Input<pulumi.Input<inputs.TeamProperty>[]>;
     /**
      * The Service Now CI sys id associated to this team
      */
-    serviceNowCiSysId?: pulumi.Input<string | undefined>;
+    serviceNowCiSysId?: pulumi.Input<string>;
     /**
      * Slack Aliases associated with this team
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.TeamSlackAlias>[] | undefined>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.TeamSlackAlias>[]>;
     /**
      * Slack Channels associated with this team
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[] | undefined>;
-    slug?: pulumi.Input<string | undefined>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[]>;
+    /**
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+     */
+    slug?: pulumi.Input<string>;
     /**
      * The user ids of the members of this team.
      */
-    userIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    userIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The VictorOps group id associated to this team
      */
-    victorOpsId?: pulumi.Input<string | undefined>;
+    victorOpsId?: pulumi.Input<string>;
 }
 
 /**
@@ -344,102 +350,105 @@ export interface TeamArgs {
     /**
      * The user ids of the admins of this team. These users must also be present in userIds attribute.
      */
-    adminIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    adminIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
      */
-    alertBroadcastChannel?: pulumi.Input<inputs.TeamAlertBroadcastChannel | undefined>;
+    alertBroadcastChannel?: pulumi.Input<inputs.TeamAlertBroadcastChannel>;
     /**
      * Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
      */
-    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    alertBroadcastEnabled?: pulumi.Input<boolean>;
     /**
      * The alert urgency id of the team
      */
-    alertUrgencyId?: pulumi.Input<string | undefined>;
+    alertUrgencyId?: pulumi.Input<string>;
     /**
      * Auto add members to incident channel when team is attached. Value must be one of true or false
      */
-    autoAddMembersWhenAttached?: pulumi.Input<boolean | undefined>;
+    autoAddMembersWhenAttached?: pulumi.Input<boolean>;
     /**
      * The Backstage entity id associated to this team. eg: :namespace/:kind/:entity_name
      */
-    backstageId?: pulumi.Input<string | undefined>;
+    backstageId?: pulumi.Input<string>;
     /**
      * The hex color of the team
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * The Cortex group id associated to this team
      */
-    cortexId?: pulumi.Input<string | undefined>;
+    cortexId?: pulumi.Input<string>;
     /**
      * The description of the team
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The external id associated to this team
      */
-    externalId?: pulumi.Input<string | undefined>;
+    externalId?: pulumi.Input<string>;
     /**
      * Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
      */
-    incidentBroadcastChannel?: pulumi.Input<inputs.TeamIncidentBroadcastChannel | undefined>;
+    incidentBroadcastChannel?: pulumi.Input<inputs.TeamIncidentBroadcastChannel>;
     /**
      * Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
      */
-    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    incidentBroadcastEnabled?: pulumi.Input<boolean>;
     /**
      * The name of the team
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Emails to attach to the team
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Opsgenie group id associated to this team
      */
-    opsgenieId?: pulumi.Input<string | undefined>;
+    opsgenieId?: pulumi.Input<string>;
     /**
      * The PagerDuty group id associated to this team
      */
-    pagerdutyId?: pulumi.Input<string | undefined>;
+    pagerdutyId?: pulumi.Input<string>;
     /**
      * The PagerDuty service id associated to this team
      */
-    pagerdutyServiceId?: pulumi.Input<string | undefined>;
+    pagerdutyServiceId?: pulumi.Input<string>;
     /**
      * The PagerTree group id associated to this team
      */
-    pagertreeId?: pulumi.Input<string | undefined>;
+    pagertreeId?: pulumi.Input<string>;
     /**
      * Position of the team
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * Array of property values for this team.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.TeamProperty>[] | undefined>;
+    properties?: pulumi.Input<pulumi.Input<inputs.TeamProperty>[]>;
     /**
      * The Service Now CI sys id associated to this team
      */
-    serviceNowCiSysId?: pulumi.Input<string | undefined>;
+    serviceNowCiSysId?: pulumi.Input<string>;
     /**
      * Slack Aliases associated with this team
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.TeamSlackAlias>[] | undefined>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.TeamSlackAlias>[]>;
     /**
      * Slack Channels associated with this team
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[] | undefined>;
-    slug?: pulumi.Input<string | undefined>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[]>;
+    /**
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+     */
+    slug?: pulumi.Input<string>;
     /**
      * The user ids of the members of this team.
      */
-    userIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    userIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The VictorOps group id associated to this team
      */
-    victorOpsId?: pulumi.Input<string | undefined>;
+    victorOpsId?: pulumi.Input<string>;
 }

@@ -114,23 +114,23 @@ export interface DashboardState {
     /**
      * The name of the dashboard
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Whether the dashboard is owned by organization or user.
      */
-    owner?: pulumi.Input<string | undefined>;
+    owner?: pulumi.Input<string>;
     /**
      * Whether the dashboard is public
      */
-    public?: pulumi.Input<boolean | undefined>;
+    public?: pulumi.Input<boolean>;
     /**
      * The slug of the dashboard
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
     /**
      * The userId of the dashboard, for dashboards with owner == user
      */
-    userId?: pulumi.Input<number | undefined>;
+    userId?: pulumi.Input<number>;
 }
 
 /**
@@ -140,13 +140,13 @@ export interface DashboardArgs {
     /**
      * The name of the dashboard
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Whether the dashboard is owned by organization or user.
      */
-    owner?: pulumi.Input<string | undefined>;
+    owner?: pulumi.Input<string>;
     /**
      * Whether the dashboard is public
      */
-    public?: pulumi.Input<boolean | undefined>;
+    public?: pulumi.Input<boolean>;
 }

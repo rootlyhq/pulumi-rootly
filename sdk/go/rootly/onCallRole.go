@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -81,7 +81,9 @@ type OnCallRole struct {
 	SchedulesPermissions pulumi.StringArrayOutput `pulumi:"schedulesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	ServicesPermissions pulumi.StringArrayOutput `pulumi:"servicesPermissions"`
-	// The role slug.
+	// [DEPRECATED] The role slug. Derived from `name`; any configured value is ignored.
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// The kind of role
 	SystemRole pulumi.StringPtrOutput `pulumi:"systemRole"`
@@ -163,7 +165,9 @@ type onCallRoleState struct {
 	SchedulesPermissions []string `pulumi:"schedulesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	ServicesPermissions []string `pulumi:"servicesPermissions"`
-	// The role slug.
+	// [DEPRECATED] The role slug. Derived from `name`; any configured value is ignored.
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 	// The kind of role
 	SystemRole *string `pulumi:"systemRole"`
@@ -216,7 +220,9 @@ type OnCallRoleState struct {
 	SchedulesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	ServicesPermissions pulumi.StringArrayInput
-	// The role slug.
+	// [DEPRECATED] The role slug. Derived from `name`; any configured value is ignored.
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 	// The kind of role
 	SystemRole pulumi.StringPtrInput
@@ -273,7 +279,9 @@ type onCallRoleArgs struct {
 	SchedulesPermissions []string `pulumi:"schedulesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	ServicesPermissions []string `pulumi:"servicesPermissions"`
-	// The role slug.
+	// [DEPRECATED] The role slug. Derived from `name`; any configured value is ignored.
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 	// The kind of role
 	SystemRole *string `pulumi:"systemRole"`
@@ -327,7 +335,9 @@ type OnCallRoleArgs struct {
 	SchedulesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	ServicesPermissions pulumi.StringArrayInput
-	// The role slug.
+	// [DEPRECATED] The role slug. Derived from `name`; any configured value is ignored.
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 	// The kind of role
 	SystemRole pulumi.StringPtrInput
@@ -529,7 +539,9 @@ func (o OnCallRoleOutput) ServicesPermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OnCallRole) pulumi.StringArrayOutput { return v.ServicesPermissions }).(pulumi.StringArrayOutput)
 }
 
-// The role slug.
+// [DEPRECATED] The role slug. Derived from `name`; any configured value is ignored.
+//
+// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 func (o OnCallRoleOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *OnCallRole) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

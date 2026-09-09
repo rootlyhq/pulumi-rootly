@@ -80,6 +80,8 @@ export class CustomField extends pulumi.CustomResource {
     declare public readonly showns: pulumi.Output<string[]>;
     /**
      * The slug of the custom_field
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
 
@@ -132,30 +134,32 @@ export interface CustomFieldState {
     /**
      * The default value for text field kinds.
      */
-    default?: pulumi.Input<string | undefined>;
+    default?: pulumi.Input<string>;
     /**
      * The description of the custom_field
      */
-    description?: pulumi.Input<string | undefined>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The kind of the custom_field
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the custom_field
      */
-    label?: pulumi.Input<string | undefined>;
+    label?: pulumi.Input<string>;
     /**
      * The position of the custom_field
      */
-    position?: pulumi.Input<number | undefined>;
-    requireds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    showns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    position?: pulumi.Input<number>;
+    requireds?: pulumi.Input<pulumi.Input<string>[]>;
+    showns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The slug of the custom_field
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
 }
 
 /**
@@ -165,16 +169,16 @@ export interface CustomFieldArgs {
     /**
      * The default value for text field kinds.
      */
-    default?: pulumi.Input<string | undefined>;
+    default?: pulumi.Input<string>;
     /**
      * The description of the custom_field
      */
-    description?: pulumi.Input<string | undefined>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The kind of the custom_field
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the custom_field
      */
@@ -182,11 +186,13 @@ export interface CustomFieldArgs {
     /**
      * The position of the custom_field
      */
-    position?: pulumi.Input<number | undefined>;
-    requireds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    showns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    position?: pulumi.Input<number>;
+    requireds?: pulumi.Input<pulumi.Input<string>[]>;
+    showns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The slug of the custom_field
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
 }

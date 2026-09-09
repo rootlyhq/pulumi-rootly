@@ -133,35 +133,35 @@ export interface ApiKeyState {
     /**
      * A description of the API key
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Expiration date
      */
-    expiresAt?: pulumi.Input<string | undefined>;
+    expiresAt?: pulumi.Input<string>;
     /**
      * Grace period end date
      */
-    gracePeriodEndsAt?: pulumi.Input<string | undefined>;
+    gracePeriodEndsAt?: pulumi.Input<string>;
     /**
      * The kind of the API key. Value must be one of `personal`, `team`, `organization`.
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * Date of last use
      */
-    lastUsedAt?: pulumi.Input<string | undefined>;
+    lastUsedAt?: pulumi.Input<string>;
     /**
      * The name of the API key
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The on-call role ID
      */
-    onCallRoleId?: pulumi.Input<string | undefined>;
+    onCallRoleId?: pulumi.Input<string>;
     /**
      * The role ID
      */
-    roleId?: pulumi.Input<string | undefined>;
+    roleId?: pulumi.Input<string>;
 }
 
 /**
@@ -171,7 +171,7 @@ export interface ApiKeyArgs {
     /**
      * A description of the API key
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Expiration date
      */
@@ -179,25 +179,25 @@ export interface ApiKeyArgs {
     /**
      * Grace period end date
      */
-    gracePeriodEndsAt?: pulumi.Input<string | undefined>;
+    gracePeriodEndsAt?: pulumi.Input<string>;
     /**
      * The kind of the API key. Value must be one of `personal`, `team`, `organization`.
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * Date of last use
      */
-    lastUsedAt?: pulumi.Input<string | undefined>;
+    lastUsedAt?: pulumi.Input<string>;
     /**
      * The name of the API key
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The on-call role ID
      */
-    onCallRoleId?: pulumi.Input<string | undefined>;
+    onCallRoleId?: pulumi.Input<string>;
     /**
      * The role ID
      */
-    roleId?: pulumi.Input<string | undefined>;
+    roleId?: pulumi.Input<string>;
 }

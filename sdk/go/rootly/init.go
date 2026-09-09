@@ -8,7 +8,7 @@ import (
 
 	"github.com/blang/semver"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 type module struct {
@@ -153,12 +153,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Sla{}
 	case "rootly:index/statusPage:StatusPage":
 		r = &StatusPage{}
+	case "rootly:index/statusPageComponent:StatusPageComponent":
+		r = &StatusPageComponent{}
+	case "rootly:index/statusPageComponentGroup:StatusPageComponentGroup":
+		r = &StatusPageComponentGroup{}
 	case "rootly:index/statusPageTemplate:StatusPageTemplate":
 		r = &StatusPageTemplate{}
 	case "rootly:index/subStatus:SubStatus":
 		r = &SubStatus{}
 	case "rootly:index/team:Team":
 		r = &Team{}
+	case "rootly:index/userOnCallRole:UserOnCallRole":
+		r = &UserOnCallRole{}
 	case "rootly:index/webhooksEndpoint:WebhooksEndpoint":
 		r = &WebhooksEndpoint{}
 	case "rootly:index/workflowActionItem:WorkflowActionItem":
@@ -836,6 +842,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/statusPageComponent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/statusPageComponentGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/statusPageTemplate",
 		&module{version},
 	)
@@ -847,6 +863,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/team",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/userOnCallRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

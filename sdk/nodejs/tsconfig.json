@@ -1,22 +1,16 @@
 {
     "compilerOptions": {
-        // Output
         "outDir": "bin",
+        "target": "ES2020",
+        "module": "commonjs",
+        "moduleResolution": "node",
         "declaration": true,
-        "declarationMap": true,
         "sourceMap": true,
         "stripInternal": true,
-        // Environment
-        "target": "ES2022",
-        "module": "nodenext",
-        "moduleResolution": "nodenext",
-        "moduleDetection": "force",
-        "types": ["node"],
-        // Type Checking
-        "strict": true,
+        "experimentalDecorators": true,
         "noFallthroughCasesInSwitch": true,
-        "noImplicitReturns": true,
-        "skipLibCheck": true
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
     },
     "files": [
         "alertField.ts",
@@ -121,6 +115,7 @@
         "getTeam.ts",
         "getTeams.ts",
         "getUser.ts",
+        "getUsers.ts",
         "getWebhooksEndpoint.ts",
         "getWorkflow.ts",
         "getWorkflowGroup.ts",
@@ -157,12 +152,15 @@
         "severity.ts",
         "sla.ts",
         "statusPage.ts",
+        "statusPageComponent.ts",
+        "statusPageComponentGroup.ts",
         "statusPageTemplate.ts",
         "subStatus.ts",
         "team.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
+        "userOnCallRole.ts",
         "utilities.ts",
         "webhooksEndpoint.ts",
         "workflowActionItem.ts",

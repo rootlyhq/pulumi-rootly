@@ -69,8 +69,10 @@ export class IncidentPermissionSet extends pulumi.CustomResource {
     declare public readonly publicIncidentPermissions: pulumi.Output<string[]>;
     /**
      * The incident permission set slug.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a IncidentPermissionSet resource with the given unique name, arguments, and options.
@@ -96,7 +98,7 @@ export class IncidentPermissionSet extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["privateIncidentPermissions"] = args?.privateIncidentPermissions;
             resourceInputs["publicIncidentPermissions"] = args?.publicIncidentPermissions;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IncidentPermissionSet.__pulumiType, name, resourceInputs, opts);
@@ -110,23 +112,25 @@ export interface IncidentPermissionSetState {
     /**
      * The incident permission set description.
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The incident permission set name.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    privateIncidentPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    privateIncidentPermissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    publicIncidentPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    publicIncidentPermissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The incident permission set slug.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
 }
 
 /**
@@ -136,17 +140,23 @@ export interface IncidentPermissionSetArgs {
     /**
      * The incident permission set description.
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The incident permission set name.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    privateIncidentPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    privateIncidentPermissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    publicIncidentPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    publicIncidentPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The incident permission set slug.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string>;
 }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupCatalogEntity(ctx *pulumi.Context, args *LookupCatalogEntityArgs, opts ...pulumi.InvokeOption) (*LookupCatalogEntityResult, error) {

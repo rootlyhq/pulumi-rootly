@@ -84,6 +84,10 @@ export class Functionality extends pulumi.CustomResource {
      */
     declare public readonly externalId: pulumi.Output<string>;
     /**
+     * How this functionality is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    declare public /*out*/ readonly managedBy: pulumi.Output<string>;
+    /**
      * The name of the functionality
      */
     declare public readonly name: pulumi.Output<string>;
@@ -120,7 +124,7 @@ export class Functionality extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<outputs.FunctionalityProperty[] | undefined>;
     /**
-     * The public description of the functionality
+     * The status page description of the functionality
      */
     declare public readonly publicDescription: pulumi.Output<string>;
     /**
@@ -141,8 +145,10 @@ export class Functionality extends pulumi.CustomResource {
     declare public readonly slackChannels: pulumi.Output<outputs.FunctionalitySlackChannel[] | undefined>;
     /**
      * The slug of the functionality
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Functionality resource with the given unique name, arguments, and options.
@@ -164,6 +170,7 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["environmentIds"] = state?.environmentIds;
             resourceInputs["escalationPolicyId"] = state?.escalationPolicyId;
             resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["notifyEmails"] = state?.notifyEmails;
             resourceInputs["opsgenieId"] = state?.opsgenieId;
@@ -202,7 +209,8 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["serviceNowCiSysId"] = args?.serviceNowCiSysId;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
+            resourceInputs["managedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Functionality.__pulumiType, name, resourceInputs, opts);
@@ -216,91 +224,97 @@ export interface FunctionalityState {
     /**
      * The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name
      */
-    backstageId?: pulumi.Input<string | undefined>;
+    backstageId?: pulumi.Input<string>;
     /**
      * The hex color of the functionality
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * The Cortex group id associated to this functionality
      */
-    cortexId?: pulumi.Input<string | undefined>;
+    cortexId?: pulumi.Input<string>;
     /**
      * The description of the functionality
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Environments associated with this functionality
      */
-    environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The escalation policy id of the functionality
      */
-    escalationPolicyId?: pulumi.Input<string | undefined>;
+    escalationPolicyId?: pulumi.Input<string>;
     /**
      * The external id associated to this functionality
      */
-    externalId?: pulumi.Input<string | undefined>;
+    externalId?: pulumi.Input<string>;
+    /**
+     * How this functionality is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    managedBy?: pulumi.Input<string>;
     /**
      * The name of the functionality
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Emails attached to the functionality
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Opsgenie service id associated to this functionality
      */
-    opsgenieId?: pulumi.Input<string | undefined>;
+    opsgenieId?: pulumi.Input<string>;
     /**
      * The Opsgenie team id associated to this functionality
      */
-    opsgenieTeamId?: pulumi.Input<string | undefined>;
+    opsgenieTeamId?: pulumi.Input<string>;
     /**
      * Owner Teams associated with this functionality
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Owner Users associated with this functionality
      */
-    ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    ownerUserIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The PagerDuty service id associated to this functionality
      */
-    pagerdutyId?: pulumi.Input<string | undefined>;
+    pagerdutyId?: pulumi.Input<string>;
     /**
      * Position of the functionality
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * Array of property values for this functionality.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.FunctionalityProperty>[] | undefined>;
+    properties?: pulumi.Input<pulumi.Input<inputs.FunctionalityProperty>[]>;
     /**
-     * The public description of the functionality
+     * The status page description of the functionality
      */
-    publicDescription?: pulumi.Input<string | undefined>;
+    publicDescription?: pulumi.Input<string>;
     /**
      * Services associated with this functionality
      */
-    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Service Now CI sys id associated to this functionality
      */
-    serviceNowCiSysId?: pulumi.Input<string | undefined>;
+    serviceNowCiSysId?: pulumi.Input<string>;
     /**
      * Slack Aliases associated with this functionality
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackAlias>[] | undefined>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackAlias>[]>;
     /**
      * Slack Channels associated with this functionality
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackChannel>[] | undefined>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackChannel>[]>;
     /**
      * The slug of the functionality
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
 }
 
 /**
@@ -310,85 +324,91 @@ export interface FunctionalityArgs {
     /**
      * The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name
      */
-    backstageId?: pulumi.Input<string | undefined>;
+    backstageId?: pulumi.Input<string>;
     /**
      * The hex color of the functionality
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * The Cortex group id associated to this functionality
      */
-    cortexId?: pulumi.Input<string | undefined>;
+    cortexId?: pulumi.Input<string>;
     /**
      * The description of the functionality
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Environments associated with this functionality
      */
-    environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The escalation policy id of the functionality
      */
-    escalationPolicyId?: pulumi.Input<string | undefined>;
+    escalationPolicyId?: pulumi.Input<string>;
     /**
      * The external id associated to this functionality
      */
-    externalId?: pulumi.Input<string | undefined>;
+    externalId?: pulumi.Input<string>;
     /**
      * The name of the functionality
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Emails attached to the functionality
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Opsgenie service id associated to this functionality
      */
-    opsgenieId?: pulumi.Input<string | undefined>;
+    opsgenieId?: pulumi.Input<string>;
     /**
      * The Opsgenie team id associated to this functionality
      */
-    opsgenieTeamId?: pulumi.Input<string | undefined>;
+    opsgenieTeamId?: pulumi.Input<string>;
     /**
      * Owner Teams associated with this functionality
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Owner Users associated with this functionality
      */
-    ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    ownerUserIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * The PagerDuty service id associated to this functionality
      */
-    pagerdutyId?: pulumi.Input<string | undefined>;
+    pagerdutyId?: pulumi.Input<string>;
     /**
      * Position of the functionality
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * Array of property values for this functionality.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.FunctionalityProperty>[] | undefined>;
+    properties?: pulumi.Input<pulumi.Input<inputs.FunctionalityProperty>[]>;
     /**
-     * The public description of the functionality
+     * The status page description of the functionality
      */
-    publicDescription?: pulumi.Input<string | undefined>;
+    publicDescription?: pulumi.Input<string>;
     /**
      * Services associated with this functionality
      */
-    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Service Now CI sys id associated to this functionality
      */
-    serviceNowCiSysId?: pulumi.Input<string | undefined>;
+    serviceNowCiSysId?: pulumi.Input<string>;
     /**
      * Slack Aliases associated with this functionality
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackAlias>[] | undefined>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackAlias>[]>;
     /**
      * Slack Channels associated with this functionality
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackChannel>[] | undefined>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackChannel>[]>;
+    /**
+     * The slug of the functionality
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string>;
 }

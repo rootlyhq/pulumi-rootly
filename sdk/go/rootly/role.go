@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -106,6 +106,8 @@ type Role struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SlasPermissions pulumi.StringArrayOutput `pulumi:"slasPermissions"`
 	// The role slug.
+	//
+	// Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions pulumi.StringArrayOutput `pulumi:"statusPagesPermissions"`
@@ -214,6 +216,8 @@ type roleState struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SlasPermissions []string `pulumi:"slasPermissions"`
 	// The role slug.
+	//
+	// Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions []string `pulumi:"statusPagesPermissions"`
@@ -293,6 +297,8 @@ type RoleState struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SlasPermissions pulumi.StringArrayInput
 	// The role slug.
+	//
+	// Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions pulumi.StringArrayInput
@@ -375,6 +381,10 @@ type roleArgs struct {
 	SeveritiesPermissions []string `pulumi:"severitiesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SlasPermissions []string `pulumi:"slasPermissions"`
+	// The role slug.
+	//
+	// Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions []string `pulumi:"statusPagesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -453,6 +463,10 @@ type RoleArgs struct {
 	SeveritiesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	SlasPermissions pulumi.StringArrayInput
+	// The role slug.
+	//
+	// Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -716,6 +730,8 @@ func (o RoleOutput) SlasPermissions() pulumi.StringArrayOutput {
 }
 
 // The role slug.
+//
+// Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
 func (o RoleOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -65,6 +65,8 @@ type WorkflowAlert struct {
 	ServiceIds  pulumi.StringArrayOutput `pulumi:"serviceIds"`
 	SeverityIds pulumi.StringArrayOutput `pulumi:"severityIds"`
 	// The slug of the workflow
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug          pulumi.StringOutput              `pulumi:"slug"`
 	SubStatusIds  pulumi.StringArrayOutput         `pulumi:"subStatusIds"`
 	TriggerParams WorkflowAlertTriggerParamsOutput `pulumi:"triggerParams"`
@@ -136,6 +138,8 @@ type workflowAlertState struct {
 	ServiceIds  []string `pulumi:"serviceIds"`
 	SeverityIds []string `pulumi:"severityIds"`
 	// The slug of the workflow
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug          *string                     `pulumi:"slug"`
 	SubStatusIds  []string                    `pulumi:"subStatusIds"`
 	TriggerParams *WorkflowAlertTriggerParams `pulumi:"triggerParams"`
@@ -178,6 +182,8 @@ type WorkflowAlertState struct {
 	ServiceIds  pulumi.StringArrayInput
 	SeverityIds pulumi.StringArrayInput
 	// The slug of the workflow
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug          pulumi.StringPtrInput
 	SubStatusIds  pulumi.StringArrayInput
 	TriggerParams WorkflowAlertTriggerParamsPtrInput
@@ -224,6 +230,8 @@ type workflowAlertArgs struct {
 	ServiceIds  []string `pulumi:"serviceIds"`
 	SeverityIds []string `pulumi:"severityIds"`
 	// The slug of the workflow
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug          *string                     `pulumi:"slug"`
 	SubStatusIds  []string                    `pulumi:"subStatusIds"`
 	TriggerParams *WorkflowAlertTriggerParams `pulumi:"triggerParams"`
@@ -267,6 +275,8 @@ type WorkflowAlertArgs struct {
 	ServiceIds  pulumi.StringArrayInput
 	SeverityIds pulumi.StringArrayInput
 	// The slug of the workflow
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug          pulumi.StringPtrInput
 	SubStatusIds  pulumi.StringArrayInput
 	TriggerParams WorkflowAlertTriggerParamsPtrInput
@@ -455,6 +465,8 @@ func (o WorkflowAlertOutput) SeverityIds() pulumi.StringArrayOutput {
 }
 
 // The slug of the workflow
+//
+// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 func (o WorkflowAlertOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowAlert) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

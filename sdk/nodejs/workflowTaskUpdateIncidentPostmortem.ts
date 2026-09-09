@@ -126,27 +126,27 @@ export interface WorkflowTaskUpdateIncidentPostmortemState {
     /**
      * Enable/disable this workflow task
      */
-    enabled?: pulumi.Input<boolean | undefined>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Name of the workflow task
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The position of the workflow task (1 being top of list)
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * Skip workflow task if any failures
      */
-    skipOnFailure?: pulumi.Input<boolean | undefined>;
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */
-    taskParams?: pulumi.Input<inputs.WorkflowTaskUpdateIncidentPostmortemTaskParams | undefined>;
+    taskParams?: pulumi.Input<inputs.WorkflowTaskUpdateIncidentPostmortemTaskParams>;
     /**
      * The ID of the parent workflow
      */
-    workflowId?: pulumi.Input<string | undefined>;
+    workflowId?: pulumi.Input<string>;
 }
 
 /**
@@ -156,19 +156,19 @@ export interface WorkflowTaskUpdateIncidentPostmortemArgs {
     /**
      * Enable/disable this workflow task
      */
-    enabled?: pulumi.Input<boolean | undefined>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Name of the workflow task
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The position of the workflow task (1 being top of list)
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * Skip workflow task if any failures
      */
-    skipOnFailure?: pulumi.Input<boolean | undefined>;
+    skipOnFailure?: pulumi.Input<boolean>;
     /**
      * The parameters for this workflow task.
      */

@@ -62,8 +62,8 @@ export interface GetSubStatusOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    name?: pulumi.Input<string | undefined>;
-    parentStatus?: pulumi.Input<string | undefined>;
-    slug?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    name?: pulumi.Input<string>;
+    parentStatus?: pulumi.Input<string>;
+    slug?: pulumi.Input<string>;
 }

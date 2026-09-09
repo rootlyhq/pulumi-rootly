@@ -137,32 +137,32 @@ export interface AlertRoutingRuleState {
     /**
      * The ID of the alerts source
      */
-    alertsSourceId?: pulumi.Input<string | undefined>;
+    alertsSourceId?: pulumi.Input<string>;
     /**
      * The condition groups for the alert routing rule
      */
-    conditionGroups?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleConditionGroup>[] | undefined>;
+    conditionGroups?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleConditionGroup>[]>;
     /**
      * The type of condition for the alert routing rule. Value must be one of `all`, `any`.
      */
-    conditionType?: pulumi.Input<string | undefined>;
+    conditionType?: pulumi.Input<string>;
     /**
      * The conditions for the alert routing rule
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleCondition>[] | undefined>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleCondition>[]>;
     /**
      * The destinations for the alert routing rule
      */
-    destination?: pulumi.Input<inputs.AlertRoutingRuleDestination | undefined>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    destination?: pulumi.Input<inputs.AlertRoutingRuleDestination>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The name of the alert routing rule
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The position of the alert routing rule for ordering evaluation
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
 }
 
 /**
@@ -176,26 +176,26 @@ export interface AlertRoutingRuleArgs {
     /**
      * The condition groups for the alert routing rule
      */
-    conditionGroups?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleConditionGroup>[] | undefined>;
+    conditionGroups?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleConditionGroup>[]>;
     /**
      * The type of condition for the alert routing rule. Value must be one of `all`, `any`.
      */
-    conditionType?: pulumi.Input<string | undefined>;
+    conditionType?: pulumi.Input<string>;
     /**
      * The conditions for the alert routing rule
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleCondition>[] | undefined>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertRoutingRuleCondition>[]>;
     /**
      * The destinations for the alert routing rule
      */
     destination: pulumi.Input<inputs.AlertRoutingRuleDestination>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The name of the alert routing rule
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The position of the alert routing rule for ordering evaluation
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
 }

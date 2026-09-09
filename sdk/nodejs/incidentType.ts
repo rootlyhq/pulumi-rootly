@@ -80,6 +80,10 @@ export class IncidentType extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<outputs.IncidentTypeProperty[] | undefined>;
     /**
+     * The status page description of the incident type
+     */
+    declare public readonly publicDescription: pulumi.Output<string>;
+    /**
      * Slack Aliases associated with this incident type
      */
     declare public readonly slackAliases: pulumi.Output<outputs.IncidentTypeSlackAlias[] | undefined>;
@@ -89,8 +93,10 @@ export class IncidentType extends pulumi.CustomResource {
     declare public readonly slackChannels: pulumi.Output<outputs.IncidentTypeSlackChannel[] | undefined>;
     /**
      * The slug of the incident type
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a IncidentType resource with the given unique name, arguments, and options.
@@ -111,6 +117,7 @@ export class IncidentType extends pulumi.CustomResource {
             resourceInputs["notifyEmails"] = state?.notifyEmails;
             resourceInputs["position"] = state?.position;
             resourceInputs["properties"] = state?.properties;
+            resourceInputs["publicDescription"] = state?.publicDescription;
             resourceInputs["slackAliases"] = state?.slackAliases;
             resourceInputs["slackChannels"] = state?.slackChannels;
             resourceInputs["slug"] = state?.slug;
@@ -122,9 +129,10 @@ export class IncidentType extends pulumi.CustomResource {
             resourceInputs["notifyEmails"] = args?.notifyEmails;
             resourceInputs["position"] = args?.position;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["publicDescription"] = args?.publicDescription;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IncidentType.__pulumiType, name, resourceInputs, opts);
@@ -138,39 +146,45 @@ export interface IncidentTypeState {
     /**
      * The hex color of the incident type
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * The description of the incident type
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the incident type
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Emails to attach to the incident type
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Position of the incident type
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * Array of property values for this incident type.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[] | undefined>;
+    properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[]>;
+    /**
+     * The status page description of the incident type
+     */
+    publicDescription?: pulumi.Input<string>;
     /**
      * Slack Aliases associated with this incident type
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[] | undefined>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[]>;
     /**
      * Slack Channels associated with this incident type
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[] | undefined>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[]>;
     /**
      * The slug of the incident type
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
 }
 
 /**
@@ -180,33 +194,43 @@ export interface IncidentTypeArgs {
     /**
      * The hex color of the incident type
      */
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * The description of the incident type
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the incident type
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Emails to attach to the incident type
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Position of the incident type
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * Array of property values for this incident type.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[] | undefined>;
+    properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[]>;
+    /**
+     * The status page description of the incident type
+     */
+    publicDescription?: pulumi.Input<string>;
     /**
      * Slack Aliases associated with this incident type
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[] | undefined>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[]>;
     /**
      * Slack Channels associated with this incident type
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[] | undefined>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[]>;
+    /**
+     * The slug of the incident type
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string>;
 }

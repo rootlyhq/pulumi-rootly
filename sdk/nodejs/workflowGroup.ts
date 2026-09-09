@@ -77,8 +77,10 @@ export class WorkflowGroup extends pulumi.CustomResource {
     declare public readonly position: pulumi.Output<number>;
     /**
      * The slug of the workflow group.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a WorkflowGroup resource with the given unique name, arguments, and options.
@@ -108,7 +110,7 @@ export class WorkflowGroup extends pulumi.CustomResource {
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkflowGroup.__pulumiType, name, resourceInputs, opts);
@@ -122,31 +124,33 @@ export interface WorkflowGroupState {
     /**
      * A description of the workflow group.
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Whether the group is expanded or collapsed.. Value must be one of true or false
      */
-    expanded?: pulumi.Input<boolean | undefined>;
+    expanded?: pulumi.Input<boolean>;
     /**
      * An emoji icon displayed next to the workflow group.
      */
-    icon?: pulumi.Input<string | undefined>;
+    icon?: pulumi.Input<string>;
     /**
      * The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the workflow group.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The position of the workflow group
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The slug of the workflow group.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
 }
 
 /**
@@ -156,25 +160,31 @@ export interface WorkflowGroupArgs {
     /**
      * A description of the workflow group.
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Whether the group is expanded or collapsed.. Value must be one of true or false
      */
-    expanded?: pulumi.Input<boolean | undefined>;
+    expanded?: pulumi.Input<boolean>;
     /**
      * An emoji icon displayed next to the workflow group.
      */
-    icon?: pulumi.Input<string | undefined>;
+    icon?: pulumi.Input<string>;
     /**
      * The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the workflow group.
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The position of the workflow group
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
+    /**
+     * The slug of the workflow group.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string>;
 }

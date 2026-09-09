@@ -193,65 +193,65 @@ export interface LiveCallRouterState {
     /**
      * This is used in escalation paths to determine who to page
      */
-    alertUrgencyId?: pulumi.Input<string | undefined>;
+    alertUrgencyId?: pulumi.Input<string>;
     /**
      * The caller greeting message of the live*call*router
      */
-    callerGreeting?: pulumi.Input<string | undefined>;
+    callerGreeting?: pulumi.Input<string>;
     /**
      * The audio instructions callers will hear when they call this number, prompting them to select from available options to route their call
      */
-    callingTreePrompt?: pulumi.Input<string | undefined>;
+    callingTreePrompt?: pulumi.Input<string>;
     /**
      * The country code of the live*call*router. Value must be one of `AU`, `CA`, `DE`, `NL`, `NZ`, `GB`, `US`.
      */
-    countryCode?: pulumi.Input<string | undefined>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    countryCode?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * This overrides the delay (seconds) in escalation levels
      */
-    escalationLevelDelayInSeconds?: pulumi.Input<number | undefined>;
-    escalationPolicyTriggerParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    escalationLevelDelayInSeconds?: pulumi.Input<number>;
+    escalationPolicyTriggerParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The kind of the live*call*router. Value must be one of `voicemail`, `live`.
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the live*call*router
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Paging targets that callers can select from when this live call router is configured as a phone tree.
      */
-    pagingTargets?: pulumi.Input<pulumi.Input<inputs.LiveCallRouterPagingTarget>[] | undefined>;
+    pagingTargets?: pulumi.Input<pulumi.Input<inputs.LiveCallRouterPagingTarget>[]>;
     /**
      * You can select a phone number using [generate*phone*number](https://docs.rootly.com/api-reference/livecallrouters/generates-a-phone-number-for-live-call-router) API and pass that phone number here to register
      */
-    phoneNumber?: pulumi.Input<string | undefined>;
+    phoneNumber?: pulumi.Input<string>;
     /**
      * The phone type of the live*call*router. Value must be one of `local`, `tollFree`, `mobile`.
      */
-    phoneType?: pulumi.Input<string | undefined>;
+    phoneType?: pulumi.Input<string>;
     /**
      * The delay (seconds) after which the caller in redirected to voicemail
      */
-    sentToVoicemailDelay?: pulumi.Input<number | undefined>;
+    sentToVoicemailDelay?: pulumi.Input<number>;
     /**
      * This overrides the delay (seconds) in escalation levels. Value must be one of true or false
      */
-    shouldAutoResolveAlertOnCallEnd?: pulumi.Input<boolean | undefined>;
+    shouldAutoResolveAlertOnCallEnd?: pulumi.Input<boolean>;
     /**
      * This prompts the caller to choose voicemail or connect live. Value must be one of true or false
      */
-    shouldRedirectToVoicemailOnNoAnswer?: pulumi.Input<boolean | undefined>;
+    shouldRedirectToVoicemailOnNoAnswer?: pulumi.Input<boolean>;
     /**
      * The voicemail greeting of the live*call*router
      */
-    voicemailGreeting?: pulumi.Input<string | undefined>;
+    voicemailGreeting?: pulumi.Input<string>;
     /**
      * The waiting music URL of the live*call*router. Value must be one of `https://storage.rootly.com/twilio/voicemail/ClockworkWaltz.mp3`, `https://storage.rootly.com/twilio/voicemail/ith_brahms-116-4.mp3`, `https://storage.rootly.com/twilio/voicemail/Mellotroniac_-_Flight_Of_Young_Hearts_Flute.mp3`, `https://storage.rootly.com/twilio/voicemail/BusyStrings.mp3`, `https://storage.rootly.com/twilio/voicemail/oldDog_-_endless_goodbye_%28instr.%29.mp3`, `https://storage.rootly.com/twilio/voicemail/MARKOVICHAMP-Borghestral.mp3`, `https://storage.rootly.com/twilio/voicemail/ith_chopin-15-2.mp3`.
      */
-    waitingMusicUrl?: pulumi.Input<string | undefined>;
+    waitingMusicUrl?: pulumi.Input<string>;
 }
 
 /**
@@ -261,33 +261,33 @@ export interface LiveCallRouterArgs {
     /**
      * This is used in escalation paths to determine who to page
      */
-    alertUrgencyId?: pulumi.Input<string | undefined>;
+    alertUrgencyId?: pulumi.Input<string>;
     /**
      * The caller greeting message of the live*call*router
      */
-    callerGreeting?: pulumi.Input<string | undefined>;
+    callerGreeting?: pulumi.Input<string>;
     /**
      * The audio instructions callers will hear when they call this number, prompting them to select from available options to route their call
      */
-    callingTreePrompt?: pulumi.Input<string | undefined>;
+    callingTreePrompt?: pulumi.Input<string>;
     /**
      * The country code of the live*call*router. Value must be one of `AU`, `CA`, `DE`, `NL`, `NZ`, `GB`, `US`.
      */
     countryCode: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * This overrides the delay (seconds) in escalation levels
      */
-    escalationLevelDelayInSeconds?: pulumi.Input<number | undefined>;
-    escalationPolicyTriggerParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    escalationLevelDelayInSeconds?: pulumi.Input<number>;
+    escalationPolicyTriggerParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The kind of the live*call*router. Value must be one of `voicemail`, `live`.
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the live*call*router
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Paging targets that callers can select from when this live call router is configured as a phone tree.
      */
@@ -303,15 +303,15 @@ export interface LiveCallRouterArgs {
     /**
      * The delay (seconds) after which the caller in redirected to voicemail
      */
-    sentToVoicemailDelay?: pulumi.Input<number | undefined>;
+    sentToVoicemailDelay?: pulumi.Input<number>;
     /**
      * This overrides the delay (seconds) in escalation levels. Value must be one of true or false
      */
-    shouldAutoResolveAlertOnCallEnd?: pulumi.Input<boolean | undefined>;
+    shouldAutoResolveAlertOnCallEnd?: pulumi.Input<boolean>;
     /**
      * This prompts the caller to choose voicemail or connect live. Value must be one of true or false
      */
-    shouldRedirectToVoicemailOnNoAnswer?: pulumi.Input<boolean | undefined>;
+    shouldRedirectToVoicemailOnNoAnswer?: pulumi.Input<boolean>;
     /**
      * The voicemail greeting of the live*call*router
      */
@@ -319,5 +319,5 @@ export interface LiveCallRouterArgs {
     /**
      * The waiting music URL of the live*call*router. Value must be one of `https://storage.rootly.com/twilio/voicemail/ClockworkWaltz.mp3`, `https://storage.rootly.com/twilio/voicemail/ith_brahms-116-4.mp3`, `https://storage.rootly.com/twilio/voicemail/Mellotroniac_-_Flight_Of_Young_Hearts_Flute.mp3`, `https://storage.rootly.com/twilio/voicemail/BusyStrings.mp3`, `https://storage.rootly.com/twilio/voicemail/oldDog_-_endless_goodbye_%28instr.%29.mp3`, `https://storage.rootly.com/twilio/voicemail/MARKOVICHAMP-Borghestral.mp3`, `https://storage.rootly.com/twilio/voicemail/ith_chopin-15-2.mp3`.
      */
-    waitingMusicUrl?: pulumi.Input<string | undefined>;
+    waitingMusicUrl?: pulumi.Input<string>;
 }

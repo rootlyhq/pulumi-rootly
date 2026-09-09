@@ -100,12 +100,12 @@ export interface ScheduleRotationUserState {
     /**
      * Position of the user inside rotation
      */
-    position?: pulumi.Input<number | undefined>;
-    scheduleRotationId?: pulumi.Input<string | undefined>;
+    position?: pulumi.Input<number>;
+    scheduleRotationId?: pulumi.Input<string>;
     /**
      * Schedule rotation user
      */
-    userId?: pulumi.Input<number | undefined>;
+    userId?: pulumi.Input<number>;
 }
 
 /**
@@ -115,8 +115,8 @@ export interface ScheduleRotationUserArgs {
     /**
      * Position of the user inside rotation
      */
-    position?: pulumi.Input<number | undefined>;
-    scheduleRotationId?: pulumi.Input<string | undefined>;
+    position?: pulumi.Input<number>;
+    scheduleRotationId?: pulumi.Input<string>;
     /**
      * Schedule rotation user
      */

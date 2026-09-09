@@ -6,63 +6,30 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
-    args = args || {};
+/**
+ * Retrieves a list of all services.
+ *
+ * ## Example Usage
+ */
+export function getServices(opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getServices:getServices", {
-        "backstageId": args.backstageId,
-        "name": args.name,
-        "opsgenieId": args.opsgenieId,
-        "pagerdutyId": args.pagerdutyId,
-        "slug": args.slug,
     }, opts);
-}
-
-/**
- * A collection of arguments for invoking getServices.
- */
-export interface GetServicesArgs {
-    backstageId?: string;
-    name?: string;
-    opsgenieId?: string;
-    pagerdutyId?: string;
-    slug?: string;
 }
 
 /**
  * A collection of values returned by getServices.
  */
 export interface GetServicesResult {
-    readonly backstageId?: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    readonly name?: string;
-    readonly opsgenieId?: string;
-    readonly pagerdutyId?: string;
     readonly services: outputs.GetServicesService[];
-    readonly slug?: string;
 }
-export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicesResult> {
-    args = args || {};
+/**
+ * Retrieves a list of all services.
+ *
+ * ## Example Usage
+ */
+export function getServicesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getServices:getServices", {
-        "backstageId": args.backstageId,
-        "name": args.name,
-        "opsgenieId": args.opsgenieId,
-        "pagerdutyId": args.pagerdutyId,
-        "slug": args.slug,
     }, opts);
-}
-
-/**
- * A collection of arguments for invoking getServices.
- */
-export interface GetServicesOutputArgs {
-    backstageId?: pulumi.Input<string | undefined>;
-    name?: pulumi.Input<string | undefined>;
-    opsgenieId?: pulumi.Input<string | undefined>;
-    pagerdutyId?: pulumi.Input<string | undefined>;
-    slug?: pulumi.Input<string | undefined>;
 }

@@ -74,6 +74,8 @@ export class RetrospectiveStep extends pulumi.CustomResource {
     declare public readonly skippable: pulumi.Output<boolean>;
     /**
      * The slug of the step
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
     /**
@@ -128,32 +130,34 @@ export interface RetrospectiveStepState {
     /**
      * The description of the step
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Due date in days
      */
-    dueAfterDays?: pulumi.Input<number | undefined>;
+    dueAfterDays?: pulumi.Input<number>;
     /**
      * Users assigned to the selected incident role will be the default owners for this step
      */
-    incidentRoleId?: pulumi.Input<string | undefined>;
+    incidentRoleId?: pulumi.Input<string>;
     /**
      * Position of the step
      */
-    position?: pulumi.Input<number | undefined>;
-    retrospectiveProcessId?: pulumi.Input<string | undefined>;
+    position?: pulumi.Input<number>;
+    retrospectiveProcessId?: pulumi.Input<string>;
     /**
      * Is the step skippable?. Value must be one of true or false
      */
-    skippable?: pulumi.Input<boolean | undefined>;
+    skippable?: pulumi.Input<boolean>;
     /**
      * The slug of the step
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
     /**
      * The name of the step
      */
-    title?: pulumi.Input<string | undefined>;
+    title?: pulumi.Input<string>;
 }
 
 /**
@@ -163,28 +167,30 @@ export interface RetrospectiveStepArgs {
     /**
      * The description of the step
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Due date in days
      */
-    dueAfterDays?: pulumi.Input<number | undefined>;
+    dueAfterDays?: pulumi.Input<number>;
     /**
      * Users assigned to the selected incident role will be the default owners for this step
      */
-    incidentRoleId?: pulumi.Input<string | undefined>;
+    incidentRoleId?: pulumi.Input<string>;
     /**
      * Position of the step
      */
-    position?: pulumi.Input<number | undefined>;
-    retrospectiveProcessId?: pulumi.Input<string | undefined>;
+    position?: pulumi.Input<number>;
+    retrospectiveProcessId?: pulumi.Input<string>;
     /**
      * Is the step skippable?. Value must be one of true or false
      */
-    skippable?: pulumi.Input<boolean | undefined>;
+    skippable?: pulumi.Input<boolean>;
     /**
      * The slug of the step
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
     /**
      * The name of the step
      */

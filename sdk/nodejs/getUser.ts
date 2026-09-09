@@ -40,6 +40,14 @@ export interface GetUserResult {
      * The ID of this resource.
      */
     readonly id: string;
+    /**
+     * The ID of the user's on-call role, or empty when unset.
+     */
+    readonly onCallRoleId: string;
+    /**
+     * The ID of the user's (general) role, or empty when unset.
+     */
+    readonly roleId: string;
 }
 /**
  * ## Example Usage
@@ -60,6 +68,6 @@ export interface GetUserOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    email?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    email?: pulumi.Input<string>;
 }

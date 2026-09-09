@@ -105,12 +105,12 @@ export interface ScheduleRotationActiveDayState {
     /**
      * Schedule rotation active times per day
      */
-    activeTimeAttributes?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationActiveDayActiveTimeAttribute>[] | undefined>;
+    activeTimeAttributes?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationActiveDayActiveTimeAttribute>[]>;
     /**
      * Schedule rotation day name for which active times to be created. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
-    dayName?: pulumi.Input<string | undefined>;
-    scheduleRotationId?: pulumi.Input<string | undefined>;
+    dayName?: pulumi.Input<string>;
+    scheduleRotationId?: pulumi.Input<string>;
 }
 
 /**
@@ -124,6 +124,6 @@ export interface ScheduleRotationActiveDayArgs {
     /**
      * Schedule rotation day name for which active times to be created. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
-    dayName?: pulumi.Input<string | undefined>;
+    dayName?: pulumi.Input<string>;
     scheduleRotationId: pulumi.Input<string>;
 }

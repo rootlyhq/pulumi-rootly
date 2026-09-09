@@ -56,7 +56,7 @@ export interface GetIncidentSubStatusOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    assignedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    assignedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     incidentId: pulumi.Input<string>;
-    subStatusId?: pulumi.Input<string | undefined>;
+    subStatusId?: pulumi.Input<string>;
 }

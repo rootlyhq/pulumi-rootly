@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -38,6 +38,8 @@ type AlertField struct {
 	// The name of the alert field
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The slug of the alert field
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -76,6 +78,8 @@ type alertFieldState struct {
 	// The name of the alert field
 	Name *string `pulumi:"name"`
 	// The slug of the alert field
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -85,6 +89,8 @@ type AlertFieldState struct {
 	// The name of the alert field
 	Name pulumi.StringPtrInput
 	// The slug of the alert field
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -97,6 +103,10 @@ type alertFieldArgs struct {
 	Kind *string `pulumi:"kind"`
 	// The name of the alert field
 	Name *string `pulumi:"name"`
+	// The slug of the alert field
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a AlertField resource.
@@ -105,6 +115,10 @@ type AlertFieldArgs struct {
 	Kind pulumi.StringPtrInput
 	// The name of the alert field
 	Name pulumi.StringPtrInput
+	// The slug of the alert field
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (AlertFieldArgs) ElementType() reflect.Type {
@@ -205,6 +219,8 @@ func (o AlertFieldOutput) Name() pulumi.StringOutput {
 }
 
 // The slug of the alert field
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o AlertFieldOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertField) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

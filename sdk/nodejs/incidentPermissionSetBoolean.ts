@@ -98,30 +98,30 @@ export class IncidentPermissionSetBoolean extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IncidentPermissionSetBoolean resources.
  */
 export interface IncidentPermissionSetBooleanState {
-    enabled?: pulumi.Input<boolean | undefined>;
-    incidentPermissionSetId?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean>;
+    incidentPermissionSetId?: pulumi.Input<string>;
     /**
      * Value must be one of `publishToStatusPage`, `assignIncidentRoles`, `inviteSubscribers`, `updateSummary`, `updateTimeline`, `triggerWorkflows`, `createCommunications`, `readCommunications`, `updateCommunications`, `deleteCommunications`, `sendCommunications`, `modifyCustomFields`.
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * Value must be one of true or false
      */
-    private?: pulumi.Input<boolean | undefined>;
+    private?: pulumi.Input<boolean>;
 }
 
 /**
  * The set of arguments for constructing a IncidentPermissionSetBoolean resource.
  */
 export interface IncidentPermissionSetBooleanArgs {
-    enabled?: pulumi.Input<boolean | undefined>;
+    enabled?: pulumi.Input<boolean>;
     incidentPermissionSetId: pulumi.Input<string>;
     /**
      * Value must be one of `publishToStatusPage`, `assignIncidentRoles`, `inviteSubscribers`, `updateSummary`, `updateTimeline`, `triggerWorkflows`, `createCommunications`, `readCommunications`, `updateCommunications`, `deleteCommunications`, `sendCommunications`, `modifyCustomFields`.
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * Value must be one of true or false
      */
-    private?: pulumi.Input<boolean | undefined>;
+    private?: pulumi.Input<boolean>;
 }

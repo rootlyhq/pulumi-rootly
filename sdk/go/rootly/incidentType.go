@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -45,11 +45,15 @@ type IncidentType struct {
 	Position pulumi.IntOutput `pulumi:"position"`
 	// Array of property values for this incident type.
 	Properties IncidentTypePropertyArrayOutput `pulumi:"properties"`
+	// The status page description of the incident type
+	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
 	// Slack Aliases associated with this incident type
 	SlackAliases IncidentTypeSlackAliasArrayOutput `pulumi:"slackAliases"`
 	// Slack Channels associated with this incident type
 	SlackChannels IncidentTypeSlackChannelArrayOutput `pulumi:"slackChannels"`
 	// The slug of the incident type
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -95,11 +99,15 @@ type incidentTypeState struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this incident type.
 	Properties []IncidentTypeProperty `pulumi:"properties"`
+	// The status page description of the incident type
+	PublicDescription *string `pulumi:"publicDescription"`
 	// Slack Aliases associated with this incident type
 	SlackAliases []IncidentTypeSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this incident type
 	SlackChannels []IncidentTypeSlackChannel `pulumi:"slackChannels"`
 	// The slug of the incident type
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -116,11 +124,15 @@ type IncidentTypeState struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this incident type.
 	Properties IncidentTypePropertyArrayInput
+	// The status page description of the incident type
+	PublicDescription pulumi.StringPtrInput
 	// Slack Aliases associated with this incident type
 	SlackAliases IncidentTypeSlackAliasArrayInput
 	// Slack Channels associated with this incident type
 	SlackChannels IncidentTypeSlackChannelArrayInput
 	// The slug of the incident type
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -141,10 +153,16 @@ type incidentTypeArgs struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this incident type.
 	Properties []IncidentTypeProperty `pulumi:"properties"`
+	// The status page description of the incident type
+	PublicDescription *string `pulumi:"publicDescription"`
 	// Slack Aliases associated with this incident type
 	SlackAliases []IncidentTypeSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this incident type
 	SlackChannels []IncidentTypeSlackChannel `pulumi:"slackChannels"`
+	// The slug of the incident type
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a IncidentType resource.
@@ -161,10 +179,16 @@ type IncidentTypeArgs struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this incident type.
 	Properties IncidentTypePropertyArrayInput
+	// The status page description of the incident type
+	PublicDescription pulumi.StringPtrInput
 	// Slack Aliases associated with this incident type
 	SlackAliases IncidentTypeSlackAliasArrayInput
 	// Slack Channels associated with this incident type
 	SlackChannels IncidentTypeSlackChannelArrayInput
+	// The slug of the incident type
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (IncidentTypeArgs) ElementType() reflect.Type {
@@ -284,6 +308,11 @@ func (o IncidentTypeOutput) Properties() IncidentTypePropertyArrayOutput {
 	return o.ApplyT(func(v *IncidentType) IncidentTypePropertyArrayOutput { return v.Properties }).(IncidentTypePropertyArrayOutput)
 }
 
+// The status page description of the incident type
+func (o IncidentTypeOutput) PublicDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *IncidentType) pulumi.StringOutput { return v.PublicDescription }).(pulumi.StringOutput)
+}
+
 // Slack Aliases associated with this incident type
 func (o IncidentTypeOutput) SlackAliases() IncidentTypeSlackAliasArrayOutput {
 	return o.ApplyT(func(v *IncidentType) IncidentTypeSlackAliasArrayOutput { return v.SlackAliases }).(IncidentTypeSlackAliasArrayOutput)
@@ -295,6 +324,8 @@ func (o IncidentTypeOutput) SlackChannels() IncidentTypeSlackChannelArrayOutput 
 }
 
 // The slug of the incident type
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o IncidentTypeOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *IncidentType) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

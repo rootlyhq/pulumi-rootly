@@ -60,7 +60,10 @@ export class SubStatus extends pulumi.CustomResource {
      */
     declare public readonly parentStatus: pulumi.Output<string | undefined>;
     declare public readonly position: pulumi.Output<number>;
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    /**
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a SubStatus resource with the given unique name, arguments, and options.
@@ -86,7 +89,7 @@ export class SubStatus extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["parentStatus"] = args?.parentStatus;
             resourceInputs["position"] = args?.position;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SubStatus.__pulumiType, name, resourceInputs, opts);
@@ -97,25 +100,32 @@ export class SubStatus extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SubStatus resources.
  */
 export interface SubStatusState {
-    description?: pulumi.Input<string | undefined>;
-    name?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
      */
-    parentStatus?: pulumi.Input<string | undefined>;
-    position?: pulumi.Input<number | undefined>;
-    slug?: pulumi.Input<string | undefined>;
+    parentStatus?: pulumi.Input<string>;
+    position?: pulumi.Input<number>;
+    /**
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a SubStatus resource.
  */
 export interface SubStatusArgs {
-    description?: pulumi.Input<string | undefined>;
-    name?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
      */
-    parentStatus?: pulumi.Input<string | undefined>;
-    position?: pulumi.Input<number | undefined>;
+    parentStatus?: pulumi.Input<string>;
+    position?: pulumi.Input<number>;
+    /**
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string>;
 }

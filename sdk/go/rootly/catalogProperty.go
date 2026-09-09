@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -36,7 +36,7 @@ type CatalogProperty struct {
 	CatalogId pulumi.StringOutput `pulumi:"catalogId"`
 	// The type of catalog the property belongs to.. Value must be one of `catalog`, `cause`, `environment`, `functionality`, `incidentType`, `service`, `team`.
 	CatalogType pulumi.StringPtrOutput `pulumi:"catalogType"`
-	// Value must be one of `text`, `reference`.
+	// Value must be one of `text`, `reference`, `boolean`, `service`, `functionality`, `environment`, `group`, `cause`, `incidentType`, `user`.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Restricts values to items of specified catalog.
 	KindCatalogId pulumi.StringOutput `pulumi:"kindCatalogId"`
@@ -44,8 +44,9 @@ type CatalogProperty struct {
 	Multiple pulumi.BoolOutput   `pulumi:"multiple"`
 	Name     pulumi.StringOutput `pulumi:"name"`
 	// Whether the property is required.. Value must be one of true or false
-	Required pulumi.BoolOutput   `pulumi:"required"`
-	Slug     pulumi.StringOutput `pulumi:"slug"`
+	Required pulumi.BoolOutput `pulumi:"required"`
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
 // NewCatalogProperty registers a new resource with the given unique name, arguments, and options.
@@ -81,7 +82,7 @@ type catalogPropertyState struct {
 	CatalogId *string `pulumi:"catalogId"`
 	// The type of catalog the property belongs to.. Value must be one of `catalog`, `cause`, `environment`, `functionality`, `incidentType`, `service`, `team`.
 	CatalogType *string `pulumi:"catalogType"`
-	// Value must be one of `text`, `reference`.
+	// Value must be one of `text`, `reference`, `boolean`, `service`, `functionality`, `environment`, `group`, `cause`, `incidentType`, `user`.
 	Kind *string `pulumi:"kind"`
 	// Restricts values to items of specified catalog.
 	KindCatalogId *string `pulumi:"kindCatalogId"`
@@ -89,15 +90,16 @@ type catalogPropertyState struct {
 	Multiple *bool   `pulumi:"multiple"`
 	Name     *string `pulumi:"name"`
 	// Whether the property is required.. Value must be one of true or false
-	Required *bool   `pulumi:"required"`
-	Slug     *string `pulumi:"slug"`
+	Required *bool `pulumi:"required"`
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+	Slug *string `pulumi:"slug"`
 }
 
 type CatalogPropertyState struct {
 	CatalogId pulumi.StringPtrInput
 	// The type of catalog the property belongs to.. Value must be one of `catalog`, `cause`, `environment`, `functionality`, `incidentType`, `service`, `team`.
 	CatalogType pulumi.StringPtrInput
-	// Value must be one of `text`, `reference`.
+	// Value must be one of `text`, `reference`, `boolean`, `service`, `functionality`, `environment`, `group`, `cause`, `incidentType`, `user`.
 	Kind pulumi.StringPtrInput
 	// Restricts values to items of specified catalog.
 	KindCatalogId pulumi.StringPtrInput
@@ -106,7 +108,8 @@ type CatalogPropertyState struct {
 	Name     pulumi.StringPtrInput
 	// Whether the property is required.. Value must be one of true or false
 	Required pulumi.BoolPtrInput
-	Slug     pulumi.StringPtrInput
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+	Slug pulumi.StringPtrInput
 }
 
 func (CatalogPropertyState) ElementType() reflect.Type {
@@ -117,7 +120,7 @@ type catalogPropertyArgs struct {
 	CatalogId *string `pulumi:"catalogId"`
 	// The type of catalog the property belongs to.. Value must be one of `catalog`, `cause`, `environment`, `functionality`, `incidentType`, `service`, `team`.
 	CatalogType *string `pulumi:"catalogType"`
-	// Value must be one of `text`, `reference`.
+	// Value must be one of `text`, `reference`, `boolean`, `service`, `functionality`, `environment`, `group`, `cause`, `incidentType`, `user`.
 	Kind *string `pulumi:"kind"`
 	// Restricts values to items of specified catalog.
 	KindCatalogId *string `pulumi:"kindCatalogId"`
@@ -125,8 +128,9 @@ type catalogPropertyArgs struct {
 	Multiple *bool   `pulumi:"multiple"`
 	Name     *string `pulumi:"name"`
 	// Whether the property is required.. Value must be one of true or false
-	Required *bool   `pulumi:"required"`
-	Slug     *string `pulumi:"slug"`
+	Required *bool `pulumi:"required"`
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a CatalogProperty resource.
@@ -134,7 +138,7 @@ type CatalogPropertyArgs struct {
 	CatalogId pulumi.StringPtrInput
 	// The type of catalog the property belongs to.. Value must be one of `catalog`, `cause`, `environment`, `functionality`, `incidentType`, `service`, `team`.
 	CatalogType pulumi.StringPtrInput
-	// Value must be one of `text`, `reference`.
+	// Value must be one of `text`, `reference`, `boolean`, `service`, `functionality`, `environment`, `group`, `cause`, `incidentType`, `user`.
 	Kind pulumi.StringPtrInput
 	// Restricts values to items of specified catalog.
 	KindCatalogId pulumi.StringPtrInput
@@ -143,7 +147,8 @@ type CatalogPropertyArgs struct {
 	Name     pulumi.StringPtrInput
 	// Whether the property is required.. Value must be one of true or false
 	Required pulumi.BoolPtrInput
-	Slug     pulumi.StringPtrInput
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+	Slug pulumi.StringPtrInput
 }
 
 func (CatalogPropertyArgs) ElementType() reflect.Type {
@@ -242,7 +247,7 @@ func (o CatalogPropertyOutput) CatalogType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CatalogProperty) pulumi.StringPtrOutput { return v.CatalogType }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `text`, `reference`.
+// Value must be one of `text`, `reference`, `boolean`, `service`, `functionality`, `environment`, `group`, `cause`, `incidentType`, `user`.
 func (o CatalogPropertyOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CatalogProperty) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -266,6 +271,7 @@ func (o CatalogPropertyOutput) Required() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CatalogProperty) pulumi.BoolOutput { return v.Required }).(pulumi.BoolOutput)
 }
 
+// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 func (o CatalogPropertyOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *CatalogProperty) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

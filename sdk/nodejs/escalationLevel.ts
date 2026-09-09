@@ -72,6 +72,22 @@ export class EscalationLevel extends pulumi.CustomResource {
      */
     declare public readonly notificationTargetParams: pulumi.Output<outputs.EscalationLevelNotificationTargetParam[]>;
     /**
+     * Number of users to page at a time (cycle-based round robin).
+     */
+    declare public readonly pagingStrategyConfigurationPageUsersCount: pulumi.Output<number>;
+    /**
+     * Number of times to rotate through the roster (cycle-based round robin).
+     */
+    declare public readonly pagingStrategyConfigurationRepeats: pulumi.Output<number>;
+    /**
+     * Controls how repeats are interpreted: 'users' pages exactly N users, 'all' pages everyone once.. Value must be one of `users`, `all`.
+     */
+    declare public readonly pagingStrategyConfigurationRepeatsMode: pulumi.Output<string>;
+    /**
+     * Scope of rotation ordering: active rotation members only, or entire schedule.. Value must be one of `activeRotation`, `entireSchedule`.
+     */
+    declare public readonly pagingStrategyConfigurationRotationScope: pulumi.Output<string>;
+    /**
      * Value must be one of `onCallOnly`, `everyone`.
      */
     declare public readonly pagingStrategyConfigurationScheduleStrategy: pulumi.Output<string | undefined>;
@@ -101,6 +117,10 @@ export class EscalationLevel extends pulumi.CustomResource {
             resourceInputs["escalationPolicyId"] = state?.escalationPolicyId;
             resourceInputs["escalationPolicyPathId"] = state?.escalationPolicyPathId;
             resourceInputs["notificationTargetParams"] = state?.notificationTargetParams;
+            resourceInputs["pagingStrategyConfigurationPageUsersCount"] = state?.pagingStrategyConfigurationPageUsersCount;
+            resourceInputs["pagingStrategyConfigurationRepeats"] = state?.pagingStrategyConfigurationRepeats;
+            resourceInputs["pagingStrategyConfigurationRepeatsMode"] = state?.pagingStrategyConfigurationRepeatsMode;
+            resourceInputs["pagingStrategyConfigurationRotationScope"] = state?.pagingStrategyConfigurationRotationScope;
             resourceInputs["pagingStrategyConfigurationScheduleStrategy"] = state?.pagingStrategyConfigurationScheduleStrategy;
             resourceInputs["pagingStrategyConfigurationStrategy"] = state?.pagingStrategyConfigurationStrategy;
             resourceInputs["position"] = state?.position;
@@ -119,6 +139,10 @@ export class EscalationLevel extends pulumi.CustomResource {
             resourceInputs["escalationPolicyId"] = args?.escalationPolicyId;
             resourceInputs["escalationPolicyPathId"] = args?.escalationPolicyPathId;
             resourceInputs["notificationTargetParams"] = args?.notificationTargetParams;
+            resourceInputs["pagingStrategyConfigurationPageUsersCount"] = args?.pagingStrategyConfigurationPageUsersCount;
+            resourceInputs["pagingStrategyConfigurationRepeats"] = args?.pagingStrategyConfigurationRepeats;
+            resourceInputs["pagingStrategyConfigurationRepeatsMode"] = args?.pagingStrategyConfigurationRepeatsMode;
+            resourceInputs["pagingStrategyConfigurationRotationScope"] = args?.pagingStrategyConfigurationRotationScope;
             resourceInputs["pagingStrategyConfigurationScheduleStrategy"] = args?.pagingStrategyConfigurationScheduleStrategy;
             resourceInputs["pagingStrategyConfigurationStrategy"] = args?.pagingStrategyConfigurationStrategy;
             resourceInputs["position"] = args?.position;
@@ -135,31 +159,47 @@ export interface EscalationLevelState {
     /**
      * Delay before notifying targets in the next Escalation Level.
      */
-    delay?: pulumi.Input<number | undefined>;
+    delay?: pulumi.Input<number>;
     /**
      * The ID of the escalation policy
      */
-    escalationPolicyId?: pulumi.Input<string | undefined>;
+    escalationPolicyId?: pulumi.Input<string>;
     /**
      * The ID of the dynamic escalation policy path the level will belong to. If nothing is specified it will add the level to your default path.
      */
-    escalationPolicyPathId?: pulumi.Input<string | undefined>;
+    escalationPolicyPathId?: pulumi.Input<string>;
     /**
      * Escalation level's notification targets
      */
-    notificationTargetParams?: pulumi.Input<pulumi.Input<inputs.EscalationLevelNotificationTargetParam>[] | undefined>;
+    notificationTargetParams?: pulumi.Input<pulumi.Input<inputs.EscalationLevelNotificationTargetParam>[]>;
+    /**
+     * Number of users to page at a time (cycle-based round robin).
+     */
+    pagingStrategyConfigurationPageUsersCount?: pulumi.Input<number>;
+    /**
+     * Number of times to rotate through the roster (cycle-based round robin).
+     */
+    pagingStrategyConfigurationRepeats?: pulumi.Input<number>;
+    /**
+     * Controls how repeats are interpreted: 'users' pages exactly N users, 'all' pages everyone once.. Value must be one of `users`, `all`.
+     */
+    pagingStrategyConfigurationRepeatsMode?: pulumi.Input<string>;
+    /**
+     * Scope of rotation ordering: active rotation members only, or entire schedule.. Value must be one of `activeRotation`, `entireSchedule`.
+     */
+    pagingStrategyConfigurationRotationScope?: pulumi.Input<string>;
     /**
      * Value must be one of `onCallOnly`, `everyone`.
      */
-    pagingStrategyConfigurationScheduleStrategy?: pulumi.Input<string | undefined>;
+    pagingStrategyConfigurationScheduleStrategy?: pulumi.Input<string>;
     /**
      * Value must be one of `default`, `random`, `cycle`, `alert`.
      */
-    pagingStrategyConfigurationStrategy?: pulumi.Input<string | undefined>;
+    pagingStrategyConfigurationStrategy?: pulumi.Input<string>;
     /**
      * Position of the escalation policy level
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
 }
 
 /**
@@ -169,7 +209,7 @@ export interface EscalationLevelArgs {
     /**
      * Delay before notifying targets in the next Escalation Level.
      */
-    delay?: pulumi.Input<number | undefined>;
+    delay?: pulumi.Input<number>;
     /**
      * The ID of the escalation policy
      */
@@ -177,19 +217,35 @@ export interface EscalationLevelArgs {
     /**
      * The ID of the dynamic escalation policy path the level will belong to. If nothing is specified it will add the level to your default path.
      */
-    escalationPolicyPathId?: pulumi.Input<string | undefined>;
+    escalationPolicyPathId?: pulumi.Input<string>;
     /**
      * Escalation level's notification targets
      */
     notificationTargetParams: pulumi.Input<pulumi.Input<inputs.EscalationLevelNotificationTargetParam>[]>;
     /**
+     * Number of users to page at a time (cycle-based round robin).
+     */
+    pagingStrategyConfigurationPageUsersCount?: pulumi.Input<number>;
+    /**
+     * Number of times to rotate through the roster (cycle-based round robin).
+     */
+    pagingStrategyConfigurationRepeats?: pulumi.Input<number>;
+    /**
+     * Controls how repeats are interpreted: 'users' pages exactly N users, 'all' pages everyone once.. Value must be one of `users`, `all`.
+     */
+    pagingStrategyConfigurationRepeatsMode?: pulumi.Input<string>;
+    /**
+     * Scope of rotation ordering: active rotation members only, or entire schedule.. Value must be one of `activeRotation`, `entireSchedule`.
+     */
+    pagingStrategyConfigurationRotationScope?: pulumi.Input<string>;
+    /**
      * Value must be one of `onCallOnly`, `everyone`.
      */
-    pagingStrategyConfigurationScheduleStrategy?: pulumi.Input<string | undefined>;
+    pagingStrategyConfigurationScheduleStrategy?: pulumi.Input<string>;
     /**
      * Value must be one of `default`, `random`, `cycle`, `alert`.
      */
-    pagingStrategyConfigurationStrategy?: pulumi.Input<string | undefined>;
+    pagingStrategyConfigurationStrategy?: pulumi.Input<string>;
     /**
      * Position of the escalation policy level
      */

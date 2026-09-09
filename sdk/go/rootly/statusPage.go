@@ -9,7 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -84,6 +84,8 @@ type StatusPage struct {
 	// Show uptime over x days. Value must be one of `30`, `60`, `90`.
 	ShowUptimeLastDays pulumi.IntOutput `pulumi:"showUptimeLastDays"`
 	// The slug of the status page
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// Message showing when all components are operational
 	SuccessMessage pulumi.StringOutput `pulumi:"successMessage"`
@@ -182,6 +184,8 @@ type statusPageState struct {
 	// Show uptime over x days. Value must be one of `30`, `60`, `90`.
 	ShowUptimeLastDays *int `pulumi:"showUptimeLastDays"`
 	// The slug of the status page
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 	// Message showing when all components are operational
 	SuccessMessage *string `pulumi:"successMessage"`
@@ -248,6 +252,8 @@ type StatusPageState struct {
 	// Show uptime over x days. Value must be one of `30`, `60`, `90`.
 	ShowUptimeLastDays pulumi.IntPtrInput
 	// The slug of the status page
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 	// Message showing when all components are operational
 	SuccessMessage pulumi.StringPtrInput
@@ -316,6 +322,8 @@ type statusPageArgs struct {
 	// Show uptime over x days. Value must be one of `30`, `60`, `90`.
 	ShowUptimeLastDays *int `pulumi:"showUptimeLastDays"`
 	// The slug of the status page
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 	// Message showing when all components are operational
 	SuccessMessage *string `pulumi:"successMessage"`
@@ -381,6 +389,8 @@ type StatusPageArgs struct {
 	// Show uptime over x days. Value must be one of `30`, `60`, `90`.
 	ShowUptimeLastDays pulumi.IntPtrInput
 	// The slug of the status page
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 	// Message showing when all components are operational
 	SuccessMessage pulumi.StringPtrInput
@@ -608,6 +618,8 @@ func (o StatusPageOutput) ShowUptimeLastDays() pulumi.IntOutput {
 }
 
 // The slug of the status page
+//
+// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 func (o StatusPageOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatusPage) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

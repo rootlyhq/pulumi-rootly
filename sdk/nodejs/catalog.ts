@@ -71,6 +71,12 @@ export class Catalog extends pulumi.CustomResource {
      * Default position of the catalog when displayed in a list.
      */
     declare public readonly position: pulumi.Output<number>;
+    /**
+     * The slug of the catalog. Derived from `name`.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Catalog resource with the given unique name, arguments, and options.
@@ -91,6 +97,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
+            resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as CatalogArgs | undefined;
             resourceInputs["description"] = args?.description;
@@ -98,6 +105,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["icon"] = args?.icon;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
+            resourceInputs["slug"] = args?.slug;
             resourceInputs["managedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -109,42 +117,54 @@ export class Catalog extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Catalog resources.
  */
 export interface CatalogState {
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * An external identifier for this catalog. Must be unique within the team.
      */
-    externalId?: pulumi.Input<string | undefined>;
+    externalId?: pulumi.Input<string>;
     /**
      * Value must be one of `globe-alt`, `server-stack`, `users`, `user-group`, `chart-bar`, `shapes`, `light-bulb`, `cursor-arrow-ripple`.
      */
-    icon?: pulumi.Input<string | undefined>;
+    icon?: pulumi.Input<string>;
     /**
      * Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
      */
-    managedBy?: pulumi.Input<string | undefined>;
-    name?: pulumi.Input<string | undefined>;
+    managedBy?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Default position of the catalog when displayed in a list.
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
+    /**
+     * The slug of the catalog. Derived from `name`.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Catalog resource.
  */
 export interface CatalogArgs {
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * An external identifier for this catalog. Must be unique within the team.
      */
-    externalId?: pulumi.Input<string | undefined>;
+    externalId?: pulumi.Input<string>;
     /**
      * Value must be one of `globe-alt`, `server-stack`, `users`, `user-group`, `chart-bar`, `shapes`, `light-bulb`, `cursor-arrow-ripple`.
      */
-    icon?: pulumi.Input<string | undefined>;
-    name?: pulumi.Input<string | undefined>;
+    icon?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Default position of the catalog when displayed in a list.
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
+    /**
+     * The slug of the catalog. Derived from `name`.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string>;
 }

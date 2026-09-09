@@ -104,15 +104,15 @@ export interface FormFieldPositionState {
     /**
      * The form for the position. Value must be one of `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `incidentPostMortem`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `webActionItemForm`, `slackActionItemForm`.
      */
-    form?: pulumi.Input<string | undefined>;
+    form?: pulumi.Input<string>;
     /**
      * The ID of the form field.
      */
-    formFieldId?: pulumi.Input<string | undefined>;
+    formFieldId?: pulumi.Input<string>;
     /**
      * The position of the form*field*position
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
 }
 
 /**
@@ -122,7 +122,7 @@ export interface FormFieldPositionArgs {
     /**
      * The form for the position. Value must be one of `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `incidentPostMortem`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `webActionItemForm`, `slackActionItemForm`.
      */
-    form?: pulumi.Input<string | undefined>;
+    form?: pulumi.Input<string>;
     /**
      * The ID of the form field.
      */

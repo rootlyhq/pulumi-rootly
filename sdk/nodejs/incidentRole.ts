@@ -76,8 +76,10 @@ export class IncidentRole extends pulumi.CustomResource {
     declare public readonly position: pulumi.Output<number>;
     /**
      * The slug of the incident role
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
     /**
      * The summary of the incident role
      */
@@ -112,8 +114,8 @@ export class IncidentRole extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["optional"] = args?.optional;
             resourceInputs["position"] = args?.position;
+            resourceInputs["slug"] = args?.slug;
             resourceInputs["summary"] = args?.summary;
-            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IncidentRole.__pulumiType, name, resourceInputs, opts);
@@ -127,32 +129,34 @@ export interface IncidentRoleState {
     /**
      * Value must be one of true or false
      */
-    allowMultiUserAssignment?: pulumi.Input<boolean | undefined>;
+    allowMultiUserAssignment?: pulumi.Input<boolean>;
     /**
      * The description of the incident role
      */
-    description?: pulumi.Input<string | undefined>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The name of the incident role
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Value must be one of true or false
      */
-    optional?: pulumi.Input<boolean | undefined>;
+    optional?: pulumi.Input<boolean>;
     /**
      * Position of the incident role
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The slug of the incident role
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
     /**
      * The summary of the incident role
      */
-    summary?: pulumi.Input<string | undefined>;
+    summary?: pulumi.Input<string>;
 }
 
 /**
@@ -162,26 +166,32 @@ export interface IncidentRoleArgs {
     /**
      * Value must be one of true or false
      */
-    allowMultiUserAssignment?: pulumi.Input<boolean | undefined>;
+    allowMultiUserAssignment?: pulumi.Input<boolean>;
     /**
      * The description of the incident role
      */
-    description?: pulumi.Input<string | undefined>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The name of the incident role
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Value must be one of true or false
      */
-    optional?: pulumi.Input<boolean | undefined>;
+    optional?: pulumi.Input<boolean>;
     /**
      * Position of the incident role
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
+    /**
+     * The slug of the incident role
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string>;
     /**
      * The summary of the incident role
      */
-    summary?: pulumi.Input<string | undefined>;
+    summary?: pulumi.Input<string>;
 }

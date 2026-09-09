@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Import
@@ -44,6 +44,8 @@ type WorkflowGroup struct {
 	// The position of the workflow group
 	Position pulumi.IntOutput `pulumi:"position"`
 	// The slug of the workflow group.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -90,6 +92,8 @@ type workflowGroupState struct {
 	// The position of the workflow group
 	Position *int `pulumi:"position"`
 	// The slug of the workflow group.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -107,6 +111,8 @@ type WorkflowGroupState struct {
 	// The position of the workflow group
 	Position pulumi.IntPtrInput
 	// The slug of the workflow group.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -127,6 +133,10 @@ type workflowGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The position of the workflow group
 	Position *int `pulumi:"position"`
+	// The slug of the workflow group.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a WorkflowGroup resource.
@@ -143,6 +153,10 @@ type WorkflowGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The position of the workflow group
 	Position pulumi.IntPtrInput
+	// The slug of the workflow group.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (WorkflowGroupArgs) ElementType() reflect.Type {
@@ -263,6 +277,8 @@ func (o WorkflowGroupOutput) Position() pulumi.IntOutput {
 }
 
 // The slug of the workflow group.
+//
+// Deprecated: Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o WorkflowGroupOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowGroup) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

@@ -88,6 +88,14 @@ export class EscalationPath extends pulumi.CustomResource {
      */
     declare public readonly notificationType: pulumi.Output<string>;
     /**
+     * Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+     */
+    declare public readonly notificationTypeFallback: pulumi.Output<string>;
+    /**
+     * Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+     */
+    declare public readonly notificationTypeRules: pulumi.Output<outputs.EscalationPathNotificationTypeRule[] | undefined>;
+    /**
      * The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.
      */
     declare public readonly pathType: pulumi.Output<string | undefined>;
@@ -137,6 +145,8 @@ export class EscalationPath extends pulumi.CustomResource {
             resourceInputs["matchMode"] = state?.matchMode;
             resourceInputs["name"] = state?.name;
             resourceInputs["notificationType"] = state?.notificationType;
+            resourceInputs["notificationTypeFallback"] = state?.notificationTypeFallback;
+            resourceInputs["notificationTypeRules"] = state?.notificationTypeRules;
             resourceInputs["pathType"] = state?.pathType;
             resourceInputs["position"] = state?.position;
             resourceInputs["repeat"] = state?.repeat;
@@ -154,6 +164,8 @@ export class EscalationPath extends pulumi.CustomResource {
             resourceInputs["matchMode"] = args?.matchMode;
             resourceInputs["name"] = args?.name;
             resourceInputs["notificationType"] = args?.notificationType;
+            resourceInputs["notificationTypeFallback"] = args?.notificationTypeFallback;
+            resourceInputs["notificationTypeRules"] = args?.notificationTypeRules;
             resourceInputs["pathType"] = args?.pathType;
             resourceInputs["position"] = args?.position;
             resourceInputs["repeat"] = args?.repeat;
@@ -174,63 +186,71 @@ export interface EscalationPathState {
     /**
      * What happens after a deferral path finishes. Required for deferral paths.. Value must be one of `reEvaluate`, `executePath`.
      */
-    afterDeferralBehavior?: pulumi.Input<string | undefined>;
+    afterDeferralBehavior?: pulumi.Input<string>;
     /**
      * The escalation path to execute after this deferral path when after*deferral*behavior is execute_path.
      */
-    afterDeferralPathId?: pulumi.Input<string | undefined>;
+    afterDeferralPathId?: pulumi.Input<string>;
     /**
      * Whether this escalation path is the default path. Value must be one of true or false
      */
-    default?: pulumi.Input<boolean | undefined>;
+    default?: pulumi.Input<boolean>;
     /**
      * The ID of the escalation policy
      */
-    escalationPolicyId?: pulumi.Input<string | undefined>;
+    escalationPolicyId?: pulumi.Input<string>;
     /**
      * Initial delay for escalation path in minutes. Maximum 1 week (10080).
      */
-    initialDelay?: pulumi.Input<number | undefined>;
+    initialDelay?: pulumi.Input<number>;
     /**
      * How path rules are matched.. Value must be one of `match-all-rules`, `match-any-rule`.
      */
-    matchMode?: pulumi.Input<string | undefined>;
+    matchMode?: pulumi.Input<string>;
     /**
      * The name of the escalation path
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Notification rule type
      */
-    notificationType?: pulumi.Input<string | undefined>;
+    notificationType?: pulumi.Input<string>;
+    /**
+     * Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+     */
+    notificationTypeFallback?: pulumi.Input<string>;
+    /**
+     * Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+     */
+    notificationTypeRules?: pulumi.Input<pulumi.Input<inputs.EscalationPathNotificationTypeRule>[]>;
     /**
      * The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.
      */
-    pathType?: pulumi.Input<string | undefined>;
+    pathType?: pulumi.Input<string>;
     /**
      * The position of this path in the paths for this EP.
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * Whether this path should be repeated until someone acknowledges the alert. Value must be one of true or false
      */
-    repeat?: pulumi.Input<boolean | undefined>;
+    repeat?: pulumi.Input<boolean>;
     /**
      * The number of times this path will be executed until someone acknowledges the alert
      */
-    repeatCount?: pulumi.Input<number | undefined>;
+    repeatCount?: pulumi.Input<number>;
     /**
      * Escalation path rules
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.EscalationPathRule>[] | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.EscalationPathRule>[]>;
     /**
      * Time zone used for time restrictions.. Value must be one of `International Date Line West`, `Etc/GMT+12`, `American Samoa`, `Pacific/Pago_Pago`, `Midway Island`, `Pacific/Midway`, `Hawaii`, `Pacific/Honolulu`, `Alaska`, `America/Juneau`, `Pacific Time (US & Canada)`, `America/Los_Angeles`, `Tijuana`, `America/Tijuana`, `Arizona`, `America/Phoenix`, `Mazatlan`, `America/Mazatlan`, `Mountain Time (US & Canada)`, `America/Denver`, `Central America`, `America/Guatemala`, `Central Time (US & Canada)`, `America/Chicago`, `Chihuahua`, `America/Chihuahua`, `Guadalajara`, `America/Mexico_City`, `Mexico City`, `America/Mexico_City`, `Monterrey`, `America/Monterrey`, `Saskatchewan`, `America/Regina`, `Bogota`, `America/Bogota`, `Eastern Time (US & Canada)`, `America/New_York`, `Indiana (East)`, `America/Indiana/Indianapolis`, `Lima`, `America/Lima`, `Quito`, `America/Lima`, `Atlantic Time (Canada)`, `America/Halifax`, `Caracas`, `America/Caracas`, `Georgetown`, `America/Guyana`, `La Paz`, `America/La_Paz`, `Puerto Rico`, `America/Puerto_Rico`, `Santiago`, `America/Santiago`, `Newfoundland`, `America/St_Johns`, `Brasilia`, `America/Sao_Paulo`, `Buenos Aires`, `America/Argentina/Buenos_Aires`, `Montevideo`, `America/Montevideo`, `Greenland`, `America/Godthab`, `Mid-Atlantic`, `Atlantic/South_Georgia`, `Azores`, `Atlantic/Azores`, `Cape Verde Is.`, `Atlantic/Cape_Verde`, `Casablanca`, `Africa/Casablanca`, `Dublin`, `Europe/Dublin`, `Edinburgh`, `Europe/London`, `Lisbon`, `Europe/Lisbon`, `London`, `Europe/London`, `Monrovia`, `Africa/Monrovia`, `UTC`, `Etc/UTC`, `Amsterdam`, `Europe/Amsterdam`, `Belgrade`, `Europe/Belgrade`, `Berlin`, `Europe/Berlin`, `Bern`, `Europe/Zurich`, `Bratislava`, `Europe/Bratislava`, `Brussels`, `Europe/Brussels`, `Budapest`, `Europe/Budapest`, `Copenhagen`, `Europe/Copenhagen`, `Ljubljana`, `Europe/Ljubljana`, `Madrid`, `Europe/Madrid`, `Paris`, `Europe/Paris`, `Prague`, `Europe/Prague`, `Rome`, `Europe/Rome`, `Sarajevo`, `Europe/Sarajevo`, `Skopje`, `Europe/Skopje`, `Stockholm`, `Europe/Stockholm`, `Vienna`, `Europe/Vienna`, `Warsaw`, `Europe/Warsaw`, `West Central Africa`, `Africa/Algiers`, `Zagreb`, `Europe/Zagreb`, `Zurich`, `Europe/Zurich`, `Athens`, `Europe/Athens`, `Bucharest`, `Europe/Bucharest`, `Cairo`, `Africa/Cairo`, `Harare`, `Africa/Harare`, `Helsinki`, `Europe/Helsinki`, `Jerusalem`, `Asia/Jerusalem`, `Kaliningrad`, `Europe/Kaliningrad`, `Kyiv`, `Europe/Kiev`, `Pretoria`, `Africa/Johannesburg`, `Riga`, `Europe/Riga`, `Sofia`, `Europe/Sofia`, `Tallinn`, `Europe/Tallinn`, `Vilnius`, `Europe/Vilnius`, `Baghdad`, `Asia/Baghdad`, `Istanbul`, `Europe/Istanbul`, `Kuwait`, `Asia/Kuwait`, `Minsk`, `Europe/Minsk`, `Moscow`, `Europe/Moscow`, `Nairobi`, `Africa/Nairobi`, `Riyadh`, `Asia/Riyadh`, `St. Petersburg`, `Europe/Moscow`, `Volgograd`, `Europe/Volgograd`, `Tehran`, `Asia/Tehran`, `Abu Dhabi`, `Asia/Muscat`, `Baku`, `Asia/Baku`, `Muscat`, `Asia/Muscat`, `Samara`, `Europe/Samara`, `Tbilisi`, `Asia/Tbilisi`, `Yerevan`, `Asia/Yerevan`, `Kabul`, `Asia/Kabul`, `Almaty`, `Asia/Almaty`, `Astana`, `Asia/Almaty`, `Ekaterinburg`, `Asia/Yekaterinburg`, `Islamabad`, `Asia/Karachi`, `Karachi`, `Asia/Karachi`, `Tashkent`, `Asia/Tashkent`, `Chennai`, `Asia/Kolkata`, `Kolkata`, `Asia/Kolkata`, `Mumbai`, `Asia/Kolkata`, `New Delhi`, `Asia/Kolkata`, `Sri Jayawardenepura`, `Asia/Colombo`, `Kathmandu`, `Asia/Kathmandu`, `Dhaka`, `Asia/Dhaka`, `Urumqi`, `Asia/Urumqi`, `Rangoon`, `Asia/Rangoon`, `Bangkok`, `Asia/Bangkok`, `Hanoi`, `Asia/Bangkok`, `Jakarta`, `Asia/Jakarta`, `Krasnoyarsk`, `Asia/Krasnoyarsk`, `Novosibirsk`, `Asia/Novosibirsk`, `Beijing`, `Asia/Shanghai`, `Chongqing`, `Asia/Chongqing`, `Hong Kong`, `Asia/Hong_Kong`, `Irkutsk`, `Asia/Irkutsk`, `Kuala Lumpur`, `Asia/Kuala_Lumpur`, `Perth`, `Australia/Perth`, `Singapore`, `Asia/Singapore`, `Taipei`, `Asia/Taipei`, `Ulaanbaatar`, `Asia/Ulaanbaatar`, `Osaka`, `Asia/Tokyo`, `Sapporo`, `Asia/Tokyo`, `Seoul`, `Asia/Seoul`, `Tokyo`, `Asia/Tokyo`, `Yakutsk`, `Asia/Yakutsk`, `Adelaide`, `Australia/Adelaide`, `Darwin`, `Australia/Darwin`, `Brisbane`, `Australia/Brisbane`, `Canberra`, `Australia/Canberra`, `Guam`, `Pacific/Guam`, `Hobart`, `Australia/Hobart`, `Melbourne`, `Australia/Melbourne`, `Port Moresby`, `Pacific/Port_Moresby`, `Sydney`, `Australia/Sydney`, `Vladivostok`, `Asia/Vladivostok`, `Magadan`, `Asia/Magadan`, `New Caledonia`, `Pacific/Noumea`, `Solomon Is.`, `Pacific/Guadalcanal`, `Srednekolymsk`, `Asia/Srednekolymsk`, `Auckland`, `Pacific/Auckland`, `Fiji`, `Pacific/Fiji`, `Kamchatka`, `Asia/Kamchatka`, `Marshall Is.`, `Pacific/Majuro`, `Wellington`, `Pacific/Auckland`, `Chatham Is.`, `Pacific/Chatham`, `Nuku'alofa`, `Pacific/Tongatapu`, `Samoa`, `Pacific/Apia`, `Tokelau Is.`, `Pacific/Fakaofo`.
      */
-    timeRestrictionTimeZone?: pulumi.Input<string | undefined>;
+    timeRestrictionTimeZone?: pulumi.Input<string>;
     /**
      * If time restrictions are set, alerts will follow this path when they arrive within the specified time ranges and meet the rules.
      */
-    timeRestrictions?: pulumi.Input<pulumi.Input<inputs.EscalationPathTimeRestriction>[] | undefined>;
+    timeRestrictions?: pulumi.Input<pulumi.Input<inputs.EscalationPathTimeRestriction>[]>;
 }
 
 /**
@@ -240,61 +260,69 @@ export interface EscalationPathArgs {
     /**
      * What happens after a deferral path finishes. Required for deferral paths.. Value must be one of `reEvaluate`, `executePath`.
      */
-    afterDeferralBehavior?: pulumi.Input<string | undefined>;
+    afterDeferralBehavior?: pulumi.Input<string>;
     /**
      * The escalation path to execute after this deferral path when after*deferral*behavior is execute_path.
      */
-    afterDeferralPathId?: pulumi.Input<string | undefined>;
+    afterDeferralPathId?: pulumi.Input<string>;
     /**
      * Whether this escalation path is the default path. Value must be one of true or false
      */
-    default?: pulumi.Input<boolean | undefined>;
+    default?: pulumi.Input<boolean>;
     /**
      * The ID of the escalation policy
      */
-    escalationPolicyId?: pulumi.Input<string | undefined>;
+    escalationPolicyId?: pulumi.Input<string>;
     /**
      * Initial delay for escalation path in minutes. Maximum 1 week (10080).
      */
-    initialDelay?: pulumi.Input<number | undefined>;
+    initialDelay?: pulumi.Input<number>;
     /**
      * How path rules are matched.. Value must be one of `match-all-rules`, `match-any-rule`.
      */
-    matchMode?: pulumi.Input<string | undefined>;
+    matchMode?: pulumi.Input<string>;
     /**
      * The name of the escalation path
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Notification rule type
      */
-    notificationType?: pulumi.Input<string | undefined>;
+    notificationType?: pulumi.Input<string>;
+    /**
+     * Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+     */
+    notificationTypeFallback?: pulumi.Input<string>;
+    /**
+     * Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+     */
+    notificationTypeRules?: pulumi.Input<pulumi.Input<inputs.EscalationPathNotificationTypeRule>[]>;
     /**
      * The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.
      */
-    pathType?: pulumi.Input<string | undefined>;
+    pathType?: pulumi.Input<string>;
     /**
      * The position of this path in the paths for this EP.
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * Whether this path should be repeated until someone acknowledges the alert. Value must be one of true or false
      */
-    repeat?: pulumi.Input<boolean | undefined>;
+    repeat?: pulumi.Input<boolean>;
     /**
      * The number of times this path will be executed until someone acknowledges the alert
      */
-    repeatCount?: pulumi.Input<number | undefined>;
+    repeatCount?: pulumi.Input<number>;
     /**
      * Escalation path rules
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.EscalationPathRule>[] | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.EscalationPathRule>[]>;
     /**
      * Time zone used for time restrictions.. Value must be one of `International Date Line West`, `Etc/GMT+12`, `American Samoa`, `Pacific/Pago_Pago`, `Midway Island`, `Pacific/Midway`, `Hawaii`, `Pacific/Honolulu`, `Alaska`, `America/Juneau`, `Pacific Time (US & Canada)`, `America/Los_Angeles`, `Tijuana`, `America/Tijuana`, `Arizona`, `America/Phoenix`, `Mazatlan`, `America/Mazatlan`, `Mountain Time (US & Canada)`, `America/Denver`, `Central America`, `America/Guatemala`, `Central Time (US & Canada)`, `America/Chicago`, `Chihuahua`, `America/Chihuahua`, `Guadalajara`, `America/Mexico_City`, `Mexico City`, `America/Mexico_City`, `Monterrey`, `America/Monterrey`, `Saskatchewan`, `America/Regina`, `Bogota`, `America/Bogota`, `Eastern Time (US & Canada)`, `America/New_York`, `Indiana (East)`, `America/Indiana/Indianapolis`, `Lima`, `America/Lima`, `Quito`, `America/Lima`, `Atlantic Time (Canada)`, `America/Halifax`, `Caracas`, `America/Caracas`, `Georgetown`, `America/Guyana`, `La Paz`, `America/La_Paz`, `Puerto Rico`, `America/Puerto_Rico`, `Santiago`, `America/Santiago`, `Newfoundland`, `America/St_Johns`, `Brasilia`, `America/Sao_Paulo`, `Buenos Aires`, `America/Argentina/Buenos_Aires`, `Montevideo`, `America/Montevideo`, `Greenland`, `America/Godthab`, `Mid-Atlantic`, `Atlantic/South_Georgia`, `Azores`, `Atlantic/Azores`, `Cape Verde Is.`, `Atlantic/Cape_Verde`, `Casablanca`, `Africa/Casablanca`, `Dublin`, `Europe/Dublin`, `Edinburgh`, `Europe/London`, `Lisbon`, `Europe/Lisbon`, `London`, `Europe/London`, `Monrovia`, `Africa/Monrovia`, `UTC`, `Etc/UTC`, `Amsterdam`, `Europe/Amsterdam`, `Belgrade`, `Europe/Belgrade`, `Berlin`, `Europe/Berlin`, `Bern`, `Europe/Zurich`, `Bratislava`, `Europe/Bratislava`, `Brussels`, `Europe/Brussels`, `Budapest`, `Europe/Budapest`, `Copenhagen`, `Europe/Copenhagen`, `Ljubljana`, `Europe/Ljubljana`, `Madrid`, `Europe/Madrid`, `Paris`, `Europe/Paris`, `Prague`, `Europe/Prague`, `Rome`, `Europe/Rome`, `Sarajevo`, `Europe/Sarajevo`, `Skopje`, `Europe/Skopje`, `Stockholm`, `Europe/Stockholm`, `Vienna`, `Europe/Vienna`, `Warsaw`, `Europe/Warsaw`, `West Central Africa`, `Africa/Algiers`, `Zagreb`, `Europe/Zagreb`, `Zurich`, `Europe/Zurich`, `Athens`, `Europe/Athens`, `Bucharest`, `Europe/Bucharest`, `Cairo`, `Africa/Cairo`, `Harare`, `Africa/Harare`, `Helsinki`, `Europe/Helsinki`, `Jerusalem`, `Asia/Jerusalem`, `Kaliningrad`, `Europe/Kaliningrad`, `Kyiv`, `Europe/Kiev`, `Pretoria`, `Africa/Johannesburg`, `Riga`, `Europe/Riga`, `Sofia`, `Europe/Sofia`, `Tallinn`, `Europe/Tallinn`, `Vilnius`, `Europe/Vilnius`, `Baghdad`, `Asia/Baghdad`, `Istanbul`, `Europe/Istanbul`, `Kuwait`, `Asia/Kuwait`, `Minsk`, `Europe/Minsk`, `Moscow`, `Europe/Moscow`, `Nairobi`, `Africa/Nairobi`, `Riyadh`, `Asia/Riyadh`, `St. Petersburg`, `Europe/Moscow`, `Volgograd`, `Europe/Volgograd`, `Tehran`, `Asia/Tehran`, `Abu Dhabi`, `Asia/Muscat`, `Baku`, `Asia/Baku`, `Muscat`, `Asia/Muscat`, `Samara`, `Europe/Samara`, `Tbilisi`, `Asia/Tbilisi`, `Yerevan`, `Asia/Yerevan`, `Kabul`, `Asia/Kabul`, `Almaty`, `Asia/Almaty`, `Astana`, `Asia/Almaty`, `Ekaterinburg`, `Asia/Yekaterinburg`, `Islamabad`, `Asia/Karachi`, `Karachi`, `Asia/Karachi`, `Tashkent`, `Asia/Tashkent`, `Chennai`, `Asia/Kolkata`, `Kolkata`, `Asia/Kolkata`, `Mumbai`, `Asia/Kolkata`, `New Delhi`, `Asia/Kolkata`, `Sri Jayawardenepura`, `Asia/Colombo`, `Kathmandu`, `Asia/Kathmandu`, `Dhaka`, `Asia/Dhaka`, `Urumqi`, `Asia/Urumqi`, `Rangoon`, `Asia/Rangoon`, `Bangkok`, `Asia/Bangkok`, `Hanoi`, `Asia/Bangkok`, `Jakarta`, `Asia/Jakarta`, `Krasnoyarsk`, `Asia/Krasnoyarsk`, `Novosibirsk`, `Asia/Novosibirsk`, `Beijing`, `Asia/Shanghai`, `Chongqing`, `Asia/Chongqing`, `Hong Kong`, `Asia/Hong_Kong`, `Irkutsk`, `Asia/Irkutsk`, `Kuala Lumpur`, `Asia/Kuala_Lumpur`, `Perth`, `Australia/Perth`, `Singapore`, `Asia/Singapore`, `Taipei`, `Asia/Taipei`, `Ulaanbaatar`, `Asia/Ulaanbaatar`, `Osaka`, `Asia/Tokyo`, `Sapporo`, `Asia/Tokyo`, `Seoul`, `Asia/Seoul`, `Tokyo`, `Asia/Tokyo`, `Yakutsk`, `Asia/Yakutsk`, `Adelaide`, `Australia/Adelaide`, `Darwin`, `Australia/Darwin`, `Brisbane`, `Australia/Brisbane`, `Canberra`, `Australia/Canberra`, `Guam`, `Pacific/Guam`, `Hobart`, `Australia/Hobart`, `Melbourne`, `Australia/Melbourne`, `Port Moresby`, `Pacific/Port_Moresby`, `Sydney`, `Australia/Sydney`, `Vladivostok`, `Asia/Vladivostok`, `Magadan`, `Asia/Magadan`, `New Caledonia`, `Pacific/Noumea`, `Solomon Is.`, `Pacific/Guadalcanal`, `Srednekolymsk`, `Asia/Srednekolymsk`, `Auckland`, `Pacific/Auckland`, `Fiji`, `Pacific/Fiji`, `Kamchatka`, `Asia/Kamchatka`, `Marshall Is.`, `Pacific/Majuro`, `Wellington`, `Pacific/Auckland`, `Chatham Is.`, `Pacific/Chatham`, `Nuku'alofa`, `Pacific/Tongatapu`, `Samoa`, `Pacific/Apia`, `Tokelau Is.`, `Pacific/Fakaofo`.
      */
-    timeRestrictionTimeZone?: pulumi.Input<string | undefined>;
+    timeRestrictionTimeZone?: pulumi.Input<string>;
     /**
      * If time restrictions are set, alerts will follow this path when they arrive within the specified time ranges and meet the rules.
      */
-    timeRestrictions?: pulumi.Input<pulumi.Input<inputs.EscalationPathTimeRestriction>[] | undefined>;
+    timeRestrictions?: pulumi.Input<pulumi.Input<inputs.EscalationPathTimeRestriction>[]>;
 }

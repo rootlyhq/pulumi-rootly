@@ -63,8 +63,10 @@ export class AlertField extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The slug of the alert field
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a AlertField resource with the given unique name, arguments, and options.
@@ -86,7 +88,7 @@ export class AlertField extends pulumi.CustomResource {
             const args = argsOrState as AlertFieldArgs | undefined;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AlertField.__pulumiType, name, resourceInputs, opts);
@@ -100,15 +102,17 @@ export interface AlertFieldState {
     /**
      * The kind of alert field
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the alert field
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * The slug of the alert field
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
 }
 
 /**
@@ -118,9 +122,15 @@ export interface AlertFieldArgs {
     /**
      * The kind of alert field
      */
-    kind?: pulumi.Input<string | undefined>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the alert field
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
+    /**
+     * The slug of the alert field
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string>;
 }

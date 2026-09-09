@@ -81,6 +81,8 @@ export class CommunicationsTemplate extends pulumi.CustomResource {
     declare public readonly position: pulumi.Output<number>;
     /**
      * The slug of the communications template
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
 
@@ -129,31 +131,33 @@ export interface CommunicationsTemplateState {
     /**
      * Communication template stages
      */
-    communicationTemplateStages?: pulumi.Input<pulumi.Input<inputs.CommunicationsTemplateCommunicationTemplateStage>[] | undefined>;
+    communicationTemplateStages?: pulumi.Input<pulumi.Input<inputs.CommunicationsTemplateCommunicationTemplateStage>[]>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    communicationType?: pulumi.Input<inputs.CommunicationsTemplateCommunicationType | undefined>;
+    communicationType?: pulumi.Input<inputs.CommunicationsTemplateCommunicationType>;
     /**
      * The communication type ID
      */
-    communicationTypeId?: pulumi.Input<string | undefined>;
+    communicationTypeId?: pulumi.Input<string>;
     /**
      * The description of the communications template
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the communications template
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Position of the communications template
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The slug of the communications template
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
 }
 
 /**
@@ -163,11 +167,11 @@ export interface CommunicationsTemplateArgs {
     /**
      * Communication template stages
      */
-    communicationTemplateStages?: pulumi.Input<pulumi.Input<inputs.CommunicationsTemplateCommunicationTemplateStage>[] | undefined>;
+    communicationTemplateStages?: pulumi.Input<pulumi.Input<inputs.CommunicationsTemplateCommunicationTemplateStage>[]>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    communicationType?: pulumi.Input<inputs.CommunicationsTemplateCommunicationType | undefined>;
+    communicationType?: pulumi.Input<inputs.CommunicationsTemplateCommunicationType>;
     /**
      * The communication type ID
      */
@@ -175,17 +179,19 @@ export interface CommunicationsTemplateArgs {
     /**
      * The description of the communications template
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the communications template
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Position of the communications template
      */
-    position?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number>;
     /**
      * The slug of the communications template
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
 }

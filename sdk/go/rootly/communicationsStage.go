@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -40,6 +40,8 @@ type CommunicationsStage struct {
 	// Position of the communications stage
 	Position pulumi.IntOutput `pulumi:"position"`
 	// The slug of the communications stage
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -80,6 +82,8 @@ type communicationsStageState struct {
 	// Position of the communications stage
 	Position *int `pulumi:"position"`
 	// The slug of the communications stage
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -91,6 +95,8 @@ type CommunicationsStageState struct {
 	// Position of the communications stage
 	Position pulumi.IntPtrInput
 	// The slug of the communications stage
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -105,6 +111,10 @@ type communicationsStageArgs struct {
 	Name *string `pulumi:"name"`
 	// Position of the communications stage
 	Position *int `pulumi:"position"`
+	// The slug of the communications stage
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a CommunicationsStage resource.
@@ -115,6 +125,10 @@ type CommunicationsStageArgs struct {
 	Name pulumi.StringPtrInput
 	// Position of the communications stage
 	Position pulumi.IntPtrInput
+	// The slug of the communications stage
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (CommunicationsStageArgs) ElementType() reflect.Type {
@@ -220,6 +234,8 @@ func (o CommunicationsStageOutput) Position() pulumi.IntOutput {
 }
 
 // The slug of the communications stage
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o CommunicationsStageOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommunicationsStage) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

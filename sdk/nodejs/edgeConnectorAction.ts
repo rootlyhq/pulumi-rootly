@@ -142,38 +142,38 @@ export interface EdgeConnectorActionState {
     /**
      * Action type. Value must be one of `script`, `http`.
      */
-    actionType?: pulumi.Input<string | undefined>;
-    createdAt?: pulumi.Input<string | undefined>;
+    actionType?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Action description
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the edge connector
      */
-    edgeConnectorId?: pulumi.Input<string | undefined>;
+    edgeConnectorId?: pulumi.Input<string>;
     /**
      * Action icon. Value must be one of `bolt`, `bolt-slash`, `cog`, `command-line`, `code-bracket`, `server`, `server-stack`, `play`, `arrow-path`, `wrench-screwdriver`, `cube`, `rocket-launch`.
      */
-    icon?: pulumi.Input<string | undefined>;
-    lastExecutedAt?: pulumi.Input<string | undefined>;
+    icon?: pulumi.Input<string>;
+    lastExecutedAt?: pulumi.Input<string>;
     /**
      * Action name
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Parameter definitions
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.EdgeConnectorActionParameter>[] | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.EdgeConnectorActionParameter>[]>;
     /**
      * Action slug
      */
-    slug?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string>;
     /**
      * Timeout in seconds
      */
-    timeout?: pulumi.Input<number | undefined>;
-    updatedAt?: pulumi.Input<string | undefined>;
+    timeout?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -183,11 +183,11 @@ export interface EdgeConnectorActionArgs {
     /**
      * Action type. Value must be one of `script`, `http`.
      */
-    actionType?: pulumi.Input<string | undefined>;
+    actionType?: pulumi.Input<string>;
     /**
      * Action description
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * The ID of the edge connector
      */
@@ -195,17 +195,17 @@ export interface EdgeConnectorActionArgs {
     /**
      * Action icon. Value must be one of `bolt`, `bolt-slash`, `cog`, `command-line`, `code-bracket`, `server`, `server-stack`, `play`, `arrow-path`, `wrench-screwdriver`, `cube`, `rocket-launch`.
      */
-    icon?: pulumi.Input<string | undefined>;
+    icon?: pulumi.Input<string>;
     /**
      * Action name
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Parameter definitions
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.EdgeConnectorActionParameter>[] | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.EdgeConnectorActionParameter>[]>;
     /**
      * Timeout in seconds
      */
-    timeout?: pulumi.Input<number | undefined>;
+    timeout?: pulumi.Input<number>;
 }

@@ -119,23 +119,23 @@ export interface OverrideShiftState {
     /**
      * End datetime of shift
      */
-    endsAt?: pulumi.Input<string | undefined>;
+    endsAt?: pulumi.Input<string>;
     /**
      * ID of rotation
      */
-    rotationId?: pulumi.Input<string | undefined>;
+    rotationId?: pulumi.Input<string>;
     /**
      * ID of schedule
      */
-    scheduleId?: pulumi.Input<string | undefined>;
+    scheduleId?: pulumi.Input<string>;
     /**
      * Start datetime of shift
      */
-    startsAt?: pulumi.Input<string | undefined>;
+    startsAt?: pulumi.Input<string>;
     /**
      * Override shift user
      */
-    userId?: pulumi.Input<number | undefined>;
+    userId?: pulumi.Input<number>;
 }
 
 /**
@@ -149,11 +149,11 @@ export interface OverrideShiftArgs {
     /**
      * ID of rotation
      */
-    rotationId?: pulumi.Input<string | undefined>;
+    rotationId?: pulumi.Input<string>;
     /**
      * ID of schedule
      */
-    scheduleId?: pulumi.Input<string | undefined>;
+    scheduleId?: pulumi.Input<string>;
     /**
      * Start datetime of shift
      */

@@ -8,60 +8,32 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
-func GetServices(ctx *pulumi.Context, args *GetServicesArgs, opts ...pulumi.InvokeOption) (*GetServicesResult, error) {
+// Retrieves a list of all services.
+//
+// ## Example Usage
+func GetServices(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetServicesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicesResult
-	err := ctx.Invoke("rootly:index/getServices:getServices", args, &rv, opts...)
+	err := ctx.Invoke("rootly:index/getServices:getServices", nil, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
-// A collection of arguments for invoking getServices.
-type GetServicesArgs struct {
-	BackstageId *string `pulumi:"backstageId"`
-	Name        *string `pulumi:"name"`
-	OpsgenieId  *string `pulumi:"opsgenieId"`
-	PagerdutyId *string `pulumi:"pagerdutyId"`
-	Slug        *string `pulumi:"slug"`
-}
-
 // A collection of values returned by getServices.
 type GetServicesResult struct {
-	BackstageId *string `pulumi:"backstageId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id          string               `pulumi:"id"`
-	Name        *string              `pulumi:"name"`
-	OpsgenieId  *string              `pulumi:"opsgenieId"`
-	PagerdutyId *string              `pulumi:"pagerdutyId"`
-	Services    []GetServicesService `pulumi:"services"`
-	Slug        *string              `pulumi:"slug"`
+	Services []GetServicesService `pulumi:"services"`
 }
 
-func GetServicesOutput(ctx *pulumi.Context, args GetServicesOutputArgs, opts ...pulumi.InvokeOption) GetServicesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServicesResultOutput, error) {
-			args := v.(GetServicesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getServices:getServices", args, GetServicesResultOutput{}, options).(GetServicesResultOutput), nil
-		}).(GetServicesResultOutput)
-}
-
-// A collection of arguments for invoking getServices.
-type GetServicesOutputArgs struct {
-	BackstageId pulumi.StringPtrInput `pulumi:"backstageId"`
-	Name        pulumi.StringPtrInput `pulumi:"name"`
-	OpsgenieId  pulumi.StringPtrInput `pulumi:"opsgenieId"`
-	PagerdutyId pulumi.StringPtrInput `pulumi:"pagerdutyId"`
-	Slug        pulumi.StringPtrInput `pulumi:"slug"`
-}
-
-func (GetServicesOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServicesArgs)(nil)).Elem()
+func GetServicesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetServicesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetServicesResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("rootly:index/getServices:getServices", nil, GetServicesResultOutput{}, options).(GetServicesResultOutput), nil
+	}).(GetServicesResultOutput)
 }
 
 // A collection of values returned by getServices.
@@ -79,33 +51,8 @@ func (o GetServicesResultOutput) ToGetServicesResultOutputWithContext(ctx contex
 	return o
 }
 
-func (o GetServicesResultOutput) BackstageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicesResult) *string { return v.BackstageId }).(pulumi.StringPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetServicesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicesResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetServicesResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o GetServicesResultOutput) OpsgenieId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicesResult) *string { return v.OpsgenieId }).(pulumi.StringPtrOutput)
-}
-
-func (o GetServicesResultOutput) PagerdutyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicesResult) *string { return v.PagerdutyId }).(pulumi.StringPtrOutput)
-}
-
 func (o GetServicesResultOutput) Services() GetServicesServiceArrayOutput {
 	return o.ApplyT(func(v GetServicesResult) []GetServicesService { return v.Services }).(GetServicesServiceArrayOutput)
-}
-
-func (o GetServicesResultOutput) Slug() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetServicesResult) *string { return v.Slug }).(pulumi.StringPtrOutput)
 }
 
 func init() {

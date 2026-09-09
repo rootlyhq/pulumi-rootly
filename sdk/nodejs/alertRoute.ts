@@ -102,14 +102,14 @@ export class AlertRoute extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlertRoute resources.
  */
 export interface AlertRouteState {
-    alertsSourceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    alertsSourceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The name of the alert route
      */
-    name?: pulumi.Input<string | undefined>;
-    owningTeamIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    rules?: pulumi.Input<pulumi.Input<inputs.AlertRouteRule>[] | undefined>;
+    name?: pulumi.Input<string>;
+    owningTeamIds?: pulumi.Input<pulumi.Input<string>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.AlertRouteRule>[]>;
 }
 
 /**
@@ -117,11 +117,11 @@ export interface AlertRouteState {
  */
 export interface AlertRouteArgs {
     alertsSourceIds: pulumi.Input<pulumi.Input<string>[]>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The name of the alert route
      */
-    name?: pulumi.Input<string | undefined>;
-    owningTeamIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    rules?: pulumi.Input<pulumi.Input<inputs.AlertRouteRule>[] | undefined>;
+    name?: pulumi.Input<string>;
+    owningTeamIds?: pulumi.Input<pulumi.Input<string>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.AlertRouteRule>[]>;
 }

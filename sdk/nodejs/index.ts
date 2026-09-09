@@ -460,7 +460,7 @@ export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
-export { GetServicesArgs, GetServicesResult, GetServicesOutputArgs } from "./getServices";
+export { GetServicesResult } from "./getServices";
 export const getServices: typeof import("./getServices").getServices = null as any;
 export const getServicesOutput: typeof import("./getServices").getServicesOutput = null as any;
 utilities.lazyLoad(exports, ["getServices","getServicesOutput"], () => require("./getServices"));
@@ -504,6 +504,11 @@ export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
 
 export { GetWebhooksEndpointArgs, GetWebhooksEndpointResult, GetWebhooksEndpointOutputArgs } from "./getWebhooksEndpoint";
 export const getWebhooksEndpoint: typeof import("./getWebhooksEndpoint").getWebhooksEndpoint = null as any;
@@ -678,6 +683,16 @@ export type StatusPage = import("./statusPage").StatusPage;
 export const StatusPage: typeof import("./statusPage").StatusPage = null as any;
 utilities.lazyLoad(exports, ["StatusPage"], () => require("./statusPage"));
 
+export { StatusPageComponentArgs, StatusPageComponentState } from "./statusPageComponent";
+export type StatusPageComponent = import("./statusPageComponent").StatusPageComponent;
+export const StatusPageComponent: typeof import("./statusPageComponent").StatusPageComponent = null as any;
+utilities.lazyLoad(exports, ["StatusPageComponent"], () => require("./statusPageComponent"));
+
+export { StatusPageComponentGroupArgs, StatusPageComponentGroupState } from "./statusPageComponentGroup";
+export type StatusPageComponentGroup = import("./statusPageComponentGroup").StatusPageComponentGroup;
+export const StatusPageComponentGroup: typeof import("./statusPageComponentGroup").StatusPageComponentGroup = null as any;
+utilities.lazyLoad(exports, ["StatusPageComponentGroup"], () => require("./statusPageComponentGroup"));
+
 export { StatusPageTemplateArgs, StatusPageTemplateState } from "./statusPageTemplate";
 export type StatusPageTemplate = import("./statusPageTemplate").StatusPageTemplate;
 export const StatusPageTemplate: typeof import("./statusPageTemplate").StatusPageTemplate = null as any;
@@ -692,6 +707,11 @@ export { TeamArgs, TeamState } from "./team";
 export type Team = import("./team").Team;
 export const Team: typeof import("./team").Team = null as any;
 utilities.lazyLoad(exports, ["Team"], () => require("./team"));
+
+export { UserOnCallRoleArgs, UserOnCallRoleState } from "./userOnCallRole";
+export type UserOnCallRole = import("./userOnCallRole").UserOnCallRole;
+export const UserOnCallRole: typeof import("./userOnCallRole").UserOnCallRole = null as any;
+utilities.lazyLoad(exports, ["UserOnCallRole"], () => require("./userOnCallRole"));
 
 export { WebhooksEndpointArgs, WebhooksEndpointState } from "./webhooksEndpoint";
 export type WebhooksEndpoint = import("./webhooksEndpoint").WebhooksEndpoint;
@@ -1624,12 +1644,18 @@ const _module = {
                 return new Sla(name, <any>undefined, { urn })
             case "rootly:index/statusPage:StatusPage":
                 return new StatusPage(name, <any>undefined, { urn })
+            case "rootly:index/statusPageComponent:StatusPageComponent":
+                return new StatusPageComponent(name, <any>undefined, { urn })
+            case "rootly:index/statusPageComponentGroup:StatusPageComponentGroup":
+                return new StatusPageComponentGroup(name, <any>undefined, { urn })
             case "rootly:index/statusPageTemplate:StatusPageTemplate":
                 return new StatusPageTemplate(name, <any>undefined, { urn })
             case "rootly:index/subStatus:SubStatus":
                 return new SubStatus(name, <any>undefined, { urn })
             case "rootly:index/team:Team":
                 return new Team(name, <any>undefined, { urn })
+            case "rootly:index/userOnCallRole:UserOnCallRole":
+                return new UserOnCallRole(name, <any>undefined, { urn })
             case "rootly:index/webhooksEndpoint:WebhooksEndpoint":
                 return new WebhooksEndpoint(name, <any>undefined, { urn })
             case "rootly:index/workflowActionItem:WorkflowActionItem":
@@ -2015,9 +2041,12 @@ pulumi.runtime.registerResourceModule("rootly", "index/service", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/severity", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/sla", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/statusPage", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/statusPageComponent", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/statusPageComponentGroup", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/statusPageTemplate", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/subStatus", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/team", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/userOnCallRole", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/webhooksEndpoint", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowActionItem", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowActionItemFormFieldCondition", _module)

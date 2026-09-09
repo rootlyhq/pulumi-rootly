@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -41,7 +41,11 @@ type Cause struct {
 	Position pulumi.IntOutput `pulumi:"position"`
 	// Array of property values for this cause.
 	Properties CausePropertyArrayOutput `pulumi:"properties"`
+	// The status page description of the cause
+	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
 	// The slug of the cause
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -83,7 +87,11 @@ type causeState struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this cause.
 	Properties []CauseProperty `pulumi:"properties"`
+	// The status page description of the cause
+	PublicDescription *string `pulumi:"publicDescription"`
 	// The slug of the cause
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -96,7 +104,11 @@ type CauseState struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this cause.
 	Properties CausePropertyArrayInput
+	// The status page description of the cause
+	PublicDescription pulumi.StringPtrInput
 	// The slug of the cause
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -113,6 +125,12 @@ type causeArgs struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this cause.
 	Properties []CauseProperty `pulumi:"properties"`
+	// The status page description of the cause
+	PublicDescription *string `pulumi:"publicDescription"`
+	// The slug of the cause
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a Cause resource.
@@ -125,6 +143,12 @@ type CauseArgs struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this cause.
 	Properties CausePropertyArrayInput
+	// The status page description of the cause
+	PublicDescription pulumi.StringPtrInput
+	// The slug of the cause
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (CauseArgs) ElementType() reflect.Type {
@@ -234,7 +258,14 @@ func (o CauseOutput) Properties() CausePropertyArrayOutput {
 	return o.ApplyT(func(v *Cause) CausePropertyArrayOutput { return v.Properties }).(CausePropertyArrayOutput)
 }
 
+// The status page description of the cause
+func (o CauseOutput) PublicDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cause) pulumi.StringOutput { return v.PublicDescription }).(pulumi.StringOutput)
+}
+
 // The slug of the cause
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o CauseOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cause) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

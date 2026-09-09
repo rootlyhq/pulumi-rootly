@@ -47,5 +47,5 @@ export function getAlertRouteOutput(args?: GetAlertRouteOutputArgs, opts?: pulum
  * A collection of arguments for invoking getAlertRoute.
  */
 export interface GetAlertRouteOutputArgs {
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
 }

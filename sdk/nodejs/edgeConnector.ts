@@ -115,28 +115,28 @@ export class EdgeConnector extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EdgeConnector resources.
  */
 export interface EdgeConnectorState {
-    createdAt?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<string>;
     /**
      * Connector description
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Connector name
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Whether connector is currently online
      */
-    online?: pulumi.Input<boolean | undefined>;
+    online?: pulumi.Input<boolean>;
     /**
      * Connector status. Value must be one of `active`, `paused`.
      */
-    status?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string>;
     /**
      * Array of event types to subscribe to
      */
-    subscriptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    updatedAt?: pulumi.Input<string | undefined>;
+    subscriptions?: pulumi.Input<pulumi.Input<string>[]>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -146,17 +146,17 @@ export interface EdgeConnectorArgs {
     /**
      * Connector description
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Connector name
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     /**
      * Connector status. Value must be one of `active`, `paused`.
      */
-    status?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string>;
     /**
      * Array of event types to subscribe to
      */
-    subscriptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    subscriptions?: pulumi.Input<pulumi.Input<string>[]>;
 }

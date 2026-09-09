@@ -69,12 +69,12 @@ export function getSeverityOutput(args?: GetSeverityOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getSeverity.
  */
 export interface GetSeverityOutputArgs {
-    color?: pulumi.Input<string | undefined>;
+    color?: pulumi.Input<string>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    name?: pulumi.Input<string | undefined>;
-    severity?: pulumi.Input<string | undefined>;
-    slug?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    name?: pulumi.Input<string>;
+    severity?: pulumi.Input<string>;
+    slug?: pulumi.Input<string>;
 }

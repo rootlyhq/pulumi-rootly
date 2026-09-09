@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -49,6 +49,10 @@ type EscalationPath struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Notification rule type
 	NotificationType pulumi.StringOutput `pulumi:"notificationType"`
+	// Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+	NotificationTypeFallback pulumi.StringOutput `pulumi:"notificationTypeFallback"`
+	// Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+	NotificationTypeRules EscalationPathNotificationTypeRuleArrayOutput `pulumi:"notificationTypeRules"`
 	// The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.
 	PathType pulumi.StringPtrOutput `pulumi:"pathType"`
 	// The position of this path in the paths for this EP.
@@ -111,6 +115,10 @@ type escalationPathState struct {
 	Name *string `pulumi:"name"`
 	// Notification rule type
 	NotificationType *string `pulumi:"notificationType"`
+	// Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+	NotificationTypeFallback *string `pulumi:"notificationTypeFallback"`
+	// Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+	NotificationTypeRules []EscalationPathNotificationTypeRule `pulumi:"notificationTypeRules"`
 	// The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.
 	PathType *string `pulumi:"pathType"`
 	// The position of this path in the paths for this EP.
@@ -144,6 +152,10 @@ type EscalationPathState struct {
 	Name pulumi.StringPtrInput
 	// Notification rule type
 	NotificationType pulumi.StringPtrInput
+	// Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+	NotificationTypeFallback pulumi.StringPtrInput
+	// Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+	NotificationTypeRules EscalationPathNotificationTypeRuleArrayInput
 	// The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.
 	PathType pulumi.StringPtrInput
 	// The position of this path in the paths for this EP.
@@ -181,6 +193,10 @@ type escalationPathArgs struct {
 	Name *string `pulumi:"name"`
 	// Notification rule type
 	NotificationType *string `pulumi:"notificationType"`
+	// Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+	NotificationTypeFallback *string `pulumi:"notificationTypeFallback"`
+	// Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+	NotificationTypeRules []EscalationPathNotificationTypeRule `pulumi:"notificationTypeRules"`
 	// The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.
 	PathType *string `pulumi:"pathType"`
 	// The position of this path in the paths for this EP.
@@ -215,6 +231,10 @@ type EscalationPathArgs struct {
 	Name pulumi.StringPtrInput
 	// Notification rule type
 	NotificationType pulumi.StringPtrInput
+	// Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+	NotificationTypeFallback pulumi.StringPtrInput
+	// Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+	NotificationTypeRules EscalationPathNotificationTypeRuleArrayInput
 	// The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.
 	PathType pulumi.StringPtrInput
 	// The position of this path in the paths for this EP.
@@ -356,6 +376,16 @@ func (o EscalationPathOutput) Name() pulumi.StringOutput {
 // Notification rule type
 func (o EscalationPathOutput) NotificationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EscalationPath) pulumi.StringOutput { return v.NotificationType }).(pulumi.StringOutput)
+}
+
+// Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+func (o EscalationPathOutput) NotificationTypeFallback() pulumi.StringOutput {
+	return o.ApplyT(func(v *EscalationPath) pulumi.StringOutput { return v.NotificationTypeFallback }).(pulumi.StringOutput)
+}
+
+// Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+func (o EscalationPathOutput) NotificationTypeRules() EscalationPathNotificationTypeRuleArrayOutput {
+	return o.ApplyT(func(v *EscalationPath) EscalationPathNotificationTypeRuleArrayOutput { return v.NotificationTypeRules }).(EscalationPathNotificationTypeRuleArrayOutput)
 }
 
 // The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.

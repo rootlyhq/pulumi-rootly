@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupRetrospectiveProcessGroupStep(ctx *pulumi.Context, args *LookupRetrospectiveProcessGroupStepArgs, opts ...pulumi.InvokeOption) (*LookupRetrospectiveProcessGroupStepResult, error) {

@@ -172,46 +172,46 @@ export interface GetIncidentOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    acknowledgedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    acknowledgedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    closedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    closedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    detectedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    environments?: pulumi.Input<string | undefined>;
-    functionalities?: pulumi.Input<string | undefined>;
+    detectedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environments?: pulumi.Input<string>;
+    functionalities?: pulumi.Input<string>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    inTriageAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    kind?: pulumi.Input<string | undefined>;
-    labels?: pulumi.Input<string | undefined>;
+    inTriageAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kind?: pulumi.Input<string>;
+    labels?: pulumi.Input<string>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    mitigatedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    private?: pulumi.Input<boolean | undefined>;
+    mitigatedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    private?: pulumi.Input<boolean>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    resolvedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    services?: pulumi.Input<string | undefined>;
-    severity?: pulumi.Input<string | undefined>;
+    resolvedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    services?: pulumi.Input<string>;
+    severity?: pulumi.Input<string>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    startedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    status?: pulumi.Input<string | undefined>;
+    startedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    status?: pulumi.Input<string>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    updatedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    user?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    user?: pulumi.Input<string>;
 }

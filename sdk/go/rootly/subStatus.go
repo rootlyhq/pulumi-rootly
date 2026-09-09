@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -38,7 +38,8 @@ type SubStatus struct {
 	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus pulumi.StringPtrOutput `pulumi:"parentStatus"`
 	Position     pulumi.IntOutput       `pulumi:"position"`
-	Slug         pulumi.StringOutput    `pulumi:"slug"`
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
 // NewSubStatus registers a new resource with the given unique name, arguments, and options.
@@ -76,7 +77,8 @@ type subStatusState struct {
 	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus *string `pulumi:"parentStatus"`
 	Position     *int    `pulumi:"position"`
-	Slug         *string `pulumi:"slug"`
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 type SubStatusState struct {
@@ -85,7 +87,8 @@ type SubStatusState struct {
 	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus pulumi.StringPtrInput
 	Position     pulumi.IntPtrInput
-	Slug         pulumi.StringPtrInput
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (SubStatusState) ElementType() reflect.Type {
@@ -98,6 +101,8 @@ type subStatusArgs struct {
 	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus *string `pulumi:"parentStatus"`
 	Position     *int    `pulumi:"position"`
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a SubStatus resource.
@@ -107,6 +112,8 @@ type SubStatusArgs struct {
 	// Value must be one of `inTriage`, `started`, `resolved`, `closed`, `cancelled`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`.
 	ParentStatus pulumi.StringPtrInput
 	Position     pulumi.IntPtrInput
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (SubStatusArgs) ElementType() reflect.Type {
@@ -213,6 +220,7 @@ func (o SubStatusOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *SubStatus) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
 }
 
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o SubStatusOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *SubStatus) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

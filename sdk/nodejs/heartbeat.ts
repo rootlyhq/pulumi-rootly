@@ -184,62 +184,62 @@ export interface HeartbeatState {
     /**
      * Description of alerts triggered when heartbeat expires.
      */
-    alertDescription?: pulumi.Input<string | undefined>;
+    alertDescription?: pulumi.Input<string>;
     /**
      * Summary of alerts triggered when heartbeat expires.
      */
-    alertSummary?: pulumi.Input<string | undefined>;
+    alertSummary?: pulumi.Input<string>;
     /**
      * Urgency of alerts triggered when heartbeat expires.
      */
-    alertUrgencyId?: pulumi.Input<string | undefined>;
+    alertUrgencyId?: pulumi.Input<string>;
     /**
      * The description of the heartbeat
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Email address to receive heartbeat pings.
      */
-    emailAddress?: pulumi.Input<string | undefined>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    emailAddress?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * When heartbeat expires
      */
-    expiresAt?: pulumi.Input<string | undefined>;
-    interval?: pulumi.Input<number | undefined>;
+    expiresAt?: pulumi.Input<string>;
+    interval?: pulumi.Input<number>;
     /**
      * Value must be one of `minutes`, `hours`, `days`.
      */
-    intervalUnit?: pulumi.Input<string | undefined>;
+    intervalUnit?: pulumi.Input<string>;
     /**
      * When the heartbeat was last pinged.
      */
-    lastPingedAt?: pulumi.Input<string | undefined>;
+    lastPingedAt?: pulumi.Input<string>;
     /**
      * The name of the heartbeat
      */
-    name?: pulumi.Input<string | undefined>;
-    notificationTargetId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
+    notificationTargetId?: pulumi.Input<string>;
     /**
      * The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
      */
-    notificationTargetType?: pulumi.Input<string | undefined>;
+    notificationTargetType?: pulumi.Input<string>;
     /**
      * List of team IDs that own this heartbeat
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * URL to receive heartbeat pings.
      */
-    pingUrl?: pulumi.Input<string | undefined>;
+    pingUrl?: pulumi.Input<string>;
     /**
      * Secret used as bearer token when pinging heartbeat.
      */
-    secret?: pulumi.Input<string | undefined>;
+    secret?: pulumi.Input<string>;
     /**
      * Value must be one of `waiting`, `active`, `expired`.
      */
-    status?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string>;
 }
 
 /**
@@ -249,7 +249,7 @@ export interface HeartbeatArgs {
     /**
      * Description of alerts triggered when heartbeat expires.
      */
-    alertDescription?: pulumi.Input<string | undefined>;
+    alertDescription?: pulumi.Input<string>;
     /**
      * Summary of alerts triggered when heartbeat expires.
      */
@@ -257,44 +257,44 @@ export interface HeartbeatArgs {
     /**
      * Urgency of alerts triggered when heartbeat expires.
      */
-    alertUrgencyId?: pulumi.Input<string | undefined>;
+    alertUrgencyId?: pulumi.Input<string>;
     /**
      * The description of the heartbeat
      */
-    description?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string>;
     /**
      * Email address to receive heartbeat pings.
      */
-    emailAddress?: pulumi.Input<string | undefined>;
-    enabled?: pulumi.Input<boolean | undefined>;
+    emailAddress?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * When heartbeat expires
      */
-    expiresAt?: pulumi.Input<string | undefined>;
+    expiresAt?: pulumi.Input<string>;
     interval: pulumi.Input<number>;
     /**
      * Value must be one of `minutes`, `hours`, `days`.
      */
-    intervalUnit?: pulumi.Input<string | undefined>;
+    intervalUnit?: pulumi.Input<string>;
     /**
      * When the heartbeat was last pinged.
      */
-    lastPingedAt?: pulumi.Input<string | undefined>;
+    lastPingedAt?: pulumi.Input<string>;
     /**
      * The name of the heartbeat
      */
-    name?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string>;
     notificationTargetId: pulumi.Input<string>;
     /**
      * The type of the notification target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `User`, `Group`, `Service`, `EscalationPolicy`, `Functionality`.
      */
-    notificationTargetType?: pulumi.Input<string | undefined>;
+    notificationTargetType?: pulumi.Input<string>;
     /**
      * List of team IDs that own this heartbeat
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Value must be one of `waiting`, `active`, `expired`.
      */
-    status?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string>;
 }

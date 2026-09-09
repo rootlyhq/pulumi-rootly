@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -53,7 +53,9 @@ type AlertGroup struct {
 	GroupByAlertUrgency pulumi.BoolOutput `pulumi:"groupByAlertUrgency"`
 	// The name of the alert group
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The slug of the alert group
+	// [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug    pulumi.StringOutput         `pulumi:"slug"`
 	Targets AlertGroupTargetArrayOutput `pulumi:"targets"`
 	// Time window for the alert grouping
@@ -110,7 +112,9 @@ type alertGroupState struct {
 	GroupByAlertUrgency *bool `pulumi:"groupByAlertUrgency"`
 	// The name of the alert group
 	Name *string `pulumi:"name"`
-	// The slug of the alert group
+	// [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug    *string            `pulumi:"slug"`
 	Targets []AlertGroupTarget `pulumi:"targets"`
 	// Time window for the alert grouping
@@ -138,7 +142,9 @@ type AlertGroupState struct {
 	GroupByAlertUrgency pulumi.BoolPtrInput
 	// The name of the alert group
 	Name pulumi.StringPtrInput
-	// The slug of the alert group
+	// [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug    pulumi.StringPtrInput
 	Targets AlertGroupTargetArrayInput
 	// Time window for the alert grouping
@@ -170,7 +176,9 @@ type alertGroupArgs struct {
 	GroupByAlertUrgency *bool `pulumi:"groupByAlertUrgency"`
 	// The name of the alert group
 	Name *string `pulumi:"name"`
-	// The slug of the alert group
+	// [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug    *string            `pulumi:"slug"`
 	Targets []AlertGroupTarget `pulumi:"targets"`
 	// Time window for the alert grouping
@@ -199,7 +207,9 @@ type AlertGroupArgs struct {
 	GroupByAlertUrgency pulumi.BoolPtrInput
 	// The name of the alert group
 	Name pulumi.StringPtrInput
-	// The slug of the alert group
+	// [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug    pulumi.StringPtrInput
 	Targets AlertGroupTargetArrayInput
 	// Time window for the alert grouping
@@ -337,7 +347,9 @@ func (o AlertGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The slug of the alert group
+// [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+//
+// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 func (o AlertGroupOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertGroup) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }
