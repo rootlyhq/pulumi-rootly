@@ -37,12 +37,8 @@ type GetSeveritiesResult struct {
 }
 
 func GetSeveritiesOutput(ctx *pulumi.Context, args GetSeveritiesOutputArgs, opts ...pulumi.InvokeOption) GetSeveritiesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSeveritiesResultOutput, error) {
-			args := v.(GetSeveritiesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getSeverities:getSeverities", args, GetSeveritiesResultOutput{}, options).(GetSeveritiesResultOutput), nil
-		}).(GetSeveritiesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getSeverities:getSeverities", args, GetSeveritiesResultOutput{}, options).(GetSeveritiesResultOutput)
 }
 
 // A collection of arguments for invoking getSeverities.

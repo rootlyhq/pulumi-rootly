@@ -39,12 +39,8 @@ type LookupCustomFieldOptionResult struct {
 }
 
 func LookupCustomFieldOptionOutput(ctx *pulumi.Context, args LookupCustomFieldOptionOutputArgs, opts ...pulumi.InvokeOption) LookupCustomFieldOptionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomFieldOptionResultOutput, error) {
-			args := v.(LookupCustomFieldOptionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCustomFieldOption:getCustomFieldOption", args, LookupCustomFieldOptionResultOutput{}, options).(LookupCustomFieldOptionResultOutput), nil
-		}).(LookupCustomFieldOptionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCustomFieldOption:getCustomFieldOption", args, LookupCustomFieldOptionResultOutput{}, options).(LookupCustomFieldOptionResultOutput)
 }
 
 // A collection of arguments for invoking getCustomFieldOption.

@@ -134,37 +134,37 @@ export interface CatalogChecklistTemplateState {
     /**
      * The catalog type. Value must be one of `Service`, `Functionality`, `Environment`, `Group`, `Cause`, `IncidentType`, `Catalog`.
      */
-    catalogType?: pulumi.Input<string>;
+    catalogType?: pulumi.Input<string | undefined>;
     /**
      * The description of the checklist template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Template fields in position order
      */
-    fields?: pulumi.Input<pulumi.Input<inputs.CatalogChecklistTemplateField>[]>;
+    fields?: pulumi.Input<pulumi.Input<inputs.CatalogChecklistTemplateField>[] | undefined>;
     /**
      * The name of the checklist template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Template owners
      */
-    owners?: pulumi.Input<pulumi.Input<inputs.CatalogChecklistTemplateOwner>[]>;
+    owners?: pulumi.Input<pulumi.Input<inputs.CatalogChecklistTemplateOwner>[] | undefined>;
     /**
      * The scope ID
      */
-    scopeId?: pulumi.Input<string>;
+    scopeId?: pulumi.Input<string | undefined>;
     /**
      * The scope type. Value must be one of `Team`, `Catalog`.
      */
-    scopeType?: pulumi.Input<string>;
+    scopeType?: pulumi.Input<string | undefined>;
     /**
      * The slug of the checklist template
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,35 +174,35 @@ export interface CatalogChecklistTemplateArgs {
     /**
      * The catalog type. Value must be one of `Service`, `Functionality`, `Environment`, `Group`, `Cause`, `IncidentType`, `Catalog`.
      */
-    catalogType?: pulumi.Input<string>;
+    catalogType?: pulumi.Input<string | undefined>;
     /**
      * The description of the checklist template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Template fields in position order
      */
-    fields?: pulumi.Input<pulumi.Input<inputs.CatalogChecklistTemplateField>[]>;
+    fields?: pulumi.Input<pulumi.Input<inputs.CatalogChecklistTemplateField>[] | undefined>;
     /**
      * The name of the checklist template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Template owners
      */
-    owners?: pulumi.Input<pulumi.Input<inputs.CatalogChecklistTemplateOwner>[]>;
+    owners?: pulumi.Input<pulumi.Input<inputs.CatalogChecklistTemplateOwner>[] | undefined>;
     /**
      * The scope ID
      */
-    scopeId?: pulumi.Input<string>;
+    scopeId?: pulumi.Input<string | undefined>;
     /**
      * The scope type. Value must be one of `Team`, `Catalog`.
      */
-    scopeType?: pulumi.Input<string>;
+    scopeType?: pulumi.Input<string | undefined>;
     /**
      * The slug of the checklist template
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

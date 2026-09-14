@@ -53,7 +53,7 @@ export function getWorkflowTaskOutput(args: GetWorkflowTaskOutputArgs, opts?: pu
  * A collection of arguments for invoking getWorkflowTask.
  */
 export interface GetWorkflowTaskOutputArgs {
-    name?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
     workflowId: pulumi.Input<string>;
 }

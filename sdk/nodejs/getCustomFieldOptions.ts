@@ -50,7 +50,7 @@ export function getCustomFieldOptionsOutput(args: GetCustomFieldOptionsOutputArg
  * A collection of arguments for invoking getCustomFieldOptions.
  */
 export interface GetCustomFieldOptionsOutputArgs {
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     customFieldId: pulumi.Input<number>;
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

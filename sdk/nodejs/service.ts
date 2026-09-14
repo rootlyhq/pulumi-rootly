@@ -290,141 +290,141 @@ export interface ServiceState {
     /**
      * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
      */
-    alertBroadcastChannel?: pulumi.Input<inputs.ServiceAlertBroadcastChannel>;
+    alertBroadcastChannel?: pulumi.Input<inputs.ServiceAlertBroadcastChannel | undefined>;
     /**
      * Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
      */
-    alertBroadcastEnabled?: pulumi.Input<boolean>;
+    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The alert urgency id of the service
      */
-    alertUrgencyId?: pulumi.Input<string>;
+    alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
      * Email generated to send alerts to
      */
-    alertsEmailAddress?: pulumi.Input<string>;
+    alertsEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * Enable alerts through email. Value must be one of true or false
      */
-    alertsEmailEnabled?: pulumi.Input<boolean>;
+    alertsEmailEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
      */
-    backstageId?: pulumi.Input<string>;
+    backstageId?: pulumi.Input<string | undefined>;
     /**
      * The hex color of the service
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The Cortex group id associated to this service
      */
-    cortexId?: pulumi.Input<string>;
+    cortexId?: pulumi.Input<string | undefined>;
     /**
      * The description of the service
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Environments associated with this service
      */
-    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The escalation policy id of the service
      */
-    escalationPolicyId?: pulumi.Input<string>;
+    escalationPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The external id associated to this service
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The GitHub repository branch associated to this service. eg: main
      */
-    githubRepositoryBranch?: pulumi.Input<string>;
+    githubRepositoryBranch?: pulumi.Input<string | undefined>;
     /**
      * The GitHub repository name associated to this service. eg: rootlyhq/my-service
      */
-    githubRepositoryName?: pulumi.Input<string>;
+    githubRepositoryName?: pulumi.Input<string | undefined>;
     /**
      * The GitLab repository branch associated to this service. eg: main
      */
-    gitlabRepositoryBranch?: pulumi.Input<string>;
+    gitlabRepositoryBranch?: pulumi.Input<string | undefined>;
     /**
      * The GitLab repository name associated to this service. eg: rootlyhq/my-service
      */
-    gitlabRepositoryName?: pulumi.Input<string>;
+    gitlabRepositoryName?: pulumi.Input<string | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
      */
-    incidentBroadcastChannel?: pulumi.Input<inputs.ServiceIncidentBroadcastChannel>;
+    incidentBroadcastChannel?: pulumi.Input<inputs.ServiceIncidentBroadcastChannel | undefined>;
     /**
      * Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
      */
-    incidentBroadcastEnabled?: pulumi.Input<boolean>;
+    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
      */
-    kubernetesDeploymentName?: pulumi.Input<string>;
+    kubernetesDeploymentName?: pulumi.Input<string | undefined>;
     /**
      * How this service is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
      */
-    managedBy?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the service
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails attached to the service
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Opsgenie service id associated to this service
      */
-    opsgenieId?: pulumi.Input<string>;
+    opsgenieId?: pulumi.Input<string | undefined>;
     /**
      * Owner Teams associated with this service
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Owner Users associated with this service
      */
-    ownerUserIds?: pulumi.Input<pulumi.Input<number>[]>;
+    ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The PagerDuty service id associated to this service
      */
-    pagerdutyId?: pulumi.Input<string>;
+    pagerdutyId?: pulumi.Input<string | undefined>;
     /**
      * Position of the service
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Array of property values for this service.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.ServiceProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.ServiceProperty>[] | undefined>;
     /**
      * The status page description of the service
      */
-    publicDescription?: pulumi.Input<string>;
+    publicDescription?: pulumi.Input<string | undefined>;
     /**
      * Services dependent on this service
      */
-    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Service Now CI sys id associated to this service
      */
-    serviceNowCiSysId?: pulumi.Input<string>;
+    serviceNowCiSysId?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this service
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.ServiceSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.ServiceSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this service
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.ServiceSlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.ServiceSlackChannel>[] | undefined>;
     /**
      * The slug of the service
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -434,135 +434,135 @@ export interface ServiceArgs {
     /**
      * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
      */
-    alertBroadcastChannel?: pulumi.Input<inputs.ServiceAlertBroadcastChannel>;
+    alertBroadcastChannel?: pulumi.Input<inputs.ServiceAlertBroadcastChannel | undefined>;
     /**
      * Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
      */
-    alertBroadcastEnabled?: pulumi.Input<boolean>;
+    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The alert urgency id of the service
      */
-    alertUrgencyId?: pulumi.Input<string>;
+    alertUrgencyId?: pulumi.Input<string | undefined>;
     /**
      * Email generated to send alerts to
      */
-    alertsEmailAddress?: pulumi.Input<string>;
+    alertsEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * Enable alerts through email. Value must be one of true or false
      */
-    alertsEmailEnabled?: pulumi.Input<boolean>;
+    alertsEmailEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
      */
-    backstageId?: pulumi.Input<string>;
+    backstageId?: pulumi.Input<string | undefined>;
     /**
      * The hex color of the service
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The Cortex group id associated to this service
      */
-    cortexId?: pulumi.Input<string>;
+    cortexId?: pulumi.Input<string | undefined>;
     /**
      * The description of the service
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Environments associated with this service
      */
-    environmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The escalation policy id of the service
      */
-    escalationPolicyId?: pulumi.Input<string>;
+    escalationPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The external id associated to this service
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The GitHub repository branch associated to this service. eg: main
      */
-    githubRepositoryBranch?: pulumi.Input<string>;
+    githubRepositoryBranch?: pulumi.Input<string | undefined>;
     /**
      * The GitHub repository name associated to this service. eg: rootlyhq/my-service
      */
-    githubRepositoryName?: pulumi.Input<string>;
+    githubRepositoryName?: pulumi.Input<string | undefined>;
     /**
      * The GitLab repository branch associated to this service. eg: main
      */
-    gitlabRepositoryBranch?: pulumi.Input<string>;
+    gitlabRepositoryBranch?: pulumi.Input<string | undefined>;
     /**
      * The GitLab repository name associated to this service. eg: rootlyhq/my-service
      */
-    gitlabRepositoryName?: pulumi.Input<string>;
+    gitlabRepositoryName?: pulumi.Input<string | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. Slack channel to broadcast incidents to
      */
-    incidentBroadcastChannel?: pulumi.Input<inputs.ServiceIncidentBroadcastChannel>;
+    incidentBroadcastChannel?: pulumi.Input<inputs.ServiceIncidentBroadcastChannel | undefined>;
     /**
      * Enable incidents to be broadcasted to a specific channel. Value must be one of true or false
      */
-    incidentBroadcastEnabled?: pulumi.Input<boolean>;
+    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
      */
-    kubernetesDeploymentName?: pulumi.Input<string>;
+    kubernetesDeploymentName?: pulumi.Input<string | undefined>;
     /**
      * The name of the service
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails attached to the service
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Opsgenie service id associated to this service
      */
-    opsgenieId?: pulumi.Input<string>;
+    opsgenieId?: pulumi.Input<string | undefined>;
     /**
      * Owner Teams associated with this service
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Owner Users associated with this service
      */
-    ownerUserIds?: pulumi.Input<pulumi.Input<number>[]>;
+    ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The PagerDuty service id associated to this service
      */
-    pagerdutyId?: pulumi.Input<string>;
+    pagerdutyId?: pulumi.Input<string | undefined>;
     /**
      * Position of the service
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Array of property values for this service.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.ServiceProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.ServiceProperty>[] | undefined>;
     /**
      * The status page description of the service
      */
-    publicDescription?: pulumi.Input<string>;
+    publicDescription?: pulumi.Input<string | undefined>;
     /**
      * Services dependent on this service
      */
-    serviceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Service Now CI sys id associated to this service
      */
-    serviceNowCiSysId?: pulumi.Input<string>;
+    serviceNowCiSysId?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this service
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.ServiceSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.ServiceSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this service
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.ServiceSlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.ServiceSlackChannel>[] | undefined>;
     /**
      * The slug of the service
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -40,12 +40,8 @@ type LookupAlertFieldResult struct {
 }
 
 func LookupAlertFieldOutput(ctx *pulumi.Context, args LookupAlertFieldOutputArgs, opts ...pulumi.InvokeOption) LookupAlertFieldResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlertFieldResultOutput, error) {
-			args := v.(LookupAlertFieldArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getAlertField:getAlertField", args, LookupAlertFieldResultOutput{}, options).(LookupAlertFieldResultOutput), nil
-		}).(LookupAlertFieldResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getAlertField:getAlertField", args, LookupAlertFieldResultOutput{}, options).(LookupAlertFieldResultOutput)
 }
 
 // A collection of arguments for invoking getAlertField.

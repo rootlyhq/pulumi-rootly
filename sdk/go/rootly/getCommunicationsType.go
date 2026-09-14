@@ -40,12 +40,8 @@ type LookupCommunicationsTypeResult struct {
 }
 
 func LookupCommunicationsTypeOutput(ctx *pulumi.Context, args LookupCommunicationsTypeOutputArgs, opts ...pulumi.InvokeOption) LookupCommunicationsTypeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCommunicationsTypeResultOutput, error) {
-			args := v.(LookupCommunicationsTypeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCommunicationsType:getCommunicationsType", args, LookupCommunicationsTypeResultOutput{}, options).(LookupCommunicationsTypeResultOutput), nil
-		}).(LookupCommunicationsTypeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCommunicationsType:getCommunicationsType", args, LookupCommunicationsTypeResultOutput{}, options).(LookupCommunicationsTypeResultOutput)
 }
 
 // A collection of arguments for invoking getCommunicationsType.

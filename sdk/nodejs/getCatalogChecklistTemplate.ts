@@ -63,12 +63,12 @@ export function getCatalogChecklistTemplateOutput(args?: GetCatalogChecklistTemp
  * A collection of arguments for invoking getCatalogChecklistTemplate.
  */
 export interface GetCatalogChecklistTemplateOutputArgs {
-    catalogType?: pulumi.Input<string>;
+    catalogType?: pulumi.Input<string | undefined>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    scopeType?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    scopeType?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -102,11 +102,11 @@ export interface UserOnCallRoleState {
     /**
      * The id of the on-call role to assign.
      */
-    onCallRoleId?: pulumi.Input<string>;
+    onCallRoleId?: pulumi.Input<string | undefined>;
     /**
      * The id of the user to assign the on-call role to.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -56,7 +56,7 @@ export interface GetIncidentPermissionSetBooleanOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     incidentPermissionSetId: pulumi.Input<string>;
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
 }

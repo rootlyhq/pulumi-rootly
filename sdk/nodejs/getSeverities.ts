@@ -48,6 +48,6 @@ export function getSeveritiesOutput(args?: GetSeveritiesOutputArgs, opts?: pulum
  * A collection of arguments for invoking getSeverities.
  */
 export interface GetSeveritiesOutputArgs {
-    name?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

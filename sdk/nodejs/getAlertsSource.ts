@@ -49,7 +49,7 @@ export function getAlertsSourceOutput(args?: GetAlertsSourceOutputArgs, opts?: p
  * A collection of arguments for invoking getAlertsSource.
  */
 export interface GetAlertsSourceOutputArgs {
-    name?: pulumi.Input<string>;
-    sourceType?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    sourceType?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }

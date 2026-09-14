@@ -56,8 +56,8 @@ export function getCustomFieldsOutput(args?: GetCustomFieldsOutputArgs, opts?: p
  * A collection of arguments for invoking getCustomFields.
  */
 export interface GetCustomFieldsOutputArgs {
-    enabled?: pulumi.Input<boolean>;
-    kind?: pulumi.Input<string>;
-    label?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    kind?: pulumi.Input<string | undefined>;
+    label?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

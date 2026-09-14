@@ -41,12 +41,8 @@ type GetFunctionalitiesResult struct {
 }
 
 func GetFunctionalitiesOutput(ctx *pulumi.Context, args GetFunctionalitiesOutputArgs, opts ...pulumi.InvokeOption) GetFunctionalitiesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFunctionalitiesResultOutput, error) {
-			args := v.(GetFunctionalitiesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getFunctionalities:getFunctionalities", args, GetFunctionalitiesResultOutput{}, options).(GetFunctionalitiesResultOutput), nil
-		}).(GetFunctionalitiesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getFunctionalities:getFunctionalities", args, GetFunctionalitiesResultOutput{}, options).(GetFunctionalitiesResultOutput)
 }
 
 // A collection of arguments for invoking getFunctionalities.

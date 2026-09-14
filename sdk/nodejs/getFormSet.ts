@@ -58,7 +58,7 @@ export interface GetFormSetOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    isDefault?: pulumi.Input<boolean>;
-    slug?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    isDefault?: pulumi.Input<boolean | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

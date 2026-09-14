@@ -178,67 +178,67 @@ export interface ScheduleState {
     /**
      * 24/7 coverage of the schedule. Value must be one of true or false
      */
-    allTimeCoverage?: pulumi.Input<boolean>;
+    allTimeCoverage?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the schedule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
      */
-    includeShadowsInSlackNotifications?: pulumi.Input<boolean>;
+    includeShadowsInSlackNotifications?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the schedule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The owning teams for this schedules.
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
      */
-    ownerUserId?: pulumi.Input<number>;
+    ownerUserId?: pulumi.Input<number | undefined>;
     /**
      * Day of week the weekly shift summary is sent. Value must be one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
      */
-    shiftReportDayOfWeek?: pulumi.Input<string>;
+    shiftReportDayOfWeek?: pulumi.Input<string | undefined>;
     /**
      * Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
      */
-    shiftReportEnabled?: pulumi.Input<boolean>;
+    shiftReportEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.
      */
-    shiftReportTimeOfDay?: pulumi.Input<string>;
+    shiftReportTimeOfDay?: pulumi.Input<string | undefined>;
     /**
      * IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).
      */
-    shiftReportTimeZone?: pulumi.Input<string>;
+    shiftReportTimeZone?: pulumi.Input<string | undefined>;
     /**
      * Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
      */
-    shiftStartNotificationsEnabled?: pulumi.Input<boolean>;
+    shiftStartNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
      */
-    shiftUpdateNotificationsEnabled?: pulumi.Input<boolean>;
+    shiftUpdateNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
      */
-    slackChannel?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    slackChannel?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
      */
-    slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether the schedule is synced with Linear. Value must be one of true or false
      */
-    syncLinearEnabled?: pulumi.Input<boolean>;
+    syncLinearEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A valid IANA time zone name. Only applicable when config*one*timezone*per*schedule_enabled is true for the organization.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,65 +248,65 @@ export interface ScheduleArgs {
     /**
      * 24/7 coverage of the schedule. Value must be one of true or false
      */
-    allTimeCoverage?: pulumi.Input<boolean>;
+    allTimeCoverage?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the schedule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
      */
-    includeShadowsInSlackNotifications?: pulumi.Input<boolean>;
+    includeShadowsInSlackNotifications?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the schedule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The owning teams for this schedules.
      */
-    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
      */
-    ownerUserId?: pulumi.Input<number>;
+    ownerUserId?: pulumi.Input<number | undefined>;
     /**
      * Day of week the weekly shift summary is sent. Value must be one of `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
      */
-    shiftReportDayOfWeek?: pulumi.Input<string>;
+    shiftReportDayOfWeek?: pulumi.Input<string | undefined>;
     /**
      * Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
      */
-    shiftReportEnabled?: pulumi.Input<boolean>;
+    shiftReportEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Time of day the weekly shift summary is sent, in `HH:MM` 24-hour format.
      */
-    shiftReportTimeOfDay?: pulumi.Input<string>;
+    shiftReportTimeOfDay?: pulumi.Input<string | undefined>;
     /**
      * IANA time zone used for the weekly shift summary (e.g. `Australia/Sydney`).
      */
-    shiftReportTimeZone?: pulumi.Input<string>;
+    shiftReportTimeZone?: pulumi.Input<string | undefined>;
     /**
      * Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
      */
-    shiftStartNotificationsEnabled?: pulumi.Input<boolean>;
+    shiftStartNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
      */
-    shiftUpdateNotificationsEnabled?: pulumi.Input<boolean>;
+    shiftUpdateNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
      */
-    slackChannel?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    slackChannel?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
      */
-    slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether the schedule is synced with Linear. Value must be one of true or false
      */
-    syncLinearEnabled?: pulumi.Input<boolean>;
+    syncLinearEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A valid IANA time zone name. Only applicable when config*one*timezone*per*schedule_enabled is true for the organization.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }

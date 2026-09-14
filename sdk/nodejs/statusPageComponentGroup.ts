@@ -116,20 +116,20 @@ export interface StatusPageComponentGroupState {
     /**
      * Whether the group renders collapsed on the public page. Value must be one of true or false
      */
-    collapsedByDefault?: pulumi.Input<boolean>;
+    collapsedByDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the component group
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the component group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the group on the status page's top-level list
      */
-    position?: pulumi.Input<number>;
-    statusPageId?: pulumi.Input<string>;
+    position?: pulumi.Input<number | undefined>;
+    statusPageId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,18 +139,18 @@ export interface StatusPageComponentGroupArgs {
     /**
      * Whether the group renders collapsed on the public page. Value must be one of true or false
      */
-    collapsedByDefault?: pulumi.Input<boolean>;
+    collapsedByDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the component group
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the component group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the group on the status page's top-level list
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     statusPageId: pulumi.Input<string>;
 }

@@ -143,39 +143,39 @@ export interface CatalogEntityState {
     /**
      * The Backstage entity ID this catalog entity is linked to.
      */
-    backstageId?: pulumi.Input<string>;
+    backstageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent catalog
      */
-    catalogId?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An external identifier for this catalog entity. Must be unique within the catalog.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
      */
-    managedBy?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Default position of the item when displayed in a list.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Array of property values for this catalog entity
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.CatalogEntityProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.CatalogEntityProperty>[] | undefined>;
     /**
      * The status page description of the catalog entity
      */
-    publicDescription?: pulumi.Input<string>;
+    publicDescription?: pulumi.Input<string | undefined>;
     /**
      * The slug of the catalog entity. Derived from `name`.
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,33 +185,33 @@ export interface CatalogEntityArgs {
     /**
      * The Backstage entity ID this catalog entity is linked to.
      */
-    backstageId?: pulumi.Input<string>;
+    backstageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent catalog
      */
     catalogId: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * An external identifier for this catalog entity. Must be unique within the catalog.
      */
-    externalId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Default position of the item when displayed in a list.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Array of property values for this catalog entity
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.CatalogEntityProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.CatalogEntityProperty>[] | undefined>;
     /**
      * The status page description of the catalog entity
      */
-    publicDescription?: pulumi.Input<string>;
+    publicDescription?: pulumi.Input<string | undefined>;
     /**
      * The slug of the catalog entity. Derived from `name`.
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

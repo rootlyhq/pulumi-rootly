@@ -43,6 +43,6 @@ export function getFormSetConditionOutput(args: GetFormSetConditionOutputArgs, o
  * A collection of arguments for invoking getFormSetCondition.
  */
 export interface GetFormSetConditionOutputArgs {
-    formFieldId?: pulumi.Input<string>;
+    formFieldId?: pulumi.Input<string | undefined>;
     formSetId: pulumi.Input<string>;
 }

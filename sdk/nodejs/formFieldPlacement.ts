@@ -137,35 +137,35 @@ export interface FormFieldPlacementState {
     /**
      * The form this field is placed on.
      */
-    form?: pulumi.Input<string>;
+    form?: pulumi.Input<string | undefined>;
     /**
      * The form field that is placed.
      */
-    formFieldId?: pulumi.Input<string>;
+    formFieldId?: pulumi.Input<string | undefined>;
     /**
      * The form set this field is placed in.
      */
-    formSetId?: pulumi.Input<string>;
+    formSetId?: pulumi.Input<string | undefined>;
     /**
      * Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
      */
-    nonEditable?: pulumi.Input<boolean>;
+    nonEditable?: pulumi.Input<boolean | undefined>;
     /**
      * Logical operator when evaluating multiple form*field*placement_conditions with conditioned=placement. Value must be one of `and`, `or`.
      */
-    placementOperator?: pulumi.Input<string>;
+    placementOperator?: pulumi.Input<string | undefined>;
     /**
      * The position of the field placement.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Whether the field is unconditionally required on this form.. Value must be one of true or false
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
     /**
      * Logical operator when evaluating multiple form*field*placement_conditions with conditioned=required. Value must be one of `and`, `or`.
      */
-    requiredOperator?: pulumi.Input<string>;
+    requiredOperator?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,21 +187,21 @@ export interface FormFieldPlacementArgs {
     /**
      * Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
      */
-    nonEditable?: pulumi.Input<boolean>;
+    nonEditable?: pulumi.Input<boolean | undefined>;
     /**
      * Logical operator when evaluating multiple form*field*placement_conditions with conditioned=placement. Value must be one of `and`, `or`.
      */
-    placementOperator?: pulumi.Input<string>;
+    placementOperator?: pulumi.Input<string | undefined>;
     /**
      * The position of the field placement.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Whether the field is unconditionally required on this form.. Value must be one of true or false
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
     /**
      * Logical operator when evaluating multiple form*field*placement_conditions with conditioned=required. Value must be one of `and`, `or`.
      */
-    requiredOperator?: pulumi.Input<string>;
+    requiredOperator?: pulumi.Input<string | undefined>;
 }

@@ -244,33 +244,33 @@ export interface GetServiceOutputArgs {
     /**
      * Enable alerts to be broadcasted to a specific channel.
      */
-    alertBroadcastEnabled?: pulumi.Input<boolean>;
+    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.
      */
-    backstageId?: pulumi.Input<string>;
+    backstageId?: pulumi.Input<string | undefined>;
     /**
      * The Cortex group id associated to this service.
      */
-    cortexId?: pulumi.Input<string>;
+    cortexId?: pulumi.Input<string | undefined>;
     /**
      * The external id associated to this service.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Enable incidents to be broadcasted to a specific channel.
      */
-    incidentBroadcastEnabled?: pulumi.Input<boolean>;
+    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the service.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the service.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -63,12 +63,12 @@ export function getAuthorizationOutput(args?: GetAuthorizationOutputArgs, opts?:
  * A collection of arguments for invoking getAuthorization.
  */
 export interface GetAuthorizationOutputArgs {
-    authorizableId?: pulumi.Input<string>;
-    authorizableType?: pulumi.Input<string>;
+    authorizableId?: pulumi.Input<string | undefined>;
+    authorizableType?: pulumi.Input<string | undefined>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    granteeId?: pulumi.Input<string>;
-    granteeType?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    granteeId?: pulumi.Input<string | undefined>;
+    granteeType?: pulumi.Input<string | undefined>;
 }

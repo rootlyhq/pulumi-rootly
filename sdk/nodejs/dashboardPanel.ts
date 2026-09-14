@@ -108,13 +108,13 @@ export interface DashboardPanelState {
     /**
      * The panel dashboard
      */
-    dashboardId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string | undefined>;
     /**
      * The name of the dashboard_panel
      */
-    name?: pulumi.Input<string>;
-    params?: pulumi.Input<inputs.DashboardPanelParams>;
-    position?: pulumi.Input<inputs.DashboardPanelPosition>;
+    name?: pulumi.Input<string | undefined>;
+    params?: pulumi.Input<inputs.DashboardPanelParams | undefined>;
+    position?: pulumi.Input<inputs.DashboardPanelPosition | undefined>;
 }
 
 /**
@@ -128,7 +128,7 @@ export interface DashboardPanelArgs {
     /**
      * The name of the dashboard_panel
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     params: pulumi.Input<inputs.DashboardPanelParams>;
-    position?: pulumi.Input<inputs.DashboardPanelPosition>;
+    position?: pulumi.Input<inputs.DashboardPanelPosition | undefined>;
 }

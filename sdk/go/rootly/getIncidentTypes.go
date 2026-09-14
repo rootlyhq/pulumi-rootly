@@ -37,12 +37,8 @@ type GetIncidentTypesResult struct {
 }
 
 func GetIncidentTypesOutput(ctx *pulumi.Context, args GetIncidentTypesOutputArgs, opts ...pulumi.InvokeOption) GetIncidentTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIncidentTypesResultOutput, error) {
-			args := v.(GetIncidentTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getIncidentTypes:getIncidentTypes", args, GetIncidentTypesResultOutput{}, options).(GetIncidentTypesResultOutput), nil
-		}).(GetIncidentTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getIncidentTypes:getIncidentTypes", args, GetIncidentTypesResultOutput{}, options).(GetIncidentTypesResultOutput)
 }
 
 // A collection of arguments for invoking getIncidentTypes.

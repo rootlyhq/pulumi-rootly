@@ -37,12 +37,8 @@ type GetCausesResult struct {
 }
 
 func GetCausesOutput(ctx *pulumi.Context, args GetCausesOutputArgs, opts ...pulumi.InvokeOption) GetCausesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCausesResultOutput, error) {
-			args := v.(GetCausesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCauses:getCauses", args, GetCausesResultOutput{}, options).(GetCausesResultOutput), nil
-		}).(GetCausesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCauses:getCauses", args, GetCausesResultOutput{}, options).(GetCausesResultOutput)
 }
 
 // A collection of arguments for invoking getCauses.

@@ -37,12 +37,8 @@ type LookupWebhooksEndpointResult struct {
 }
 
 func LookupWebhooksEndpointOutput(ctx *pulumi.Context, args LookupWebhooksEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupWebhooksEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWebhooksEndpointResultOutput, error) {
-			args := v.(LookupWebhooksEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getWebhooksEndpoint:getWebhooksEndpoint", args, LookupWebhooksEndpointResultOutput{}, options).(LookupWebhooksEndpointResultOutput), nil
-		}).(LookupWebhooksEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getWebhooksEndpoint:getWebhooksEndpoint", args, LookupWebhooksEndpointResultOutput{}, options).(LookupWebhooksEndpointResultOutput)
 }
 
 // A collection of arguments for invoking getWebhooksEndpoint.

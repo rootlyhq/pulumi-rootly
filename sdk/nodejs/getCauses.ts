@@ -48,6 +48,6 @@ export function getCausesOutput(args?: GetCausesOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getCauses.
  */
 export interface GetCausesOutputArgs {
-    name?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -125,27 +125,27 @@ export interface FormFieldPlacementConditionState {
     /**
      * The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
      */
-    comparison?: pulumi.Input<string>;
+    comparison?: pulumi.Input<string | undefined>;
     /**
      * The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
      */
-    conditioned?: pulumi.Input<string>;
+    conditioned?: pulumi.Input<string | undefined>;
     /**
      * The condition field.
      */
-    formFieldId?: pulumi.Input<string>;
+    formFieldId?: pulumi.Input<string | undefined>;
     /**
      * The form field placement this condition applies.
      */
-    formFieldPlacementId?: pulumi.Input<string>;
+    formFieldPlacementId?: pulumi.Input<string | undefined>;
     /**
      * The condition position.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The values for comparison.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -155,11 +155,11 @@ export interface FormFieldPlacementConditionArgs {
     /**
      * The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
      */
-    comparison?: pulumi.Input<string>;
+    comparison?: pulumi.Input<string | undefined>;
     /**
      * The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
      */
-    conditioned?: pulumi.Input<string>;
+    conditioned?: pulumi.Input<string | undefined>;
     /**
      * The condition field.
      */
@@ -171,7 +171,7 @@ export interface FormFieldPlacementConditionArgs {
     /**
      * The condition position.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The values for comparison.
      */

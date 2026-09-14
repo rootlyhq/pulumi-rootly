@@ -40,12 +40,8 @@ type LookupFormSetResult struct {
 }
 
 func LookupFormSetOutput(ctx *pulumi.Context, args LookupFormSetOutputArgs, opts ...pulumi.InvokeOption) LookupFormSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFormSetResultOutput, error) {
-			args := v.(LookupFormSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getFormSet:getFormSet", args, LookupFormSetResultOutput{}, options).(LookupFormSetResultOutput), nil
-		}).(LookupFormSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getFormSet:getFormSet", args, LookupFormSetResultOutput{}, options).(LookupFormSetResultOutput)
 }
 
 // A collection of arguments for invoking getFormSet.

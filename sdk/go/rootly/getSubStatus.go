@@ -42,12 +42,8 @@ type LookupSubStatusResult struct {
 }
 
 func LookupSubStatusOutput(ctx *pulumi.Context, args LookupSubStatusOutputArgs, opts ...pulumi.InvokeOption) LookupSubStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSubStatusResultOutput, error) {
-			args := v.(LookupSubStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getSubStatus:getSubStatus", args, LookupSubStatusResultOutput{}, options).(LookupSubStatusResultOutput), nil
-		}).(LookupSubStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getSubStatus:getSubStatus", args, LookupSubStatusResultOutput{}, options).(LookupSubStatusResultOutput)
 }
 
 // A collection of arguments for invoking getSubStatus.

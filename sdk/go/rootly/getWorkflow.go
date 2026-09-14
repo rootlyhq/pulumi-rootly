@@ -41,12 +41,8 @@ type GetWorkflowResult struct {
 }
 
 func GetWorkflowOutput(ctx *pulumi.Context, args GetWorkflowOutputArgs, opts ...pulumi.InvokeOption) GetWorkflowResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWorkflowResultOutput, error) {
-			args := v.(GetWorkflowArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getWorkflow:getWorkflow", args, GetWorkflowResultOutput{}, options).(GetWorkflowResultOutput), nil
-		}).(GetWorkflowResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getWorkflow:getWorkflow", args, GetWorkflowResultOutput{}, options).(GetWorkflowResultOutput)
 }
 
 // A collection of arguments for invoking getWorkflow.

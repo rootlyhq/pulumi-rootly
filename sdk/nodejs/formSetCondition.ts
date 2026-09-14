@@ -113,19 +113,19 @@ export interface FormSetConditionState {
     /**
      * The condition comparison.. Value must be one of `equal`.
      */
-    comparison?: pulumi.Input<string>;
+    comparison?: pulumi.Input<string | undefined>;
     /**
      * The form field this condition applies.
      */
-    formFieldId?: pulumi.Input<string>;
+    formFieldId?: pulumi.Input<string | undefined>;
     /**
      * The form set this condition applies.
      */
-    formSetId?: pulumi.Input<string>;
+    formSetId?: pulumi.Input<string | undefined>;
     /**
      * The values for comparison.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -135,7 +135,7 @@ export interface FormSetConditionArgs {
     /**
      * The condition comparison.. Value must be one of `equal`.
      */
-    comparison?: pulumi.Input<string>;
+    comparison?: pulumi.Input<string | undefined>;
     /**
      * The form field this condition applies.
      */

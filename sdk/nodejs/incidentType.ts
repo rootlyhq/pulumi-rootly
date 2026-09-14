@@ -146,45 +146,45 @@ export interface IncidentTypeState {
     /**
      * The hex color of the incident type
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The description of the incident type
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the incident type
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails to attach to the incident type
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Position of the incident type
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Array of property values for this incident type.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[] | undefined>;
     /**
      * The status page description of the incident type
      */
-    publicDescription?: pulumi.Input<string>;
+    publicDescription?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this incident type
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this incident type
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[] | undefined>;
     /**
      * The slug of the incident type
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -194,43 +194,43 @@ export interface IncidentTypeArgs {
     /**
      * The hex color of the incident type
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The description of the incident type
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the incident type
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails to attach to the incident type
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Position of the incident type
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Array of property values for this incident type.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[] | undefined>;
     /**
      * The status page description of the incident type
      */
-    publicDescription?: pulumi.Input<string>;
+    publicDescription?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this incident type
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this incident type
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[] | undefined>;
     /**
      * The slug of the incident type
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

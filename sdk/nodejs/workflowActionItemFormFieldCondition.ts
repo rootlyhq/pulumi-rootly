@@ -134,25 +134,25 @@ export interface WorkflowActionItemFormFieldConditionState {
     /**
      * The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
-    actionItemCondition?: pulumi.Input<string>;
+    actionItemCondition?: pulumi.Input<string | undefined>;
     /**
      * The custom field for this condition
      */
-    formFieldId?: pulumi.Input<string>;
-    selectedCatalogEntityIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedCauseIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedEnvironmentIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedFunctionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedIncidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedOptionIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedServiceIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedUserIds?: pulumi.Input<pulumi.Input<number>[]>;
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    formFieldId?: pulumi.Input<string | undefined>;
+    selectedCatalogEntityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedCauseIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedEnvironmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedFunctionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedIncidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedOptionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedServiceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The workflow for this condition
      */
-    workflowId?: pulumi.Input<string>;
+    workflowId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,21 +162,21 @@ export interface WorkflowActionItemFormFieldConditionArgs {
     /**
      * The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
-    actionItemCondition?: pulumi.Input<string>;
+    actionItemCondition?: pulumi.Input<string | undefined>;
     /**
      * The custom field for this condition
      */
     formFieldId: pulumi.Input<string>;
-    selectedCatalogEntityIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedCauseIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedEnvironmentIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedFunctionalityIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedIncidentTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedOptionIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedServiceIds?: pulumi.Input<pulumi.Input<string>[]>;
-    selectedUserIds?: pulumi.Input<pulumi.Input<number>[]>;
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    selectedCatalogEntityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedCauseIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedEnvironmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedFunctionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedIncidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedOptionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedServiceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    selectedUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The workflow for this condition
      */

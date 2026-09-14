@@ -121,62 +121,62 @@ export class CatalogProperty extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CatalogProperty resources.
  */
 export interface CatalogPropertyState {
-    catalogId?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string | undefined>;
     /**
      * The type of catalog the property belongs to.. Value must be one of `catalog`, `cause`, `environment`, `functionality`, `incidentType`, `service`, `team`.
      */
-    catalogType?: pulumi.Input<string>;
+    catalogType?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `text`, `reference`, `boolean`, `service`, `functionality`, `environment`, `group`, `cause`, `incidentType`, `user`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Restricts values to items of specified catalog.
      */
-    kindCatalogId?: pulumi.Input<string>;
+    kindCatalogId?: pulumi.Input<string | undefined>;
     /**
      * Whether the attribute accepts multiple values.. Value must be one of true or false
      */
-    multiple?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
+    multiple?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether the property is required.. Value must be one of true or false
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a CatalogProperty resource.
  */
 export interface CatalogPropertyArgs {
-    catalogId?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string | undefined>;
     /**
      * The type of catalog the property belongs to.. Value must be one of `catalog`, `cause`, `environment`, `functionality`, `incidentType`, `service`, `team`.
      */
-    catalogType?: pulumi.Input<string>;
+    catalogType?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `text`, `reference`, `boolean`, `service`, `functionality`, `environment`, `group`, `cause`, `incidentType`, `user`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Restricts values to items of specified catalog.
      */
-    kindCatalogId?: pulumi.Input<string>;
+    kindCatalogId?: pulumi.Input<string | undefined>;
     /**
      * Whether the attribute accepts multiple values.. Value must be one of true or false
      */
-    multiple?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
+    multiple?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether the property is required.. Value must be one of true or false
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
     /**
      * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

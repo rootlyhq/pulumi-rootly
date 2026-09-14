@@ -44,12 +44,8 @@ type LookupCatalogChecklistTemplateResult struct {
 }
 
 func LookupCatalogChecklistTemplateOutput(ctx *pulumi.Context, args LookupCatalogChecklistTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupCatalogChecklistTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCatalogChecklistTemplateResultOutput, error) {
-			args := v.(LookupCatalogChecklistTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCatalogChecklistTemplate:getCatalogChecklistTemplate", args, LookupCatalogChecklistTemplateResultOutput{}, options).(LookupCatalogChecklistTemplateResultOutput), nil
-		}).(LookupCatalogChecklistTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCatalogChecklistTemplate:getCatalogChecklistTemplate", args, LookupCatalogChecklistTemplateResultOutput{}, options).(LookupCatalogChecklistTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getCatalogChecklistTemplate.

@@ -40,12 +40,8 @@ type LookupIncidentPermissionSetBooleanResult struct {
 }
 
 func LookupIncidentPermissionSetBooleanOutput(ctx *pulumi.Context, args LookupIncidentPermissionSetBooleanOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentPermissionSetBooleanResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIncidentPermissionSetBooleanResultOutput, error) {
-			args := v.(LookupIncidentPermissionSetBooleanArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getIncidentPermissionSetBoolean:getIncidentPermissionSetBoolean", args, LookupIncidentPermissionSetBooleanResultOutput{}, options).(LookupIncidentPermissionSetBooleanResultOutput), nil
-		}).(LookupIncidentPermissionSetBooleanResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getIncidentPermissionSetBoolean:getIncidentPermissionSetBoolean", args, LookupIncidentPermissionSetBooleanResultOutput{}, options).(LookupIncidentPermissionSetBooleanResultOutput)
 }
 
 // A collection of arguments for invoking getIncidentPermissionSetBoolean.

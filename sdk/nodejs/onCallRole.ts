@@ -240,105 +240,105 @@ export interface OnCallRoleState {
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    alertFieldsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertFieldsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    alertGroupsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertGroupsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    alertRoutingRulesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertRoutingRulesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    alertSourcesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertSourcesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    alertUrgencyPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertUrgencyPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `update`, `read`, `delete`.
      */
-    alertsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    apiKeysPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    apiKeysPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    auditsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    auditsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `read`.
      */
-    contactsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    contactsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    escalationPoliciesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    escalationPoliciesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    groupsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    groupsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    heartbeatsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    heartbeatsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    integrationsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    integrationsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    invitationsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    invitationsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    liveCallRoutingPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    liveCallRoutingPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The role name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    onCallReadinessReportPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    onCallReadinessReportPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    onCallRolesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    onCallRolesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `update`.
      */
-    scheduleOverridePermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    scheduleOverridePermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    schedulesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    schedulesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    servicesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    servicesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * [DEPRECATED] The role slug. Derived from `name`; any configured value is ignored.
      *
      * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The kind of role
      */
-    systemRole?: pulumi.Input<string>;
+    systemRole?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    webhooksPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    webhooksPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    workflowsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    workflowsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -348,103 +348,103 @@ export interface OnCallRoleArgs {
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    alertFieldsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertFieldsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    alertGroupsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertGroupsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    alertRoutingRulesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertRoutingRulesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    alertSourcesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertSourcesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    alertUrgencyPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertUrgencyPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `update`, `read`, `delete`.
      */
-    alertsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    alertsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    apiKeysPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    apiKeysPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    auditsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    auditsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `read`.
      */
-    contactsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    contactsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    escalationPoliciesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    escalationPoliciesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    groupsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    groupsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    heartbeatsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    heartbeatsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    integrationsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    integrationsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    invitationsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    invitationsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    liveCallRoutingPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    liveCallRoutingPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The role name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    onCallReadinessReportPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    onCallReadinessReportPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    onCallRolesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    onCallRolesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `update`.
      */
-    scheduleOverridePermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    scheduleOverridePermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    schedulesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    schedulesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    servicesPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    servicesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * [DEPRECATED] The role slug. Derived from `name`; any configured value is ignored.
      *
      * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The kind of role
      */
-    systemRole?: pulumi.Input<string>;
+    systemRole?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    webhooksPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    webhooksPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
-    workflowsPermissions?: pulumi.Input<pulumi.Input<string>[]>;
+    workflowsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -63,9 +63,9 @@ export function getWorkflowGroupOutput(args?: GetWorkflowGroupOutputArgs, opts?:
  * A collection of arguments for invoking getWorkflowGroup.
  */
 export interface GetWorkflowGroupOutputArgs {
-    expanded?: pulumi.Input<boolean>;
-    kind?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    position?: pulumi.Input<number>;
-    slug?: pulumi.Input<string>;
+    expanded?: pulumi.Input<boolean | undefined>;
+    kind?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    position?: pulumi.Input<number | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -40,12 +40,8 @@ type LookupCommunicationsStageResult struct {
 }
 
 func LookupCommunicationsStageOutput(ctx *pulumi.Context, args LookupCommunicationsStageOutputArgs, opts ...pulumi.InvokeOption) LookupCommunicationsStageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCommunicationsStageResultOutput, error) {
-			args := v.(LookupCommunicationsStageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCommunicationsStage:getCommunicationsStage", args, LookupCommunicationsStageResultOutput{}, options).(LookupCommunicationsStageResultOutput), nil
-		}).(LookupCommunicationsStageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCommunicationsStage:getCommunicationsStage", args, LookupCommunicationsStageResultOutput{}, options).(LookupCommunicationsStageResultOutput)
 }
 
 // A collection of arguments for invoking getCommunicationsStage.

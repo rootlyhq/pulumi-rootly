@@ -64,10 +64,11 @@ outputs are now optional in the generated SDK and callers must handle absent val
 
 Update Go imports from `github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly` to
 `github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly`. The Go SDK now declares its
-dependencies and requires Go 1.26 or later. Provider development uses Go 1.26.8.
+dependencies and requires Go 1.27.1 or later. Provider development uses the same version.
 
 The npm package remains `@rootly/pulumi`. The generated SDK is built with
-TypeScript 5 and current Node.js type definitions. Repository builds use Yarn
+TypeScript 7.0.2 and Node.js 26.5.1 type definitions, with Pulumi 3.262.0.
+Repository builds use Node.js 26.8.2 and Yarn
 1.22.22 and commit the SDK lockfile.
 
 ## Additions and security fixes
@@ -75,9 +76,9 @@ TypeScript 5 and current Node.js type definitions. Repository builds use Yarn
 New resources: `StatusPageComponent`, `StatusPageComponentGroup`, and
 `UserOnCallRole`. New data source: `getUsers`.
 
-Dependency updates address GitHub alerts 22–26 with gRPC 1.83.2,
-go-git 6.0.0-alpha.5, and OpenTelemetry OpenTracing bridge 1.45.0.
-The update also includes `golang.org/x/crypto` 0.56.0 for the SSH denial-of-service
+Dependency updates address GitHub alerts 22–27 with gRPC 1.83.2,
+go-git 6.0.0-alpha.5, and OpenTelemetry OpenTracing bridge 1.46.0.
+The update also includes `golang.org/x/crypto` 0.57.0 for the SSH denial-of-service
 fixes reported by govulncheck.
 
 Release this change as **v4.0.0**, with the matching **sdk/v4.0.0** Go module tag.

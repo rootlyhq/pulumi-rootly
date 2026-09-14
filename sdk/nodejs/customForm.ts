@@ -109,19 +109,19 @@ export interface CustomFormState {
     /**
      * The Slack command used to trigger this form.
      */
-    command?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    command?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the custom form.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -132,16 +132,16 @@ export interface CustomFormArgs {
      * The Slack command used to trigger this form.
      */
     command: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the custom form.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

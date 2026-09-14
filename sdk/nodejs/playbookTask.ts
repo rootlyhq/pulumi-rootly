@@ -109,16 +109,16 @@ export interface PlaybookTaskState {
     /**
      * The description of task
      */
-    description?: pulumi.Input<string>;
-    playbookId?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    playbookId?: pulumi.Input<string | undefined>;
     /**
      * The position of the task
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The task of the task
      */
-    task?: pulumi.Input<string>;
+    task?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -128,12 +128,12 @@ export interface PlaybookTaskArgs {
     /**
      * The description of task
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     playbookId: pulumi.Input<string>;
     /**
      * The position of the task
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The task of the task
      */

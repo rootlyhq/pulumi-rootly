@@ -51,12 +51,8 @@ type GetIncidentPostMortemResult struct {
 }
 
 func GetIncidentPostMortemOutput(ctx *pulumi.Context, args GetIncidentPostMortemOutputArgs, opts ...pulumi.InvokeOption) GetIncidentPostMortemResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIncidentPostMortemResultOutput, error) {
-			args := v.(GetIncidentPostMortemArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getIncidentPostMortem:getIncidentPostMortem", args, GetIncidentPostMortemResultOutput{}, options).(GetIncidentPostMortemResultOutput), nil
-		}).(GetIncidentPostMortemResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getIncidentPostMortem:getIncidentPostMortem", args, GetIncidentPostMortemResultOutput{}, options).(GetIncidentPostMortemResultOutput)
 }
 
 // A collection of arguments for invoking getIncidentPostMortem.

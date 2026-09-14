@@ -43,12 +43,8 @@ type LookupCustomFormResult struct {
 }
 
 func LookupCustomFormOutput(ctx *pulumi.Context, args LookupCustomFormOutputArgs, opts ...pulumi.InvokeOption) LookupCustomFormResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomFormResultOutput, error) {
-			args := v.(LookupCustomFormArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCustomForm:getCustomForm", args, LookupCustomFormResultOutput{}, options).(LookupCustomFormResultOutput), nil
-		}).(LookupCustomFormResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCustomForm:getCustomForm", args, LookupCustomFormResultOutput{}, options).(LookupCustomFormResultOutput)
 }
 
 // A collection of arguments for invoking getCustomForm.

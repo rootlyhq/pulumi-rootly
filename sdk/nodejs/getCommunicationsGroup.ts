@@ -67,13 +67,13 @@ export function getCommunicationsGroupOutput(args?: GetCommunicationsGroupOutput
  * A collection of arguments for invoking getCommunicationsGroup.
  */
 export interface GetCommunicationsGroupOutputArgs {
-    communicationTypeId?: pulumi.Input<string>;
-    conditionType?: pulumi.Input<string>;
+    communicationTypeId?: pulumi.Input<string | undefined>;
+    conditionType?: pulumi.Input<string | undefined>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    isPrivate?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    isPrivate?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

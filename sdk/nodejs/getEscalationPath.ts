@@ -44,5 +44,5 @@ export function getEscalationPathOutput(args: GetEscalationPathOutputArgs, opts?
  */
 export interface GetEscalationPathOutputArgs {
     escalationPolicyId: pulumi.Input<string>;
-    pathType?: pulumi.Input<string>;
+    pathType?: pulumi.Input<string | undefined>;
 }

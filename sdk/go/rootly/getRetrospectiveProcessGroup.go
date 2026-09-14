@@ -36,12 +36,8 @@ type LookupRetrospectiveProcessGroupResult struct {
 }
 
 func LookupRetrospectiveProcessGroupOutput(ctx *pulumi.Context, args LookupRetrospectiveProcessGroupOutputArgs, opts ...pulumi.InvokeOption) LookupRetrospectiveProcessGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRetrospectiveProcessGroupResultOutput, error) {
-			args := v.(LookupRetrospectiveProcessGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getRetrospectiveProcessGroup:getRetrospectiveProcessGroup", args, LookupRetrospectiveProcessGroupResultOutput{}, options).(LookupRetrospectiveProcessGroupResultOutput), nil
-		}).(LookupRetrospectiveProcessGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getRetrospectiveProcessGroup:getRetrospectiveProcessGroup", args, LookupRetrospectiveProcessGroupResultOutput{}, options).(LookupRetrospectiveProcessGroupResultOutput)
 }
 
 // A collection of arguments for invoking getRetrospectiveProcessGroup.

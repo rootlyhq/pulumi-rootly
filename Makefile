@@ -116,7 +116,7 @@ clean::
 	rm -rf sdk/{nodejs,go}
 
 install_plugins::
-	$(EXEC)pulumi plugin install resource random 4.3.1
+	$(EXEC)pulumi plugin install resource random 4.21.1
 
 install_go_sdk::
 

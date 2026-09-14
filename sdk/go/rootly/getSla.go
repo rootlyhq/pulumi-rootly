@@ -41,12 +41,8 @@ type LookupSlaResult struct {
 }
 
 func LookupSlaOutput(ctx *pulumi.Context, args LookupSlaOutputArgs, opts ...pulumi.InvokeOption) LookupSlaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSlaResultOutput, error) {
-			args := v.(LookupSlaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getSla:getSla", args, LookupSlaResultOutput{}, options).(LookupSlaResultOutput), nil
-		}).(LookupSlaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getSla:getSla", args, LookupSlaResultOutput{}, options).(LookupSlaResultOutput)
 }
 
 // A collection of arguments for invoking getSla.

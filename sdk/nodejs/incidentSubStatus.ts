@@ -103,13 +103,13 @@ export class IncidentSubStatus extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IncidentSubStatus resources.
  */
 export interface IncidentSubStatusState {
-    assignedAt?: pulumi.Input<string>;
-    assignedByUserId?: pulumi.Input<number>;
-    incidentId?: pulumi.Input<string>;
+    assignedAt?: pulumi.Input<string | undefined>;
+    assignedByUserId?: pulumi.Input<number | undefined>;
+    incidentId?: pulumi.Input<string | undefined>;
     /**
      * Note: To change an incident's sub-status, use the PATCH /incidents/:id endpoint and set the sub*status*id attribute. This endpoint is for modifying the timestamp of when an incident's sub-status was assigned.
      */
-    subStatusId?: pulumi.Input<string>;
+    subStatusId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -117,7 +117,7 @@ export interface IncidentSubStatusState {
  */
 export interface IncidentSubStatusArgs {
     assignedAt: pulumi.Input<string>;
-    assignedByUserId?: pulumi.Input<number>;
+    assignedByUserId?: pulumi.Input<number | undefined>;
     incidentId: pulumi.Input<string>;
     /**
      * Note: To change an incident's sub-status, use the PATCH /incidents/:id endpoint and set the sub*status*id attribute. This endpoint is for modifying the timestamp of when an incident's sub-status was assigned.

@@ -87,12 +87,8 @@ type GetIncidentResult struct {
 }
 
 func GetIncidentOutput(ctx *pulumi.Context, args GetIncidentOutputArgs, opts ...pulumi.InvokeOption) GetIncidentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIncidentResultOutput, error) {
-			args := v.(GetIncidentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getIncident:getIncident", args, GetIncidentResultOutput{}, options).(GetIncidentResultOutput), nil
-		}).(GetIncidentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getIncident:getIncident", args, GetIncidentResultOutput{}, options).(GetIncidentResultOutput)
 }
 
 // A collection of arguments for invoking getIncident.

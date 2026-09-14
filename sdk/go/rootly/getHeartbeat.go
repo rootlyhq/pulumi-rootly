@@ -39,12 +39,8 @@ type LookupHeartbeatResult struct {
 }
 
 func LookupHeartbeatOutput(ctx *pulumi.Context, args LookupHeartbeatOutputArgs, opts ...pulumi.InvokeOption) LookupHeartbeatResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHeartbeatResultOutput, error) {
-			args := v.(LookupHeartbeatArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getHeartbeat:getHeartbeat", args, LookupHeartbeatResultOutput{}, options).(LookupHeartbeatResultOutput), nil
-		}).(LookupHeartbeatResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getHeartbeat:getHeartbeat", args, LookupHeartbeatResultOutput{}, options).(LookupHeartbeatResultOutput)
 }
 
 // A collection of arguments for invoking getHeartbeat.

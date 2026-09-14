@@ -66,5 +66,5 @@ export interface GetUsersOutputArgs {
     /**
      * Optional set of emails to filter by (case-insensitive). When omitted, all users are returned.
      */
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

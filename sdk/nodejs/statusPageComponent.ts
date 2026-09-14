@@ -134,32 +134,32 @@ export interface StatusPageComponentState {
     /**
      * Description of the component (derived from the source for catalog-backed components)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the component (derived from the source for catalog-backed components)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the component
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * ID of the catalog source backing the component (null for ad-hoc components)
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
     /**
      * Catalog source type backing the component (null for ad-hoc components)
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * Latest recorded status of the component. Value must be one of `operational`, `degradedPerformance`, `partialOutage`, `majorOutage`, `maintenance`, `impacted`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * ID of the component group the component belongs to
      */
-    statusPageComponentGroupId?: pulumi.Input<string>;
-    statusPageId?: pulumi.Input<string>;
+    statusPageComponentGroupId?: pulumi.Input<string | undefined>;
+    statusPageId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -169,30 +169,30 @@ export interface StatusPageComponentArgs {
     /**
      * Description of the component (derived from the source for catalog-backed components)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the component (derived from the source for catalog-backed components)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the component
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * ID of the catalog source backing the component (null for ad-hoc components)
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
     /**
      * Catalog source type backing the component (null for ad-hoc components)
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * Latest recorded status of the component. Value must be one of `operational`, `degradedPerformance`, `partialOutage`, `majorOutage`, `maintenance`, `impacted`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * ID of the component group the component belongs to
      */
-    statusPageComponentGroupId?: pulumi.Input<string>;
+    statusPageComponentGroupId?: pulumi.Input<string | undefined>;
     statusPageId: pulumi.Input<string>;
 }

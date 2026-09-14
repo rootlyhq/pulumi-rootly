@@ -155,49 +155,49 @@ export interface CommunicationsGroupState {
     /**
      * External group members
      */
-    communicationExternalGroupMembers?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationExternalGroupMember>[]>;
+    communicationExternalGroupMembers?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationExternalGroupMember>[] | undefined>;
     /**
      * Group conditions
      */
-    communicationGroupConditions?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationGroupCondition>[]>;
+    communicationGroupConditions?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationGroupCondition>[] | undefined>;
     /**
      * Group members
      */
-    communicationGroupMembers?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationGroupMember>[]>;
+    communicationGroupMembers?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationGroupMember>[] | undefined>;
     /**
      * The communication type ID
      */
-    communicationTypeId?: pulumi.Input<string>;
+    communicationTypeId?: pulumi.Input<string | undefined>;
     /**
      * Condition type. Value must be one of `any`, `all`.
      */
-    conditionType?: pulumi.Input<string>;
+    conditionType?: pulumi.Input<string | undefined>;
     /**
      * The description of the communications group
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Email channel enabled. Value must be one of true or false
      */
-    emailChannel?: pulumi.Input<boolean>;
+    emailChannel?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the group is private. Value must be one of true or false
      */
-    isPrivate?: pulumi.Input<boolean>;
+    isPrivate?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the communications group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the communications group
      *
      * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * SMS channel enabled. Value must be one of true or false
      */
-    smsChannel?: pulumi.Input<boolean>;
+    smsChannel?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -207,15 +207,15 @@ export interface CommunicationsGroupArgs {
     /**
      * External group members
      */
-    communicationExternalGroupMembers?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationExternalGroupMember>[]>;
+    communicationExternalGroupMembers?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationExternalGroupMember>[] | undefined>;
     /**
      * Group conditions
      */
-    communicationGroupConditions?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationGroupCondition>[]>;
+    communicationGroupConditions?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationGroupCondition>[] | undefined>;
     /**
      * Group members
      */
-    communicationGroupMembers?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationGroupMember>[]>;
+    communicationGroupMembers?: pulumi.Input<pulumi.Input<inputs.CommunicationsGroupCommunicationGroupMember>[] | undefined>;
     /**
      * The communication type ID
      */
@@ -223,31 +223,31 @@ export interface CommunicationsGroupArgs {
     /**
      * Condition type. Value must be one of `any`, `all`.
      */
-    conditionType?: pulumi.Input<string>;
+    conditionType?: pulumi.Input<string | undefined>;
     /**
      * The description of the communications group
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Email channel enabled. Value must be one of true or false
      */
-    emailChannel?: pulumi.Input<boolean>;
+    emailChannel?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the group is private. Value must be one of true or false
      */
-    isPrivate?: pulumi.Input<boolean>;
+    isPrivate?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the communications group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the communications group
      *
      * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
     /**
      * SMS channel enabled. Value must be one of true or false
      */
-    smsChannel?: pulumi.Input<boolean>;
+    smsChannel?: pulumi.Input<boolean | undefined>;
 }

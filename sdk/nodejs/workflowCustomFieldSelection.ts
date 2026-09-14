@@ -110,17 +110,17 @@ export interface WorkflowCustomFieldSelectionState {
     /**
      * The custom field for this selection
      */
-    customFieldId?: pulumi.Input<number>;
+    customFieldId?: pulumi.Input<number | undefined>;
     /**
      * The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
-    incidentCondition?: pulumi.Input<string>;
-    selectedOptionIds?: pulumi.Input<pulumi.Input<number>[]>;
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentCondition?: pulumi.Input<string | undefined>;
+    selectedOptionIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The workflow for this selection
      */
-    workflowId?: pulumi.Input<string>;
+    workflowId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -134,9 +134,9 @@ export interface WorkflowCustomFieldSelectionArgs {
     /**
      * The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
-    incidentCondition?: pulumi.Input<string>;
-    selectedOptionIds?: pulumi.Input<pulumi.Input<number>[]>;
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentCondition?: pulumi.Input<string | undefined>;
+    selectedOptionIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The workflow for this selection
      */

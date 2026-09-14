@@ -41,12 +41,8 @@ type LookupOnCallRoleResult struct {
 }
 
 func LookupOnCallRoleOutput(ctx *pulumi.Context, args LookupOnCallRoleOutputArgs, opts ...pulumi.InvokeOption) LookupOnCallRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOnCallRoleResultOutput, error) {
-			args := v.(LookupOnCallRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getOnCallRole:getOnCallRole", args, LookupOnCallRoleResultOutput{}, options).(LookupOnCallRoleResultOutput), nil
-		}).(LookupOnCallRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getOnCallRole:getOnCallRole", args, LookupOnCallRoleResultOutput{}, options).(LookupOnCallRoleResultOutput)
 }
 
 // A collection of arguments for invoking getOnCallRole.

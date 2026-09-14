@@ -56,8 +56,8 @@ export function getFunctionalitiesOutput(args?: GetFunctionalitiesOutputArgs, op
  * A collection of arguments for invoking getFunctionalities.
  */
 export interface GetFunctionalitiesOutputArgs {
-    name?: pulumi.Input<string>;
-    opsgenieId?: pulumi.Input<string>;
-    pagerdutyId?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    opsgenieId?: pulumi.Input<string | undefined>;
+    pagerdutyId?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

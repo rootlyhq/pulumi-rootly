@@ -153,50 +153,50 @@ export interface AlertGroupState {
     /**
      * This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[] | undefined>;
     /**
      * Grouping condition for the alert group
      */
-    conditionType?: pulumi.Input<string>;
+    conditionType?: pulumi.Input<string | undefined>;
     /**
      * The conditions for the alert group
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.AlertGroupCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertGroupCondition>[] | undefined>;
     /**
      * Date or deletion
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the alert group
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
      *
      * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
-    groupByAlertTitle?: pulumi.Input<boolean>;
+    groupByAlertTitle?: pulumi.Input<boolean | undefined>;
     /**
      * [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
      *
      * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
-    groupByAlertUrgency?: pulumi.Input<boolean>;
+    groupByAlertUrgency?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the alert group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
      *
      * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string>;
-    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[]>;
+    slug?: pulumi.Input<string | undefined>;
+    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[] | undefined>;
     /**
      * Time window for the alert grouping
      */
-    timeWindow?: pulumi.Input<number>;
+    timeWindow?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -206,48 +206,48 @@ export interface AlertGroupArgs {
     /**
      * This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
      */
-    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[]>;
+    attributes?: pulumi.Input<pulumi.Input<inputs.AlertGroupAttribute>[] | undefined>;
     /**
      * Grouping condition for the alert group
      */
-    conditionType?: pulumi.Input<string>;
+    conditionType?: pulumi.Input<string | undefined>;
     /**
      * The conditions for the alert group
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.AlertGroupCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.AlertGroupCondition>[] | undefined>;
     /**
      * Date or deletion
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * The description of the alert group
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * [DEPRECATED] Whether the alerts are grouped by title or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
      *
      * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
-    groupByAlertTitle?: pulumi.Input<boolean>;
+    groupByAlertTitle?: pulumi.Input<boolean | undefined>;
     /**
      * [DEPRECATED] Whether the alerts are grouped by urgency or not. This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.. Value must be one of true or false
      *
      * @deprecated This field is deprecated. Please use the `conditions` field with advanced alert grouping instead.
      */
-    groupByAlertUrgency?: pulumi.Input<boolean>;
+    groupByAlertUrgency?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the alert group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
      *
      * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string>;
-    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[]>;
+    slug?: pulumi.Input<string | undefined>;
+    targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[] | undefined>;
     /**
      * Time window for the alert grouping
      */
-    timeWindow?: pulumi.Input<number>;
+    timeWindow?: pulumi.Input<number | undefined>;
 }

@@ -40,12 +40,8 @@ type LookupIncidentPermissionSetResourceResult struct {
 }
 
 func LookupIncidentPermissionSetResourceOutput(ctx *pulumi.Context, args LookupIncidentPermissionSetResourceOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentPermissionSetResourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIncidentPermissionSetResourceResultOutput, error) {
-			args := v.(LookupIncidentPermissionSetResourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getIncidentPermissionSetResource:getIncidentPermissionSetResource", args, LookupIncidentPermissionSetResourceResultOutput{}, options).(LookupIncidentPermissionSetResourceResultOutput), nil
-		}).(LookupIncidentPermissionSetResourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getIncidentPermissionSetResource:getIncidentPermissionSetResource", args, LookupIncidentPermissionSetResourceResultOutput{}, options).(LookupIncidentPermissionSetResourceResultOutput)
 }
 
 // A collection of arguments for invoking getIncidentPermissionSetResource.

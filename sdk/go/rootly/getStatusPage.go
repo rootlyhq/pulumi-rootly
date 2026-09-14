@@ -39,12 +39,8 @@ type LookupStatusPageResult struct {
 }
 
 func LookupStatusPageOutput(ctx *pulumi.Context, args LookupStatusPageOutputArgs, opts ...pulumi.InvokeOption) LookupStatusPageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStatusPageResultOutput, error) {
-			args := v.(LookupStatusPageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getStatusPage:getStatusPage", args, LookupStatusPageResultOutput{}, options).(LookupStatusPageResultOutput), nil
-		}).(LookupStatusPageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getStatusPage:getStatusPage", args, LookupStatusPageResultOutput{}, options).(LookupStatusPageResultOutput)
 }
 
 // A collection of arguments for invoking getStatusPage.

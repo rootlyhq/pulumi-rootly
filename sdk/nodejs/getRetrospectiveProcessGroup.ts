@@ -44,5 +44,5 @@ export function getRetrospectiveProcessGroupOutput(args: GetRetrospectiveProcess
  */
 export interface GetRetrospectiveProcessGroupOutputArgs {
     retrospectiveProcessId: pulumi.Input<string>;
-    subStatusId?: pulumi.Input<string>;
+    subStatusId?: pulumi.Input<string | undefined>;
 }

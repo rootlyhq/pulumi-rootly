@@ -44,12 +44,8 @@ type LookupCommunicationsTemplateResult struct {
 }
 
 func LookupCommunicationsTemplateOutput(ctx *pulumi.Context, args LookupCommunicationsTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupCommunicationsTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCommunicationsTemplateResultOutput, error) {
-			args := v.(LookupCommunicationsTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCommunicationsTemplate:getCommunicationsTemplate", args, LookupCommunicationsTemplateResultOutput{}, options).(LookupCommunicationsTemplateResultOutput), nil
-		}).(LookupCommunicationsTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCommunicationsTemplate:getCommunicationsTemplate", args, LookupCommunicationsTemplateResultOutput{}, options).(LookupCommunicationsTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getCommunicationsTemplate.

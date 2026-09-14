@@ -39,12 +39,8 @@ type LookupAlertRoutingRuleResult struct {
 }
 
 func LookupAlertRoutingRuleOutput(ctx *pulumi.Context, args LookupAlertRoutingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupAlertRoutingRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlertRoutingRuleResultOutput, error) {
-			args := v.(LookupAlertRoutingRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getAlertRoutingRule:getAlertRoutingRule", args, LookupAlertRoutingRuleResultOutput{}, options).(LookupAlertRoutingRuleResultOutput), nil
-		}).(LookupAlertRoutingRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getAlertRoutingRule:getAlertRoutingRule", args, LookupAlertRoutingRuleResultOutput{}, options).(LookupAlertRoutingRuleResultOutput)
 }
 
 // A collection of arguments for invoking getAlertRoutingRule.

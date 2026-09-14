@@ -31,18 +31,19 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@25e24d2d23ae098373794ef1d6faecb48ee52da8 # v3.0.0
       with:
         repo: pulumi/pulumictl
+        tag: v0.0.50
     - name: Set PreRelease Version
       run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@f06c13b6b1a9625abc9e6e439d9c05a8f2190e94 # v7.2.3
       with:
         args: -p 3 release --clean
-        version: latest
+        version: v2.18.1
     strategy:
       fail-fast: true
       matrix:
         goversion:
-        - 1.26.x
+        - 1.27.x
   npm-publish:
     name: npm-publish
     runs-on: ubuntu-latest
@@ -64,10 +65,11 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@25e24d2d23ae098373794ef1d6faecb48ee52da8 # v3.0.0
       with:
         repo: pulumi/pulumictl
-    - run: corepack enable
+        tag: v0.0.50
     - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
       with:
-        node-version: '24.x'
+        node-version: '26.8.2'
+    - run: npm install --global yarn@1.22.22
     - name: Publish NPM
       run: |
         make build_nodejs
@@ -77,4 +79,4 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-        - 1.26.x
+        - 1.27.x

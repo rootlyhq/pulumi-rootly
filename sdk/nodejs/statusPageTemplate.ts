@@ -137,33 +137,33 @@ export interface StatusPageTemplateState {
     /**
      * Description of the event the template will populate
      */
-    body?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    body?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The kind of the status page template. Value must be one of `normal`, `scheduled`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Position of the workflow task
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Controls if incident subscribers should be notified. Value must be one of true or false
      */
-    shouldNotifySubscribers?: pulumi.Input<boolean>;
-    statusPageId?: pulumi.Input<string>;
+    shouldNotifySubscribers?: pulumi.Input<boolean | undefined>;
+    statusPageId?: pulumi.Input<string | undefined>;
     /**
      * Title of the template
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * Status of the event the template will populate
      */
-    updateStatus?: pulumi.Input<string>;
+    updateStatus?: pulumi.Input<string | undefined>;
     /**
      * Title that will be used for the status page update
      */
-    updateTitle?: pulumi.Input<string>;
+    updateTitle?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,19 +174,19 @@ export interface StatusPageTemplateArgs {
      * Description of the event the template will populate
      */
     body: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The kind of the status page template. Value must be one of `normal`, `scheduled`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Position of the workflow task
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Controls if incident subscribers should be notified. Value must be one of true or false
      */
-    shouldNotifySubscribers?: pulumi.Input<boolean>;
+    shouldNotifySubscribers?: pulumi.Input<boolean | undefined>;
     statusPageId: pulumi.Input<string>;
     /**
      * Title of the template
@@ -195,9 +195,9 @@ export interface StatusPageTemplateArgs {
     /**
      * Status of the event the template will populate
      */
-    updateStatus?: pulumi.Input<string>;
+    updateStatus?: pulumi.Input<string | undefined>;
     /**
      * Title that will be used for the status page update
      */
-    updateTitle?: pulumi.Input<string>;
+    updateTitle?: pulumi.Input<string | undefined>;
 }

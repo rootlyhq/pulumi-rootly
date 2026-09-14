@@ -48,6 +48,6 @@ export function getEnvironmentsOutput(args?: GetEnvironmentsOutputArgs, opts?: p
  * A collection of arguments for invoking getEnvironments.
  */
 export interface GetEnvironmentsOutputArgs {
-    name?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

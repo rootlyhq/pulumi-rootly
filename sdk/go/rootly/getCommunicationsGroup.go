@@ -46,12 +46,8 @@ type LookupCommunicationsGroupResult struct {
 }
 
 func LookupCommunicationsGroupOutput(ctx *pulumi.Context, args LookupCommunicationsGroupOutputArgs, opts ...pulumi.InvokeOption) LookupCommunicationsGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCommunicationsGroupResultOutput, error) {
-			args := v.(LookupCommunicationsGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCommunicationsGroup:getCommunicationsGroup", args, LookupCommunicationsGroupResultOutput{}, options).(LookupCommunicationsGroupResultOutput), nil
-		}).(LookupCommunicationsGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCommunicationsGroup:getCommunicationsGroup", args, LookupCommunicationsGroupResultOutput{}, options).(LookupCommunicationsGroupResultOutput)
 }
 
 // A collection of arguments for invoking getCommunicationsGroup.

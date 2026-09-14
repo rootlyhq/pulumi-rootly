@@ -13,6 +13,7 @@ updates:
     directories:
       - "/provider/shim"
       - "/sdk"
+      - "/examples"
     schedule:
       interval: "weekly"
     cooldown:

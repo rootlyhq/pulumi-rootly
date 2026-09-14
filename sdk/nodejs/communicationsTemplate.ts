@@ -131,33 +131,33 @@ export interface CommunicationsTemplateState {
     /**
      * Communication template stages
      */
-    communicationTemplateStages?: pulumi.Input<pulumi.Input<inputs.CommunicationsTemplateCommunicationTemplateStage>[]>;
+    communicationTemplateStages?: pulumi.Input<pulumi.Input<inputs.CommunicationsTemplateCommunicationTemplateStage>[] | undefined>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    communicationType?: pulumi.Input<inputs.CommunicationsTemplateCommunicationType>;
+    communicationType?: pulumi.Input<inputs.CommunicationsTemplateCommunicationType | undefined>;
     /**
      * The communication type ID
      */
-    communicationTypeId?: pulumi.Input<string>;
+    communicationTypeId?: pulumi.Input<string | undefined>;
     /**
      * The description of the communications template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the communications template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the communications template
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the communications template
      *
      * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -167,11 +167,11 @@ export interface CommunicationsTemplateArgs {
     /**
      * Communication template stages
      */
-    communicationTemplateStages?: pulumi.Input<pulumi.Input<inputs.CommunicationsTemplateCommunicationTemplateStage>[]>;
+    communicationTemplateStages?: pulumi.Input<pulumi.Input<inputs.CommunicationsTemplateCommunicationTemplateStage>[] | undefined>;
     /**
      * Map must contain two fields, `id` and `name`.
      */
-    communicationType?: pulumi.Input<inputs.CommunicationsTemplateCommunicationType>;
+    communicationType?: pulumi.Input<inputs.CommunicationsTemplateCommunicationType | undefined>;
     /**
      * The communication type ID
      */
@@ -179,19 +179,19 @@ export interface CommunicationsTemplateArgs {
     /**
      * The description of the communications template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the communications template
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the communications template
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the communications template
      *
      * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

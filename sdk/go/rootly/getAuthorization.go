@@ -44,12 +44,8 @@ type LookupAuthorizationResult struct {
 }
 
 func LookupAuthorizationOutput(ctx *pulumi.Context, args LookupAuthorizationOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorizationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAuthorizationResultOutput, error) {
-			args := v.(LookupAuthorizationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getAuthorization:getAuthorization", args, LookupAuthorizationResultOutput{}, options).(LookupAuthorizationResultOutput), nil
-		}).(LookupAuthorizationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getAuthorization:getAuthorization", args, LookupAuthorizationResultOutput{}, options).(LookupAuthorizationResultOutput)
 }
 
 // A collection of arguments for invoking getAuthorization.

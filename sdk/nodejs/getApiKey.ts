@@ -82,16 +82,16 @@ export interface GetApiKeyOutputArgs {
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    expiresAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    kind?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Filter by date range using 'lt' and 'gt'.
      */
-    lastUsedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
-    roleId?: pulumi.Input<string>;
+    lastUsedAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    roleId?: pulumi.Input<string | undefined>;
 }

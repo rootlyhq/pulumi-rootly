@@ -119,29 +119,29 @@ export interface GetServicesOutputArgs {
     /**
      * Filter by alert broadcast enabled.
      */
-    alertBroadcastEnabled?: pulumi.Input<boolean>;
+    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The Backstage entity id to filter by. eg: :namespace/:kind/:entity_name.
      */
-    backstageId?: pulumi.Input<string>;
+    backstageId?: pulumi.Input<string | undefined>;
     /**
      * The Cortex group id to filter by.
      */
-    cortexId?: pulumi.Input<string>;
+    cortexId?: pulumi.Input<string | undefined>;
     /**
      * The external id to filter by.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Filter by incident broadcast enabled.
      */
-    incidentBroadcastEnabled?: pulumi.Input<boolean>;
+    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the service to filter by.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The slug of the service to filter by.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

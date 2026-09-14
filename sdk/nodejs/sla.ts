@@ -206,77 +206,77 @@ export interface SlaState {
     /**
      * Number of days for the assignment deadline
      */
-    assignmentDeadlineDays?: pulumi.Input<number>;
+    assignmentDeadlineDays?: pulumi.Input<number | undefined>;
     /**
      * The incident parent status that triggers the assignment deadline
      */
-    assignmentDeadlineParentStatus?: pulumi.Input<string>;
+    assignmentDeadlineParentStatus?: pulumi.Input<string | undefined>;
     /**
      * Sub-status for the assignment deadline. Required when custom lifecycle statuses are enabled on the team.
      */
-    assignmentDeadlineSubStatusId?: pulumi.Input<string>;
+    assignmentDeadlineSubStatusId?: pulumi.Input<string | undefined>;
     /**
      * Whether to skip weekends when calculating the assignment deadline. Value must be one of true or false
      */
-    assignmentSkipWeekends?: pulumi.Input<boolean>;
+    assignmentSkipWeekends?: pulumi.Input<boolean | undefined>;
     /**
      * Number of days for the completion deadline
      */
-    completionDeadlineDays?: pulumi.Input<number>;
+    completionDeadlineDays?: pulumi.Input<number | undefined>;
     /**
      * The incident parent status that triggers the completion deadline
      */
-    completionDeadlineParentStatus?: pulumi.Input<string>;
+    completionDeadlineParentStatus?: pulumi.Input<string | undefined>;
     /**
      * Sub-status for the completion deadline. Required when custom lifecycle statuses are enabled on the team.
      */
-    completionDeadlineSubStatusId?: pulumi.Input<string>;
+    completionDeadlineSubStatusId?: pulumi.Input<string | undefined>;
     /**
      * Whether to skip weekends when calculating the completion deadline. Value must be one of true or false
      */
-    completionSkipWeekends?: pulumi.Input<boolean>;
+    completionSkipWeekends?: pulumi.Input<boolean | undefined>;
     /**
      * Whether all or any conditions must match. Value must be one of `ALL`, `ANY`.
      */
-    conditionMatchType?: pulumi.Input<string>;
+    conditionMatchType?: pulumi.Input<string | undefined>;
     /**
      * Conditions that determine which incidents this SLA applies to
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.SlaCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.SlaCondition>[] | undefined>;
     /**
      * A description of the SLA
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The entity type this SLA applies to. Value must be one of `followUp`.
      */
-    entityType?: pulumi.Input<string>;
+    entityType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the manager incident role. Exactly one of `managerRoleId` or `managerUserId` must be provided.
      */
-    managerRoleId?: pulumi.Input<string>;
+    managerRoleId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the manager user. Exactly one of `managerRoleId` or `managerUserId` must be provided.
      */
-    managerUserId?: pulumi.Input<number>;
+    managerUserId?: pulumi.Input<number | undefined>;
     /**
      * The name of the SLA
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Notification timing configurations
      */
-    notificationConfigurations?: pulumi.Input<pulumi.Input<inputs.SlaNotificationConfiguration>[]>;
+    notificationConfigurations?: pulumi.Input<pulumi.Input<inputs.SlaNotificationConfiguration>[] | undefined>;
     /**
      * Position of the SLA for ordering
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the SLA
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -294,11 +294,11 @@ export interface SlaArgs {
     /**
      * Sub-status for the assignment deadline. Required when custom lifecycle statuses are enabled on the team.
      */
-    assignmentDeadlineSubStatusId?: pulumi.Input<string>;
+    assignmentDeadlineSubStatusId?: pulumi.Input<string | undefined>;
     /**
      * Whether to skip weekends when calculating the assignment deadline. Value must be one of true or false
      */
-    assignmentSkipWeekends?: pulumi.Input<boolean>;
+    assignmentSkipWeekends?: pulumi.Input<boolean | undefined>;
     /**
      * Number of days for the completion deadline
      */
@@ -310,51 +310,51 @@ export interface SlaArgs {
     /**
      * Sub-status for the completion deadline. Required when custom lifecycle statuses are enabled on the team.
      */
-    completionDeadlineSubStatusId?: pulumi.Input<string>;
+    completionDeadlineSubStatusId?: pulumi.Input<string | undefined>;
     /**
      * Whether to skip weekends when calculating the completion deadline. Value must be one of true or false
      */
-    completionSkipWeekends?: pulumi.Input<boolean>;
+    completionSkipWeekends?: pulumi.Input<boolean | undefined>;
     /**
      * Whether all or any conditions must match. Value must be one of `ALL`, `ANY`.
      */
-    conditionMatchType?: pulumi.Input<string>;
+    conditionMatchType?: pulumi.Input<string | undefined>;
     /**
      * Conditions that determine which incidents this SLA applies to
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.SlaCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.SlaCondition>[] | undefined>;
     /**
      * A description of the SLA
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The entity type this SLA applies to. Value must be one of `followUp`.
      */
-    entityType?: pulumi.Input<string>;
+    entityType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the manager incident role. Exactly one of `managerRoleId` or `managerUserId` must be provided.
      */
-    managerRoleId?: pulumi.Input<string>;
+    managerRoleId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the manager user. Exactly one of `managerRoleId` or `managerUserId` must be provided.
      */
-    managerUserId?: pulumi.Input<number>;
+    managerUserId?: pulumi.Input<number | undefined>;
     /**
      * The name of the SLA
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Notification timing configurations
      */
-    notificationConfigurations?: pulumi.Input<pulumi.Input<inputs.SlaNotificationConfiguration>[]>;
+    notificationConfigurations?: pulumi.Input<pulumi.Input<inputs.SlaNotificationConfiguration>[] | undefined>;
     /**
      * Position of the SLA for ordering
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the SLA
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

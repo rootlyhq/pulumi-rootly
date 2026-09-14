@@ -122,29 +122,29 @@ export interface CauseState {
     /**
      * The description of the cause
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the cause
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the cause
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Array of property values for this cause.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.CauseProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.CauseProperty>[] | undefined>;
     /**
      * The status page description of the cause
      */
-    publicDescription?: pulumi.Input<string>;
+    publicDescription?: pulumi.Input<string | undefined>;
     /**
      * The slug of the cause
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -154,27 +154,27 @@ export interface CauseArgs {
     /**
      * The description of the cause
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the cause
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Position of the cause
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Array of property values for this cause.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.CauseProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.CauseProperty>[] | undefined>;
     /**
      * The status page description of the cause
      */
-    publicDescription?: pulumi.Input<string>;
+    publicDescription?: pulumi.Input<string | undefined>;
     /**
      * The slug of the cause
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

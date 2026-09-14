@@ -48,6 +48,6 @@ export function getIncidentTypesOutput(args?: GetIncidentTypesOutputArgs, opts?:
  * A collection of arguments for invoking getIncidentTypes.
  */
 export interface GetIncidentTypesOutputArgs {
-    name?: pulumi.Input<string>;
-    slug?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -44,5 +44,5 @@ export function getRetrospectiveProcessGroupStepOutput(args: GetRetrospectivePro
  */
 export interface GetRetrospectiveProcessGroupStepOutputArgs {
     retrospectiveProcessGroupId: pulumi.Input<string>;
-    retrospectiveStepId?: pulumi.Input<string>;
+    retrospectiveStepId?: pulumi.Input<string | undefined>;
 }

@@ -158,53 +158,53 @@ export interface EnvironmentState {
     /**
      * The hex color of the environment
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The description of the environment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The external id associated to this environment
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * How this environment is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
      */
-    managedBy?: pulumi.Input<string>;
+    managedBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails attached to the environment
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Position of the environment
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Array of property values for this environment.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.EnvironmentProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.EnvironmentProperty>[] | undefined>;
     /**
      * The status page description of the environment
      */
-    publicDescription?: pulumi.Input<string>;
+    publicDescription?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this environment
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this environment
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[] | undefined>;
     /**
      * The slug of the environment
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -214,47 +214,47 @@ export interface EnvironmentArgs {
     /**
      * The hex color of the environment
      */
-    color?: pulumi.Input<string>;
+    color?: pulumi.Input<string | undefined>;
     /**
      * The description of the environment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The external id associated to this environment
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Emails attached to the environment
      */
-    notifyEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Position of the environment
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Array of property values for this environment.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.EnvironmentProperty>[]>;
+    properties?: pulumi.Input<pulumi.Input<inputs.EnvironmentProperty>[] | undefined>;
     /**
      * The status page description of the environment
      */
-    publicDescription?: pulumi.Input<string>;
+    publicDescription?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this environment
      */
-    slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[]>;
+    slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[] | undefined>;
     /**
      * Slack Channels associated with this environment
      */
-    slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[]>;
+    slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[] | undefined>;
     /**
      * The slug of the environment
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    slug?: pulumi.Input<string>;
+    slug?: pulumi.Input<string | undefined>;
 }

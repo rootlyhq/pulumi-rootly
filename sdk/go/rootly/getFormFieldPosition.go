@@ -36,12 +36,8 @@ type LookupFormFieldPositionResult struct {
 }
 
 func LookupFormFieldPositionOutput(ctx *pulumi.Context, args LookupFormFieldPositionOutputArgs, opts ...pulumi.InvokeOption) LookupFormFieldPositionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFormFieldPositionResultOutput, error) {
-			args := v.(LookupFormFieldPositionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getFormFieldPosition:getFormFieldPosition", args, LookupFormFieldPositionResultOutput{}, options).(LookupFormFieldPositionResultOutput), nil
-		}).(LookupFormFieldPositionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getFormFieldPosition:getFormFieldPosition", args, LookupFormFieldPositionResultOutput{}, options).(LookupFormFieldPositionResultOutput)
 }
 
 // A collection of arguments for invoking getFormFieldPosition.

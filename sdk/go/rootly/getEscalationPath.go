@@ -36,12 +36,8 @@ type LookupEscalationPathResult struct {
 }
 
 func LookupEscalationPathOutput(ctx *pulumi.Context, args LookupEscalationPathOutputArgs, opts ...pulumi.InvokeOption) LookupEscalationPathResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEscalationPathResultOutput, error) {
-			args := v.(LookupEscalationPathArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getEscalationPath:getEscalationPath", args, LookupEscalationPathResultOutput{}, options).(LookupEscalationPathResultOutput), nil
-		}).(LookupEscalationPathResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getEscalationPath:getEscalationPath", args, LookupEscalationPathResultOutput{}, options).(LookupEscalationPathResultOutput)
 }
 
 // A collection of arguments for invoking getEscalationPath.

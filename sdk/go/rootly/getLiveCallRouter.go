@@ -38,12 +38,8 @@ type LookupLiveCallRouterResult struct {
 }
 
 func LookupLiveCallRouterOutput(ctx *pulumi.Context, args LookupLiveCallRouterOutputArgs, opts ...pulumi.InvokeOption) LookupLiveCallRouterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLiveCallRouterResultOutput, error) {
-			args := v.(LookupLiveCallRouterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getLiveCallRouter:getLiveCallRouter", args, LookupLiveCallRouterResultOutput{}, options).(LookupLiveCallRouterResultOutput), nil
-		}).(LookupLiveCallRouterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getLiveCallRouter:getLiveCallRouter", args, LookupLiveCallRouterResultOutput{}, options).(LookupLiveCallRouterResultOutput)
 }
 
 // A collection of arguments for invoking getLiveCallRouter.
