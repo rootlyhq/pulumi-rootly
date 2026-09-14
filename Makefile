@@ -81,6 +81,7 @@ build_nodejs:: install_plugins tfgen # build the node sdk
 		$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/; \
 		if [ -f "$$lock_dir/yarn.lock" ]; then cp "$$lock_dir/yarn.lock" sdk/nodejs/; fi
 	cd sdk/nodejs/ && \
+        $(EXEC)npm pkg set 'engines.node=>=24' && \
         $(EXEC)yarn install && \
         $(EXEC)yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \

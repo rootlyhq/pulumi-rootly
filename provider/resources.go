@@ -161,7 +161,7 @@ func Provider() tfbridge.ProviderInfo {
 				"@pulumi/pulumi": "^3.262.0",
 			},
 			DevDependencies: map[string]string{
-				"@types/node": "^26.5.1",
+				"@types/node": "^24.13.4",
 			},
 			TypeScriptVersion: "^7.0.2",
 		},

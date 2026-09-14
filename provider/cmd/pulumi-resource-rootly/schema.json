@@ -37,7 +37,7 @@
                 "@pulumi/pulumi": "^3.262.0"
             },
             "devDependencies": {
-                "@types/node": "^26.5.1"
+                "@types/node": "^24.13.4"
             },
             "typescriptVersion": "^7.0.2",
             "compatibility": "tfbridge20",

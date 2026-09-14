@@ -17,12 +17,15 @@
         "@pulumi/pulumi": "^3.262.0"
     },
     "devDependencies": {
-        "@types/node": "^26.5.1",
+        "@types/node": "^24.13.4",
         "typescript": "^7.0.2"
     },
     "pulumi": {
         "resource": true,
         "name": "rootly",
         "server": "https://github.com/rootlyhq/pulumi-rootly/releases/download/v${VERSION}"
+    },
+    "engines": {
+        "node": ">=24"
     }
 }

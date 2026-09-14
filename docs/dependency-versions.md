@@ -5,7 +5,7 @@ together. Go module versions were checked with `go list -m -u -json all` against
 each module's declared requirements after `go get -u` and `go mod tidy`.
 Example test dependencies were included with `go get -tags=all -t -u ./...`.
 The Node.js lockfile was refreshed with `yarn upgrade`; `yarn outdated` reports
-no newer direct dependencies.
+no newer direct dependencies within the selected major versions.
 
 | Component | Version |
 | --- | --- |
@@ -14,8 +14,8 @@ no newer direct dependencies.
 | Pulumi CLI, Go packages, Node.js and Python dependency baselines | 3.262.0 |
 | .NET Pulumi dependency baseline | 3.113.2 |
 | Go | 1.27.1 |
-| Node.js | 26.8.2 |
-| TypeScript / Node.js types | 7.0.2 / 26.5.1 |
+| Node.js | 24.21.0 |
+| TypeScript / Node.js types | 7.0.2 / 24.13.4 |
 | Python / .NET SDK | 3.14.7 / 10.0.400 |
 | Yarn Classic | 1.22.22 |
 | golangci-lint / govulncheck | 2.13.2 / 1.8.0 |
@@ -37,6 +37,8 @@ and `imdario/mergo` override were removed.
   Go rejects those versions with a module-path mismatch.
 - The examples use mpb 8.15.2. Both 8.16.0 and 8.16.1 change `ProxyReader` to
   return two values, breaking Pulumi 3.262.0's integration-test helper build.
+- Node.js and its type definitions stay on the requested Node 24 LTS line.
+  The published npm package declares `engines.node: >=24`.
 - Yarn remains on the latest Classic release, 1.22.22, for the provider's build
   and SDK linking workflow. Transitive npm dependencies follow their upstream
   packages' supported version ranges.
@@ -52,7 +54,7 @@ compilation, and example helper compilation pass. The example helpers do not
 contain live acceptance tests. `govulncheck` reports no vulnerable imported
 packages or reachable vulnerabilities across all four Go modules. An unused
 `x/crypto/openpgp` module-only advisory has no patched release. Yarn audit reports
-zero vulnerabilities across 240 dependencies, and a frozen-lockfile build passes.
+zero vulnerabilities across 242 dependencies, and a frozen-lockfile build passes.
 
 The development container was not built locally because the Docker daemon was
 unavailable. Its configured tool versions were installed and exercised locally.
