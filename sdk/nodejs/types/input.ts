@@ -1384,7 +1384,7 @@ export interface WorkflowActionItemTriggerParams {
      * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
     incidentStatuses?: pulumi.Input<pulumi.Input<string>[]>;
-    incidentVisibilities?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentVisibilities?: pulumi.Input<pulumi.Input<boolean>[]>;
     /**
      * Value must be one of `actionItem`.
      */
@@ -1589,13 +1589,13 @@ export interface WorkflowIncidentTriggerParams {
      * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
     incidentStatuses?: pulumi.Input<pulumi.Input<string>[]>;
-    incidentVisibilities?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentVisibilities?: pulumi.Input<pulumi.Input<boolean>[]>;
     /**
      * Value must be one of `incident`.
      */
     triggerType?: pulumi.Input<string>;
     /**
-     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
      */
     triggers?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -1718,7 +1718,7 @@ export interface WorkflowPostMortemTriggerParams {
      * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
     incidentStatuses?: pulumi.Input<pulumi.Input<string>[]>;
-    incidentVisibilities?: pulumi.Input<pulumi.Input<string>[]>;
+    incidentVisibilities?: pulumi.Input<pulumi.Input<boolean>[]>;
     /**
      * Value must be one of `postMortem`.
      */

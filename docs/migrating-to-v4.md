@@ -1,33 +1,41 @@
 # Migrating to v4
 
-Version 4 updates the Rootly Terraform provider from 5.18.0 to 5.21.0 and the
+Version 4 updates the Rootly Terraform provider from 5.18.0 to 5.21.1 and the
 Pulumi Terraform bridge to 3.139.0. It includes both upstream Terraform provider
 frameworks, retaining all existing resource tokens. The upstream service lookup
 and schedule rotation schema changes require a major SDK version.
 
 ## Service data sources
 
-`getService` now requires the service ID and returns its full details:
+`getService` accepts either an ID or search filters and returns full service details:
 
 ```typescript
-const service = await rootly.getService({ id: "existing-service-id" });
+const byId = await rootly.getService({ id: "existing-service-id" });
+const bySlug = await rootly.getService({ slug: "api" });
+const matchingServices = await rootly.getServices({ slug: "api" });
 ```
 
-The previous name, slug, date, integration ID, and broadcast filters are no
-longer accepted. `getServices()` now returns all services without input filters.
-To locate a service by slug, filter that result explicitly:
+Terraform provider 5.21.1 restores filters for both service data sources: `name`,
+`slug`, `backstageId`, `cortexId`, `externalId`, `alertBroadcastEnabled`, and
+`incidentBroadcastEnabled`. `getService` requires an ID or at least one filter;
+combining an ID with filters, or matching multiple services, produces an error.
+`getServices()` without filters still returns all services.
+
+Compared with v3, `getService` no longer accepts or returns the `createdAt` filter
+map. `getServices` no longer accepts the `opsgenieId` or `pagerdutyId` filters and
+no longer returns a synthetic `id`. Both functions return additional service
+details from the upstream provider.
+
+## Workflow incident visibility
+
+`triggerParams.incidentVisibilities` is now a list of booleans for `WorkflowActionItem`,
+`WorkflowIncident`, and `WorkflowPostMortem`. Replace string values with booleans:
 
 ```typescript
-const { services } = await rootly.getServices();
-const service = services.find(service => service.slug === "api");
-if (!service) {
-    throw new Error("Service api was not found");
+triggerParams: {
+    incidentVisibilities: [true, false],
 }
 ```
-
-`getServices` no longer returns the synthetic `id` or echoed filter fields.
-`getService` no longer returns the old `createdAt` filter map. Both functions
-return additional service details from the upstream provider.
 
 ## Schedule rotations
 

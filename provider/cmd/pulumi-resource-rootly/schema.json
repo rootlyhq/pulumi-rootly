@@ -2393,7 +2393,7 @@
                 "incidentVisibilities": {
                     "type": "array",
                     "items": {
-                        "type": "string"
+                        "type": "boolean"
                     }
                 },
                 "triggerType": {
@@ -2730,7 +2730,7 @@
                 "incidentVisibilities": {
                     "type": "array",
                     "items": {
-                        "type": "string"
+                        "type": "boolean"
                     }
                 },
                 "triggerType": {
@@ -2742,7 +2742,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Actions that trigger the workflow. One of custom*fields.\\n\\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created\n"
+                    "description": "Actions that trigger the workflow. One of custom*fields.\\n\\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created\n"
                 }
             },
             "type": "object",
@@ -2903,7 +2903,7 @@
                 "incidentVisibilities": {
                     "type": "array",
                     "items": {
-                        "type": "string"
+                        "type": "boolean"
                     }
                 },
                 "triggerType": {
@@ -10262,11 +10262,11 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Slack channel ID\n"
+                    "description": "Slack channel ID.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Slack channel name\n"
+                    "description": "Slack channel name.\n"
                 }
             },
             "type": "object",
@@ -10284,11 +10284,11 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Slack channel ID\n"
+                    "description": "Slack channel ID.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Slack channel name\n"
+                    "description": "Slack channel name.\n"
                 }
             },
             "type": "object",
@@ -10306,11 +10306,11 @@
             "properties": {
                 "catalogPropertyId": {
                     "type": "string",
-                    "description": "Catalog property ID\n"
+                    "description": "Catalog property ID.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "The property value\n"
+                    "description": "The property value.\n"
                 }
             },
             "type": "object",
@@ -10328,11 +10328,11 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Slack alias ID\n"
+                    "description": "Slack alias ID.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Slack alias name\n"
+                    "description": "Slack alias name.\n"
                 }
             },
             "type": "object",
@@ -10350,11 +10350,11 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Slack channel ID\n"
+                    "description": "Slack channel ID.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Slack channel name\n"
+                    "description": "Slack channel name.\n"
                 }
             },
             "type": "object",
@@ -10372,127 +10372,131 @@
             "properties": {
                 "alertBroadcastChannel": {
                     "$ref": "#/types/rootly:index/getServicesServiceAlertBroadcastChannel:getServicesServiceAlertBroadcastChannel",
-                    "description": "Slack channel to broadcast alerts to\n"
+                    "description": "Slack channel to broadcast alerts to.\n"
                 },
                 "alertBroadcastEnabled": {
                     "type": "boolean",
-                    "description": "Enable alerts to be broadcasted to a specific channel\n"
+                    "description": "Enable alerts to be broadcasted to a specific channel.\n"
                 },
                 "alertUrgencyId": {
                     "type": "string",
-                    "description": "The alert urgency id of the service\n"
+                    "description": "The alert urgency id of the service.\n"
                 },
                 "alertsEmailAddress": {
                     "type": "string",
-                    "description": "Email generated to send alerts to\n"
+                    "description": "Email generated to send alerts to.\n"
                 },
                 "alertsEmailEnabled": {
                     "type": "boolean",
-                    "description": "Enable alerts through email\n"
+                    "description": "Enable alerts through email.\n"
                 },
                 "backstageId": {
                     "type": "string",
-                    "description": "The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name\n"
+                    "description": "The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.\n"
                 },
                 "color": {
                     "type": "string",
-                    "description": "The hex color of the service\n"
+                    "description": "The hex color of the service.\n"
                 },
                 "cortexId": {
                     "type": "string",
-                    "description": "The Cortex group id associated to this service\n"
+                    "description": "The Cortex group id associated to this service.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Date of creation.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "The description of the service\n"
+                    "description": "The description of the service.\n"
                 },
                 "environmentIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Environments associated with this service\n"
+                    "description": "Environments associated with this service.\n"
                 },
                 "escalationPolicyId": {
                     "type": "string",
-                    "description": "The escalation policy id of the service\n"
+                    "description": "The escalation policy id of the service.\n"
                 },
                 "externalId": {
                     "type": "string",
-                    "description": "The external id associated to this service\n"
+                    "description": "The external id associated to this service.\n"
                 },
                 "githubRepositoryBranch": {
                     "type": "string",
-                    "description": "The GitHub repository branch associated to this service. eg: main\n"
+                    "description": "The GitHub repository branch associated to this service. eg: main.\n"
                 },
                 "githubRepositoryName": {
                     "type": "string",
-                    "description": "The GitHub repository name associated to this service. eg: rootlyhq/my-service\n"
+                    "description": "The GitHub repository name associated to this service. eg: rootlyhq/my-service.\n"
                 },
                 "gitlabRepositoryBranch": {
                     "type": "string",
-                    "description": "The GitLab repository branch associated to this service. eg: main\n"
+                    "description": "The GitLab repository branch associated to this service. eg: main.\n"
                 },
                 "gitlabRepositoryName": {
                     "type": "string",
-                    "description": "The GitLab repository name associated to this service. eg: rootlyhq/my-service\n"
+                    "description": "The GitLab repository name associated to this service. eg: rootlyhq/my-service.\n"
                 },
                 "id": {
                     "type": "string",
-                    "description": "The ID of the service.\n"
+                    "description": "The ID of the resource.\n"
                 },
                 "incidentBroadcastChannel": {
                     "$ref": "#/types/rootly:index/getServicesServiceIncidentBroadcastChannel:getServicesServiceIncidentBroadcastChannel",
-                    "description": "Slack channel to broadcast incidents to\n"
+                    "description": "Slack channel to broadcast incidents to.\n"
                 },
                 "incidentBroadcastEnabled": {
                     "type": "boolean",
-                    "description": "Enable incidents to be broadcasted to a specific channel\n"
+                    "description": "Enable incidents to be broadcasted to a specific channel.\n"
                 },
                 "kubernetesDeploymentName": {
                     "type": "string",
-                    "description": "The Kubernetes deployment name associated to this service. eg: namespace/deployment-name\n"
+                    "description": "The Kubernetes deployment name associated to this service. eg: namespace/deployment-name.\n"
                 },
                 "managedBy": {
                     "type": "string",
-                    "description": "How this service is managed (provenance): web, api, terraform, etc. Read-only.\n"
+                    "description": "How this service is managed (provenance): web, api, terraform, etc. Read-only. Value must be one of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\" pulumi-lang-hcl=\"`web`\"\u003e`web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`adminWeb`\" pulumi-lang-dotnet=\"`AdminWeb`\" pulumi-lang-go=\"`adminWeb`\" pulumi-lang-python=\"`admin_web`\" pulumi-lang-yaml=\"`adminWeb`\" pulumi-lang-java=\"`adminWeb`\" pulumi-lang-hcl=\"`admin_web`\"\u003e`adminWeb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`api`\" pulumi-lang-dotnet=\"`Api`\" pulumi-lang-go=\"`api`\" pulumi-lang-python=\"`api`\" pulumi-lang-yaml=\"`api`\" pulumi-lang-java=\"`api`\" pulumi-lang-hcl=\"`api`\"\u003e`api`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`terraform`\" pulumi-lang-dotnet=\"`Terraform`\" pulumi-lang-go=\"`terraform`\" pulumi-lang-python=\"`terraform`\" pulumi-lang-yaml=\"`terraform`\" pulumi-lang-java=\"`terraform`\" pulumi-lang-hcl=\"`terraform`\"\u003e`terraform`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pulumi`\" pulumi-lang-dotnet=\"`Pulumi`\" pulumi-lang-go=\"`pulumi`\" pulumi-lang-python=\"`pulumi`\" pulumi-lang-yaml=\"`pulumi`\" pulumi-lang-java=\"`pulumi`\" pulumi-lang-hcl=\"`pulumi`\"\u003e`pulumi`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backstage`\" pulumi-lang-dotnet=\"`Backstage`\" pulumi-lang-go=\"`backstage`\" pulumi-lang-python=\"`backstage`\" pulumi-lang-yaml=\"`backstage`\" pulumi-lang-java=\"`backstage`\" pulumi-lang-hcl=\"`backstage`\"\u003e`backstage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catalogSync`\" pulumi-lang-dotnet=\"`CatalogSync`\" pulumi-lang-go=\"`catalogSync`\" pulumi-lang-python=\"`catalog_sync`\" pulumi-lang-yaml=\"`catalogSync`\" pulumi-lang-java=\"`catalogSync`\" pulumi-lang-hcl=\"`catalog_sync`\"\u003e`catalogSync`\u003c/span\u003e.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the service\n"
+                    "description": "The name of the service.\n"
                 },
                 "notifyEmails": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Emails attached to the service\n"
+                    "description": "Emails attached to the service.\n"
                 },
                 "opsgenieId": {
                     "type": "string",
-                    "description": "The Opsgenie service id associated to this service\n"
+                    "description": "The Opsgenie service id associated to this service.\n"
                 },
                 "ownerGroupIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Owner Teams associated with this service\n"
+                    "description": "Owner Teams associated with this service.\n"
                 },
                 "ownerUserIds": {
                     "type": "array",
                     "items": {
                         "type": "number"
                     },
-                    "description": "Owner Users associated with this service\n"
+                    "description": "Owner Users associated with this service.\n"
                 },
                 "pagerdutyId": {
                     "type": "string",
-                    "description": "The PagerDuty service id associated to this service\n"
+                    "description": "The PagerDuty service id associated to this service.\n"
                 },
                 "position": {
                     "type": "integer",
-                    "description": "Position of the service\n"
+                    "description": "Position of the service.\n"
                 },
                 "properties": {
                     "type": "array",
@@ -10503,36 +10507,40 @@
                 },
                 "publicDescription": {
                     "type": "string",
-                    "description": "The status page description of the service\n"
+                    "description": "The status page description of the service.\n"
                 },
                 "serviceIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Services dependent on this service\n"
+                    "description": "Services dependent on this service.\n"
                 },
                 "serviceNowCiSysId": {
                     "type": "string",
-                    "description": "The Service Now CI sys id associated to this service\n"
+                    "description": "The Service Now CI sys id associated to this service.\n"
                 },
                 "slackAliases": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/rootly:index/getServicesServiceSlackAlias:getServicesServiceSlackAlias"
                     },
-                    "description": "Slack Aliases associated with this service\n"
+                    "description": "Slack Aliases associated with this service.\n"
                 },
                 "slackChannels": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/rootly:index/getServicesServiceSlackChannel:getServicesServiceSlackChannel"
                     },
-                    "description": "Slack Channels associated with this service\n"
+                    "description": "Slack Channels associated with this service.\n"
                 },
                 "slug": {
                     "type": "string",
-                    "description": "The slug of the service\n"
+                    "description": "The slug of the service.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Date of last update.\n"
                 }
             },
             "type": "object",
@@ -10545,6 +10553,7 @@
                 "backstageId",
                 "color",
                 "cortexId",
+                "createdAt",
                 "description",
                 "environmentIds",
                 "escalationPolicyId",
@@ -10571,7 +10580,8 @@
                 "serviceNowCiSysId",
                 "slackAliases",
                 "slackChannels",
-                "slug"
+                "slug",
+                "updatedAt"
             ],
             "language": {
                 "nodejs": {
@@ -10583,11 +10593,11 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Slack channel ID\n"
+                    "description": "Slack channel ID.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Slack channel name\n"
+                    "description": "Slack channel name.\n"
                 }
             },
             "type": "object",
@@ -10605,11 +10615,11 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Slack channel ID\n"
+                    "description": "Slack channel ID.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Slack channel name\n"
+                    "description": "Slack channel name.\n"
                 }
             },
             "type": "object",
@@ -10627,11 +10637,11 @@
             "properties": {
                 "catalogPropertyId": {
                     "type": "string",
-                    "description": "Catalog property ID\n"
+                    "description": "Catalog property ID.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "The property value\n"
+                    "description": "The property value.\n"
                 }
             },
             "type": "object",
@@ -10649,11 +10659,11 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Slack alias ID\n"
+                    "description": "Slack alias ID.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Slack alias name\n"
+                    "description": "Slack alias name.\n"
                 }
             },
             "type": "object",
@@ -10671,11 +10681,11 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "Slack channel ID\n"
+                    "description": "Slack channel ID.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Slack channel name\n"
+                    "description": "Slack channel name.\n"
                 }
             },
             "type": "object",
@@ -13846,7 +13856,7 @@
             }
         },
         "rootly:index/escalationLevel:EscalationLevel": {
-            "description": "## Example Usage\n\n```shell\ndata \"rootly_user\" \"john\" {\n  email = \"demo@rootly.com\"\n}\n\ndata \"rootly_user\" \"jane\" {\n  email = \"demo1@rootly.com\"\n}\n\ndata \"rootly_alert_urgency\" \"low\" {\n  name = \"Low\"\n}\n\nresource \"rootly_team\" \"sre\" {\n  name     = \"SREs On-Call\"\n  user_ids = [data.rootly_user.john.id, data.rootly_user.jane.id]\n}\n\nresource \"rootly_schedule\" \"primary\" {\n  name              = \"Primary On-Call Schedule\"\n  owner_user_id     = data.rootly_user.john.id\n  all_time_coverage = false\n}\n\nresource \"rootly_schedule_rotation\" \"weekdays\" {\n  schedule_id     = rootly_schedule.primary.id\n  name            = \"weekdays\"\n  active_all_week = false\n  active_days = [\n    \"M\",\n    \"T\",\n    \"W\",\n    \"R\",\n    \"F\",\n  ]\n  active_time_type = \"custom\"\n  position         = 1\n  schedule_rotationable_attributes = {\n    handoff_time = \"10:00\"\n  }\n  schedule_rotationable_type = \"ScheduleDailyRotation\"\n  time_zone                  = \"America/Toronto\"\n}\n\n# Define active days for the weekday rotation\n# Monday\nresource \"rootly_schedule_rotation_active_day\" \"m1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"M\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Tuesday\nresource \"rootly_schedule_rotation_active_day\" \"t1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"T\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Wednesday\nresource \"rootly_schedule_rotation_active_day\" \"w1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"W\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Thursday\nresource \"rootly_schedule_rotation_active_day\" \"th1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"R\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Friday\nresource \"rootly_schedule_rotation_active_day\" \"f1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"F\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n\nresource \"rootly_schedule_rotation_user\" \"john\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 1\n  user_id              = data.rootly_user.john.id\n}\n\nresource \"rootly_schedule_rotation_user\" \"jane\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 2\n  user_id              = data.rootly_user.jane.id\n}\n\nresource \"rootly_escalation_policy\" \"primary\" {\n  name      = \"Primary\"\n  group_ids = [rootly_team.sre.id]\n}\n\nresource \"rootly_escalation_path\" \"default\" {\n  name                 = \"Default\"\n  default              = true\n  escalation_policy_id = rootly_escalation_policy.primary.id\n}\n\nresource \"rootly_escalation_path\" \"ignore\" {\n  name                 = \"Ignore\"\n  default              = false\n  escalation_policy_id = rootly_escalation_policy.primary.id\n  rules {\n    rule_type   = \"alert_urgency\"\n    urgency_ids = [data.rootly_alert_urgency.low.id]\n  }\n}\n\nresource \"rootly_escalation_level\" \"first\" {\n  escalation_policy_path_id = rootly_escalation_path.default.id\n  escalation_policy_id      = rootly_escalation_policy.primary.id\n  position                  = 1\n  notification_target_params {\n    team_members = \"all\"\n    type         = \"slack_channel\"\n    id           = \"C06D4QHLAUE\"\n  }\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n\n# cycle-based round-robin everyone on the schedule\nresource \"rootly_escalation_level\" \"second\" {\n  escalation_policy_path_id                       = rootly_escalation_path.default.id\n  escalation_policy_id                            = rootly_escalation_policy.primary.id\n  position                                        = 2\n  delay                                           = 5\n  paging_strategy_configuration_strategy          = \"cycle\"\n  paging_strategy_configuration_schedule_strategy = \"everyone\"\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n\n# cycle-based round-robin: page 3 users at a time from the active rotation\nresource \"rootly_escalation_level\" \"third\" {\n  escalation_policy_path_id                       = rootly_escalation_path.default.id\n  escalation_policy_id                            = rootly_escalation_policy.primary.id\n  position                                        = 3\n  delay                                           = 5\n  paging_strategy_configuration_strategy          = \"cycle\"\n  paging_strategy_configuration_schedule_strategy = \"everyone\"\n  paging_strategy_configuration_repeats_mode      = \"users\"\n  paging_strategy_configuration_repeats           = 3\n  paging_strategy_configuration_rotation_scope    = \"active_rotation\"\n  paging_strategy_configuration_page_users_count  = 2\n  notification_target_params {\n    type = \"schedule\"\n    id   = rootly_schedule.primary.id\n  }\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.EscalationLevel \" pulumi-lang-dotnet=\"\nrootly.EscalationLevel \" pulumi-lang-go=\"\nEscalationLevel \" pulumi-lang-python=\"\nEscalationLevel \" pulumi-lang-yaml=\"\nrootly.EscalationLevel \" pulumi-lang-java=\"\nrootly.EscalationLevel \" pulumi-lang-hcl=\"\nrootly_escalation_level \"\u003e\nrootly.EscalationLevel \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/escalationLevel:EscalationLevel primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\ndata \"rootly_user\" \"john\" {\n  email = \"demo@rootly.com\"\n}\n\ndata \"rootly_user\" \"jane\" {\n  email = \"demo1@rootly.com\"\n}\n\ndata \"rootly_alert_urgency\" \"low\" {\n  name = \"Low\"\n}\n\nresource \"rootly_team\" \"sre\" {\n  name     = \"SREs On-Call\"\n  user_ids = [data.rootly_user.john.id, data.rootly_user.jane.id]\n}\n\nresource \"rootly_schedule\" \"primary\" {\n  name              = \"Primary On-Call Schedule\"\n  owner_user_id     = data.rootly_user.john.id\n  all_time_coverage = false\n}\n\nresource \"rootly_schedule_rotation\" \"weekdays\" {\n  schedule_id     = rootly_schedule.primary.id\n  name            = \"weekdays\"\n  active_all_week = false\n  active_days = [\n    \"M\",\n    \"T\",\n    \"W\",\n    \"R\",\n    \"F\",\n  ]\n  active_time_type = \"custom\"\n  position         = 1\n  schedule_rotationable_attributes = {\n    handoff_time = \"10:00\"\n  }\n  schedule_rotationable_type = \"ScheduleDailyRotation\"\n  time_zone                  = \"America/Toronto\"\n}\n\n# Define active days for the weekday rotation\n# Monday\nresource \"rootly_schedule_rotation_active_day\" \"m1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"M\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Tuesday\nresource \"rootly_schedule_rotation_active_day\" \"t1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"T\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Wednesday\nresource \"rootly_schedule_rotation_active_day\" \"w1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"W\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Thursday\nresource \"rootly_schedule_rotation_active_day\" \"th1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"R\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Friday\nresource \"rootly_schedule_rotation_active_day\" \"f1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"F\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n\nresource \"rootly_schedule_rotation_user\" \"john\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 1\n  user_id              = data.rootly_user.john.id\n}\n\nresource \"rootly_schedule_rotation_user\" \"jane\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 2\n  user_id              = data.rootly_user.jane.id\n}\n\nresource \"rootly_escalation_policy\" \"primary\" {\n  name      = \"Primary\"\n  group_ids = [rootly_team.sre.id]\n}\n\nresource \"rootly_escalation_path\" \"default\" {\n  name                 = \"Default\"\n  default              = true\n  escalation_policy_id = rootly_escalation_policy.primary.id\n}\n\nresource \"rootly_escalation_path\" \"ignore\" {\n  name                 = \"Ignore\"\n  default              = false\n  escalation_policy_id = rootly_escalation_policy.primary.id\n  rules {\n    rule_type   = \"alert_urgency\"\n    urgency_ids = [data.rootly_alert_urgency.low.id]\n  }\n}\n\nresource \"rootly_escalation_level\" \"first\" {\n  escalation_policy_path_id = rootly_escalation_path.default.id\n  escalation_policy_id      = rootly_escalation_policy.primary.id\n  position                  = 1\n  notification_target_params {\n    team_members = \"all\"\n    type         = \"slack_channel\"\n    id           = \"C06D4QHLAUE\"\n  }\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n\n# Page a Microsoft Teams channel — supply the external Teams channel ID\n# (e.g. from the channel link: https://teams.microsoft.com/l/channel/\u003cid\u003e/...).\nresource \"rootly_escalation_level\" \"teams_channel\" {\n  escalation_policy_path_id = rootly_escalation_path.default.id\n  escalation_policy_id      = rootly_escalation_policy.primary.id\n  position                  = 4\n  delay                     = 5\n  notification_target_params {\n    type = \"microsoft_teams_channel\"\n    id   = \"19:49a01245b7d04e57b314b55986f771e4@thread.tacv2\"\n  }\n}\n\n# cycle-based round-robin everyone on the schedule\nresource \"rootly_escalation_level\" \"second\" {\n  escalation_policy_path_id                       = rootly_escalation_path.default.id\n  escalation_policy_id                            = rootly_escalation_policy.primary.id\n  position                                        = 2\n  delay                                           = 5\n  paging_strategy_configuration_strategy          = \"cycle\"\n  paging_strategy_configuration_schedule_strategy = \"everyone\"\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n\n# cycle-based round-robin: page 3 users at a time from the active rotation\nresource \"rootly_escalation_level\" \"third\" {\n  escalation_policy_path_id                       = rootly_escalation_path.default.id\n  escalation_policy_id                            = rootly_escalation_policy.primary.id\n  position                                        = 3\n  delay                                           = 5\n  paging_strategy_configuration_strategy          = \"cycle\"\n  paging_strategy_configuration_schedule_strategy = \"everyone\"\n  paging_strategy_configuration_repeats_mode      = \"users\"\n  paging_strategy_configuration_repeats           = 3\n  paging_strategy_configuration_rotation_scope    = \"active_rotation\"\n  paging_strategy_configuration_page_users_count  = 2\n  notification_target_params {\n    type = \"schedule\"\n    id   = rootly_schedule.primary.id\n  }\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.EscalationLevel \" pulumi-lang-dotnet=\"\nrootly.EscalationLevel \" pulumi-lang-go=\"\nEscalationLevel \" pulumi-lang-python=\"\nEscalationLevel \" pulumi-lang-yaml=\"\nrootly.EscalationLevel \" pulumi-lang-java=\"\nrootly.EscalationLevel \" pulumi-lang-hcl=\"\nrootly_escalation_level \"\u003e\nrootly.EscalationLevel \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/escalationLevel:EscalationLevel primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "delay": {
                     "type": "integer",
@@ -42156,145 +42166,174 @@
             }
         },
         "rootly:index/getService:getService": {
-            "description": "Retrieves a service.\n\n## Example Usage\n\n```shell\ndata \"rootly_service\" \"my-service\" {\n  id = \"bfba89f8-98bb-43cf-aca4-789aff1b5e5b\"\n}\n```\n",
+            "description": "Retrieves a single service using either its \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e or search criteria (\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slug`\" pulumi-lang-dotnet=\"`Slug`\" pulumi-lang-go=\"`slug`\" pulumi-lang-python=\"`slug`\" pulumi-lang-yaml=\"`slug`\" pulumi-lang-java=\"`slug`\" pulumi-lang-hcl=\"`slug`\"\u003e`slug`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`externalId`\" pulumi-lang-dotnet=\"`ExternalId`\" pulumi-lang-go=\"`externalId`\" pulumi-lang-python=\"`external_id`\" pulumi-lang-yaml=\"`externalId`\" pulumi-lang-java=\"`externalId`\" pulumi-lang-hcl=\"`external_id`\"\u003e`externalId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cortexId`\" pulumi-lang-dotnet=\"`CortexId`\" pulumi-lang-go=\"`cortexId`\" pulumi-lang-python=\"`cortex_id`\" pulumi-lang-yaml=\"`cortexId`\" pulumi-lang-java=\"`cortexId`\" pulumi-lang-hcl=\"`cortex_id`\"\u003e`cortexId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backstageId`\" pulumi-lang-dotnet=\"`BackstageId`\" pulumi-lang-go=\"`backstageId`\" pulumi-lang-python=\"`backstage_id`\" pulumi-lang-yaml=\"`backstageId`\" pulumi-lang-java=\"`backstageId`\" pulumi-lang-hcl=\"`backstage_id`\"\u003e`backstageId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`alertBroadcastEnabled`\" pulumi-lang-dotnet=\"`AlertBroadcastEnabled`\" pulumi-lang-go=\"`alertBroadcastEnabled`\" pulumi-lang-python=\"`alert_broadcast_enabled`\" pulumi-lang-yaml=\"`alertBroadcastEnabled`\" pulumi-lang-java=\"`alertBroadcastEnabled`\" pulumi-lang-hcl=\"`alert_broadcast_enabled`\"\u003e`alertBroadcastEnabled`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`incidentBroadcastEnabled`\" pulumi-lang-dotnet=\"`IncidentBroadcastEnabled`\" pulumi-lang-go=\"`incidentBroadcastEnabled`\" pulumi-lang-python=\"`incident_broadcast_enabled`\" pulumi-lang-yaml=\"`incidentBroadcastEnabled`\" pulumi-lang-java=\"`incidentBroadcastEnabled`\" pulumi-lang-hcl=\"`incident_broadcast_enabled`\"\u003e`incidentBroadcastEnabled`\u003c/span\u003e). \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e cannot be combined with filter attributes. If multiple services match the provided filters, an error will be raised.\n\n## Example Usage\n\n```shell\ndata \"rootly_service\" \"my-service\" {\n  id = \"bfba89f8-98bb-43cf-aca4-789aff1b5e5b\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getService.\n",
                 "properties": {
+                    "alertBroadcastEnabled": {
+                        "type": "boolean",
+                        "description": "Enable alerts to be broadcasted to a specific channel.\n"
+                    },
+                    "backstageId": {
+                        "type": "string",
+                        "description": "The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.\n"
+                    },
+                    "cortexId": {
+                        "type": "string",
+                        "description": "The Cortex group id associated to this service.\n"
+                    },
+                    "externalId": {
+                        "type": "string",
+                        "description": "The external id associated to this service.\n"
+                    },
                     "id": {
                         "type": "string",
-                        "description": "The ID of the service.\n"
+                        "description": "The ID of the resource.\n"
+                    },
+                    "incidentBroadcastEnabled": {
+                        "type": "boolean",
+                        "description": "Enable incidents to be broadcasted to a specific channel.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the service.\n"
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "The slug of the service.\n"
                     }
                 },
-                "type": "object",
-                "required": [
-                    "id"
-                ]
+                "type": "object"
             },
             "outputs": {
                 "description": "A collection of values returned by getService.\n",
                 "properties": {
                     "alertBroadcastChannel": {
                         "$ref": "#/types/rootly:index/getServiceAlertBroadcastChannel:getServiceAlertBroadcastChannel",
-                        "description": "Slack channel to broadcast alerts to\n"
+                        "description": "Slack channel to broadcast alerts to.\n"
                     },
                     "alertBroadcastEnabled": {
-                        "description": "Enable alerts to be broadcasted to a specific channel\n",
+                        "description": "Enable alerts to be broadcasted to a specific channel.\n",
                         "type": "boolean"
                     },
                     "alertUrgencyId": {
-                        "description": "The alert urgency id of the service\n",
+                        "description": "The alert urgency id of the service.\n",
                         "type": "string"
                     },
                     "alertsEmailAddress": {
-                        "description": "Email generated to send alerts to\n",
+                        "description": "Email generated to send alerts to.\n",
                         "type": "string"
                     },
                     "alertsEmailEnabled": {
-                        "description": "Enable alerts through email\n",
+                        "description": "Enable alerts through email.\n",
                         "type": "boolean"
                     },
                     "backstageId": {
-                        "description": "The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name\n",
+                        "description": "The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.\n",
                         "type": "string"
                     },
                     "color": {
-                        "description": "The hex color of the service\n",
+                        "description": "The hex color of the service.\n",
                         "type": "string"
                     },
                     "cortexId": {
-                        "description": "The Cortex group id associated to this service\n",
+                        "description": "The Cortex group id associated to this service.\n",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "Date of creation.\n",
                         "type": "string"
                     },
                     "description": {
-                        "description": "The description of the service\n",
+                        "description": "The description of the service.\n",
                         "type": "string"
                     },
                     "environmentIds": {
-                        "description": "Environments associated with this service\n",
+                        "description": "Environments associated with this service.\n",
                         "items": {
                             "type": "string"
                         },
                         "type": "array"
                     },
                     "escalationPolicyId": {
-                        "description": "The escalation policy id of the service\n",
+                        "description": "The escalation policy id of the service.\n",
                         "type": "string"
                     },
                     "externalId": {
-                        "description": "The external id associated to this service\n",
+                        "description": "The external id associated to this service.\n",
                         "type": "string"
                     },
                     "githubRepositoryBranch": {
-                        "description": "The GitHub repository branch associated to this service. eg: main\n",
+                        "description": "The GitHub repository branch associated to this service. eg: main.\n",
                         "type": "string"
                     },
                     "githubRepositoryName": {
-                        "description": "The GitHub repository name associated to this service. eg: rootlyhq/my-service\n",
+                        "description": "The GitHub repository name associated to this service. eg: rootlyhq/my-service.\n",
                         "type": "string"
                     },
                     "gitlabRepositoryBranch": {
-                        "description": "The GitLab repository branch associated to this service. eg: main\n",
+                        "description": "The GitLab repository branch associated to this service. eg: main.\n",
                         "type": "string"
                     },
                     "gitlabRepositoryName": {
-                        "description": "The GitLab repository name associated to this service. eg: rootlyhq/my-service\n",
+                        "description": "The GitLab repository name associated to this service. eg: rootlyhq/my-service.\n",
                         "type": "string"
                     },
                     "id": {
-                        "description": "The ID of the service.\n",
+                        "description": "The ID of the resource.\n",
                         "type": "string"
                     },
                     "incidentBroadcastChannel": {
                         "$ref": "#/types/rootly:index/getServiceIncidentBroadcastChannel:getServiceIncidentBroadcastChannel",
-                        "description": "Slack channel to broadcast incidents to\n"
+                        "description": "Slack channel to broadcast incidents to.\n"
                     },
                     "incidentBroadcastEnabled": {
-                        "description": "Enable incidents to be broadcasted to a specific channel\n",
+                        "description": "Enable incidents to be broadcasted to a specific channel.\n",
                         "type": "boolean"
                     },
                     "kubernetesDeploymentName": {
-                        "description": "The Kubernetes deployment name associated to this service. eg: namespace/deployment-name\n",
+                        "description": "The Kubernetes deployment name associated to this service. eg: namespace/deployment-name.\n",
                         "type": "string"
                     },
                     "managedBy": {
-                        "description": "How this service is managed (provenance): web, api, terraform, etc. Read-only.\n",
+                        "description": "How this service is managed (provenance): web, api, terraform, etc. Read-only. Value must be one of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\" pulumi-lang-hcl=\"`web`\"\u003e`web`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`adminWeb`\" pulumi-lang-dotnet=\"`AdminWeb`\" pulumi-lang-go=\"`adminWeb`\" pulumi-lang-python=\"`admin_web`\" pulumi-lang-yaml=\"`adminWeb`\" pulumi-lang-java=\"`adminWeb`\" pulumi-lang-hcl=\"`admin_web`\"\u003e`adminWeb`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`api`\" pulumi-lang-dotnet=\"`Api`\" pulumi-lang-go=\"`api`\" pulumi-lang-python=\"`api`\" pulumi-lang-yaml=\"`api`\" pulumi-lang-java=\"`api`\" pulumi-lang-hcl=\"`api`\"\u003e`api`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`terraform`\" pulumi-lang-dotnet=\"`Terraform`\" pulumi-lang-go=\"`terraform`\" pulumi-lang-python=\"`terraform`\" pulumi-lang-yaml=\"`terraform`\" pulumi-lang-java=\"`terraform`\" pulumi-lang-hcl=\"`terraform`\"\u003e`terraform`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pulumi`\" pulumi-lang-dotnet=\"`Pulumi`\" pulumi-lang-go=\"`pulumi`\" pulumi-lang-python=\"`pulumi`\" pulumi-lang-yaml=\"`pulumi`\" pulumi-lang-java=\"`pulumi`\" pulumi-lang-hcl=\"`pulumi`\"\u003e`pulumi`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backstage`\" pulumi-lang-dotnet=\"`Backstage`\" pulumi-lang-go=\"`backstage`\" pulumi-lang-python=\"`backstage`\" pulumi-lang-yaml=\"`backstage`\" pulumi-lang-java=\"`backstage`\" pulumi-lang-hcl=\"`backstage`\"\u003e`backstage`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`catalogSync`\" pulumi-lang-dotnet=\"`CatalogSync`\" pulumi-lang-go=\"`catalogSync`\" pulumi-lang-python=\"`catalog_sync`\" pulumi-lang-yaml=\"`catalogSync`\" pulumi-lang-java=\"`catalogSync`\" pulumi-lang-hcl=\"`catalog_sync`\"\u003e`catalogSync`\u003c/span\u003e.\n",
                         "type": "string"
                     },
                     "name": {
-                        "description": "The name of the service\n",
+                        "description": "The name of the service.\n",
                         "type": "string"
                     },
                     "notifyEmails": {
-                        "description": "Emails attached to the service\n",
+                        "description": "Emails attached to the service.\n",
                         "items": {
                             "type": "string"
                         },
                         "type": "array"
                     },
                     "opsgenieId": {
-                        "description": "The Opsgenie service id associated to this service\n",
+                        "description": "The Opsgenie service id associated to this service.\n",
                         "type": "string"
                     },
                     "ownerGroupIds": {
-                        "description": "Owner Teams associated with this service\n",
+                        "description": "Owner Teams associated with this service.\n",
                         "items": {
                             "type": "string"
                         },
                         "type": "array"
                     },
                     "ownerUserIds": {
-                        "description": "Owner Users associated with this service\n",
+                        "description": "Owner Users associated with this service.\n",
                         "items": {
                             "type": "number"
                         },
                         "type": "array"
                     },
                     "pagerdutyId": {
-                        "description": "The PagerDuty service id associated to this service\n",
+                        "description": "The PagerDuty service id associated to this service.\n",
                         "type": "string"
                     },
                     "position": {
-                        "description": "Position of the service\n",
+                        "description": "Position of the service.\n",
                         "type": "integer"
                     },
                     "properties": {
@@ -42305,36 +42344,40 @@
                         "type": "array"
                     },
                     "publicDescription": {
-                        "description": "The status page description of the service\n",
+                        "description": "The status page description of the service.\n",
                         "type": "string"
                     },
                     "serviceIds": {
-                        "description": "Services dependent on this service\n",
+                        "description": "Services dependent on this service.\n",
                         "items": {
                             "type": "string"
                         },
                         "type": "array"
                     },
                     "serviceNowCiSysId": {
-                        "description": "The Service Now CI sys id associated to this service\n",
+                        "description": "The Service Now CI sys id associated to this service.\n",
                         "type": "string"
                     },
                     "slackAliases": {
-                        "description": "Slack Aliases associated with this service\n",
+                        "description": "Slack Aliases associated with this service.\n",
                         "items": {
                             "$ref": "#/types/rootly:index/getServiceSlackAlias:getServiceSlackAlias"
                         },
                         "type": "array"
                     },
                     "slackChannels": {
-                        "description": "Slack Channels associated with this service\n",
+                        "description": "Slack Channels associated with this service.\n",
                         "items": {
                             "$ref": "#/types/rootly:index/getServiceSlackChannel:getServiceSlackChannel"
                         },
                         "type": "array"
                     },
                     "slug": {
-                        "description": "The slug of the service\n",
+                        "description": "The slug of the service.\n",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "Date of last update.\n",
                         "type": "string"
                     }
                 },
@@ -42347,6 +42390,7 @@
                     "backstageId",
                     "color",
                     "cortexId",
+                    "createdAt",
                     "description",
                     "environmentIds",
                     "escalationPolicyId",
@@ -42373,21 +42417,84 @@
                     "serviceNowCiSysId",
                     "slackAliases",
                     "slackChannels",
-                    "slug"
+                    "slug",
+                    "updatedAt"
                 ],
                 "type": "object"
             }
         },
         "rootly:index/getServices:getServices": {
             "description": "Retrieves a list of all services.\n\n## Example Usage\n\n```shell\ndata \"rootly_services\" \"all\" {}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServices.\n",
+                "properties": {
+                    "alertBroadcastEnabled": {
+                        "type": "boolean",
+                        "description": "Filter by alert broadcast enabled.\n"
+                    },
+                    "backstageId": {
+                        "type": "string",
+                        "description": "The Backstage entity id to filter by. eg: :namespace/:kind/:entity_name.\n"
+                    },
+                    "cortexId": {
+                        "type": "string",
+                        "description": "The Cortex group id to filter by.\n"
+                    },
+                    "externalId": {
+                        "type": "string",
+                        "description": "The external id to filter by.\n"
+                    },
+                    "incidentBroadcastEnabled": {
+                        "type": "boolean",
+                        "description": "Filter by incident broadcast enabled.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the service to filter by.\n"
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "The slug of the service to filter by.\n"
+                    }
+                },
+                "type": "object"
+            },
             "outputs": {
                 "description": "A collection of values returned by getServices.\n",
                 "properties": {
+                    "alertBroadcastEnabled": {
+                        "description": "Filter by alert broadcast enabled.\n",
+                        "type": "boolean"
+                    },
+                    "backstageId": {
+                        "description": "The Backstage entity id to filter by. eg: :namespace/:kind/:entity_name.\n",
+                        "type": "string"
+                    },
+                    "cortexId": {
+                        "description": "The Cortex group id to filter by.\n",
+                        "type": "string"
+                    },
+                    "externalId": {
+                        "description": "The external id to filter by.\n",
+                        "type": "string"
+                    },
+                    "incidentBroadcastEnabled": {
+                        "description": "Filter by incident broadcast enabled.\n",
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "description": "The name of the service to filter by.\n",
+                        "type": "string"
+                    },
                     "services": {
                         "items": {
                             "$ref": "#/types/rootly:index/getServicesService:getServicesService"
                         },
                         "type": "array"
+                    },
+                    "slug": {
+                        "description": "The slug of the service to filter by.\n",
+                        "type": "string"
                     }
                 },
                 "required": [

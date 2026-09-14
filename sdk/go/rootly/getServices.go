@@ -14,26 +14,82 @@ import (
 // Retrieves a list of all services.
 //
 // ## Example Usage
-func GetServices(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetServicesResult, error) {
+func GetServices(ctx *pulumi.Context, args *GetServicesArgs, opts ...pulumi.InvokeOption) (*GetServicesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicesResult
-	err := ctx.Invoke("rootly:index/getServices:getServices", nil, &rv, opts...)
+	err := ctx.Invoke("rootly:index/getServices:getServices", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &rv, nil
 }
 
-// A collection of values returned by getServices.
-type GetServicesResult struct {
-	Services []GetServicesService `pulumi:"services"`
+// A collection of arguments for invoking getServices.
+type GetServicesArgs struct {
+	// Filter by alert broadcast enabled.
+	AlertBroadcastEnabled *bool `pulumi:"alertBroadcastEnabled"`
+	// The Backstage entity id to filter by. eg: :namespace/:kind/:entity_name.
+	BackstageId *string `pulumi:"backstageId"`
+	// The Cortex group id to filter by.
+	CortexId *string `pulumi:"cortexId"`
+	// The external id to filter by.
+	ExternalId *string `pulumi:"externalId"`
+	// Filter by incident broadcast enabled.
+	IncidentBroadcastEnabled *bool `pulumi:"incidentBroadcastEnabled"`
+	// The name of the service to filter by.
+	Name *string `pulumi:"name"`
+	// The slug of the service to filter by.
+	Slug *string `pulumi:"slug"`
 }
 
-func GetServicesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetServicesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetServicesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("rootly:index/getServices:getServices", nil, GetServicesResultOutput{}, options).(GetServicesResultOutput), nil
-	}).(GetServicesResultOutput)
+// A collection of values returned by getServices.
+type GetServicesResult struct {
+	// Filter by alert broadcast enabled.
+	AlertBroadcastEnabled *bool `pulumi:"alertBroadcastEnabled"`
+	// The Backstage entity id to filter by. eg: :namespace/:kind/:entity_name.
+	BackstageId *string `pulumi:"backstageId"`
+	// The Cortex group id to filter by.
+	CortexId *string `pulumi:"cortexId"`
+	// The external id to filter by.
+	ExternalId *string `pulumi:"externalId"`
+	// Filter by incident broadcast enabled.
+	IncidentBroadcastEnabled *bool `pulumi:"incidentBroadcastEnabled"`
+	// The name of the service to filter by.
+	Name     *string              `pulumi:"name"`
+	Services []GetServicesService `pulumi:"services"`
+	// The slug of the service to filter by.
+	Slug *string `pulumi:"slug"`
+}
+
+func GetServicesOutput(ctx *pulumi.Context, args GetServicesOutputArgs, opts ...pulumi.InvokeOption) GetServicesResultOutput {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetServicesResultOutput, error) {
+			args := v.(GetServicesArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("rootly:index/getServices:getServices", args, GetServicesResultOutput{}, options).(GetServicesResultOutput), nil
+		}).(GetServicesResultOutput)
+}
+
+// A collection of arguments for invoking getServices.
+type GetServicesOutputArgs struct {
+	// Filter by alert broadcast enabled.
+	AlertBroadcastEnabled pulumi.BoolPtrInput `pulumi:"alertBroadcastEnabled"`
+	// The Backstage entity id to filter by. eg: :namespace/:kind/:entity_name.
+	BackstageId pulumi.StringPtrInput `pulumi:"backstageId"`
+	// The Cortex group id to filter by.
+	CortexId pulumi.StringPtrInput `pulumi:"cortexId"`
+	// The external id to filter by.
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
+	// Filter by incident broadcast enabled.
+	IncidentBroadcastEnabled pulumi.BoolPtrInput `pulumi:"incidentBroadcastEnabled"`
+	// The name of the service to filter by.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The slug of the service to filter by.
+	Slug pulumi.StringPtrInput `pulumi:"slug"`
+}
+
+func (GetServicesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicesArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getServices.
@@ -51,8 +107,43 @@ func (o GetServicesResultOutput) ToGetServicesResultOutputWithContext(ctx contex
 	return o
 }
 
+// Filter by alert broadcast enabled.
+func (o GetServicesResultOutput) AlertBroadcastEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServicesResult) *bool { return v.AlertBroadcastEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Backstage entity id to filter by. eg: :namespace/:kind/:entity_name.
+func (o GetServicesResultOutput) BackstageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicesResult) *string { return v.BackstageId }).(pulumi.StringPtrOutput)
+}
+
+// The Cortex group id to filter by.
+func (o GetServicesResultOutput) CortexId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicesResult) *string { return v.CortexId }).(pulumi.StringPtrOutput)
+}
+
+// The external id to filter by.
+func (o GetServicesResultOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicesResult) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
+// Filter by incident broadcast enabled.
+func (o GetServicesResultOutput) IncidentBroadcastEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServicesResult) *bool { return v.IncidentBroadcastEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the service to filter by.
+func (o GetServicesResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 func (o GetServicesResultOutput) Services() GetServicesServiceArrayOutput {
 	return o.ApplyT(func(v GetServicesResult) []GetServicesService { return v.Services }).(GetServicesServiceArrayOutput)
+}
+
+// The slug of the service to filter by.
+func (o GetServicesResultOutput) Slug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicesResult) *string { return v.Slug }).(pulumi.StringPtrOutput)
 }
 
 func init() {

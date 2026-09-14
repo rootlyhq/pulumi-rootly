@@ -1003,170 +1003,174 @@ export interface GetIncidentTypesIncidentType {
 
 export interface GetServiceAlertBroadcastChannel {
     /**
-     * Slack channel ID
+     * Slack channel ID.
      */
     id: string;
     /**
-     * Slack channel name
+     * Slack channel name.
      */
     name: string;
 }
 
 export interface GetServiceIncidentBroadcastChannel {
     /**
-     * Slack channel ID
+     * Slack channel ID.
      */
     id: string;
     /**
-     * Slack channel name
+     * Slack channel name.
      */
     name: string;
 }
 
 export interface GetServiceProperty {
     /**
-     * Catalog property ID
+     * Catalog property ID.
      */
     catalogPropertyId: string;
     /**
-     * The property value
+     * The property value.
      */
     value: string;
 }
 
 export interface GetServiceSlackAlias {
     /**
-     * Slack alias ID
+     * Slack alias ID.
      */
     id: string;
     /**
-     * Slack alias name
+     * Slack alias name.
      */
     name: string;
 }
 
 export interface GetServiceSlackChannel {
     /**
-     * Slack channel ID
+     * Slack channel ID.
      */
     id: string;
     /**
-     * Slack channel name
+     * Slack channel name.
      */
     name: string;
 }
 
 export interface GetServicesService {
     /**
-     * Slack channel to broadcast alerts to
+     * Slack channel to broadcast alerts to.
      */
     alertBroadcastChannel: outputs.GetServicesServiceAlertBroadcastChannel;
     /**
-     * Enable alerts to be broadcasted to a specific channel
+     * Enable alerts to be broadcasted to a specific channel.
      */
     alertBroadcastEnabled: boolean;
     /**
-     * The alert urgency id of the service
+     * The alert urgency id of the service.
      */
     alertUrgencyId: string;
     /**
-     * Email generated to send alerts to
+     * Email generated to send alerts to.
      */
     alertsEmailAddress: string;
     /**
-     * Enable alerts through email
+     * Enable alerts through email.
      */
     alertsEmailEnabled: boolean;
     /**
-     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
+     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.
      */
     backstageId: string;
     /**
-     * The hex color of the service
+     * The hex color of the service.
      */
     color: string;
     /**
-     * The Cortex group id associated to this service
+     * The Cortex group id associated to this service.
      */
     cortexId: string;
     /**
-     * The description of the service
+     * Date of creation.
+     */
+    createdAt: string;
+    /**
+     * The description of the service.
      */
     description: string;
     /**
-     * Environments associated with this service
+     * Environments associated with this service.
      */
     environmentIds: string[];
     /**
-     * The escalation policy id of the service
+     * The escalation policy id of the service.
      */
     escalationPolicyId: string;
     /**
-     * The external id associated to this service
+     * The external id associated to this service.
      */
     externalId: string;
     /**
-     * The GitHub repository branch associated to this service. eg: main
+     * The GitHub repository branch associated to this service. eg: main.
      */
     githubRepositoryBranch: string;
     /**
-     * The GitHub repository name associated to this service. eg: rootlyhq/my-service
+     * The GitHub repository name associated to this service. eg: rootlyhq/my-service.
      */
     githubRepositoryName: string;
     /**
-     * The GitLab repository branch associated to this service. eg: main
+     * The GitLab repository branch associated to this service. eg: main.
      */
     gitlabRepositoryBranch: string;
     /**
-     * The GitLab repository name associated to this service. eg: rootlyhq/my-service
+     * The GitLab repository name associated to this service. eg: rootlyhq/my-service.
      */
     gitlabRepositoryName: string;
     /**
-     * The ID of the service.
+     * The ID of the resource.
      */
     id: string;
     /**
-     * Slack channel to broadcast incidents to
+     * Slack channel to broadcast incidents to.
      */
     incidentBroadcastChannel: outputs.GetServicesServiceIncidentBroadcastChannel;
     /**
-     * Enable incidents to be broadcasted to a specific channel
+     * Enable incidents to be broadcasted to a specific channel.
      */
     incidentBroadcastEnabled: boolean;
     /**
-     * The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
+     * The Kubernetes deployment name associated to this service. eg: namespace/deployment-name.
      */
     kubernetesDeploymentName: string;
     /**
-     * How this service is managed (provenance): web, api, terraform, etc. Read-only.
+     * How this service is managed (provenance): web, api, terraform, etc. Read-only. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
      */
     managedBy: string;
     /**
-     * The name of the service
+     * The name of the service.
      */
     name: string;
     /**
-     * Emails attached to the service
+     * Emails attached to the service.
      */
     notifyEmails: string[];
     /**
-     * The Opsgenie service id associated to this service
+     * The Opsgenie service id associated to this service.
      */
     opsgenieId: string;
     /**
-     * Owner Teams associated with this service
+     * Owner Teams associated with this service.
      */
     ownerGroupIds: string[];
     /**
-     * Owner Users associated with this service
+     * Owner Users associated with this service.
      */
     ownerUserIds: number[];
     /**
-     * The PagerDuty service id associated to this service
+     * The PagerDuty service id associated to this service.
      */
     pagerdutyId: string;
     /**
-     * Position of the service
+     * Position of the service.
      */
     position: number;
     /**
@@ -1174,82 +1178,86 @@ export interface GetServicesService {
      */
     properties: outputs.GetServicesServiceProperty[];
     /**
-     * The status page description of the service
+     * The status page description of the service.
      */
     publicDescription: string;
     /**
-     * Services dependent on this service
+     * Services dependent on this service.
      */
     serviceIds: string[];
     /**
-     * The Service Now CI sys id associated to this service
+     * The Service Now CI sys id associated to this service.
      */
     serviceNowCiSysId: string;
     /**
-     * Slack Aliases associated with this service
+     * Slack Aliases associated with this service.
      */
     slackAliases: outputs.GetServicesServiceSlackAlias[];
     /**
-     * Slack Channels associated with this service
+     * Slack Channels associated with this service.
      */
     slackChannels: outputs.GetServicesServiceSlackChannel[];
     /**
-     * The slug of the service
+     * The slug of the service.
      */
     slug: string;
+    /**
+     * Date of last update.
+     */
+    updatedAt: string;
 }
 
 export interface GetServicesServiceAlertBroadcastChannel {
     /**
-     * Slack channel ID
+     * Slack channel ID.
      */
     id: string;
     /**
-     * Slack channel name
+     * Slack channel name.
      */
     name: string;
 }
 
 export interface GetServicesServiceIncidentBroadcastChannel {
     /**
-     * Slack channel ID
+     * Slack channel ID.
      */
     id: string;
     /**
-     * Slack channel name
+     * Slack channel name.
      */
     name: string;
 }
 
 export interface GetServicesServiceProperty {
     /**
-     * Catalog property ID
+     * Catalog property ID.
      */
     catalogPropertyId: string;
     /**
-     * The property value
+     * The property value.
      */
     value: string;
 }
 
 export interface GetServicesServiceSlackAlias {
     /**
-     * Slack alias ID
+     * Slack alias ID.
      */
     id: string;
     /**
-     * Slack alias name
+     * Slack alias name.
      */
     name: string;
 }
 
 export interface GetServicesServiceSlackChannel {
     /**
-     * Slack channel ID
+     * Slack channel ID.
      */
     id: string;
     /**
-     * Slack channel name
+     * Slack channel name.
      */
     name: string;
 }
@@ -1719,7 +1727,7 @@ export interface WorkflowActionItemTriggerParams {
      * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
     incidentStatuses: string[];
-    incidentVisibilities: string[];
+    incidentVisibilities: boolean[];
     /**
      * Value must be one of `actionItem`.
      */
@@ -1924,13 +1932,13 @@ export interface WorkflowIncidentTriggerParams {
      * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
     incidentStatuses: string[];
-    incidentVisibilities: string[];
+    incidentVisibilities: boolean[];
     /**
      * Value must be one of `incident`.
      */
     triggerType?: string;
     /**
-     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
      */
     triggers: string[];
 }
@@ -2053,7 +2061,7 @@ export interface WorkflowPostMortemTriggerParams {
      * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
     incidentStatuses: string[];
-    incidentVisibilities: string[];
+    incidentVisibilities: boolean[];
     /**
      * Value must be one of `postMortem`.
      */

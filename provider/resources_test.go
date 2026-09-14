@@ -65,6 +65,7 @@ func TestSchemaRetainsResourcesAndMuxDispatch(t *testing.T) {
 }
 
 func TestMuxedProviderRoutesAPIRequests(t *testing.T) {
+	serviceQueries := make(chan string, 4)
 	api := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		require.Equal(t, "Bearer test-token", r.Header.Get("Authorization"))
 		w.Header().Set("Content-Type", "application/vnd.api+json")
@@ -73,6 +74,7 @@ func TestMuxedProviderRoutesAPIRequests(t *testing.T) {
 		case "/v1/services/service-1":
 			body = `{"data":{"id":"service-1","type":"services","attributes":{"name":"API","slug":"api"}}}`
 		case "/v1/services":
+			serviceQueries <- r.URL.Query().Get("filter[slug]")
 			body = `{"data":[{"id":"service-1","type":"services","attributes":{"name":"API","slug":"api"}}]}`
 		case "/v1/severities":
 			body = `{"data":[{"id":"severity-1","type":"severities","attributes":{"name":"SEV1","slug":"sev1"}}]}`
@@ -101,8 +103,10 @@ func TestMuxedProviderRoutesAPIRequests(t *testing.T) {
 		name  string
 	}{
 		{"rootly:index/getService:getService", map[string]any{"id": "service-1"}, "API"},
+		{"rootly:index/getService:getService", map[string]any{"slug": "api"}, "API"},
 		{"rootly:index/getSeverity:getSeverity", map[string]any{"slug": "sev1"}, "SEV1"},
 		{"rootly:index/getServices:getServices", map[string]any{}, ""},
+		{"rootly:index/getServices:getServices", map[string]any{"slug": "api"}, ""},
 	} {
 		t.Run(tc.token, func(t *testing.T) {
 			args, err := structpb.NewStruct(tc.args)
@@ -110,6 +114,11 @@ func TestMuxedProviderRoutesAPIRequests(t *testing.T) {
 			result, err := server.Invoke(ctx, &pulumirpc.InvokeRequest{Tok: tc.token, Args: args})
 			require.NoError(t, err)
 			require.Empty(t, result.Failures)
+			if tc.args["slug"] == "api" {
+				require.Equal(t, "api", <-serviceQueries, "service filter must reach the upstream API")
+			} else if tc.token == "rootly:index/getServices:getServices" {
+				require.Empty(t, <-serviceQueries)
+			}
 			if tc.name != "" {
 				require.Equal(t, tc.name, result.Return.AsMap()["name"])
 			} else {
