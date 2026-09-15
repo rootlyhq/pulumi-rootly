@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func GetCustomFields(ctx *pulumi.Context, args *GetCustomFieldsArgs, opts ...pulumi.InvokeOption) (*GetCustomFieldsResult, error) {
@@ -41,12 +41,8 @@ type GetCustomFieldsResult struct {
 }
 
 func GetCustomFieldsOutput(ctx *pulumi.Context, args GetCustomFieldsOutputArgs, opts ...pulumi.InvokeOption) GetCustomFieldsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCustomFieldsResultOutput, error) {
-			args := v.(GetCustomFieldsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCustomFields:getCustomFields", args, GetCustomFieldsResultOutput{}, options).(GetCustomFieldsResultOutput), nil
-		}).(GetCustomFieldsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCustomFields:getCustomFields", args, GetCustomFieldsResultOutput{}, options).(GetCustomFieldsResultOutput)
 }
 
 // A collection of arguments for invoking getCustomFields.

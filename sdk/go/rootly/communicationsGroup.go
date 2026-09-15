@@ -9,7 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -53,6 +53,8 @@ type CommunicationsGroup struct {
 	// The name of the communications group
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The slug of the communications group
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// SMS channel enabled. Value must be one of true or false
 	SmsChannel pulumi.BoolOutput `pulumi:"smsChannel"`
@@ -110,6 +112,8 @@ type communicationsGroupState struct {
 	// The name of the communications group
 	Name *string `pulumi:"name"`
 	// The slug of the communications group
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 	// SMS channel enabled. Value must be one of true or false
 	SmsChannel *bool `pulumi:"smsChannel"`
@@ -135,6 +139,8 @@ type CommunicationsGroupState struct {
 	// The name of the communications group
 	Name pulumi.StringPtrInput
 	// The slug of the communications group
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 	// SMS channel enabled. Value must be one of true or false
 	SmsChannel pulumi.BoolPtrInput
@@ -164,6 +170,8 @@ type communicationsGroupArgs struct {
 	// The name of the communications group
 	Name *string `pulumi:"name"`
 	// The slug of the communications group
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 	// SMS channel enabled. Value must be one of true or false
 	SmsChannel *bool `pulumi:"smsChannel"`
@@ -190,6 +198,8 @@ type CommunicationsGroupArgs struct {
 	// The name of the communications group
 	Name pulumi.StringPtrInput
 	// The slug of the communications group
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 	// SMS channel enabled. Value must be one of true or false
 	SmsChannel pulumi.BoolPtrInput
@@ -334,6 +344,8 @@ func (o CommunicationsGroupOutput) Name() pulumi.StringOutput {
 }
 
 // The slug of the communications group
+//
+// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 func (o CommunicationsGroupOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommunicationsGroup) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

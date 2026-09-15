@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -37,10 +37,8 @@ type GetIpRangesResult struct {
 }
 
 func GetIpRangesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetIpRangesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetIpRangesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("rootly:index/getIpRanges:getIpRanges", nil, GetIpRangesResultOutput{}, options).(GetIpRangesResultOutput), nil
-	}).(GetIpRangesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getIpRanges:getIpRanges", nil, GetIpRangesResultOutput{}, options).(GetIpRangesResultOutput)
 }
 
 // A collection of values returned by getIpRanges.

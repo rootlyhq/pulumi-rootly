@@ -93,7 +93,7 @@ export class StatusPage extends pulumi.CustomResource {
     /**
      * Functionalities attached to the status page
      */
-    declare public readonly functionalityIds: pulumi.Output<string[] | undefined>;
+    declare public readonly functionalityIds: pulumi.Output<string[]>;
     /**
      * Google Analytics tracking ID
      */
@@ -141,7 +141,7 @@ export class StatusPage extends pulumi.CustomResource {
     /**
      * Services attached to the status page
      */
-    declare public readonly serviceIds: pulumi.Output<string[] | undefined>;
+    declare public readonly serviceIds: pulumi.Output<string[]>;
     /**
      * Show uptime. Value must be one of true or false
      */
@@ -152,6 +152,8 @@ export class StatusPage extends pulumi.CustomResource {
     declare public readonly showUptimeLastDays: pulumi.Output<number>;
     /**
      * The slug of the status page
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
     /**
@@ -370,6 +372,8 @@ export interface StatusPageState {
     showUptimeLastDays?: pulumi.Input<number | undefined>;
     /**
      * The slug of the status page
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
     /**
@@ -497,6 +501,8 @@ export interface StatusPageArgs {
     showUptimeLastDays?: pulumi.Input<number | undefined>;
     /**
      * The slug of the status page
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
     /**

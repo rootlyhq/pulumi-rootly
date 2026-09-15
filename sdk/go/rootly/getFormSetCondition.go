@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupFormSetCondition(ctx *pulumi.Context, args *LookupFormSetConditionArgs, opts ...pulumi.InvokeOption) (*LookupFormSetConditionResult, error) {
@@ -36,12 +36,8 @@ type LookupFormSetConditionResult struct {
 }
 
 func LookupFormSetConditionOutput(ctx *pulumi.Context, args LookupFormSetConditionOutputArgs, opts ...pulumi.InvokeOption) LookupFormSetConditionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFormSetConditionResultOutput, error) {
-			args := v.(LookupFormSetConditionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getFormSetCondition:getFormSetCondition", args, LookupFormSetConditionResultOutput{}, options).(LookupFormSetConditionResultOutput), nil
-		}).(LookupFormSetConditionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getFormSetCondition:getFormSetCondition", args, LookupFormSetConditionResultOutput{}, options).(LookupFormSetConditionResultOutput)
 }
 
 // A collection of arguments for invoking getFormSetCondition.

@@ -40,6 +40,14 @@ export interface GetUserResult {
      * The ID of this resource.
      */
     readonly id: string;
+    /**
+     * The ID of the user's on-call role, or empty when unset.
+     */
+    readonly onCallRoleId: string;
+    /**
+     * The ID of the user's (general) role, or empty when unset.
+     */
+    readonly roleId: string;
 }
 /**
  * ## Example Usage

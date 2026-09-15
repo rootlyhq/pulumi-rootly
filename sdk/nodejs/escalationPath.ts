@@ -88,6 +88,14 @@ export class EscalationPath extends pulumi.CustomResource {
      */
     declare public readonly notificationType: pulumi.Output<string>;
     /**
+     * Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+     */
+    declare public readonly notificationTypeFallback: pulumi.Output<string>;
+    /**
+     * Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+     */
+    declare public readonly notificationTypeRules: pulumi.Output<outputs.EscalationPathNotificationTypeRule[] | undefined>;
+    /**
      * The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.
      */
     declare public readonly pathType: pulumi.Output<string | undefined>;
@@ -137,6 +145,8 @@ export class EscalationPath extends pulumi.CustomResource {
             resourceInputs["matchMode"] = state?.matchMode;
             resourceInputs["name"] = state?.name;
             resourceInputs["notificationType"] = state?.notificationType;
+            resourceInputs["notificationTypeFallback"] = state?.notificationTypeFallback;
+            resourceInputs["notificationTypeRules"] = state?.notificationTypeRules;
             resourceInputs["pathType"] = state?.pathType;
             resourceInputs["position"] = state?.position;
             resourceInputs["repeat"] = state?.repeat;
@@ -154,6 +164,8 @@ export class EscalationPath extends pulumi.CustomResource {
             resourceInputs["matchMode"] = args?.matchMode;
             resourceInputs["name"] = args?.name;
             resourceInputs["notificationType"] = args?.notificationType;
+            resourceInputs["notificationTypeFallback"] = args?.notificationTypeFallback;
+            resourceInputs["notificationTypeRules"] = args?.notificationTypeRules;
             resourceInputs["pathType"] = args?.pathType;
             resourceInputs["position"] = args?.position;
             resourceInputs["repeat"] = args?.repeat;
@@ -203,6 +215,14 @@ export interface EscalationPathState {
      * Notification rule type
      */
     notificationType?: pulumi.Input<string | undefined>;
+    /**
+     * Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+     */
+    notificationTypeFallback?: pulumi.Input<string | undefined>;
+    /**
+     * Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+     */
+    notificationTypeRules?: pulumi.Input<pulumi.Input<inputs.EscalationPathNotificationTypeRule>[] | undefined>;
     /**
      * The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.
      */
@@ -269,6 +289,14 @@ export interface EscalationPathArgs {
      * Notification rule type
      */
     notificationType?: pulumi.Input<string | undefined>;
+    /**
+     * Paged when no notification type rule matches. Considered only when notification*type*rules are present — the path's notification*type is aligned to it; without rules it is aligned to notification*type instead. Only available when notification type conditions are enabled for the team. Value must be one of `audible`, `quiet`.
+     */
+    notificationTypeFallback?: pulumi.Input<string | undefined>;
+    /**
+     * Rules deciding whether an alert pages audible or quiet, evaluated in order — the first matching rule's notification*type wins, otherwise notification*type*fallback applies. When present, the path's notification*type is aligned to notification*type*fallback. Only available when notification type conditions are enabled for the team. Maximum of 10 rules.
+     */
+    notificationTypeRules?: pulumi.Input<pulumi.Input<inputs.EscalationPathNotificationTypeRule>[] | undefined>;
     /**
      * The type of escalation path. Cannot be changed after creation.. Value must be one of `escalation`, `deferral`.
      */

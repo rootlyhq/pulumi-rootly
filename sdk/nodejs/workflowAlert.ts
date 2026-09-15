@@ -110,6 +110,8 @@ export class WorkflowAlert extends pulumi.CustomResource {
     declare public readonly severityIds: pulumi.Output<string[]>;
     /**
      * The slug of the workflow
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
     declare public readonly subStatusIds: pulumi.Output<string[]>;
@@ -253,6 +255,8 @@ export interface WorkflowAlertState {
     severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the workflow
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
     subStatusIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -326,6 +330,8 @@ export interface WorkflowAlertArgs {
     severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the workflow
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
     subStatusIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;

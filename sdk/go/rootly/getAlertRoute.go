@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -35,12 +35,8 @@ type LookupAlertRouteResult struct {
 }
 
 func LookupAlertRouteOutput(ctx *pulumi.Context, args LookupAlertRouteOutputArgs, opts ...pulumi.InvokeOption) LookupAlertRouteResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlertRouteResultOutput, error) {
-			args := v.(LookupAlertRouteArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getAlertRoute:getAlertRoute", args, LookupAlertRouteResultOutput{}, options).(LookupAlertRouteResultOutput), nil
-		}).(LookupAlertRouteResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getAlertRoute:getAlertRoute", args, LookupAlertRouteResultOutput{}, options).(LookupAlertRouteResultOutput)
 }
 
 // A collection of arguments for invoking getAlertRoute.

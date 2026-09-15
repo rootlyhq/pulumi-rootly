@@ -89,8 +89,10 @@ export class Severity extends pulumi.CustomResource {
     declare public readonly slackChannels: pulumi.Output<outputs.SeveritySlackChannel[] | undefined>;
     /**
      * The slug of the severity
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Severity resource with the given unique name, arguments, and options.
@@ -124,7 +126,7 @@ export class Severity extends pulumi.CustomResource {
             resourceInputs["severity"] = args?.severity;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Severity.__pulumiType, name, resourceInputs, opts);
@@ -169,6 +171,8 @@ export interface SeverityState {
     slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[] | undefined>;
     /**
      * The slug of the severity
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -209,4 +213,10 @@ export interface SeverityArgs {
      * Slack Channels associated with this severity
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.SeveritySlackChannel>[] | undefined>;
+    /**
+     * The slug of the severity
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

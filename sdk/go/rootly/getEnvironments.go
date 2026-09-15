@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func GetEnvironments(ctx *pulumi.Context, args *GetEnvironmentsArgs, opts ...pulumi.InvokeOption) (*GetEnvironmentsResult, error) {
@@ -37,12 +37,8 @@ type GetEnvironmentsResult struct {
 }
 
 func GetEnvironmentsOutput(ctx *pulumi.Context, args GetEnvironmentsOutputArgs, opts ...pulumi.InvokeOption) GetEnvironmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnvironmentsResultOutput, error) {
-			args := v.(GetEnvironmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getEnvironments:getEnvironments", args, GetEnvironmentsResultOutput{}, options).(GetEnvironmentsResultOutput), nil
-		}).(GetEnvironmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getEnvironments:getEnvironments", args, GetEnvironmentsResultOutput{}, options).(GetEnvironmentsResultOutput)
 }
 
 // A collection of arguments for invoking getEnvironments.

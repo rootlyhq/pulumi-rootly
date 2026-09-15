@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/rootly",
+    "name": "@rootly/pulumi",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing rootly cloud resources.",
     "keywords": [
@@ -14,16 +14,18 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^3.0.0"
+        "@pulumi/pulumi": "^3.262.0"
     },
     "devDependencies": {
-        "@types/mime": "^2.0.0",
-        "@types/node": "^10.0.0",
-        "typescript": "^4.7.0"
+        "@types/node": "^24.13.4",
+        "typescript": "^7.0.2"
     },
     "pulumi": {
         "resource": true,
         "name": "rootly",
         "server": "https://github.com/rootlyhq/pulumi-rootly/releases/download/v${VERSION}"
+    },
+    "engines": {
+        "node": ">=24"
     }
 }

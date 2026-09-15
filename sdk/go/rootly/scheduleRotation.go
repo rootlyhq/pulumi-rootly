@@ -9,9 +9,11 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
+// Manages a schedule rotation.
+//
 // ## Example Usage
 //
 // ## Import
@@ -34,32 +36,32 @@ import (
 type ScheduleRotation struct {
 	pulumi.CustomResourceState
 
-	// Schedule rotation active all week?. Value must be one of true or false
+	// Schedule rotation active all week?
 	ActiveAllWeek pulumi.BoolOutput `pulumi:"activeAllWeek"`
 	// Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
 	ActiveDays pulumi.StringArrayOutput `pulumi:"activeDays"`
-	// Schedule rotation's active times
+	// Schedule rotation's active times.
 	ActiveTimeAttributes ScheduleRotationActiveTimeAttributeArrayOutput `pulumi:"activeTimeAttributes"`
 	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`.
 	ActiveTimeType pulumi.StringOutput `pulumi:"activeTimeType"`
 	// ISO8601 date and time when rotation ends. Shifts will only be created before this time.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// The name of the schedule rotation
+	// The name of the schedule rotation.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Position of the schedule rotation
+	// Position of the schedule rotation.
 	Position pulumi.IntOutput `pulumi:"position"`
-	// The ID of parent schedule
+	// The ID of parent schedule.
 	ScheduleId pulumi.StringOutput `pulumi:"scheduleId"`
 	// Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
 	ScheduleRotationMembers ScheduleRotationScheduleRotationMemberArrayOutput `pulumi:"scheduleRotationMembers"`
 	// handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
-	ScheduleRotationableAttributes pulumi.StringMapOutput `pulumi:"scheduleRotationableAttributes"`
+	ScheduleRotationableAttributes ScheduleRotationScheduleRotationableAttributesOutput `pulumi:"scheduleRotationableAttributes"`
 	// Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
-	ScheduleRotationableType pulumi.StringPtrOutput `pulumi:"scheduleRotationableType"`
+	ScheduleRotationableType pulumi.StringOutput `pulumi:"scheduleRotationableType"`
 	// ISO8601 date and time when rotation starts. Shifts will only be created after this time.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// A valid IANA time zone name.
-	TimeZone pulumi.StringPtrOutput `pulumi:"timeZone"`
+	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 }
 
 // NewScheduleRotation registers a new resource with the given unique name, arguments, and options.
@@ -98,26 +100,26 @@ func GetScheduleRotation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ScheduleRotation resources.
 type scheduleRotationState struct {
-	// Schedule rotation active all week?. Value must be one of true or false
+	// Schedule rotation active all week?
 	ActiveAllWeek *bool `pulumi:"activeAllWeek"`
 	// Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
 	ActiveDays []string `pulumi:"activeDays"`
-	// Schedule rotation's active times
+	// Schedule rotation's active times.
 	ActiveTimeAttributes []ScheduleRotationActiveTimeAttribute `pulumi:"activeTimeAttributes"`
 	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`.
 	ActiveTimeType *string `pulumi:"activeTimeType"`
 	// ISO8601 date and time when rotation ends. Shifts will only be created before this time.
 	EndTime *string `pulumi:"endTime"`
-	// The name of the schedule rotation
+	// The name of the schedule rotation.
 	Name *string `pulumi:"name"`
-	// Position of the schedule rotation
+	// Position of the schedule rotation.
 	Position *int `pulumi:"position"`
-	// The ID of parent schedule
+	// The ID of parent schedule.
 	ScheduleId *string `pulumi:"scheduleId"`
 	// Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
 	ScheduleRotationMembers []ScheduleRotationScheduleRotationMember `pulumi:"scheduleRotationMembers"`
 	// handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
-	ScheduleRotationableAttributes map[string]string `pulumi:"scheduleRotationableAttributes"`
+	ScheduleRotationableAttributes *ScheduleRotationScheduleRotationableAttributes `pulumi:"scheduleRotationableAttributes"`
 	// Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
 	ScheduleRotationableType *string `pulumi:"scheduleRotationableType"`
 	// ISO8601 date and time when rotation starts. Shifts will only be created after this time.
@@ -127,26 +129,26 @@ type scheduleRotationState struct {
 }
 
 type ScheduleRotationState struct {
-	// Schedule rotation active all week?. Value must be one of true or false
+	// Schedule rotation active all week?
 	ActiveAllWeek pulumi.BoolPtrInput
 	// Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
 	ActiveDays pulumi.StringArrayInput
-	// Schedule rotation's active times
+	// Schedule rotation's active times.
 	ActiveTimeAttributes ScheduleRotationActiveTimeAttributeArrayInput
 	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`.
 	ActiveTimeType pulumi.StringPtrInput
 	// ISO8601 date and time when rotation ends. Shifts will only be created before this time.
 	EndTime pulumi.StringPtrInput
-	// The name of the schedule rotation
+	// The name of the schedule rotation.
 	Name pulumi.StringPtrInput
-	// Position of the schedule rotation
+	// Position of the schedule rotation.
 	Position pulumi.IntPtrInput
-	// The ID of parent schedule
+	// The ID of parent schedule.
 	ScheduleId pulumi.StringPtrInput
 	// Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
 	ScheduleRotationMembers ScheduleRotationScheduleRotationMemberArrayInput
 	// handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
-	ScheduleRotationableAttributes pulumi.StringMapInput
+	ScheduleRotationableAttributes ScheduleRotationScheduleRotationableAttributesPtrInput
 	// Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
 	ScheduleRotationableType pulumi.StringPtrInput
 	// ISO8601 date and time when rotation starts. Shifts will only be created after this time.
@@ -160,26 +162,26 @@ func (ScheduleRotationState) ElementType() reflect.Type {
 }
 
 type scheduleRotationArgs struct {
-	// Schedule rotation active all week?. Value must be one of true or false
+	// Schedule rotation active all week?
 	ActiveAllWeek *bool `pulumi:"activeAllWeek"`
 	// Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
 	ActiveDays []string `pulumi:"activeDays"`
-	// Schedule rotation's active times
+	// Schedule rotation's active times.
 	ActiveTimeAttributes []ScheduleRotationActiveTimeAttribute `pulumi:"activeTimeAttributes"`
 	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`.
 	ActiveTimeType *string `pulumi:"activeTimeType"`
 	// ISO8601 date and time when rotation ends. Shifts will only be created before this time.
 	EndTime *string `pulumi:"endTime"`
-	// The name of the schedule rotation
+	// The name of the schedule rotation.
 	Name *string `pulumi:"name"`
-	// Position of the schedule rotation
+	// Position of the schedule rotation.
 	Position *int `pulumi:"position"`
-	// The ID of parent schedule
+	// The ID of parent schedule.
 	ScheduleId string `pulumi:"scheduleId"`
 	// Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
 	ScheduleRotationMembers []ScheduleRotationScheduleRotationMember `pulumi:"scheduleRotationMembers"`
 	// handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
-	ScheduleRotationableAttributes map[string]string `pulumi:"scheduleRotationableAttributes"`
+	ScheduleRotationableAttributes ScheduleRotationScheduleRotationableAttributes `pulumi:"scheduleRotationableAttributes"`
 	// Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
 	ScheduleRotationableType *string `pulumi:"scheduleRotationableType"`
 	// ISO8601 date and time when rotation starts. Shifts will only be created after this time.
@@ -190,26 +192,26 @@ type scheduleRotationArgs struct {
 
 // The set of arguments for constructing a ScheduleRotation resource.
 type ScheduleRotationArgs struct {
-	// Schedule rotation active all week?. Value must be one of true or false
+	// Schedule rotation active all week?
 	ActiveAllWeek pulumi.BoolPtrInput
 	// Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
 	ActiveDays pulumi.StringArrayInput
-	// Schedule rotation's active times
+	// Schedule rotation's active times.
 	ActiveTimeAttributes ScheduleRotationActiveTimeAttributeArrayInput
 	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`.
 	ActiveTimeType pulumi.StringPtrInput
 	// ISO8601 date and time when rotation ends. Shifts will only be created before this time.
 	EndTime pulumi.StringPtrInput
-	// The name of the schedule rotation
+	// The name of the schedule rotation.
 	Name pulumi.StringPtrInput
-	// Position of the schedule rotation
+	// Position of the schedule rotation.
 	Position pulumi.IntPtrInput
-	// The ID of parent schedule
+	// The ID of parent schedule.
 	ScheduleId pulumi.StringInput
 	// Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
 	ScheduleRotationMembers ScheduleRotationScheduleRotationMemberArrayInput
 	// handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
-	ScheduleRotationableAttributes pulumi.StringMapInput
+	ScheduleRotationableAttributes ScheduleRotationScheduleRotationableAttributesInput
 	// Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
 	ScheduleRotationableType pulumi.StringPtrInput
 	// ISO8601 date and time when rotation starts. Shifts will only be created after this time.
@@ -305,7 +307,7 @@ func (o ScheduleRotationOutput) ToScheduleRotationOutputWithContext(ctx context.
 	return o
 }
 
-// Schedule rotation active all week?. Value must be one of true or false
+// Schedule rotation active all week?
 func (o ScheduleRotationOutput) ActiveAllWeek() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ScheduleRotation) pulumi.BoolOutput { return v.ActiveAllWeek }).(pulumi.BoolOutput)
 }
@@ -315,7 +317,7 @@ func (o ScheduleRotationOutput) ActiveDays() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScheduleRotation) pulumi.StringArrayOutput { return v.ActiveDays }).(pulumi.StringArrayOutput)
 }
 
-// Schedule rotation's active times
+// Schedule rotation's active times.
 func (o ScheduleRotationOutput) ActiveTimeAttributes() ScheduleRotationActiveTimeAttributeArrayOutput {
 	return o.ApplyT(func(v *ScheduleRotation) ScheduleRotationActiveTimeAttributeArrayOutput {
 		return v.ActiveTimeAttributes
@@ -332,17 +334,17 @@ func (o ScheduleRotationOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScheduleRotation) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// The name of the schedule rotation
+// The name of the schedule rotation.
 func (o ScheduleRotationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScheduleRotation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Position of the schedule rotation
+// Position of the schedule rotation.
 func (o ScheduleRotationOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *ScheduleRotation) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
 }
 
-// The ID of parent schedule
+// The ID of parent schedule.
 func (o ScheduleRotationOutput) ScheduleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScheduleRotation) pulumi.StringOutput { return v.ScheduleId }).(pulumi.StringOutput)
 }
@@ -355,13 +357,15 @@ func (o ScheduleRotationOutput) ScheduleRotationMembers() ScheduleRotationSchedu
 }
 
 // handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
-func (o ScheduleRotationOutput) ScheduleRotationableAttributes() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ScheduleRotation) pulumi.StringMapOutput { return v.ScheduleRotationableAttributes }).(pulumi.StringMapOutput)
+func (o ScheduleRotationOutput) ScheduleRotationableAttributes() ScheduleRotationScheduleRotationableAttributesOutput {
+	return o.ApplyT(func(v *ScheduleRotation) ScheduleRotationScheduleRotationableAttributesOutput {
+		return v.ScheduleRotationableAttributes
+	}).(ScheduleRotationScheduleRotationableAttributesOutput)
 }
 
 // Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
-func (o ScheduleRotationOutput) ScheduleRotationableType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScheduleRotation) pulumi.StringPtrOutput { return v.ScheduleRotationableType }).(pulumi.StringPtrOutput)
+func (o ScheduleRotationOutput) ScheduleRotationableType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduleRotation) pulumi.StringOutput { return v.ScheduleRotationableType }).(pulumi.StringOutput)
 }
 
 // ISO8601 date and time when rotation starts. Shifts will only be created after this time.
@@ -370,8 +374,8 @@ func (o ScheduleRotationOutput) StartTime() pulumi.StringOutput {
 }
 
 // A valid IANA time zone name.
-func (o ScheduleRotationOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ScheduleRotation) pulumi.StringPtrOutput { return v.TimeZone }).(pulumi.StringPtrOutput)
+func (o ScheduleRotationOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduleRotation) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 type ScheduleRotationArrayOutput struct{ *pulumi.OutputState }

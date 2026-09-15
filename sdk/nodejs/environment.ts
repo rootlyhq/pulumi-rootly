@@ -64,6 +64,14 @@ export class Environment extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
+     * The external id associated to this environment
+     */
+    declare public readonly externalId: pulumi.Output<string>;
+    /**
+     * How this environment is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    declare public /*out*/ readonly managedBy: pulumi.Output<string>;
+    /**
      * The name of the environment
      */
     declare public readonly name: pulumi.Output<string>;
@@ -80,6 +88,10 @@ export class Environment extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<outputs.EnvironmentProperty[] | undefined>;
     /**
+     * The status page description of the environment
+     */
+    declare public readonly publicDescription: pulumi.Output<string>;
+    /**
      * Slack Aliases associated with this environment
      */
     declare public readonly slackAliases: pulumi.Output<outputs.EnvironmentSlackAlias[] | undefined>;
@@ -89,8 +101,10 @@ export class Environment extends pulumi.CustomResource {
     declare public readonly slackChannels: pulumi.Output<outputs.EnvironmentSlackChannel[] | undefined>;
     /**
      * The slug of the environment
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Environment resource with the given unique name, arguments, and options.
@@ -107,10 +121,13 @@ export class Environment extends pulumi.CustomResource {
             const state = argsOrState as EnvironmentState | undefined;
             resourceInputs["color"] = state?.color;
             resourceInputs["description"] = state?.description;
+            resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["notifyEmails"] = state?.notifyEmails;
             resourceInputs["position"] = state?.position;
             resourceInputs["properties"] = state?.properties;
+            resourceInputs["publicDescription"] = state?.publicDescription;
             resourceInputs["slackAliases"] = state?.slackAliases;
             resourceInputs["slackChannels"] = state?.slackChannels;
             resourceInputs["slug"] = state?.slug;
@@ -118,13 +135,16 @@ export class Environment extends pulumi.CustomResource {
             const args = argsOrState as EnvironmentArgs | undefined;
             resourceInputs["color"] = args?.color;
             resourceInputs["description"] = args?.description;
+            resourceInputs["externalId"] = args?.externalId;
             resourceInputs["name"] = args?.name;
             resourceInputs["notifyEmails"] = args?.notifyEmails;
             resourceInputs["position"] = args?.position;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["publicDescription"] = args?.publicDescription;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
+            resourceInputs["managedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Environment.__pulumiType, name, resourceInputs, opts);
@@ -144,6 +164,14 @@ export interface EnvironmentState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * The external id associated to this environment
+     */
+    externalId?: pulumi.Input<string | undefined>;
+    /**
+     * How this environment is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    managedBy?: pulumi.Input<string | undefined>;
+    /**
      * The name of the environment
      */
     name?: pulumi.Input<string | undefined>;
@@ -160,6 +188,10 @@ export interface EnvironmentState {
      */
     properties?: pulumi.Input<pulumi.Input<inputs.EnvironmentProperty>[] | undefined>;
     /**
+     * The status page description of the environment
+     */
+    publicDescription?: pulumi.Input<string | undefined>;
+    /**
      * Slack Aliases associated with this environment
      */
     slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[] | undefined>;
@@ -169,6 +201,8 @@ export interface EnvironmentState {
     slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[] | undefined>;
     /**
      * The slug of the environment
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -186,6 +220,10 @@ export interface EnvironmentArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * The external id associated to this environment
+     */
+    externalId?: pulumi.Input<string | undefined>;
+    /**
      * The name of the environment
      */
     name?: pulumi.Input<string | undefined>;
@@ -202,6 +240,10 @@ export interface EnvironmentArgs {
      */
     properties?: pulumi.Input<pulumi.Input<inputs.EnvironmentProperty>[] | undefined>;
     /**
+     * The status page description of the environment
+     */
+    publicDescription?: pulumi.Input<string | undefined>;
+    /**
      * Slack Aliases associated with this environment
      */
     slackAliases?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackAlias>[] | undefined>;
@@ -209,4 +251,10 @@ export interface EnvironmentArgs {
      * Slack Channels associated with this environment
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.EnvironmentSlackChannel>[] | undefined>;
+    /**
+     * The slug of the environment
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -48,6 +48,8 @@ type CatalogChecklistTemplate struct {
 	// The scope type. Value must be one of `Team`, `Catalog`.
 	ScopeType pulumi.StringPtrOutput `pulumi:"scopeType"`
 	// The slug of the checklist template
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -96,6 +98,8 @@ type catalogChecklistTemplateState struct {
 	// The scope type. Value must be one of `Team`, `Catalog`.
 	ScopeType *string `pulumi:"scopeType"`
 	// The slug of the checklist template
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -115,6 +119,8 @@ type CatalogChecklistTemplateState struct {
 	// The scope type. Value must be one of `Team`, `Catalog`.
 	ScopeType pulumi.StringPtrInput
 	// The slug of the checklist template
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -137,6 +143,10 @@ type catalogChecklistTemplateArgs struct {
 	ScopeId *string `pulumi:"scopeId"`
 	// The scope type. Value must be one of `Team`, `Catalog`.
 	ScopeType *string `pulumi:"scopeType"`
+	// The slug of the checklist template
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a CatalogChecklistTemplate resource.
@@ -155,6 +165,10 @@ type CatalogChecklistTemplateArgs struct {
 	ScopeId pulumi.StringPtrInput
 	// The scope type. Value must be one of `Team`, `Catalog`.
 	ScopeType pulumi.StringPtrInput
+	// The slug of the checklist template
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (CatalogChecklistTemplateArgs) ElementType() reflect.Type {
@@ -280,6 +294,8 @@ func (o CatalogChecklistTemplateOutput) ScopeType() pulumi.StringPtrOutput {
 }
 
 // The slug of the checklist template
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o CatalogChecklistTemplateOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *CatalogChecklistTemplate) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

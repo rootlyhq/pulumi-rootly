@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupPostMortemTemplate(ctx *pulumi.Context, args *LookupPostMortemTemplateArgs, opts ...pulumi.InvokeOption) (*LookupPostMortemTemplateResult, error) {
@@ -38,12 +38,8 @@ type LookupPostMortemTemplateResult struct {
 }
 
 func LookupPostMortemTemplateOutput(ctx *pulumi.Context, args LookupPostMortemTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupPostMortemTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPostMortemTemplateResultOutput, error) {
-			args := v.(LookupPostMortemTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getPostMortemTemplate:getPostMortemTemplate", args, LookupPostMortemTemplateResultOutput{}, options).(LookupPostMortemTemplateResultOutput), nil
-		}).(LookupPostMortemTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getPostMortemTemplate:getPostMortemTemplate", args, LookupPostMortemTemplateResultOutput{}, options).(LookupPostMortemTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getPostMortemTemplate.

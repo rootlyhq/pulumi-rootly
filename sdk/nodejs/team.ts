@@ -147,6 +147,9 @@ export class Team extends pulumi.CustomResource {
      * Slack Channels associated with this team
      */
     declare public readonly slackChannels: pulumi.Output<outputs.TeamSlackChannel[] | undefined>;
+    /**
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+     */
     declare public readonly slug: pulumi.Output<string>;
     /**
      * The user ids of the members of this team.
@@ -326,6 +329,9 @@ export interface TeamState {
      * Slack Channels associated with this team
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[] | undefined>;
+    /**
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+     */
     slug?: pulumi.Input<string | undefined>;
     /**
      * The user ids of the members of this team.
@@ -433,6 +439,9 @@ export interface TeamArgs {
      * Slack Channels associated with this team
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.TeamSlackChannel>[] | undefined>;
+    /**
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+     */
     slug?: pulumi.Input<string | undefined>;
     /**
      * The user ids of the members of this team.

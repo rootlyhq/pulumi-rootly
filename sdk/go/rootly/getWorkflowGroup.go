@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -43,12 +43,8 @@ type LookupWorkflowGroupResult struct {
 }
 
 func LookupWorkflowGroupOutput(ctx *pulumi.Context, args LookupWorkflowGroupOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupWorkflowGroupResultOutput, error) {
-			args := v.(LookupWorkflowGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getWorkflowGroup:getWorkflowGroup", args, LookupWorkflowGroupResultOutput{}, options).(LookupWorkflowGroupResultOutput), nil
-		}).(LookupWorkflowGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getWorkflowGroup:getWorkflowGroup", args, LookupWorkflowGroupResultOutput{}, options).(LookupWorkflowGroupResultOutput)
 }
 
 // A collection of arguments for invoking getWorkflowGroup.

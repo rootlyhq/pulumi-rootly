@@ -76,8 +76,10 @@ export class IncidentRole extends pulumi.CustomResource {
     declare public readonly position: pulumi.Output<number>;
     /**
      * The slug of the incident role
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
     /**
      * The summary of the incident role
      */
@@ -112,8 +114,8 @@ export class IncidentRole extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["optional"] = args?.optional;
             resourceInputs["position"] = args?.position;
+            resourceInputs["slug"] = args?.slug;
             resourceInputs["summary"] = args?.summary;
-            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IncidentRole.__pulumiType, name, resourceInputs, opts);
@@ -147,6 +149,8 @@ export interface IncidentRoleState {
     position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the incident role
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
     /**
@@ -180,6 +184,12 @@ export interface IncidentRoleArgs {
      * Position of the incident role
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * The slug of the incident role
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The summary of the incident role
      */

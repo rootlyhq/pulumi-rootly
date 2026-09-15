@@ -9,7 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -47,6 +47,8 @@ type CommunicationsTemplate struct {
 	// Position of the communications template
 	Position pulumi.IntOutput `pulumi:"position"`
 	// The slug of the communications template
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -96,6 +98,8 @@ type communicationsTemplateState struct {
 	// Position of the communications template
 	Position *int `pulumi:"position"`
 	// The slug of the communications template
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -113,6 +117,8 @@ type CommunicationsTemplateState struct {
 	// Position of the communications template
 	Position pulumi.IntPtrInput
 	// The slug of the communications template
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 }
 
@@ -134,6 +140,8 @@ type communicationsTemplateArgs struct {
 	// Position of the communications template
 	Position *int `pulumi:"position"`
 	// The slug of the communications template
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -152,6 +160,8 @@ type CommunicationsTemplateArgs struct {
 	// Position of the communications template
 	Position pulumi.IntPtrInput
 	// The slug of the communications template
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 }
 
@@ -277,6 +287,8 @@ func (o CommunicationsTemplateOutput) Position() pulumi.IntOutput {
 }
 
 // The slug of the communications template
+//
+// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 func (o CommunicationsTemplateOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommunicationsTemplate) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

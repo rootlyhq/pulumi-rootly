@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupIncidentSubStatus(ctx *pulumi.Context, args *LookupIncidentSubStatusArgs, opts ...pulumi.InvokeOption) (*LookupIncidentSubStatusResult, error) {
@@ -40,12 +40,8 @@ type LookupIncidentSubStatusResult struct {
 }
 
 func LookupIncidentSubStatusOutput(ctx *pulumi.Context, args LookupIncidentSubStatusOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentSubStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIncidentSubStatusResultOutput, error) {
-			args := v.(LookupIncidentSubStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getIncidentSubStatus:getIncidentSubStatus", args, LookupIncidentSubStatusResultOutput{}, options).(LookupIncidentSubStatusResultOutput), nil
-		}).(LookupIncidentSubStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getIncidentSubStatus:getIncidentSubStatus", args, LookupIncidentSubStatusResultOutput{}, options).(LookupIncidentSubStatusResultOutput)
 }
 
 // A collection of arguments for invoking getIncidentSubStatus.

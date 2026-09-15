@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func GetIncidentRoles(ctx *pulumi.Context, args *GetIncidentRolesArgs, opts ...pulumi.InvokeOption) (*GetIncidentRolesResult, error) {
@@ -39,12 +39,8 @@ type GetIncidentRolesResult struct {
 }
 
 func GetIncidentRolesOutput(ctx *pulumi.Context, args GetIncidentRolesOutputArgs, opts ...pulumi.InvokeOption) GetIncidentRolesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIncidentRolesResultOutput, error) {
-			args := v.(GetIncidentRolesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getIncidentRoles:getIncidentRoles", args, GetIncidentRolesResultOutput{}, options).(GetIncidentRolesResultOutput), nil
-		}).(GetIncidentRolesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getIncidentRoles:getIncidentRoles", args, GetIncidentRolesResultOutput{}, options).(GetIncidentRolesResultOutput)
 }
 
 // A collection of arguments for invoking getIncidentRoles.

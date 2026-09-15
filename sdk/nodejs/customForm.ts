@@ -63,8 +63,10 @@ export class CustomForm extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a CustomForm resource with the given unique name, arguments, and options.
@@ -93,7 +95,7 @@ export class CustomForm extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["name"] = args?.name;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomForm.__pulumiType, name, resourceInputs, opts);
@@ -116,6 +118,8 @@ export interface CustomFormState {
     name?: pulumi.Input<string | undefined>;
     /**
      * The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -134,4 +138,10 @@ export interface CustomFormArgs {
      * The name of the custom form.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The custom form slug. Add this to form*field.shown or form*field.required to associate form fields with custom forms.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

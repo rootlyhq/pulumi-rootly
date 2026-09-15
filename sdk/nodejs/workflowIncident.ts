@@ -110,6 +110,8 @@ export class WorkflowIncident extends pulumi.CustomResource {
     declare public readonly severityIds: pulumi.Output<string[]>;
     /**
      * The slug of the workflow
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     declare public readonly slug: pulumi.Output<string>;
     declare public readonly subStatusIds: pulumi.Output<string[]>;
@@ -253,6 +255,8 @@ export interface WorkflowIncidentState {
     severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the workflow
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
     subStatusIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -326,6 +330,8 @@ export interface WorkflowIncidentArgs {
     severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the workflow
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
     subStatusIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;

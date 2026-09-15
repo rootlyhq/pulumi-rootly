@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -51,12 +51,8 @@ type GetIncidentPostMortemResult struct {
 }
 
 func GetIncidentPostMortemOutput(ctx *pulumi.Context, args GetIncidentPostMortemOutputArgs, opts ...pulumi.InvokeOption) GetIncidentPostMortemResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIncidentPostMortemResultOutput, error) {
-			args := v.(GetIncidentPostMortemArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getIncidentPostMortem:getIncidentPostMortem", args, GetIncidentPostMortemResultOutput{}, options).(GetIncidentPostMortemResultOutput), nil
-		}).(GetIncidentPostMortemResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getIncidentPostMortem:getIncidentPostMortem", args, GetIncidentPostMortemResultOutput{}, options).(GetIncidentPostMortemResultOutput)
 }
 
 // A collection of arguments for invoking getIncidentPostMortem.

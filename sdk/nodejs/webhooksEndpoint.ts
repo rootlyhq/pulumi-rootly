@@ -61,7 +61,7 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
     declare public readonly customHeaders: pulumi.Output<outputs.WebhooksEndpointCustomHeader[] | undefined>;
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
-     * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
+     * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `alert.updated`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
      */
     declare public readonly eventTypes: pulumi.Output<string[] | undefined>;
     /**
@@ -74,8 +74,10 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
     declare public readonly secret: pulumi.Output<string>;
     /**
      * The slug of the endpoint
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
     /**
      * The URL of the endpoint.
      */
@@ -111,8 +113,8 @@ export class WebhooksEndpoint extends pulumi.CustomResource {
             resourceInputs["eventTypes"] = args?.eventTypes;
             resourceInputs["name"] = args?.name;
             resourceInputs["secret"] = args?.secret;
+            resourceInputs["slug"] = args?.slug;
             resourceInputs["url"] = args?.url;
-            resourceInputs["slug"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WebhooksEndpoint.__pulumiType, name, resourceInputs, opts);
@@ -129,7 +131,7 @@ export interface WebhooksEndpointState {
     customHeaders?: pulumi.Input<pulumi.Input<inputs.WebhooksEndpointCustomHeader>[] | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
+     * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `alert.updated`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
      */
     eventTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -142,6 +144,8 @@ export interface WebhooksEndpointState {
     secret?: pulumi.Input<string | undefined>;
     /**
      * The slug of the endpoint
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
     /**
@@ -160,7 +164,7 @@ export interface WebhooksEndpointArgs {
     customHeaders?: pulumi.Input<pulumi.Input<inputs.WebhooksEndpointCustomHeader>[] | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
+     * Value must be one of `incident.created`, `incident.updated`, `incident.in_triage`, `incident.mitigated`, `incident.resolved`, `incident.cancelled`, `incident.deleted`, `incident.scheduled.created`, `incident.scheduled.updated`, `incident.scheduled.in_progress`, `incident.scheduled.completed`, `incident.scheduled.deleted`, `incident_post_mortem.created`, `incident_post_mortem.updated`, `incident_post_mortem.published`, `incident_post_mortem.deleted`, `incident_status_page_event.created`, `incident_status_page_event.updated`, `incident_status_page_event.deleted`, `incident_event.created`, `incident_event.updated`, `incident_event.deleted`, `alert.created`, `alert.updated`, `pulse.created`, `shift.started`, `genius_workflow_run.queued`, `genius_workflow_run.started`, `genius_workflow_run.completed`, `genius_workflow_run.failed`, `genius_workflow_run.canceled`, `audit_log.created`.
      */
     eventTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -171,6 +175,12 @@ export interface WebhooksEndpointArgs {
      * The webhook signing secret used to verify webhook requests.
      */
     secret?: pulumi.Input<string | undefined>;
+    /**
+     * The slug of the endpoint
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The URL of the endpoint.
      */

@@ -81,6 +81,16 @@ export class CatalogEntity extends pulumi.CustomResource {
      * Array of property values for this catalog entity
      */
     declare public readonly properties: pulumi.Output<outputs.CatalogEntityProperty[] | undefined>;
+    /**
+     * The status page description of the catalog entity
+     */
+    declare public readonly publicDescription: pulumi.Output<string>;
+    /**
+     * The slug of the catalog entity. Derived from `name`.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a CatalogEntity resource with the given unique name, arguments, and options.
@@ -103,6 +113,8 @@ export class CatalogEntity extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
             resourceInputs["properties"] = state?.properties;
+            resourceInputs["publicDescription"] = state?.publicDescription;
+            resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as CatalogEntityArgs | undefined;
             if (args?.catalogId === undefined && !opts.urn) {
@@ -115,6 +127,8 @@ export class CatalogEntity extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["publicDescription"] = args?.publicDescription;
+            resourceInputs["slug"] = args?.slug;
             resourceInputs["managedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -152,6 +166,16 @@ export interface CatalogEntityState {
      * Array of property values for this catalog entity
      */
     properties?: pulumi.Input<pulumi.Input<inputs.CatalogEntityProperty>[] | undefined>;
+    /**
+     * The status page description of the catalog entity
+     */
+    publicDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The slug of the catalog entity. Derived from `name`.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -180,4 +204,14 @@ export interface CatalogEntityArgs {
      * Array of property values for this catalog entity
      */
     properties?: pulumi.Input<pulumi.Input<inputs.CatalogEntityProperty>[] | undefined>;
+    /**
+     * The status page description of the catalog entity
+     */
+    publicDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The slug of the catalog entity. Derived from `name`.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -16,17 +16,20 @@
 package rootly
 
 import (
+	"context"
 	"path"
 
 	// Allow embedding bridge-metadata.json in the provider.
 	_ "embed"
 
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 
 	// Replace this provider with the provider you are bridging.
 	rootly "github.com/rootlyhq/terraform-provider-rootly/v5/provider"
+	rootlyshim "github.com/rootlyhq/terraform-provider-rootly/v5/pulumi-shim"
 
 	"github.com/rootlyhq/pulumi-rootly/provider/pkg/version"
 )
@@ -107,7 +110,8 @@ func Provider() tfbridge.ProviderInfo {
 		// - "github.com/hashicorp/terraform-plugin-framework/provider".Provider (for plugin-framework)
 		//
 		//nolint:lll
-		P: shimv2.NewProvider(rootly.New(version.Version)()),
+		P: pfbridge.MuxShimWithDisjointgPF(context.Background(),
+			shimv2.NewProvider(rootly.New(version.Version)()), rootlyshim.New(version.Version)),
 
 		Name:    "rootly",
 		Version: version.Version,
@@ -151,19 +155,20 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			PackageName: "@rootly/pulumi",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^3.0.0",
+				"@pulumi/pulumi": "^3.262.0",
 			},
 			DevDependencies: map[string]string{
-				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
-				"@types/mime": "^2.0.0",
+				"@types/node": "^24.13.4",
 			},
+			TypeScriptVersion: "^7.0.2",
 		},
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
-				"pulumi": ">=3.0.0,<4.0.0",
+				"pulumi": ">=3.262.0,<4.0.0",
 			},
 		},
 		Golang: &tfbridge.GolangInfo{
@@ -177,7 +182,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi": "3.*",
+				"Pulumi": "3.113.2",
 			},
 		},
 	}
@@ -190,6 +195,8 @@ func Provider() tfbridge.ProviderInfo {
 	// and [tfbridge.ProviderInfo.DataSources].
 	prov.MustComputeTokens(tokens.SingleModule("rootly_", mainMod,
 		tokens.MakeStandard(mainPkg)))
+
+	prov.Resources["rootly_schedule_rotation"].TransformFromState = upgradeScheduleRotationState
 
 	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")

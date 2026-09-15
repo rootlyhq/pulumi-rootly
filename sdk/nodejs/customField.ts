@@ -80,6 +80,8 @@ export class CustomField extends pulumi.CustomResource {
     declare public readonly showns: pulumi.Output<string[]>;
     /**
      * The slug of the custom_field
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
 
@@ -154,6 +156,8 @@ export interface CustomFieldState {
     showns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the custom_field
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -187,6 +191,8 @@ export interface CustomFieldArgs {
     showns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the custom_field
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
 }

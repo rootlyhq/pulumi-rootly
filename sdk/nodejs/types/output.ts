@@ -656,9 +656,122 @@ export interface EscalationLevelNotificationTargetParam {
      */
     teamMembers: string;
     /**
-     * The type of the notification target. Value must be one of `team`, `user`, `schedule`, `slackChannel`, `service`.
+     * The type of the notification target. Value must be one of `team`, `user`, `schedule`, `slackChannel`, `microsoftTeamsChannel`, `service`.
      */
     type?: string;
+}
+
+export interface EscalationPathNotificationTypeRule {
+    /**
+     * Conditions combined per match*mode, at least one per rule. A deferral*window condition matches when the alert falls inside its time blocks. Maximum of 5 conditions.
+     */
+    conditions: outputs.EscalationPathNotificationTypeRuleCondition[];
+    /**
+     * Whether all or any of the rule's conditions must match. Value must be one of `match-all-rules`, `match-any-rule`.
+     */
+    matchMode?: string;
+    /**
+     * Outcome when this rule matches. Value must be one of `audible`, `quiet`.
+     */
+    notificationType?: string;
+}
+
+export interface EscalationPathNotificationTypeRuleCondition {
+    /**
+     * The ID of the alert field. Only used with `field` rule type.
+     */
+    fieldableId: string;
+    /**
+     * The type of the fieldable. Only used with `field` rule type. Value must be one of `AlertField`.
+     */
+    fieldableType: string;
+    /**
+     * JSON path to extract value from payload
+     */
+    jsonPath: string;
+    /**
+     * How the value should be matched. For `jsonPath` rule type: `is`, `isNot`, `contains`, `doesNotContain`. For `field` rule type: `is`, `isNot`, `contains`, `doesNotContain`, `isOneOf`, `isNotOneOf`, `isEmpty`, `isNotEmpty`, `containsKey`, `doesNotContainKey`, `startsWith`, `doesNotStartWith`, `matches`, `doesNotMatch`. For `source` rule type: `is`, `isNot`, `isOneOf`, `isNotOneOf`. For `relatedIncidents` rule type: `isSet`, `isNotSet`.
+     */
+    operator: string;
+    /**
+     * The type of the escalation path rule. Value must be one of `alertUrgency`, `workingHour`, `jsonPath`, `field`, `service`, `deferralWindow`, `source`, `relatedIncidents`.
+     */
+    ruleType: string;
+    /**
+     * Service ids for which this escalation path should be used. Only used with `service` rule type.
+     */
+    serviceIds?: string[];
+    /**
+     * Time windows during which alerts are deferred. Only used with `deferralWindow` rule type.
+     */
+    timeBlocks?: outputs.EscalationPathNotificationTypeRuleConditionTimeBlock[];
+    /**
+     * Time zone for the deferral window (IANA format, e.g. `America/New_York`). Only used with `deferralWindow` rule type.
+     */
+    timeZone: string;
+    /**
+     * Alert urgency ids for which this escalation path should be used
+     */
+    urgencyIds?: string[];
+    /**
+     * Value with which JSON path value should be matched
+     */
+    value: string;
+    /**
+     * Values to match against. Used with `field` and `source` rule types.
+     */
+    values?: string[];
+    /**
+     * Whether the escalation path should be used within working hours. Value must be one of true or false
+     */
+    withinWorkingHour: boolean;
+}
+
+export interface EscalationPathNotificationTypeRuleConditionTimeBlock {
+    /**
+     * Whether this time block covers the entire day
+     */
+    allDay?: boolean;
+    /**
+     * Formatted as HH:MM
+     */
+    endTime: string;
+    /**
+     * Whether the time block applies on Friday
+     */
+    friday?: boolean;
+    /**
+     * Whether the time block applies on Monday
+     */
+    monday?: boolean;
+    /**
+     * Position of the time block
+     */
+    position: number;
+    /**
+     * Whether the time block applies on Saturday
+     */
+    saturday?: boolean;
+    /**
+     * Formatted as HH:MM
+     */
+    startTime: string;
+    /**
+     * Whether the time block applies on Sunday
+     */
+    sunday?: boolean;
+    /**
+     * Whether the time block applies on Thursday
+     */
+    thursday?: boolean;
+    /**
+     * Whether the time block applies on Tuesday
+     */
+    tuesday?: boolean;
+    /**
+     * Whether the time block applies on Wednesday
+     */
+    wednesday?: boolean;
 }
 
 export interface EscalationPathRule {
@@ -888,41 +1001,265 @@ export interface GetIncidentTypesIncidentType {
     slug: string;
 }
 
-export interface GetServicesService {
-    alertBroadcastChannel: {[key: string]: string};
-    alertBroadcastEnabled: boolean;
-    alertUrgencyId: string;
-    alertsEmailAddress: string;
-    alertsEmailEnabled: boolean;
-    backstageId: string;
-    color: string;
-    cortexId: string;
-    description: string;
-    environmentIds: string[];
-    escalationPolicyId: string;
-    externalId: string;
-    githubRepositoryBranch: string;
-    githubRepositoryName: string;
-    gitlabRepositoryBranch: string;
-    gitlabRepositoryName: string;
+export interface GetServiceAlertBroadcastChannel {
+    /**
+     * Slack channel ID.
+     */
     id: string;
-    incidentBroadcastChannel: {[key: string]: string};
-    incidentBroadcastEnabled: boolean;
-    kubernetesDeploymentName: string;
+    /**
+     * Slack channel name.
+     */
     name: string;
+}
+
+export interface GetServiceIncidentBroadcastChannel {
+    /**
+     * Slack channel ID.
+     */
+    id: string;
+    /**
+     * Slack channel name.
+     */
+    name: string;
+}
+
+export interface GetServiceProperty {
+    /**
+     * Catalog property ID.
+     */
+    catalogPropertyId: string;
+    /**
+     * The property value.
+     */
+    value: string;
+}
+
+export interface GetServiceSlackAlias {
+    /**
+     * Slack alias ID.
+     */
+    id: string;
+    /**
+     * Slack alias name.
+     */
+    name: string;
+}
+
+export interface GetServiceSlackChannel {
+    /**
+     * Slack channel ID.
+     */
+    id: string;
+    /**
+     * Slack channel name.
+     */
+    name: string;
+}
+
+export interface GetServicesService {
+    /**
+     * Slack channel to broadcast alerts to.
+     */
+    alertBroadcastChannel: outputs.GetServicesServiceAlertBroadcastChannel;
+    /**
+     * Enable alerts to be broadcasted to a specific channel.
+     */
+    alertBroadcastEnabled: boolean;
+    /**
+     * The alert urgency id of the service.
+     */
+    alertUrgencyId: string;
+    /**
+     * Email generated to send alerts to.
+     */
+    alertsEmailAddress: string;
+    /**
+     * Enable alerts through email.
+     */
+    alertsEmailEnabled: boolean;
+    /**
+     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.
+     */
+    backstageId: string;
+    /**
+     * The hex color of the service.
+     */
+    color: string;
+    /**
+     * The Cortex group id associated to this service.
+     */
+    cortexId: string;
+    /**
+     * Date of creation.
+     */
+    createdAt: string;
+    /**
+     * The description of the service.
+     */
+    description: string;
+    /**
+     * Environments associated with this service.
+     */
+    environmentIds: string[];
+    /**
+     * The escalation policy id of the service.
+     */
+    escalationPolicyId: string;
+    /**
+     * The external id associated to this service.
+     */
+    externalId: string;
+    /**
+     * The GitHub repository branch associated to this service. eg: main.
+     */
+    githubRepositoryBranch: string;
+    /**
+     * The GitHub repository name associated to this service. eg: rootlyhq/my-service.
+     */
+    githubRepositoryName: string;
+    /**
+     * The GitLab repository branch associated to this service. eg: main.
+     */
+    gitlabRepositoryBranch: string;
+    /**
+     * The GitLab repository name associated to this service. eg: rootlyhq/my-service.
+     */
+    gitlabRepositoryName: string;
+    /**
+     * The ID of the resource.
+     */
+    id: string;
+    /**
+     * Slack channel to broadcast incidents to.
+     */
+    incidentBroadcastChannel: outputs.GetServicesServiceIncidentBroadcastChannel;
+    /**
+     * Enable incidents to be broadcasted to a specific channel.
+     */
+    incidentBroadcastEnabled: boolean;
+    /**
+     * The Kubernetes deployment name associated to this service. eg: namespace/deployment-name.
+     */
+    kubernetesDeploymentName: string;
+    /**
+     * How this service is managed (provenance): web, api, terraform, etc. Read-only. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    managedBy: string;
+    /**
+     * The name of the service.
+     */
+    name: string;
+    /**
+     * Emails attached to the service.
+     */
     notifyEmails: string[];
+    /**
+     * The Opsgenie service id associated to this service.
+     */
     opsgenieId: string;
+    /**
+     * Owner Teams associated with this service.
+     */
     ownerGroupIds: string[];
-    ownerUserIds: string[];
+    /**
+     * Owner Users associated with this service.
+     */
+    ownerUserIds: number[];
+    /**
+     * The PagerDuty service id associated to this service.
+     */
     pagerdutyId: string;
+    /**
+     * Position of the service.
+     */
     position: number;
-    properties: string[];
+    /**
+     * Array of property values for this service.
+     */
+    properties: outputs.GetServicesServiceProperty[];
+    /**
+     * The status page description of the service.
+     */
     publicDescription: string;
+    /**
+     * Services dependent on this service.
+     */
     serviceIds: string[];
+    /**
+     * The Service Now CI sys id associated to this service.
+     */
     serviceNowCiSysId: string;
-    slackAliases: string[];
-    slackChannels: string[];
+    /**
+     * Slack Aliases associated with this service.
+     */
+    slackAliases: outputs.GetServicesServiceSlackAlias[];
+    /**
+     * Slack Channels associated with this service.
+     */
+    slackChannels: outputs.GetServicesServiceSlackChannel[];
+    /**
+     * The slug of the service.
+     */
     slug: string;
+    /**
+     * Date of last update.
+     */
+    updatedAt: string;
+}
+
+export interface GetServicesServiceAlertBroadcastChannel {
+    /**
+     * Slack channel ID.
+     */
+    id: string;
+    /**
+     * Slack channel name.
+     */
+    name: string;
+}
+
+export interface GetServicesServiceIncidentBroadcastChannel {
+    /**
+     * Slack channel ID.
+     */
+    id: string;
+    /**
+     * Slack channel name.
+     */
+    name: string;
+}
+
+export interface GetServicesServiceProperty {
+    /**
+     * Catalog property ID.
+     */
+    catalogPropertyId: string;
+    /**
+     * The property value.
+     */
+    value: string;
+}
+
+export interface GetServicesServiceSlackAlias {
+    /**
+     * Slack alias ID.
+     */
+    id: string;
+    /**
+     * Slack alias name.
+     */
+    name: string;
+}
+
+export interface GetServicesServiceSlackChannel {
+    /**
+     * Slack channel ID.
+     */
+    id: string;
+    /**
+     * Slack channel name.
+     */
+    name: string;
 }
 
 export interface GetSeveritiesSeverity {
@@ -940,6 +1277,13 @@ export interface GetTeamsTeam {
     id: string;
     name: string;
     slug: string;
+}
+
+export interface GetUsersUser {
+    email: string;
+    id: string;
+    onCallRoleId: string;
+    roleId: string;
 }
 
 export interface IncidentTypeProperty {
@@ -1018,18 +1362,18 @@ export interface ScheduleRotationActiveDayActiveTimeAttribute {
 
 export interface ScheduleRotationActiveTimeAttribute {
     /**
-     * End time for schedule rotation active time
+     * End time for schedule rotation active time.
      */
     endTime: string;
     /**
-     * Start time for schedule rotation active time
+     * Start time for schedule rotation active time.
      */
     startTime: string;
 }
 
 export interface ScheduleRotationScheduleRotationMember {
     /**
-     * ID of the member
+     * ID of the member.
      */
     memberId: string;
     /**
@@ -1040,6 +1384,25 @@ export interface ScheduleRotationScheduleRotationMember {
      * Position of the member in rotation
      */
     position: number;
+}
+
+export interface ScheduleRotationScheduleRotationableAttributes {
+    /**
+     * Hand off day. Only applicable for weekly/biweekly, and monthly.
+     */
+    handoffDay?: string;
+    /**
+     * Hand off time. Only applicable for daily, weekly/biweekly, monthly, and custom rotations.
+     */
+    handoffTime: string;
+    /**
+     * Shift length for custom rotation.
+     */
+    shiftLength?: number;
+    /**
+     * Shift length unit for custom rotation. Value must be one of `hours`, `days`, `weeks`.
+     */
+    shiftLengthUnit?: string;
 }
 
 export interface ServiceAlertBroadcastChannel {
@@ -1364,7 +1727,7 @@ export interface WorkflowActionItemTriggerParams {
      * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
     incidentStatuses: string[];
-    incidentVisibilities: string[];
+    incidentVisibilities: boolean[];
     /**
      * Value must be one of `actionItem`.
      */
@@ -1569,13 +1932,13 @@ export interface WorkflowIncidentTriggerParams {
      * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
     incidentStatuses: string[];
-    incidentVisibilities: string[];
+    incidentVisibilities: boolean[];
     /**
      * Value must be one of `incident`.
      */
     triggerType?: string;
     /**
-     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
      */
     triggers: string[];
 }
@@ -1698,7 +2061,7 @@ export interface WorkflowPostMortemTriggerParams {
      * Value must be one of `inTriage`, `started`, `detected`, `acknowledged`, `mitigated`, `resolved`, `closed`, `cancelled`, `scheduled`, `inProgress`, `completed`.
      */
     incidentStatuses: string[];
-    incidentVisibilities: string[];
+    incidentVisibilities: boolean[];
     /**
      * Value must be one of `postMortem`.
      */
@@ -2111,6 +2474,10 @@ export interface WorkflowTaskCreateAirtableTableRecordTaskParams {
 
 export interface WorkflowTaskCreateAnthropicChatCompletionTaskParams {
     /**
+     * Maximum number of tokens to generate. Defaults to 4000 when omitted
+     */
+    maxTokens?: number;
+    /**
      * Map must contain two fields, `id` and `name`. The Anthropic model. eg: claude-3-5-sonnet-20241022
      */
     model: {[key: string]: string};
@@ -2293,6 +2660,10 @@ export interface WorkflowTaskCreateConfluencePageTaskParams {
     /**
      * Value must be one of true or false
      */
+    includeFollowUps?: boolean;
+    /**
+     * Value must be one of true or false
+     */
     includeOverview?: boolean;
     /**
      * Value must be one of true or false
@@ -2430,7 +2801,7 @@ export interface WorkflowTaskCreateGitlabIssueTaskParams {
     /**
      * The issue type. Value must be one of `issue`, `incident`, `testCase`, `task`.
      */
-    issueType?: string;
+    issueType: string;
     /**
      * The issue labels
      */
@@ -2558,6 +2929,10 @@ export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
      * Map must contain two fields, `id` and `name`.
      */
     drive?: {[key: string]: string};
+    /**
+     * Value must be one of true or false
+     */
+    includeFollowUps?: boolean;
     /**
      * Value must be one of true or false
      */
@@ -3095,7 +3470,10 @@ export interface WorkflowTaskCreateMotionTaskTaskParams {
      * The duration. Eg.  "NONE", "REMINDER", or a integer greater than 0.
      */
     duration?: string;
-    labels?: string[];
+    /**
+     * The task labels
+     */
+    labels?: string;
     /**
      * Map must contain two fields, `id` and `name`. The priority id and display name
      */
@@ -3814,6 +4192,14 @@ export interface WorkflowTaskHttpClientTaskParams {
     eventMessage?: string;
     eventUrl?: string;
     /**
+     * Map of valid HTTP header names to reg
+     */
+    expectedResponseHeaders?: {[key: string]: string};
+    /**
+     * Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is.. Value must be one of true or false
+     */
+    followRedirects?: boolean;
+    /**
      * JSON map of HTTP headers
      */
     headers?: string;
@@ -4207,6 +4593,14 @@ export interface WorkflowTaskPublishIncidentTaskParams {
     notifySubscribers?: boolean;
     publicTitle: string;
     /**
+     * Composite "SourceType:\n\n" keys of the status page components affected by the publish. This field is in Early Access and is not generally available; contact Rootly Support to request access.
+     */
+    selectedComponentKeys?: string[];
+    /**
+     * Impact status to publish for each selected component key. Keys must match selected*component*keys entries.
+     */
+    selectedComponentStatuses?: {[key: string]: string};
+    /**
      * For Statuspage.io integrated pages auto publishes a tweet for your update. Value must be one of true or false
      */
     shouldTweet?: boolean;
@@ -4216,7 +4610,7 @@ export interface WorkflowTaskPublishIncidentTaskParams {
     status: string;
     statusPageId: string;
     /**
-     * Publishes the update to every listed status page (requires the status-page-v3-limited-bulk-publish feature). When set, it takes precedence over status*page*id and the first entry becomes status*page*id.
+     * Publishes the update to every listed status page. This field is in limited Early Access; contact Rootly Support to request access. When set, it takes precedence over status*page*id and the first entry becomes status*page*id.
      */
     statusPageIds?: string[];
     /**
@@ -4666,7 +5060,7 @@ export interface WorkflowTaskSnapshotNewRelicGraphTaskParamsPostToSlackChannel {
 
 export interface WorkflowTaskTriggerWorkflowTaskParams {
     /**
-     * ["(incident) kind can only match [:id, :slug, :sequential*id, :pagerduty*incident*id, :opsgenie*incident*id, :victor*ops*incident*id, :jira*issue*id, :asana*task*id, :shortcut*task*id, :linear*issue*id, :zendesk*ticket*id, :motion*task*id, :trello*card*id, :airtable*record*id, :shortcut*story*id, :github*issue*id, :freshservice*ticket*id, :freshservice*task*id, :clickup*task*id]", "(post*mortem) kind can only match [:id]", "(action*item) kind can only match [:id, :jira*issue*id, :asana*task*id, :shortcut*task*id, :linear*issue*id, :zendesk*ticket*id, :motion*task*id, :trello*card*id, :airtable*record*id, :shortcut*story*id, :github*issue*id, :freshservice*ticket*id, :freshservice*task*id, :clickup*task*id]", "(pulse) kind can only match [:id]", "(alert) kind can only match [:id]"]. Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `motionTaskId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
+     * ["(incident) kind can only match [:id, :slug, :sequential*id, :pagerduty*incident*id, :opsgenie*incident*id, :victor*ops*incident*id, :jira*issue*id, :asana*task*id, :shortcut*task*id, :linear*issue*id, :zendesk*ticket*id, :motion*task*id, :trello*card*id, :airtable*record*id, :shortcut*story*id, :github*issue*id, :freshservice*ticket*id, :freshservice*task*id, :clickup*task*id]", "(action*item) kind can only match [:id, :jira*issue*id, :asana*task*id, :shortcut*task*id, :linear*issue*id, :zendesk*ticket*id, :motion*task*id, :trello*card*id, :airtable*record*id, :shortcut*story*id, :github*issue*id, :freshservice*ticket*id, :freshservice*task*id, :clickup*task*id]", "(post*mortem) kind can only match [:id]", "(pulse) kind can only match [:id]", "(alert) kind can only match [:id]", "(problem) kind can only match [:id]"]. Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `motionTaskId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
      */
     attributeToQueryBy: string;
     /**
@@ -4674,7 +5068,7 @@ export interface WorkflowTaskTriggerWorkflowTaskParams {
      */
     checkWorkflowConditions?: boolean;
     /**
-     * Value must be one of `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+     * Value must be one of `incident`, `actionItem`, `postMortem`, `pulse`, `alert`, `problem`.
      */
     kind: string;
     /**
@@ -4876,6 +5270,10 @@ export interface WorkflowTaskUpdateConfluencePageTaskParams {
      * The Confluence page ID
      */
     fileId: string;
+    /**
+     * Value must be one of true or false
+     */
+    includeFollowUps?: boolean;
     /**
      * Value must be one of true or false
      */
@@ -5116,6 +5514,10 @@ export interface WorkflowTaskUpdateGoogleDocsPageTaskParams {
      * The Google Doc file ID
      */
     fileId: string;
+    /**
+     * Value must be one of true or false
+     */
+    includeFollowUps?: boolean;
     /**
      * Value must be one of true or false
      */

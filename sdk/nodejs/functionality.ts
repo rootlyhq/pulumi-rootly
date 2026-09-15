@@ -84,6 +84,10 @@ export class Functionality extends pulumi.CustomResource {
      */
     declare public readonly externalId: pulumi.Output<string>;
     /**
+     * How this functionality is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    declare public /*out*/ readonly managedBy: pulumi.Output<string>;
+    /**
      * The name of the functionality
      */
     declare public readonly name: pulumi.Output<string>;
@@ -120,7 +124,7 @@ export class Functionality extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<outputs.FunctionalityProperty[] | undefined>;
     /**
-     * The public description of the functionality
+     * The status page description of the functionality
      */
     declare public readonly publicDescription: pulumi.Output<string>;
     /**
@@ -141,8 +145,10 @@ export class Functionality extends pulumi.CustomResource {
     declare public readonly slackChannels: pulumi.Output<outputs.FunctionalitySlackChannel[] | undefined>;
     /**
      * The slug of the functionality
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Functionality resource with the given unique name, arguments, and options.
@@ -164,6 +170,7 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["environmentIds"] = state?.environmentIds;
             resourceInputs["escalationPolicyId"] = state?.escalationPolicyId;
             resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["notifyEmails"] = state?.notifyEmails;
             resourceInputs["opsgenieId"] = state?.opsgenieId;
@@ -202,7 +209,8 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["serviceNowCiSysId"] = args?.serviceNowCiSysId;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
+            resourceInputs["managedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Functionality.__pulumiType, name, resourceInputs, opts);
@@ -242,6 +250,10 @@ export interface FunctionalityState {
      */
     externalId?: pulumi.Input<string | undefined>;
     /**
+     * How this functionality is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    managedBy?: pulumi.Input<string | undefined>;
+    /**
      * The name of the functionality
      */
     name?: pulumi.Input<string | undefined>;
@@ -278,7 +290,7 @@ export interface FunctionalityState {
      */
     properties?: pulumi.Input<pulumi.Input<inputs.FunctionalityProperty>[] | undefined>;
     /**
-     * The public description of the functionality
+     * The status page description of the functionality
      */
     publicDescription?: pulumi.Input<string | undefined>;
     /**
@@ -299,6 +311,8 @@ export interface FunctionalityState {
     slackChannels?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackChannel>[] | undefined>;
     /**
      * The slug of the functionality
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -372,7 +386,7 @@ export interface FunctionalityArgs {
      */
     properties?: pulumi.Input<pulumi.Input<inputs.FunctionalityProperty>[] | undefined>;
     /**
-     * The public description of the functionality
+     * The status page description of the functionality
      */
     publicDescription?: pulumi.Input<string | undefined>;
     /**
@@ -391,4 +405,10 @@ export interface FunctionalityArgs {
      * Slack Channels associated with this functionality
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.FunctionalitySlackChannel>[] | undefined>;
+    /**
+     * The slug of the functionality
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

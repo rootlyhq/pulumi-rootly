@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupRetrospectiveConfiguration(ctx *pulumi.Context, args *LookupRetrospectiveConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupRetrospectiveConfigurationResult, error) {
@@ -34,12 +34,8 @@ type LookupRetrospectiveConfigurationResult struct {
 }
 
 func LookupRetrospectiveConfigurationOutput(ctx *pulumi.Context, args LookupRetrospectiveConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupRetrospectiveConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRetrospectiveConfigurationResultOutput, error) {
-			args := v.(LookupRetrospectiveConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getRetrospectiveConfiguration:getRetrospectiveConfiguration", args, LookupRetrospectiveConfigurationResultOutput{}, options).(LookupRetrospectiveConfigurationResultOutput), nil
-		}).(LookupRetrospectiveConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getRetrospectiveConfiguration:getRetrospectiveConfiguration", args, LookupRetrospectiveConfigurationResultOutput{}, options).(LookupRetrospectiveConfigurationResultOutput)
 }
 
 // A collection of arguments for invoking getRetrospectiveConfiguration.

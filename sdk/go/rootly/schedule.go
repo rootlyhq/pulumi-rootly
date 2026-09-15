@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -63,6 +63,8 @@ type Schedule struct {
 	SlackUserGroup pulumi.StringMapOutput `pulumi:"slackUserGroup"`
 	// Whether the schedule is synced with Linear. Value must be one of true or false
 	SyncLinearEnabled pulumi.BoolOutput `pulumi:"syncLinearEnabled"`
+	// A valid IANA time zone name. Only applicable when config*one*timezone*per*schedule_enabled is true for the organization.
+	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 }
 
 // NewSchedule registers a new resource with the given unique name, arguments, and options.
@@ -125,6 +127,8 @@ type scheduleState struct {
 	SlackUserGroup map[string]string `pulumi:"slackUserGroup"`
 	// Whether the schedule is synced with Linear. Value must be one of true or false
 	SyncLinearEnabled *bool `pulumi:"syncLinearEnabled"`
+	// A valid IANA time zone name. Only applicable when config*one*timezone*per*schedule_enabled is true for the organization.
+	TimeZone *string `pulumi:"timeZone"`
 }
 
 type ScheduleState struct {
@@ -158,6 +162,8 @@ type ScheduleState struct {
 	SlackUserGroup pulumi.StringMapInput
 	// Whether the schedule is synced with Linear. Value must be one of true or false
 	SyncLinearEnabled pulumi.BoolPtrInput
+	// A valid IANA time zone name. Only applicable when config*one*timezone*per*schedule_enabled is true for the organization.
+	TimeZone pulumi.StringPtrInput
 }
 
 func (ScheduleState) ElementType() reflect.Type {
@@ -195,6 +201,8 @@ type scheduleArgs struct {
 	SlackUserGroup map[string]string `pulumi:"slackUserGroup"`
 	// Whether the schedule is synced with Linear. Value must be one of true or false
 	SyncLinearEnabled *bool `pulumi:"syncLinearEnabled"`
+	// A valid IANA time zone name. Only applicable when config*one*timezone*per*schedule_enabled is true for the organization.
+	TimeZone *string `pulumi:"timeZone"`
 }
 
 // The set of arguments for constructing a Schedule resource.
@@ -229,6 +237,8 @@ type ScheduleArgs struct {
 	SlackUserGroup pulumi.StringMapInput
 	// Whether the schedule is synced with Linear. Value must be one of true or false
 	SyncLinearEnabled pulumi.BoolPtrInput
+	// A valid IANA time zone name. Only applicable when config*one*timezone*per*schedule_enabled is true for the organization.
+	TimeZone pulumi.StringPtrInput
 }
 
 func (ScheduleArgs) ElementType() reflect.Type {
@@ -391,6 +401,11 @@ func (o ScheduleOutput) SlackUserGroup() pulumi.StringMapOutput {
 // Whether the schedule is synced with Linear. Value must be one of true or false
 func (o ScheduleOutput) SyncLinearEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.BoolOutput { return v.SyncLinearEnabled }).(pulumi.BoolOutput)
+}
+
+// A valid IANA time zone name. Only applicable when config*one*timezone*per*schedule_enabled is true for the organization.
+func (o ScheduleOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 type ScheduleArrayOutput struct{ *pulumi.OutputState }

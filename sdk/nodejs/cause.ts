@@ -72,9 +72,15 @@ export class Cause extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<outputs.CauseProperty[] | undefined>;
     /**
-     * The slug of the cause
+     * The status page description of the cause
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly publicDescription: pulumi.Output<string>;
+    /**
+     * The slug of the cause
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Cause resource with the given unique name, arguments, and options.
@@ -93,6 +99,7 @@ export class Cause extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
             resourceInputs["properties"] = state?.properties;
+            resourceInputs["publicDescription"] = state?.publicDescription;
             resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as CauseArgs | undefined;
@@ -100,7 +107,8 @@ export class Cause extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
             resourceInputs["properties"] = args?.properties;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["publicDescription"] = args?.publicDescription;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cause.__pulumiType, name, resourceInputs, opts);
@@ -128,7 +136,13 @@ export interface CauseState {
      */
     properties?: pulumi.Input<pulumi.Input<inputs.CauseProperty>[] | undefined>;
     /**
+     * The status page description of the cause
+     */
+    publicDescription?: pulumi.Input<string | undefined>;
+    /**
      * The slug of the cause
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -153,4 +167,14 @@ export interface CauseArgs {
      * Array of property values for this cause.
      */
     properties?: pulumi.Input<pulumi.Input<inputs.CauseProperty>[] | undefined>;
+    /**
+     * The status page description of the cause
+     */
+    publicDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The slug of the cause
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

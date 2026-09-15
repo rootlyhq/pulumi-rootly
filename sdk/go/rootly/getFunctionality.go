@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -47,12 +47,8 @@ type LookupFunctionalityResult struct {
 }
 
 func LookupFunctionalityOutput(ctx *pulumi.Context, args LookupFunctionalityOutputArgs, opts ...pulumi.InvokeOption) LookupFunctionalityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFunctionalityResultOutput, error) {
-			args := v.(LookupFunctionalityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getFunctionality:getFunctionality", args, LookupFunctionalityResultOutput{}, options).(LookupFunctionalityResultOutput), nil
-		}).(LookupFunctionalityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getFunctionality:getFunctionality", args, LookupFunctionalityResultOutput{}, options).(LookupFunctionalityResultOutput)
 }
 
 // A collection of arguments for invoking getFunctionality.

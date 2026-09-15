@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -79,7 +79,8 @@ type Team struct {
 	SlackAliases TeamSlackAliasArrayOutput `pulumi:"slackAliases"`
 	// Slack Channels associated with this team
 	SlackChannels TeamSlackChannelArrayOutput `pulumi:"slackChannels"`
-	Slug          pulumi.StringOutput         `pulumi:"slug"`
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+	Slug pulumi.StringOutput `pulumi:"slug"`
 	// The user ids of the members of this team.
 	UserIds pulumi.IntArrayOutput `pulumi:"userIds"`
 	// The VictorOps group id associated to this team
@@ -162,7 +163,8 @@ type teamState struct {
 	SlackAliases []TeamSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this team
 	SlackChannels []TeamSlackChannel `pulumi:"slackChannels"`
-	Slug          *string            `pulumi:"slug"`
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+	Slug *string `pulumi:"slug"`
 	// The user ids of the members of this team.
 	UserIds []int `pulumi:"userIds"`
 	// The VictorOps group id associated to this team
@@ -216,7 +218,8 @@ type TeamState struct {
 	SlackAliases TeamSlackAliasArrayInput
 	// Slack Channels associated with this team
 	SlackChannels TeamSlackChannelArrayInput
-	Slug          pulumi.StringPtrInput
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+	Slug pulumi.StringPtrInput
 	// The user ids of the members of this team.
 	UserIds pulumi.IntArrayInput
 	// The VictorOps group id associated to this team
@@ -274,7 +277,8 @@ type teamArgs struct {
 	SlackAliases []TeamSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this team
 	SlackChannels []TeamSlackChannel `pulumi:"slackChannels"`
-	Slug          *string            `pulumi:"slug"`
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+	Slug *string `pulumi:"slug"`
 	// The user ids of the members of this team.
 	UserIds []int `pulumi:"userIds"`
 	// The VictorOps group id associated to this team
@@ -329,7 +333,8 @@ type TeamArgs struct {
 	SlackAliases TeamSlackAliasArrayInput
 	// Slack Channels associated with this team
 	SlackChannels TeamSlackChannelArrayInput
-	Slug          pulumi.StringPtrInput
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+	Slug pulumi.StringPtrInput
 	// The user ids of the members of this team.
 	UserIds pulumi.IntArrayInput
 	// The VictorOps group id associated to this team
@@ -538,6 +543,7 @@ func (o TeamOutput) SlackChannels() TeamSlackChannelArrayOutput {
 	return o.ApplyT(func(v *Team) TeamSlackChannelArrayOutput { return v.SlackChannels }).(TeamSlackChannelArrayOutput)
 }
 
+// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 func (o TeamOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

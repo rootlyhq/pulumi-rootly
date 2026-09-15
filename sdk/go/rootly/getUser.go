@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -36,15 +36,15 @@ type GetUserResult struct {
 	Email     string            `pulumi:"email"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
+	// The ID of the user's on-call role, or empty when unset.
+	OnCallRoleId string `pulumi:"onCallRoleId"`
+	// The ID of the user's (general) role, or empty when unset.
+	RoleId string `pulumi:"roleId"`
 }
 
 func GetUserOutput(ctx *pulumi.Context, args GetUserOutputArgs, opts ...pulumi.InvokeOption) GetUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUserResultOutput, error) {
-			args := v.(GetUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getUser:getUser", args, GetUserResultOutput{}, options).(GetUserResultOutput), nil
-		}).(GetUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getUser:getUser", args, GetUserResultOutput{}, options).(GetUserResultOutput)
 }
 
 // A collection of arguments for invoking getUser.
@@ -85,6 +85,16 @@ func (o GetUserResultOutput) Email() pulumi.StringOutput {
 // The ID of this resource.
 func (o GetUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the user's on-call role, or empty when unset.
+func (o GetUserResultOutput) OnCallRoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserResult) string { return v.OnCallRoleId }).(pulumi.StringOutput)
+}
+
+// The ID of the user's (general) role, or empty when unset.
+func (o GetUserResultOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserResult) string { return v.RoleId }).(pulumi.StringOutput)
 }
 
 func init() {

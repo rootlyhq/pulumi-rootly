@@ -2,9 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Retrieves a single service using either its `id` or search criteria (`name`, `slug`, `externalId`, `cortexId`, `backstageId`, `alertBroadcastEnabled`, or `incidentBroadcastEnabled`). `id` cannot be combined with filter attributes. If multiple services match the provided filters, an error will be raised.
+ *
  * ## Example Usage
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
@@ -14,8 +18,8 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
         "alertBroadcastEnabled": args.alertBroadcastEnabled,
         "backstageId": args.backstageId,
         "cortexId": args.cortexId,
-        "createdAt": args.createdAt,
         "externalId": args.externalId,
+        "id": args.id,
         "incidentBroadcastEnabled": args.incidentBroadcastEnabled,
         "name": args.name,
         "slug": args.slug,
@@ -26,16 +30,37 @@ export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceArgs {
+    /**
+     * Enable alerts to be broadcasted to a specific channel.
+     */
     alertBroadcastEnabled?: boolean;
+    /**
+     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.
+     */
     backstageId?: string;
+    /**
+     * The Cortex group id associated to this service.
+     */
     cortexId?: string;
     /**
-     * Filter by date range using 'lt' and 'gt'.
+     * The external id associated to this service.
      */
-    createdAt?: {[key: string]: string};
     externalId?: string;
+    /**
+     * The ID of the resource.
+     */
+    id?: string;
+    /**
+     * Enable incidents to be broadcasted to a specific channel.
+     */
     incidentBroadcastEnabled?: boolean;
+    /**
+     * The name of the service.
+     */
     name?: string;
+    /**
+     * The slug of the service.
+     */
     slug?: string;
 }
 
@@ -43,23 +68,158 @@ export interface GetServiceArgs {
  * A collection of values returned by getService.
  */
 export interface GetServiceResult {
+    /**
+     * Slack channel to broadcast alerts to.
+     */
+    readonly alertBroadcastChannel: outputs.GetServiceAlertBroadcastChannel;
+    /**
+     * Enable alerts to be broadcasted to a specific channel.
+     */
     readonly alertBroadcastEnabled: boolean;
+    /**
+     * The alert urgency id of the service.
+     */
+    readonly alertUrgencyId: string;
+    /**
+     * Email generated to send alerts to.
+     */
+    readonly alertsEmailAddress: string;
+    /**
+     * Enable alerts through email.
+     */
+    readonly alertsEmailEnabled: boolean;
+    /**
+     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.
+     */
     readonly backstageId: string;
+    /**
+     * The hex color of the service.
+     */
+    readonly color: string;
+    /**
+     * The Cortex group id associated to this service.
+     */
     readonly cortexId: string;
     /**
-     * Filter by date range using 'lt' and 'gt'.
+     * Date of creation.
      */
-    readonly createdAt?: {[key: string]: string};
+    readonly createdAt: string;
+    /**
+     * The description of the service.
+     */
+    readonly description: string;
+    /**
+     * Environments associated with this service.
+     */
+    readonly environmentIds: string[];
+    /**
+     * The escalation policy id of the service.
+     */
+    readonly escalationPolicyId: string;
+    /**
+     * The external id associated to this service.
+     */
     readonly externalId: string;
     /**
-     * The ID of this resource.
+     * The GitHub repository branch associated to this service. eg: main.
+     */
+    readonly githubRepositoryBranch: string;
+    /**
+     * The GitHub repository name associated to this service. eg: rootlyhq/my-service.
+     */
+    readonly githubRepositoryName: string;
+    /**
+     * The GitLab repository branch associated to this service. eg: main.
+     */
+    readonly gitlabRepositoryBranch: string;
+    /**
+     * The GitLab repository name associated to this service. eg: rootlyhq/my-service.
+     */
+    readonly gitlabRepositoryName: string;
+    /**
+     * The ID of the resource.
      */
     readonly id: string;
+    /**
+     * Slack channel to broadcast incidents to.
+     */
+    readonly incidentBroadcastChannel: outputs.GetServiceIncidentBroadcastChannel;
+    /**
+     * Enable incidents to be broadcasted to a specific channel.
+     */
     readonly incidentBroadcastEnabled: boolean;
+    /**
+     * The Kubernetes deployment name associated to this service. eg: namespace/deployment-name.
+     */
+    readonly kubernetesDeploymentName: string;
+    /**
+     * How this service is managed (provenance): web, api, terraform, etc. Read-only. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    readonly managedBy: string;
+    /**
+     * The name of the service.
+     */
     readonly name: string;
+    /**
+     * Emails attached to the service.
+     */
+    readonly notifyEmails: string[];
+    /**
+     * The Opsgenie service id associated to this service.
+     */
+    readonly opsgenieId: string;
+    /**
+     * Owner Teams associated with this service.
+     */
+    readonly ownerGroupIds: string[];
+    /**
+     * Owner Users associated with this service.
+     */
+    readonly ownerUserIds: number[];
+    /**
+     * The PagerDuty service id associated to this service.
+     */
+    readonly pagerdutyId: string;
+    /**
+     * Position of the service.
+     */
+    readonly position: number;
+    /**
+     * Array of property values for this service.
+     */
+    readonly properties: outputs.GetServiceProperty[];
+    /**
+     * The status page description of the service.
+     */
+    readonly publicDescription: string;
+    /**
+     * Services dependent on this service.
+     */
+    readonly serviceIds: string[];
+    /**
+     * The Service Now CI sys id associated to this service.
+     */
+    readonly serviceNowCiSysId: string;
+    /**
+     * Slack Aliases associated with this service.
+     */
+    readonly slackAliases: outputs.GetServiceSlackAlias[];
+    /**
+     * Slack Channels associated with this service.
+     */
+    readonly slackChannels: outputs.GetServiceSlackChannel[];
+    /**
+     * The slug of the service.
+     */
     readonly slug: string;
+    /**
+     * Date of last update.
+     */
+    readonly updatedAt: string;
 }
 /**
+ * Retrieves a single service using either its `id` or search criteria (`name`, `slug`, `externalId`, `cortexId`, `backstageId`, `alertBroadcastEnabled`, or `incidentBroadcastEnabled`). `id` cannot be combined with filter attributes. If multiple services match the provided filters, an error will be raised.
+ *
  * ## Example Usage
  */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceResult> {
@@ -69,8 +229,8 @@ export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.Invo
         "alertBroadcastEnabled": args.alertBroadcastEnabled,
         "backstageId": args.backstageId,
         "cortexId": args.cortexId,
-        "createdAt": args.createdAt,
         "externalId": args.externalId,
+        "id": args.id,
         "incidentBroadcastEnabled": args.incidentBroadcastEnabled,
         "name": args.name,
         "slug": args.slug,
@@ -81,15 +241,36 @@ export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceOutputArgs {
+    /**
+     * Enable alerts to be broadcasted to a specific channel.
+     */
     alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.
+     */
     backstageId?: pulumi.Input<string | undefined>;
+    /**
+     * The Cortex group id associated to this service.
+     */
     cortexId?: pulumi.Input<string | undefined>;
     /**
-     * Filter by date range using 'lt' and 'gt'.
+     * The external id associated to this service.
      */
-    createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     externalId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the resource.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Enable incidents to be broadcasted to a specific channel.
+     */
     incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The name of the service.
+     */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The slug of the service.
+     */
     slug?: pulumi.Input<string | undefined>;
 }

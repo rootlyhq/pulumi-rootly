@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -41,12 +41,8 @@ type LookupCauseResult struct {
 }
 
 func LookupCauseOutput(ctx *pulumi.Context, args LookupCauseOutputArgs, opts ...pulumi.InvokeOption) LookupCauseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCauseResultOutput, error) {
-			args := v.(LookupCauseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCause:getCause", args, LookupCauseResultOutput{}, options).(LookupCauseResultOutput), nil
-		}).(LookupCauseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCause:getCause", args, LookupCauseResultOutput{}, options).(LookupCauseResultOutput)
 }
 
 // A collection of arguments for invoking getCause.

@@ -80,6 +80,10 @@ export class IncidentType extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<outputs.IncidentTypeProperty[] | undefined>;
     /**
+     * The status page description of the incident type
+     */
+    declare public readonly publicDescription: pulumi.Output<string>;
+    /**
      * Slack Aliases associated with this incident type
      */
     declare public readonly slackAliases: pulumi.Output<outputs.IncidentTypeSlackAlias[] | undefined>;
@@ -89,8 +93,10 @@ export class IncidentType extends pulumi.CustomResource {
     declare public readonly slackChannels: pulumi.Output<outputs.IncidentTypeSlackChannel[] | undefined>;
     /**
      * The slug of the incident type
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a IncidentType resource with the given unique name, arguments, and options.
@@ -111,6 +117,7 @@ export class IncidentType extends pulumi.CustomResource {
             resourceInputs["notifyEmails"] = state?.notifyEmails;
             resourceInputs["position"] = state?.position;
             resourceInputs["properties"] = state?.properties;
+            resourceInputs["publicDescription"] = state?.publicDescription;
             resourceInputs["slackAliases"] = state?.slackAliases;
             resourceInputs["slackChannels"] = state?.slackChannels;
             resourceInputs["slug"] = state?.slug;
@@ -122,9 +129,10 @@ export class IncidentType extends pulumi.CustomResource {
             resourceInputs["notifyEmails"] = args?.notifyEmails;
             resourceInputs["position"] = args?.position;
             resourceInputs["properties"] = args?.properties;
+            resourceInputs["publicDescription"] = args?.publicDescription;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IncidentType.__pulumiType, name, resourceInputs, opts);
@@ -160,6 +168,10 @@ export interface IncidentTypeState {
      */
     properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[] | undefined>;
     /**
+     * The status page description of the incident type
+     */
+    publicDescription?: pulumi.Input<string | undefined>;
+    /**
      * Slack Aliases associated with this incident type
      */
     slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[] | undefined>;
@@ -169,6 +181,8 @@ export interface IncidentTypeState {
     slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[] | undefined>;
     /**
      * The slug of the incident type
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -202,6 +216,10 @@ export interface IncidentTypeArgs {
      */
     properties?: pulumi.Input<pulumi.Input<inputs.IncidentTypeProperty>[] | undefined>;
     /**
+     * The status page description of the incident type
+     */
+    publicDescription?: pulumi.Input<string | undefined>;
+    /**
      * Slack Aliases associated with this incident type
      */
     slackAliases?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackAlias>[] | undefined>;
@@ -209,4 +227,10 @@ export interface IncidentTypeArgs {
      * Slack Channels associated with this incident type
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.IncidentTypeSlackChannel>[] | undefined>;
+    /**
+     * The slug of the incident type
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

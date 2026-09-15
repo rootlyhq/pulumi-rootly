@@ -92,7 +92,9 @@ export class AlertGroup extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The slug of the alert group
+     * [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
     declare public readonly targets: pulumi.Output<outputs.AlertGroupTarget[] | undefined>;
@@ -185,7 +187,9 @@ export interface AlertGroupState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The slug of the alert group
+     * [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
     targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[] | undefined>;
@@ -236,7 +240,9 @@ export interface AlertGroupArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The slug of the alert group
+     * [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
     targets?: pulumi.Input<pulumi.Input<inputs.AlertGroupTarget>[] | undefined>;

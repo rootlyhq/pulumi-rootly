@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -47,6 +47,8 @@ type Functionality struct {
 	EscalationPolicyId pulumi.StringOutput `pulumi:"escalationPolicyId"`
 	// The external id associated to this functionality
 	ExternalId pulumi.StringOutput `pulumi:"externalId"`
+	// How this functionality is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy pulumi.StringOutput `pulumi:"managedBy"`
 	// The name of the functionality
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Emails attached to the functionality
@@ -65,7 +67,7 @@ type Functionality struct {
 	Position pulumi.IntOutput `pulumi:"position"`
 	// Array of property values for this functionality.
 	Properties FunctionalityPropertyArrayOutput `pulumi:"properties"`
-	// The public description of the functionality
+	// The status page description of the functionality
 	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
 	// Services associated with this functionality
 	ServiceIds pulumi.StringArrayOutput `pulumi:"serviceIds"`
@@ -76,6 +78,8 @@ type Functionality struct {
 	// Slack Channels associated with this functionality
 	SlackChannels FunctionalitySlackChannelArrayOutput `pulumi:"slackChannels"`
 	// The slug of the functionality
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -123,6 +127,8 @@ type functionalityState struct {
 	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
 	// The external id associated to this functionality
 	ExternalId *string `pulumi:"externalId"`
+	// How this functionality is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy *string `pulumi:"managedBy"`
 	// The name of the functionality
 	Name *string `pulumi:"name"`
 	// Emails attached to the functionality
@@ -141,7 +147,7 @@ type functionalityState struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this functionality.
 	Properties []FunctionalityProperty `pulumi:"properties"`
-	// The public description of the functionality
+	// The status page description of the functionality
 	PublicDescription *string `pulumi:"publicDescription"`
 	// Services associated with this functionality
 	ServiceIds []string `pulumi:"serviceIds"`
@@ -152,6 +158,8 @@ type functionalityState struct {
 	// Slack Channels associated with this functionality
 	SlackChannels []FunctionalitySlackChannel `pulumi:"slackChannels"`
 	// The slug of the functionality
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -170,6 +178,8 @@ type FunctionalityState struct {
 	EscalationPolicyId pulumi.StringPtrInput
 	// The external id associated to this functionality
 	ExternalId pulumi.StringPtrInput
+	// How this functionality is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy pulumi.StringPtrInput
 	// The name of the functionality
 	Name pulumi.StringPtrInput
 	// Emails attached to the functionality
@@ -188,7 +198,7 @@ type FunctionalityState struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this functionality.
 	Properties FunctionalityPropertyArrayInput
-	// The public description of the functionality
+	// The status page description of the functionality
 	PublicDescription pulumi.StringPtrInput
 	// Services associated with this functionality
 	ServiceIds pulumi.StringArrayInput
@@ -199,6 +209,8 @@ type FunctionalityState struct {
 	// Slack Channels associated with this functionality
 	SlackChannels FunctionalitySlackChannelArrayInput
 	// The slug of the functionality
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -239,7 +251,7 @@ type functionalityArgs struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this functionality.
 	Properties []FunctionalityProperty `pulumi:"properties"`
-	// The public description of the functionality
+	// The status page description of the functionality
 	PublicDescription *string `pulumi:"publicDescription"`
 	// Services associated with this functionality
 	ServiceIds []string `pulumi:"serviceIds"`
@@ -249,6 +261,10 @@ type functionalityArgs struct {
 	SlackAliases []FunctionalitySlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this functionality
 	SlackChannels []FunctionalitySlackChannel `pulumi:"slackChannels"`
+	// The slug of the functionality
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a Functionality resource.
@@ -285,7 +301,7 @@ type FunctionalityArgs struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this functionality.
 	Properties FunctionalityPropertyArrayInput
-	// The public description of the functionality
+	// The status page description of the functionality
 	PublicDescription pulumi.StringPtrInput
 	// Services associated with this functionality
 	ServiceIds pulumi.StringArrayInput
@@ -295,6 +311,10 @@ type FunctionalityArgs struct {
 	SlackAliases FunctionalitySlackAliasArrayInput
 	// Slack Channels associated with this functionality
 	SlackChannels FunctionalitySlackChannelArrayInput
+	// The slug of the functionality
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (FunctionalityArgs) ElementType() reflect.Type {
@@ -419,6 +439,11 @@ func (o FunctionalityOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
 }
 
+// How this functionality is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+func (o FunctionalityOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.ManagedBy }).(pulumi.StringOutput)
+}
+
 // The name of the functionality
 func (o FunctionalityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -464,7 +489,7 @@ func (o FunctionalityOutput) Properties() FunctionalityPropertyArrayOutput {
 	return o.ApplyT(func(v *Functionality) FunctionalityPropertyArrayOutput { return v.Properties }).(FunctionalityPropertyArrayOutput)
 }
 
-// The public description of the functionality
+// The status page description of the functionality
 func (o FunctionalityOutput) PublicDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.PublicDescription }).(pulumi.StringOutput)
 }
@@ -490,6 +515,8 @@ func (o FunctionalityOutput) SlackChannels() FunctionalitySlackChannelArrayOutpu
 }
 
 // The slug of the functionality
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o FunctionalityOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

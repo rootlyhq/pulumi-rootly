@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -45,6 +45,8 @@ type IncidentRole struct {
 	// Position of the incident role
 	Position pulumi.IntOutput `pulumi:"position"`
 	// The slug of the incident role
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// The summary of the incident role
 	Summary pulumi.StringOutput `pulumi:"summary"`
@@ -92,6 +94,8 @@ type incidentRoleState struct {
 	// Position of the incident role
 	Position *int `pulumi:"position"`
 	// The slug of the incident role
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 	// The summary of the incident role
 	Summary *string `pulumi:"summary"`
@@ -110,6 +114,8 @@ type IncidentRoleState struct {
 	// Position of the incident role
 	Position pulumi.IntPtrInput
 	// The slug of the incident role
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 	// The summary of the incident role
 	Summary pulumi.StringPtrInput
@@ -131,6 +137,10 @@ type incidentRoleArgs struct {
 	Optional *bool `pulumi:"optional"`
 	// Position of the incident role
 	Position *int `pulumi:"position"`
+	// The slug of the incident role
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 	// The summary of the incident role
 	Summary *string `pulumi:"summary"`
 }
@@ -148,6 +158,10 @@ type IncidentRoleArgs struct {
 	Optional pulumi.BoolPtrInput
 	// Position of the incident role
 	Position pulumi.IntPtrInput
+	// The slug of the incident role
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 	// The summary of the incident role
 	Summary pulumi.StringPtrInput
 }
@@ -269,6 +283,8 @@ func (o IncidentRoleOutput) Position() pulumi.IntOutput {
 }
 
 // The slug of the incident role
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o IncidentRoleOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *IncidentRole) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

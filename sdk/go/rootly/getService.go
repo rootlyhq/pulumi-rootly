@@ -8,9 +8,11 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
+// Retrieves a single service using either its `id` or search criteria (`name`, `slug`, `externalId`, `cortexId`, `backstageId`, `alertBroadcastEnabled`, or `incidentBroadcastEnabled`). `id` cannot be combined with filter attributes. If multiple services match the provided filters, an error will be raised.
+//
 // ## Example Usage
 func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.InvokeOption) (*LookupServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -24,52 +26,125 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getService.
 type LookupServiceArgs struct {
-	AlertBroadcastEnabled *bool   `pulumi:"alertBroadcastEnabled"`
-	BackstageId           *string `pulumi:"backstageId"`
-	CortexId              *string `pulumi:"cortexId"`
-	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt                map[string]string `pulumi:"createdAt"`
-	ExternalId               *string           `pulumi:"externalId"`
-	IncidentBroadcastEnabled *bool             `pulumi:"incidentBroadcastEnabled"`
-	Name                     *string           `pulumi:"name"`
-	Slug                     *string           `pulumi:"slug"`
+	// Enable alerts to be broadcasted to a specific channel.
+	AlertBroadcastEnabled *bool `pulumi:"alertBroadcastEnabled"`
+	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.
+	BackstageId *string `pulumi:"backstageId"`
+	// The Cortex group id associated to this service.
+	CortexId *string `pulumi:"cortexId"`
+	// The external id associated to this service.
+	ExternalId *string `pulumi:"externalId"`
+	// The ID of the resource.
+	Id *string `pulumi:"id"`
+	// Enable incidents to be broadcasted to a specific channel.
+	IncidentBroadcastEnabled *bool `pulumi:"incidentBroadcastEnabled"`
+	// The name of the service.
+	Name *string `pulumi:"name"`
+	// The slug of the service.
+	Slug *string `pulumi:"slug"`
 }
 
 // A collection of values returned by getService.
 type LookupServiceResult struct {
-	AlertBroadcastEnabled bool   `pulumi:"alertBroadcastEnabled"`
-	BackstageId           string `pulumi:"backstageId"`
-	CortexId              string `pulumi:"cortexId"`
-	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt  map[string]string `pulumi:"createdAt"`
-	ExternalId string            `pulumi:"externalId"`
-	// The ID of this resource.
-	Id                       string `pulumi:"id"`
-	IncidentBroadcastEnabled bool   `pulumi:"incidentBroadcastEnabled"`
-	Name                     string `pulumi:"name"`
-	Slug                     string `pulumi:"slug"`
+	// Slack channel to broadcast alerts to.
+	AlertBroadcastChannel GetServiceAlertBroadcastChannel `pulumi:"alertBroadcastChannel"`
+	// Enable alerts to be broadcasted to a specific channel.
+	AlertBroadcastEnabled bool `pulumi:"alertBroadcastEnabled"`
+	// The alert urgency id of the service.
+	AlertUrgencyId string `pulumi:"alertUrgencyId"`
+	// Email generated to send alerts to.
+	AlertsEmailAddress string `pulumi:"alertsEmailAddress"`
+	// Enable alerts through email.
+	AlertsEmailEnabled bool `pulumi:"alertsEmailEnabled"`
+	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.
+	BackstageId string `pulumi:"backstageId"`
+	// The hex color of the service.
+	Color string `pulumi:"color"`
+	// The Cortex group id associated to this service.
+	CortexId string `pulumi:"cortexId"`
+	// Date of creation.
+	CreatedAt string `pulumi:"createdAt"`
+	// The description of the service.
+	Description string `pulumi:"description"`
+	// Environments associated with this service.
+	EnvironmentIds []string `pulumi:"environmentIds"`
+	// The escalation policy id of the service.
+	EscalationPolicyId string `pulumi:"escalationPolicyId"`
+	// The external id associated to this service.
+	ExternalId string `pulumi:"externalId"`
+	// The GitHub repository branch associated to this service. eg: main.
+	GithubRepositoryBranch string `pulumi:"githubRepositoryBranch"`
+	// The GitHub repository name associated to this service. eg: rootlyhq/my-service.
+	GithubRepositoryName string `pulumi:"githubRepositoryName"`
+	// The GitLab repository branch associated to this service. eg: main.
+	GitlabRepositoryBranch string `pulumi:"gitlabRepositoryBranch"`
+	// The GitLab repository name associated to this service. eg: rootlyhq/my-service.
+	GitlabRepositoryName string `pulumi:"gitlabRepositoryName"`
+	// The ID of the resource.
+	Id string `pulumi:"id"`
+	// Slack channel to broadcast incidents to.
+	IncidentBroadcastChannel GetServiceIncidentBroadcastChannel `pulumi:"incidentBroadcastChannel"`
+	// Enable incidents to be broadcasted to a specific channel.
+	IncidentBroadcastEnabled bool `pulumi:"incidentBroadcastEnabled"`
+	// The Kubernetes deployment name associated to this service. eg: namespace/deployment-name.
+	KubernetesDeploymentName string `pulumi:"kubernetesDeploymentName"`
+	// How this service is managed (provenance): web, api, terraform, etc. Read-only. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy string `pulumi:"managedBy"`
+	// The name of the service.
+	Name string `pulumi:"name"`
+	// Emails attached to the service.
+	NotifyEmails []string `pulumi:"notifyEmails"`
+	// The Opsgenie service id associated to this service.
+	OpsgenieId string `pulumi:"opsgenieId"`
+	// Owner Teams associated with this service.
+	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
+	// Owner Users associated with this service.
+	OwnerUserIds []float64 `pulumi:"ownerUserIds"`
+	// The PagerDuty service id associated to this service.
+	PagerdutyId string `pulumi:"pagerdutyId"`
+	// Position of the service.
+	Position int `pulumi:"position"`
+	// Array of property values for this service.
+	Properties []GetServiceProperty `pulumi:"properties"`
+	// The status page description of the service.
+	PublicDescription string `pulumi:"publicDescription"`
+	// Services dependent on this service.
+	ServiceIds []string `pulumi:"serviceIds"`
+	// The Service Now CI sys id associated to this service.
+	ServiceNowCiSysId string `pulumi:"serviceNowCiSysId"`
+	// Slack Aliases associated with this service.
+	SlackAliases []GetServiceSlackAlias `pulumi:"slackAliases"`
+	// Slack Channels associated with this service.
+	SlackChannels []GetServiceSlackChannel `pulumi:"slackChannels"`
+	// The slug of the service.
+	Slug string `pulumi:"slug"`
+	// Date of last update.
+	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts ...pulumi.InvokeOption) LookupServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceResultOutput, error) {
-			args := v.(LookupServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getService:getService", args, LookupServiceResultOutput{}, options).(LookupServiceResultOutput), nil
-		}).(LookupServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getService:getService", args, LookupServiceResultOutput{}, options).(LookupServiceResultOutput)
 }
 
 // A collection of arguments for invoking getService.
 type LookupServiceOutputArgs struct {
-	AlertBroadcastEnabled pulumi.BoolPtrInput   `pulumi:"alertBroadcastEnabled"`
-	BackstageId           pulumi.StringPtrInput `pulumi:"backstageId"`
-	CortexId              pulumi.StringPtrInput `pulumi:"cortexId"`
-	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt                pulumi.StringMapInput `pulumi:"createdAt"`
-	ExternalId               pulumi.StringPtrInput `pulumi:"externalId"`
-	IncidentBroadcastEnabled pulumi.BoolPtrInput   `pulumi:"incidentBroadcastEnabled"`
-	Name                     pulumi.StringPtrInput `pulumi:"name"`
-	Slug                     pulumi.StringPtrInput `pulumi:"slug"`
+	// Enable alerts to be broadcasted to a specific channel.
+	AlertBroadcastEnabled pulumi.BoolPtrInput `pulumi:"alertBroadcastEnabled"`
+	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.
+	BackstageId pulumi.StringPtrInput `pulumi:"backstageId"`
+	// The Cortex group id associated to this service.
+	CortexId pulumi.StringPtrInput `pulumi:"cortexId"`
+	// The external id associated to this service.
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
+	// The ID of the resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Enable incidents to be broadcasted to a specific channel.
+	IncidentBroadcastEnabled pulumi.BoolPtrInput `pulumi:"incidentBroadcastEnabled"`
+	// The name of the service.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The slug of the service.
+	Slug pulumi.StringPtrInput `pulumi:"slug"`
 }
 
 func (LookupServiceOutputArgs) ElementType() reflect.Type {
@@ -91,42 +166,189 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx co
 	return o
 }
 
+// Slack channel to broadcast alerts to.
+func (o LookupServiceResultOutput) AlertBroadcastChannel() GetServiceAlertBroadcastChannelOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceAlertBroadcastChannel { return v.AlertBroadcastChannel }).(GetServiceAlertBroadcastChannelOutput)
+}
+
+// Enable alerts to be broadcasted to a specific channel.
 func (o LookupServiceResultOutput) AlertBroadcastEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceResult) bool { return v.AlertBroadcastEnabled }).(pulumi.BoolOutput)
 }
 
+// The alert urgency id of the service.
+func (o LookupServiceResultOutput) AlertUrgencyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.AlertUrgencyId }).(pulumi.StringOutput)
+}
+
+// Email generated to send alerts to.
+func (o LookupServiceResultOutput) AlertsEmailAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.AlertsEmailAddress }).(pulumi.StringOutput)
+}
+
+// Enable alerts through email.
+func (o LookupServiceResultOutput) AlertsEmailEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceResult) bool { return v.AlertsEmailEnabled }).(pulumi.BoolOutput)
+}
+
+// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name.
 func (o LookupServiceResultOutput) BackstageId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.BackstageId }).(pulumi.StringOutput)
 }
 
+// The hex color of the service.
+func (o LookupServiceResultOutput) Color() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Color }).(pulumi.StringOutput)
+}
+
+// The Cortex group id associated to this service.
 func (o LookupServiceResultOutput) CortexId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.CortexId }).(pulumi.StringOutput)
 }
 
-// Filter by date range using 'lt' and 'gt'.
-func (o LookupServiceResultOutput) CreatedAt() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LookupServiceResult) map[string]string { return v.CreatedAt }).(pulumi.StringMapOutput)
+// Date of creation.
+func (o LookupServiceResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The description of the service.
+func (o LookupServiceResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Environments associated with this service.
+func (o LookupServiceResultOutput) EnvironmentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []string { return v.EnvironmentIds }).(pulumi.StringArrayOutput)
+}
+
+// The escalation policy id of the service.
+func (o LookupServiceResultOutput) EscalationPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.EscalationPolicyId }).(pulumi.StringOutput)
+}
+
+// The external id associated to this service.
 func (o LookupServiceResultOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ExternalId }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
+// The GitHub repository branch associated to this service. eg: main.
+func (o LookupServiceResultOutput) GithubRepositoryBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.GithubRepositoryBranch }).(pulumi.StringOutput)
+}
+
+// The GitHub repository name associated to this service. eg: rootlyhq/my-service.
+func (o LookupServiceResultOutput) GithubRepositoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.GithubRepositoryName }).(pulumi.StringOutput)
+}
+
+// The GitLab repository branch associated to this service. eg: main.
+func (o LookupServiceResultOutput) GitlabRepositoryBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.GitlabRepositoryBranch }).(pulumi.StringOutput)
+}
+
+// The GitLab repository name associated to this service. eg: rootlyhq/my-service.
+func (o LookupServiceResultOutput) GitlabRepositoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.GitlabRepositoryName }).(pulumi.StringOutput)
+}
+
+// The ID of the resource.
 func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Slack channel to broadcast incidents to.
+func (o LookupServiceResultOutput) IncidentBroadcastChannel() GetServiceIncidentBroadcastChannelOutput {
+	return o.ApplyT(func(v LookupServiceResult) GetServiceIncidentBroadcastChannel { return v.IncidentBroadcastChannel }).(GetServiceIncidentBroadcastChannelOutput)
+}
+
+// Enable incidents to be broadcasted to a specific channel.
 func (o LookupServiceResultOutput) IncidentBroadcastEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceResult) bool { return v.IncidentBroadcastEnabled }).(pulumi.BoolOutput)
 }
 
+// The Kubernetes deployment name associated to this service. eg: namespace/deployment-name.
+func (o LookupServiceResultOutput) KubernetesDeploymentName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.KubernetesDeploymentName }).(pulumi.StringOutput)
+}
+
+// How this service is managed (provenance): web, api, terraform, etc. Read-only. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+func (o LookupServiceResultOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ManagedBy }).(pulumi.StringOutput)
+}
+
+// The name of the service.
 func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Emails attached to the service.
+func (o LookupServiceResultOutput) NotifyEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []string { return v.NotifyEmails }).(pulumi.StringArrayOutput)
+}
+
+// The Opsgenie service id associated to this service.
+func (o LookupServiceResultOutput) OpsgenieId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.OpsgenieId }).(pulumi.StringOutput)
+}
+
+// Owner Teams associated with this service.
+func (o LookupServiceResultOutput) OwnerGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []string { return v.OwnerGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Owner Users associated with this service.
+func (o LookupServiceResultOutput) OwnerUserIds() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []float64 { return v.OwnerUserIds }).(pulumi.Float64ArrayOutput)
+}
+
+// The PagerDuty service id associated to this service.
+func (o LookupServiceResultOutput) PagerdutyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.PagerdutyId }).(pulumi.StringOutput)
+}
+
+// Position of the service.
+func (o LookupServiceResultOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServiceResult) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// Array of property values for this service.
+func (o LookupServiceResultOutput) Properties() GetServicePropertyArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceProperty { return v.Properties }).(GetServicePropertyArrayOutput)
+}
+
+// The status page description of the service.
+func (o LookupServiceResultOutput) PublicDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.PublicDescription }).(pulumi.StringOutput)
+}
+
+// Services dependent on this service.
+func (o LookupServiceResultOutput) ServiceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []string { return v.ServiceIds }).(pulumi.StringArrayOutput)
+}
+
+// The Service Now CI sys id associated to this service.
+func (o LookupServiceResultOutput) ServiceNowCiSysId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceNowCiSysId }).(pulumi.StringOutput)
+}
+
+// Slack Aliases associated with this service.
+func (o LookupServiceResultOutput) SlackAliases() GetServiceSlackAliasArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceSlackAlias { return v.SlackAliases }).(GetServiceSlackAliasArrayOutput)
+}
+
+// Slack Channels associated with this service.
+func (o LookupServiceResultOutput) SlackChannels() GetServiceSlackChannelArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceSlackChannel { return v.SlackChannels }).(GetServiceSlackChannelArrayOutput)
+}
+
+// The slug of the service.
 func (o LookupServiceResultOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Slug }).(pulumi.StringOutput)
+}
+
+// Date of last update.
+func (o LookupServiceResultOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 func init() {

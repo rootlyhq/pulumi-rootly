@@ -77,8 +77,10 @@ export class WorkflowGroup extends pulumi.CustomResource {
     declare public readonly position: pulumi.Output<number>;
     /**
      * The slug of the workflow group.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a WorkflowGroup resource with the given unique name, arguments, and options.
@@ -108,7 +110,7 @@ export class WorkflowGroup extends pulumi.CustomResource {
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkflowGroup.__pulumiType, name, resourceInputs, opts);
@@ -145,6 +147,8 @@ export interface WorkflowGroupState {
     position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the workflow group.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -177,4 +181,10 @@ export interface WorkflowGroupArgs {
      * The position of the workflow group
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * The slug of the workflow group.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name` and `kind`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

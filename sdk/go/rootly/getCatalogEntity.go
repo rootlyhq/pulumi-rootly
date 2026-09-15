@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupCatalogEntity(ctx *pulumi.Context, args *LookupCatalogEntityArgs, opts ...pulumi.InvokeOption) (*LookupCatalogEntityResult, error) {
@@ -40,12 +40,8 @@ type LookupCatalogEntityResult struct {
 }
 
 func LookupCatalogEntityOutput(ctx *pulumi.Context, args LookupCatalogEntityOutputArgs, opts ...pulumi.InvokeOption) LookupCatalogEntityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCatalogEntityResultOutput, error) {
-			args := v.(LookupCatalogEntityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCatalogEntity:getCatalogEntity", args, LookupCatalogEntityResultOutput{}, options).(LookupCatalogEntityResultOutput), nil
-		}).(LookupCatalogEntityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCatalogEntity:getCatalogEntity", args, LookupCatalogEntityResultOutput{}, options).(LookupCatalogEntityResultOutput)
 }
 
 // A collection of arguments for invoking getCatalogEntity.

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupRetrospectiveProcessGroupStep(ctx *pulumi.Context, args *LookupRetrospectiveProcessGroupStepArgs, opts ...pulumi.InvokeOption) (*LookupRetrospectiveProcessGroupStepResult, error) {
@@ -36,12 +36,8 @@ type LookupRetrospectiveProcessGroupStepResult struct {
 }
 
 func LookupRetrospectiveProcessGroupStepOutput(ctx *pulumi.Context, args LookupRetrospectiveProcessGroupStepOutputArgs, opts ...pulumi.InvokeOption) LookupRetrospectiveProcessGroupStepResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRetrospectiveProcessGroupStepResultOutput, error) {
-			args := v.(LookupRetrospectiveProcessGroupStepArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getRetrospectiveProcessGroupStep:getRetrospectiveProcessGroupStep", args, LookupRetrospectiveProcessGroupStepResultOutput{}, options).(LookupRetrospectiveProcessGroupStepResultOutput), nil
-		}).(LookupRetrospectiveProcessGroupStepResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getRetrospectiveProcessGroupStep:getRetrospectiveProcessGroupStep", args, LookupRetrospectiveProcessGroupStepResultOutput{}, options).(LookupRetrospectiveProcessGroupStepResultOutput)
 }
 
 // A collection of arguments for invoking getRetrospectiveProcessGroupStep.

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -39,12 +39,8 @@ type LookupAlertUrgencyResult struct {
 }
 
 func LookupAlertUrgencyOutput(ctx *pulumi.Context, args LookupAlertUrgencyOutputArgs, opts ...pulumi.InvokeOption) LookupAlertUrgencyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlertUrgencyResultOutput, error) {
-			args := v.(LookupAlertUrgencyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getAlertUrgency:getAlertUrgency", args, LookupAlertUrgencyResultOutput{}, options).(LookupAlertUrgencyResultOutput), nil
-		}).(LookupAlertUrgencyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getAlertUrgency:getAlertUrgency", args, LookupAlertUrgencyResultOutput{}, options).(LookupAlertUrgencyResultOutput)
 }
 
 // A collection of arguments for invoking getAlertUrgency.

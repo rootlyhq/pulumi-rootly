@@ -85,8 +85,10 @@ export class CatalogChecklistTemplate extends pulumi.CustomResource {
     declare public readonly scopeType: pulumi.Output<string | undefined>;
     /**
      * The slug of the checklist template
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a CatalogChecklistTemplate resource with the given unique name, arguments, and options.
@@ -118,7 +120,7 @@ export class CatalogChecklistTemplate extends pulumi.CustomResource {
             resourceInputs["owners"] = args?.owners;
             resourceInputs["scopeId"] = args?.scopeId;
             resourceInputs["scopeType"] = args?.scopeType;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CatalogChecklistTemplate.__pulumiType, name, resourceInputs, opts);
@@ -159,6 +161,8 @@ export interface CatalogChecklistTemplateState {
     scopeType?: pulumi.Input<string | undefined>;
     /**
      * The slug of the checklist template
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -195,4 +199,10 @@ export interface CatalogChecklistTemplateArgs {
      * The scope type. Value must be one of `Team`, `Catalog`.
      */
     scopeType?: pulumi.Input<string | undefined>;
+    /**
+     * The slug of the checklist template
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

@@ -23,6 +23,9 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: lint
@@ -33,17 +36,34 @@ jobs:
     - name: Install go
       uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
       with:
-        go-version: 1.26.x
+        go-version-file: provider/go.mod
         cache: false
-    - name: disarm go:embed directives to enable lint
-      continue-on-error: true # this fails if there are no go:embed directives
+    - name: Verify generated schema and dispatch metadata
       run: |
-        git grep -l 'go:embed' -- provider | xargs sed -i 's/go:embed/ goembed/g'
-    - name: prepare upstream
-      continue-on-error: true
-      run: make upstream
-    - run: cd provider && go mod tidy
+        (cd provider && go build -o ../bin/pulumi-tfgen-rootly -ldflags '-X github.com/rootlyhq/pulumi-rootly/provider/pkg/version.Version=4.0.0' ./cmd/pulumi-tfgen-rootly)
+        ./bin/pulumi-tfgen-rootly schema --out provider/cmd/pulumi-resource-rootly
+        git diff --exit-code -- provider/cmd/pulumi-resource-rootly/schema.json provider/cmd/pulumi-resource-rootly/bridge-metadata.json
+    - name: Test provider and mux dispatch
+      run: cd provider && go test ./...
     - name: golangci-lint
       uses: golangci/golangci-lint-action@ba0d7d2ec06a0ea1cb5fa41b2e4a3ab91d21278a # v9.3.0
       with:
         working-directory: provider
+        version: v2.13.2
+    - name: Check reachable Go vulnerabilities
+      run: |
+        go install golang.org/x/vuln/cmd/govulncheck@v1.8.0
+        cd provider
+        govulncheck ./...
+    - name: Install Node.js
+      uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      with:
+        node-version: '24.21.0'
+    - name: Build Node.js SDK
+      run: |
+        npm exec --yes --package=yarn@1.22.22 -- yarn --cwd sdk/nodejs install --frozen-lockfile
+        npm exec --yes --package=yarn@1.22.22 -- yarn --cwd sdk/nodejs build
+    - name: Build Go SDK
+      run: cd sdk && go test ./...
+    - name: Compile example test helpers
+      run: cd examples && go test -tags=all ./...

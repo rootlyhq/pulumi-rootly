@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -45,12 +45,8 @@ type LookupSeverityResult struct {
 }
 
 func LookupSeverityOutput(ctx *pulumi.Context, args LookupSeverityOutputArgs, opts ...pulumi.InvokeOption) LookupSeverityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSeverityResultOutput, error) {
-			args := v.(LookupSeverityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getSeverity:getSeverity", args, LookupSeverityResultOutput{}, options).(LookupSeverityResultOutput), nil
-		}).(LookupSeverityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getSeverity:getSeverity", args, LookupSeverityResultOutput{}, options).(LookupSeverityResultOutput)
 }
 
 // A collection of arguments for invoking getSeverity.

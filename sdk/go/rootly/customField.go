@@ -9,7 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // DEPRECATED: Please use `FormField` resource instead.
@@ -50,6 +50,8 @@ type CustomField struct {
 	Requireds pulumi.StringArrayOutput `pulumi:"requireds"`
 	Showns    pulumi.StringArrayOutput `pulumi:"showns"`
 	// The slug of the custom_field
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -100,6 +102,8 @@ type customFieldState struct {
 	Requireds []string `pulumi:"requireds"`
 	Showns    []string `pulumi:"showns"`
 	// The slug of the custom_field
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -118,6 +122,8 @@ type CustomFieldState struct {
 	Requireds pulumi.StringArrayInput
 	Showns    pulumi.StringArrayInput
 	// The slug of the custom_field
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 }
 
@@ -140,6 +146,8 @@ type customFieldArgs struct {
 	Requireds []string `pulumi:"requireds"`
 	Showns    []string `pulumi:"showns"`
 	// The slug of the custom_field
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -159,6 +167,8 @@ type CustomFieldArgs struct {
 	Requireds pulumi.StringArrayInput
 	Showns    pulumi.StringArrayInput
 	// The slug of the custom_field
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 }
 
@@ -287,6 +297,8 @@ func (o CustomFieldOutput) Showns() pulumi.StringArrayOutput {
 }
 
 // The slug of the custom_field
+//
+// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 func (o CustomFieldOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomField) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

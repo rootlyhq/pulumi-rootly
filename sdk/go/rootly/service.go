@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -71,6 +71,8 @@ type Service struct {
 	IncidentBroadcastEnabled pulumi.BoolOutput `pulumi:"incidentBroadcastEnabled"`
 	// The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
 	KubernetesDeploymentName pulumi.StringOutput `pulumi:"kubernetesDeploymentName"`
+	// How this service is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy pulumi.StringOutput `pulumi:"managedBy"`
 	// The name of the service
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Emails attached to the service
@@ -87,7 +89,7 @@ type Service struct {
 	Position pulumi.IntOutput `pulumi:"position"`
 	// Array of property values for this service.
 	Properties ServicePropertyArrayOutput `pulumi:"properties"`
-	// The public description of the service
+	// The status page description of the service
 	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
 	// Services dependent on this service
 	ServiceIds pulumi.StringArrayOutput `pulumi:"serviceIds"`
@@ -98,6 +100,8 @@ type Service struct {
 	// Slack Channels associated with this service
 	SlackChannels ServiceSlackChannelArrayOutput `pulumi:"slackChannels"`
 	// The slug of the service
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -169,6 +173,8 @@ type serviceState struct {
 	IncidentBroadcastEnabled *bool `pulumi:"incidentBroadcastEnabled"`
 	// The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
 	KubernetesDeploymentName *string `pulumi:"kubernetesDeploymentName"`
+	// How this service is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy *string `pulumi:"managedBy"`
 	// The name of the service
 	Name *string `pulumi:"name"`
 	// Emails attached to the service
@@ -185,7 +191,7 @@ type serviceState struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this service.
 	Properties []ServiceProperty `pulumi:"properties"`
-	// The public description of the service
+	// The status page description of the service
 	PublicDescription *string `pulumi:"publicDescription"`
 	// Services dependent on this service
 	ServiceIds []string `pulumi:"serviceIds"`
@@ -196,6 +202,8 @@ type serviceState struct {
 	// Slack Channels associated with this service
 	SlackChannels []ServiceSlackChannel `pulumi:"slackChannels"`
 	// The slug of the service
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -238,6 +246,8 @@ type ServiceState struct {
 	IncidentBroadcastEnabled pulumi.BoolPtrInput
 	// The Kubernetes deployment name associated to this service. eg: namespace/deployment-name
 	KubernetesDeploymentName pulumi.StringPtrInput
+	// How this service is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+	ManagedBy pulumi.StringPtrInput
 	// The name of the service
 	Name pulumi.StringPtrInput
 	// Emails attached to the service
@@ -254,7 +264,7 @@ type ServiceState struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this service.
 	Properties ServicePropertyArrayInput
-	// The public description of the service
+	// The status page description of the service
 	PublicDescription pulumi.StringPtrInput
 	// Services dependent on this service
 	ServiceIds pulumi.StringArrayInput
@@ -265,6 +275,8 @@ type ServiceState struct {
 	// Slack Channels associated with this service
 	SlackChannels ServiceSlackChannelArrayInput
 	// The slug of the service
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -327,7 +339,7 @@ type serviceArgs struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this service.
 	Properties []ServiceProperty `pulumi:"properties"`
-	// The public description of the service
+	// The status page description of the service
 	PublicDescription *string `pulumi:"publicDescription"`
 	// Services dependent on this service
 	ServiceIds []string `pulumi:"serviceIds"`
@@ -337,6 +349,10 @@ type serviceArgs struct {
 	SlackAliases []ServiceSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this service
 	SlackChannels []ServiceSlackChannel `pulumi:"slackChannels"`
+	// The slug of the service
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a Service resource.
@@ -395,7 +411,7 @@ type ServiceArgs struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this service.
 	Properties ServicePropertyArrayInput
-	// The public description of the service
+	// The status page description of the service
 	PublicDescription pulumi.StringPtrInput
 	// Services dependent on this service
 	ServiceIds pulumi.StringArrayInput
@@ -405,6 +421,10 @@ type ServiceArgs struct {
 	SlackAliases ServiceSlackAliasArrayInput
 	// Slack Channels associated with this service
 	SlackChannels ServiceSlackChannelArrayInput
+	// The slug of the service
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {
@@ -589,6 +609,11 @@ func (o ServiceOutput) KubernetesDeploymentName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.KubernetesDeploymentName }).(pulumi.StringOutput)
 }
 
+// How this service is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+func (o ServiceOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ManagedBy }).(pulumi.StringOutput)
+}
+
 // The name of the service
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -629,7 +654,7 @@ func (o ServiceOutput) Properties() ServicePropertyArrayOutput {
 	return o.ApplyT(func(v *Service) ServicePropertyArrayOutput { return v.Properties }).(ServicePropertyArrayOutput)
 }
 
-// The public description of the service
+// The status page description of the service
 func (o ServiceOutput) PublicDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.PublicDescription }).(pulumi.StringOutput)
 }
@@ -655,6 +680,8 @@ func (o ServiceOutput) SlackChannels() ServiceSlackChannelArrayOutput {
 }
 
 // The slug of the service
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o ServiceOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

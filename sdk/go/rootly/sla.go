@@ -9,7 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -69,6 +69,8 @@ type Sla struct {
 	// Position of the SLA for ordering
 	Position pulumi.IntOutput `pulumi:"position"`
 	// The slug of the SLA
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
@@ -149,6 +151,8 @@ type slaState struct {
 	// Position of the SLA for ordering
 	Position *int `pulumi:"position"`
 	// The slug of the SLA
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -188,6 +192,8 @@ type SlaState struct {
 	// Position of the SLA for ordering
 	Position pulumi.IntPtrInput
 	// The slug of the SLA
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -231,6 +237,8 @@ type slaArgs struct {
 	// Position of the SLA for ordering
 	Position *int `pulumi:"position"`
 	// The slug of the SLA
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
 }
 
@@ -271,6 +279,8 @@ type SlaArgs struct {
 	// Position of the SLA for ordering
 	Position pulumi.IntPtrInput
 	// The slug of the SLA
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
 }
 
@@ -447,6 +457,8 @@ func (o SlaOutput) Position() pulumi.IntOutput {
 }
 
 // The slug of the SLA
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
 func (o SlaOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sla) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

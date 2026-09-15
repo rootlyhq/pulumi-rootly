@@ -71,6 +71,12 @@ export class Catalog extends pulumi.CustomResource {
      * Default position of the catalog when displayed in a list.
      */
     declare public readonly position: pulumi.Output<number>;
+    /**
+     * The slug of the catalog. Derived from `name`.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Catalog resource with the given unique name, arguments, and options.
@@ -91,6 +97,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
+            resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as CatalogArgs | undefined;
             resourceInputs["description"] = args?.description;
@@ -98,6 +105,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["icon"] = args?.icon;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
+            resourceInputs["slug"] = args?.slug;
             resourceInputs["managedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -127,6 +135,12 @@ export interface CatalogState {
      * Default position of the catalog when displayed in a list.
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * The slug of the catalog. Derived from `name`.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,4 +161,10 @@ export interface CatalogArgs {
      * Default position of the catalog when displayed in a list.
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * The slug of the catalog. Derived from `name`.
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

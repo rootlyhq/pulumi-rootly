@@ -6,14 +6,21 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Retrieves a list of all services.
+ *
+ * ## Example Usage
+ */
 export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rootly:index/getServices:getServices", {
+        "alertBroadcastEnabled": args.alertBroadcastEnabled,
         "backstageId": args.backstageId,
+        "cortexId": args.cortexId,
+        "externalId": args.externalId,
+        "incidentBroadcastEnabled": args.incidentBroadcastEnabled,
         "name": args.name,
-        "opsgenieId": args.opsgenieId,
-        "pagerdutyId": args.pagerdutyId,
         "slug": args.slug,
     }, opts);
 }
@@ -22,10 +29,33 @@ export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getServices.
  */
 export interface GetServicesArgs {
+    /**
+     * Filter by alert broadcast enabled.
+     */
+    alertBroadcastEnabled?: boolean;
+    /**
+     * The Backstage entity id to filter by. eg: :namespace/:kind/:entity_name.
+     */
     backstageId?: string;
+    /**
+     * The Cortex group id to filter by.
+     */
+    cortexId?: string;
+    /**
+     * The external id to filter by.
+     */
+    externalId?: string;
+    /**
+     * Filter by incident broadcast enabled.
+     */
+    incidentBroadcastEnabled?: boolean;
+    /**
+     * The name of the service to filter by.
+     */
     name?: string;
-    opsgenieId?: string;
-    pagerdutyId?: string;
+    /**
+     * The slug of the service to filter by.
+     */
     slug?: string;
 }
 
@@ -33,25 +63,51 @@ export interface GetServicesArgs {
  * A collection of values returned by getServices.
  */
 export interface GetServicesResult {
+    /**
+     * Filter by alert broadcast enabled.
+     */
+    readonly alertBroadcastEnabled?: boolean;
+    /**
+     * The Backstage entity id to filter by. eg: :namespace/:kind/:entity_name.
+     */
     readonly backstageId?: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The Cortex group id to filter by.
      */
-    readonly id: string;
+    readonly cortexId?: string;
+    /**
+     * The external id to filter by.
+     */
+    readonly externalId?: string;
+    /**
+     * Filter by incident broadcast enabled.
+     */
+    readonly incidentBroadcastEnabled?: boolean;
+    /**
+     * The name of the service to filter by.
+     */
     readonly name?: string;
-    readonly opsgenieId?: string;
-    readonly pagerdutyId?: string;
     readonly services: outputs.GetServicesService[];
+    /**
+     * The slug of the service to filter by.
+     */
     readonly slug?: string;
 }
+/**
+ * Retrieves a list of all services.
+ *
+ * ## Example Usage
+ */
 export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rootly:index/getServices:getServices", {
+        "alertBroadcastEnabled": args.alertBroadcastEnabled,
         "backstageId": args.backstageId,
+        "cortexId": args.cortexId,
+        "externalId": args.externalId,
+        "incidentBroadcastEnabled": args.incidentBroadcastEnabled,
         "name": args.name,
-        "opsgenieId": args.opsgenieId,
-        "pagerdutyId": args.pagerdutyId,
         "slug": args.slug,
     }, opts);
 }
@@ -60,9 +116,32 @@ export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getServices.
  */
 export interface GetServicesOutputArgs {
+    /**
+     * Filter by alert broadcast enabled.
+     */
+    alertBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The Backstage entity id to filter by. eg: :namespace/:kind/:entity_name.
+     */
     backstageId?: pulumi.Input<string | undefined>;
+    /**
+     * The Cortex group id to filter by.
+     */
+    cortexId?: pulumi.Input<string | undefined>;
+    /**
+     * The external id to filter by.
+     */
+    externalId?: pulumi.Input<string | undefined>;
+    /**
+     * Filter by incident broadcast enabled.
+     */
+    incidentBroadcastEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The name of the service to filter by.
+     */
     name?: pulumi.Input<string | undefined>;
-    opsgenieId?: pulumi.Input<string | undefined>;
-    pagerdutyId?: pulumi.Input<string | undefined>;
+    /**
+     * The slug of the service to filter by.
+     */
     slug?: pulumi.Input<string | undefined>;
 }

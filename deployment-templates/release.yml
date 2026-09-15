@@ -3,77 +3,80 @@ on:
   push:
     tags:
       - v*.*.*
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Git tag to release (e.g. v3.1.0)'
+        required: true
 env:
-  # THIS GITHUB_TOKEN IS A REQUIREMENT TO BE ABLE TO WRITE TO GH RELEASES
-  GITHUB_TOKEN: ${{ YOUR GITHUB TOKEN HERE }}
-  # IF YOU NEED TO PUBLISH A NPM PACKAGE THEN ENSURE A NPM_TOKEN SECRET IS SET
-  # AND PUBLISH_NPM: TRUE. IF YOU WANT TO PUBLISH TO A PRIVATE NPM REGISTRY
-  # THEN ENSURE THE NPM_REGISTRY_URL IS CHANGED
-  NODE_AUTH_TOKEN: ${{ YOUR NPM TOKEN HERE }}
-  NPM_TOKEN: ${{ YOUR NPM TOKEN HERE }}
-  PUBLISH_NPM: true
-  NPM_REGISTRY_URL: https://registry.npmjs.org
-  # IF YOU NEED TO PUBLISH A NUGET PACKAGE THEN ENSURE AN NUGET_PUBLISH_KEY
-  # SECRET IS SET AND PUBLISH_NUGET: TRUE. IF YOU WANT TO PUBLISH TO AN ALTERNATIVE
-  # NPM REGISTRY THEN ENSURE THE NPM_REGISTRY_URL IS CHANGED
-  NUGET_PUBLISH_KEY: ${{ YOUR NUGET PUBLISH KEY HERE }}
-  NUGET_FEED_URL: https://api.nuget.org/v3/index.json
-  PUBLISH_NUGET: true
-  # IF YOU NEED TO PUBLISH A PYPI PACKAGE SET PUBLISH_PYPI: TRUE AND CHANGE PYPI_PASSWORD, PYPI_USERNAME TO YOUR CREDENTIALS.
-  # IF YOU WANT TO PUBLISH TO AN ALTERNATIVE PYPI REGISTRY THEN ENSURE THE PYPI_REPOSITORY_URL IS SET. 
-  PYPI_PASSWORD: ${{ YOUR PYPI PASSWORD HERE }}
-  PYPI_USERNAME: "YOUR PYPI USERNAME HERE"
-  PYPI_REPOSITORY_URL: ""
-  PUBLISH_PYPI: true
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
-  publish_binary:
-    name: publish
+  github-release:
+    name: github-release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        ref: ${{ inputs.tag || github.ref }}
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
       with:
         go-version: ${{matrix.goversion}}
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      uses: jaxxstorm/action-install-gh-release@25e24d2d23ae098373794ef1d6faecb48ee52da8 # v3.0.0
       with:
         repo: pulumi/pulumictl
+        tag: v0.0.50
     - name: Set PreRelease Version
       run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
     - name: Run GoReleaser
-      uses: goreleaser/goreleaser-action@v2
+      uses: goreleaser/goreleaser-action@f06c13b6b1a9625abc9e6e439d9c05a8f2190e94 # v7.2.3
       with:
-        args: -p 3 release --rm-dist
-        version: latest
+        args: -p 3 release --clean
+        version: v2.18.1
     strategy:
       fail-fast: true
       matrix:
         goversion:
-        - 1.17.x
-  publish_sdk:
-    name: Publish SDKs
+        - 1.27.x
+  npm-publish:
+    name: npm-publish
     runs-on: ubuntu-latest
-    needs: publish_binary
+    permissions:
+      contents: read
+      id-token: write
     steps:
-    - name: Publish SDKs
-      uses: pulumi/pulumi-package-publisher@v0.0.6
+    - name: Checkout Repo
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        ref: ${{ inputs.tag || github.ref }}
+    - name: Unshallow clone for tags
+      run: git fetch --prune --unshallow --tags
+    - name: Install Go
+      uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+      with:
+        go-version: ${{matrix.goversion}}
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@25e24d2d23ae098373794ef1d6faecb48ee52da8 # v3.0.0
+      with:
+        repo: pulumi/pulumictl
+        tag: v0.0.50
+    - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+      with:
+        node-version: '24.21.0'
+    - run: npm install --global yarn@1.22.22
+    - name: Publish NPM
+      run: |
+        make build_nodejs
+        npm publish --access public --provenance sdk/nodejs/bin
+        git checkout -f sdk/nodejs/package.json
     strategy:
       fail-fast: true
       matrix:
-        dotnetversion:
-          - 3.1.301
         goversion:
-          - 1.17.x
-        language:
-          - nodejs
-          - python
-          - dotnet
-          - go
-        nodeversion:
-          - 14.x
-        pythonversion:
-          - "3.9"
+        - 1.27.x

@@ -144,7 +144,9 @@ export class OnCallRole extends pulumi.CustomResource {
      */
     declare public readonly servicesPermissions: pulumi.Output<string[]>;
     /**
-     * The role slug.
+     * [DEPRECATED] The role slug. Derived from `name`; any configured value is ignored.
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
     /**
@@ -320,7 +322,9 @@ export interface OnCallRoleState {
      */
     servicesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The role slug.
+     * [DEPRECATED] The role slug. Derived from `name`; any configured value is ignored.
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
     /**
@@ -426,7 +430,9 @@ export interface OnCallRoleArgs {
      */
     servicesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The role slug.
+     * [DEPRECATED] The role slug. Derived from `name`; any configured value is ignored.
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
     /**

@@ -113,6 +113,10 @@ export class Schedule extends pulumi.CustomResource {
      * Whether the schedule is synced with Linear. Value must be one of true or false
      */
     declare public readonly syncLinearEnabled: pulumi.Output<boolean>;
+    /**
+     * A valid IANA time zone name. Only applicable when config*one*timezone*per*schedule_enabled is true for the organization.
+     */
+    declare public readonly timeZone: pulumi.Output<string>;
 
     /**
      * Create a Schedule resource with the given unique name, arguments, and options.
@@ -142,6 +146,7 @@ export class Schedule extends pulumi.CustomResource {
             resourceInputs["slackChannel"] = state?.slackChannel;
             resourceInputs["slackUserGroup"] = state?.slackUserGroup;
             resourceInputs["syncLinearEnabled"] = state?.syncLinearEnabled;
+            resourceInputs["timeZone"] = state?.timeZone;
         } else {
             const args = argsOrState as ScheduleArgs | undefined;
             resourceInputs["allTimeCoverage"] = args?.allTimeCoverage;
@@ -159,6 +164,7 @@ export class Schedule extends pulumi.CustomResource {
             resourceInputs["slackChannel"] = args?.slackChannel;
             resourceInputs["slackUserGroup"] = args?.slackUserGroup;
             resourceInputs["syncLinearEnabled"] = args?.syncLinearEnabled;
+            resourceInputs["timeZone"] = args?.timeZone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Schedule.__pulumiType, name, resourceInputs, opts);
@@ -229,6 +235,10 @@ export interface ScheduleState {
      * Whether the schedule is synced with Linear. Value must be one of true or false
      */
     syncLinearEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * A valid IANA time zone name. Only applicable when config*one*timezone*per*schedule_enabled is true for the organization.
+     */
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -295,4 +305,8 @@ export interface ScheduleArgs {
      * Whether the schedule is synced with Linear. Value must be one of true or false
      */
     syncLinearEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * A valid IANA time zone name. Only applicable when config*one*timezone*per*schedule_enabled is true for the organization.
+     */
+    timeZone?: pulumi.Input<string | undefined>;
 }

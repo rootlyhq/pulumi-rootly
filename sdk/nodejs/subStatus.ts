@@ -60,7 +60,10 @@ export class SubStatus extends pulumi.CustomResource {
      */
     declare public readonly parentStatus: pulumi.Output<string | undefined>;
     declare public readonly position: pulumi.Output<number>;
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    /**
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a SubStatus resource with the given unique name, arguments, and options.
@@ -86,7 +89,7 @@ export class SubStatus extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["parentStatus"] = args?.parentStatus;
             resourceInputs["position"] = args?.position;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SubStatus.__pulumiType, name, resourceInputs, opts);
@@ -104,6 +107,9 @@ export interface SubStatusState {
      */
     parentStatus?: pulumi.Input<string | undefined>;
     position?: pulumi.Input<number | undefined>;
+    /**
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
     slug?: pulumi.Input<string | undefined>;
 }
 
@@ -118,4 +124,8 @@ export interface SubStatusArgs {
      */
     parentStatus?: pulumi.Input<string | undefined>;
     position?: pulumi.Input<number | undefined>;
+    /**
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

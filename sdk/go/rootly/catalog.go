@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -43,6 +43,10 @@ type Catalog struct {
 	Name      pulumi.StringOutput `pulumi:"name"`
 	// Default position of the catalog when displayed in a list.
 	Position pulumi.IntOutput `pulumi:"position"`
+	// The slug of the catalog. Derived from `name`.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
 // NewCatalog registers a new resource with the given unique name, arguments, and options.
@@ -85,6 +89,10 @@ type catalogState struct {
 	Name      *string `pulumi:"name"`
 	// Default position of the catalog when displayed in a list.
 	Position *int `pulumi:"position"`
+	// The slug of the catalog. Derived from `name`.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 type CatalogState struct {
@@ -98,6 +106,10 @@ type CatalogState struct {
 	Name      pulumi.StringPtrInput
 	// Default position of the catalog when displayed in a list.
 	Position pulumi.IntPtrInput
+	// The slug of the catalog. Derived from `name`.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (CatalogState) ElementType() reflect.Type {
@@ -113,6 +125,10 @@ type catalogArgs struct {
 	Name *string `pulumi:"name"`
 	// Default position of the catalog when displayed in a list.
 	Position *int `pulumi:"position"`
+	// The slug of the catalog. Derived from `name`.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a Catalog resource.
@@ -125,6 +141,10 @@ type CatalogArgs struct {
 	Name pulumi.StringPtrInput
 	// Default position of the catalog when displayed in a list.
 	Position pulumi.IntPtrInput
+	// The slug of the catalog. Derived from `name`.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (CatalogArgs) ElementType() reflect.Type {
@@ -240,6 +260,13 @@ func (o CatalogOutput) Name() pulumi.StringOutput {
 // Default position of the catalog when displayed in a list.
 func (o CatalogOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
+}
+
+// The slug of the catalog. Derived from `name`.
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+func (o CatalogOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }
 
 type CatalogArrayOutput struct{ *pulumi.OutputState }

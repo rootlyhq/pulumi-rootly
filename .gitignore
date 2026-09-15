@@ -14,6 +14,7 @@ Pulumi.*.yaml
 *.iml
 
 yarn.lock
+!sdk/nodejs/yarn.lock
 **/pulumiManifest.go
 
 ci-scripts

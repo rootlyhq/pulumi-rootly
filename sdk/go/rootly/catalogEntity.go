@@ -9,7 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -48,6 +48,12 @@ type CatalogEntity struct {
 	Position pulumi.IntOutput `pulumi:"position"`
 	// Array of property values for this catalog entity
 	Properties CatalogEntityPropertyArrayOutput `pulumi:"properties"`
+	// The status page description of the catalog entity
+	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
+	// The slug of the catalog entity. Derived from `name`.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringOutput `pulumi:"slug"`
 }
 
 // NewCatalogEntity registers a new resource with the given unique name, arguments, and options.
@@ -97,6 +103,12 @@ type catalogEntityState struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this catalog entity
 	Properties []CatalogEntityProperty `pulumi:"properties"`
+	// The status page description of the catalog entity
+	PublicDescription *string `pulumi:"publicDescription"`
+	// The slug of the catalog entity. Derived from `name`.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 type CatalogEntityState struct {
@@ -114,6 +126,12 @@ type CatalogEntityState struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this catalog entity
 	Properties CatalogEntityPropertyArrayInput
+	// The status page description of the catalog entity
+	PublicDescription pulumi.StringPtrInput
+	// The slug of the catalog entity. Derived from `name`.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (CatalogEntityState) ElementType() reflect.Type {
@@ -133,6 +151,12 @@ type catalogEntityArgs struct {
 	Position *int `pulumi:"position"`
 	// Array of property values for this catalog entity
 	Properties []CatalogEntityProperty `pulumi:"properties"`
+	// The status page description of the catalog entity
+	PublicDescription *string `pulumi:"publicDescription"`
+	// The slug of the catalog entity. Derived from `name`.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug *string `pulumi:"slug"`
 }
 
 // The set of arguments for constructing a CatalogEntity resource.
@@ -149,6 +173,12 @@ type CatalogEntityArgs struct {
 	Position pulumi.IntPtrInput
 	// Array of property values for this catalog entity
 	Properties CatalogEntityPropertyArrayInput
+	// The status page description of the catalog entity
+	PublicDescription pulumi.StringPtrInput
+	// The slug of the catalog entity. Derived from `name`.
+	//
+	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+	Slug pulumi.StringPtrInput
 }
 
 func (CatalogEntityArgs) ElementType() reflect.Type {
@@ -274,6 +304,18 @@ func (o CatalogEntityOutput) Position() pulumi.IntOutput {
 // Array of property values for this catalog entity
 func (o CatalogEntityOutput) Properties() CatalogEntityPropertyArrayOutput {
 	return o.ApplyT(func(v *CatalogEntity) CatalogEntityPropertyArrayOutput { return v.Properties }).(CatalogEntityPropertyArrayOutput)
+}
+
+// The status page description of the catalog entity
+func (o CatalogEntityOutput) PublicDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogEntity) pulumi.StringOutput { return v.PublicDescription }).(pulumi.StringOutput)
+}
+
+// The slug of the catalog entity. Derived from `name`.
+//
+// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+func (o CatalogEntityOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogEntity) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }
 
 type CatalogEntityArrayOutput struct{ *pulumi.OutputState }

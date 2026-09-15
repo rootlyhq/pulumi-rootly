@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupCommunicationsType(ctx *pulumi.Context, args *LookupCommunicationsTypeArgs, opts ...pulumi.InvokeOption) (*LookupCommunicationsTypeResult, error) {
@@ -40,12 +40,8 @@ type LookupCommunicationsTypeResult struct {
 }
 
 func LookupCommunicationsTypeOutput(ctx *pulumi.Context, args LookupCommunicationsTypeOutputArgs, opts ...pulumi.InvokeOption) LookupCommunicationsTypeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCommunicationsTypeResultOutput, error) {
-			args := v.(LookupCommunicationsTypeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCommunicationsType:getCommunicationsType", args, LookupCommunicationsTypeResultOutput{}, options).(LookupCommunicationsTypeResultOutput), nil
-		}).(LookupCommunicationsTypeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCommunicationsType:getCommunicationsType", args, LookupCommunicationsTypeResultOutput{}, options).(LookupCommunicationsTypeResultOutput)
 }
 
 // A collection of arguments for invoking getCommunicationsType.

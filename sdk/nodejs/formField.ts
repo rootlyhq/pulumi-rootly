@@ -68,7 +68,7 @@ export class FormField extends pulumi.CustomResource {
      */
     declare public readonly inputKind: pulumi.Output<string | undefined>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
@@ -77,14 +77,20 @@ export class FormField extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly requireds: pulumi.Output<string[] | undefined>;
     /**
+     * The resource type this field belongs to. Value must be one of `incident`, `problem`.
+     */
+    declare public /*out*/ readonly resourceType: pulumi.Output<string>;
+    /**
      * Whether the form field is shown on the incident details panel. Value must be one of true or false
      */
     declare public readonly showOnIncidentDetails: pulumi.Output<boolean>;
     declare public readonly showns: pulumi.Output<string[] | undefined>;
     /**
      * The slug of the form field
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
     /**
      * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
      */
@@ -115,6 +121,7 @@ export class FormField extends pulumi.CustomResource {
             resourceInputs["kind"] = state?.kind;
             resourceInputs["name"] = state?.name;
             resourceInputs["requireds"] = state?.requireds;
+            resourceInputs["resourceType"] = state?.resourceType;
             resourceInputs["showOnIncidentDetails"] = state?.showOnIncidentDetails;
             resourceInputs["showns"] = state?.showns;
             resourceInputs["slug"] = state?.slug;
@@ -132,9 +139,10 @@ export class FormField extends pulumi.CustomResource {
             resourceInputs["requireds"] = args?.requireds;
             resourceInputs["showOnIncidentDetails"] = args?.showOnIncidentDetails;
             resourceInputs["showns"] = args?.showns;
+            resourceInputs["slug"] = args?.slug;
             resourceInputs["valueKind"] = args?.valueKind;
             resourceInputs["valueKindCatalogId"] = args?.valueKindCatalogId;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["resourceType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FormField.__pulumiType, name, resourceInputs, opts);
@@ -160,7 +168,7 @@ export interface FormFieldState {
      */
     inputKind?: pulumi.Input<string | undefined>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
@@ -169,12 +177,18 @@ export interface FormFieldState {
     name?: pulumi.Input<string | undefined>;
     requireds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The resource type this field belongs to. Value must be one of `incident`, `problem`.
+     */
+    resourceType?: pulumi.Input<string | undefined>;
+    /**
      * Whether the form field is shown on the incident details panel. Value must be one of true or false
      */
     showOnIncidentDetails?: pulumi.Input<boolean | undefined>;
     showns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the form field
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
     /**
@@ -206,7 +220,7 @@ export interface FormFieldArgs {
      */
     inputKind?: pulumi.Input<string | undefined>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
@@ -219,6 +233,12 @@ export interface FormFieldArgs {
      */
     showOnIncidentDetails?: pulumi.Input<boolean | undefined>;
     showns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The slug of the form field
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
     /**
      * The value kind of the form field. Value must be one of `inherit`, `group`, `service`, `functionality`, `user`, `catalogEntity`, `environment`, `cause`, `incidentType`.
      */

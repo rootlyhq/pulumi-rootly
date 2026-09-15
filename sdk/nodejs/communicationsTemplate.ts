@@ -81,6 +81,8 @@ export class CommunicationsTemplate extends pulumi.CustomResource {
     declare public readonly position: pulumi.Output<number>;
     /**
      * The slug of the communications template
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
 
@@ -152,6 +154,8 @@ export interface CommunicationsTemplateState {
     position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the communications template
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -186,6 +190,8 @@ export interface CommunicationsTemplateArgs {
     position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the communications template
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
 }

@@ -74,6 +74,8 @@ export class RetrospectiveStep extends pulumi.CustomResource {
     declare public readonly skippable: pulumi.Output<boolean>;
     /**
      * The slug of the step
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     declare public readonly slug: pulumi.Output<string>;
     /**
@@ -148,6 +150,8 @@ export interface RetrospectiveStepState {
     skippable?: pulumi.Input<boolean | undefined>;
     /**
      * The slug of the step
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
     /**
@@ -183,6 +187,8 @@ export interface RetrospectiveStepArgs {
     skippable?: pulumi.Input<boolean | undefined>;
     /**
      * The slug of the step
+     *
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
      */
     slug?: pulumi.Input<string | undefined>;
     /**

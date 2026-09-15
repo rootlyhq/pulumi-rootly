@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // DEPRECATED: Please use `formField` data source instead.
@@ -47,12 +47,8 @@ type LookupCustomFieldResult struct {
 }
 
 func LookupCustomFieldOutput(ctx *pulumi.Context, args LookupCustomFieldOutputArgs, opts ...pulumi.InvokeOption) LookupCustomFieldResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomFieldResultOutput, error) {
-			args := v.(LookupCustomFieldArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getCustomField:getCustomField", args, LookupCustomFieldResultOutput{}, options).(LookupCustomFieldResultOutput), nil
-		}).(LookupCustomFieldResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getCustomField:getCustomField", args, LookupCustomFieldResultOutput{}, options).(LookupCustomFieldResultOutput)
 }
 
 // A collection of arguments for invoking getCustomField.

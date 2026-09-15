@@ -125,6 +125,8 @@ export class Sla extends pulumi.CustomResource {
     declare public readonly position: pulumi.Output<number>;
     /**
      * The slug of the SLA
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     declare public readonly slug: pulumi.Output<string>;
 
@@ -271,6 +273,8 @@ export interface SlaState {
     position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the SLA
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -349,6 +353,8 @@ export interface SlaArgs {
     position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the SLA
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }

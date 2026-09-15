@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupIncidentPermissionSetResource(ctx *pulumi.Context, args *LookupIncidentPermissionSetResourceArgs, opts ...pulumi.InvokeOption) (*LookupIncidentPermissionSetResourceResult, error) {
@@ -40,12 +40,8 @@ type LookupIncidentPermissionSetResourceResult struct {
 }
 
 func LookupIncidentPermissionSetResourceOutput(ctx *pulumi.Context, args LookupIncidentPermissionSetResourceOutputArgs, opts ...pulumi.InvokeOption) LookupIncidentPermissionSetResourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIncidentPermissionSetResourceResultOutput, error) {
-			args := v.(LookupIncidentPermissionSetResourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getIncidentPermissionSetResource:getIncidentPermissionSetResource", args, LookupIncidentPermissionSetResourceResultOutput{}, options).(LookupIncidentPermissionSetResourceResultOutput), nil
-		}).(LookupIncidentPermissionSetResourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getIncidentPermissionSetResource:getIncidentPermissionSetResource", args, LookupIncidentPermissionSetResourceResultOutput{}, options).(LookupIncidentPermissionSetResourceResultOutput)
 }
 
 // A collection of arguments for invoking getIncidentPermissionSetResource.

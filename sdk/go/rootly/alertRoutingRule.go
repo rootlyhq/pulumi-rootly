@@ -9,7 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // *Note: If you are an advanced alert routing user, you should use the Alert Routes resource/data source instead of this one. If you don't know whether you are an advanced alert routing user, please contact Rootly customer support.*

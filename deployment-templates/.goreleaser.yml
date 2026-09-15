@@ -1,6 +1,4 @@
-archives:
-  - id: archive
-    name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+version: 2
 before:
   hooks:
     - make provider
@@ -9,6 +7,9 @@ builds:
     dir: provider
     env:
       - CGO_ENABLED=0
+    mod_timestamp: '{{ .CommitTimestamp }}'
+    flags:
+      - -trimpath
     goarch:
       - amd64
       - arm64
@@ -18,10 +19,20 @@ builds:
       - linux
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
-      - -X github.com/rootlyhq/pulumi-rootly/provider/pkg/version.Version={{.Tag }}
+      - '-s -w -X github.com/rootlyhq/pulumi-rootly/provider/pkg/version.Version={{.Version}}'
     main: ./cmd/pulumi-resource-rootly/
+archives:
+  - id: archive
+    formats:
+      - tar.gz
+    name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+    files:
+      - 'none*'
+checksum:
+  name_template: 'pulumi-resource-rootly_{{ .Version }}_SHA256SUMS'
+  algorithm: sha256
 changelog:
-  skip: true
+  disable: true
 release:
   disable: false
   prerelease: auto

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -39,12 +39,8 @@ type GetWorkflowTaskResult struct {
 }
 
 func GetWorkflowTaskOutput(ctx *pulumi.Context, args GetWorkflowTaskOutputArgs, opts ...pulumi.InvokeOption) GetWorkflowTaskResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWorkflowTaskResultOutput, error) {
-			args := v.(GetWorkflowTaskArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getWorkflowTask:getWorkflowTask", args, GetWorkflowTaskResultOutput{}, options).(GetWorkflowTaskResultOutput), nil
-		}).(GetWorkflowTaskResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getWorkflowTask:getWorkflowTask", args, GetWorkflowTaskResultOutput{}, options).(GetWorkflowTaskResultOutput)
 }
 
 // A collection of arguments for invoking getWorkflowTask.

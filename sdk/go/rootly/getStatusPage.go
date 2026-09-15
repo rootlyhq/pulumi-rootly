@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -39,12 +39,8 @@ type LookupStatusPageResult struct {
 }
 
 func LookupStatusPageOutput(ctx *pulumi.Context, args LookupStatusPageOutputArgs, opts ...pulumi.InvokeOption) LookupStatusPageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupStatusPageResultOutput, error) {
-			args := v.(LookupStatusPageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getStatusPage:getStatusPage", args, LookupStatusPageResultOutput{}, options).(LookupStatusPageResultOutput), nil
-		}).(LookupStatusPageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getStatusPage:getStatusPage", args, LookupStatusPageResultOutput{}, options).(LookupStatusPageResultOutput)
 }
 
 // A collection of arguments for invoking getStatusPage.

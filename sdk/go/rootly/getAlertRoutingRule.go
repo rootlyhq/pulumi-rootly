@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // *Note: If you are an advanced alert routing user, you should use the Alert Routes resource/data source instead of this one. If you don't know whether you are an advanced alert routing user, please contact Rootly customer support.*
@@ -39,12 +39,8 @@ type LookupAlertRoutingRuleResult struct {
 }
 
 func LookupAlertRoutingRuleOutput(ctx *pulumi.Context, args LookupAlertRoutingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupAlertRoutingRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlertRoutingRuleResultOutput, error) {
-			args := v.(LookupAlertRoutingRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getAlertRoutingRule:getAlertRoutingRule", args, LookupAlertRoutingRuleResultOutput{}, options).(LookupAlertRoutingRuleResultOutput), nil
-		}).(LookupAlertRoutingRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getAlertRoutingRule:getAlertRoutingRule", args, LookupAlertRoutingRuleResultOutput{}, options).(LookupAlertRoutingRuleResultOutput)
 }
 
 // A collection of arguments for invoking getAlertRoutingRule.

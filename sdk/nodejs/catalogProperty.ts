@@ -59,7 +59,7 @@ export class CatalogProperty extends pulumi.CustomResource {
      */
     declare public readonly catalogType: pulumi.Output<string | undefined>;
     /**
-     * Value must be one of `text`, `reference`.
+     * Value must be one of `text`, `reference`, `boolean`, `service`, `functionality`, `environment`, `group`, `cause`, `incidentType`, `user`.
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
@@ -75,6 +75,9 @@ export class CatalogProperty extends pulumi.CustomResource {
      * Whether the property is required.. Value must be one of true or false
      */
     declare public readonly required: pulumi.Output<boolean>;
+    /**
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+     */
     declare public readonly slug: pulumi.Output<string>;
 
     /**
@@ -124,7 +127,7 @@ export interface CatalogPropertyState {
      */
     catalogType?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one of `text`, `reference`.
+     * Value must be one of `text`, `reference`, `boolean`, `service`, `functionality`, `environment`, `group`, `cause`, `incidentType`, `user`.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
@@ -140,6 +143,9 @@ export interface CatalogPropertyState {
      * Whether the property is required.. Value must be one of true or false
      */
     required?: pulumi.Input<boolean | undefined>;
+    /**
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+     */
     slug?: pulumi.Input<string | undefined>;
 }
 
@@ -153,7 +159,7 @@ export interface CatalogPropertyArgs {
      */
     catalogType?: pulumi.Input<string | undefined>;
     /**
-     * Value must be one of `text`, `reference`.
+     * Value must be one of `text`, `reference`, `boolean`, `service`, `functionality`, `environment`, `group`, `cause`, `incidentType`, `user`.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
@@ -169,5 +175,8 @@ export interface CatalogPropertyArgs {
      * Whether the property is required.. Value must be one of true or false
      */
     required?: pulumi.Input<boolean | undefined>;
+    /**
+     * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
+     */
     slug?: pulumi.Input<string | undefined>;
 }

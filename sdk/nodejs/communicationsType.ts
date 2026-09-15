@@ -71,8 +71,10 @@ export class CommunicationsType extends pulumi.CustomResource {
     declare public readonly position: pulumi.Output<number>;
     /**
      * The slug of the communications type
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a CommunicationsType resource with the given unique name, arguments, and options.
@@ -101,7 +103,7 @@ export class CommunicationsType extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CommunicationsType.__pulumiType, name, resourceInputs, opts);
@@ -130,6 +132,8 @@ export interface CommunicationsTypeState {
     position?: pulumi.Input<number | undefined>;
     /**
      * The slug of the communications type
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -154,4 +158,10 @@ export interface CommunicationsTypeArgs {
      * Position of the communications type
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * The slug of the communications type
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

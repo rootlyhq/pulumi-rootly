@@ -9,7 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -42,6 +42,14 @@ type EscalationLevel struct {
 	EscalationPolicyPathId pulumi.StringOutput `pulumi:"escalationPolicyPathId"`
 	// Escalation level's notification targets
 	NotificationTargetParams EscalationLevelNotificationTargetParamArrayOutput `pulumi:"notificationTargetParams"`
+	// Number of users to page at a time (cycle-based round robin).
+	PagingStrategyConfigurationPageUsersCount pulumi.IntOutput `pulumi:"pagingStrategyConfigurationPageUsersCount"`
+	// Number of times to rotate through the roster (cycle-based round robin).
+	PagingStrategyConfigurationRepeats pulumi.IntOutput `pulumi:"pagingStrategyConfigurationRepeats"`
+	// Controls how repeats are interpreted: 'users' pages exactly N users, 'all' pages everyone once.. Value must be one of `users`, `all`.
+	PagingStrategyConfigurationRepeatsMode pulumi.StringOutput `pulumi:"pagingStrategyConfigurationRepeatsMode"`
+	// Scope of rotation ordering: active rotation members only, or entire schedule.. Value must be one of `activeRotation`, `entireSchedule`.
+	PagingStrategyConfigurationRotationScope pulumi.StringOutput `pulumi:"pagingStrategyConfigurationRotationScope"`
 	// Value must be one of `onCallOnly`, `everyone`.
 	PagingStrategyConfigurationScheduleStrategy pulumi.StringPtrOutput `pulumi:"pagingStrategyConfigurationScheduleStrategy"`
 	// Value must be one of `default`, `random`, `cycle`, `alert`.
@@ -97,6 +105,14 @@ type escalationLevelState struct {
 	EscalationPolicyPathId *string `pulumi:"escalationPolicyPathId"`
 	// Escalation level's notification targets
 	NotificationTargetParams []EscalationLevelNotificationTargetParam `pulumi:"notificationTargetParams"`
+	// Number of users to page at a time (cycle-based round robin).
+	PagingStrategyConfigurationPageUsersCount *int `pulumi:"pagingStrategyConfigurationPageUsersCount"`
+	// Number of times to rotate through the roster (cycle-based round robin).
+	PagingStrategyConfigurationRepeats *int `pulumi:"pagingStrategyConfigurationRepeats"`
+	// Controls how repeats are interpreted: 'users' pages exactly N users, 'all' pages everyone once.. Value must be one of `users`, `all`.
+	PagingStrategyConfigurationRepeatsMode *string `pulumi:"pagingStrategyConfigurationRepeatsMode"`
+	// Scope of rotation ordering: active rotation members only, or entire schedule.. Value must be one of `activeRotation`, `entireSchedule`.
+	PagingStrategyConfigurationRotationScope *string `pulumi:"pagingStrategyConfigurationRotationScope"`
 	// Value must be one of `onCallOnly`, `everyone`.
 	PagingStrategyConfigurationScheduleStrategy *string `pulumi:"pagingStrategyConfigurationScheduleStrategy"`
 	// Value must be one of `default`, `random`, `cycle`, `alert`.
@@ -114,6 +130,14 @@ type EscalationLevelState struct {
 	EscalationPolicyPathId pulumi.StringPtrInput
 	// Escalation level's notification targets
 	NotificationTargetParams EscalationLevelNotificationTargetParamArrayInput
+	// Number of users to page at a time (cycle-based round robin).
+	PagingStrategyConfigurationPageUsersCount pulumi.IntPtrInput
+	// Number of times to rotate through the roster (cycle-based round robin).
+	PagingStrategyConfigurationRepeats pulumi.IntPtrInput
+	// Controls how repeats are interpreted: 'users' pages exactly N users, 'all' pages everyone once.. Value must be one of `users`, `all`.
+	PagingStrategyConfigurationRepeatsMode pulumi.StringPtrInput
+	// Scope of rotation ordering: active rotation members only, or entire schedule.. Value must be one of `activeRotation`, `entireSchedule`.
+	PagingStrategyConfigurationRotationScope pulumi.StringPtrInput
 	// Value must be one of `onCallOnly`, `everyone`.
 	PagingStrategyConfigurationScheduleStrategy pulumi.StringPtrInput
 	// Value must be one of `default`, `random`, `cycle`, `alert`.
@@ -135,6 +159,14 @@ type escalationLevelArgs struct {
 	EscalationPolicyPathId *string `pulumi:"escalationPolicyPathId"`
 	// Escalation level's notification targets
 	NotificationTargetParams []EscalationLevelNotificationTargetParam `pulumi:"notificationTargetParams"`
+	// Number of users to page at a time (cycle-based round robin).
+	PagingStrategyConfigurationPageUsersCount *int `pulumi:"pagingStrategyConfigurationPageUsersCount"`
+	// Number of times to rotate through the roster (cycle-based round robin).
+	PagingStrategyConfigurationRepeats *int `pulumi:"pagingStrategyConfigurationRepeats"`
+	// Controls how repeats are interpreted: 'users' pages exactly N users, 'all' pages everyone once.. Value must be one of `users`, `all`.
+	PagingStrategyConfigurationRepeatsMode *string `pulumi:"pagingStrategyConfigurationRepeatsMode"`
+	// Scope of rotation ordering: active rotation members only, or entire schedule.. Value must be one of `activeRotation`, `entireSchedule`.
+	PagingStrategyConfigurationRotationScope *string `pulumi:"pagingStrategyConfigurationRotationScope"`
 	// Value must be one of `onCallOnly`, `everyone`.
 	PagingStrategyConfigurationScheduleStrategy *string `pulumi:"pagingStrategyConfigurationScheduleStrategy"`
 	// Value must be one of `default`, `random`, `cycle`, `alert`.
@@ -153,6 +185,14 @@ type EscalationLevelArgs struct {
 	EscalationPolicyPathId pulumi.StringPtrInput
 	// Escalation level's notification targets
 	NotificationTargetParams EscalationLevelNotificationTargetParamArrayInput
+	// Number of users to page at a time (cycle-based round robin).
+	PagingStrategyConfigurationPageUsersCount pulumi.IntPtrInput
+	// Number of times to rotate through the roster (cycle-based round robin).
+	PagingStrategyConfigurationRepeats pulumi.IntPtrInput
+	// Controls how repeats are interpreted: 'users' pages exactly N users, 'all' pages everyone once.. Value must be one of `users`, `all`.
+	PagingStrategyConfigurationRepeatsMode pulumi.StringPtrInput
+	// Scope of rotation ordering: active rotation members only, or entire schedule.. Value must be one of `activeRotation`, `entireSchedule`.
+	PagingStrategyConfigurationRotationScope pulumi.StringPtrInput
 	// Value must be one of `onCallOnly`, `everyone`.
 	PagingStrategyConfigurationScheduleStrategy pulumi.StringPtrInput
 	// Value must be one of `default`, `random`, `cycle`, `alert`.
@@ -268,6 +308,26 @@ func (o EscalationLevelOutput) NotificationTargetParams() EscalationLevelNotific
 	return o.ApplyT(func(v *EscalationLevel) EscalationLevelNotificationTargetParamArrayOutput {
 		return v.NotificationTargetParams
 	}).(EscalationLevelNotificationTargetParamArrayOutput)
+}
+
+// Number of users to page at a time (cycle-based round robin).
+func (o EscalationLevelOutput) PagingStrategyConfigurationPageUsersCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *EscalationLevel) pulumi.IntOutput { return v.PagingStrategyConfigurationPageUsersCount }).(pulumi.IntOutput)
+}
+
+// Number of times to rotate through the roster (cycle-based round robin).
+func (o EscalationLevelOutput) PagingStrategyConfigurationRepeats() pulumi.IntOutput {
+	return o.ApplyT(func(v *EscalationLevel) pulumi.IntOutput { return v.PagingStrategyConfigurationRepeats }).(pulumi.IntOutput)
+}
+
+// Controls how repeats are interpreted: 'users' pages exactly N users, 'all' pages everyone once.. Value must be one of `users`, `all`.
+func (o EscalationLevelOutput) PagingStrategyConfigurationRepeatsMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *EscalationLevel) pulumi.StringOutput { return v.PagingStrategyConfigurationRepeatsMode }).(pulumi.StringOutput)
+}
+
+// Scope of rotation ordering: active rotation members only, or entire schedule.. Value must be one of `activeRotation`, `entireSchedule`.
+func (o EscalationLevelOutput) PagingStrategyConfigurationRotationScope() pulumi.StringOutput {
+	return o.ApplyT(func(v *EscalationLevel) pulumi.StringOutput { return v.PagingStrategyConfigurationRotationScope }).(pulumi.StringOutput)
 }
 
 // Value must be one of `onCallOnly`, `everyone`.

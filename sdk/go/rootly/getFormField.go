@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -45,12 +45,8 @@ type LookupFormFieldResult struct {
 }
 
 func LookupFormFieldOutput(ctx *pulumi.Context, args LookupFormFieldOutputArgs, opts ...pulumi.InvokeOption) LookupFormFieldResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFormFieldResultOutput, error) {
-			args := v.(LookupFormFieldArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getFormField:getFormField", args, LookupFormFieldResultOutput{}, options).(LookupFormFieldResultOutput), nil
-		}).(LookupFormFieldResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getFormField:getFormField", args, LookupFormFieldResultOutput{}, options).(LookupFormFieldResultOutput)
 }
 
 // A collection of arguments for invoking getFormField.

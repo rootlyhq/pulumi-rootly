@@ -132,6 +132,10 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly kubernetesDeploymentName: pulumi.Output<string>;
     /**
+     * How this service is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    declare public /*out*/ readonly managedBy: pulumi.Output<string>;
+    /**
      * The name of the service
      */
     declare public readonly name: pulumi.Output<string>;
@@ -164,7 +168,7 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly properties: pulumi.Output<outputs.ServiceProperty[] | undefined>;
     /**
-     * The public description of the service
+     * The status page description of the service
      */
     declare public readonly publicDescription: pulumi.Output<string>;
     /**
@@ -185,8 +189,10 @@ export class Service extends pulumi.CustomResource {
     declare public readonly slackChannels: pulumi.Output<outputs.ServiceSlackChannel[] | undefined>;
     /**
      * The slug of the service
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
-    declare public /*out*/ readonly slug: pulumi.Output<string>;
+    declare public readonly slug: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -220,6 +226,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["incidentBroadcastChannel"] = state?.incidentBroadcastChannel;
             resourceInputs["incidentBroadcastEnabled"] = state?.incidentBroadcastEnabled;
             resourceInputs["kubernetesDeploymentName"] = state?.kubernetesDeploymentName;
+            resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["notifyEmails"] = state?.notifyEmails;
             resourceInputs["opsgenieId"] = state?.opsgenieId;
@@ -268,7 +275,8 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["serviceNowCiSysId"] = args?.serviceNowCiSysId;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
-            resourceInputs["slug"] = undefined /*out*/;
+            resourceInputs["slug"] = args?.slug;
+            resourceInputs["managedBy"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Service.__pulumiType, name, resourceInputs, opts);
@@ -356,6 +364,10 @@ export interface ServiceState {
      */
     kubernetesDeploymentName?: pulumi.Input<string | undefined>;
     /**
+     * How this service is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
+     */
+    managedBy?: pulumi.Input<string | undefined>;
+    /**
      * The name of the service
      */
     name?: pulumi.Input<string | undefined>;
@@ -388,7 +400,7 @@ export interface ServiceState {
      */
     properties?: pulumi.Input<pulumi.Input<inputs.ServiceProperty>[] | undefined>;
     /**
-     * The public description of the service
+     * The status page description of the service
      */
     publicDescription?: pulumi.Input<string | undefined>;
     /**
@@ -409,6 +421,8 @@ export interface ServiceState {
     slackChannels?: pulumi.Input<pulumi.Input<inputs.ServiceSlackChannel>[] | undefined>;
     /**
      * The slug of the service
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
 }
@@ -526,7 +540,7 @@ export interface ServiceArgs {
      */
     properties?: pulumi.Input<pulumi.Input<inputs.ServiceProperty>[] | undefined>;
     /**
-     * The public description of the service
+     * The status page description of the service
      */
     publicDescription?: pulumi.Input<string | undefined>;
     /**
@@ -545,4 +559,10 @@ export interface ServiceArgs {
      * Slack Channels associated with this service
      */
     slackChannels?: pulumi.Input<pulumi.Input<inputs.ServiceSlackChannel>[] | undefined>;
+    /**
+     * The slug of the service
+     *
+     * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
+     */
+    slug?: pulumi.Input<string | undefined>;
 }

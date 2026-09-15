@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Example Usage
@@ -41,12 +41,8 @@ type LookupSlaResult struct {
 }
 
 func LookupSlaOutput(ctx *pulumi.Context, args LookupSlaOutputArgs, opts ...pulumi.InvokeOption) LookupSlaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSlaResultOutput, error) {
-			args := v.(LookupSlaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getSla:getSla", args, LookupSlaResultOutput{}, options).(LookupSlaResultOutput), nil
-		}).(LookupSlaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getSla:getSla", args, LookupSlaResultOutput{}, options).(LookupSlaResultOutput)
 }
 
 // A collection of arguments for invoking getSla.

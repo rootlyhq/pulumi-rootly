@@ -9,7 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 // ## Import
@@ -44,6 +44,8 @@ type RetrospectiveStep struct {
 	// Is the step skippable?. Value must be one of true or false
 	Skippable pulumi.BoolOutput `pulumi:"skippable"`
 	// The slug of the step
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringOutput `pulumi:"slug"`
 	// The name of the step
 	Title pulumi.StringOutput `pulumi:"title"`
@@ -94,6 +96,8 @@ type retrospectiveStepState struct {
 	// Is the step skippable?. Value must be one of true or false
 	Skippable *bool `pulumi:"skippable"`
 	// The slug of the step
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 	// The name of the step
 	Title *string `pulumi:"title"`
@@ -112,6 +116,8 @@ type RetrospectiveStepState struct {
 	// Is the step skippable?. Value must be one of true or false
 	Skippable pulumi.BoolPtrInput
 	// The slug of the step
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 	// The name of the step
 	Title pulumi.StringPtrInput
@@ -134,6 +140,8 @@ type retrospectiveStepArgs struct {
 	// Is the step skippable?. Value must be one of true or false
 	Skippable *bool `pulumi:"skippable"`
 	// The slug of the step
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug *string `pulumi:"slug"`
 	// The name of the step
 	Title string `pulumi:"title"`
@@ -153,6 +161,8 @@ type RetrospectiveStepArgs struct {
 	// Is the step skippable?. Value must be one of true or false
 	Skippable pulumi.BoolPtrInput
 	// The slug of the step
+	//
+	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 	Slug pulumi.StringPtrInput
 	// The name of the step
 	Title pulumi.StringInput
@@ -275,6 +285,8 @@ func (o RetrospectiveStepOutput) Skippable() pulumi.BoolOutput {
 }
 
 // The slug of the step
+//
+// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
 func (o RetrospectiveStepOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *RetrospectiveStep) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
 }

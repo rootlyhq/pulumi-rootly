@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupSubStatus(ctx *pulumi.Context, args *LookupSubStatusArgs, opts ...pulumi.InvokeOption) (*LookupSubStatusResult, error) {
@@ -42,12 +42,8 @@ type LookupSubStatusResult struct {
 }
 
 func LookupSubStatusOutput(ctx *pulumi.Context, args LookupSubStatusOutputArgs, opts ...pulumi.InvokeOption) LookupSubStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSubStatusResultOutput, error) {
-			args := v.(LookupSubStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getSubStatus:getSubStatus", args, LookupSubStatusResultOutput{}, options).(LookupSubStatusResultOutput), nil
-		}).(LookupSubStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getSubStatus:getSubStatus", args, LookupSubStatusResultOutput{}, options).(LookupSubStatusResultOutput)
 }
 
 // A collection of arguments for invoking getSubStatus.

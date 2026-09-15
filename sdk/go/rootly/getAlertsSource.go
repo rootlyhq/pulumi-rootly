@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupAlertsSource(ctx *pulumi.Context, args *LookupAlertsSourceArgs, opts ...pulumi.InvokeOption) (*LookupAlertsSourceResult, error) {
@@ -38,12 +38,8 @@ type LookupAlertsSourceResult struct {
 }
 
 func LookupAlertsSourceOutput(ctx *pulumi.Context, args LookupAlertsSourceOutputArgs, opts ...pulumi.InvokeOption) LookupAlertsSourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlertsSourceResultOutput, error) {
-			args := v.(LookupAlertsSourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getAlertsSource:getAlertsSource", args, LookupAlertsSourceResultOutput{}, options).(LookupAlertsSourceResultOutput), nil
-		}).(LookupAlertsSourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getAlertsSource:getAlertsSource", args, LookupAlertsSourceResultOutput{}, options).(LookupAlertsSourceResultOutput)
 }
 
 // A collection of arguments for invoking getAlertsSource.

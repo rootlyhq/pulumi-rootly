@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly/internal"
+	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
 func LookupFormFieldPlacement(ctx *pulumi.Context, args *LookupFormFieldPlacementArgs, opts ...pulumi.InvokeOption) (*LookupFormFieldPlacementResult, error) {
@@ -36,12 +36,8 @@ type LookupFormFieldPlacementResult struct {
 }
 
 func LookupFormFieldPlacementOutput(ctx *pulumi.Context, args LookupFormFieldPlacementOutputArgs, opts ...pulumi.InvokeOption) LookupFormFieldPlacementResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFormFieldPlacementResultOutput, error) {
-			args := v.(LookupFormFieldPlacementArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rootly:index/getFormFieldPlacement:getFormFieldPlacement", args, LookupFormFieldPlacementResultOutput{}, options).(LookupFormFieldPlacementResultOutput), nil
-		}).(LookupFormFieldPlacementResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rootly:index/getFormFieldPlacement:getFormFieldPlacement", args, LookupFormFieldPlacementResultOutput{}, options).(LookupFormFieldPlacementResultOutput)
 }
 
 // A collection of arguments for invoking getFormFieldPlacement.
