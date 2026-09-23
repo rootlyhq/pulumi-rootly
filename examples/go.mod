@@ -2,7 +2,7 @@ module github.com/rootlyhq/pulumi-rootly/examples
 
 go 1.27.1
 
-require github.com/pulumi/pulumi/pkg/v3 v3.262.0
+require github.com/pulumi/pulumi/pkg/v3 v3.263.0
 
 require (
 	cel.dev/expr v0.25.3 // indirect
@@ -154,7 +154,7 @@ require (
 	github.com/planetscale/vtprotobuf v0.6.1-0.20240319094008-0393e58bdf10 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.262.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.263.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.16.0 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
@@ -182,8 +182,8 @@ require (
 	github.com/zclconf/go-cty v1.19.0 // indirect
 	go.mongodb.org/mongo-driver v1.17.10 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
-	go.opentelemetry.io/collector/featuregate v1.66.0 // indirect
-	go.opentelemetry.io/collector/pdata v1.66.0 // indirect
+	go.opentelemetry.io/collector/featuregate v1.67.0 // indirect
+	go.opentelemetry.io/collector/pdata v1.67.0 // indirect
 	go.opentelemetry.io/contrib/bridges/otelslog v0.20.1 // indirect
 	go.opentelemetry.io/contrib/detectors/gcp v1.46.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.71.0 // indirect
