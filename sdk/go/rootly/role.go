@@ -89,6 +89,8 @@ type Role struct {
 	PagingPermissions pulumi.StringArrayOutput `pulumi:"pagingPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PlaybooksPermissions pulumi.StringArrayOutput `pulumi:"playbooksPermissions"`
+	// Private Agent management permissions: create issues enrollment tokens, read views agent inventory and details, and delete revokes agent credentials. Create and delete can be used independently through the API; browser inventory requires read.. Value must be one of `create`, `read`, `update`, `delete`.
+	PrivateAgentPermissions pulumi.StringArrayOutput `pulumi:"privateAgentPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PrivateIncidentsPermissions pulumi.StringArrayOutput `pulumi:"privateIncidentsPermissions"`
 	// Value must be one of `create`, `update`, `read`.
@@ -109,6 +111,8 @@ type Role struct {
 	//
 	// Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
 	Slug pulumi.StringOutput `pulumi:"slug"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	StatusPageUpdatesPermissions pulumi.StringArrayOutput `pulumi:"statusPageUpdatesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions pulumi.StringArrayOutput `pulumi:"statusPagesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -199,6 +203,8 @@ type roleState struct {
 	PagingPermissions []string `pulumi:"pagingPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PlaybooksPermissions []string `pulumi:"playbooksPermissions"`
+	// Private Agent management permissions: create issues enrollment tokens, read views agent inventory and details, and delete revokes agent credentials. Create and delete can be used independently through the API; browser inventory requires read.. Value must be one of `create`, `read`, `update`, `delete`.
+	PrivateAgentPermissions []string `pulumi:"privateAgentPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PrivateIncidentsPermissions []string `pulumi:"privateIncidentsPermissions"`
 	// Value must be one of `create`, `update`, `read`.
@@ -219,6 +225,8 @@ type roleState struct {
 	//
 	// Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	StatusPageUpdatesPermissions []string `pulumi:"statusPageUpdatesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions []string `pulumi:"statusPagesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -280,6 +288,8 @@ type RoleState struct {
 	PagingPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PlaybooksPermissions pulumi.StringArrayInput
+	// Private Agent management permissions: create issues enrollment tokens, read views agent inventory and details, and delete revokes agent credentials. Create and delete can be used independently through the API; browser inventory requires read.. Value must be one of `create`, `read`, `update`, `delete`.
+	PrivateAgentPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PrivateIncidentsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `update`, `read`.
@@ -300,6 +310,8 @@ type RoleState struct {
 	//
 	// Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	StatusPageUpdatesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -365,6 +377,8 @@ type roleArgs struct {
 	PagingPermissions []string `pulumi:"pagingPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PlaybooksPermissions []string `pulumi:"playbooksPermissions"`
+	// Private Agent management permissions: create issues enrollment tokens, read views agent inventory and details, and delete revokes agent credentials. Create and delete can be used independently through the API; browser inventory requires read.. Value must be one of `create`, `read`, `update`, `delete`.
+	PrivateAgentPermissions []string `pulumi:"privateAgentPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PrivateIncidentsPermissions []string `pulumi:"privateIncidentsPermissions"`
 	// Value must be one of `create`, `update`, `read`.
@@ -385,6 +399,8 @@ type roleArgs struct {
 	//
 	// Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
 	Slug *string `pulumi:"slug"`
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	StatusPageUpdatesPermissions []string `pulumi:"statusPageUpdatesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions []string `pulumi:"statusPagesPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -447,6 +463,8 @@ type RoleArgs struct {
 	PagingPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PlaybooksPermissions pulumi.StringArrayInput
+	// Private Agent management permissions: create issues enrollment tokens, read views agent inventory and details, and delete revokes agent credentials. Create and delete can be used independently through the API; browser inventory requires read.. Value must be one of `create`, `read`, `update`, `delete`.
+	PrivateAgentPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	PrivateIncidentsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `update`, `read`.
@@ -467,6 +485,8 @@ type RoleArgs struct {
 	//
 	// Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
 	Slug pulumi.StringPtrInput
+	// Value must be one of `create`, `read`, `update`, `delete`.
+	StatusPageUpdatesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	StatusPagesPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -689,6 +709,11 @@ func (o RoleOutput) PlaybooksPermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.PlaybooksPermissions }).(pulumi.StringArrayOutput)
 }
 
+// Private Agent management permissions: create issues enrollment tokens, read views agent inventory and details, and delete revokes agent credentials. Create and delete can be used independently through the API; browser inventory requires read.. Value must be one of `create`, `read`, `update`, `delete`.
+func (o RoleOutput) PrivateAgentPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.PrivateAgentPermissions }).(pulumi.StringArrayOutput)
+}
+
 // Value must be one of `create`, `read`, `update`, `delete`.
 func (o RoleOutput) PrivateIncidentsPermissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.PrivateIncidentsPermissions }).(pulumi.StringArrayOutput)
@@ -734,6 +759,11 @@ func (o RoleOutput) SlasPermissions() pulumi.StringArrayOutput {
 // Deprecated: Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
 func (o RoleOutput) Slug() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Slug }).(pulumi.StringOutput)
+}
+
+// Value must be one of `create`, `read`, `update`, `delete`.
+func (o RoleOutput) StatusPageUpdatesPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.StatusPageUpdatesPermissions }).(pulumi.StringArrayOutput)
 }
 
 // Value must be one of `create`, `read`, `update`, `delete`.

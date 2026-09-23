@@ -36,7 +36,7 @@ type FormFieldPlacement struct {
 	Form pulumi.StringOutput `pulumi:"form"`
 	// The form field that is placed.
 	FormFieldId pulumi.StringOutput `pulumi:"formFieldId"`
-	// The form set this field is placed in.
+	// The form set this field is placed in. The form set must have the same `resourceType` as the form field, otherwise the request is rejected with 422.
 	FormSetId pulumi.StringOutput `pulumi:"formSetId"`
 	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
 	NonEditable pulumi.BoolOutput `pulumi:"nonEditable"`
@@ -93,7 +93,7 @@ type formFieldPlacementState struct {
 	Form *string `pulumi:"form"`
 	// The form field that is placed.
 	FormFieldId *string `pulumi:"formFieldId"`
-	// The form set this field is placed in.
+	// The form set this field is placed in. The form set must have the same `resourceType` as the form field, otherwise the request is rejected with 422.
 	FormSetId *string `pulumi:"formSetId"`
 	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
 	NonEditable *bool `pulumi:"nonEditable"`
@@ -112,7 +112,7 @@ type FormFieldPlacementState struct {
 	Form pulumi.StringPtrInput
 	// The form field that is placed.
 	FormFieldId pulumi.StringPtrInput
-	// The form set this field is placed in.
+	// The form set this field is placed in. The form set must have the same `resourceType` as the form field, otherwise the request is rejected with 422.
 	FormSetId pulumi.StringPtrInput
 	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
 	NonEditable pulumi.BoolPtrInput
@@ -135,7 +135,7 @@ type formFieldPlacementArgs struct {
 	Form string `pulumi:"form"`
 	// The form field that is placed.
 	FormFieldId string `pulumi:"formFieldId"`
-	// The form set this field is placed in.
+	// The form set this field is placed in. The form set must have the same `resourceType` as the form field, otherwise the request is rejected with 422.
 	FormSetId string `pulumi:"formSetId"`
 	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
 	NonEditable *bool `pulumi:"nonEditable"`
@@ -155,7 +155,7 @@ type FormFieldPlacementArgs struct {
 	Form pulumi.StringInput
 	// The form field that is placed.
 	FormFieldId pulumi.StringInput
-	// The form set this field is placed in.
+	// The form set this field is placed in. The form set must have the same `resourceType` as the form field, otherwise the request is rejected with 422.
 	FormSetId pulumi.StringInput
 	// Whether the field is read-only and cannot be edited by users.. Value must be one of true or false
 	NonEditable pulumi.BoolPtrInput
@@ -266,7 +266,7 @@ func (o FormFieldPlacementOutput) FormFieldId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FormFieldPlacement) pulumi.StringOutput { return v.FormFieldId }).(pulumi.StringOutput)
 }
 
-// The form set this field is placed in.
+// The form set this field is placed in. The form set must have the same `resourceType` as the form field, otherwise the request is rejected with 422.
 func (o FormFieldPlacementOutput) FormSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FormFieldPlacement) pulumi.StringOutput { return v.FormSetId }).(pulumi.StringOutput)
 }

@@ -683,6 +683,11 @@ export type StatusPage = import("./statusPage").StatusPage;
 export const StatusPage: typeof import("./statusPage").StatusPage = null as any;
 utilities.lazyLoad(exports, ["StatusPage"], () => require("./statusPage"));
 
+export { StatusPageAnnouncementArgs, StatusPageAnnouncementState } from "./statusPageAnnouncement";
+export type StatusPageAnnouncement = import("./statusPageAnnouncement").StatusPageAnnouncement;
+export const StatusPageAnnouncement: typeof import("./statusPageAnnouncement").StatusPageAnnouncement = null as any;
+utilities.lazyLoad(exports, ["StatusPageAnnouncement"], () => require("./statusPageAnnouncement"));
+
 export { StatusPageComponentArgs, StatusPageComponentState } from "./statusPageComponent";
 export type StatusPageComponent = import("./statusPageComponent").StatusPageComponent;
 export const StatusPageComponent: typeof import("./statusPageComponent").StatusPageComponent = null as any;
@@ -822,6 +827,16 @@ export { WorkflowTaskAttachDatadogDashboardsArgs, WorkflowTaskAttachDatadogDashb
 export type WorkflowTaskAttachDatadogDashboards = import("./workflowTaskAttachDatadogDashboards").WorkflowTaskAttachDatadogDashboards;
 export const WorkflowTaskAttachDatadogDashboards: typeof import("./workflowTaskAttachDatadogDashboards").WorkflowTaskAttachDatadogDashboards = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskAttachDatadogDashboards"], () => require("./workflowTaskAttachDatadogDashboards"));
+
+export { WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketArgs, WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketState } from "./workflowTaskAttachRetrospectivePdfToFreshserviceTicket";
+export type WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket = import("./workflowTaskAttachRetrospectivePdfToFreshserviceTicket").WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket;
+export const WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket: typeof import("./workflowTaskAttachRetrospectivePdfToFreshserviceTicket").WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket"], () => require("./workflowTaskAttachRetrospectivePdfToFreshserviceTicket"));
+
+export { WorkflowTaskAttachRetrospectivePdfToJiraIssueArgs, WorkflowTaskAttachRetrospectivePdfToJiraIssueState } from "./workflowTaskAttachRetrospectivePdfToJiraIssue";
+export type WorkflowTaskAttachRetrospectivePdfToJiraIssue = import("./workflowTaskAttachRetrospectivePdfToJiraIssue").WorkflowTaskAttachRetrospectivePdfToJiraIssue;
+export const WorkflowTaskAttachRetrospectivePdfToJiraIssue: typeof import("./workflowTaskAttachRetrospectivePdfToJiraIssue").WorkflowTaskAttachRetrospectivePdfToJiraIssue = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskAttachRetrospectivePdfToJiraIssue"], () => require("./workflowTaskAttachRetrospectivePdfToJiraIssue"));
 
 export { WorkflowTaskAutoAssignRoleOpsgenieArgs, WorkflowTaskAutoAssignRoleOpsgenieState } from "./workflowTaskAutoAssignRoleOpsgenie";
 export type WorkflowTaskAutoAssignRoleOpsgenie = import("./workflowTaskAutoAssignRoleOpsgenie").WorkflowTaskAutoAssignRoleOpsgenie;
@@ -1067,6 +1082,11 @@ export { WorkflowTaskCreateShortcutTaskArgs, WorkflowTaskCreateShortcutTaskState
 export type WorkflowTaskCreateShortcutTask = import("./workflowTaskCreateShortcutTask").WorkflowTaskCreateShortcutTask;
 export const WorkflowTaskCreateShortcutTask: typeof import("./workflowTaskCreateShortcutTask").WorkflowTaskCreateShortcutTask = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskCreateShortcutTask"], () => require("./workflowTaskCreateShortcutTask"));
+
+export { WorkflowTaskCreateSlackCanvasArgs, WorkflowTaskCreateSlackCanvasState } from "./workflowTaskCreateSlackCanvas";
+export type WorkflowTaskCreateSlackCanvas = import("./workflowTaskCreateSlackCanvas").WorkflowTaskCreateSlackCanvas;
+export const WorkflowTaskCreateSlackCanvas: typeof import("./workflowTaskCreateSlackCanvas").WorkflowTaskCreateSlackCanvas = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskCreateSlackCanvas"], () => require("./workflowTaskCreateSlackCanvas"));
 
 export { WorkflowTaskCreateSlackChannelArgs, WorkflowTaskCreateSlackChannelState } from "./workflowTaskCreateSlackChannel";
 export type WorkflowTaskCreateSlackChannel = import("./workflowTaskCreateSlackChannel").WorkflowTaskCreateSlackChannel;
@@ -1473,6 +1493,11 @@ export type WorkflowTaskUpdateShortcutTask = import("./workflowTaskUpdateShortcu
 export const WorkflowTaskUpdateShortcutTask: typeof import("./workflowTaskUpdateShortcutTask").WorkflowTaskUpdateShortcutTask = null as any;
 utilities.lazyLoad(exports, ["WorkflowTaskUpdateShortcutTask"], () => require("./workflowTaskUpdateShortcutTask"));
 
+export { WorkflowTaskUpdateSlackCanvasArgs, WorkflowTaskUpdateSlackCanvasState } from "./workflowTaskUpdateSlackCanvas";
+export type WorkflowTaskUpdateSlackCanvas = import("./workflowTaskUpdateSlackCanvas").WorkflowTaskUpdateSlackCanvas;
+export const WorkflowTaskUpdateSlackCanvas: typeof import("./workflowTaskUpdateSlackCanvas").WorkflowTaskUpdateSlackCanvas = null as any;
+utilities.lazyLoad(exports, ["WorkflowTaskUpdateSlackCanvas"], () => require("./workflowTaskUpdateSlackCanvas"));
+
 export { WorkflowTaskUpdateSlackChannelTopicArgs, WorkflowTaskUpdateSlackChannelTopicState } from "./workflowTaskUpdateSlackChannelTopic";
 export type WorkflowTaskUpdateSlackChannelTopic = import("./workflowTaskUpdateSlackChannelTopic").WorkflowTaskUpdateSlackChannelTopic;
 export const WorkflowTaskUpdateSlackChannelTopic: typeof import("./workflowTaskUpdateSlackChannelTopic").WorkflowTaskUpdateSlackChannelTopic = null as any;
@@ -1644,6 +1669,8 @@ const _module = {
                 return new Sla(name, <any>undefined, { urn })
             case "rootly:index/statusPage:StatusPage":
                 return new StatusPage(name, <any>undefined, { urn })
+            case "rootly:index/statusPageAnnouncement:StatusPageAnnouncement":
+                return new StatusPageAnnouncement(name, <any>undefined, { urn })
             case "rootly:index/statusPageComponent:StatusPageComponent":
                 return new StatusPageComponent(name, <any>undefined, { urn })
             case "rootly:index/statusPageComponentGroup:StatusPageComponentGroup":
@@ -1700,6 +1727,10 @@ const _module = {
                 return new WorkflowTaskArchiveSlackChannels(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskAttachDatadogDashboards:WorkflowTaskAttachDatadogDashboards":
                 return new WorkflowTaskAttachDatadogDashboards(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskAttachRetrospectivePdfToFreshserviceTicket:WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket":
+                return new WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskAttachRetrospectivePdfToJiraIssue:WorkflowTaskAttachRetrospectivePdfToJiraIssue":
+                return new WorkflowTaskAttachRetrospectivePdfToJiraIssue(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskAutoAssignRoleOpsgenie:WorkflowTaskAutoAssignRoleOpsgenie":
                 return new WorkflowTaskAutoAssignRoleOpsgenie(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskAutoAssignRolePagerduty:WorkflowTaskAutoAssignRolePagerduty":
@@ -1798,6 +1829,8 @@ const _module = {
                 return new WorkflowTaskCreateShortcutStory(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateShortcutTask:WorkflowTaskCreateShortcutTask":
                 return new WorkflowTaskCreateShortcutTask(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskCreateSlackCanvas:WorkflowTaskCreateSlackCanvas":
+                return new WorkflowTaskCreateSlackCanvas(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateSlackChannel:WorkflowTaskCreateSlackChannel":
                 return new WorkflowTaskCreateSlackChannel(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskCreateSubIncident:WorkflowTaskCreateSubIncident":
@@ -1960,6 +1993,8 @@ const _module = {
                 return new WorkflowTaskUpdateShortcutStory(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateShortcutTask:WorkflowTaskUpdateShortcutTask":
                 return new WorkflowTaskUpdateShortcutTask(name, <any>undefined, { urn })
+            case "rootly:index/workflowTaskUpdateSlackCanvas:WorkflowTaskUpdateSlackCanvas":
+                return new WorkflowTaskUpdateSlackCanvas(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateSlackChannelTopic:WorkflowTaskUpdateSlackChannelTopic":
                 return new WorkflowTaskUpdateSlackChannelTopic(name, <any>undefined, { urn })
             case "rootly:index/workflowTaskUpdateStatus:WorkflowTaskUpdateStatus":
@@ -2041,6 +2076,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/service", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/severity", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/sla", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/statusPage", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/statusPageAnnouncement", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/statusPageComponent", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/statusPageComponentGroup", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/statusPageTemplate", _module)
@@ -2069,6 +2105,8 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskArchiveGoogle
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskArchiveMicrosoftTeamsChannels", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskArchiveSlackChannels", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAttachDatadogDashboards", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAttachRetrospectivePdfToFreshserviceTicket", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAttachRetrospectivePdfToJiraIssue", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRoleOpsgenie", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRolePagerduty", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskAutoAssignRoleRootly", _module)
@@ -2118,6 +2156,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateService
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateSharepointPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateShortcutStory", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateShortcutTask", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateSlackCanvas", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateSlackChannel", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateSubIncident", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskCreateTrelloCard", _module)
@@ -2199,6 +2238,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateService
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateSharepointPage", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateShortcutStory", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateShortcutTask", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateSlackCanvas", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateSlackChannelTopic", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateStatus", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowTaskUpdateTrelloCard", _module)

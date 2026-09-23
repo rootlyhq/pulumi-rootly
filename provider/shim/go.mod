@@ -4,7 +4,7 @@ go 1.27.1
 
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.19.0
-	github.com/rootlyhq/terraform-provider-rootly/v5 v5.21.1
+	github.com/rootlyhq/terraform-provider-rootly/v5 v5.22.0
 )
 
 require (
