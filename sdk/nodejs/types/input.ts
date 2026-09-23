@@ -1253,6 +1253,17 @@ export interface WebhooksEndpointCustomHeader {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface WorkflowActionItemFailureNotificationChannel {
+    /**
+     * Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Slack channel name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface WorkflowActionItemTriggerParams {
     /**
      * Value must be one of `ALL`, `ANY`, `NONE`.
@@ -1483,6 +1494,17 @@ export interface WorkflowAlertTriggerParamsAlertPayloadConditionsCondition {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface WorkflowIncidentFailureNotificationChannel {
+    /**
+     * Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Slack channel name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface WorkflowIncidentTriggerParams {
     /**
      * Value must be one of `ALL`, `ANY`, `NONE`.
@@ -1598,6 +1620,17 @@ export interface WorkflowIncidentTriggerParams {
      * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
      */
     triggers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface WorkflowPostMortemFailureNotificationChannel {
+    /**
+     * Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Slack channel name
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface WorkflowPostMortemTriggerParams {
@@ -1729,6 +1762,17 @@ export interface WorkflowPostMortemTriggerParams {
     triggers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
+export interface WorkflowPulseFailureNotificationChannel {
+    /**
+     * Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Slack channel name
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface WorkflowPulseTriggerParams {
     /**
      * Value must be one of `ALL`, `ANY`, `NONE`.
@@ -1773,6 +1817,17 @@ export interface WorkflowPulseTriggerParams {
      * Actions that trigger the workflow. Value must be one of `pulseCreated`.
      */
     triggers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface WorkflowSimpleFailureNotificationChannel {
+    /**
+     * Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Slack channel name
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface WorkflowSimpleTriggerParams {
@@ -1917,6 +1972,14 @@ export interface WorkflowTaskAddSlackBookmarkTaskParams {
      * The playbook id if bookmark is of an incident playbook
      */
     playbookId?: pulumi.Input<string | undefined>;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
     taskType?: pulumi.Input<string | undefined>;
     /**
      * The bookmark title. Required if not a playbook bookmark
@@ -1976,6 +2039,14 @@ export interface WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsChannel {
 
 export interface WorkflowTaskArchiveSlackChannelsTaskParams {
     channels: pulumi.Input<pulumi.Input<inputs.WorkflowTaskArchiveSlackChannelsTaskParamsChannel>[]>;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
     taskType?: pulumi.Input<string | undefined>;
 }
 
@@ -2002,6 +2073,34 @@ export interface WorkflowTaskAttachDatadogDashboardsTaskParamsDashboard {
 export interface WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannel {
     id: pulumi.Input<string>;
     name: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams {
+    /**
+     * The attachment filename
+     */
+    filename?: pulumi.Input<string | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * The Freshservice ticket id
+     */
+    ticketId: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams {
+    /**
+     * The attachment filename
+     */
+    filename?: pulumi.Input<string | undefined>;
+    /**
+     * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+     */
+    integration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The issue id
+     */
+    issueId: pulumi.Input<string>;
+    taskType?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkflowTaskAutoAssignRoleOpsgenieTaskParams {
@@ -2110,6 +2209,14 @@ export interface WorkflowTaskChangeSlackChannelPrivacyTaskParams {
      * Value must be one of `private`, `public`.
      */
     privacy: pulumi.Input<string>;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
     taskType?: pulumi.Input<string | undefined>;
 }
 
@@ -2683,6 +2790,14 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParams {
      * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
      */
     recordingMode?: pulumi.Input<string | undefined>;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
     /**
      * [DEPRECATED] The meeting summary
      */
@@ -3512,11 +3627,69 @@ export interface WorkflowTaskCreateShortcutTaskTaskParams {
     taskType?: pulumi.Input<string | undefined>;
 }
 
+export interface WorkflowTaskCreateSlackCanvasTaskParams {
+    /**
+     * Slack channel containing the canvas. Channel IDs support Liquid variables.
+     */
+    channel: pulumi.Input<inputs.WorkflowTaskCreateSlackCanvasTaskParamsChannel>;
+    /**
+     * The initial canvas content in Markdown. Supports Liquid variables. An existing channel canvas is preserved.
+     */
+    content: pulumi.Input<string>;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+    /**
+     * The canvas title. Supports Liquid variables.
+     */
+    title: pulumi.Input<string>;
+}
+
+export interface WorkflowTaskCreateSlackCanvasTaskParamsChannel {
+    /**
+     * Slack channel ID.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Channel display name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+     */
+    workspace?: pulumi.Input<inputs.WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace | undefined>;
+}
+
+export interface WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace {
+    /**
+     * Slack workspace ID. Enter a literal ID from Slack.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Workspace display name.
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskCreateSlackChannelTaskParams {
     /**
      * Value must be one of `auto`, `true`, `false`.
      */
     private?: pulumi.Input<string | undefined>;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
     taskType?: pulumi.Input<string | undefined>;
     /**
      * Slack channel title
@@ -3704,6 +3877,14 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
      */
     recordingMode?: pulumi.Input<string | undefined>;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
     taskType?: pulumi.Input<string | undefined>;
     /**
      * The meeting topic
@@ -3853,7 +4034,7 @@ export interface WorkflowTaskHttpClientTaskParams {
      */
     expectedResponseHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is.. Value must be one of true or false
+     * Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is. Value must be one of true or false
      */
     followRedirects?: pulumi.Input<boolean | undefined>;
     /**
@@ -4335,6 +4516,14 @@ export interface WorkflowTaskRenameSlackChannelTaskParams {
      * Map must contain two fields, `id` and `name`.
      */
     channel: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
     taskType?: pulumi.Input<string | undefined>;
     title: pulumi.Input<string>;
 }
@@ -4486,6 +4675,10 @@ export interface WorkflowTaskSendMicrosoftTeamsMessageTaskParamsChannel {
 
 export interface WorkflowTaskSendSlackBlocksTaskParams {
     /**
+     * When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+     */
+    allowCrossWorkflowThreading?: pulumi.Input<boolean | undefined>;
+    /**
      * Support liquid markup. Needs to be a valid JSON string after liquid is parsed
      */
     attachments?: pulumi.Input<string | undefined>;
@@ -4508,11 +4701,19 @@ export interface WorkflowTaskSendSlackBlocksTaskParams {
      */
     pinToChannel?: pulumi.Input<boolean | undefined>;
     /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
+    /**
      * Value must be one of true or false
      */
     sendAsEphemeral?: pulumi.Input<boolean | undefined>;
     /**
-     * When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+     * When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
      */
     sendOnlyAsThreadedMessage?: pulumi.Input<boolean | undefined>;
     slackUserGroups?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup>[] | undefined>;
@@ -4549,6 +4750,10 @@ export interface WorkflowTaskSendSlackMessageTaskParams {
      */
     actionables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+     */
+    allowCrossWorkflowThreading?: pulumi.Input<boolean | undefined>;
+    /**
      * Value must be one of true or false
      */
     broadcastThreadReplyToChannel?: pulumi.Input<boolean | undefined>;
@@ -4566,11 +4771,19 @@ export interface WorkflowTaskSendSlackMessageTaskParams {
      */
     pinToChannel?: pulumi.Input<boolean | undefined>;
     /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
+    /**
      * Value must be one of true or false
      */
     sendAsEphemeral?: pulumi.Input<boolean | undefined>;
     /**
-     * When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+     * When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
      */
     sendOnlyAsThreadedMessage?: pulumi.Input<boolean | undefined>;
     slackUserGroups?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup>[] | undefined>;
@@ -5032,7 +5245,7 @@ export interface WorkflowTaskUpdateGithubIssueTaskParams {
      */
     labels?: pulumi.Input<pulumi.Input<inputs.WorkflowTaskUpdateGithubIssueTaskParamsLabel>[] | undefined>;
     /**
-     * How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+     * How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them. Value must be one of `replace`, `append`.
      */
     labelsMode?: pulumi.Input<string | undefined>;
     /**
@@ -5675,11 +5888,69 @@ export interface WorkflowTaskUpdateShortcutTaskTaskParams {
     taskType?: pulumi.Input<string | undefined>;
 }
 
+export interface WorkflowTaskUpdateSlackCanvasTaskParams {
+    /**
+     * Slack channel containing the canvas. Channel IDs support Liquid variables.
+     */
+    channel: pulumi.Input<inputs.WorkflowTaskUpdateSlackCanvasTaskParamsChannel>;
+    /**
+     * The canvas content in Markdown. Supports Liquid variables.
+     */
+    content: pulumi.Input<string>;
+    /**
+     * Append content, replace all content, or replace only registered tables in a canvas created by Rootly from a managed template while preserving content outside them. Matching labels do not register an existing canvas. Managed sections overwrite edits inside those tables and require Slack reauthorization with canvases:read and canvases:write. Value must be one of `insertAtEnd`, `replace`, `managedSections`.
+     */
+    operation?: pulumi.Input<string | undefined>;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
+    taskType?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkflowTaskUpdateSlackCanvasTaskParamsChannel {
+    /**
+     * Slack channel ID.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Channel display name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+     */
+    workspace?: pulumi.Input<inputs.WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace | undefined>;
+}
+
+export interface WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace {
+    /**
+     * Slack workspace ID. Enter a literal ID from Slack.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Workspace display name.
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface WorkflowTaskUpdateSlackChannelTopicTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
     channel: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: pulumi.Input<number | undefined>;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: pulumi.Input<number | undefined>;
     taskType?: pulumi.Input<string | undefined>;
     topic: pulumi.Input<string>;
 }

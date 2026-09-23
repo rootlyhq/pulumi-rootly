@@ -1596,6 +1596,17 @@ export interface WebhooksEndpointCustomHeader {
     value: string;
 }
 
+export interface WorkflowActionItemFailureNotificationChannel {
+    /**
+     * Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+     */
+    id: string;
+    /**
+     * Slack channel name
+     */
+    name: string;
+}
+
 export interface WorkflowActionItemTriggerParams {
     /**
      * Value must be one of `ALL`, `ANY`, `NONE`.
@@ -1826,6 +1837,17 @@ export interface WorkflowAlertTriggerParamsAlertPayloadConditionsCondition {
     values: string[];
 }
 
+export interface WorkflowIncidentFailureNotificationChannel {
+    /**
+     * Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+     */
+    id: string;
+    /**
+     * Slack channel name
+     */
+    name: string;
+}
+
 export interface WorkflowIncidentTriggerParams {
     /**
      * Value must be one of `ALL`, `ANY`, `NONE`.
@@ -1941,6 +1963,17 @@ export interface WorkflowIncidentTriggerParams {
      * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
      */
     triggers: string[];
+}
+
+export interface WorkflowPostMortemFailureNotificationChannel {
+    /**
+     * Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+     */
+    id: string;
+    /**
+     * Slack channel name
+     */
+    name: string;
 }
 
 export interface WorkflowPostMortemTriggerParams {
@@ -2072,6 +2105,17 @@ export interface WorkflowPostMortemTriggerParams {
     triggers: string[];
 }
 
+export interface WorkflowPulseFailureNotificationChannel {
+    /**
+     * Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+     */
+    id: string;
+    /**
+     * Slack channel name
+     */
+    name: string;
+}
+
 export interface WorkflowPulseTriggerParams {
     /**
      * Value must be one of `ALL`, `ANY`, `NONE`.
@@ -2116,6 +2160,17 @@ export interface WorkflowPulseTriggerParams {
      * Actions that trigger the workflow. Value must be one of `pulseCreated`.
      */
     triggers: string[];
+}
+
+export interface WorkflowSimpleFailureNotificationChannel {
+    /**
+     * Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+     */
+    id: string;
+    /**
+     * Slack channel name
+     */
+    name: string;
 }
 
 export interface WorkflowSimpleTriggerParams {
@@ -2260,6 +2315,14 @@ export interface WorkflowTaskAddSlackBookmarkTaskParams {
      * The playbook id if bookmark is of an incident playbook
      */
     playbookId?: string;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
     taskType?: string;
     /**
      * The bookmark title. Required if not a playbook bookmark
@@ -2319,6 +2382,14 @@ export interface WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsChannel {
 
 export interface WorkflowTaskArchiveSlackChannelsTaskParams {
     channels: outputs.WorkflowTaskArchiveSlackChannelsTaskParamsChannel[];
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
     taskType?: string;
 }
 
@@ -2345,6 +2416,34 @@ export interface WorkflowTaskAttachDatadogDashboardsTaskParamsDashboard {
 export interface WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannel {
     id: string;
     name: string;
+}
+
+export interface WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams {
+    /**
+     * The attachment filename
+     */
+    filename?: string;
+    taskType?: string;
+    /**
+     * The Freshservice ticket id
+     */
+    ticketId: string;
+}
+
+export interface WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams {
+    /**
+     * The attachment filename
+     */
+    filename?: string;
+    /**
+     * Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+     */
+    integration?: {[key: string]: string};
+    /**
+     * The issue id
+     */
+    issueId: string;
+    taskType?: string;
 }
 
 export interface WorkflowTaskAutoAssignRoleOpsgenieTaskParams {
@@ -2453,6 +2552,14 @@ export interface WorkflowTaskChangeSlackChannelPrivacyTaskParams {
      * Value must be one of `private`, `public`.
      */
     privacy: string;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
     taskType?: string;
 }
 
@@ -3026,6 +3133,14 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParams {
      * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
      */
     recordingMode?: string;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
     /**
      * [DEPRECATED] The meeting summary
      */
@@ -3855,11 +3970,69 @@ export interface WorkflowTaskCreateShortcutTaskTaskParams {
     taskType?: string;
 }
 
+export interface WorkflowTaskCreateSlackCanvasTaskParams {
+    /**
+     * Slack channel containing the canvas. Channel IDs support Liquid variables.
+     */
+    channel: outputs.WorkflowTaskCreateSlackCanvasTaskParamsChannel;
+    /**
+     * The initial canvas content in Markdown. Supports Liquid variables. An existing channel canvas is preserved.
+     */
+    content: string;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
+    taskType?: string;
+    /**
+     * The canvas title. Supports Liquid variables.
+     */
+    title: string;
+}
+
+export interface WorkflowTaskCreateSlackCanvasTaskParamsChannel {
+    /**
+     * Slack channel ID.
+     */
+    id: string;
+    /**
+     * Channel display name.
+     */
+    name: string;
+    /**
+     * Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+     */
+    workspace?: outputs.WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace;
+}
+
+export interface WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace {
+    /**
+     * Slack workspace ID. Enter a literal ID from Slack.
+     */
+    id: string;
+    /**
+     * Workspace display name.
+     */
+    name: string;
+}
+
 export interface WorkflowTaskCreateSlackChannelTaskParams {
     /**
      * Value must be one of `auto`, `true`, `false`.
      */
     private?: string;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
     taskType?: string;
     /**
      * Slack channel title
@@ -4047,6 +4220,14 @@ export interface WorkflowTaskCreateZoomMeetingTaskParams {
      * The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
      */
     recordingMode?: string;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
     taskType?: string;
     /**
      * The meeting topic
@@ -4196,7 +4377,7 @@ export interface WorkflowTaskHttpClientTaskParams {
      */
     expectedResponseHeaders?: {[key: string]: string};
     /**
-     * Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is.. Value must be one of true or false
+     * Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is. Value must be one of true or false
      */
     followRedirects?: boolean;
     /**
@@ -4678,6 +4859,14 @@ export interface WorkflowTaskRenameSlackChannelTaskParams {
      * Map must contain two fields, `id` and `name`.
      */
     channel: {[key: string]: string};
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
     taskType?: string;
     title: string;
 }
@@ -4829,6 +5018,10 @@ export interface WorkflowTaskSendMicrosoftTeamsMessageTaskParamsChannel {
 
 export interface WorkflowTaskSendSlackBlocksTaskParams {
     /**
+     * When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+     */
+    allowCrossWorkflowThreading?: boolean;
+    /**
      * Support liquid markup. Needs to be a valid JSON string after liquid is parsed
      */
     attachments?: string;
@@ -4851,11 +5044,19 @@ export interface WorkflowTaskSendSlackBlocksTaskParams {
      */
     pinToChannel?: boolean;
     /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
+    /**
      * Value must be one of true or false
      */
     sendAsEphemeral?: boolean;
     /**
-     * When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+     * When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
      */
     sendOnlyAsThreadedMessage?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup[];
@@ -4892,6 +5093,10 @@ export interface WorkflowTaskSendSlackMessageTaskParams {
      */
     actionables?: string[];
     /**
+     * When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+     */
+    allowCrossWorkflowThreading?: boolean;
+    /**
      * Value must be one of true or false
      */
     broadcastThreadReplyToChannel?: boolean;
@@ -4909,11 +5114,19 @@ export interface WorkflowTaskSendSlackMessageTaskParams {
      */
     pinToChannel?: boolean;
     /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
+    /**
      * Value must be one of true or false
      */
     sendAsEphemeral?: boolean;
     /**
-     * When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+     * When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
      */
     sendOnlyAsThreadedMessage?: boolean;
     slackUserGroups?: outputs.WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup[];
@@ -5375,7 +5588,7 @@ export interface WorkflowTaskUpdateGithubIssueTaskParams {
      */
     labels?: outputs.WorkflowTaskUpdateGithubIssueTaskParamsLabel[];
     /**
-     * How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+     * How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them. Value must be one of `replace`, `append`.
      */
     labelsMode?: string;
     /**
@@ -6018,11 +6231,69 @@ export interface WorkflowTaskUpdateShortcutTaskTaskParams {
     taskType?: string;
 }
 
+export interface WorkflowTaskUpdateSlackCanvasTaskParams {
+    /**
+     * Slack channel containing the canvas. Channel IDs support Liquid variables.
+     */
+    channel: outputs.WorkflowTaskUpdateSlackCanvasTaskParamsChannel;
+    /**
+     * The canvas content in Markdown. Supports Liquid variables.
+     */
+    content: string;
+    /**
+     * Append content, replace all content, or replace only registered tables in a canvas created by Rootly from a managed template while preserving content outside them. Matching labels do not register an existing canvas. Managed sections overwrite edits inside those tables and require Slack reauthorization with canvases:read and canvases:write. Value must be one of `insertAtEnd`, `replace`, `managedSections`.
+     */
+    operation?: string;
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
+    taskType?: string;
+}
+
+export interface WorkflowTaskUpdateSlackCanvasTaskParamsChannel {
+    /**
+     * Slack channel ID.
+     */
+    id: string;
+    /**
+     * Channel display name.
+     */
+    name: string;
+    /**
+     * Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+     */
+    workspace?: outputs.WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace;
+}
+
+export interface WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace {
+    /**
+     * Slack workspace ID. Enter a literal ID from Slack.
+     */
+    id: string;
+    /**
+     * Workspace display name.
+     */
+    name: string;
+}
+
 export interface WorkflowTaskUpdateSlackChannelTopicTaskParams {
     /**
      * Map must contain two fields, `id` and `name`.
      */
     channel: {[key: string]: string};
+    /**
+     * Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+     */
+    retryCount?: number;
+    /**
+     * Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+     */
+    retryWaitTime?: number;
     taskType?: string;
     topic: string;
 }

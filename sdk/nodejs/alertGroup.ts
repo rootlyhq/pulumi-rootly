@@ -92,6 +92,10 @@ export class AlertGroup extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Teams that own this alert group. Admins of an owning team can manage it, and an owned alert group can only target destinations that belong to its owning teams. Only available when owning teams for alert groups are enabled for the organization. Set this explicitly when the provider uses a team-scoped API key: omitting it makes the API assign that key's own teams, which the key cannot later clear.
+     */
+    declare public readonly ownerGroupIds: pulumi.Output<string[] | undefined>;
+    /**
      * [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
      *
      * @deprecated `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
@@ -124,6 +128,7 @@ export class AlertGroup extends pulumi.CustomResource {
             resourceInputs["groupByAlertTitle"] = state?.groupByAlertTitle;
             resourceInputs["groupByAlertUrgency"] = state?.groupByAlertUrgency;
             resourceInputs["name"] = state?.name;
+            resourceInputs["ownerGroupIds"] = state?.ownerGroupIds;
             resourceInputs["slug"] = state?.slug;
             resourceInputs["targets"] = state?.targets;
             resourceInputs["timeWindow"] = state?.timeWindow;
@@ -137,6 +142,7 @@ export class AlertGroup extends pulumi.CustomResource {
             resourceInputs["groupByAlertTitle"] = args?.groupByAlertTitle;
             resourceInputs["groupByAlertUrgency"] = args?.groupByAlertUrgency;
             resourceInputs["name"] = args?.name;
+            resourceInputs["ownerGroupIds"] = args?.ownerGroupIds;
             resourceInputs["slug"] = args?.slug;
             resourceInputs["targets"] = args?.targets;
             resourceInputs["timeWindow"] = args?.timeWindow;
@@ -186,6 +192,10 @@ export interface AlertGroupState {
      * The name of the alert group
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Teams that own this alert group. Admins of an owning team can manage it, and an owned alert group can only target destinations that belong to its owning teams. Only available when owning teams for alert groups are enabled for the organization. Set this explicitly when the provider uses a team-scoped API key: omitting it makes the API assign that key's own teams, which the key cannot later clear.
+     */
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
      *
@@ -239,6 +249,10 @@ export interface AlertGroupArgs {
      * The name of the alert group
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Teams that own this alert group. Admins of an owning team can manage it, and an owned alert group can only target destinations that belong to its owning teams. Only available when owning teams for alert groups are enabled for the organization. Set this explicitly when the provider uses a team-scoped API key: omitting it makes the API assign that key's own teams, which the key cannot later clear.
+     */
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
      *
