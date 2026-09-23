@@ -7,8 +7,8 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.139.0
-	github.com/pulumi/pulumi/pkg/v3 v3.262.0
-	github.com/pulumi/pulumi/sdk/v3 v3.262.0
+	github.com/pulumi/pulumi/pkg/v3 v3.263.0
+	github.com/pulumi/pulumi/sdk/v3 v3.263.0
 	github.com/rootlyhq/terraform-provider-rootly/v5 v5.21.1
 	github.com/rootlyhq/terraform-provider-rootly/v5/pulumi-shim v0.0.0
 	github.com/stretchr/testify v1.12.1
@@ -230,8 +230,8 @@ require (
 	go.abhg.dev/goldmark/frontmatter v0.3.0 // indirect
 	go.mongodb.org/mongo-driver v1.17.10 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
-	go.opentelemetry.io/collector/featuregate v1.66.0 // indirect
-	go.opentelemetry.io/collector/pdata v1.66.0 // indirect
+	go.opentelemetry.io/collector/featuregate v1.67.0 // indirect
+	go.opentelemetry.io/collector/pdata v1.67.0 // indirect
 	go.opentelemetry.io/contrib/bridges/otelslog v0.20.1 // indirect
 	go.opentelemetry.io/contrib/detectors/gcp v1.46.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.71.0 // indirect
