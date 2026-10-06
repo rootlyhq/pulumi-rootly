@@ -4,7 +4,7 @@ go 1.27.1
 
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.19.0
-	github.com/rootlyhq/terraform-provider-rootly/v5 v5.21.1
+	github.com/rootlyhq/terraform-provider-rootly/v5 v5.23.3
 )
 
 require (
@@ -82,7 +82,6 @@ require (
 	golang.org/x/text v0.42.0 // indirect
 	golang.org/x/tools v0.50.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
-	google.golang.org/grpc v1.83.2 // indirect
 	google.golang.org/protobuf v1.36.12 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
