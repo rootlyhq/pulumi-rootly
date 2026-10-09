@@ -3,7 +3,12 @@
         "resources": {
             "rootly_alert_field": {
                 "current": "rootly:index/alertField:AlertField",
-                "majorVersion": 4
+                "majorVersion": 4,
+                "fields": {
+                    "owner_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "rootly_alert_group": {
                 "current": "rootly:index/alertGroup:AlertGroup",
@@ -27,6 +32,9 @@
                                 }
                             }
                         }
+                    },
+                    "owner_group_ids": {
+                        "maxItemsOne": false
                     },
                     "targets": {
                         "maxItemsOne": false
@@ -823,6 +831,9 @@
                     "playbooks_permissions": {
                         "maxItemsOne": false
                     },
+                    "private_agent_permissions": {
+                        "maxItemsOne": false
+                    },
                     "private_incidents_permissions": {
                         "maxItemsOne": false
                     },
@@ -845,6 +856,9 @@
                         "maxItemsOne": false
                     },
                     "slas_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "status_page_updates_permissions": {
                         "maxItemsOne": false
                     },
                     "status_pages_permissions": {
@@ -990,6 +1004,10 @@
                     }
                 }
             },
+            "rootly_status_page_announcement": {
+                "current": "rootly:index/statusPageAnnouncement:StatusPageAnnouncement",
+                "majorVersion": 4
+            },
             "rootly_status_page_component": {
                 "current": "rootly:index/statusPageComponent:StatusPageComponent",
                 "majorVersion": 4
@@ -1060,6 +1078,9 @@
                         "maxItemsOne": false
                     },
                     "environment_ids": {
+                        "maxItemsOne": false
+                    },
+                    "failure_notification_channels": {
                         "maxItemsOne": false
                     },
                     "functionality_ids": {
@@ -1301,6 +1322,9 @@
                     "environment_ids": {
                         "maxItemsOne": false
                     },
+                    "failure_notification_channels": {
+                        "maxItemsOne": false
+                    },
                     "functionality_ids": {
                         "maxItemsOne": false
                     },
@@ -1357,6 +1381,9 @@
                         "maxItemsOne": false
                     },
                     "environment_ids": {
+                        "maxItemsOne": false
+                    },
+                    "failure_notification_channels": {
                         "maxItemsOne": false
                     },
                     "functionality_ids": {
@@ -1420,6 +1447,9 @@
                     "environment_ids": {
                         "maxItemsOne": false
                     },
+                    "failure_notification_channels": {
+                        "maxItemsOne": false
+                    },
                     "functionality_ids": {
                         "maxItemsOne": false
                     },
@@ -1473,6 +1503,9 @@
                         "maxItemsOne": false
                     },
                     "environment_ids": {
+                        "maxItemsOne": false
+                    },
+                    "failure_notification_channels": {
                         "maxItemsOne": false
                     },
                     "functionality_ids": {
@@ -1652,6 +1685,24 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "rootly_workflow_task_attach_retrospective_pdf_to_freshservice_ticket": {
+                "current": "rootly:index/workflowTaskAttachRetrospectivePdfToFreshserviceTicket:WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket",
+                "majorVersion": 4,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_attach_retrospective_pdf_to_jira_issue": {
+                "current": "rootly:index/workflowTaskAttachRetrospectivePdfToJiraIssue:WorkflowTaskAttachRetrospectivePdfToJiraIssue",
+                "majorVersion": 4,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -2247,6 +2298,29 @@
                 "fields": {
                     "task_params": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "rootly_workflow_task_create_slack_canvas": {
+                "current": "rootly:index/workflowTaskCreateSlackCanvas:WorkflowTaskCreateSlackCanvas",
+                "majorVersion": 4,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "channel": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "workspace": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -3394,6 +3468,29 @@
                     }
                 }
             },
+            "rootly_workflow_task_update_slack_canvas": {
+                "current": "rootly:index/workflowTaskUpdateSlackCanvas:WorkflowTaskUpdateSlackCanvas",
+                "majorVersion": 4,
+                "fields": {
+                    "task_params": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "channel": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "workspace": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "rootly_workflow_task_update_slack_channel_topic": {
                 "current": "rootly:index/workflowTaskUpdateSlackChannelTopic:WorkflowTaskUpdateSlackChannelTopic",
                 "majorVersion": 4,
@@ -3936,6 +4033,7 @@
             "rootly:index/severity:Severity": 0,
             "rootly:index/sla:Sla": 0,
             "rootly:index/statusPage:StatusPage": 0,
+            "rootly:index/statusPageAnnouncement:StatusPageAnnouncement": 0,
             "rootly:index/statusPageComponent:StatusPageComponent": 0,
             "rootly:index/statusPageComponentGroup:StatusPageComponentGroup": 0,
             "rootly:index/statusPageTemplate:StatusPageTemplate": 0,
@@ -3964,6 +4062,8 @@
             "rootly:index/workflowTaskArchiveMicrosoftTeamsChannels:WorkflowTaskArchiveMicrosoftTeamsChannels": 0,
             "rootly:index/workflowTaskArchiveSlackChannels:WorkflowTaskArchiveSlackChannels": 0,
             "rootly:index/workflowTaskAttachDatadogDashboards:WorkflowTaskAttachDatadogDashboards": 0,
+            "rootly:index/workflowTaskAttachRetrospectivePdfToFreshserviceTicket:WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket": 0,
+            "rootly:index/workflowTaskAttachRetrospectivePdfToJiraIssue:WorkflowTaskAttachRetrospectivePdfToJiraIssue": 0,
             "rootly:index/workflowTaskAutoAssignRoleOpsgenie:WorkflowTaskAutoAssignRoleOpsgenie": 0,
             "rootly:index/workflowTaskAutoAssignRolePagerduty:WorkflowTaskAutoAssignRolePagerduty": 0,
             "rootly:index/workflowTaskAutoAssignRoleRootly:WorkflowTaskAutoAssignRoleRootly": 0,
@@ -4013,6 +4113,7 @@
             "rootly:index/workflowTaskCreateSharepointPage:WorkflowTaskCreateSharepointPage": 0,
             "rootly:index/workflowTaskCreateShortcutStory:WorkflowTaskCreateShortcutStory": 0,
             "rootly:index/workflowTaskCreateShortcutTask:WorkflowTaskCreateShortcutTask": 0,
+            "rootly:index/workflowTaskCreateSlackCanvas:WorkflowTaskCreateSlackCanvas": 0,
             "rootly:index/workflowTaskCreateSlackChannel:WorkflowTaskCreateSlackChannel": 0,
             "rootly:index/workflowTaskCreateSubIncident:WorkflowTaskCreateSubIncident": 0,
             "rootly:index/workflowTaskCreateTrelloCard:WorkflowTaskCreateTrelloCard": 0,
@@ -4094,6 +4195,7 @@
             "rootly:index/workflowTaskUpdateSharepointPage:WorkflowTaskUpdateSharepointPage": 0,
             "rootly:index/workflowTaskUpdateShortcutStory:WorkflowTaskUpdateShortcutStory": 0,
             "rootly:index/workflowTaskUpdateShortcutTask:WorkflowTaskUpdateShortcutTask": 0,
+            "rootly:index/workflowTaskUpdateSlackCanvas:WorkflowTaskUpdateSlackCanvas": 0,
             "rootly:index/workflowTaskUpdateSlackChannelTopic:WorkflowTaskUpdateSlackChannelTopic": 0,
             "rootly:index/workflowTaskUpdateStatus:WorkflowTaskUpdateStatus": 0,
             "rootly:index/workflowTaskUpdateTrelloCard:WorkflowTaskUpdateTrelloCard": 0,

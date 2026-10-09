@@ -38,17 +38,21 @@ type WorkflowPulse struct {
 	Command pulumi.StringOutput `pulumi:"command"`
 	// This will notify you back when the workflow is starting. Value must be one of true or false
 	CommandFeedbackEnabled pulumi.BoolOutput `pulumi:"commandFeedbackEnabled"`
-	// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters.. Value must be one of true or false
+	// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters. Value must be one of true or false
 	ContinuouslyRepeat pulumi.BoolOutput `pulumi:"continuouslyRepeat"`
 	// The description of the workflow
-	Description      pulumi.StringOutput      `pulumi:"description"`
-	Enabled          pulumi.BoolPtrOutput     `pulumi:"enabled"`
-	EnvironmentIds   pulumi.StringArrayOutput `pulumi:"environmentIds"`
-	FunctionalityIds pulumi.StringArrayOutput `pulumi:"functionalityIds"`
-	GroupIds         pulumi.StringArrayOutput `pulumi:"groupIds"`
-	IncidentRoleIds  pulumi.StringArrayOutput `pulumi:"incidentRoleIds"`
-	IncidentTypeIds  pulumi.StringArrayOutput `pulumi:"incidentTypeIds"`
-	// Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
+	Description    pulumi.StringOutput      `pulumi:"description"`
+	Enabled        pulumi.BoolPtrOutput     `pulumi:"enabled"`
+	EnvironmentIds pulumi.StringArrayOutput `pulumi:"environmentIds"`
+	// Slack channels notified when a run of this workflow fails. Used when `failureNotificationMode` is `custom`.
+	FailureNotificationChannels WorkflowPulseFailureNotificationChannelArrayOutput `pulumi:"failureNotificationChannels"`
+	// Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
+	FailureNotificationMode pulumi.StringOutput      `pulumi:"failureNotificationMode"`
+	FunctionalityIds        pulumi.StringArrayOutput `pulumi:"functionalityIds"`
+	GroupIds                pulumi.StringArrayOutput `pulumi:"groupIds"`
+	IncidentRoleIds         pulumi.StringArrayOutput `pulumi:"incidentRoleIds"`
+	IncidentTypeIds         pulumi.StringArrayOutput `pulumi:"incidentTypeIds"`
+	// Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// The title of the workflow
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -111,17 +115,21 @@ type workflowPulseState struct {
 	Command *string `pulumi:"command"`
 	// This will notify you back when the workflow is starting. Value must be one of true or false
 	CommandFeedbackEnabled *bool `pulumi:"commandFeedbackEnabled"`
-	// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters.. Value must be one of true or false
+	// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters. Value must be one of true or false
 	ContinuouslyRepeat *bool `pulumi:"continuouslyRepeat"`
 	// The description of the workflow
-	Description      *string  `pulumi:"description"`
-	Enabled          *bool    `pulumi:"enabled"`
-	EnvironmentIds   []string `pulumi:"environmentIds"`
-	FunctionalityIds []string `pulumi:"functionalityIds"`
-	GroupIds         []string `pulumi:"groupIds"`
-	IncidentRoleIds  []string `pulumi:"incidentRoleIds"`
-	IncidentTypeIds  []string `pulumi:"incidentTypeIds"`
-	// Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
+	Description    *string  `pulumi:"description"`
+	Enabled        *bool    `pulumi:"enabled"`
+	EnvironmentIds []string `pulumi:"environmentIds"`
+	// Slack channels notified when a run of this workflow fails. Used when `failureNotificationMode` is `custom`.
+	FailureNotificationChannels []WorkflowPulseFailureNotificationChannel `pulumi:"failureNotificationChannels"`
+	// Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
+	FailureNotificationMode *string  `pulumi:"failureNotificationMode"`
+	FunctionalityIds        []string `pulumi:"functionalityIds"`
+	GroupIds                []string `pulumi:"groupIds"`
+	IncidentRoleIds         []string `pulumi:"incidentRoleIds"`
+	IncidentTypeIds         []string `pulumi:"incidentTypeIds"`
+	// Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
 	Locked *bool `pulumi:"locked"`
 	// The title of the workflow
 	Name *string `pulumi:"name"`
@@ -155,17 +163,21 @@ type WorkflowPulseState struct {
 	Command pulumi.StringPtrInput
 	// This will notify you back when the workflow is starting. Value must be one of true or false
 	CommandFeedbackEnabled pulumi.BoolPtrInput
-	// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters.. Value must be one of true or false
+	// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters. Value must be one of true or false
 	ContinuouslyRepeat pulumi.BoolPtrInput
 	// The description of the workflow
-	Description      pulumi.StringPtrInput
-	Enabled          pulumi.BoolPtrInput
-	EnvironmentIds   pulumi.StringArrayInput
-	FunctionalityIds pulumi.StringArrayInput
-	GroupIds         pulumi.StringArrayInput
-	IncidentRoleIds  pulumi.StringArrayInput
-	IncidentTypeIds  pulumi.StringArrayInput
-	// Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
+	Description    pulumi.StringPtrInput
+	Enabled        pulumi.BoolPtrInput
+	EnvironmentIds pulumi.StringArrayInput
+	// Slack channels notified when a run of this workflow fails. Used when `failureNotificationMode` is `custom`.
+	FailureNotificationChannels WorkflowPulseFailureNotificationChannelArrayInput
+	// Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
+	FailureNotificationMode pulumi.StringPtrInput
+	FunctionalityIds        pulumi.StringArrayInput
+	GroupIds                pulumi.StringArrayInput
+	IncidentRoleIds         pulumi.StringArrayInput
+	IncidentTypeIds         pulumi.StringArrayInput
+	// Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
 	Locked pulumi.BoolPtrInput
 	// The title of the workflow
 	Name pulumi.StringPtrInput
@@ -203,17 +215,21 @@ type workflowPulseArgs struct {
 	Command *string `pulumi:"command"`
 	// This will notify you back when the workflow is starting. Value must be one of true or false
 	CommandFeedbackEnabled *bool `pulumi:"commandFeedbackEnabled"`
-	// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters.. Value must be one of true or false
+	// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters. Value must be one of true or false
 	ContinuouslyRepeat *bool `pulumi:"continuouslyRepeat"`
 	// The description of the workflow
-	Description      *string  `pulumi:"description"`
-	Enabled          *bool    `pulumi:"enabled"`
-	EnvironmentIds   []string `pulumi:"environmentIds"`
-	FunctionalityIds []string `pulumi:"functionalityIds"`
-	GroupIds         []string `pulumi:"groupIds"`
-	IncidentRoleIds  []string `pulumi:"incidentRoleIds"`
-	IncidentTypeIds  []string `pulumi:"incidentTypeIds"`
-	// Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
+	Description    *string  `pulumi:"description"`
+	Enabled        *bool    `pulumi:"enabled"`
+	EnvironmentIds []string `pulumi:"environmentIds"`
+	// Slack channels notified when a run of this workflow fails. Used when `failureNotificationMode` is `custom`.
+	FailureNotificationChannels []WorkflowPulseFailureNotificationChannel `pulumi:"failureNotificationChannels"`
+	// Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
+	FailureNotificationMode *string  `pulumi:"failureNotificationMode"`
+	FunctionalityIds        []string `pulumi:"functionalityIds"`
+	GroupIds                []string `pulumi:"groupIds"`
+	IncidentRoleIds         []string `pulumi:"incidentRoleIds"`
+	IncidentTypeIds         []string `pulumi:"incidentTypeIds"`
+	// Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
 	Locked *bool `pulumi:"locked"`
 	// The title of the workflow
 	Name *string `pulumi:"name"`
@@ -248,17 +264,21 @@ type WorkflowPulseArgs struct {
 	Command pulumi.StringPtrInput
 	// This will notify you back when the workflow is starting. Value must be one of true or false
 	CommandFeedbackEnabled pulumi.BoolPtrInput
-	// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters.. Value must be one of true or false
+	// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters. Value must be one of true or false
 	ContinuouslyRepeat pulumi.BoolPtrInput
 	// The description of the workflow
-	Description      pulumi.StringPtrInput
-	Enabled          pulumi.BoolPtrInput
-	EnvironmentIds   pulumi.StringArrayInput
-	FunctionalityIds pulumi.StringArrayInput
-	GroupIds         pulumi.StringArrayInput
-	IncidentRoleIds  pulumi.StringArrayInput
-	IncidentTypeIds  pulumi.StringArrayInput
-	// Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
+	Description    pulumi.StringPtrInput
+	Enabled        pulumi.BoolPtrInput
+	EnvironmentIds pulumi.StringArrayInput
+	// Slack channels notified when a run of this workflow fails. Used when `failureNotificationMode` is `custom`.
+	FailureNotificationChannels WorkflowPulseFailureNotificationChannelArrayInput
+	// Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
+	FailureNotificationMode pulumi.StringPtrInput
+	FunctionalityIds        pulumi.StringArrayInput
+	GroupIds                pulumi.StringArrayInput
+	IncidentRoleIds         pulumi.StringArrayInput
+	IncidentTypeIds         pulumi.StringArrayInput
+	// Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
 	Locked pulumi.BoolPtrInput
 	// The title of the workflow
 	Name pulumi.StringPtrInput
@@ -387,7 +407,7 @@ func (o WorkflowPulseOutput) CommandFeedbackEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkflowPulse) pulumi.BoolOutput { return v.CommandFeedbackEnabled }).(pulumi.BoolOutput)
 }
 
-// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters.. Value must be one of true or false
+// When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters. Value must be one of true or false
 func (o WorkflowPulseOutput) ContinuouslyRepeat() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkflowPulse) pulumi.BoolOutput { return v.ContinuouslyRepeat }).(pulumi.BoolOutput)
 }
@@ -403,6 +423,18 @@ func (o WorkflowPulseOutput) Enabled() pulumi.BoolPtrOutput {
 
 func (o WorkflowPulseOutput) EnvironmentIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowPulse) pulumi.StringArrayOutput { return v.EnvironmentIds }).(pulumi.StringArrayOutput)
+}
+
+// Slack channels notified when a run of this workflow fails. Used when `failureNotificationMode` is `custom`.
+func (o WorkflowPulseOutput) FailureNotificationChannels() WorkflowPulseFailureNotificationChannelArrayOutput {
+	return o.ApplyT(func(v *WorkflowPulse) WorkflowPulseFailureNotificationChannelArrayOutput {
+		return v.FailureNotificationChannels
+	}).(WorkflowPulseFailureNotificationChannelArrayOutput)
+}
+
+// Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
+func (o WorkflowPulseOutput) FailureNotificationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkflowPulse) pulumi.StringOutput { return v.FailureNotificationMode }).(pulumi.StringOutput)
 }
 
 func (o WorkflowPulseOutput) FunctionalityIds() pulumi.StringArrayOutput {
@@ -421,7 +453,7 @@ func (o WorkflowPulseOutput) IncidentTypeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowPulse) pulumi.StringArrayOutput { return v.IncidentTypeIds }).(pulumi.StringArrayOutput)
 }
 
-// Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
+// Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
 func (o WorkflowPulseOutput) Locked() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkflowPulse) pulumi.BoolOutput { return v.Locked }).(pulumi.BoolOutput)
 }

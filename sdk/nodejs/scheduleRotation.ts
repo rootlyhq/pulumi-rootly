@@ -70,7 +70,7 @@ export class ScheduleRotation extends pulumi.CustomResource {
      */
     declare public readonly activeTimeAttributes: pulumi.Output<outputs.ScheduleRotationActiveTimeAttribute[] | undefined>;
     /**
-     * Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `rootly.ScheduleRotationActiveDay` resources linked to this `rootly.ScheduleRotation`.
+     * Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `rootly.ScheduleRotationActiveDay` resources linked to this `rootly.ScheduleRotation`. Defaults to `allDay`.
      */
     declare public readonly activeTimeType: pulumi.Output<string>;
     /**
@@ -180,7 +180,7 @@ export interface ScheduleRotationState {
      */
     activeTimeAttributes?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationActiveTimeAttribute>[] | undefined>;
     /**
-     * Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `rootly.ScheduleRotationActiveDay` resources linked to this `rootly.ScheduleRotation`.
+     * Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `rootly.ScheduleRotationActiveDay` resources linked to this `rootly.ScheduleRotation`. Defaults to `allDay`.
      */
     activeTimeType?: pulumi.Input<string | undefined>;
     /**
@@ -238,7 +238,7 @@ export interface ScheduleRotationArgs {
      */
     activeTimeAttributes?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationActiveTimeAttribute>[] | undefined>;
     /**
-     * Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `rootly.ScheduleRotationActiveDay` resources linked to this `rootly.ScheduleRotation`.
+     * Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `rootly.ScheduleRotationActiveDay` resources linked to this `rootly.ScheduleRotation`. Defaults to `allDay`.
      */
     activeTimeType?: pulumi.Input<string | undefined>;
     /**

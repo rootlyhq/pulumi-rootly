@@ -53,6 +53,8 @@ type AlertGroup struct {
 	GroupByAlertUrgency pulumi.BoolOutput `pulumi:"groupByAlertUrgency"`
 	// The name of the alert group
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Teams that own this alert group. Admins of an owning team can manage it, and an owned alert group can only target destinations that belong to its owning teams. Only available when owning teams for alert groups are enabled for the organization. Set this explicitly when the provider uses a team-scoped API key: omitting it makes the API assign that key's own teams, which the key cannot later clear.
+	OwnerGroupIds pulumi.StringArrayOutput `pulumi:"ownerGroupIds"`
 	// [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
 	//
 	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
@@ -112,6 +114,8 @@ type alertGroupState struct {
 	GroupByAlertUrgency *bool `pulumi:"groupByAlertUrgency"`
 	// The name of the alert group
 	Name *string `pulumi:"name"`
+	// Teams that own this alert group. Admins of an owning team can manage it, and an owned alert group can only target destinations that belong to its owning teams. Only available when owning teams for alert groups are enabled for the organization. Set this explicitly when the provider uses a team-scoped API key: omitting it makes the API assign that key's own teams, which the key cannot later clear.
+	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
 	//
 	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
@@ -142,6 +146,8 @@ type AlertGroupState struct {
 	GroupByAlertUrgency pulumi.BoolPtrInput
 	// The name of the alert group
 	Name pulumi.StringPtrInput
+	// Teams that own this alert group. Admins of an owning team can manage it, and an owned alert group can only target destinations that belong to its owning teams. Only available when owning teams for alert groups are enabled for the organization. Set this explicitly when the provider uses a team-scoped API key: omitting it makes the API assign that key's own teams, which the key cannot later clear.
+	OwnerGroupIds pulumi.StringArrayInput
 	// [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
 	//
 	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
@@ -176,6 +182,8 @@ type alertGroupArgs struct {
 	GroupByAlertUrgency *bool `pulumi:"groupByAlertUrgency"`
 	// The name of the alert group
 	Name *string `pulumi:"name"`
+	// Teams that own this alert group. Admins of an owning team can manage it, and an owned alert group can only target destinations that belong to its owning teams. Only available when owning teams for alert groups are enabled for the organization. Set this explicitly when the provider uses a team-scoped API key: omitting it makes the API assign that key's own teams, which the key cannot later clear.
+	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
 	//
 	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
@@ -207,6 +215,8 @@ type AlertGroupArgs struct {
 	GroupByAlertUrgency pulumi.BoolPtrInput
 	// The name of the alert group
 	Name pulumi.StringPtrInput
+	// Teams that own this alert group. Admins of an owning team can manage it, and an owned alert group can only target destinations that belong to its owning teams. Only available when owning teams for alert groups are enabled for the organization. Set this explicitly when the provider uses a team-scoped API key: omitting it makes the API assign that key's own teams, which the key cannot later clear.
+	OwnerGroupIds pulumi.StringArrayInput
 	// [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.
 	//
 	// Deprecated: `slug` is derived from `name` and any configured value is ignored. It will become read-only in the next major version; remove it from your configuration.
@@ -345,6 +355,11 @@ func (o AlertGroupOutput) GroupByAlertUrgency() pulumi.BoolOutput {
 // The name of the alert group
 func (o AlertGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Teams that own this alert group. Admins of an owning team can manage it, and an owned alert group can only target destinations that belong to its owning teams. Only available when owning teams for alert groups are enabled for the organization. Set this explicitly when the provider uses a team-scoped API key: omitting it makes the API assign that key's own teams, which the key cannot later clear.
+func (o AlertGroupOutput) OwnerGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertGroup) pulumi.StringArrayOutput { return v.OwnerGroupIds }).(pulumi.StringArrayOutput)
 }
 
 // [DEPRECATED] The slug of the alert group. Derived from `name`; any configured value is ignored.

@@ -42,7 +42,7 @@ type ScheduleRotation struct {
 	ActiveDays pulumi.StringArrayOutput `pulumi:"activeDays"`
 	// Schedule rotation's active times.
 	ActiveTimeAttributes ScheduleRotationActiveTimeAttributeArrayOutput `pulumi:"activeTimeAttributes"`
-	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`.
+	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`. Defaults to `allDay`.
 	ActiveTimeType pulumi.StringOutput `pulumi:"activeTimeType"`
 	// ISO8601 date and time when rotation ends. Shifts will only be created before this time.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
@@ -106,7 +106,7 @@ type scheduleRotationState struct {
 	ActiveDays []string `pulumi:"activeDays"`
 	// Schedule rotation's active times.
 	ActiveTimeAttributes []ScheduleRotationActiveTimeAttribute `pulumi:"activeTimeAttributes"`
-	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`.
+	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`. Defaults to `allDay`.
 	ActiveTimeType *string `pulumi:"activeTimeType"`
 	// ISO8601 date and time when rotation ends. Shifts will only be created before this time.
 	EndTime *string `pulumi:"endTime"`
@@ -135,7 +135,7 @@ type ScheduleRotationState struct {
 	ActiveDays pulumi.StringArrayInput
 	// Schedule rotation's active times.
 	ActiveTimeAttributes ScheduleRotationActiveTimeAttributeArrayInput
-	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`.
+	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`. Defaults to `allDay`.
 	ActiveTimeType pulumi.StringPtrInput
 	// ISO8601 date and time when rotation ends. Shifts will only be created before this time.
 	EndTime pulumi.StringPtrInput
@@ -168,7 +168,7 @@ type scheduleRotationArgs struct {
 	ActiveDays []string `pulumi:"activeDays"`
 	// Schedule rotation's active times.
 	ActiveTimeAttributes []ScheduleRotationActiveTimeAttribute `pulumi:"activeTimeAttributes"`
-	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`.
+	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`. Defaults to `allDay`.
 	ActiveTimeType *string `pulumi:"activeTimeType"`
 	// ISO8601 date and time when rotation ends. Shifts will only be created before this time.
 	EndTime *string `pulumi:"endTime"`
@@ -198,7 +198,7 @@ type ScheduleRotationArgs struct {
 	ActiveDays pulumi.StringArrayInput
 	// Schedule rotation's active times.
 	ActiveTimeAttributes ScheduleRotationActiveTimeAttributeArrayInput
-	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`.
+	// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`. Defaults to `allDay`.
 	ActiveTimeType pulumi.StringPtrInput
 	// ISO8601 date and time when rotation ends. Shifts will only be created before this time.
 	EndTime pulumi.StringPtrInput
@@ -324,7 +324,7 @@ func (o ScheduleRotationOutput) ActiveTimeAttributes() ScheduleRotationActiveTim
 	}).(ScheduleRotationActiveTimeAttributeArrayOutput)
 }
 
-// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`.
+// Value must be one of `allDay`, `sameTime`, or `custom`. The value chosen will override `activeTimeAttributes` in any `ScheduleRotationActiveDay` resources linked to this `ScheduleRotation`. Defaults to `allDay`.
 func (o ScheduleRotationOutput) ActiveTimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScheduleRotation) pulumi.StringOutput { return v.ActiveTimeType }).(pulumi.StringOutput)
 }

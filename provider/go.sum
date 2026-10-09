@@ -3959,8 +3959,8 @@ github.com/rogpeppe/go-internal v1.16.0 h1:O9DK+vNMDVGLr2BeZqmpLeMjiMNkuXfcqntWb
 github.com/rogpeppe/go-internal v1.16.0/go.mod h1:DrUVZyrJU+txYW5/1kwtXQSMFio52ZOxX7yM1VHvnxs=
 github.com/rootlyhq/jsonapi v0.0.0-20260818145503-f499cfb9d78f h1:N5RQErwXU/54Di+exNXKU+gD4SBStVxnron5V8CNin8=
 github.com/rootlyhq/jsonapi v0.0.0-20260818145503-f499cfb9d78f/go.mod h1:6POKQlTzvX4WpvKcf8UeC1Fa3eJFRjfBbxAk/KiFjrc=
-github.com/rootlyhq/terraform-provider-rootly/v5 v5.21.1 h1:HECNp8rzbT6jAxIdEaPOXN+Uy0NwEGLLz7+FEsFYD8U=
-github.com/rootlyhq/terraform-provider-rootly/v5 v5.21.1/go.mod h1:gdYh+mSZV8GG5aZxR0a2PUcRkwBryq1dj44mnM8YZ7M=
+github.com/rootlyhq/terraform-provider-rootly/v5 v5.22.0 h1:nKq78lgG/SsJvqyNzjj5SnjXtymd0smkKp0aH7anaCk=
+github.com/rootlyhq/terraform-provider-rootly/v5 v5.22.0/go.mod h1:gdYh+mSZV8GG5aZxR0a2PUcRkwBryq1dj44mnM8YZ7M=
 github.com/rs/xid v1.2.1/go.mod h1:+uKXf+4Djp6Md1KODXJxgGQPKngRmWyn10oCKFzNHOQ=
 github.com/rs/zerolog v1.21.0/go.mod h1:ZPhntP/xmq1nnND05hhpAh2QMhSsA4UN3MGZ6O2J3hM=
 github.com/russross/blackfriday/v2 v2.0.1/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=

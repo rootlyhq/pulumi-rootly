@@ -75,7 +75,7 @@ export class Heartbeat extends pulumi.CustomResource {
     declare public readonly emailAddress: pulumi.Output<string>;
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
-     * When heartbeat expires
+     * Persisted expiry deadline, including up to 30 seconds of coalescing grace.
      */
     declare public readonly expiresAt: pulumi.Output<string>;
     declare public readonly interval: pulumi.Output<number>;
@@ -84,7 +84,7 @@ export class Heartbeat extends pulumi.CustomResource {
      */
     declare public readonly intervalUnit: pulumi.Output<string | undefined>;
     /**
-     * When the heartbeat was last pinged.
+     * Last persisted heartbeat ping timestamp. Accepted pings may be coalesced for up to 30 seconds.
      */
     declare public readonly lastPingedAt: pulumi.Output<string>;
     /**
@@ -203,7 +203,7 @@ export interface HeartbeatState {
     emailAddress?: pulumi.Input<string | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * When heartbeat expires
+     * Persisted expiry deadline, including up to 30 seconds of coalescing grace.
      */
     expiresAt?: pulumi.Input<string | undefined>;
     interval?: pulumi.Input<number | undefined>;
@@ -212,7 +212,7 @@ export interface HeartbeatState {
      */
     intervalUnit?: pulumi.Input<string | undefined>;
     /**
-     * When the heartbeat was last pinged.
+     * Last persisted heartbeat ping timestamp. Accepted pings may be coalesced for up to 30 seconds.
      */
     lastPingedAt?: pulumi.Input<string | undefined>;
     /**
@@ -268,7 +268,7 @@ export interface HeartbeatArgs {
     emailAddress?: pulumi.Input<string | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * When heartbeat expires
+     * Persisted expiry deadline, including up to 30 seconds of coalescing grace.
      */
     expiresAt?: pulumi.Input<string | undefined>;
     interval: pulumi.Input<number>;
@@ -277,7 +277,7 @@ export interface HeartbeatArgs {
      */
     intervalUnit?: pulumi.Input<string | undefined>;
     /**
-     * When the heartbeat was last pinged.
+     * Last persisted heartbeat ping timestamp. Accepted pings may be coalesced for up to 30 seconds.
      */
     lastPingedAt?: pulumi.Input<string | undefined>;
     /**
