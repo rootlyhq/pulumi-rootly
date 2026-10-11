@@ -71,8 +71,10 @@ jobs:
         node-version: '24.21.0'
     - run: npm install --global yarn@1.22.22
     - name: Publish NPM
+      env:
+        RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
       run: |
-        make build_nodejs
+        make build_nodejs VERSION="${RELEASE_TAG#v}"
         npm publish --access public --provenance sdk/nodejs/bin
         git checkout -f sdk/nodejs/package.json
     strategy:
