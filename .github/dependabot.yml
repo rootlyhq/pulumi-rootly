@@ -29,6 +29,9 @@ updates:
       default-days: 3
     commit-message:
       prefix: "deps"
+    ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
