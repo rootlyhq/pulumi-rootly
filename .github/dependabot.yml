@@ -1,16 +1,8 @@
 version: 2
 updates:
   - package-ecosystem: "gomod"
-    directory: "/provider"
-    schedule:
-      interval: "weekly"
-    cooldown:
-      default-days: 3
-    commit-message:
-      prefix: "deps"
-
-  - package-ecosystem: "gomod"
     directories:
+      - "/provider"
       - "/provider/shim"
       - "/sdk"
       - "/examples"
@@ -20,6 +12,13 @@ updates:
       default-days: 3
     commit-message:
       prefix: "deps"
+    groups:
+      pulumi:
+        patterns:
+          - "github.com/pulumi/*"
+      rootly-terraform-provider:
+        patterns:
+          - "github.com/rootlyhq/terraform-provider-rootly/*"
 
   - package-ecosystem: "npm"
     directory: "/sdk/nodejs"
@@ -29,6 +28,10 @@ updates:
       default-days: 3
     commit-message:
       prefix: "deps"
+    groups:
+      pulumi:
+        patterns:
+          - "@pulumi/*"
     ignore:
       - dependency-name: "@types/node"
         update-types: ["version-update:semver-major"]
