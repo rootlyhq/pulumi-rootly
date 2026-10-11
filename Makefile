@@ -66,8 +66,9 @@ tfgen:: install_plugins
 	(cd provider && VERSION=$(VERSION) go generate cmd/${PROVIDER}/main.go)
 
 update_provider::
-	(cd provider && go get -u github.com/rootlyhq/terraform-provider-rootly/v5@latest)
-	(cd provider && go mod tidy)
+	@set -e; version=$$(cd provider && go list -m -f '{{.Version}}' github.com/rootlyhq/terraform-provider-rootly/v5@latest); \
+		(cd provider/shim && go get github.com/rootlyhq/terraform-provider-rootly/v5@$$version && go mod tidy); \
+		(cd provider && go get github.com/rootlyhq/terraform-provider-rootly/v5@$$version && go mod tidy)
 
 provider:: tfgen install_plugins # build the provider binary
 	(cd provider && go build -o $(WORKING_DIR)/bin/${PROVIDER} -ldflags "-X ${PROJECT}/${VERSION_PATH}=${VERSION}" ${PROJECT}/${PROVIDER_PATH}/cmd/${PROVIDER})

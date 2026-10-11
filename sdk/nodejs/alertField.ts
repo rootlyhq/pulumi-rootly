@@ -62,6 +62,10 @@ export class AlertField extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * IDs of the teams that own the alert field. Empty for org-wide fields.
+     */
+    declare public readonly ownerGroupIds: pulumi.Output<string[] | undefined>;
+    /**
      * The slug of the alert field
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -83,11 +87,13 @@ export class AlertField extends pulumi.CustomResource {
             const state = argsOrState as AlertFieldState | undefined;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["name"] = state?.name;
+            resourceInputs["ownerGroupIds"] = state?.ownerGroupIds;
             resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as AlertFieldArgs | undefined;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
+            resourceInputs["ownerGroupIds"] = args?.ownerGroupIds;
             resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -108,6 +114,10 @@ export interface AlertFieldState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * IDs of the teams that own the alert field. Empty for org-wide fields.
+     */
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * The slug of the alert field
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -127,6 +137,10 @@ export interface AlertFieldArgs {
      * The name of the alert field
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * IDs of the teams that own the alert field. Empty for org-wide fields.
+     */
+    ownerGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The slug of the alert field
      *

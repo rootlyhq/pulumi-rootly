@@ -37,7 +37,7 @@ type WorkflowGroup struct {
 	Expanded pulumi.BoolOutput `pulumi:"expanded"`
 	// An emoji icon displayed next to the workflow group.
 	Icon pulumi.StringOutput `pulumi:"icon"`
-	// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+	// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `problem`, `alert`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the workflow group.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -85,7 +85,7 @@ type workflowGroupState struct {
 	Expanded *bool `pulumi:"expanded"`
 	// An emoji icon displayed next to the workflow group.
 	Icon *string `pulumi:"icon"`
-	// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+	// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `problem`, `alert`.
 	Kind *string `pulumi:"kind"`
 	// The name of the workflow group.
 	Name *string `pulumi:"name"`
@@ -104,7 +104,7 @@ type WorkflowGroupState struct {
 	Expanded pulumi.BoolPtrInput
 	// An emoji icon displayed next to the workflow group.
 	Icon pulumi.StringPtrInput
-	// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+	// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `problem`, `alert`.
 	Kind pulumi.StringPtrInput
 	// The name of the workflow group.
 	Name pulumi.StringPtrInput
@@ -127,7 +127,7 @@ type workflowGroupArgs struct {
 	Expanded *bool `pulumi:"expanded"`
 	// An emoji icon displayed next to the workflow group.
 	Icon *string `pulumi:"icon"`
-	// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+	// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `problem`, `alert`.
 	Kind *string `pulumi:"kind"`
 	// The name of the workflow group.
 	Name *string `pulumi:"name"`
@@ -147,7 +147,7 @@ type WorkflowGroupArgs struct {
 	Expanded pulumi.BoolPtrInput
 	// An emoji icon displayed next to the workflow group.
 	Icon pulumi.StringPtrInput
-	// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+	// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `problem`, `alert`.
 	Kind pulumi.StringPtrInput
 	// The name of the workflow group.
 	Name pulumi.StringPtrInput
@@ -261,7 +261,7 @@ func (o WorkflowGroupOutput) Icon() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowGroup) pulumi.StringOutput { return v.Icon }).(pulumi.StringOutput)
 }
 
-// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+// The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `problem`, `alert`.
 func (o WorkflowGroupOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowGroup) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }

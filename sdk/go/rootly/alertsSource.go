@@ -87,9 +87,6 @@ func NewAlertsSource(ctx *pulumi.Context,
 		args = &AlertsSourceArgs{}
 	}
 
-	if args.Secret != nil {
-		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringPtrInput)
-	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secret",
 	})
@@ -219,8 +216,6 @@ type alertsSourceArgs struct {
 	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// Provide additional attributes for email alerts source
 	ResolutionRuleAttributes *AlertsSourceResolutionRuleAttributes `pulumi:"resolutionRuleAttributes"`
-	// The secret used to authenticate non-email alert sources
-	Secret *string `pulumi:"secret"`
 	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
 	SourceType *string `pulumi:"sourceType"`
 	// Provide additional attributes for generic*webhook alerts source
@@ -257,8 +252,6 @@ type AlertsSourceArgs struct {
 	OwnerGroupIds pulumi.StringArrayInput
 	// Provide additional attributes for email alerts source
 	ResolutionRuleAttributes AlertsSourceResolutionRuleAttributesPtrInput
-	// The secret used to authenticate non-email alert sources
-	Secret pulumi.StringPtrInput
 	// The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
 	SourceType pulumi.StringPtrInput
 	// Provide additional attributes for generic*webhook alerts source

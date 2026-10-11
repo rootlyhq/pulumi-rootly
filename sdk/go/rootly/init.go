@@ -153,6 +153,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Sla{}
 	case "rootly:index/statusPage:StatusPage":
 		r = &StatusPage{}
+	case "rootly:index/statusPageAnnouncement:StatusPageAnnouncement":
+		r = &StatusPageAnnouncement{}
 	case "rootly:index/statusPageComponent:StatusPageComponent":
 		r = &StatusPageComponent{}
 	case "rootly:index/statusPageComponentGroup:StatusPageComponentGroup":
@@ -209,6 +211,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskArchiveSlackChannels{}
 	case "rootly:index/workflowTaskAttachDatadogDashboards:WorkflowTaskAttachDatadogDashboards":
 		r = &WorkflowTaskAttachDatadogDashboards{}
+	case "rootly:index/workflowTaskAttachRetrospectivePdfToFreshserviceTicket:WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket":
+		r = &WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket{}
+	case "rootly:index/workflowTaskAttachRetrospectivePdfToJiraIssue:WorkflowTaskAttachRetrospectivePdfToJiraIssue":
+		r = &WorkflowTaskAttachRetrospectivePdfToJiraIssue{}
 	case "rootly:index/workflowTaskAutoAssignRoleOpsgenie:WorkflowTaskAutoAssignRoleOpsgenie":
 		r = &WorkflowTaskAutoAssignRoleOpsgenie{}
 	case "rootly:index/workflowTaskAutoAssignRolePagerduty:WorkflowTaskAutoAssignRolePagerduty":
@@ -307,6 +313,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskCreateShortcutStory{}
 	case "rootly:index/workflowTaskCreateShortcutTask:WorkflowTaskCreateShortcutTask":
 		r = &WorkflowTaskCreateShortcutTask{}
+	case "rootly:index/workflowTaskCreateSlackCanvas:WorkflowTaskCreateSlackCanvas":
+		r = &WorkflowTaskCreateSlackCanvas{}
 	case "rootly:index/workflowTaskCreateSlackChannel:WorkflowTaskCreateSlackChannel":
 		r = &WorkflowTaskCreateSlackChannel{}
 	case "rootly:index/workflowTaskCreateSubIncident:WorkflowTaskCreateSubIncident":
@@ -469,6 +477,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkflowTaskUpdateShortcutStory{}
 	case "rootly:index/workflowTaskUpdateShortcutTask:WorkflowTaskUpdateShortcutTask":
 		r = &WorkflowTaskUpdateShortcutTask{}
+	case "rootly:index/workflowTaskUpdateSlackCanvas:WorkflowTaskUpdateSlackCanvas":
+		r = &WorkflowTaskUpdateSlackCanvas{}
 	case "rootly:index/workflowTaskUpdateSlackChannelTopic:WorkflowTaskUpdateSlackChannelTopic":
 		r = &WorkflowTaskUpdateSlackChannelTopic{}
 	case "rootly:index/workflowTaskUpdateStatus:WorkflowTaskUpdateStatus":
@@ -842,6 +852,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rootly",
+		"index/statusPageAnnouncement",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
 		"index/statusPageComponent",
 		&module{version},
 	)
@@ -978,6 +993,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/workflowTaskAttachDatadogDashboards",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskAttachRetrospectivePdfToFreshserviceTicket",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskAttachRetrospectivePdfToJiraIssue",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1223,6 +1248,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/workflowTaskCreateShortcutTask",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskCreateSlackCanvas",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1628,6 +1658,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/workflowTaskUpdateShortcutTask",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/workflowTaskUpdateSlackCanvas",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

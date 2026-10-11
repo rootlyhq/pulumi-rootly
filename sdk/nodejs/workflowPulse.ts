@@ -65,7 +65,7 @@ export class WorkflowPulse extends pulumi.CustomResource {
      */
     declare public readonly commandFeedbackEnabled: pulumi.Output<boolean>;
     /**
-     * When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters.. Value must be one of true or false
+     * When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters. Value must be one of true or false
      */
     declare public readonly continuouslyRepeat: pulumi.Output<boolean>;
     /**
@@ -74,12 +74,20 @@ export class WorkflowPulse extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string>;
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     declare public readonly environmentIds: pulumi.Output<string[]>;
+    /**
+     * Slack channels notified when a run of this workflow fails. Used when `failureNotificationMode` is `custom`.
+     */
+    declare public readonly failureNotificationChannels: pulumi.Output<outputs.WorkflowPulseFailureNotificationChannel[]>;
+    /**
+     * Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
+     */
+    declare public readonly failureNotificationMode: pulumi.Output<string>;
     declare public readonly functionalityIds: pulumi.Output<string[]>;
     declare public readonly groupIds: pulumi.Output<string[]>;
     declare public readonly incidentRoleIds: pulumi.Output<string[]>;
     declare public readonly incidentTypeIds: pulumi.Output<string[]>;
     /**
-     * Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
+     * Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
      */
     declare public readonly locked: pulumi.Output<boolean>;
     /**
@@ -145,6 +153,8 @@ export class WorkflowPulse extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["environmentIds"] = state?.environmentIds;
+            resourceInputs["failureNotificationChannels"] = state?.failureNotificationChannels;
+            resourceInputs["failureNotificationMode"] = state?.failureNotificationMode;
             resourceInputs["functionalityIds"] = state?.functionalityIds;
             resourceInputs["groupIds"] = state?.groupIds;
             resourceInputs["incidentRoleIds"] = state?.incidentRoleIds;
@@ -172,6 +182,8 @@ export class WorkflowPulse extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["environmentIds"] = args?.environmentIds;
+            resourceInputs["failureNotificationChannels"] = args?.failureNotificationChannels;
+            resourceInputs["failureNotificationMode"] = args?.failureNotificationMode;
             resourceInputs["functionalityIds"] = args?.functionalityIds;
             resourceInputs["groupIds"] = args?.groupIds;
             resourceInputs["incidentRoleIds"] = args?.incidentRoleIds;
@@ -210,7 +222,7 @@ export interface WorkflowPulseState {
      */
     commandFeedbackEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters.. Value must be one of true or false
+     * When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters. Value must be one of true or false
      */
     continuouslyRepeat?: pulumi.Input<boolean | undefined>;
     /**
@@ -219,12 +231,20 @@ export interface WorkflowPulseState {
     description?: pulumi.Input<string | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Slack channels notified when a run of this workflow fails. Used when `failureNotificationMode` is `custom`.
+     */
+    failureNotificationChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowPulseFailureNotificationChannel>[] | undefined>;
+    /**
+     * Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
+     */
+    failureNotificationMode?: pulumi.Input<string | undefined>;
     functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentRoleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
+     * Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
      */
     locked?: pulumi.Input<boolean | undefined>;
     /**
@@ -285,7 +305,7 @@ export interface WorkflowPulseArgs {
      */
     commandFeedbackEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters.. Value must be one of true or false
+     * When continuously repeat is true, repeat workflows aren't automatically stopped when conditions aren't met. This setting won't override your conditions set by repeat*condition*duration*since*first*run and repeat*condition*number*of_repeats parameters. Value must be one of true or false
      */
     continuouslyRepeat?: pulumi.Input<boolean | undefined>;
     /**
@@ -294,12 +314,20 @@ export interface WorkflowPulseArgs {
     description?: pulumi.Input<string | undefined>;
     enabled?: pulumi.Input<boolean | undefined>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Slack channels notified when a run of this workflow fails. Used when `failureNotificationMode` is `custom`.
+     */
+    failureNotificationChannels?: pulumi.Input<pulumi.Input<inputs.WorkflowPulseFailureNotificationChannel>[] | undefined>;
+    /**
+     * Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
+     */
+    failureNotificationMode?: pulumi.Input<string | undefined>;
     functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentRoleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
+     * Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
      */
     locked?: pulumi.Input<boolean | undefined>;
     /**

@@ -33,7 +33,7 @@ import (
 type Service struct {
 	pulumi.CustomResourceState
 
-	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 	AlertBroadcastChannel ServiceAlertBroadcastChannelOutput `pulumi:"alertBroadcastChannel"`
 	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
 	AlertBroadcastEnabled pulumi.BoolOutput `pulumi:"alertBroadcastEnabled"`
@@ -135,7 +135,7 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 	AlertBroadcastChannel *ServiceAlertBroadcastChannel `pulumi:"alertBroadcastChannel"`
 	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
 	AlertBroadcastEnabled *bool `pulumi:"alertBroadcastEnabled"`
@@ -208,7 +208,7 @@ type serviceState struct {
 }
 
 type ServiceState struct {
-	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 	AlertBroadcastChannel ServiceAlertBroadcastChannelPtrInput
 	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
 	AlertBroadcastEnabled pulumi.BoolPtrInput
@@ -285,7 +285,7 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 	AlertBroadcastChannel *ServiceAlertBroadcastChannel `pulumi:"alertBroadcastChannel"`
 	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
 	AlertBroadcastEnabled *bool `pulumi:"alertBroadcastEnabled"`
@@ -357,7 +357,7 @@ type serviceArgs struct {
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 	AlertBroadcastChannel ServiceAlertBroadcastChannelPtrInput
 	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
 	AlertBroadcastEnabled pulumi.BoolPtrInput
@@ -514,7 +514,7 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
-// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 func (o ServiceOutput) AlertBroadcastChannel() ServiceAlertBroadcastChannelOutput {
 	return o.ApplyT(func(v *Service) ServiceAlertBroadcastChannelOutput { return v.AlertBroadcastChannel }).(ServiceAlertBroadcastChannelOutput)
 }

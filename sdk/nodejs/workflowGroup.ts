@@ -64,7 +64,7 @@ export class WorkflowGroup extends pulumi.CustomResource {
      */
     declare public readonly icon: pulumi.Output<string>;
     /**
-     * The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+     * The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `problem`, `alert`.
      */
     declare public readonly kind: pulumi.Output<string>;
     /**
@@ -134,7 +134,7 @@ export interface WorkflowGroupState {
      */
     icon?: pulumi.Input<string | undefined>;
     /**
-     * The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+     * The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `problem`, `alert`.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
@@ -170,7 +170,7 @@ export interface WorkflowGroupArgs {
      */
     icon?: pulumi.Input<string | undefined>;
     /**
-     * The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `alert`.
+     * The kind of the workflow group. Value must be one of `simple`, `incident`, `postMortem`, `actionItem`, `pulse`, `problem`, `alert`.
      */
     kind?: pulumi.Input<string | undefined>;
     /**

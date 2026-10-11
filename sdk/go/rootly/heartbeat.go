@@ -45,12 +45,12 @@ type Heartbeat struct {
 	// Email address to receive heartbeat pings.
 	EmailAddress pulumi.StringOutput  `pulumi:"emailAddress"`
 	Enabled      pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// When heartbeat expires
+	// Persisted expiry deadline, including up to 30 seconds of coalescing grace.
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	Interval  pulumi.IntOutput    `pulumi:"interval"`
 	// Value must be one of `minutes`, `hours`, `days`.
 	IntervalUnit pulumi.StringPtrOutput `pulumi:"intervalUnit"`
-	// When the heartbeat was last pinged.
+	// Last persisted heartbeat ping timestamp. Accepted pings may be coalesced for up to 30 seconds.
 	LastPingedAt pulumi.StringOutput `pulumi:"lastPingedAt"`
 	// The name of the heartbeat
 	Name                 pulumi.StringOutput `pulumi:"name"`
@@ -117,12 +117,12 @@ type heartbeatState struct {
 	// Email address to receive heartbeat pings.
 	EmailAddress *string `pulumi:"emailAddress"`
 	Enabled      *bool   `pulumi:"enabled"`
-	// When heartbeat expires
+	// Persisted expiry deadline, including up to 30 seconds of coalescing grace.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	Interval  *int    `pulumi:"interval"`
 	// Value must be one of `minutes`, `hours`, `days`.
 	IntervalUnit *string `pulumi:"intervalUnit"`
-	// When the heartbeat was last pinged.
+	// Last persisted heartbeat ping timestamp. Accepted pings may be coalesced for up to 30 seconds.
 	LastPingedAt *string `pulumi:"lastPingedAt"`
 	// The name of the heartbeat
 	Name                 *string `pulumi:"name"`
@@ -151,12 +151,12 @@ type HeartbeatState struct {
 	// Email address to receive heartbeat pings.
 	EmailAddress pulumi.StringPtrInput
 	Enabled      pulumi.BoolPtrInput
-	// When heartbeat expires
+	// Persisted expiry deadline, including up to 30 seconds of coalescing grace.
 	ExpiresAt pulumi.StringPtrInput
 	Interval  pulumi.IntPtrInput
 	// Value must be one of `minutes`, `hours`, `days`.
 	IntervalUnit pulumi.StringPtrInput
-	// When the heartbeat was last pinged.
+	// Last persisted heartbeat ping timestamp. Accepted pings may be coalesced for up to 30 seconds.
 	LastPingedAt pulumi.StringPtrInput
 	// The name of the heartbeat
 	Name                 pulumi.StringPtrInput
@@ -189,12 +189,12 @@ type heartbeatArgs struct {
 	// Email address to receive heartbeat pings.
 	EmailAddress *string `pulumi:"emailAddress"`
 	Enabled      *bool   `pulumi:"enabled"`
-	// When heartbeat expires
+	// Persisted expiry deadline, including up to 30 seconds of coalescing grace.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	Interval  int     `pulumi:"interval"`
 	// Value must be one of `minutes`, `hours`, `days`.
 	IntervalUnit *string `pulumi:"intervalUnit"`
-	// When the heartbeat was last pinged.
+	// Last persisted heartbeat ping timestamp. Accepted pings may be coalesced for up to 30 seconds.
 	LastPingedAt *string `pulumi:"lastPingedAt"`
 	// The name of the heartbeat
 	Name                 *string `pulumi:"name"`
@@ -220,12 +220,12 @@ type HeartbeatArgs struct {
 	// Email address to receive heartbeat pings.
 	EmailAddress pulumi.StringPtrInput
 	Enabled      pulumi.BoolPtrInput
-	// When heartbeat expires
+	// Persisted expiry deadline, including up to 30 seconds of coalescing grace.
 	ExpiresAt pulumi.StringPtrInput
 	Interval  pulumi.IntInput
 	// Value must be one of `minutes`, `hours`, `days`.
 	IntervalUnit pulumi.StringPtrInput
-	// When the heartbeat was last pinged.
+	// Last persisted heartbeat ping timestamp. Accepted pings may be coalesced for up to 30 seconds.
 	LastPingedAt pulumi.StringPtrInput
 	// The name of the heartbeat
 	Name                 pulumi.StringPtrInput
@@ -354,7 +354,7 @@ func (o HeartbeatOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// When heartbeat expires
+// Persisted expiry deadline, including up to 30 seconds of coalescing grace.
 func (o HeartbeatOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
@@ -368,7 +368,7 @@ func (o HeartbeatOutput) IntervalUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.StringPtrOutput { return v.IntervalUnit }).(pulumi.StringPtrOutput)
 }
 
-// When the heartbeat was last pinged.
+// Last persisted heartbeat ping timestamp. Accepted pings may be coalesced for up to 30 seconds.
 func (o HeartbeatOutput) LastPingedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.StringOutput { return v.LastPingedAt }).(pulumi.StringOutput)
 }

@@ -78,6 +78,10 @@ export class AlertUrgency extends pulumi.CustomResource {
      */
     declare public readonly position: pulumi.Output<number>;
     /**
+     * Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, `10`, `20`, `30`, `40`, `50`, `60`, `90`, `120`, `180`, `240`, `300`, `360`, `720`, `1440`.
+     */
+    declare public readonly retriggerTimeoutMinutes: pulumi.Output<number | undefined>;
+    /**
      * The ID of the team this urgency belongs to
      */
     declare public readonly teamId: pulumi.Output<number>;
@@ -105,6 +109,7 @@ export class AlertUrgency extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
+            resourceInputs["retriggerTimeoutMinutes"] = state?.retriggerTimeoutMinutes;
             resourceInputs["teamId"] = state?.teamId;
             resourceInputs["urgency"] = state?.urgency;
         } else {
@@ -118,6 +123,7 @@ export class AlertUrgency extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
+            resourceInputs["retriggerTimeoutMinutes"] = args?.retriggerTimeoutMinutes;
             resourceInputs["teamId"] = args?.teamId;
             resourceInputs["urgency"] = args?.urgency;
         }
@@ -154,6 +160,10 @@ export interface AlertUrgencyState {
      * Position of the alert urgency
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, `10`, `20`, `30`, `40`, `50`, `60`, `90`, `120`, `180`, `240`, `300`, `360`, `720`, `1440`.
+     */
+    retriggerTimeoutMinutes?: pulumi.Input<number | undefined>;
     /**
      * The ID of the team this urgency belongs to
      */
@@ -192,6 +202,10 @@ export interface AlertUrgencyArgs {
      * Position of the alert urgency
      */
     position?: pulumi.Input<number | undefined>;
+    /**
+     * Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, `10`, `20`, `30`, `40`, `50`, `60`, `90`, `120`, `180`, `240`, `300`, `360`, `720`, `1440`.
+     */
+    retriggerTimeoutMinutes?: pulumi.Input<number | undefined>;
     /**
      * The ID of the team this urgency belongs to
      */

@@ -117,7 +117,7 @@ export class AlertsSource extends pulumi.CustomResource {
     /**
      * The secret used to authenticate non-email alert sources
      */
-    declare public readonly secret: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
     /**
      * The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
      */
@@ -179,11 +179,11 @@ export class AlertsSource extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["ownerGroupIds"] = args?.ownerGroupIds;
             resourceInputs["resolutionRuleAttributes"] = args?.resolutionRuleAttributes;
-            resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
             resourceInputs["sourceType"] = args?.sourceType;
             resourceInputs["sourceableAttributes"] = args?.sourceableAttributes;
             resourceInputs["status"] = args?.status;
             resourceInputs["webhookEndpoint"] = args?.webhookEndpoint;
+            resourceInputs["secret"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["secret"] };
@@ -318,10 +318,6 @@ export interface AlertsSourceArgs {
      * Provide additional attributes for email alerts source
      */
     resolutionRuleAttributes?: pulumi.Input<inputs.AlertsSourceResolutionRuleAttributes | undefined>;
-    /**
-     * The secret used to authenticate non-email alert sources
-     */
-    secret?: pulumi.Input<string | undefined>;
     /**
      * The alert source type. Value must be one of `email`, `appDynamics`, `catchpoint`, `datadog`, `dynatrace`, `alertmanager`, `googleCloud`, `grafana`, `sentry`, `genericWebhook`, `cloudWatch`, `awsSns`, `checkly`, `azure`, `newRelic`, `splunk`, `chronosphere`, `appOptics`, `bugSnag`, `honeycomb`, `monteCarlo`, `nagios`, `prtg`.
      */

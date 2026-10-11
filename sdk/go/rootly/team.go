@@ -35,7 +35,7 @@ type Team struct {
 
 	// The user ids of the admins of this team. These users must also be present in userIds attribute.
 	AdminIds pulumi.IntArrayOutput `pulumi:"adminIds"`
-	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 	AlertBroadcastChannel TeamAlertBroadcastChannelOutput `pulumi:"alertBroadcastChannel"`
 	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
 	AlertBroadcastEnabled pulumi.BoolOutput `pulumi:"alertBroadcastEnabled"`
@@ -119,7 +119,7 @@ func GetTeam(ctx *pulumi.Context,
 type teamState struct {
 	// The user ids of the admins of this team. These users must also be present in userIds attribute.
 	AdminIds []int `pulumi:"adminIds"`
-	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 	AlertBroadcastChannel *TeamAlertBroadcastChannel `pulumi:"alertBroadcastChannel"`
 	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
 	AlertBroadcastEnabled *bool `pulumi:"alertBroadcastEnabled"`
@@ -174,7 +174,7 @@ type teamState struct {
 type TeamState struct {
 	// The user ids of the admins of this team. These users must also be present in userIds attribute.
 	AdminIds pulumi.IntArrayInput
-	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 	AlertBroadcastChannel TeamAlertBroadcastChannelPtrInput
 	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
 	AlertBroadcastEnabled pulumi.BoolPtrInput
@@ -233,7 +233,7 @@ func (TeamState) ElementType() reflect.Type {
 type teamArgs struct {
 	// The user ids of the admins of this team. These users must also be present in userIds attribute.
 	AdminIds []int `pulumi:"adminIds"`
-	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 	AlertBroadcastChannel *TeamAlertBroadcastChannel `pulumi:"alertBroadcastChannel"`
 	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
 	AlertBroadcastEnabled *bool `pulumi:"alertBroadcastEnabled"`
@@ -289,7 +289,7 @@ type teamArgs struct {
 type TeamArgs struct {
 	// The user ids of the admins of this team. These users must also be present in userIds attribute.
 	AdminIds pulumi.IntArrayInput
-	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 	AlertBroadcastChannel TeamAlertBroadcastChannelPtrInput
 	// Enable alerts to be broadcasted to a specific channel. Value must be one of true or false
 	AlertBroadcastEnabled pulumi.BoolPtrInput
@@ -433,7 +433,7 @@ func (o TeamOutput) AdminIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Team) pulumi.IntArrayOutput { return v.AdminIds }).(pulumi.IntArrayOutput)
 }
 
-// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 func (o TeamOutput) AlertBroadcastChannel() TeamAlertBroadcastChannelOutput {
 	return o.ApplyT(func(v *Team) TeamAlertBroadcastChannelOutput { return v.AlertBroadcastChannel }).(TeamAlertBroadcastChannelOutput)
 }

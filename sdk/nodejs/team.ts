@@ -60,7 +60,7 @@ export class Team extends pulumi.CustomResource {
      */
     declare public readonly adminIds: pulumi.Output<number[]>;
     /**
-     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
      */
     declare public readonly alertBroadcastChannel: pulumi.Output<outputs.TeamAlertBroadcastChannel>;
     /**
@@ -242,7 +242,7 @@ export interface TeamState {
      */
     adminIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
      */
     alertBroadcastChannel?: pulumi.Input<inputs.TeamAlertBroadcastChannel | undefined>;
     /**
@@ -352,7 +352,7 @@ export interface TeamArgs {
      */
     adminIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
      */
     alertBroadcastChannel?: pulumi.Input<inputs.TeamAlertBroadcastChannel | undefined>;
     /**

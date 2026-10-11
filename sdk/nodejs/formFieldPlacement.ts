@@ -60,7 +60,7 @@ export class FormFieldPlacement extends pulumi.CustomResource {
      */
     declare public readonly formFieldId: pulumi.Output<string>;
     /**
-     * The form set this field is placed in.
+     * The form set this field is placed in. The form set must have the same `resourceType` as the form field, otherwise the request is rejected with 422.
      */
     declare public readonly formSetId: pulumi.Output<string>;
     /**
@@ -143,7 +143,7 @@ export interface FormFieldPlacementState {
      */
     formFieldId?: pulumi.Input<string | undefined>;
     /**
-     * The form set this field is placed in.
+     * The form set this field is placed in. The form set must have the same `resourceType` as the form field, otherwise the request is rejected with 422.
      */
     formSetId?: pulumi.Input<string | undefined>;
     /**
@@ -181,7 +181,7 @@ export interface FormFieldPlacementArgs {
      */
     formFieldId: pulumi.Input<string>;
     /**
-     * The form set this field is placed in.
+     * The form set this field is placed in. The form set must have the same `resourceType` as the form field, otherwise the request is rejected with 422.
      */
     formSetId: pulumi.Input<string>;
     /**

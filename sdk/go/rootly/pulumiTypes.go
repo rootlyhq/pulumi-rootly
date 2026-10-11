@@ -7777,6 +7777,181 @@ func (o RetrospectiveProcessRetrospectiveProcessMatchingCriteriaPtrOutput) Sever
 	}).(pulumi.StringArrayOutput)
 }
 
+type ScheduleBusinessHours struct {
+	// End time in HH:MM 24-hour format.
+	EndTime *string `pulumi:"endTime"`
+	// Whether to include weekends.
+	IncludeWeekends *bool `pulumi:"includeWeekends"`
+	// Start time in HH:MM 24-hour format.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// ScheduleBusinessHoursInput is an input type that accepts ScheduleBusinessHoursArgs and ScheduleBusinessHoursOutput values.
+// You can construct a concrete instance of `ScheduleBusinessHoursInput` via:
+//
+//	ScheduleBusinessHoursArgs{...}
+type ScheduleBusinessHoursInput interface {
+	pulumi.Input
+
+	ToScheduleBusinessHoursOutput() ScheduleBusinessHoursOutput
+	ToScheduleBusinessHoursOutputWithContext(context.Context) ScheduleBusinessHoursOutput
+}
+
+type ScheduleBusinessHoursArgs struct {
+	// End time in HH:MM 24-hour format.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Whether to include weekends.
+	IncludeWeekends pulumi.BoolPtrInput `pulumi:"includeWeekends"`
+	// Start time in HH:MM 24-hour format.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (ScheduleBusinessHoursArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleBusinessHours)(nil)).Elem()
+}
+
+func (i ScheduleBusinessHoursArgs) ToScheduleBusinessHoursOutput() ScheduleBusinessHoursOutput {
+	return i.ToScheduleBusinessHoursOutputWithContext(context.Background())
+}
+
+func (i ScheduleBusinessHoursArgs) ToScheduleBusinessHoursOutputWithContext(ctx context.Context) ScheduleBusinessHoursOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBusinessHoursOutput)
+}
+
+func (i ScheduleBusinessHoursArgs) ToScheduleBusinessHoursPtrOutput() ScheduleBusinessHoursPtrOutput {
+	return i.ToScheduleBusinessHoursPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleBusinessHoursArgs) ToScheduleBusinessHoursPtrOutputWithContext(ctx context.Context) ScheduleBusinessHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBusinessHoursOutput).ToScheduleBusinessHoursPtrOutputWithContext(ctx)
+}
+
+// ScheduleBusinessHoursPtrInput is an input type that accepts ScheduleBusinessHoursArgs, ScheduleBusinessHoursPtr and ScheduleBusinessHoursPtrOutput values.
+// You can construct a concrete instance of `ScheduleBusinessHoursPtrInput` via:
+//
+//	        ScheduleBusinessHoursArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleBusinessHoursPtrInput interface {
+	pulumi.Input
+
+	ToScheduleBusinessHoursPtrOutput() ScheduleBusinessHoursPtrOutput
+	ToScheduleBusinessHoursPtrOutputWithContext(context.Context) ScheduleBusinessHoursPtrOutput
+}
+
+type scheduleBusinessHoursPtrType ScheduleBusinessHoursArgs
+
+func ScheduleBusinessHoursPtr(v *ScheduleBusinessHoursArgs) ScheduleBusinessHoursPtrInput {
+	return (*scheduleBusinessHoursPtrType)(v)
+}
+
+func (*scheduleBusinessHoursPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleBusinessHours)(nil)).Elem()
+}
+
+func (i *scheduleBusinessHoursPtrType) ToScheduleBusinessHoursPtrOutput() ScheduleBusinessHoursPtrOutput {
+	return i.ToScheduleBusinessHoursPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleBusinessHoursPtrType) ToScheduleBusinessHoursPtrOutputWithContext(ctx context.Context) ScheduleBusinessHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBusinessHoursPtrOutput)
+}
+
+type ScheduleBusinessHoursOutput struct{ *pulumi.OutputState }
+
+func (ScheduleBusinessHoursOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleBusinessHours)(nil)).Elem()
+}
+
+func (o ScheduleBusinessHoursOutput) ToScheduleBusinessHoursOutput() ScheduleBusinessHoursOutput {
+	return o
+}
+
+func (o ScheduleBusinessHoursOutput) ToScheduleBusinessHoursOutputWithContext(ctx context.Context) ScheduleBusinessHoursOutput {
+	return o
+}
+
+func (o ScheduleBusinessHoursOutput) ToScheduleBusinessHoursPtrOutput() ScheduleBusinessHoursPtrOutput {
+	return o.ToScheduleBusinessHoursPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleBusinessHoursOutput) ToScheduleBusinessHoursPtrOutputWithContext(ctx context.Context) ScheduleBusinessHoursPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleBusinessHours) *ScheduleBusinessHours {
+		return &v
+	}).(ScheduleBusinessHoursPtrOutput)
+}
+
+// End time in HH:MM 24-hour format.
+func (o ScheduleBusinessHoursOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleBusinessHours) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Whether to include weekends.
+func (o ScheduleBusinessHoursOutput) IncludeWeekends() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ScheduleBusinessHours) *bool { return v.IncludeWeekends }).(pulumi.BoolPtrOutput)
+}
+
+// Start time in HH:MM 24-hour format.
+func (o ScheduleBusinessHoursOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleBusinessHours) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type ScheduleBusinessHoursPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleBusinessHoursPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleBusinessHours)(nil)).Elem()
+}
+
+func (o ScheduleBusinessHoursPtrOutput) ToScheduleBusinessHoursPtrOutput() ScheduleBusinessHoursPtrOutput {
+	return o
+}
+
+func (o ScheduleBusinessHoursPtrOutput) ToScheduleBusinessHoursPtrOutputWithContext(ctx context.Context) ScheduleBusinessHoursPtrOutput {
+	return o
+}
+
+func (o ScheduleBusinessHoursPtrOutput) Elem() ScheduleBusinessHoursOutput {
+	return o.ApplyT(func(v *ScheduleBusinessHours) ScheduleBusinessHours {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleBusinessHours
+		return ret
+	}).(ScheduleBusinessHoursOutput)
+}
+
+// End time in HH:MM 24-hour format.
+func (o ScheduleBusinessHoursPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleBusinessHours) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to include weekends.
+func (o ScheduleBusinessHoursPtrOutput) IncludeWeekends() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScheduleBusinessHours) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeWeekends
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Start time in HH:MM 24-hour format.
+func (o ScheduleBusinessHoursPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleBusinessHours) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type ScheduleRotationActiveDayActiveTimeAttribute struct {
 	// End time for schedule rotation active time
 	EndTime *string `pulumi:"endTime"`
@@ -8295,6 +8470,318 @@ func (o ScheduleRotationScheduleRotationableAttributesPtrOutput) ShiftLengthUnit
 			return nil
 		}
 		return v.ShiftLengthUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScheduleSlackChannel struct {
+	// Slack channel ID.
+	Id *string `pulumi:"id"`
+	// Slack channel name.
+	Name *string `pulumi:"name"`
+}
+
+// ScheduleSlackChannelInput is an input type that accepts ScheduleSlackChannelArgs and ScheduleSlackChannelOutput values.
+// You can construct a concrete instance of `ScheduleSlackChannelInput` via:
+//
+//	ScheduleSlackChannelArgs{...}
+type ScheduleSlackChannelInput interface {
+	pulumi.Input
+
+	ToScheduleSlackChannelOutput() ScheduleSlackChannelOutput
+	ToScheduleSlackChannelOutputWithContext(context.Context) ScheduleSlackChannelOutput
+}
+
+type ScheduleSlackChannelArgs struct {
+	// Slack channel ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Slack channel name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ScheduleSlackChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleSlackChannel)(nil)).Elem()
+}
+
+func (i ScheduleSlackChannelArgs) ToScheduleSlackChannelOutput() ScheduleSlackChannelOutput {
+	return i.ToScheduleSlackChannelOutputWithContext(context.Background())
+}
+
+func (i ScheduleSlackChannelArgs) ToScheduleSlackChannelOutputWithContext(ctx context.Context) ScheduleSlackChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackChannelOutput)
+}
+
+func (i ScheduleSlackChannelArgs) ToScheduleSlackChannelPtrOutput() ScheduleSlackChannelPtrOutput {
+	return i.ToScheduleSlackChannelPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleSlackChannelArgs) ToScheduleSlackChannelPtrOutputWithContext(ctx context.Context) ScheduleSlackChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackChannelOutput).ToScheduleSlackChannelPtrOutputWithContext(ctx)
+}
+
+// ScheduleSlackChannelPtrInput is an input type that accepts ScheduleSlackChannelArgs, ScheduleSlackChannelPtr and ScheduleSlackChannelPtrOutput values.
+// You can construct a concrete instance of `ScheduleSlackChannelPtrInput` via:
+//
+//	        ScheduleSlackChannelArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleSlackChannelPtrInput interface {
+	pulumi.Input
+
+	ToScheduleSlackChannelPtrOutput() ScheduleSlackChannelPtrOutput
+	ToScheduleSlackChannelPtrOutputWithContext(context.Context) ScheduleSlackChannelPtrOutput
+}
+
+type scheduleSlackChannelPtrType ScheduleSlackChannelArgs
+
+func ScheduleSlackChannelPtr(v *ScheduleSlackChannelArgs) ScheduleSlackChannelPtrInput {
+	return (*scheduleSlackChannelPtrType)(v)
+}
+
+func (*scheduleSlackChannelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleSlackChannel)(nil)).Elem()
+}
+
+func (i *scheduleSlackChannelPtrType) ToScheduleSlackChannelPtrOutput() ScheduleSlackChannelPtrOutput {
+	return i.ToScheduleSlackChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleSlackChannelPtrType) ToScheduleSlackChannelPtrOutputWithContext(ctx context.Context) ScheduleSlackChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackChannelPtrOutput)
+}
+
+type ScheduleSlackChannelOutput struct{ *pulumi.OutputState }
+
+func (ScheduleSlackChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleSlackChannel)(nil)).Elem()
+}
+
+func (o ScheduleSlackChannelOutput) ToScheduleSlackChannelOutput() ScheduleSlackChannelOutput {
+	return o
+}
+
+func (o ScheduleSlackChannelOutput) ToScheduleSlackChannelOutputWithContext(ctx context.Context) ScheduleSlackChannelOutput {
+	return o
+}
+
+func (o ScheduleSlackChannelOutput) ToScheduleSlackChannelPtrOutput() ScheduleSlackChannelPtrOutput {
+	return o.ToScheduleSlackChannelPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleSlackChannelOutput) ToScheduleSlackChannelPtrOutputWithContext(ctx context.Context) ScheduleSlackChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleSlackChannel) *ScheduleSlackChannel {
+		return &v
+	}).(ScheduleSlackChannelPtrOutput)
+}
+
+// Slack channel ID.
+func (o ScheduleSlackChannelOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleSlackChannel) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name.
+func (o ScheduleSlackChannelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleSlackChannel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ScheduleSlackChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleSlackChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleSlackChannel)(nil)).Elem()
+}
+
+func (o ScheduleSlackChannelPtrOutput) ToScheduleSlackChannelPtrOutput() ScheduleSlackChannelPtrOutput {
+	return o
+}
+
+func (o ScheduleSlackChannelPtrOutput) ToScheduleSlackChannelPtrOutputWithContext(ctx context.Context) ScheduleSlackChannelPtrOutput {
+	return o
+}
+
+func (o ScheduleSlackChannelPtrOutput) Elem() ScheduleSlackChannelOutput {
+	return o.ApplyT(func(v *ScheduleSlackChannel) ScheduleSlackChannel {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleSlackChannel
+		return ret
+	}).(ScheduleSlackChannelOutput)
+}
+
+// Slack channel ID.
+func (o ScheduleSlackChannelPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleSlackChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name.
+func (o ScheduleSlackChannelPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleSlackChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScheduleSlackUserGroup struct {
+	// Slack user group ID.
+	Id *string `pulumi:"id"`
+	// Slack user group name.
+	Name *string `pulumi:"name"`
+}
+
+// ScheduleSlackUserGroupInput is an input type that accepts ScheduleSlackUserGroupArgs and ScheduleSlackUserGroupOutput values.
+// You can construct a concrete instance of `ScheduleSlackUserGroupInput` via:
+//
+//	ScheduleSlackUserGroupArgs{...}
+type ScheduleSlackUserGroupInput interface {
+	pulumi.Input
+
+	ToScheduleSlackUserGroupOutput() ScheduleSlackUserGroupOutput
+	ToScheduleSlackUserGroupOutputWithContext(context.Context) ScheduleSlackUserGroupOutput
+}
+
+type ScheduleSlackUserGroupArgs struct {
+	// Slack user group ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Slack user group name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ScheduleSlackUserGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleSlackUserGroup)(nil)).Elem()
+}
+
+func (i ScheduleSlackUserGroupArgs) ToScheduleSlackUserGroupOutput() ScheduleSlackUserGroupOutput {
+	return i.ToScheduleSlackUserGroupOutputWithContext(context.Background())
+}
+
+func (i ScheduleSlackUserGroupArgs) ToScheduleSlackUserGroupOutputWithContext(ctx context.Context) ScheduleSlackUserGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackUserGroupOutput)
+}
+
+func (i ScheduleSlackUserGroupArgs) ToScheduleSlackUserGroupPtrOutput() ScheduleSlackUserGroupPtrOutput {
+	return i.ToScheduleSlackUserGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleSlackUserGroupArgs) ToScheduleSlackUserGroupPtrOutputWithContext(ctx context.Context) ScheduleSlackUserGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackUserGroupOutput).ToScheduleSlackUserGroupPtrOutputWithContext(ctx)
+}
+
+// ScheduleSlackUserGroupPtrInput is an input type that accepts ScheduleSlackUserGroupArgs, ScheduleSlackUserGroupPtr and ScheduleSlackUserGroupPtrOutput values.
+// You can construct a concrete instance of `ScheduleSlackUserGroupPtrInput` via:
+//
+//	        ScheduleSlackUserGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleSlackUserGroupPtrInput interface {
+	pulumi.Input
+
+	ToScheduleSlackUserGroupPtrOutput() ScheduleSlackUserGroupPtrOutput
+	ToScheduleSlackUserGroupPtrOutputWithContext(context.Context) ScheduleSlackUserGroupPtrOutput
+}
+
+type scheduleSlackUserGroupPtrType ScheduleSlackUserGroupArgs
+
+func ScheduleSlackUserGroupPtr(v *ScheduleSlackUserGroupArgs) ScheduleSlackUserGroupPtrInput {
+	return (*scheduleSlackUserGroupPtrType)(v)
+}
+
+func (*scheduleSlackUserGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleSlackUserGroup)(nil)).Elem()
+}
+
+func (i *scheduleSlackUserGroupPtrType) ToScheduleSlackUserGroupPtrOutput() ScheduleSlackUserGroupPtrOutput {
+	return i.ToScheduleSlackUserGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleSlackUserGroupPtrType) ToScheduleSlackUserGroupPtrOutputWithContext(ctx context.Context) ScheduleSlackUserGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackUserGroupPtrOutput)
+}
+
+type ScheduleSlackUserGroupOutput struct{ *pulumi.OutputState }
+
+func (ScheduleSlackUserGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleSlackUserGroup)(nil)).Elem()
+}
+
+func (o ScheduleSlackUserGroupOutput) ToScheduleSlackUserGroupOutput() ScheduleSlackUserGroupOutput {
+	return o
+}
+
+func (o ScheduleSlackUserGroupOutput) ToScheduleSlackUserGroupOutputWithContext(ctx context.Context) ScheduleSlackUserGroupOutput {
+	return o
+}
+
+func (o ScheduleSlackUserGroupOutput) ToScheduleSlackUserGroupPtrOutput() ScheduleSlackUserGroupPtrOutput {
+	return o.ToScheduleSlackUserGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleSlackUserGroupOutput) ToScheduleSlackUserGroupPtrOutputWithContext(ctx context.Context) ScheduleSlackUserGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleSlackUserGroup) *ScheduleSlackUserGroup {
+		return &v
+	}).(ScheduleSlackUserGroupPtrOutput)
+}
+
+// Slack user group ID.
+func (o ScheduleSlackUserGroupOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleSlackUserGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Slack user group name.
+func (o ScheduleSlackUserGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleSlackUserGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ScheduleSlackUserGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleSlackUserGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleSlackUserGroup)(nil)).Elem()
+}
+
+func (o ScheduleSlackUserGroupPtrOutput) ToScheduleSlackUserGroupPtrOutput() ScheduleSlackUserGroupPtrOutput {
+	return o
+}
+
+func (o ScheduleSlackUserGroupPtrOutput) ToScheduleSlackUserGroupPtrOutputWithContext(ctx context.Context) ScheduleSlackUserGroupPtrOutput {
+	return o
+}
+
+func (o ScheduleSlackUserGroupPtrOutput) Elem() ScheduleSlackUserGroupOutput {
+	return o.ApplyT(func(v *ScheduleSlackUserGroup) ScheduleSlackUserGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleSlackUserGroup
+		return ret
+	}).(ScheduleSlackUserGroupOutput)
+}
+
+// Slack user group ID.
+func (o ScheduleSlackUserGroupPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleSlackUserGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Slack user group name.
+func (o ScheduleSlackUserGroupPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleSlackUserGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10154,6 +10641,112 @@ func (o WebhooksEndpointCustomHeaderArrayOutput) Index(i pulumi.IntInput) Webhoo
 	}).(WebhooksEndpointCustomHeaderOutput)
 }
 
+type WorkflowActionItemFailureNotificationChannel struct {
+	// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+	Id string `pulumi:"id"`
+	// Slack channel name
+	Name string `pulumi:"name"`
+}
+
+// WorkflowActionItemFailureNotificationChannelInput is an input type that accepts WorkflowActionItemFailureNotificationChannelArgs and WorkflowActionItemFailureNotificationChannelOutput values.
+// You can construct a concrete instance of `WorkflowActionItemFailureNotificationChannelInput` via:
+//
+//	WorkflowActionItemFailureNotificationChannelArgs{...}
+type WorkflowActionItemFailureNotificationChannelInput interface {
+	pulumi.Input
+
+	ToWorkflowActionItemFailureNotificationChannelOutput() WorkflowActionItemFailureNotificationChannelOutput
+	ToWorkflowActionItemFailureNotificationChannelOutputWithContext(context.Context) WorkflowActionItemFailureNotificationChannelOutput
+}
+
+type WorkflowActionItemFailureNotificationChannelArgs struct {
+	// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Slack channel name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowActionItemFailureNotificationChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowActionItemFailureNotificationChannel)(nil)).Elem()
+}
+
+func (i WorkflowActionItemFailureNotificationChannelArgs) ToWorkflowActionItemFailureNotificationChannelOutput() WorkflowActionItemFailureNotificationChannelOutput {
+	return i.ToWorkflowActionItemFailureNotificationChannelOutputWithContext(context.Background())
+}
+
+func (i WorkflowActionItemFailureNotificationChannelArgs) ToWorkflowActionItemFailureNotificationChannelOutputWithContext(ctx context.Context) WorkflowActionItemFailureNotificationChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowActionItemFailureNotificationChannelOutput)
+}
+
+// WorkflowActionItemFailureNotificationChannelArrayInput is an input type that accepts WorkflowActionItemFailureNotificationChannelArray and WorkflowActionItemFailureNotificationChannelArrayOutput values.
+// You can construct a concrete instance of `WorkflowActionItemFailureNotificationChannelArrayInput` via:
+//
+//	WorkflowActionItemFailureNotificationChannelArray{ WorkflowActionItemFailureNotificationChannelArgs{...} }
+type WorkflowActionItemFailureNotificationChannelArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowActionItemFailureNotificationChannelArrayOutput() WorkflowActionItemFailureNotificationChannelArrayOutput
+	ToWorkflowActionItemFailureNotificationChannelArrayOutputWithContext(context.Context) WorkflowActionItemFailureNotificationChannelArrayOutput
+}
+
+type WorkflowActionItemFailureNotificationChannelArray []WorkflowActionItemFailureNotificationChannelInput
+
+func (WorkflowActionItemFailureNotificationChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowActionItemFailureNotificationChannel)(nil)).Elem()
+}
+
+func (i WorkflowActionItemFailureNotificationChannelArray) ToWorkflowActionItemFailureNotificationChannelArrayOutput() WorkflowActionItemFailureNotificationChannelArrayOutput {
+	return i.ToWorkflowActionItemFailureNotificationChannelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowActionItemFailureNotificationChannelArray) ToWorkflowActionItemFailureNotificationChannelArrayOutputWithContext(ctx context.Context) WorkflowActionItemFailureNotificationChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowActionItemFailureNotificationChannelArrayOutput)
+}
+
+type WorkflowActionItemFailureNotificationChannelOutput struct{ *pulumi.OutputState }
+
+func (WorkflowActionItemFailureNotificationChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowActionItemFailureNotificationChannel)(nil)).Elem()
+}
+
+func (o WorkflowActionItemFailureNotificationChannelOutput) ToWorkflowActionItemFailureNotificationChannelOutput() WorkflowActionItemFailureNotificationChannelOutput {
+	return o
+}
+
+func (o WorkflowActionItemFailureNotificationChannelOutput) ToWorkflowActionItemFailureNotificationChannelOutputWithContext(ctx context.Context) WorkflowActionItemFailureNotificationChannelOutput {
+	return o
+}
+
+// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+func (o WorkflowActionItemFailureNotificationChannelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowActionItemFailureNotificationChannel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Slack channel name
+func (o WorkflowActionItemFailureNotificationChannelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowActionItemFailureNotificationChannel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowActionItemFailureNotificationChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowActionItemFailureNotificationChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowActionItemFailureNotificationChannel)(nil)).Elem()
+}
+
+func (o WorkflowActionItemFailureNotificationChannelArrayOutput) ToWorkflowActionItemFailureNotificationChannelArrayOutput() WorkflowActionItemFailureNotificationChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowActionItemFailureNotificationChannelArrayOutput) ToWorkflowActionItemFailureNotificationChannelArrayOutputWithContext(ctx context.Context) WorkflowActionItemFailureNotificationChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowActionItemFailureNotificationChannelArrayOutput) Index(i pulumi.IntInput) WorkflowActionItemFailureNotificationChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowActionItemFailureNotificationChannel {
+		return vs[0].([]WorkflowActionItemFailureNotificationChannel)[vs[1].(int)]
+	}).(WorkflowActionItemFailureNotificationChannelOutput)
+}
+
 type WorkflowActionItemTriggerParams struct {
 	// Value must be one of `ALL`, `ANY`, `NONE`.
 	IncidentActionItemCondition *string `pulumi:"incidentActionItemCondition"`
@@ -11809,6 +12402,112 @@ func (o WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput) In
 	}).(WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput)
 }
 
+type WorkflowIncidentFailureNotificationChannel struct {
+	// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+	Id string `pulumi:"id"`
+	// Slack channel name
+	Name string `pulumi:"name"`
+}
+
+// WorkflowIncidentFailureNotificationChannelInput is an input type that accepts WorkflowIncidentFailureNotificationChannelArgs and WorkflowIncidentFailureNotificationChannelOutput values.
+// You can construct a concrete instance of `WorkflowIncidentFailureNotificationChannelInput` via:
+//
+//	WorkflowIncidentFailureNotificationChannelArgs{...}
+type WorkflowIncidentFailureNotificationChannelInput interface {
+	pulumi.Input
+
+	ToWorkflowIncidentFailureNotificationChannelOutput() WorkflowIncidentFailureNotificationChannelOutput
+	ToWorkflowIncidentFailureNotificationChannelOutputWithContext(context.Context) WorkflowIncidentFailureNotificationChannelOutput
+}
+
+type WorkflowIncidentFailureNotificationChannelArgs struct {
+	// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Slack channel name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowIncidentFailureNotificationChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowIncidentFailureNotificationChannel)(nil)).Elem()
+}
+
+func (i WorkflowIncidentFailureNotificationChannelArgs) ToWorkflowIncidentFailureNotificationChannelOutput() WorkflowIncidentFailureNotificationChannelOutput {
+	return i.ToWorkflowIncidentFailureNotificationChannelOutputWithContext(context.Background())
+}
+
+func (i WorkflowIncidentFailureNotificationChannelArgs) ToWorkflowIncidentFailureNotificationChannelOutputWithContext(ctx context.Context) WorkflowIncidentFailureNotificationChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowIncidentFailureNotificationChannelOutput)
+}
+
+// WorkflowIncidentFailureNotificationChannelArrayInput is an input type that accepts WorkflowIncidentFailureNotificationChannelArray and WorkflowIncidentFailureNotificationChannelArrayOutput values.
+// You can construct a concrete instance of `WorkflowIncidentFailureNotificationChannelArrayInput` via:
+//
+//	WorkflowIncidentFailureNotificationChannelArray{ WorkflowIncidentFailureNotificationChannelArgs{...} }
+type WorkflowIncidentFailureNotificationChannelArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowIncidentFailureNotificationChannelArrayOutput() WorkflowIncidentFailureNotificationChannelArrayOutput
+	ToWorkflowIncidentFailureNotificationChannelArrayOutputWithContext(context.Context) WorkflowIncidentFailureNotificationChannelArrayOutput
+}
+
+type WorkflowIncidentFailureNotificationChannelArray []WorkflowIncidentFailureNotificationChannelInput
+
+func (WorkflowIncidentFailureNotificationChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowIncidentFailureNotificationChannel)(nil)).Elem()
+}
+
+func (i WorkflowIncidentFailureNotificationChannelArray) ToWorkflowIncidentFailureNotificationChannelArrayOutput() WorkflowIncidentFailureNotificationChannelArrayOutput {
+	return i.ToWorkflowIncidentFailureNotificationChannelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowIncidentFailureNotificationChannelArray) ToWorkflowIncidentFailureNotificationChannelArrayOutputWithContext(ctx context.Context) WorkflowIncidentFailureNotificationChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowIncidentFailureNotificationChannelArrayOutput)
+}
+
+type WorkflowIncidentFailureNotificationChannelOutput struct{ *pulumi.OutputState }
+
+func (WorkflowIncidentFailureNotificationChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowIncidentFailureNotificationChannel)(nil)).Elem()
+}
+
+func (o WorkflowIncidentFailureNotificationChannelOutput) ToWorkflowIncidentFailureNotificationChannelOutput() WorkflowIncidentFailureNotificationChannelOutput {
+	return o
+}
+
+func (o WorkflowIncidentFailureNotificationChannelOutput) ToWorkflowIncidentFailureNotificationChannelOutputWithContext(ctx context.Context) WorkflowIncidentFailureNotificationChannelOutput {
+	return o
+}
+
+// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+func (o WorkflowIncidentFailureNotificationChannelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowIncidentFailureNotificationChannel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Slack channel name
+func (o WorkflowIncidentFailureNotificationChannelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowIncidentFailureNotificationChannel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowIncidentFailureNotificationChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowIncidentFailureNotificationChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowIncidentFailureNotificationChannel)(nil)).Elem()
+}
+
+func (o WorkflowIncidentFailureNotificationChannelArrayOutput) ToWorkflowIncidentFailureNotificationChannelArrayOutput() WorkflowIncidentFailureNotificationChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowIncidentFailureNotificationChannelArrayOutput) ToWorkflowIncidentFailureNotificationChannelArrayOutputWithContext(ctx context.Context) WorkflowIncidentFailureNotificationChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowIncidentFailureNotificationChannelArrayOutput) Index(i pulumi.IntInput) WorkflowIncidentFailureNotificationChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowIncidentFailureNotificationChannel {
+		return vs[0].([]WorkflowIncidentFailureNotificationChannel)[vs[1].(int)]
+	}).(WorkflowIncidentFailureNotificationChannelOutput)
+}
+
 type WorkflowIncidentTriggerParams struct {
 	// Value must be one of `ALL`, `ANY`, `NONE`.
 	IncidentCondition *string `pulumi:"incidentCondition"`
@@ -12487,6 +13186,112 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) Triggers() pulumi.StringArrayOut
 		}
 		return v.Triggers
 	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowPostMortemFailureNotificationChannel struct {
+	// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+	Id string `pulumi:"id"`
+	// Slack channel name
+	Name string `pulumi:"name"`
+}
+
+// WorkflowPostMortemFailureNotificationChannelInput is an input type that accepts WorkflowPostMortemFailureNotificationChannelArgs and WorkflowPostMortemFailureNotificationChannelOutput values.
+// You can construct a concrete instance of `WorkflowPostMortemFailureNotificationChannelInput` via:
+//
+//	WorkflowPostMortemFailureNotificationChannelArgs{...}
+type WorkflowPostMortemFailureNotificationChannelInput interface {
+	pulumi.Input
+
+	ToWorkflowPostMortemFailureNotificationChannelOutput() WorkflowPostMortemFailureNotificationChannelOutput
+	ToWorkflowPostMortemFailureNotificationChannelOutputWithContext(context.Context) WorkflowPostMortemFailureNotificationChannelOutput
+}
+
+type WorkflowPostMortemFailureNotificationChannelArgs struct {
+	// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Slack channel name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowPostMortemFailureNotificationChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowPostMortemFailureNotificationChannel)(nil)).Elem()
+}
+
+func (i WorkflowPostMortemFailureNotificationChannelArgs) ToWorkflowPostMortemFailureNotificationChannelOutput() WorkflowPostMortemFailureNotificationChannelOutput {
+	return i.ToWorkflowPostMortemFailureNotificationChannelOutputWithContext(context.Background())
+}
+
+func (i WorkflowPostMortemFailureNotificationChannelArgs) ToWorkflowPostMortemFailureNotificationChannelOutputWithContext(ctx context.Context) WorkflowPostMortemFailureNotificationChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowPostMortemFailureNotificationChannelOutput)
+}
+
+// WorkflowPostMortemFailureNotificationChannelArrayInput is an input type that accepts WorkflowPostMortemFailureNotificationChannelArray and WorkflowPostMortemFailureNotificationChannelArrayOutput values.
+// You can construct a concrete instance of `WorkflowPostMortemFailureNotificationChannelArrayInput` via:
+//
+//	WorkflowPostMortemFailureNotificationChannelArray{ WorkflowPostMortemFailureNotificationChannelArgs{...} }
+type WorkflowPostMortemFailureNotificationChannelArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowPostMortemFailureNotificationChannelArrayOutput() WorkflowPostMortemFailureNotificationChannelArrayOutput
+	ToWorkflowPostMortemFailureNotificationChannelArrayOutputWithContext(context.Context) WorkflowPostMortemFailureNotificationChannelArrayOutput
+}
+
+type WorkflowPostMortemFailureNotificationChannelArray []WorkflowPostMortemFailureNotificationChannelInput
+
+func (WorkflowPostMortemFailureNotificationChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowPostMortemFailureNotificationChannel)(nil)).Elem()
+}
+
+func (i WorkflowPostMortemFailureNotificationChannelArray) ToWorkflowPostMortemFailureNotificationChannelArrayOutput() WorkflowPostMortemFailureNotificationChannelArrayOutput {
+	return i.ToWorkflowPostMortemFailureNotificationChannelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowPostMortemFailureNotificationChannelArray) ToWorkflowPostMortemFailureNotificationChannelArrayOutputWithContext(ctx context.Context) WorkflowPostMortemFailureNotificationChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowPostMortemFailureNotificationChannelArrayOutput)
+}
+
+type WorkflowPostMortemFailureNotificationChannelOutput struct{ *pulumi.OutputState }
+
+func (WorkflowPostMortemFailureNotificationChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowPostMortemFailureNotificationChannel)(nil)).Elem()
+}
+
+func (o WorkflowPostMortemFailureNotificationChannelOutput) ToWorkflowPostMortemFailureNotificationChannelOutput() WorkflowPostMortemFailureNotificationChannelOutput {
+	return o
+}
+
+func (o WorkflowPostMortemFailureNotificationChannelOutput) ToWorkflowPostMortemFailureNotificationChannelOutputWithContext(ctx context.Context) WorkflowPostMortemFailureNotificationChannelOutput {
+	return o
+}
+
+// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+func (o WorkflowPostMortemFailureNotificationChannelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowPostMortemFailureNotificationChannel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Slack channel name
+func (o WorkflowPostMortemFailureNotificationChannelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowPostMortemFailureNotificationChannel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowPostMortemFailureNotificationChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowPostMortemFailureNotificationChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowPostMortemFailureNotificationChannel)(nil)).Elem()
+}
+
+func (o WorkflowPostMortemFailureNotificationChannelArrayOutput) ToWorkflowPostMortemFailureNotificationChannelArrayOutput() WorkflowPostMortemFailureNotificationChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowPostMortemFailureNotificationChannelArrayOutput) ToWorkflowPostMortemFailureNotificationChannelArrayOutputWithContext(ctx context.Context) WorkflowPostMortemFailureNotificationChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowPostMortemFailureNotificationChannelArrayOutput) Index(i pulumi.IntInput) WorkflowPostMortemFailureNotificationChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowPostMortemFailureNotificationChannel {
+		return vs[0].([]WorkflowPostMortemFailureNotificationChannel)[vs[1].(int)]
+	}).(WorkflowPostMortemFailureNotificationChannelOutput)
 }
 
 type WorkflowPostMortemTriggerParams struct {
@@ -13226,6 +14031,112 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) Triggers() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+type WorkflowPulseFailureNotificationChannel struct {
+	// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+	Id string `pulumi:"id"`
+	// Slack channel name
+	Name string `pulumi:"name"`
+}
+
+// WorkflowPulseFailureNotificationChannelInput is an input type that accepts WorkflowPulseFailureNotificationChannelArgs and WorkflowPulseFailureNotificationChannelOutput values.
+// You can construct a concrete instance of `WorkflowPulseFailureNotificationChannelInput` via:
+//
+//	WorkflowPulseFailureNotificationChannelArgs{...}
+type WorkflowPulseFailureNotificationChannelInput interface {
+	pulumi.Input
+
+	ToWorkflowPulseFailureNotificationChannelOutput() WorkflowPulseFailureNotificationChannelOutput
+	ToWorkflowPulseFailureNotificationChannelOutputWithContext(context.Context) WorkflowPulseFailureNotificationChannelOutput
+}
+
+type WorkflowPulseFailureNotificationChannelArgs struct {
+	// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Slack channel name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowPulseFailureNotificationChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowPulseFailureNotificationChannel)(nil)).Elem()
+}
+
+func (i WorkflowPulseFailureNotificationChannelArgs) ToWorkflowPulseFailureNotificationChannelOutput() WorkflowPulseFailureNotificationChannelOutput {
+	return i.ToWorkflowPulseFailureNotificationChannelOutputWithContext(context.Background())
+}
+
+func (i WorkflowPulseFailureNotificationChannelArgs) ToWorkflowPulseFailureNotificationChannelOutputWithContext(ctx context.Context) WorkflowPulseFailureNotificationChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowPulseFailureNotificationChannelOutput)
+}
+
+// WorkflowPulseFailureNotificationChannelArrayInput is an input type that accepts WorkflowPulseFailureNotificationChannelArray and WorkflowPulseFailureNotificationChannelArrayOutput values.
+// You can construct a concrete instance of `WorkflowPulseFailureNotificationChannelArrayInput` via:
+//
+//	WorkflowPulseFailureNotificationChannelArray{ WorkflowPulseFailureNotificationChannelArgs{...} }
+type WorkflowPulseFailureNotificationChannelArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowPulseFailureNotificationChannelArrayOutput() WorkflowPulseFailureNotificationChannelArrayOutput
+	ToWorkflowPulseFailureNotificationChannelArrayOutputWithContext(context.Context) WorkflowPulseFailureNotificationChannelArrayOutput
+}
+
+type WorkflowPulseFailureNotificationChannelArray []WorkflowPulseFailureNotificationChannelInput
+
+func (WorkflowPulseFailureNotificationChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowPulseFailureNotificationChannel)(nil)).Elem()
+}
+
+func (i WorkflowPulseFailureNotificationChannelArray) ToWorkflowPulseFailureNotificationChannelArrayOutput() WorkflowPulseFailureNotificationChannelArrayOutput {
+	return i.ToWorkflowPulseFailureNotificationChannelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowPulseFailureNotificationChannelArray) ToWorkflowPulseFailureNotificationChannelArrayOutputWithContext(ctx context.Context) WorkflowPulseFailureNotificationChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowPulseFailureNotificationChannelArrayOutput)
+}
+
+type WorkflowPulseFailureNotificationChannelOutput struct{ *pulumi.OutputState }
+
+func (WorkflowPulseFailureNotificationChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowPulseFailureNotificationChannel)(nil)).Elem()
+}
+
+func (o WorkflowPulseFailureNotificationChannelOutput) ToWorkflowPulseFailureNotificationChannelOutput() WorkflowPulseFailureNotificationChannelOutput {
+	return o
+}
+
+func (o WorkflowPulseFailureNotificationChannelOutput) ToWorkflowPulseFailureNotificationChannelOutputWithContext(ctx context.Context) WorkflowPulseFailureNotificationChannelOutput {
+	return o
+}
+
+// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+func (o WorkflowPulseFailureNotificationChannelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowPulseFailureNotificationChannel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Slack channel name
+func (o WorkflowPulseFailureNotificationChannelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowPulseFailureNotificationChannel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowPulseFailureNotificationChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowPulseFailureNotificationChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowPulseFailureNotificationChannel)(nil)).Elem()
+}
+
+func (o WorkflowPulseFailureNotificationChannelArrayOutput) ToWorkflowPulseFailureNotificationChannelArrayOutput() WorkflowPulseFailureNotificationChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowPulseFailureNotificationChannelArrayOutput) ToWorkflowPulseFailureNotificationChannelArrayOutputWithContext(ctx context.Context) WorkflowPulseFailureNotificationChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowPulseFailureNotificationChannelArrayOutput) Index(i pulumi.IntInput) WorkflowPulseFailureNotificationChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowPulseFailureNotificationChannel {
+		return vs[0].([]WorkflowPulseFailureNotificationChannel)[vs[1].(int)]
+	}).(WorkflowPulseFailureNotificationChannelOutput)
+}
+
 type WorkflowPulseTriggerParams struct {
 	// Value must be one of `ALL`, `ANY`, `NONE`.
 	PulseCondition *string `pulumi:"pulseCondition"`
@@ -13577,6 +14488,112 @@ func (o WorkflowPulseTriggerParamsPtrOutput) Triggers() pulumi.StringArrayOutput
 		}
 		return v.Triggers
 	}).(pulumi.StringArrayOutput)
+}
+
+type WorkflowSimpleFailureNotificationChannel struct {
+	// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+	Id string `pulumi:"id"`
+	// Slack channel name
+	Name string `pulumi:"name"`
+}
+
+// WorkflowSimpleFailureNotificationChannelInput is an input type that accepts WorkflowSimpleFailureNotificationChannelArgs and WorkflowSimpleFailureNotificationChannelOutput values.
+// You can construct a concrete instance of `WorkflowSimpleFailureNotificationChannelInput` via:
+//
+//	WorkflowSimpleFailureNotificationChannelArgs{...}
+type WorkflowSimpleFailureNotificationChannelInput interface {
+	pulumi.Input
+
+	ToWorkflowSimpleFailureNotificationChannelOutput() WorkflowSimpleFailureNotificationChannelOutput
+	ToWorkflowSimpleFailureNotificationChannelOutputWithContext(context.Context) WorkflowSimpleFailureNotificationChannelOutput
+}
+
+type WorkflowSimpleFailureNotificationChannelArgs struct {
+	// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Slack channel name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowSimpleFailureNotificationChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowSimpleFailureNotificationChannel)(nil)).Elem()
+}
+
+func (i WorkflowSimpleFailureNotificationChannelArgs) ToWorkflowSimpleFailureNotificationChannelOutput() WorkflowSimpleFailureNotificationChannelOutput {
+	return i.ToWorkflowSimpleFailureNotificationChannelOutputWithContext(context.Background())
+}
+
+func (i WorkflowSimpleFailureNotificationChannelArgs) ToWorkflowSimpleFailureNotificationChannelOutputWithContext(ctx context.Context) WorkflowSimpleFailureNotificationChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowSimpleFailureNotificationChannelOutput)
+}
+
+// WorkflowSimpleFailureNotificationChannelArrayInput is an input type that accepts WorkflowSimpleFailureNotificationChannelArray and WorkflowSimpleFailureNotificationChannelArrayOutput values.
+// You can construct a concrete instance of `WorkflowSimpleFailureNotificationChannelArrayInput` via:
+//
+//	WorkflowSimpleFailureNotificationChannelArray{ WorkflowSimpleFailureNotificationChannelArgs{...} }
+type WorkflowSimpleFailureNotificationChannelArrayInput interface {
+	pulumi.Input
+
+	ToWorkflowSimpleFailureNotificationChannelArrayOutput() WorkflowSimpleFailureNotificationChannelArrayOutput
+	ToWorkflowSimpleFailureNotificationChannelArrayOutputWithContext(context.Context) WorkflowSimpleFailureNotificationChannelArrayOutput
+}
+
+type WorkflowSimpleFailureNotificationChannelArray []WorkflowSimpleFailureNotificationChannelInput
+
+func (WorkflowSimpleFailureNotificationChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowSimpleFailureNotificationChannel)(nil)).Elem()
+}
+
+func (i WorkflowSimpleFailureNotificationChannelArray) ToWorkflowSimpleFailureNotificationChannelArrayOutput() WorkflowSimpleFailureNotificationChannelArrayOutput {
+	return i.ToWorkflowSimpleFailureNotificationChannelArrayOutputWithContext(context.Background())
+}
+
+func (i WorkflowSimpleFailureNotificationChannelArray) ToWorkflowSimpleFailureNotificationChannelArrayOutputWithContext(ctx context.Context) WorkflowSimpleFailureNotificationChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowSimpleFailureNotificationChannelArrayOutput)
+}
+
+type WorkflowSimpleFailureNotificationChannelOutput struct{ *pulumi.OutputState }
+
+func (WorkflowSimpleFailureNotificationChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowSimpleFailureNotificationChannel)(nil)).Elem()
+}
+
+func (o WorkflowSimpleFailureNotificationChannelOutput) ToWorkflowSimpleFailureNotificationChannelOutput() WorkflowSimpleFailureNotificationChannelOutput {
+	return o
+}
+
+func (o WorkflowSimpleFailureNotificationChannelOutput) ToWorkflowSimpleFailureNotificationChannelOutputWithContext(ctx context.Context) WorkflowSimpleFailureNotificationChannelOutput {
+	return o
+}
+
+// Slack channel ID. Liquid is allowed, for example `{{ incident.slack_channel_id }}` for the incident channel.
+func (o WorkflowSimpleFailureNotificationChannelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowSimpleFailureNotificationChannel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Slack channel name
+func (o WorkflowSimpleFailureNotificationChannelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowSimpleFailureNotificationChannel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowSimpleFailureNotificationChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkflowSimpleFailureNotificationChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkflowSimpleFailureNotificationChannel)(nil)).Elem()
+}
+
+func (o WorkflowSimpleFailureNotificationChannelArrayOutput) ToWorkflowSimpleFailureNotificationChannelArrayOutput() WorkflowSimpleFailureNotificationChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowSimpleFailureNotificationChannelArrayOutput) ToWorkflowSimpleFailureNotificationChannelArrayOutputWithContext(ctx context.Context) WorkflowSimpleFailureNotificationChannelArrayOutput {
+	return o
+}
+
+func (o WorkflowSimpleFailureNotificationChannelArrayOutput) Index(i pulumi.IntInput) WorkflowSimpleFailureNotificationChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowSimpleFailureNotificationChannel {
+		return vs[0].([]WorkflowSimpleFailureNotificationChannel)[vs[1].(int)]
+	}).(WorkflowSimpleFailureNotificationChannelOutput)
 }
 
 type WorkflowSimpleTriggerParams struct {
@@ -14830,7 +15847,11 @@ type WorkflowTaskAddSlackBookmarkTaskParams struct {
 	Link *string `pulumi:"link"`
 	// The playbook id if bookmark is of an incident playbook
 	PlaybookId *string `pulumi:"playbookId"`
-	TaskType   *string `pulumi:"taskType"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int    `pulumi:"retryWaitTime"`
+	TaskType      *string `pulumi:"taskType"`
 	// The bookmark title. Required if not a playbook bookmark
 	Title *string `pulumi:"title"`
 }
@@ -14855,7 +15876,11 @@ type WorkflowTaskAddSlackBookmarkTaskParamsArgs struct {
 	Link pulumi.StringPtrInput `pulumi:"link"`
 	// The playbook id if bookmark is of an incident playbook
 	PlaybookId pulumi.StringPtrInput `pulumi:"playbookId"`
-	TaskType   pulumi.StringPtrInput `pulumi:"taskType"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput    `pulumi:"retryWaitTime"`
+	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
 	// The bookmark title. Required if not a playbook bookmark
 	Title pulumi.StringPtrInput `pulumi:"title"`
 }
@@ -14957,6 +15982,16 @@ func (o WorkflowTaskAddSlackBookmarkTaskParamsOutput) PlaybookId() pulumi.String
 	return o.ApplyT(func(v WorkflowTaskAddSlackBookmarkTaskParams) *string { return v.PlaybookId }).(pulumi.StringPtrOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskAddSlackBookmarkTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskAddSlackBookmarkTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskAddSlackBookmarkTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskAddSlackBookmarkTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
 func (o WorkflowTaskAddSlackBookmarkTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskAddSlackBookmarkTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
@@ -15028,6 +16063,26 @@ func (o WorkflowTaskAddSlackBookmarkTaskParamsPtrOutput) PlaybookId() pulumi.Str
 		}
 		return v.PlaybookId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskAddSlackBookmarkTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskAddSlackBookmarkTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskAddSlackBookmarkTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskAddSlackBookmarkTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o WorkflowTaskAddSlackBookmarkTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -16010,7 +17065,11 @@ func (o WorkflowTaskArchiveMicrosoftTeamsChannelsTaskParamsChannelArrayOutput) I
 
 type WorkflowTaskArchiveSlackChannelsTaskParams struct {
 	Channels []WorkflowTaskArchiveSlackChannelsTaskParamsChannel `pulumi:"channels"`
-	TaskType *string                                             `pulumi:"taskType"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int    `pulumi:"retryWaitTime"`
+	TaskType      *string `pulumi:"taskType"`
 }
 
 // WorkflowTaskArchiveSlackChannelsTaskParamsInput is an input type that accepts WorkflowTaskArchiveSlackChannelsTaskParamsArgs and WorkflowTaskArchiveSlackChannelsTaskParamsOutput values.
@@ -16026,7 +17085,11 @@ type WorkflowTaskArchiveSlackChannelsTaskParamsInput interface {
 
 type WorkflowTaskArchiveSlackChannelsTaskParamsArgs struct {
 	Channels WorkflowTaskArchiveSlackChannelsTaskParamsChannelArrayInput `pulumi:"channels"`
-	TaskType pulumi.StringPtrInput                                       `pulumi:"taskType"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput    `pulumi:"retryWaitTime"`
+	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
 }
 
 func (WorkflowTaskArchiveSlackChannelsTaskParamsArgs) ElementType() reflect.Type {
@@ -16112,6 +17175,16 @@ func (o WorkflowTaskArchiveSlackChannelsTaskParamsOutput) Channels() WorkflowTas
 	}).(WorkflowTaskArchiveSlackChannelsTaskParamsChannelArrayOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskArchiveSlackChannelsTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskArchiveSlackChannelsTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskArchiveSlackChannelsTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskArchiveSlackChannelsTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
 func (o WorkflowTaskArchiveSlackChannelsTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskArchiveSlackChannelsTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
@@ -16147,6 +17220,26 @@ func (o WorkflowTaskArchiveSlackChannelsTaskParamsPtrOutput) Channels() Workflow
 		}
 		return v.Channels
 	}).(WorkflowTaskArchiveSlackChannelsTaskParamsChannelArrayOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskArchiveSlackChannelsTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskArchiveSlackChannelsTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskArchiveSlackChannelsTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskArchiveSlackChannelsTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o WorkflowTaskArchiveSlackChannelsTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -16642,6 +17735,369 @@ func (o WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannelArrayOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannel {
 		return vs[0].([]WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannel)[vs[1].(int)]
 	}).(WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannelOutput)
+}
+
+type WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams struct {
+	// The attachment filename
+	Filename *string `pulumi:"filename"`
+	TaskType *string `pulumi:"taskType"`
+	// The Freshservice ticket id
+	TicketId string `pulumi:"ticketId"`
+}
+
+// WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsInput is an input type that accepts WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs and WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsInput` via:
+//
+//	WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs{...}
+type WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput() WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput
+	ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutputWithContext(context.Context) WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput
+}
+
+type WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs struct {
+	// The attachment filename
+	Filename pulumi.StringPtrInput `pulumi:"filename"`
+	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
+	// The Freshservice ticket id
+	TicketId pulumi.StringInput `pulumi:"ticketId"`
+}
+
+func (WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput() WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput {
+	return i.ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput)
+}
+
+func (i WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput() WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput {
+	return i.ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput).ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrInput is an input type that accepts WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs, WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtr and WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput() WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput
+	ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput
+}
+
+type workflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrType WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs
+
+func WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtr(v *WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs) WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrInput {
+	return (*workflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrType) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput() WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput {
+	return i.ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrType) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput)
+}
+
+type WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput() WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput() WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput {
+	return o.ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams) *WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams {
+		return &v
+	}).(WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput)
+}
+
+// The attachment filename
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams) *string { return v.Filename }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// The Freshservice ticket id
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput) TicketId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams) string { return v.TicketId }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput() WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput) ToWorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput) Elem() WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams) WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams
+		return ret
+	}).(WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput)
+}
+
+// The attachment filename
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filename
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Freshservice ticket id
+func (o WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput) TicketId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TicketId
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams struct {
+	// The attachment filename
+	Filename *string `pulumi:"filename"`
+	// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+	Integration map[string]string `pulumi:"integration"`
+	// The issue id
+	IssueId  string  `pulumi:"issueId"`
+	TaskType *string `pulumi:"taskType"`
+}
+
+// WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsInput is an input type that accepts WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs and WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsInput` via:
+//
+//	WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs{...}
+type WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput() WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput
+	ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutputWithContext(context.Context) WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput
+}
+
+type WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs struct {
+	// The attachment filename
+	Filename pulumi.StringPtrInput `pulumi:"filename"`
+	// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+	Integration pulumi.StringMapInput `pulumi:"integration"`
+	// The issue id
+	IssueId  pulumi.StringInput    `pulumi:"issueId"`
+	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
+}
+
+func (WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput() WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput {
+	return i.ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput)
+}
+
+func (i WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput() WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput {
+	return i.ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput).ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrInput is an input type that accepts WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs, WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtr and WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput() WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput
+	ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput
+}
+
+type workflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrType WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs
+
+func WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtr(v *WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs) WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrInput {
+	return (*workflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrType) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput() WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput {
+	return i.ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrType) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput)
+}
+
+type WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput() WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput() WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput {
+	return o.ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams) *WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams {
+		return &v
+	}).(WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput)
+}
+
+// The attachment filename
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams) *string { return v.Filename }).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput) Integration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams) map[string]string {
+		return v.Integration
+	}).(pulumi.StringMapOutput)
+}
+
+// The issue id
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput) IssueId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams) string { return v.IssueId }).(pulumi.StringOutput)
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput() WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput) ToWorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput) Elem() WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams) WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams
+		return ret
+	}).(WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput)
+}
+
+// The attachment filename
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput) Filename() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Filename
+	}).(pulumi.StringPtrOutput)
+}
+
+// Map must contain two fields, `id` and `name`. Specify integration id if you have more than one Jira instance
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput) Integration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Integration
+	}).(pulumi.StringMapOutput)
+}
+
+// The issue id
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput) IssueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IssueId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkflowTaskAutoAssignRoleOpsgenieTaskParams struct {
@@ -17803,8 +19259,12 @@ type WorkflowTaskChangeSlackChannelPrivacyTaskParams struct {
 	// Map must contain two fields, `id` and `name`.
 	Channel map[string]string `pulumi:"channel"`
 	// Value must be one of `private`, `public`.
-	Privacy  string  `pulumi:"privacy"`
-	TaskType *string `pulumi:"taskType"`
+	Privacy string `pulumi:"privacy"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int    `pulumi:"retryWaitTime"`
+	TaskType      *string `pulumi:"taskType"`
 }
 
 // WorkflowTaskChangeSlackChannelPrivacyTaskParamsInput is an input type that accepts WorkflowTaskChangeSlackChannelPrivacyTaskParamsArgs and WorkflowTaskChangeSlackChannelPrivacyTaskParamsOutput values.
@@ -17822,8 +19282,12 @@ type WorkflowTaskChangeSlackChannelPrivacyTaskParamsArgs struct {
 	// Map must contain two fields, `id` and `name`.
 	Channel pulumi.StringMapInput `pulumi:"channel"`
 	// Value must be one of `private`, `public`.
-	Privacy  pulumi.StringInput    `pulumi:"privacy"`
-	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
+	Privacy pulumi.StringInput `pulumi:"privacy"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput    `pulumi:"retryWaitTime"`
+	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
 }
 
 func (WorkflowTaskChangeSlackChannelPrivacyTaskParamsArgs) ElementType() reflect.Type {
@@ -17913,6 +19377,16 @@ func (o WorkflowTaskChangeSlackChannelPrivacyTaskParamsOutput) Privacy() pulumi.
 	return o.ApplyT(func(v WorkflowTaskChangeSlackChannelPrivacyTaskParams) string { return v.Privacy }).(pulumi.StringOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskChangeSlackChannelPrivacyTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskChangeSlackChannelPrivacyTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskChangeSlackChannelPrivacyTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskChangeSlackChannelPrivacyTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
 func (o WorkflowTaskChangeSlackChannelPrivacyTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskChangeSlackChannelPrivacyTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
@@ -17959,6 +19433,26 @@ func (o WorkflowTaskChangeSlackChannelPrivacyTaskParamsPtrOutput) Privacy() pulu
 		}
 		return &v.Privacy
 	}).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskChangeSlackChannelPrivacyTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskChangeSlackChannelPrivacyTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskChangeSlackChannelPrivacyTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskChangeSlackChannelPrivacyTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o WorkflowTaskChangeSlackChannelPrivacyTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -22918,6 +24412,10 @@ type WorkflowTaskCreateGoogleMeetingTaskParams struct {
 	RecordMeeting *bool `pulumi:"recordMeeting"`
 	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
 	RecordingMode *string `pulumi:"recordingMode"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int `pulumi:"retryWaitTime"`
 	// [DEPRECATED] The meeting summary
 	Summary  string  `pulumi:"summary"`
 	TaskType *string `pulumi:"taskType"`
@@ -22946,6 +24444,10 @@ type WorkflowTaskCreateGoogleMeetingTaskParamsArgs struct {
 	RecordMeeting pulumi.BoolPtrInput `pulumi:"recordMeeting"`
 	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
 	RecordingMode pulumi.StringPtrInput `pulumi:"recordingMode"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput `pulumi:"retryWaitTime"`
 	// [DEPRECATED] The meeting summary
 	Summary  pulumi.StringInput    `pulumi:"summary"`
 	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
@@ -23059,6 +24561,16 @@ func (o WorkflowTaskCreateGoogleMeetingTaskParamsOutput) RecordingMode() pulumi.
 	return o.ApplyT(func(v WorkflowTaskCreateGoogleMeetingTaskParams) *string { return v.RecordingMode }).(pulumi.StringPtrOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateGoogleMeetingTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleMeetingTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateGoogleMeetingTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleMeetingTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
 // [DEPRECATED] The meeting summary
 func (o WorkflowTaskCreateGoogleMeetingTaskParamsOutput) Summary() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateGoogleMeetingTaskParams) string { return v.Summary }).(pulumi.StringOutput)
@@ -23149,6 +24661,26 @@ func (o WorkflowTaskCreateGoogleMeetingTaskParamsPtrOutput) RecordingMode() pulu
 		}
 		return v.RecordingMode
 	}).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateGoogleMeetingTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleMeetingTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateGoogleMeetingTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleMeetingTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
 }
 
 // [DEPRECATED] The meeting summary
@@ -31245,10 +32777,577 @@ func (o WorkflowTaskCreateShortcutTaskTaskParamsPtrOutput) TaskType() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkflowTaskCreateSlackCanvasTaskParams struct {
+	// Slack channel containing the canvas. Channel IDs support Liquid variables.
+	Channel WorkflowTaskCreateSlackCanvasTaskParamsChannel `pulumi:"channel"`
+	// The initial canvas content in Markdown. Supports Liquid variables. An existing channel canvas is preserved.
+	Content string `pulumi:"content"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int    `pulumi:"retryWaitTime"`
+	TaskType      *string `pulumi:"taskType"`
+	// The canvas title. Supports Liquid variables.
+	Title string `pulumi:"title"`
+}
+
+// WorkflowTaskCreateSlackCanvasTaskParamsInput is an input type that accepts WorkflowTaskCreateSlackCanvasTaskParamsArgs and WorkflowTaskCreateSlackCanvasTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateSlackCanvasTaskParamsInput` via:
+//
+//	WorkflowTaskCreateSlackCanvasTaskParamsArgs{...}
+type WorkflowTaskCreateSlackCanvasTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateSlackCanvasTaskParamsOutput() WorkflowTaskCreateSlackCanvasTaskParamsOutput
+	ToWorkflowTaskCreateSlackCanvasTaskParamsOutputWithContext(context.Context) WorkflowTaskCreateSlackCanvasTaskParamsOutput
+}
+
+type WorkflowTaskCreateSlackCanvasTaskParamsArgs struct {
+	// Slack channel containing the canvas. Channel IDs support Liquid variables.
+	Channel WorkflowTaskCreateSlackCanvasTaskParamsChannelInput `pulumi:"channel"`
+	// The initial canvas content in Markdown. Supports Liquid variables. An existing channel canvas is preserved.
+	Content pulumi.StringInput `pulumi:"content"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput    `pulumi:"retryWaitTime"`
+	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
+	// The canvas title. Supports Liquid variables.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (WorkflowTaskCreateSlackCanvasTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsOutput() WorkflowTaskCreateSlackCanvasTaskParamsOutput {
+	return i.ToWorkflowTaskCreateSlackCanvasTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSlackCanvasTaskParamsOutput)
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSlackCanvasTaskParamsOutput).ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateSlackCanvasTaskParamsPtrInput is an input type that accepts WorkflowTaskCreateSlackCanvasTaskParamsArgs, WorkflowTaskCreateSlackCanvasTaskParamsPtr and WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateSlackCanvasTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskCreateSlackCanvasTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateSlackCanvasTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput
+	ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput
+}
+
+type workflowTaskCreateSlackCanvasTaskParamsPtrType WorkflowTaskCreateSlackCanvasTaskParamsArgs
+
+func WorkflowTaskCreateSlackCanvasTaskParamsPtr(v *WorkflowTaskCreateSlackCanvasTaskParamsArgs) WorkflowTaskCreateSlackCanvasTaskParamsPtrInput {
+	return (*workflowTaskCreateSlackCanvasTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskCreateSlackCanvasTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateSlackCanvasTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateSlackCanvasTaskParamsPtrType) ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput {
+	return i.ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateSlackCanvasTaskParamsPtrType) ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput)
+}
+
+type WorkflowTaskCreateSlackCanvasTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateSlackCanvasTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsOutput() WorkflowTaskCreateSlackCanvasTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput {
+	return o.ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateSlackCanvasTaskParams) *WorkflowTaskCreateSlackCanvasTaskParams {
+		return &v
+	}).(WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput)
+}
+
+// Slack channel containing the canvas. Channel IDs support Liquid variables.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsOutput) Channel() WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackCanvasTaskParams) WorkflowTaskCreateSlackCanvasTaskParamsChannel {
+		return v.Channel
+	}).(WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput)
+}
+
+// The initial canvas content in Markdown. Supports Liquid variables. An existing channel canvas is preserved.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackCanvasTaskParams) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackCanvasTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackCanvasTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackCanvasTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+// The canvas title. Supports Liquid variables.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackCanvasTaskParams) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateSlackCanvasTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput) Elem() WorkflowTaskCreateSlackCanvasTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParams) WorkflowTaskCreateSlackCanvasTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateSlackCanvasTaskParams
+		return ret
+	}).(WorkflowTaskCreateSlackCanvasTaskParamsOutput)
+}
+
+// Slack channel containing the canvas. Channel IDs support Liquid variables.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput) Channel() WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParams) *WorkflowTaskCreateSlackCanvasTaskParamsChannel {
+		if v == nil {
+			return nil
+		}
+		return &v.Channel
+	}).(WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput)
+}
+
+// The initial canvas content in Markdown. Supports Liquid variables. An existing channel canvas is preserved.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The canvas title. Supports Liquid variables.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskCreateSlackCanvasTaskParamsChannel struct {
+	// Slack channel ID.
+	Id string `pulumi:"id"`
+	// Channel display name.
+	Name string `pulumi:"name"`
+	// Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+	Workspace *WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace `pulumi:"workspace"`
+}
+
+// WorkflowTaskCreateSlackCanvasTaskParamsChannelInput is an input type that accepts WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs and WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateSlackCanvasTaskParamsChannelInput` via:
+//
+//	WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs{...}
+type WorkflowTaskCreateSlackCanvasTaskParamsChannelInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateSlackCanvasTaskParamsChannelOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput
+	ToWorkflowTaskCreateSlackCanvasTaskParamsChannelOutputWithContext(context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput
+}
+
+type WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs struct {
+	// Slack channel ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Channel display name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+	Workspace WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrInput `pulumi:"workspace"`
+}
+
+func (WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParamsChannel)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput {
+	return i.ToWorkflowTaskCreateSlackCanvasTaskParamsChannelOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput)
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput {
+	return i.ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput).ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrInput is an input type that accepts WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs, WorkflowTaskCreateSlackCanvasTaskParamsChannelPtr and WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrInput` via:
+//
+//	        WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput
+	ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutputWithContext(context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput
+}
+
+type workflowTaskCreateSlackCanvasTaskParamsChannelPtrType WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs
+
+func WorkflowTaskCreateSlackCanvasTaskParamsChannelPtr(v *WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs) WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrInput {
+	return (*workflowTaskCreateSlackCanvasTaskParamsChannelPtrType)(v)
+}
+
+func (*workflowTaskCreateSlackCanvasTaskParamsChannelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateSlackCanvasTaskParamsChannel)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateSlackCanvasTaskParamsChannelPtrType) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput {
+	return i.ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateSlackCanvasTaskParamsChannelPtrType) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput)
+}
+
+type WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParamsChannel)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput {
+	return o.ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateSlackCanvasTaskParamsChannel) *WorkflowTaskCreateSlackCanvasTaskParamsChannel {
+		return &v
+	}).(WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput)
+}
+
+// Slack channel ID.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackCanvasTaskParamsChannel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Channel display name.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackCanvasTaskParamsChannel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput) Workspace() WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackCanvasTaskParamsChannel) *WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace {
+		return v.Workspace
+	}).(WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput)
+}
+
+type WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateSlackCanvasTaskParamsChannel)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput) Elem() WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParamsChannel) WorkflowTaskCreateSlackCanvasTaskParamsChannel {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateSlackCanvasTaskParamsChannel
+		return ret
+	}).(WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput)
+}
+
+// Slack channel ID.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParamsChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Channel display name.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParamsChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput) Workspace() WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParamsChannel) *WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace {
+		if v == nil {
+			return nil
+		}
+		return v.Workspace
+	}).(WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput)
+}
+
+type WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace struct {
+	// Slack workspace ID. Enter a literal ID from Slack.
+	Id string `pulumi:"id"`
+	// Workspace display name.
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceInput is an input type that accepts WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs and WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceInput` via:
+//
+//	WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs{...}
+type WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput
+	ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutputWithContext(context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput
+}
+
+type WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs struct {
+	// Slack workspace ID. Enter a literal ID from Slack.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Workspace display name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace)(nil)).Elem()
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput {
+	return i.ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput)
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return i.ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput).ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrInput is an input type that accepts WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs, WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtr and WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrInput` via:
+//
+//	        WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput
+	ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput
+}
+
+type workflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrType WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs
+
+func WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtr(v *WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs) WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrInput {
+	return (*workflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrType)(v)
+}
+
+func (*workflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace)(nil)).Elem()
+}
+
+func (i *workflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrType) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return i.ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrType) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput)
+}
+
+type WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o.ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace) *WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace {
+		return &v
+	}).(WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput)
+}
+
+// Slack workspace ID. Enter a literal ID from Slack.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Workspace display name.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace)(nil)).Elem()
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput() WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput) ToWorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(ctx context.Context) WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o
+}
+
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput) Elem() WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace) WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace
+		return ret
+	}).(WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput)
+}
+
+// Slack workspace ID. Enter a literal ID from Slack.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Workspace display name.
+func (o WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskCreateSlackChannelTaskParams struct {
 	// Value must be one of `auto`, `true`, `false`.
-	Private  *string `pulumi:"private"`
-	TaskType *string `pulumi:"taskType"`
+	Private *string `pulumi:"private"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int    `pulumi:"retryWaitTime"`
+	TaskType      *string `pulumi:"taskType"`
 	// Slack channel title
 	Title string `pulumi:"title"`
 	// Map must contain two fields, `id` and `name`.
@@ -31268,8 +33367,12 @@ type WorkflowTaskCreateSlackChannelTaskParamsInput interface {
 
 type WorkflowTaskCreateSlackChannelTaskParamsArgs struct {
 	// Value must be one of `auto`, `true`, `false`.
-	Private  pulumi.StringPtrInput `pulumi:"private"`
-	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
+	Private pulumi.StringPtrInput `pulumi:"private"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput    `pulumi:"retryWaitTime"`
+	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
 	// Slack channel title
 	Title pulumi.StringInput `pulumi:"title"`
 	// Map must contain two fields, `id` and `name`.
@@ -31358,6 +33461,16 @@ func (o WorkflowTaskCreateSlackChannelTaskParamsOutput) Private() pulumi.StringP
 	return o.ApplyT(func(v WorkflowTaskCreateSlackChannelTaskParams) *string { return v.Private }).(pulumi.StringPtrOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateSlackChannelTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackChannelTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateSlackChannelTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSlackChannelTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
 func (o WorkflowTaskCreateSlackChannelTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateSlackChannelTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
@@ -31404,6 +33517,26 @@ func (o WorkflowTaskCreateSlackChannelTaskParamsPtrOutput) Private() pulumi.Stri
 		}
 		return v.Private
 	}).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateSlackChannelTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackChannelTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateSlackChannelTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSlackChannelTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o WorkflowTaskCreateSlackChannelTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -33012,6 +35145,10 @@ type WorkflowTaskCreateZoomMeetingTaskParams struct {
 	RecordMeeting *bool `pulumi:"recordMeeting"`
 	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
 	RecordingMode *string `pulumi:"recordingMode"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int    `pulumi:"retryWaitTime"`
 	TaskType      *string `pulumi:"taskType"`
 	// The meeting topic
 	Topic string `pulumi:"topic"`
@@ -33045,6 +35182,10 @@ type WorkflowTaskCreateZoomMeetingTaskParamsArgs struct {
 	RecordMeeting pulumi.BoolPtrInput `pulumi:"recordMeeting"`
 	// The video layout for the bot's recording (e.g. speaker*view, gallery*view, gallery*view*v2, audio_only). Value must be one of `speakerView`, `galleryView`, `galleryViewV2`, `audioOnly`.
 	RecordingMode pulumi.StringPtrInput `pulumi:"recordingMode"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput    `pulumi:"retryWaitTime"`
 	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
 	// The meeting topic
 	Topic pulumi.StringInput `pulumi:"topic"`
@@ -33172,6 +35313,16 @@ func (o WorkflowTaskCreateZoomMeetingTaskParamsOutput) RecordingMode() pulumi.St
 	return o.ApplyT(func(v WorkflowTaskCreateZoomMeetingTaskParams) *string { return v.RecordingMode }).(pulumi.StringPtrOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateZoomMeetingTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateZoomMeetingTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateZoomMeetingTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateZoomMeetingTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
 func (o WorkflowTaskCreateZoomMeetingTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateZoomMeetingTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
@@ -33291,6 +35442,26 @@ func (o WorkflowTaskCreateZoomMeetingTaskParamsPtrOutput) RecordingMode() pulumi
 		}
 		return v.RecordingMode
 	}).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskCreateZoomMeetingTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateZoomMeetingTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskCreateZoomMeetingTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateZoomMeetingTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o WorkflowTaskCreateZoomMeetingTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -34956,7 +37127,7 @@ type WorkflowTaskHttpClientTaskParams struct {
 	EventUrl     *string `pulumi:"eventUrl"`
 	// Map of valid HTTP header names to reg
 	ExpectedResponseHeaders map[string]string `pulumi:"expectedResponseHeaders"`
-	// Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is.. Value must be one of true or false
+	// Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is. Value must be one of true or false
 	FollowRedirects *bool `pulumi:"followRedirects"`
 	// JSON map of HTTP headers
 	Headers *string `pulumi:"headers"`
@@ -34996,7 +37167,7 @@ type WorkflowTaskHttpClientTaskParamsArgs struct {
 	EventUrl     pulumi.StringPtrInput `pulumi:"eventUrl"`
 	// Map of valid HTTP header names to reg
 	ExpectedResponseHeaders pulumi.StringMapInput `pulumi:"expectedResponseHeaders"`
-	// Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is.. Value must be one of true or false
+	// Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is. Value must be one of true or false
 	FollowRedirects pulumi.BoolPtrInput `pulumi:"followRedirects"`
 	// JSON map of HTTP headers
 	Headers pulumi.StringPtrInput `pulumi:"headers"`
@@ -35113,7 +37284,7 @@ func (o WorkflowTaskHttpClientTaskParamsOutput) ExpectedResponseHeaders() pulumi
 	return o.ApplyT(func(v WorkflowTaskHttpClientTaskParams) map[string]string { return v.ExpectedResponseHeaders }).(pulumi.StringMapOutput)
 }
 
-// Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is.. Value must be one of true or false
+// Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is. Value must be one of true or false
 func (o WorkflowTaskHttpClientTaskParamsOutput) FollowRedirects() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskHttpClientTaskParams) *bool { return v.FollowRedirects }).(pulumi.BoolPtrOutput)
 }
@@ -35230,7 +37401,7 @@ func (o WorkflowTaskHttpClientTaskParamsPtrOutput) ExpectedResponseHeaders() pul
 	}).(pulumi.StringMapOutput)
 }
 
-// Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is.. Value must be one of true or false
+// Whether to follow HTTP 3xx redirects. Defaults to true. Set to false to treat redirect responses as-is. Value must be one of true or false
 func (o WorkflowTaskHttpClientTaskParamsPtrOutput) FollowRedirects() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskHttpClientTaskParams) *bool {
 		if v == nil {
@@ -41123,9 +43294,13 @@ func (o WorkflowTaskRenameMicrosoftTeamsChannelTaskParamsPtrOutput) Title() pulu
 
 type WorkflowTaskRenameSlackChannelTaskParams struct {
 	// Map must contain two fields, `id` and `name`.
-	Channel  map[string]string `pulumi:"channel"`
-	TaskType *string           `pulumi:"taskType"`
-	Title    string            `pulumi:"title"`
+	Channel map[string]string `pulumi:"channel"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int    `pulumi:"retryWaitTime"`
+	TaskType      *string `pulumi:"taskType"`
+	Title         string  `pulumi:"title"`
 }
 
 // WorkflowTaskRenameSlackChannelTaskParamsInput is an input type that accepts WorkflowTaskRenameSlackChannelTaskParamsArgs and WorkflowTaskRenameSlackChannelTaskParamsOutput values.
@@ -41141,9 +43316,13 @@ type WorkflowTaskRenameSlackChannelTaskParamsInput interface {
 
 type WorkflowTaskRenameSlackChannelTaskParamsArgs struct {
 	// Map must contain two fields, `id` and `name`.
-	Channel  pulumi.StringMapInput `pulumi:"channel"`
-	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
-	Title    pulumi.StringInput    `pulumi:"title"`
+	Channel pulumi.StringMapInput `pulumi:"channel"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput    `pulumi:"retryWaitTime"`
+	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
+	Title         pulumi.StringInput    `pulumi:"title"`
 }
 
 func (WorkflowTaskRenameSlackChannelTaskParamsArgs) ElementType() reflect.Type {
@@ -41228,6 +43407,16 @@ func (o WorkflowTaskRenameSlackChannelTaskParamsOutput) Channel() pulumi.StringM
 	return o.ApplyT(func(v WorkflowTaskRenameSlackChannelTaskParams) map[string]string { return v.Channel }).(pulumi.StringMapOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskRenameSlackChannelTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskRenameSlackChannelTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskRenameSlackChannelTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskRenameSlackChannelTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
 func (o WorkflowTaskRenameSlackChannelTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskRenameSlackChannelTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
@@ -41268,6 +43457,26 @@ func (o WorkflowTaskRenameSlackChannelTaskParamsPtrOutput) Channel() pulumi.Stri
 		}
 		return v.Channel
 	}).(pulumi.StringMapOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskRenameSlackChannelTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskRenameSlackChannelTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskRenameSlackChannelTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskRenameSlackChannelTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o WorkflowTaskRenameSlackChannelTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -43513,6 +45722,8 @@ func (o WorkflowTaskSendMicrosoftTeamsMessageTaskParamsChannelArrayOutput) Index
 }
 
 type WorkflowTaskSendSlackBlocksTaskParams struct {
+	// When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+	AllowCrossWorkflowThreading *bool `pulumi:"allowCrossWorkflowThreading"`
 	// Support liquid markup. Needs to be a valid JSON string after liquid is parsed
 	Attachments *string `pulumi:"attachments"`
 	// Support liquid markup. Needs to be a valid JSON string after liquid is parsed
@@ -43525,9 +45736,13 @@ type WorkflowTaskSendSlackBlocksTaskParams struct {
 	ParentMessageThreadTask map[string]string `pulumi:"parentMessageThreadTask"`
 	// Value must be one of true or false
 	PinToChannel *bool `pulumi:"pinToChannel"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int `pulumi:"retryWaitTime"`
 	// Value must be one of true or false
 	SendAsEphemeral *bool `pulumi:"sendAsEphemeral"`
-	// When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+	// When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
 	SendOnlyAsThreadedMessage *bool                                                 `pulumi:"sendOnlyAsThreadedMessage"`
 	SlackUserGroups           []WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroup `pulumi:"slackUserGroups"`
 	SlackUsers                []WorkflowTaskSendSlackBlocksTaskParamsSlackUser      `pulumi:"slackUsers"`
@@ -43550,6 +45765,8 @@ type WorkflowTaskSendSlackBlocksTaskParamsInput interface {
 }
 
 type WorkflowTaskSendSlackBlocksTaskParamsArgs struct {
+	// When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+	AllowCrossWorkflowThreading pulumi.BoolPtrInput `pulumi:"allowCrossWorkflowThreading"`
 	// Support liquid markup. Needs to be a valid JSON string after liquid is parsed
 	Attachments pulumi.StringPtrInput `pulumi:"attachments"`
 	// Support liquid markup. Needs to be a valid JSON string after liquid is parsed
@@ -43562,9 +45779,13 @@ type WorkflowTaskSendSlackBlocksTaskParamsArgs struct {
 	ParentMessageThreadTask pulumi.StringMapInput `pulumi:"parentMessageThreadTask"`
 	// Value must be one of true or false
 	PinToChannel pulumi.BoolPtrInput `pulumi:"pinToChannel"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput `pulumi:"retryWaitTime"`
 	// Value must be one of true or false
 	SendAsEphemeral pulumi.BoolPtrInput `pulumi:"sendAsEphemeral"`
-	// When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+	// When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
 	SendOnlyAsThreadedMessage pulumi.BoolPtrInput                                           `pulumi:"sendOnlyAsThreadedMessage"`
 	SlackUserGroups           WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroupArrayInput `pulumi:"slackUserGroups"`
 	SlackUsers                WorkflowTaskSendSlackBlocksTaskParamsSlackUserArrayInput      `pulumi:"slackUsers"`
@@ -43652,6 +45873,11 @@ func (o WorkflowTaskSendSlackBlocksTaskParamsOutput) ToWorkflowTaskSendSlackBloc
 	}).(WorkflowTaskSendSlackBlocksTaskParamsPtrOutput)
 }
 
+// When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+func (o WorkflowTaskSendSlackBlocksTaskParamsOutput) AllowCrossWorkflowThreading() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskSendSlackBlocksTaskParams) *bool { return v.AllowCrossWorkflowThreading }).(pulumi.BoolPtrOutput)
+}
+
 // Support liquid markup. Needs to be a valid JSON string after liquid is parsed
 func (o WorkflowTaskSendSlackBlocksTaskParamsOutput) Attachments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskSendSlackBlocksTaskParams) *string { return v.Attachments }).(pulumi.StringPtrOutput)
@@ -43687,12 +45913,22 @@ func (o WorkflowTaskSendSlackBlocksTaskParamsOutput) PinToChannel() pulumi.BoolP
 	return o.ApplyT(func(v WorkflowTaskSendSlackBlocksTaskParams) *bool { return v.PinToChannel }).(pulumi.BoolPtrOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskSendSlackBlocksTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskSendSlackBlocksTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskSendSlackBlocksTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskSendSlackBlocksTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
 // Value must be one of true or false
 func (o WorkflowTaskSendSlackBlocksTaskParamsOutput) SendAsEphemeral() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskSendSlackBlocksTaskParams) *bool { return v.SendAsEphemeral }).(pulumi.BoolPtrOutput)
 }
 
-// When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+// When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
 func (o WorkflowTaskSendSlackBlocksTaskParamsOutput) SendOnlyAsThreadedMessage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskSendSlackBlocksTaskParams) *bool { return v.SendOnlyAsThreadedMessage }).(pulumi.BoolPtrOutput)
 }
@@ -43745,6 +45981,16 @@ func (o WorkflowTaskSendSlackBlocksTaskParamsPtrOutput) Elem() WorkflowTaskSendS
 		var ret WorkflowTaskSendSlackBlocksTaskParams
 		return ret
 	}).(WorkflowTaskSendSlackBlocksTaskParamsOutput)
+}
+
+// When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+func (o WorkflowTaskSendSlackBlocksTaskParamsPtrOutput) AllowCrossWorkflowThreading() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendSlackBlocksTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCrossWorkflowThreading
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Support liquid markup. Needs to be a valid JSON string after liquid is parsed
@@ -43815,6 +46061,26 @@ func (o WorkflowTaskSendSlackBlocksTaskParamsPtrOutput) PinToChannel() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskSendSlackBlocksTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendSlackBlocksTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskSendSlackBlocksTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendSlackBlocksTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
+}
+
 // Value must be one of true or false
 func (o WorkflowTaskSendSlackBlocksTaskParamsPtrOutput) SendAsEphemeral() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskSendSlackBlocksTaskParams) *bool {
@@ -43825,7 +46091,7 @@ func (o WorkflowTaskSendSlackBlocksTaskParamsPtrOutput) SendAsEphemeral() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
-// When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+// When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
 func (o WorkflowTaskSendSlackBlocksTaskParamsPtrOutput) SendOnlyAsThreadedMessage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskSendSlackBlocksTaskParams) *bool {
 		if v == nil {
@@ -44185,6 +46451,8 @@ func (o WorkflowTaskSendSlackBlocksTaskParamsSlackUserGroupArrayOutput) Index(i 
 type WorkflowTaskSendSlackMessageTaskParams struct {
 	// Value must be one of `updateSummary`, `updateStatus`, `archiveChannel`, `manageIncidentRoles`, `updateIncident`, `allCommands`, `leaveFeedback`, `manageFormFields`, `manageActionItems`, `viewTasks`, `addPagerdutyResponders`, `addOpsgenieResponders`, `addVictorOpsResponders`, `updateStatusPage`, `pauseReminder`, `snoozeReminder`, `restartReminder`, `cancelIncident`, `deleteMessage`.
 	Actionables []string `pulumi:"actionables"`
+	// When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+	AllowCrossWorkflowThreading *bool `pulumi:"allowCrossWorkflowThreading"`
 	// Value must be one of true or false
 	BroadcastThreadReplyToChannel *bool                                           `pulumi:"broadcastThreadReplyToChannel"`
 	Channels                      []WorkflowTaskSendSlackMessageTaskParamsChannel `pulumi:"channels"`
@@ -44194,9 +46462,13 @@ type WorkflowTaskSendSlackMessageTaskParams struct {
 	ParentMessageThreadTask map[string]string `pulumi:"parentMessageThreadTask"`
 	// Value must be one of true or false
 	PinToChannel *bool `pulumi:"pinToChannel"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int `pulumi:"retryWaitTime"`
 	// Value must be one of true or false
 	SendAsEphemeral *bool `pulumi:"sendAsEphemeral"`
-	// When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+	// When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
 	SendOnlyAsThreadedMessage *bool                                                  `pulumi:"sendOnlyAsThreadedMessage"`
 	SlackUserGroups           []WorkflowTaskSendSlackMessageTaskParamsSlackUserGroup `pulumi:"slackUserGroups"`
 	SlackUsers                []WorkflowTaskSendSlackMessageTaskParamsSlackUser      `pulumi:"slackUsers"`
@@ -44223,6 +46495,8 @@ type WorkflowTaskSendSlackMessageTaskParamsInput interface {
 type WorkflowTaskSendSlackMessageTaskParamsArgs struct {
 	// Value must be one of `updateSummary`, `updateStatus`, `archiveChannel`, `manageIncidentRoles`, `updateIncident`, `allCommands`, `leaveFeedback`, `manageFormFields`, `manageActionItems`, `viewTasks`, `addPagerdutyResponders`, `addOpsgenieResponders`, `addVictorOpsResponders`, `updateStatusPage`, `pauseReminder`, `snoozeReminder`, `restartReminder`, `cancelIncident`, `deleteMessage`.
 	Actionables pulumi.StringArrayInput `pulumi:"actionables"`
+	// When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+	AllowCrossWorkflowThreading pulumi.BoolPtrInput `pulumi:"allowCrossWorkflowThreading"`
 	// Value must be one of true or false
 	BroadcastThreadReplyToChannel pulumi.BoolPtrInput                                     `pulumi:"broadcastThreadReplyToChannel"`
 	Channels                      WorkflowTaskSendSlackMessageTaskParamsChannelArrayInput `pulumi:"channels"`
@@ -44232,9 +46506,13 @@ type WorkflowTaskSendSlackMessageTaskParamsArgs struct {
 	ParentMessageThreadTask pulumi.StringMapInput `pulumi:"parentMessageThreadTask"`
 	// Value must be one of true or false
 	PinToChannel pulumi.BoolPtrInput `pulumi:"pinToChannel"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput `pulumi:"retryWaitTime"`
 	// Value must be one of true or false
 	SendAsEphemeral pulumi.BoolPtrInput `pulumi:"sendAsEphemeral"`
-	// When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+	// When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
 	SendOnlyAsThreadedMessage pulumi.BoolPtrInput                                            `pulumi:"sendOnlyAsThreadedMessage"`
 	SlackUserGroups           WorkflowTaskSendSlackMessageTaskParamsSlackUserGroupArrayInput `pulumi:"slackUserGroups"`
 	SlackUsers                WorkflowTaskSendSlackMessageTaskParamsSlackUserArrayInput      `pulumi:"slackUsers"`
@@ -44329,6 +46607,11 @@ func (o WorkflowTaskSendSlackMessageTaskParamsOutput) Actionables() pulumi.Strin
 	return o.ApplyT(func(v WorkflowTaskSendSlackMessageTaskParams) []string { return v.Actionables }).(pulumi.StringArrayOutput)
 }
 
+// When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+func (o WorkflowTaskSendSlackMessageTaskParamsOutput) AllowCrossWorkflowThreading() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskSendSlackMessageTaskParams) *bool { return v.AllowCrossWorkflowThreading }).(pulumi.BoolPtrOutput)
+}
+
 // Value must be one of true or false
 func (o WorkflowTaskSendSlackMessageTaskParamsOutput) BroadcastThreadReplyToChannel() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskSendSlackMessageTaskParams) *bool { return v.BroadcastThreadReplyToChannel }).(pulumi.BoolPtrOutput)
@@ -44355,12 +46638,22 @@ func (o WorkflowTaskSendSlackMessageTaskParamsOutput) PinToChannel() pulumi.Bool
 	return o.ApplyT(func(v WorkflowTaskSendSlackMessageTaskParams) *bool { return v.PinToChannel }).(pulumi.BoolPtrOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskSendSlackMessageTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskSendSlackMessageTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskSendSlackMessageTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskSendSlackMessageTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
 // Value must be one of true or false
 func (o WorkflowTaskSendSlackMessageTaskParamsOutput) SendAsEphemeral() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskSendSlackMessageTaskParams) *bool { return v.SendAsEphemeral }).(pulumi.BoolPtrOutput)
 }
 
-// When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+// When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
 func (o WorkflowTaskSendSlackMessageTaskParamsOutput) SendOnlyAsThreadedMessage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskSendSlackMessageTaskParams) *bool { return v.SendOnlyAsThreadedMessage }).(pulumi.BoolPtrOutput)
 }
@@ -44430,6 +46723,16 @@ func (o WorkflowTaskSendSlackMessageTaskParamsPtrOutput) Actionables() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
+// When set to true, allows workflows from different sources (e.g. different incidents or alerts) to thread together on the same parent message. Value must be one of true or false
+func (o WorkflowTaskSendSlackMessageTaskParamsPtrOutput) AllowCrossWorkflowThreading() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendSlackMessageTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCrossWorkflowThreading
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Value must be one of true or false
 func (o WorkflowTaskSendSlackMessageTaskParamsPtrOutput) BroadcastThreadReplyToChannel() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskSendSlackMessageTaskParams) *bool {
@@ -44479,6 +46782,26 @@ func (o WorkflowTaskSendSlackMessageTaskParamsPtrOutput) PinToChannel() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskSendSlackMessageTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendSlackMessageTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskSendSlackMessageTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskSendSlackMessageTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
+}
+
 // Value must be one of true or false
 func (o WorkflowTaskSendSlackMessageTaskParamsPtrOutput) SendAsEphemeral() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskSendSlackMessageTaskParams) *bool {
@@ -44489,7 +46812,7 @@ func (o WorkflowTaskSendSlackMessageTaskParamsPtrOutput) SendAsEphemeral() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
-// When set to true, if the parent for this threaded message cannot be found the message will be skipped.. Value must be one of true or false
+// When set to true, if the parent for this threaded message cannot be found the message will be skipped. Value must be one of true or false
 func (o WorkflowTaskSendSlackMessageTaskParamsPtrOutput) SendOnlyAsThreadedMessage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskSendSlackMessageTaskParams) *bool {
 		if v == nil {
@@ -49403,7 +51726,7 @@ type WorkflowTaskUpdateGithubIssueTaskParams struct {
 	IssueType map[string]string `pulumi:"issueType"`
 	// The issue labels
 	Labels []WorkflowTaskUpdateGithubIssueTaskParamsLabel `pulumi:"labels"`
-	// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+	// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them. Value must be one of `replace`, `append`.
 	LabelsMode *string `pulumi:"labelsMode"`
 	// Map must contain two fields, `id` and `name`. The repository (used for loading labels and issue types)
 	Repository map[string]string `pulumi:"repository"`
@@ -49436,7 +51759,7 @@ type WorkflowTaskUpdateGithubIssueTaskParamsArgs struct {
 	IssueType pulumi.StringMapInput `pulumi:"issueType"`
 	// The issue labels
 	Labels WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayInput `pulumi:"labels"`
-	// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+	// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them. Value must be one of `replace`, `append`.
 	LabelsMode pulumi.StringPtrInput `pulumi:"labelsMode"`
 	// Map must contain two fields, `id` and `name`. The repository (used for loading labels and issue types)
 	Repository pulumi.StringMapInput `pulumi:"repository"`
@@ -49554,7 +51877,7 @@ func (o WorkflowTaskUpdateGithubIssueTaskParamsOutput) Labels() WorkflowTaskUpda
 	}).(WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput)
 }
 
-// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them. Value must be one of `replace`, `append`.
 func (o WorkflowTaskUpdateGithubIssueTaskParamsOutput) LabelsMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateGithubIssueTaskParams) *string { return v.LabelsMode }).(pulumi.StringPtrOutput)
 }
@@ -49657,7 +51980,7 @@ func (o WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput) Labels() WorkflowTaskU
 	}).(WorkflowTaskUpdateGithubIssueTaskParamsLabelArrayOutput)
 }
 
-// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them.. Value must be one of `replace`, `append`.
+// How to apply labels. 'replace' (default) overwrites all existing labels. 'append' adds to existing labels without removing them. Value must be one of `replace`, `append`.
 func (o WorkflowTaskUpdateGithubIssueTaskParamsPtrOutput) LabelsMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowTaskUpdateGithubIssueTaskParams) *string {
 		if v == nil {
@@ -55517,11 +57840,578 @@ func (o WorkflowTaskUpdateShortcutTaskTaskParamsPtrOutput) TaskType() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkflowTaskUpdateSlackCanvasTaskParams struct {
+	// Slack channel containing the canvas. Channel IDs support Liquid variables.
+	Channel WorkflowTaskUpdateSlackCanvasTaskParamsChannel `pulumi:"channel"`
+	// The canvas content in Markdown. Supports Liquid variables.
+	Content string `pulumi:"content"`
+	// Append content, replace all content, or replace only registered tables in a canvas created by Rootly from a managed template while preserving content outside them. Matching labels do not register an existing canvas. Managed sections overwrite edits inside those tables and require Slack reauthorization with canvases:read and canvases:write. Value must be one of `insertAtEnd`, `replace`, `managedSections`.
+	Operation *string `pulumi:"operation"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int    `pulumi:"retryWaitTime"`
+	TaskType      *string `pulumi:"taskType"`
+}
+
+// WorkflowTaskUpdateSlackCanvasTaskParamsInput is an input type that accepts WorkflowTaskUpdateSlackCanvasTaskParamsArgs and WorkflowTaskUpdateSlackCanvasTaskParamsOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateSlackCanvasTaskParamsInput` via:
+//
+//	WorkflowTaskUpdateSlackCanvasTaskParamsArgs{...}
+type WorkflowTaskUpdateSlackCanvasTaskParamsInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsOutput() WorkflowTaskUpdateSlackCanvasTaskParamsOutput
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsOutputWithContext(context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsOutput
+}
+
+type WorkflowTaskUpdateSlackCanvasTaskParamsArgs struct {
+	// Slack channel containing the canvas. Channel IDs support Liquid variables.
+	Channel WorkflowTaskUpdateSlackCanvasTaskParamsChannelInput `pulumi:"channel"`
+	// The canvas content in Markdown. Supports Liquid variables.
+	Content pulumi.StringInput `pulumi:"content"`
+	// Append content, replace all content, or replace only registered tables in a canvas created by Rootly from a managed template while preserving content outside them. Matching labels do not register an existing canvas. Managed sections overwrite edits inside those tables and require Slack reauthorization with canvases:read and canvases:write. Value must be one of `insertAtEnd`, `replace`, `managedSections`.
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput    `pulumi:"retryWaitTime"`
+	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
+}
+
+func (WorkflowTaskUpdateSlackCanvasTaskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParams)(nil)).Elem()
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsOutput() WorkflowTaskUpdateSlackCanvasTaskParamsOutput {
+	return i.ToWorkflowTaskUpdateSlackCanvasTaskParamsOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSlackCanvasTaskParamsOutput)
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSlackCanvasTaskParamsOutput).ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskUpdateSlackCanvasTaskParamsPtrInput is an input type that accepts WorkflowTaskUpdateSlackCanvasTaskParamsArgs, WorkflowTaskUpdateSlackCanvasTaskParamsPtr and WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateSlackCanvasTaskParamsPtrInput` via:
+//
+//	        WorkflowTaskUpdateSlackCanvasTaskParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskUpdateSlackCanvasTaskParamsPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutputWithContext(context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput
+}
+
+type workflowTaskUpdateSlackCanvasTaskParamsPtrType WorkflowTaskUpdateSlackCanvasTaskParamsArgs
+
+func WorkflowTaskUpdateSlackCanvasTaskParamsPtr(v *WorkflowTaskUpdateSlackCanvasTaskParamsArgs) WorkflowTaskUpdateSlackCanvasTaskParamsPtrInput {
+	return (*workflowTaskUpdateSlackCanvasTaskParamsPtrType)(v)
+}
+
+func (*workflowTaskUpdateSlackCanvasTaskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateSlackCanvasTaskParams)(nil)).Elem()
+}
+
+func (i *workflowTaskUpdateSlackCanvasTaskParamsPtrType) ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput {
+	return i.ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskUpdateSlackCanvasTaskParamsPtrType) ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput)
+}
+
+type WorkflowTaskUpdateSlackCanvasTaskParamsOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateSlackCanvasTaskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsOutput() WorkflowTaskUpdateSlackCanvasTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput {
+	return o.ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskUpdateSlackCanvasTaskParams) *WorkflowTaskUpdateSlackCanvasTaskParams {
+		return &v
+	}).(WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput)
+}
+
+// Slack channel containing the canvas. Channel IDs support Liquid variables.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsOutput) Channel() WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackCanvasTaskParams) WorkflowTaskUpdateSlackCanvasTaskParamsChannel {
+		return v.Channel
+	}).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput)
+}
+
+// The canvas content in Markdown. Supports Liquid variables.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackCanvasTaskParams) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// Append content, replace all content, or replace only registered tables in a canvas created by Rootly from a managed template while preserving content outside them. Matching labels do not register an existing canvas. Managed sections overwrite edits inside those tables and require Slack reauthorization with canvases:read and canvases:write. Value must be one of `insertAtEnd`, `replace`, `managedSections`.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackCanvasTaskParams) *string { return v.Operation }).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackCanvasTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackCanvasTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackCanvasTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateSlackCanvasTaskParams)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput) Elem() WorkflowTaskUpdateSlackCanvasTaskParamsOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParams) WorkflowTaskUpdateSlackCanvasTaskParams {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskUpdateSlackCanvasTaskParams
+		return ret
+	}).(WorkflowTaskUpdateSlackCanvasTaskParamsOutput)
+}
+
+// Slack channel containing the canvas. Channel IDs support Liquid variables.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput) Channel() WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParams) *WorkflowTaskUpdateSlackCanvasTaskParamsChannel {
+		if v == nil {
+			return nil
+		}
+		return &v.Channel
+	}).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput)
+}
+
+// The canvas content in Markdown. Supports Liquid variables.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// Append content, replace all content, or replace only registered tables in a canvas created by Rootly from a managed template while preserving content outside them. Matching labels do not register an existing canvas. Managed sections overwrite edits inside those tables and require Slack reauthorization with canvases:read and canvases:write. Value must be one of `insertAtEnd`, `replace`, `managedSections`.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TaskType
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannel struct {
+	// Slack channel ID.
+	Id string `pulumi:"id"`
+	// Channel display name.
+	Name string `pulumi:"name"`
+	// Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+	Workspace *WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace `pulumi:"workspace"`
+}
+
+// WorkflowTaskUpdateSlackCanvasTaskParamsChannelInput is an input type that accepts WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs and WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateSlackCanvasTaskParamsChannelInput` via:
+//
+//	WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs{...}
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannelInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelOutputWithContext(context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput
+}
+
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs struct {
+	// Slack channel ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Channel display name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+	Workspace WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrInput `pulumi:"workspace"`
+}
+
+func (WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParamsChannel)(nil)).Elem()
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput {
+	return i.ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput)
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput {
+	return i.ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput).ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrInput is an input type that accepts WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs, WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtr and WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrInput` via:
+//
+//	        WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutputWithContext(context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput
+}
+
+type workflowTaskUpdateSlackCanvasTaskParamsChannelPtrType WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs
+
+func WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtr(v *WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs) WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrInput {
+	return (*workflowTaskUpdateSlackCanvasTaskParamsChannelPtrType)(v)
+}
+
+func (*workflowTaskUpdateSlackCanvasTaskParamsChannelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateSlackCanvasTaskParamsChannel)(nil)).Elem()
+}
+
+func (i *workflowTaskUpdateSlackCanvasTaskParamsChannelPtrType) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput {
+	return i.ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskUpdateSlackCanvasTaskParamsChannelPtrType) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput)
+}
+
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParamsChannel)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput {
+	return o.ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskUpdateSlackCanvasTaskParamsChannel) *WorkflowTaskUpdateSlackCanvasTaskParamsChannel {
+		return &v
+	}).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput)
+}
+
+// Slack channel ID.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackCanvasTaskParamsChannel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Channel display name.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackCanvasTaskParamsChannel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput) Workspace() WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackCanvasTaskParamsChannel) *WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace {
+		return v.Workspace
+	}).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput)
+}
+
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateSlackCanvasTaskParamsChannel)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput) Elem() WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParamsChannel) WorkflowTaskUpdateSlackCanvasTaskParamsChannel {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskUpdateSlackCanvasTaskParamsChannel
+		return ret
+	}).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput)
+}
+
+// Slack channel ID.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParamsChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Channel display name.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParamsChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Slack workspace containing the channel, used for Enterprise Grid. Omit this block to use automatic workspace resolution; removing a configured block clears the saved workspace.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput) Workspace() WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParamsChannel) *WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace {
+		if v == nil {
+			return nil
+		}
+		return v.Workspace
+	}).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput)
+}
+
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace struct {
+	// Slack workspace ID. Enter a literal ID from Slack.
+	Id string `pulumi:"id"`
+	// Workspace display name.
+	Name string `pulumi:"name"`
+}
+
+// WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceInput is an input type that accepts WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs and WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceInput` via:
+//
+//	WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs{...}
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutputWithContext(context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput
+}
+
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs struct {
+	// Slack workspace ID. Enter a literal ID from Slack.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Workspace display name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace)(nil)).Elem()
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput {
+	return i.ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput)
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return i.ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput).ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(ctx)
+}
+
+// WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrInput is an input type that accepts WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs, WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtr and WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput values.
+// You can construct a concrete instance of `WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrInput` via:
+//
+//	        WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrInput interface {
+	pulumi.Input
+
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput
+	ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput
+}
+
+type workflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrType WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs
+
+func WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtr(v *WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs) WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrInput {
+	return (*workflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrType)(v)
+}
+
+func (*workflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace)(nil)).Elem()
+}
+
+func (i *workflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrType) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return i.ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (i *workflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrType) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput)
+}
+
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o.ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(context.Background())
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace) *WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace {
+		return &v
+	}).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput)
+}
+
+// Slack workspace ID. Enter a literal ID from Slack.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Workspace display name.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace)(nil)).Elem()
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput() WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput) ToWorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutputWithContext(ctx context.Context) WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput {
+	return o
+}
+
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput) Elem() WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace) WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace {
+		if v != nil {
+			return *v
+		}
+		var ret WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace
+		return ret
+	}).(WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput)
+}
+
+// Slack workspace ID. Enter a literal ID from Slack.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Workspace display name.
+func (o WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspace) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkflowTaskUpdateSlackChannelTopicTaskParams struct {
 	// Map must contain two fields, `id` and `name`.
-	Channel  map[string]string `pulumi:"channel"`
-	TaskType *string           `pulumi:"taskType"`
-	Topic    string            `pulumi:"topic"`
+	Channel map[string]string `pulumi:"channel"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount *int `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime *int    `pulumi:"retryWaitTime"`
+	TaskType      *string `pulumi:"taskType"`
+	Topic         string  `pulumi:"topic"`
 }
 
 // WorkflowTaskUpdateSlackChannelTopicTaskParamsInput is an input type that accepts WorkflowTaskUpdateSlackChannelTopicTaskParamsArgs and WorkflowTaskUpdateSlackChannelTopicTaskParamsOutput values.
@@ -55537,9 +58427,13 @@ type WorkflowTaskUpdateSlackChannelTopicTaskParamsInput interface {
 
 type WorkflowTaskUpdateSlackChannelTopicTaskParamsArgs struct {
 	// Map must contain two fields, `id` and `name`.
-	Channel  pulumi.StringMapInput `pulumi:"channel"`
-	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
-	Topic    pulumi.StringInput    `pulumi:"topic"`
+	Channel pulumi.StringMapInput `pulumi:"channel"`
+	// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+	RetryWaitTime pulumi.IntPtrInput    `pulumi:"retryWaitTime"`
+	TaskType      pulumi.StringPtrInput `pulumi:"taskType"`
+	Topic         pulumi.StringInput    `pulumi:"topic"`
 }
 
 func (WorkflowTaskUpdateSlackChannelTopicTaskParamsArgs) ElementType() reflect.Type {
@@ -55624,6 +58518,16 @@ func (o WorkflowTaskUpdateSlackChannelTopicTaskParamsOutput) Channel() pulumi.St
 	return o.ApplyT(func(v WorkflowTaskUpdateSlackChannelTopicTaskParams) map[string]string { return v.Channel }).(pulumi.StringMapOutput)
 }
 
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskUpdateSlackChannelTopicTaskParamsOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackChannelTopicTaskParams) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskUpdateSlackChannelTopicTaskParamsOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateSlackChannelTopicTaskParams) *int { return v.RetryWaitTime }).(pulumi.IntPtrOutput)
+}
+
 func (o WorkflowTaskUpdateSlackChannelTopicTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateSlackChannelTopicTaskParams) *string { return v.TaskType }).(pulumi.StringPtrOutput)
 }
@@ -55664,6 +58568,26 @@ func (o WorkflowTaskUpdateSlackChannelTopicTaskParamsPtrOutput) Channel() pulumi
 		}
 		return v.Channel
 	}).(pulumi.StringMapOutput)
+}
+
+// Number of times to retry on rate-limit (HTTP 429) responses (0-4). 0 disables retry.
+func (o WorkflowTaskUpdateSlackChannelTopicTaskParamsPtrOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackChannelTopicTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Seconds to wait before each retry (1-15). Retry-After header is honored when present and <= 90s, taking the larger of retry*wait*time and the header value.
+func (o WorkflowTaskUpdateSlackChannelTopicTaskParamsPtrOutput) RetryWaitTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateSlackChannelTopicTaskParams) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetryWaitTime
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o WorkflowTaskUpdateSlackChannelTopicTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -59304,6 +62228,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LiveCallRouterPagingTargetArrayInput)(nil)).Elem(), LiveCallRouterPagingTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetrospectiveProcessRetrospectiveProcessMatchingCriteriaInput)(nil)).Elem(), RetrospectiveProcessRetrospectiveProcessMatchingCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetrospectiveProcessRetrospectiveProcessMatchingCriteriaPtrInput)(nil)).Elem(), RetrospectiveProcessRetrospectiveProcessMatchingCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleBusinessHoursInput)(nil)).Elem(), ScheduleBusinessHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleBusinessHoursPtrInput)(nil)).Elem(), ScheduleBusinessHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationActiveDayActiveTimeAttributeInput)(nil)).Elem(), ScheduleRotationActiveDayActiveTimeAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationActiveDayActiveTimeAttributeArrayInput)(nil)).Elem(), ScheduleRotationActiveDayActiveTimeAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationActiveTimeAttributeInput)(nil)).Elem(), ScheduleRotationActiveTimeAttributeArgs{})
@@ -59312,6 +62238,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationScheduleRotationMemberArrayInput)(nil)).Elem(), ScheduleRotationScheduleRotationMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationScheduleRotationableAttributesInput)(nil)).Elem(), ScheduleRotationScheduleRotationableAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationScheduleRotationableAttributesPtrInput)(nil)).Elem(), ScheduleRotationScheduleRotationableAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleSlackChannelInput)(nil)).Elem(), ScheduleSlackChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleSlackChannelPtrInput)(nil)).Elem(), ScheduleSlackChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleSlackUserGroupInput)(nil)).Elem(), ScheduleSlackUserGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleSlackUserGroupPtrInput)(nil)).Elem(), ScheduleSlackUserGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAlertBroadcastChannelInput)(nil)).Elem(), ServiceAlertBroadcastChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAlertBroadcastChannelPtrInput)(nil)).Elem(), ServiceAlertBroadcastChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIncidentBroadcastChannelInput)(nil)).Elem(), ServiceIncidentBroadcastChannelArgs{})
@@ -59342,6 +62272,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamSlackChannelArrayInput)(nil)).Elem(), TeamSlackChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhooksEndpointCustomHeaderInput)(nil)).Elem(), WebhooksEndpointCustomHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhooksEndpointCustomHeaderArrayInput)(nil)).Elem(), WebhooksEndpointCustomHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionItemFailureNotificationChannelInput)(nil)).Elem(), WorkflowActionItemFailureNotificationChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionItemFailureNotificationChannelArrayInput)(nil)).Elem(), WorkflowActionItemFailureNotificationChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionItemTriggerParamsInput)(nil)).Elem(), WorkflowActionItemTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowActionItemTriggerParamsPtrInput)(nil)).Elem(), WorkflowActionItemTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsInput)(nil)).Elem(), WorkflowAlertTriggerParamsArgs{})
@@ -59352,12 +62284,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsAlertPayloadConditionsPtrInput)(nil)).Elem(), WorkflowAlertTriggerParamsAlertPayloadConditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsAlertPayloadConditionsConditionInput)(nil)).Elem(), WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayInput)(nil)).Elem(), WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowIncidentFailureNotificationChannelInput)(nil)).Elem(), WorkflowIncidentFailureNotificationChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowIncidentFailureNotificationChannelArrayInput)(nil)).Elem(), WorkflowIncidentFailureNotificationChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowIncidentTriggerParamsInput)(nil)).Elem(), WorkflowIncidentTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowIncidentTriggerParamsPtrInput)(nil)).Elem(), WorkflowIncidentTriggerParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowPostMortemFailureNotificationChannelInput)(nil)).Elem(), WorkflowPostMortemFailureNotificationChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowPostMortemFailureNotificationChannelArrayInput)(nil)).Elem(), WorkflowPostMortemFailureNotificationChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowPostMortemTriggerParamsInput)(nil)).Elem(), WorkflowPostMortemTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowPostMortemTriggerParamsPtrInput)(nil)).Elem(), WorkflowPostMortemTriggerParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowPulseFailureNotificationChannelInput)(nil)).Elem(), WorkflowPulseFailureNotificationChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowPulseFailureNotificationChannelArrayInput)(nil)).Elem(), WorkflowPulseFailureNotificationChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowPulseTriggerParamsInput)(nil)).Elem(), WorkflowPulseTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowPulseTriggerParamsPtrInput)(nil)).Elem(), WorkflowPulseTriggerParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowSimpleFailureNotificationChannelInput)(nil)).Elem(), WorkflowSimpleFailureNotificationChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowSimpleFailureNotificationChannelArrayInput)(nil)).Elem(), WorkflowSimpleFailureNotificationChannelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowSimpleTriggerParamsInput)(nil)).Elem(), WorkflowSimpleTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowSimpleTriggerParamsPtrInput)(nil)).Elem(), WorkflowSimpleTriggerParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAddActionItemTaskParamsInput)(nil)).Elem(), WorkflowTaskAddActionItemTaskParamsArgs{})
@@ -59396,6 +62336,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAttachDatadogDashboardsTaskParamsDashboardArrayInput)(nil)).Elem(), WorkflowTaskAttachDatadogDashboardsTaskParamsDashboardArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannelInput)(nil)).Elem(), WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannelArrayInput)(nil)).Elem(), WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsInput)(nil)).Elem(), WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsInput)(nil)).Elem(), WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAutoAssignRoleOpsgenieTaskParamsInput)(nil)).Elem(), WorkflowTaskAutoAssignRoleOpsgenieTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAutoAssignRoleOpsgenieTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskAutoAssignRoleOpsgenieTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskAutoAssignRolePagerdutyTaskParamsInput)(nil)).Elem(), WorkflowTaskAutoAssignRolePagerdutyTaskParamsArgs{})
@@ -59534,6 +62478,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateShortcutStoryTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateShortcutStoryTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateShortcutTaskTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateShortcutTaskTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateShortcutTaskTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateShortcutTaskTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateSlackCanvasTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateSlackCanvasTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParamsChannelInput)(nil)).Elem(), WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrInput)(nil)).Elem(), WorkflowTaskCreateSlackCanvasTaskParamsChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceInput)(nil)).Elem(), WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrInput)(nil)).Elem(), WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSlackChannelTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateSlackChannelTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSlackChannelTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskCreateSlackChannelTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskCreateSubIncidentTaskParamsInput)(nil)).Elem(), WorkflowTaskCreateSubIncidentTaskParamsArgs{})
@@ -59790,6 +62740,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateShortcutStoryTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateShortcutStoryTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateShortcutTaskTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateShortcutTaskTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateShortcutTaskTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateShortcutTaskTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateSlackCanvasTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateSlackCanvasTaskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParamsChannelInput)(nil)).Elem(), WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrInput)(nil)).Elem(), WorkflowTaskUpdateSlackCanvasTaskParamsChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceInput)(nil)).Elem(), WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrInput)(nil)).Elem(), WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateSlackChannelTopicTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateSlackChannelTopicTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateSlackChannelTopicTaskParamsPtrInput)(nil)).Elem(), WorkflowTaskUpdateSlackChannelTopicTaskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTaskUpdateStatusTaskParamsInput)(nil)).Elem(), WorkflowTaskUpdateStatusTaskParamsArgs{})
@@ -59954,6 +62910,8 @@ func init() {
 	pulumi.RegisterOutputType(LiveCallRouterPagingTargetArrayOutput{})
 	pulumi.RegisterOutputType(RetrospectiveProcessRetrospectiveProcessMatchingCriteriaOutput{})
 	pulumi.RegisterOutputType(RetrospectiveProcessRetrospectiveProcessMatchingCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(ScheduleBusinessHoursOutput{})
+	pulumi.RegisterOutputType(ScheduleBusinessHoursPtrOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationActiveDayActiveTimeAttributeOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationActiveDayActiveTimeAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationActiveTimeAttributeOutput{})
@@ -59962,6 +62920,10 @@ func init() {
 	pulumi.RegisterOutputType(ScheduleRotationScheduleRotationMemberArrayOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationScheduleRotationableAttributesOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationScheduleRotationableAttributesPtrOutput{})
+	pulumi.RegisterOutputType(ScheduleSlackChannelOutput{})
+	pulumi.RegisterOutputType(ScheduleSlackChannelPtrOutput{})
+	pulumi.RegisterOutputType(ScheduleSlackUserGroupOutput{})
+	pulumi.RegisterOutputType(ScheduleSlackUserGroupPtrOutput{})
 	pulumi.RegisterOutputType(ServiceAlertBroadcastChannelOutput{})
 	pulumi.RegisterOutputType(ServiceAlertBroadcastChannelPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIncidentBroadcastChannelOutput{})
@@ -59992,6 +62954,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamSlackChannelArrayOutput{})
 	pulumi.RegisterOutputType(WebhooksEndpointCustomHeaderOutput{})
 	pulumi.RegisterOutputType(WebhooksEndpointCustomHeaderArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowActionItemFailureNotificationChannelOutput{})
+	pulumi.RegisterOutputType(WorkflowActionItemFailureNotificationChannelArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowActionItemTriggerParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowActionItemTriggerParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsOutput{})
@@ -60002,12 +62966,20 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsAlertPayloadConditionsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsAlertPayloadConditionsConditionOutput{})
 	pulumi.RegisterOutputType(WorkflowAlertTriggerParamsAlertPayloadConditionsConditionArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowIncidentFailureNotificationChannelOutput{})
+	pulumi.RegisterOutputType(WorkflowIncidentFailureNotificationChannelArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowIncidentTriggerParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowIncidentTriggerParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowPostMortemFailureNotificationChannelOutput{})
+	pulumi.RegisterOutputType(WorkflowPostMortemFailureNotificationChannelArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowPostMortemTriggerParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowPostMortemTriggerParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowPulseFailureNotificationChannelOutput{})
+	pulumi.RegisterOutputType(WorkflowPulseFailureNotificationChannelArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowPulseTriggerParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowPulseTriggerParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowSimpleFailureNotificationChannelOutput{})
+	pulumi.RegisterOutputType(WorkflowSimpleFailureNotificationChannelArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowSimpleTriggerParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowSimpleTriggerParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAddActionItemTaskParamsOutput{})
@@ -60046,6 +63018,10 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskAttachDatadogDashboardsTaskParamsDashboardArrayOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannelOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAttachDatadogDashboardsTaskParamsPostToSlackChannelArrayOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskAttachRetrospectivePdfToJiraIssueTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAutoAssignRoleOpsgenieTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAutoAssignRoleOpsgenieTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskAutoAssignRolePagerdutyTaskParamsOutput{})
@@ -60184,6 +63160,12 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskCreateShortcutStoryTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateShortcutTaskTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateShortcutTaskTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateSlackCanvasTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateSlackCanvasTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateSlackCanvasTaskParamsChannelOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateSlackCanvasTaskParamsChannelPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspaceOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskCreateSlackCanvasTaskParamsChannelWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateSlackChannelTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateSlackChannelTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskCreateSubIncidentTaskParamsOutput{})
@@ -60440,6 +63422,12 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTaskUpdateShortcutStoryTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateShortcutTaskTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateShortcutTaskTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateSlackCanvasTaskParamsOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateSlackCanvasTaskParamsPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateSlackCanvasTaskParamsChannelOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateSlackCanvasTaskParamsChannelPtrOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspaceOutput{})
+	pulumi.RegisterOutputType(WorkflowTaskUpdateSlackCanvasTaskParamsChannelWorkspacePtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateSlackChannelTopicTaskParamsOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateSlackChannelTopicTaskParamsPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTaskUpdateStatusTaskParamsOutput{})

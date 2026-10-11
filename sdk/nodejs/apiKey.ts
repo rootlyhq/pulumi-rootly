@@ -66,6 +66,10 @@ export class ApiKey extends pulumi.CustomResource {
      */
     declare public readonly gracePeriodEndsAt: pulumi.Output<string>;
     /**
+     * The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.
+     */
+    declare public readonly groupId: pulumi.Output<string>;
+    /**
      * The kind of the API key. Value must be one of `personal`, `team`, `organization`.
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
@@ -102,6 +106,7 @@ export class ApiKey extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["gracePeriodEndsAt"] = state?.gracePeriodEndsAt;
+            resourceInputs["groupId"] = state?.groupId;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["lastUsedAt"] = state?.lastUsedAt;
             resourceInputs["name"] = state?.name;
@@ -115,6 +120,7 @@ export class ApiKey extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["expiresAt"] = args?.expiresAt;
             resourceInputs["gracePeriodEndsAt"] = args?.gracePeriodEndsAt;
+            resourceInputs["groupId"] = args?.groupId;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["lastUsedAt"] = args?.lastUsedAt;
             resourceInputs["name"] = args?.name;
@@ -142,6 +148,10 @@ export interface ApiKeyState {
      * Grace period end date
      */
     gracePeriodEndsAt?: pulumi.Input<string | undefined>;
+    /**
+     * The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.
+     */
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The kind of the API key. Value must be one of `personal`, `team`, `organization`.
      */
@@ -180,6 +190,10 @@ export interface ApiKeyArgs {
      * Grace period end date
      */
     gracePeriodEndsAt?: pulumi.Input<string | undefined>;
+    /**
+     * The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.
+     */
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The kind of the API key. Value must be one of `personal`, `team`, `organization`.
      */

@@ -56,7 +56,7 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
-     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
      */
     declare public readonly alertBroadcastChannel: pulumi.Output<outputs.ServiceAlertBroadcastChannel>;
     /**
@@ -288,7 +288,7 @@ export class Service extends pulumi.CustomResource {
  */
 export interface ServiceState {
     /**
-     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
      */
     alertBroadcastChannel?: pulumi.Input<inputs.ServiceAlertBroadcastChannel | undefined>;
     /**
@@ -432,7 +432,7 @@ export interface ServiceState {
  */
 export interface ServiceArgs {
     /**
-     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to
+     * Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
      */
     alertBroadcastChannel?: pulumi.Input<inputs.ServiceAlertBroadcastChannel | undefined>;
     /**

@@ -112,6 +112,10 @@ export class EscalationPath extends pulumi.CustomResource {
      */
     declare public readonly repeatCount: pulumi.Output<number>;
     /**
+     * Re-trigger acknowledged alerts on this path after N minutes; null inherits the urgency/workspace default, negative = never.
+     */
+    declare public readonly retriggerTimeoutMinutes: pulumi.Output<number | undefined>;
+    /**
      * Escalation path rules
      */
     declare public readonly rules: pulumi.Output<outputs.EscalationPathRule[] | undefined>;
@@ -151,6 +155,7 @@ export class EscalationPath extends pulumi.CustomResource {
             resourceInputs["position"] = state?.position;
             resourceInputs["repeat"] = state?.repeat;
             resourceInputs["repeatCount"] = state?.repeatCount;
+            resourceInputs["retriggerTimeoutMinutes"] = state?.retriggerTimeoutMinutes;
             resourceInputs["rules"] = state?.rules;
             resourceInputs["timeRestrictionTimeZone"] = state?.timeRestrictionTimeZone;
             resourceInputs["timeRestrictions"] = state?.timeRestrictions;
@@ -170,6 +175,7 @@ export class EscalationPath extends pulumi.CustomResource {
             resourceInputs["position"] = args?.position;
             resourceInputs["repeat"] = args?.repeat;
             resourceInputs["repeatCount"] = args?.repeatCount;
+            resourceInputs["retriggerTimeoutMinutes"] = args?.retriggerTimeoutMinutes;
             resourceInputs["rules"] = args?.rules;
             resourceInputs["timeRestrictionTimeZone"] = args?.timeRestrictionTimeZone;
             resourceInputs["timeRestrictions"] = args?.timeRestrictions;
@@ -239,6 +245,10 @@ export interface EscalationPathState {
      * The number of times this path will be executed until someone acknowledges the alert
      */
     repeatCount?: pulumi.Input<number | undefined>;
+    /**
+     * Re-trigger acknowledged alerts on this path after N minutes; null inherits the urgency/workspace default, negative = never.
+     */
+    retriggerTimeoutMinutes?: pulumi.Input<number | undefined>;
     /**
      * Escalation path rules
      */
@@ -313,6 +323,10 @@ export interface EscalationPathArgs {
      * The number of times this path will be executed until someone acknowledges the alert
      */
     repeatCount?: pulumi.Input<number | undefined>;
+    /**
+     * Re-trigger acknowledged alerts on this path after N minutes; null inherits the urgency/workspace default, negative = never.
+     */
+    retriggerTimeoutMinutes?: pulumi.Input<number | undefined>;
     /**
      * Escalation path rules
      */

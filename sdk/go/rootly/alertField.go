@@ -37,6 +37,8 @@ type AlertField struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the alert field
 	Name pulumi.StringOutput `pulumi:"name"`
+	// IDs of the teams that own the alert field. Empty for org-wide fields.
+	OwnerGroupIds pulumi.StringArrayOutput `pulumi:"ownerGroupIds"`
 	// The slug of the alert field
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -77,6 +79,8 @@ type alertFieldState struct {
 	Kind *string `pulumi:"kind"`
 	// The name of the alert field
 	Name *string `pulumi:"name"`
+	// IDs of the teams that own the alert field. Empty for org-wide fields.
+	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// The slug of the alert field
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -88,6 +92,8 @@ type AlertFieldState struct {
 	Kind pulumi.StringPtrInput
 	// The name of the alert field
 	Name pulumi.StringPtrInput
+	// IDs of the teams that own the alert field. Empty for org-wide fields.
+	OwnerGroupIds pulumi.StringArrayInput
 	// The slug of the alert field
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -103,6 +109,8 @@ type alertFieldArgs struct {
 	Kind *string `pulumi:"kind"`
 	// The name of the alert field
 	Name *string `pulumi:"name"`
+	// IDs of the teams that own the alert field. Empty for org-wide fields.
+	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// The slug of the alert field
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -115,6 +123,8 @@ type AlertFieldArgs struct {
 	Kind pulumi.StringPtrInput
 	// The name of the alert field
 	Name pulumi.StringPtrInput
+	// IDs of the teams that own the alert field. Empty for org-wide fields.
+	OwnerGroupIds pulumi.StringArrayInput
 	// The slug of the alert field
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -216,6 +226,11 @@ func (o AlertFieldOutput) Kind() pulumi.StringOutput {
 // The name of the alert field
 func (o AlertFieldOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertField) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// IDs of the teams that own the alert field. Empty for org-wide fields.
+func (o AlertFieldOutput) OwnerGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertField) pulumi.StringArrayOutput { return v.OwnerGroupIds }).(pulumi.StringArrayOutput)
 }
 
 // The slug of the alert field

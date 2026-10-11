@@ -160,6 +160,10 @@ export class Role extends pulumi.CustomResource {
      */
     declare public readonly playbooksPermissions: pulumi.Output<string[]>;
     /**
+     * Private Agent management permissions: create issues enrollment tokens, read views agent inventory and details, and delete revokes agent credentials. Create and delete can be used independently through the API; browser inventory requires read.. Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    declare public readonly privateAgentPermissions: pulumi.Output<string[]>;
+    /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
     declare public readonly privateIncidentsPermissions: pulumi.Output<string[]>;
@@ -197,6 +201,10 @@ export class Role extends pulumi.CustomResource {
      * @deprecated Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
      */
     declare public readonly slug: pulumi.Output<string>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    declare public readonly statusPageUpdatesPermissions: pulumi.Output<string[]>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
@@ -252,6 +260,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["pagingPermissions"] = state?.pagingPermissions;
             resourceInputs["playbooksPermissions"] = state?.playbooksPermissions;
+            resourceInputs["privateAgentPermissions"] = state?.privateAgentPermissions;
             resourceInputs["privateIncidentsPermissions"] = state?.privateIncidentsPermissions;
             resourceInputs["pulsesPermissions"] = state?.pulsesPermissions;
             resourceInputs["retrospectivePermissions"] = state?.retrospectivePermissions;
@@ -261,6 +270,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["severitiesPermissions"] = state?.severitiesPermissions;
             resourceInputs["slasPermissions"] = state?.slasPermissions;
             resourceInputs["slug"] = state?.slug;
+            resourceInputs["statusPageUpdatesPermissions"] = state?.statusPageUpdatesPermissions;
             resourceInputs["statusPagesPermissions"] = state?.statusPagesPermissions;
             resourceInputs["subStatusesPermissions"] = state?.subStatusesPermissions;
             resourceInputs["webhooksPermissions"] = state?.webhooksPermissions;
@@ -292,6 +302,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["pagingPermissions"] = args?.pagingPermissions;
             resourceInputs["playbooksPermissions"] = args?.playbooksPermissions;
+            resourceInputs["privateAgentPermissions"] = args?.privateAgentPermissions;
             resourceInputs["privateIncidentsPermissions"] = args?.privateIncidentsPermissions;
             resourceInputs["pulsesPermissions"] = args?.pulsesPermissions;
             resourceInputs["retrospectivePermissions"] = args?.retrospectivePermissions;
@@ -301,6 +312,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["severitiesPermissions"] = args?.severitiesPermissions;
             resourceInputs["slasPermissions"] = args?.slasPermissions;
             resourceInputs["slug"] = args?.slug;
+            resourceInputs["statusPageUpdatesPermissions"] = args?.statusPageUpdatesPermissions;
             resourceInputs["statusPagesPermissions"] = args?.statusPagesPermissions;
             resourceInputs["subStatusesPermissions"] = args?.subStatusesPermissions;
             resourceInputs["webhooksPermissions"] = args?.webhooksPermissions;
@@ -416,6 +428,10 @@ export interface RoleState {
      */
     playbooksPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Private Agent management permissions: create issues enrollment tokens, read views agent inventory and details, and delete revokes agent credentials. Create and delete can be used independently through the API; browser inventory requires read.. Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    privateAgentPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
     privateIncidentsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -453,6 +469,10 @@ export interface RoleState {
      * @deprecated Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    statusPageUpdatesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
@@ -576,6 +596,10 @@ export interface RoleArgs {
      */
     playbooksPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Private Agent management permissions: create issues enrollment tokens, read views agent inventory and details, and delete revokes agent credentials. Create and delete can be used independently through the API; browser inventory requires read.. Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    privateAgentPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
     privateIncidentsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -613,6 +637,10 @@ export interface RoleArgs {
      * @deprecated Deprecated. Custom role slugs remain accepted temporarily. Stop setting `slug`; it will become read-only and be derived from `name` when this property is removed from the request schema in a future version.
      */
     slug?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `create`, `read`, `update`, `delete`.
+     */
+    statusPageUpdatesPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`, `update`, `delete`.
      */
