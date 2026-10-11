@@ -1,10 +1,10 @@
 module github.com/rootlyhq/pulumi-rootly/sdk/v4
 
-go 1.27.1
+go 1.27.2
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi/sdk/v3 v3.263.0
+	github.com/pulumi/pulumi/sdk/v3 v3.267.0
 )
 
 require (
@@ -36,6 +36,7 @@ require (
 	github.com/go-git/gcfg/v2 v2.0.2 // indirect
 	github.com/go-git/go-billy/v6 v6.0.0-alpha.2 // indirect
 	github.com/go-git/go-git/v6 v6.0.0-alpha.5 // indirect
+	github.com/go-jose/go-jose/v4 v4.1.4 // indirect
 	github.com/go-logr/logr v1.4.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/godbus/dbus/v5 v5.2.2 // indirect
@@ -68,11 +69,11 @@ require (
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
-	github.com/pgavlin/fx/v2 v2.0.12 // indirect
 	github.com/pjbgf/sha1cd v0.6.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
+	github.com/pulumi/pulumi-cloud-sdk/go v1.20260918.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.16.0 // indirect
 	github.com/santhosh-tekuri/jsonschema/v5 v5.3.1 // indirect
@@ -105,7 +106,7 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/crypto v0.57.0 // indirect
 	golang.org/x/mod v0.41.0 // indirect
-	golang.org/x/net v0.59.0 // indirect
+	golang.org/x/net v0.60.0 // indirect
 	golang.org/x/sync v0.23.0 // indirect
 	golang.org/x/sys v0.48.0 // indirect
 	golang.org/x/term v0.46.0 // indirect
