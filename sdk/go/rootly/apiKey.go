@@ -40,6 +40,8 @@ type ApiKey struct {
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// Grace period end date
 	GracePeriodEndsAt pulumi.StringOutput `pulumi:"gracePeriodEndsAt"`
+	// The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.
+	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The kind of the API key. Value must be one of `personal`, `team`, `organization`.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Date of last use
@@ -91,6 +93,8 @@ type apiKeyState struct {
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// Grace period end date
 	GracePeriodEndsAt *string `pulumi:"gracePeriodEndsAt"`
+	// The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.
+	GroupId *string `pulumi:"groupId"`
 	// The kind of the API key. Value must be one of `personal`, `team`, `organization`.
 	Kind *string `pulumi:"kind"`
 	// Date of last use
@@ -110,6 +114,8 @@ type ApiKeyState struct {
 	ExpiresAt pulumi.StringPtrInput
 	// Grace period end date
 	GracePeriodEndsAt pulumi.StringPtrInput
+	// The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.
+	GroupId pulumi.StringPtrInput
 	// The kind of the API key. Value must be one of `personal`, `team`, `organization`.
 	Kind pulumi.StringPtrInput
 	// Date of last use
@@ -133,6 +139,8 @@ type apiKeyArgs struct {
 	ExpiresAt string `pulumi:"expiresAt"`
 	// Grace period end date
 	GracePeriodEndsAt *string `pulumi:"gracePeriodEndsAt"`
+	// The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.
+	GroupId *string `pulumi:"groupId"`
 	// The kind of the API key. Value must be one of `personal`, `team`, `organization`.
 	Kind *string `pulumi:"kind"`
 	// Date of last use
@@ -153,6 +161,8 @@ type ApiKeyArgs struct {
 	ExpiresAt pulumi.StringInput
 	// Grace period end date
 	GracePeriodEndsAt pulumi.StringPtrInput
+	// The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.
+	GroupId pulumi.StringPtrInput
 	// The kind of the API key. Value must be one of `personal`, `team`, `organization`.
 	Kind pulumi.StringPtrInput
 	// Date of last use
@@ -265,6 +275,11 @@ func (o ApiKeyOutput) ExpiresAt() pulumi.StringOutput {
 // Grace period end date
 func (o ApiKeyOutput) GracePeriodEndsAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.GracePeriodEndsAt }).(pulumi.StringOutput)
+}
+
+// The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.
+func (o ApiKeyOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // The kind of the API key. Value must be one of `personal`, `team`, `organization`.

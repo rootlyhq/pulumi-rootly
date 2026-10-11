@@ -7777,6 +7777,181 @@ func (o RetrospectiveProcessRetrospectiveProcessMatchingCriteriaPtrOutput) Sever
 	}).(pulumi.StringArrayOutput)
 }
 
+type ScheduleBusinessHours struct {
+	// End time in HH:MM 24-hour format.
+	EndTime *string `pulumi:"endTime"`
+	// Whether to include weekends.
+	IncludeWeekends *bool `pulumi:"includeWeekends"`
+	// Start time in HH:MM 24-hour format.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// ScheduleBusinessHoursInput is an input type that accepts ScheduleBusinessHoursArgs and ScheduleBusinessHoursOutput values.
+// You can construct a concrete instance of `ScheduleBusinessHoursInput` via:
+//
+//	ScheduleBusinessHoursArgs{...}
+type ScheduleBusinessHoursInput interface {
+	pulumi.Input
+
+	ToScheduleBusinessHoursOutput() ScheduleBusinessHoursOutput
+	ToScheduleBusinessHoursOutputWithContext(context.Context) ScheduleBusinessHoursOutput
+}
+
+type ScheduleBusinessHoursArgs struct {
+	// End time in HH:MM 24-hour format.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Whether to include weekends.
+	IncludeWeekends pulumi.BoolPtrInput `pulumi:"includeWeekends"`
+	// Start time in HH:MM 24-hour format.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (ScheduleBusinessHoursArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleBusinessHours)(nil)).Elem()
+}
+
+func (i ScheduleBusinessHoursArgs) ToScheduleBusinessHoursOutput() ScheduleBusinessHoursOutput {
+	return i.ToScheduleBusinessHoursOutputWithContext(context.Background())
+}
+
+func (i ScheduleBusinessHoursArgs) ToScheduleBusinessHoursOutputWithContext(ctx context.Context) ScheduleBusinessHoursOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBusinessHoursOutput)
+}
+
+func (i ScheduleBusinessHoursArgs) ToScheduleBusinessHoursPtrOutput() ScheduleBusinessHoursPtrOutput {
+	return i.ToScheduleBusinessHoursPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleBusinessHoursArgs) ToScheduleBusinessHoursPtrOutputWithContext(ctx context.Context) ScheduleBusinessHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBusinessHoursOutput).ToScheduleBusinessHoursPtrOutputWithContext(ctx)
+}
+
+// ScheduleBusinessHoursPtrInput is an input type that accepts ScheduleBusinessHoursArgs, ScheduleBusinessHoursPtr and ScheduleBusinessHoursPtrOutput values.
+// You can construct a concrete instance of `ScheduleBusinessHoursPtrInput` via:
+//
+//	        ScheduleBusinessHoursArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleBusinessHoursPtrInput interface {
+	pulumi.Input
+
+	ToScheduleBusinessHoursPtrOutput() ScheduleBusinessHoursPtrOutput
+	ToScheduleBusinessHoursPtrOutputWithContext(context.Context) ScheduleBusinessHoursPtrOutput
+}
+
+type scheduleBusinessHoursPtrType ScheduleBusinessHoursArgs
+
+func ScheduleBusinessHoursPtr(v *ScheduleBusinessHoursArgs) ScheduleBusinessHoursPtrInput {
+	return (*scheduleBusinessHoursPtrType)(v)
+}
+
+func (*scheduleBusinessHoursPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleBusinessHours)(nil)).Elem()
+}
+
+func (i *scheduleBusinessHoursPtrType) ToScheduleBusinessHoursPtrOutput() ScheduleBusinessHoursPtrOutput {
+	return i.ToScheduleBusinessHoursPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleBusinessHoursPtrType) ToScheduleBusinessHoursPtrOutputWithContext(ctx context.Context) ScheduleBusinessHoursPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBusinessHoursPtrOutput)
+}
+
+type ScheduleBusinessHoursOutput struct{ *pulumi.OutputState }
+
+func (ScheduleBusinessHoursOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleBusinessHours)(nil)).Elem()
+}
+
+func (o ScheduleBusinessHoursOutput) ToScheduleBusinessHoursOutput() ScheduleBusinessHoursOutput {
+	return o
+}
+
+func (o ScheduleBusinessHoursOutput) ToScheduleBusinessHoursOutputWithContext(ctx context.Context) ScheduleBusinessHoursOutput {
+	return o
+}
+
+func (o ScheduleBusinessHoursOutput) ToScheduleBusinessHoursPtrOutput() ScheduleBusinessHoursPtrOutput {
+	return o.ToScheduleBusinessHoursPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleBusinessHoursOutput) ToScheduleBusinessHoursPtrOutputWithContext(ctx context.Context) ScheduleBusinessHoursPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleBusinessHours) *ScheduleBusinessHours {
+		return &v
+	}).(ScheduleBusinessHoursPtrOutput)
+}
+
+// End time in HH:MM 24-hour format.
+func (o ScheduleBusinessHoursOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleBusinessHours) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Whether to include weekends.
+func (o ScheduleBusinessHoursOutput) IncludeWeekends() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ScheduleBusinessHours) *bool { return v.IncludeWeekends }).(pulumi.BoolPtrOutput)
+}
+
+// Start time in HH:MM 24-hour format.
+func (o ScheduleBusinessHoursOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleBusinessHours) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type ScheduleBusinessHoursPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleBusinessHoursPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleBusinessHours)(nil)).Elem()
+}
+
+func (o ScheduleBusinessHoursPtrOutput) ToScheduleBusinessHoursPtrOutput() ScheduleBusinessHoursPtrOutput {
+	return o
+}
+
+func (o ScheduleBusinessHoursPtrOutput) ToScheduleBusinessHoursPtrOutputWithContext(ctx context.Context) ScheduleBusinessHoursPtrOutput {
+	return o
+}
+
+func (o ScheduleBusinessHoursPtrOutput) Elem() ScheduleBusinessHoursOutput {
+	return o.ApplyT(func(v *ScheduleBusinessHours) ScheduleBusinessHours {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleBusinessHours
+		return ret
+	}).(ScheduleBusinessHoursOutput)
+}
+
+// End time in HH:MM 24-hour format.
+func (o ScheduleBusinessHoursPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleBusinessHours) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to include weekends.
+func (o ScheduleBusinessHoursPtrOutput) IncludeWeekends() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScheduleBusinessHours) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeWeekends
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Start time in HH:MM 24-hour format.
+func (o ScheduleBusinessHoursPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleBusinessHours) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type ScheduleRotationActiveDayActiveTimeAttribute struct {
 	// End time for schedule rotation active time
 	EndTime *string `pulumi:"endTime"`
@@ -8295,6 +8470,318 @@ func (o ScheduleRotationScheduleRotationableAttributesPtrOutput) ShiftLengthUnit
 			return nil
 		}
 		return v.ShiftLengthUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScheduleSlackChannel struct {
+	// Slack channel ID.
+	Id *string `pulumi:"id"`
+	// Slack channel name.
+	Name *string `pulumi:"name"`
+}
+
+// ScheduleSlackChannelInput is an input type that accepts ScheduleSlackChannelArgs and ScheduleSlackChannelOutput values.
+// You can construct a concrete instance of `ScheduleSlackChannelInput` via:
+//
+//	ScheduleSlackChannelArgs{...}
+type ScheduleSlackChannelInput interface {
+	pulumi.Input
+
+	ToScheduleSlackChannelOutput() ScheduleSlackChannelOutput
+	ToScheduleSlackChannelOutputWithContext(context.Context) ScheduleSlackChannelOutput
+}
+
+type ScheduleSlackChannelArgs struct {
+	// Slack channel ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Slack channel name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ScheduleSlackChannelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleSlackChannel)(nil)).Elem()
+}
+
+func (i ScheduleSlackChannelArgs) ToScheduleSlackChannelOutput() ScheduleSlackChannelOutput {
+	return i.ToScheduleSlackChannelOutputWithContext(context.Background())
+}
+
+func (i ScheduleSlackChannelArgs) ToScheduleSlackChannelOutputWithContext(ctx context.Context) ScheduleSlackChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackChannelOutput)
+}
+
+func (i ScheduleSlackChannelArgs) ToScheduleSlackChannelPtrOutput() ScheduleSlackChannelPtrOutput {
+	return i.ToScheduleSlackChannelPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleSlackChannelArgs) ToScheduleSlackChannelPtrOutputWithContext(ctx context.Context) ScheduleSlackChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackChannelOutput).ToScheduleSlackChannelPtrOutputWithContext(ctx)
+}
+
+// ScheduleSlackChannelPtrInput is an input type that accepts ScheduleSlackChannelArgs, ScheduleSlackChannelPtr and ScheduleSlackChannelPtrOutput values.
+// You can construct a concrete instance of `ScheduleSlackChannelPtrInput` via:
+//
+//	        ScheduleSlackChannelArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleSlackChannelPtrInput interface {
+	pulumi.Input
+
+	ToScheduleSlackChannelPtrOutput() ScheduleSlackChannelPtrOutput
+	ToScheduleSlackChannelPtrOutputWithContext(context.Context) ScheduleSlackChannelPtrOutput
+}
+
+type scheduleSlackChannelPtrType ScheduleSlackChannelArgs
+
+func ScheduleSlackChannelPtr(v *ScheduleSlackChannelArgs) ScheduleSlackChannelPtrInput {
+	return (*scheduleSlackChannelPtrType)(v)
+}
+
+func (*scheduleSlackChannelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleSlackChannel)(nil)).Elem()
+}
+
+func (i *scheduleSlackChannelPtrType) ToScheduleSlackChannelPtrOutput() ScheduleSlackChannelPtrOutput {
+	return i.ToScheduleSlackChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleSlackChannelPtrType) ToScheduleSlackChannelPtrOutputWithContext(ctx context.Context) ScheduleSlackChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackChannelPtrOutput)
+}
+
+type ScheduleSlackChannelOutput struct{ *pulumi.OutputState }
+
+func (ScheduleSlackChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleSlackChannel)(nil)).Elem()
+}
+
+func (o ScheduleSlackChannelOutput) ToScheduleSlackChannelOutput() ScheduleSlackChannelOutput {
+	return o
+}
+
+func (o ScheduleSlackChannelOutput) ToScheduleSlackChannelOutputWithContext(ctx context.Context) ScheduleSlackChannelOutput {
+	return o
+}
+
+func (o ScheduleSlackChannelOutput) ToScheduleSlackChannelPtrOutput() ScheduleSlackChannelPtrOutput {
+	return o.ToScheduleSlackChannelPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleSlackChannelOutput) ToScheduleSlackChannelPtrOutputWithContext(ctx context.Context) ScheduleSlackChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleSlackChannel) *ScheduleSlackChannel {
+		return &v
+	}).(ScheduleSlackChannelPtrOutput)
+}
+
+// Slack channel ID.
+func (o ScheduleSlackChannelOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleSlackChannel) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name.
+func (o ScheduleSlackChannelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleSlackChannel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ScheduleSlackChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleSlackChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleSlackChannel)(nil)).Elem()
+}
+
+func (o ScheduleSlackChannelPtrOutput) ToScheduleSlackChannelPtrOutput() ScheduleSlackChannelPtrOutput {
+	return o
+}
+
+func (o ScheduleSlackChannelPtrOutput) ToScheduleSlackChannelPtrOutputWithContext(ctx context.Context) ScheduleSlackChannelPtrOutput {
+	return o
+}
+
+func (o ScheduleSlackChannelPtrOutput) Elem() ScheduleSlackChannelOutput {
+	return o.ApplyT(func(v *ScheduleSlackChannel) ScheduleSlackChannel {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleSlackChannel
+		return ret
+	}).(ScheduleSlackChannelOutput)
+}
+
+// Slack channel ID.
+func (o ScheduleSlackChannelPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleSlackChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Slack channel name.
+func (o ScheduleSlackChannelPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleSlackChannel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScheduleSlackUserGroup struct {
+	// Slack user group ID.
+	Id *string `pulumi:"id"`
+	// Slack user group name.
+	Name *string `pulumi:"name"`
+}
+
+// ScheduleSlackUserGroupInput is an input type that accepts ScheduleSlackUserGroupArgs and ScheduleSlackUserGroupOutput values.
+// You can construct a concrete instance of `ScheduleSlackUserGroupInput` via:
+//
+//	ScheduleSlackUserGroupArgs{...}
+type ScheduleSlackUserGroupInput interface {
+	pulumi.Input
+
+	ToScheduleSlackUserGroupOutput() ScheduleSlackUserGroupOutput
+	ToScheduleSlackUserGroupOutputWithContext(context.Context) ScheduleSlackUserGroupOutput
+}
+
+type ScheduleSlackUserGroupArgs struct {
+	// Slack user group ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Slack user group name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ScheduleSlackUserGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleSlackUserGroup)(nil)).Elem()
+}
+
+func (i ScheduleSlackUserGroupArgs) ToScheduleSlackUserGroupOutput() ScheduleSlackUserGroupOutput {
+	return i.ToScheduleSlackUserGroupOutputWithContext(context.Background())
+}
+
+func (i ScheduleSlackUserGroupArgs) ToScheduleSlackUserGroupOutputWithContext(ctx context.Context) ScheduleSlackUserGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackUserGroupOutput)
+}
+
+func (i ScheduleSlackUserGroupArgs) ToScheduleSlackUserGroupPtrOutput() ScheduleSlackUserGroupPtrOutput {
+	return i.ToScheduleSlackUserGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleSlackUserGroupArgs) ToScheduleSlackUserGroupPtrOutputWithContext(ctx context.Context) ScheduleSlackUserGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackUserGroupOutput).ToScheduleSlackUserGroupPtrOutputWithContext(ctx)
+}
+
+// ScheduleSlackUserGroupPtrInput is an input type that accepts ScheduleSlackUserGroupArgs, ScheduleSlackUserGroupPtr and ScheduleSlackUserGroupPtrOutput values.
+// You can construct a concrete instance of `ScheduleSlackUserGroupPtrInput` via:
+//
+//	        ScheduleSlackUserGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleSlackUserGroupPtrInput interface {
+	pulumi.Input
+
+	ToScheduleSlackUserGroupPtrOutput() ScheduleSlackUserGroupPtrOutput
+	ToScheduleSlackUserGroupPtrOutputWithContext(context.Context) ScheduleSlackUserGroupPtrOutput
+}
+
+type scheduleSlackUserGroupPtrType ScheduleSlackUserGroupArgs
+
+func ScheduleSlackUserGroupPtr(v *ScheduleSlackUserGroupArgs) ScheduleSlackUserGroupPtrInput {
+	return (*scheduleSlackUserGroupPtrType)(v)
+}
+
+func (*scheduleSlackUserGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleSlackUserGroup)(nil)).Elem()
+}
+
+func (i *scheduleSlackUserGroupPtrType) ToScheduleSlackUserGroupPtrOutput() ScheduleSlackUserGroupPtrOutput {
+	return i.ToScheduleSlackUserGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleSlackUserGroupPtrType) ToScheduleSlackUserGroupPtrOutputWithContext(ctx context.Context) ScheduleSlackUserGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleSlackUserGroupPtrOutput)
+}
+
+type ScheduleSlackUserGroupOutput struct{ *pulumi.OutputState }
+
+func (ScheduleSlackUserGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleSlackUserGroup)(nil)).Elem()
+}
+
+func (o ScheduleSlackUserGroupOutput) ToScheduleSlackUserGroupOutput() ScheduleSlackUserGroupOutput {
+	return o
+}
+
+func (o ScheduleSlackUserGroupOutput) ToScheduleSlackUserGroupOutputWithContext(ctx context.Context) ScheduleSlackUserGroupOutput {
+	return o
+}
+
+func (o ScheduleSlackUserGroupOutput) ToScheduleSlackUserGroupPtrOutput() ScheduleSlackUserGroupPtrOutput {
+	return o.ToScheduleSlackUserGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleSlackUserGroupOutput) ToScheduleSlackUserGroupPtrOutputWithContext(ctx context.Context) ScheduleSlackUserGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleSlackUserGroup) *ScheduleSlackUserGroup {
+		return &v
+	}).(ScheduleSlackUserGroupPtrOutput)
+}
+
+// Slack user group ID.
+func (o ScheduleSlackUserGroupOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleSlackUserGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Slack user group name.
+func (o ScheduleSlackUserGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleSlackUserGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ScheduleSlackUserGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleSlackUserGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleSlackUserGroup)(nil)).Elem()
+}
+
+func (o ScheduleSlackUserGroupPtrOutput) ToScheduleSlackUserGroupPtrOutput() ScheduleSlackUserGroupPtrOutput {
+	return o
+}
+
+func (o ScheduleSlackUserGroupPtrOutput) ToScheduleSlackUserGroupPtrOutputWithContext(ctx context.Context) ScheduleSlackUserGroupPtrOutput {
+	return o
+}
+
+func (o ScheduleSlackUserGroupPtrOutput) Elem() ScheduleSlackUserGroupOutput {
+	return o.ApplyT(func(v *ScheduleSlackUserGroup) ScheduleSlackUserGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleSlackUserGroup
+		return ret
+	}).(ScheduleSlackUserGroupOutput)
+}
+
+// Slack user group ID.
+func (o ScheduleSlackUserGroupPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleSlackUserGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Slack user group name.
+func (o ScheduleSlackUserGroupPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleSlackUserGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -61741,6 +62228,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LiveCallRouterPagingTargetArrayInput)(nil)).Elem(), LiveCallRouterPagingTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetrospectiveProcessRetrospectiveProcessMatchingCriteriaInput)(nil)).Elem(), RetrospectiveProcessRetrospectiveProcessMatchingCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetrospectiveProcessRetrospectiveProcessMatchingCriteriaPtrInput)(nil)).Elem(), RetrospectiveProcessRetrospectiveProcessMatchingCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleBusinessHoursInput)(nil)).Elem(), ScheduleBusinessHoursArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleBusinessHoursPtrInput)(nil)).Elem(), ScheduleBusinessHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationActiveDayActiveTimeAttributeInput)(nil)).Elem(), ScheduleRotationActiveDayActiveTimeAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationActiveDayActiveTimeAttributeArrayInput)(nil)).Elem(), ScheduleRotationActiveDayActiveTimeAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationActiveTimeAttributeInput)(nil)).Elem(), ScheduleRotationActiveTimeAttributeArgs{})
@@ -61749,6 +62238,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationScheduleRotationMemberArrayInput)(nil)).Elem(), ScheduleRotationScheduleRotationMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationScheduleRotationableAttributesInput)(nil)).Elem(), ScheduleRotationScheduleRotationableAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleRotationScheduleRotationableAttributesPtrInput)(nil)).Elem(), ScheduleRotationScheduleRotationableAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleSlackChannelInput)(nil)).Elem(), ScheduleSlackChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleSlackChannelPtrInput)(nil)).Elem(), ScheduleSlackChannelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleSlackUserGroupInput)(nil)).Elem(), ScheduleSlackUserGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleSlackUserGroupPtrInput)(nil)).Elem(), ScheduleSlackUserGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAlertBroadcastChannelInput)(nil)).Elem(), ServiceAlertBroadcastChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAlertBroadcastChannelPtrInput)(nil)).Elem(), ServiceAlertBroadcastChannelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIncidentBroadcastChannelInput)(nil)).Elem(), ServiceIncidentBroadcastChannelArgs{})
@@ -62417,6 +62910,8 @@ func init() {
 	pulumi.RegisterOutputType(LiveCallRouterPagingTargetArrayOutput{})
 	pulumi.RegisterOutputType(RetrospectiveProcessRetrospectiveProcessMatchingCriteriaOutput{})
 	pulumi.RegisterOutputType(RetrospectiveProcessRetrospectiveProcessMatchingCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(ScheduleBusinessHoursOutput{})
+	pulumi.RegisterOutputType(ScheduleBusinessHoursPtrOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationActiveDayActiveTimeAttributeOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationActiveDayActiveTimeAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationActiveTimeAttributeOutput{})
@@ -62425,6 +62920,10 @@ func init() {
 	pulumi.RegisterOutputType(ScheduleRotationScheduleRotationMemberArrayOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationScheduleRotationableAttributesOutput{})
 	pulumi.RegisterOutputType(ScheduleRotationScheduleRotationableAttributesPtrOutput{})
+	pulumi.RegisterOutputType(ScheduleSlackChannelOutput{})
+	pulumi.RegisterOutputType(ScheduleSlackChannelPtrOutput{})
+	pulumi.RegisterOutputType(ScheduleSlackUserGroupOutput{})
+	pulumi.RegisterOutputType(ScheduleSlackUserGroupPtrOutput{})
 	pulumi.RegisterOutputType(ServiceAlertBroadcastChannelOutput{})
 	pulumi.RegisterOutputType(ServiceAlertBroadcastChannelPtrOutput{})
 	pulumi.RegisterOutputType(ServiceIncidentBroadcastChannelOutput{})

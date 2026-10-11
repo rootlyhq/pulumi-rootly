@@ -3962,6 +3962,7 @@
     "auto-settings": {},
     "default-resource-schema-fixups": {
         "resources": {
+            "rootly_schedule": {},
             "rootly_schedule_rotation": {}
         }
     },
@@ -4024,7 +4025,7 @@
             "rootly:index/retrospectiveProcessGroupStep:RetrospectiveProcessGroupStep": 0,
             "rootly:index/retrospectiveStep:RetrospectiveStep": 0,
             "rootly:index/role:Role": 0,
-            "rootly:index/schedule:Schedule": 0,
+            "rootly:index/schedule:Schedule": 1,
             "rootly:index/scheduleRotation:ScheduleRotation": 1,
             "rootly:index/scheduleRotationActiveDay:ScheduleRotationActiveDay": 0,
             "rootly:index/scheduleRotationUser:ScheduleRotationUser": 0,

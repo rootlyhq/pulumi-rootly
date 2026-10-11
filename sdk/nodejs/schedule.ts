@@ -2,9 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Manages a schedule.
+ *
  * ## Example Usage
  *
  * ## Import
@@ -54,25 +58,29 @@ export class Schedule extends pulumi.CustomResource {
     }
 
     /**
-     * 24/7 coverage of the schedule. Value must be one of true or false
+     * 24/7 coverage of the schedule. Value must be one of true or false.
      */
     declare public readonly allTimeCoverage: pulumi.Output<boolean>;
     /**
-     * The description of the schedule
+     * Controls shadow paging on the schedule. To enable, specify all nested attributes. To remove, set the attribute to an empty object `{}`. `startTime` and `endTime` are HH:MM 24-hour format strings.
+     */
+    declare public readonly businessHours: pulumi.Output<outputs.ScheduleBusinessHours>;
+    /**
+     * The description of the schedule.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+     * Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false.
      */
     declare public readonly includeShadowsInSlackNotifications: pulumi.Output<boolean>;
     /**
-     * The name of the schedule
+     * The name of the schedule.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
      * The owning teams for this schedules.
      */
-    declare public readonly ownerGroupIds: pulumi.Output<string[] | undefined>;
+    declare public readonly ownerGroupIds: pulumi.Output<string[]>;
     /**
      * ID of user assigned as owner of the schedule. Defaults to the API token's user if not specified.
      */
@@ -82,7 +90,7 @@ export class Schedule extends pulumi.CustomResource {
      */
     declare public readonly shiftReportDayOfWeek: pulumi.Output<string>;
     /**
-     * Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+     * Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false.
      */
     declare public readonly shiftReportEnabled: pulumi.Output<boolean>;
     /**
@@ -94,23 +102,23 @@ export class Schedule extends pulumi.CustomResource {
      */
     declare public readonly shiftReportTimeZone: pulumi.Output<string>;
     /**
-     * Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+     * Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false.
      */
     declare public readonly shiftStartNotificationsEnabled: pulumi.Output<boolean>;
     /**
-     * Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+     * Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false.
      */
     declare public readonly shiftUpdateNotificationsEnabled: pulumi.Output<boolean>;
     /**
-     * Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+     * Synced slack channel of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.
      */
-    declare public readonly slackChannel: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly slackChannel: pulumi.Output<outputs.ScheduleSlackChannel>;
     /**
-     * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
+     * Synced slack group of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.
      */
-    declare public readonly slackUserGroup: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly slackUserGroup: pulumi.Output<outputs.ScheduleSlackUserGroup>;
     /**
-     * Whether the schedule is synced with Linear. Value must be one of true or false
+     * Whether the schedule is synced with Linear. Value must be one of true or false.
      */
     declare public readonly syncLinearEnabled: pulumi.Output<boolean>;
     /**
@@ -132,6 +140,7 @@ export class Schedule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ScheduleState | undefined;
             resourceInputs["allTimeCoverage"] = state?.allTimeCoverage;
+            resourceInputs["businessHours"] = state?.businessHours;
             resourceInputs["description"] = state?.description;
             resourceInputs["includeShadowsInSlackNotifications"] = state?.includeShadowsInSlackNotifications;
             resourceInputs["name"] = state?.name;
@@ -150,6 +159,7 @@ export class Schedule extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ScheduleArgs | undefined;
             resourceInputs["allTimeCoverage"] = args?.allTimeCoverage;
+            resourceInputs["businessHours"] = args?.businessHours;
             resourceInputs["description"] = args?.description;
             resourceInputs["includeShadowsInSlackNotifications"] = args?.includeShadowsInSlackNotifications;
             resourceInputs["name"] = args?.name;
@@ -176,19 +186,23 @@ export class Schedule extends pulumi.CustomResource {
  */
 export interface ScheduleState {
     /**
-     * 24/7 coverage of the schedule. Value must be one of true or false
+     * 24/7 coverage of the schedule. Value must be one of true or false.
      */
     allTimeCoverage?: pulumi.Input<boolean | undefined>;
     /**
-     * The description of the schedule
+     * Controls shadow paging on the schedule. To enable, specify all nested attributes. To remove, set the attribute to an empty object `{}`. `startTime` and `endTime` are HH:MM 24-hour format strings.
+     */
+    businessHours?: pulumi.Input<inputs.ScheduleBusinessHours | undefined>;
+    /**
+     * The description of the schedule.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+     * Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false.
      */
     includeShadowsInSlackNotifications?: pulumi.Input<boolean | undefined>;
     /**
-     * The name of the schedule
+     * The name of the schedule.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -204,7 +218,7 @@ export interface ScheduleState {
      */
     shiftReportDayOfWeek?: pulumi.Input<string | undefined>;
     /**
-     * Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+     * Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false.
      */
     shiftReportEnabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -216,23 +230,23 @@ export interface ScheduleState {
      */
     shiftReportTimeZone?: pulumi.Input<string | undefined>;
     /**
-     * Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+     * Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false.
      */
     shiftStartNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+     * Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false.
      */
     shiftUpdateNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+     * Synced slack channel of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.
      */
-    slackChannel?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    slackChannel?: pulumi.Input<inputs.ScheduleSlackChannel | undefined>;
     /**
-     * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
+     * Synced slack group of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.
      */
-    slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    slackUserGroup?: pulumi.Input<inputs.ScheduleSlackUserGroup | undefined>;
     /**
-     * Whether the schedule is synced with Linear. Value must be one of true or false
+     * Whether the schedule is synced with Linear. Value must be one of true or false.
      */
     syncLinearEnabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -246,19 +260,23 @@ export interface ScheduleState {
  */
 export interface ScheduleArgs {
     /**
-     * 24/7 coverage of the schedule. Value must be one of true or false
+     * 24/7 coverage of the schedule. Value must be one of true or false.
      */
     allTimeCoverage?: pulumi.Input<boolean | undefined>;
     /**
-     * The description of the schedule
+     * Controls shadow paging on the schedule. To enable, specify all nested attributes. To remove, set the attribute to an empty object `{}`. `startTime` and `endTime` are HH:MM 24-hour format strings.
+     */
+    businessHours?: pulumi.Input<inputs.ScheduleBusinessHours | undefined>;
+    /**
+     * The description of the schedule.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false
+     * Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false.
      */
     includeShadowsInSlackNotifications?: pulumi.Input<boolean | undefined>;
     /**
-     * The name of the schedule
+     * The name of the schedule.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -274,7 +292,7 @@ export interface ScheduleArgs {
      */
     shiftReportDayOfWeek?: pulumi.Input<string | undefined>;
     /**
-     * Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false
+     * Whether the weekly shift summary report is sent. Requires `slackChannel` to be set. Value must be one of true or false.
      */
     shiftReportEnabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -286,23 +304,23 @@ export interface ScheduleArgs {
      */
     shiftReportTimeZone?: pulumi.Input<string | undefined>;
     /**
-     * Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false
+     * Whether to send a Slack message every time a new shift begins. Requires `slackChannel` to be set. Value must be one of true or false.
      */
     shiftStartNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false
+     * Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires `slackChannel` to be set. Value must be one of true or false.
      */
     shiftUpdateNotificationsEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Map must contain two fields, `id` and `name`. Synced slack channel of the schedule
+     * Synced slack channel of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.
      */
-    slackChannel?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    slackChannel?: pulumi.Input<inputs.ScheduleSlackChannel | undefined>;
     /**
-     * Map must contain two fields, `id` and `name`. Synced slack group of the schedule
+     * Synced slack group of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.
      */
-    slackUserGroup?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    slackUserGroup?: pulumi.Input<inputs.ScheduleSlackUserGroup | undefined>;
     /**
-     * Whether the schedule is synced with Linear. Value must be one of true or false
+     * Whether the schedule is synced with Linear. Value must be one of true or false.
      */
     syncLinearEnabled?: pulumi.Input<boolean | undefined>;
     /**

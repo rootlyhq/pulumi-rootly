@@ -1787,6 +1787,23 @@
             },
             "type": "object"
         },
+        "rootly:index/ScheduleBusinessHours:ScheduleBusinessHours": {
+            "properties": {
+                "endTime": {
+                    "type": "string",
+                    "description": "End time in HH:MM 24-hour format.\n"
+                },
+                "includeWeekends": {
+                    "type": "boolean",
+                    "description": "Whether to include weekends.\n"
+                },
+                "startTime": {
+                    "type": "string",
+                    "description": "Start time in HH:MM 24-hour format.\n"
+                }
+            },
+            "type": "object"
+        },
         "rootly:index/ScheduleRotationActiveDayActiveTimeAttribute:ScheduleRotationActiveDayActiveTimeAttribute": {
             "properties": {
                 "endTime": {
@@ -1879,6 +1896,32 @@
                 "handoffTime"
             ]
         },
+        "rootly:index/ScheduleSlackChannel:ScheduleSlackChannel": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Slack channel ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Slack channel name.\n"
+                }
+            },
+            "type": "object"
+        },
+        "rootly:index/ScheduleSlackUserGroup:ScheduleSlackUserGroup": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Slack user group ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Slack user group name.\n"
+                }
+            },
+            "type": "object"
+        },
         "rootly:index/ServiceAlertBroadcastChannel:ServiceAlertBroadcastChannel": {
             "properties": {
                 "id": {
@@ -1890,15 +1933,7 @@
                     "description": "Slack channel name\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "id",
-                        "name"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "rootly:index/ServiceIncidentBroadcastChannel:ServiceIncidentBroadcastChannel": {
             "properties": {
@@ -2119,15 +2154,7 @@
                     "description": "Slack channel name\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "id",
-                        "name"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "rootly:index/TeamIncidentBroadcastChannel:TeamIncidentBroadcastChannel": {
             "properties": {
@@ -11728,7 +11755,7 @@
                 },
                 "retriggerTimeoutMinutes": {
                     "type": "integer",
-                    "description": "Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, negative = never.\n"
+                    "description": "Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, \u003cspan pulumi-lang-nodejs=\"`10`\" pulumi-lang-dotnet=\"`10`\" pulumi-lang-go=\"`10`\" pulumi-lang-python=\"`10`\" pulumi-lang-yaml=\"`10`\" pulumi-lang-java=\"`10`\" pulumi-lang-hcl=\"`10`\"\u003e`10`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`20`\" pulumi-lang-dotnet=\"`20`\" pulumi-lang-go=\"`20`\" pulumi-lang-python=\"`20`\" pulumi-lang-yaml=\"`20`\" pulumi-lang-java=\"`20`\" pulumi-lang-hcl=\"`20`\"\u003e`20`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`30`\" pulumi-lang-dotnet=\"`30`\" pulumi-lang-go=\"`30`\" pulumi-lang-python=\"`30`\" pulumi-lang-yaml=\"`30`\" pulumi-lang-java=\"`30`\" pulumi-lang-hcl=\"`30`\"\u003e`30`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`40`\" pulumi-lang-dotnet=\"`40`\" pulumi-lang-go=\"`40`\" pulumi-lang-python=\"`40`\" pulumi-lang-yaml=\"`40`\" pulumi-lang-java=\"`40`\" pulumi-lang-hcl=\"`40`\"\u003e`40`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`50`\" pulumi-lang-dotnet=\"`50`\" pulumi-lang-go=\"`50`\" pulumi-lang-python=\"`50`\" pulumi-lang-yaml=\"`50`\" pulumi-lang-java=\"`50`\" pulumi-lang-hcl=\"`50`\"\u003e`50`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`60`\" pulumi-lang-dotnet=\"`60`\" pulumi-lang-go=\"`60`\" pulumi-lang-python=\"`60`\" pulumi-lang-yaml=\"`60`\" pulumi-lang-java=\"`60`\" pulumi-lang-hcl=\"`60`\"\u003e`60`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`90`\" pulumi-lang-dotnet=\"`90`\" pulumi-lang-go=\"`90`\" pulumi-lang-python=\"`90`\" pulumi-lang-yaml=\"`90`\" pulumi-lang-java=\"`90`\" pulumi-lang-hcl=\"`90`\"\u003e`90`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`120`\" pulumi-lang-dotnet=\"`120`\" pulumi-lang-go=\"`120`\" pulumi-lang-python=\"`120`\" pulumi-lang-yaml=\"`120`\" pulumi-lang-java=\"`120`\" pulumi-lang-hcl=\"`120`\"\u003e`120`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`180`\" pulumi-lang-dotnet=\"`180`\" pulumi-lang-go=\"`180`\" pulumi-lang-python=\"`180`\" pulumi-lang-yaml=\"`180`\" pulumi-lang-java=\"`180`\" pulumi-lang-hcl=\"`180`\"\u003e`180`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`240`\" pulumi-lang-dotnet=\"`240`\" pulumi-lang-go=\"`240`\" pulumi-lang-python=\"`240`\" pulumi-lang-yaml=\"`240`\" pulumi-lang-java=\"`240`\" pulumi-lang-hcl=\"`240`\"\u003e`240`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`300`\" pulumi-lang-dotnet=\"`300`\" pulumi-lang-go=\"`300`\" pulumi-lang-python=\"`300`\" pulumi-lang-yaml=\"`300`\" pulumi-lang-java=\"`300`\" pulumi-lang-hcl=\"`300`\"\u003e`300`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`360`\" pulumi-lang-dotnet=\"`360`\" pulumi-lang-go=\"`360`\" pulumi-lang-python=\"`360`\" pulumi-lang-yaml=\"`360`\" pulumi-lang-java=\"`360`\" pulumi-lang-hcl=\"`360`\"\u003e`360`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`720`\" pulumi-lang-dotnet=\"`720`\" pulumi-lang-go=\"`720`\" pulumi-lang-python=\"`720`\" pulumi-lang-yaml=\"`720`\" pulumi-lang-java=\"`720`\" pulumi-lang-hcl=\"`720`\"\u003e`720`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`1440`\" pulumi-lang-dotnet=\"`1440`\" pulumi-lang-go=\"`1440`\" pulumi-lang-python=\"`1440`\" pulumi-lang-yaml=\"`1440`\" pulumi-lang-java=\"`1440`\" pulumi-lang-hcl=\"`1440`\"\u003e`1440`\u003c/span\u003e.\n"
                 },
                 "teamId": {
                     "type": "integer",
@@ -11746,7 +11773,6 @@
                 "alertUrgencyId",
                 "name",
                 "position",
-                "retriggerTimeoutMinutes",
                 "teamId",
                 "urgency"
             ],
@@ -11777,7 +11803,7 @@
                 },
                 "retriggerTimeoutMinutes": {
                     "type": "integer",
-                    "description": "Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, negative = never.\n"
+                    "description": "Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, \u003cspan pulumi-lang-nodejs=\"`10`\" pulumi-lang-dotnet=\"`10`\" pulumi-lang-go=\"`10`\" pulumi-lang-python=\"`10`\" pulumi-lang-yaml=\"`10`\" pulumi-lang-java=\"`10`\" pulumi-lang-hcl=\"`10`\"\u003e`10`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`20`\" pulumi-lang-dotnet=\"`20`\" pulumi-lang-go=\"`20`\" pulumi-lang-python=\"`20`\" pulumi-lang-yaml=\"`20`\" pulumi-lang-java=\"`20`\" pulumi-lang-hcl=\"`20`\"\u003e`20`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`30`\" pulumi-lang-dotnet=\"`30`\" pulumi-lang-go=\"`30`\" pulumi-lang-python=\"`30`\" pulumi-lang-yaml=\"`30`\" pulumi-lang-java=\"`30`\" pulumi-lang-hcl=\"`30`\"\u003e`30`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`40`\" pulumi-lang-dotnet=\"`40`\" pulumi-lang-go=\"`40`\" pulumi-lang-python=\"`40`\" pulumi-lang-yaml=\"`40`\" pulumi-lang-java=\"`40`\" pulumi-lang-hcl=\"`40`\"\u003e`40`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`50`\" pulumi-lang-dotnet=\"`50`\" pulumi-lang-go=\"`50`\" pulumi-lang-python=\"`50`\" pulumi-lang-yaml=\"`50`\" pulumi-lang-java=\"`50`\" pulumi-lang-hcl=\"`50`\"\u003e`50`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`60`\" pulumi-lang-dotnet=\"`60`\" pulumi-lang-go=\"`60`\" pulumi-lang-python=\"`60`\" pulumi-lang-yaml=\"`60`\" pulumi-lang-java=\"`60`\" pulumi-lang-hcl=\"`60`\"\u003e`60`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`90`\" pulumi-lang-dotnet=\"`90`\" pulumi-lang-go=\"`90`\" pulumi-lang-python=\"`90`\" pulumi-lang-yaml=\"`90`\" pulumi-lang-java=\"`90`\" pulumi-lang-hcl=\"`90`\"\u003e`90`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`120`\" pulumi-lang-dotnet=\"`120`\" pulumi-lang-go=\"`120`\" pulumi-lang-python=\"`120`\" pulumi-lang-yaml=\"`120`\" pulumi-lang-java=\"`120`\" pulumi-lang-hcl=\"`120`\"\u003e`120`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`180`\" pulumi-lang-dotnet=\"`180`\" pulumi-lang-go=\"`180`\" pulumi-lang-python=\"`180`\" pulumi-lang-yaml=\"`180`\" pulumi-lang-java=\"`180`\" pulumi-lang-hcl=\"`180`\"\u003e`180`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`240`\" pulumi-lang-dotnet=\"`240`\" pulumi-lang-go=\"`240`\" pulumi-lang-python=\"`240`\" pulumi-lang-yaml=\"`240`\" pulumi-lang-java=\"`240`\" pulumi-lang-hcl=\"`240`\"\u003e`240`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`300`\" pulumi-lang-dotnet=\"`300`\" pulumi-lang-go=\"`300`\" pulumi-lang-python=\"`300`\" pulumi-lang-yaml=\"`300`\" pulumi-lang-java=\"`300`\" pulumi-lang-hcl=\"`300`\"\u003e`300`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`360`\" pulumi-lang-dotnet=\"`360`\" pulumi-lang-go=\"`360`\" pulumi-lang-python=\"`360`\" pulumi-lang-yaml=\"`360`\" pulumi-lang-java=\"`360`\" pulumi-lang-hcl=\"`360`\"\u003e`360`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`720`\" pulumi-lang-dotnet=\"`720`\" pulumi-lang-go=\"`720`\" pulumi-lang-python=\"`720`\" pulumi-lang-yaml=\"`720`\" pulumi-lang-java=\"`720`\" pulumi-lang-hcl=\"`720`\"\u003e`720`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`1440`\" pulumi-lang-dotnet=\"`1440`\" pulumi-lang-go=\"`1440`\" pulumi-lang-python=\"`1440`\" pulumi-lang-yaml=\"`1440`\" pulumi-lang-java=\"`1440`\" pulumi-lang-hcl=\"`1440`\"\u003e`1440`\u003c/span\u003e.\n"
                 },
                 "teamId": {
                     "type": "integer",
@@ -11820,7 +11846,7 @@
                     },
                     "retriggerTimeoutMinutes": {
                         "type": "integer",
-                        "description": "Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, negative = never.\n"
+                        "description": "Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, \u003cspan pulumi-lang-nodejs=\"`10`\" pulumi-lang-dotnet=\"`10`\" pulumi-lang-go=\"`10`\" pulumi-lang-python=\"`10`\" pulumi-lang-yaml=\"`10`\" pulumi-lang-java=\"`10`\" pulumi-lang-hcl=\"`10`\"\u003e`10`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`20`\" pulumi-lang-dotnet=\"`20`\" pulumi-lang-go=\"`20`\" pulumi-lang-python=\"`20`\" pulumi-lang-yaml=\"`20`\" pulumi-lang-java=\"`20`\" pulumi-lang-hcl=\"`20`\"\u003e`20`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`30`\" pulumi-lang-dotnet=\"`30`\" pulumi-lang-go=\"`30`\" pulumi-lang-python=\"`30`\" pulumi-lang-yaml=\"`30`\" pulumi-lang-java=\"`30`\" pulumi-lang-hcl=\"`30`\"\u003e`30`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`40`\" pulumi-lang-dotnet=\"`40`\" pulumi-lang-go=\"`40`\" pulumi-lang-python=\"`40`\" pulumi-lang-yaml=\"`40`\" pulumi-lang-java=\"`40`\" pulumi-lang-hcl=\"`40`\"\u003e`40`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`50`\" pulumi-lang-dotnet=\"`50`\" pulumi-lang-go=\"`50`\" pulumi-lang-python=\"`50`\" pulumi-lang-yaml=\"`50`\" pulumi-lang-java=\"`50`\" pulumi-lang-hcl=\"`50`\"\u003e`50`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`60`\" pulumi-lang-dotnet=\"`60`\" pulumi-lang-go=\"`60`\" pulumi-lang-python=\"`60`\" pulumi-lang-yaml=\"`60`\" pulumi-lang-java=\"`60`\" pulumi-lang-hcl=\"`60`\"\u003e`60`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`90`\" pulumi-lang-dotnet=\"`90`\" pulumi-lang-go=\"`90`\" pulumi-lang-python=\"`90`\" pulumi-lang-yaml=\"`90`\" pulumi-lang-java=\"`90`\" pulumi-lang-hcl=\"`90`\"\u003e`90`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`120`\" pulumi-lang-dotnet=\"`120`\" pulumi-lang-go=\"`120`\" pulumi-lang-python=\"`120`\" pulumi-lang-yaml=\"`120`\" pulumi-lang-java=\"`120`\" pulumi-lang-hcl=\"`120`\"\u003e`120`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`180`\" pulumi-lang-dotnet=\"`180`\" pulumi-lang-go=\"`180`\" pulumi-lang-python=\"`180`\" pulumi-lang-yaml=\"`180`\" pulumi-lang-java=\"`180`\" pulumi-lang-hcl=\"`180`\"\u003e`180`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`240`\" pulumi-lang-dotnet=\"`240`\" pulumi-lang-go=\"`240`\" pulumi-lang-python=\"`240`\" pulumi-lang-yaml=\"`240`\" pulumi-lang-java=\"`240`\" pulumi-lang-hcl=\"`240`\"\u003e`240`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`300`\" pulumi-lang-dotnet=\"`300`\" pulumi-lang-go=\"`300`\" pulumi-lang-python=\"`300`\" pulumi-lang-yaml=\"`300`\" pulumi-lang-java=\"`300`\" pulumi-lang-hcl=\"`300`\"\u003e`300`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`360`\" pulumi-lang-dotnet=\"`360`\" pulumi-lang-go=\"`360`\" pulumi-lang-python=\"`360`\" pulumi-lang-yaml=\"`360`\" pulumi-lang-java=\"`360`\" pulumi-lang-hcl=\"`360`\"\u003e`360`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`720`\" pulumi-lang-dotnet=\"`720`\" pulumi-lang-go=\"`720`\" pulumi-lang-python=\"`720`\" pulumi-lang-yaml=\"`720`\" pulumi-lang-java=\"`720`\" pulumi-lang-hcl=\"`720`\"\u003e`720`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`1440`\" pulumi-lang-dotnet=\"`1440`\" pulumi-lang-go=\"`1440`\" pulumi-lang-python=\"`1440`\" pulumi-lang-yaml=\"`1440`\" pulumi-lang-java=\"`1440`\" pulumi-lang-hcl=\"`1440`\"\u003e`1440`\u003c/span\u003e.\n"
                     },
                     "teamId": {
                         "type": "integer",
@@ -12094,7 +12120,7 @@
             }
         },
         "rootly:index/apiKey:ApiKey": {
-            "description": "## Example Usage\n\n```shell\nresource \"rootly_api_key\" \"ci_pipeline\" {\n  name       = \"CI Pipeline\"\n  expires_at = \"2027-01-01T00:00:00Z\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.ApiKey \" pulumi-lang-dotnet=\"\nrootly.ApiKey \" pulumi-lang-go=\"\nApiKey \" pulumi-lang-python=\"\nApiKey \" pulumi-lang-yaml=\"\nrootly.ApiKey \" pulumi-lang-java=\"\nrootly.ApiKey \" pulumi-lang-hcl=\"\nrootly_api_key \"\u003e\nrootly.ApiKey \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/apiKey:ApiKey primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_api_key\" \"ci_pipeline\" {\n  name       = \"CI Pipeline\"\n  expires_at = \"2027-01-01T00:00:00Z\"\n}\n\nresource \"rootly_team\" \"payments\" {\n  name = \"Payments\"\n}\n\nresource \"rootly_api_key\" \"payments_team\" {\n  name       = \"Payments Team\"\n  expires_at = \"2027-01-01T00:00:00Z\"\n  kind       = \"team\"\n  group_id   = rootly_team.payments.id\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.ApiKey \" pulumi-lang-dotnet=\"\nrootly.ApiKey \" pulumi-lang-go=\"\nApiKey \" pulumi-lang-python=\"\nApiKey \" pulumi-lang-yaml=\"\nrootly.ApiKey \" pulumi-lang-java=\"\nrootly.ApiKey \" pulumi-lang-hcl=\"\nrootly_api_key \"\u003e\nrootly.ApiKey \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/apiKey:ApiKey primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -12107,6 +12133,10 @@
                 "gracePeriodEndsAt": {
                     "type": "string",
                     "description": "Grace period end date\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.\n"
                 },
                 "kind": {
                     "type": "string",
@@ -12133,6 +12163,7 @@
                 "description",
                 "expiresAt",
                 "gracePeriodEndsAt",
+                "groupId",
                 "lastUsedAt",
                 "name",
                 "onCallRoleId",
@@ -12150,6 +12181,11 @@
                 "gracePeriodEndsAt": {
                     "type": "string",
                     "description": "Grace period end date\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.\n",
+                    "willReplaceOnChanges": true
                 },
                 "kind": {
                     "type": "string",
@@ -12189,6 +12225,11 @@
                     "gracePeriodEndsAt": {
                         "type": "string",
                         "description": "Grace period end date\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The group (team) ID for team API keys. Keys created via the API have exactly one group; for keys with multiple groups this is the first group.\n",
+                        "willReplaceOnChanges": true
                     },
                     "kind": {
                         "type": "string",
@@ -14497,6 +14538,10 @@
                     "type": "integer",
                     "description": "The number of times this path will be executed until someone acknowledges the alert\n"
                 },
+                "retriggerTimeoutMinutes": {
+                    "type": "integer",
+                    "description": "Re-trigger acknowledged alerts on this path after N minutes; null inherits the urgency/workspace default, negative = never.\n"
+                },
                 "rules": {
                     "type": "array",
                     "items": {
@@ -14591,6 +14636,10 @@
                     "type": "integer",
                     "description": "The number of times this path will be executed until someone acknowledges the alert\n"
                 },
+                "retriggerTimeoutMinutes": {
+                    "type": "integer",
+                    "description": "Re-trigger acknowledged alerts on this path after N minutes; null inherits the urgency/workspace default, negative = never.\n"
+                },
                 "rules": {
                     "type": "array",
                     "items": {
@@ -14673,6 +14722,10 @@
                     "repeatCount": {
                         "type": "integer",
                         "description": "The number of times this path will be executed until someone acknowledges the alert\n"
+                    },
+                    "retriggerTimeoutMinutes": {
+                        "type": "integer",
+                        "description": "Re-trigger acknowledged alerts on this path after N minutes; null inherits the urgency/workspace default, negative = never.\n"
                     },
                     "rules": {
                         "type": "array",
@@ -19434,23 +19487,27 @@
             }
         },
         "rootly:index/schedule:Schedule": {
-            "description": "## Example Usage\n\n```shell\ndata \"rootly_user\" \"john\" {\n  email = \"demo@rootly.com\"\n}\n\ndata \"rootly_user\" \"jane\" {\n  email = \"demo1@rootly.com\"\n}\n\nresource \"rootly_schedule\" \"primary\" {\n  name              = \"Primary On-Call Schedule\"\n  owner_user_id     = data.rootly_user.john.id\n  all_time_coverage = false\n}\n\nresource \"rootly_schedule_rotation\" \"weekdays\" {\n  schedule_id     = rootly_schedule.primary.id\n  name            = \"weekdays\"\n  active_all_week = false\n  active_days = [\n    \"M\",\n    \"T\",\n    \"W\",\n    \"R\",\n    \"F\",\n  ]\n  active_time_type = \"custom\"\n  position         = 1\n  schedule_rotationable_attributes = {\n    handoff_time = \"T\",\n    handoff_time = \"10:00\"\n  }\n  schedule_rotationable_type = \"ScheduleWeeklyRotation\"\n  time_zone                  = \"America/Toronto\"\n}\n\n# Define active days for the weekday rotation\n# Monday\nresource \"rootly_schedule_rotation_active_day\" \"m1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"M\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Tuesday\nresource \"rootly_schedule_rotation_active_day\" \"t1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"T\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Wednesday\nresource \"rootly_schedule_rotation_active_day\" \"w1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"W\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Thursday\nresource \"rootly_schedule_rotation_active_day\" \"th1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"R\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Friday\nresource \"rootly_schedule_rotation_active_day\" \"f1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"F\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n\nresource \"rootly_schedule_rotation_user\" \"john\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 1\n  user_id              = data.rootly_user.john.id\n}\n\nresource \"rootly_schedule_rotation_user\" \"jane\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 2\n  user_id              = data.rootly_user.jane.id\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Schedule \" pulumi-lang-dotnet=\"\nrootly.Schedule \" pulumi-lang-go=\"\nSchedule \" pulumi-lang-python=\"\nSchedule \" pulumi-lang-yaml=\"\nrootly.Schedule \" pulumi-lang-java=\"\nrootly.Schedule \" pulumi-lang-hcl=\"\nrootly_schedule \"\u003e\nrootly.Schedule \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/schedule:Schedule primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "Manages a schedule.\n\n## Example Usage\n\n```shell\ndata \"rootly_user\" \"john\" {\n  email = \"demo@rootly.com\"\n}\n\ndata \"rootly_user\" \"jane\" {\n  email = \"demo1@rootly.com\"\n}\n\nresource \"rootly_schedule\" \"primary\" {\n  name              = \"Primary On-Call Schedule\"\n  owner_user_id     = data.rootly_user.john.id\n  all_time_coverage = false\n}\n\nresource \"rootly_schedule_rotation\" \"weekdays\" {\n  schedule_id     = rootly_schedule.primary.id\n  name            = \"weekdays\"\n  active_all_week = false\n  active_days = [\n    \"M\",\n    \"T\",\n    \"W\",\n    \"R\",\n    \"F\",\n  ]\n  active_time_type = \"custom\"\n  position         = 1\n  schedule_rotationable_attributes = {\n    handoff_time = \"T\",\n    handoff_time = \"10:00\"\n  }\n  schedule_rotationable_type = \"ScheduleWeeklyRotation\"\n  time_zone                  = \"America/Toronto\"\n}\n\n# Define active days for the weekday rotation\n# Monday\nresource \"rootly_schedule_rotation_active_day\" \"m1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"M\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Tuesday\nresource \"rootly_schedule_rotation_active_day\" \"t1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"T\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Wednesday\nresource \"rootly_schedule_rotation_active_day\" \"w1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"W\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Thursday\nresource \"rootly_schedule_rotation_active_day\" \"th1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"R\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Friday\nresource \"rootly_schedule_rotation_active_day\" \"f1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"F\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n\nresource \"rootly_schedule_rotation_user\" \"john\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 1\n  user_id              = data.rootly_user.john.id\n}\n\nresource \"rootly_schedule_rotation_user\" \"jane\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 2\n  user_id              = data.rootly_user.jane.id\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.Schedule \" pulumi-lang-dotnet=\"\nrootly.Schedule \" pulumi-lang-go=\"\nSchedule \" pulumi-lang-python=\"\nSchedule \" pulumi-lang-yaml=\"\nrootly.Schedule \" pulumi-lang-java=\"\nrootly.Schedule \" pulumi-lang-hcl=\"\nrootly_schedule \"\u003e\nrootly.Schedule \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/schedule:Schedule primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "allTimeCoverage": {
                     "type": "boolean",
-                    "description": "24/7 coverage of the schedule. Value must be one of true or false\n"
+                    "description": "24/7 coverage of the schedule. Value must be one of true or false.\n"
+                },
+                "businessHours": {
+                    "$ref": "#/types/rootly:index/ScheduleBusinessHours:ScheduleBusinessHours",
+                    "description": "Controls shadow paging on the schedule. To enable, specify all nested attributes. To remove, set the attribute to an empty object `{}`. \u003cspan pulumi-lang-nodejs=\"`startTime`\" pulumi-lang-dotnet=\"`StartTime`\" pulumi-lang-go=\"`startTime`\" pulumi-lang-python=\"`start_time`\" pulumi-lang-yaml=\"`startTime`\" pulumi-lang-java=\"`startTime`\" pulumi-lang-hcl=\"`start_time`\"\u003e`startTime`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`endTime`\" pulumi-lang-dotnet=\"`EndTime`\" pulumi-lang-go=\"`endTime`\" pulumi-lang-python=\"`end_time`\" pulumi-lang-yaml=\"`endTime`\" pulumi-lang-java=\"`endTime`\" pulumi-lang-hcl=\"`end_time`\"\u003e`endTime`\u003c/span\u003e are HH:MM 24-hour format strings.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "The description of the schedule\n"
+                    "description": "The description of the schedule.\n"
                 },
                 "includeShadowsInSlackNotifications": {
                     "type": "boolean",
-                    "description": "Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false\n"
+                    "description": "Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the schedule\n"
+                    "description": "The name of the schedule.\n"
                 },
                 "ownerGroupIds": {
                     "type": "array",
@@ -19469,7 +19526,7 @@
                 },
                 "shiftReportEnabled": {
                     "type": "boolean",
-                    "description": "Whether the weekly shift summary report is sent. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                    "description": "Whether the weekly shift summary report is sent. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false.\n"
                 },
                 "shiftReportTimeOfDay": {
                     "type": "string",
@@ -19481,29 +19538,23 @@
                 },
                 "shiftStartNotificationsEnabled": {
                     "type": "boolean",
-                    "description": "Whether to send a Slack message every time a new shift begins. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                    "description": "Whether to send a Slack message every time a new shift begins. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false.\n"
                 },
                 "shiftUpdateNotificationsEnabled": {
                     "type": "boolean",
-                    "description": "Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                    "description": "Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false.\n"
                 },
                 "slackChannel": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Synced slack channel of the schedule\n"
+                    "$ref": "#/types/rootly:index/ScheduleSlackChannel:ScheduleSlackChannel",
+                    "description": "Synced slack channel of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.\n"
                 },
                 "slackUserGroup": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Synced slack group of the schedule\n"
+                    "$ref": "#/types/rootly:index/ScheduleSlackUserGroup:ScheduleSlackUserGroup",
+                    "description": "Synced slack group of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.\n"
                 },
                 "syncLinearEnabled": {
                     "type": "boolean",
-                    "description": "Whether the schedule is synced with Linear. Value must be one of true or false\n"
+                    "description": "Whether the schedule is synced with Linear. Value must be one of true or false.\n"
                 },
                 "timeZone": {
                     "type": "string",
@@ -19512,9 +19563,11 @@
             },
             "required": [
                 "allTimeCoverage",
+                "businessHours",
                 "description",
                 "includeShadowsInSlackNotifications",
                 "name",
+                "ownerGroupIds",
                 "ownerUserId",
                 "shiftReportDayOfWeek",
                 "shiftReportEnabled",
@@ -19522,25 +19575,31 @@
                 "shiftReportTimeZone",
                 "shiftStartNotificationsEnabled",
                 "shiftUpdateNotificationsEnabled",
+                "slackChannel",
+                "slackUserGroup",
                 "syncLinearEnabled",
                 "timeZone"
             ],
             "inputProperties": {
                 "allTimeCoverage": {
                     "type": "boolean",
-                    "description": "24/7 coverage of the schedule. Value must be one of true or false\n"
+                    "description": "24/7 coverage of the schedule. Value must be one of true or false.\n"
+                },
+                "businessHours": {
+                    "$ref": "#/types/rootly:index/ScheduleBusinessHours:ScheduleBusinessHours",
+                    "description": "Controls shadow paging on the schedule. To enable, specify all nested attributes. To remove, set the attribute to an empty object `{}`. \u003cspan pulumi-lang-nodejs=\"`startTime`\" pulumi-lang-dotnet=\"`StartTime`\" pulumi-lang-go=\"`startTime`\" pulumi-lang-python=\"`start_time`\" pulumi-lang-yaml=\"`startTime`\" pulumi-lang-java=\"`startTime`\" pulumi-lang-hcl=\"`start_time`\"\u003e`startTime`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`endTime`\" pulumi-lang-dotnet=\"`EndTime`\" pulumi-lang-go=\"`endTime`\" pulumi-lang-python=\"`end_time`\" pulumi-lang-yaml=\"`endTime`\" pulumi-lang-java=\"`endTime`\" pulumi-lang-hcl=\"`end_time`\"\u003e`endTime`\u003c/span\u003e are HH:MM 24-hour format strings.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "The description of the schedule\n"
+                    "description": "The description of the schedule.\n"
                 },
                 "includeShadowsInSlackNotifications": {
                     "type": "boolean",
-                    "description": "Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false\n"
+                    "description": "Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the schedule\n"
+                    "description": "The name of the schedule.\n"
                 },
                 "ownerGroupIds": {
                     "type": "array",
@@ -19559,7 +19618,7 @@
                 },
                 "shiftReportEnabled": {
                     "type": "boolean",
-                    "description": "Whether the weekly shift summary report is sent. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                    "description": "Whether the weekly shift summary report is sent. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false.\n"
                 },
                 "shiftReportTimeOfDay": {
                     "type": "string",
@@ -19571,29 +19630,23 @@
                 },
                 "shiftStartNotificationsEnabled": {
                     "type": "boolean",
-                    "description": "Whether to send a Slack message every time a new shift begins. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                    "description": "Whether to send a Slack message every time a new shift begins. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false.\n"
                 },
                 "shiftUpdateNotificationsEnabled": {
                     "type": "boolean",
-                    "description": "Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                    "description": "Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false.\n"
                 },
                 "slackChannel": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Synced slack channel of the schedule\n"
+                    "$ref": "#/types/rootly:index/ScheduleSlackChannel:ScheduleSlackChannel",
+                    "description": "Synced slack channel of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.\n"
                 },
                 "slackUserGroup": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Synced slack group of the schedule\n"
+                    "$ref": "#/types/rootly:index/ScheduleSlackUserGroup:ScheduleSlackUserGroup",
+                    "description": "Synced slack group of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.\n"
                 },
                 "syncLinearEnabled": {
                     "type": "boolean",
-                    "description": "Whether the schedule is synced with Linear. Value must be one of true or false\n"
+                    "description": "Whether the schedule is synced with Linear. Value must be one of true or false.\n"
                 },
                 "timeZone": {
                     "type": "string",
@@ -19605,19 +19658,23 @@
                 "properties": {
                     "allTimeCoverage": {
                         "type": "boolean",
-                        "description": "24/7 coverage of the schedule. Value must be one of true or false\n"
+                        "description": "24/7 coverage of the schedule. Value must be one of true or false.\n"
+                    },
+                    "businessHours": {
+                        "$ref": "#/types/rootly:index/ScheduleBusinessHours:ScheduleBusinessHours",
+                        "description": "Controls shadow paging on the schedule. To enable, specify all nested attributes. To remove, set the attribute to an empty object `{}`. \u003cspan pulumi-lang-nodejs=\"`startTime`\" pulumi-lang-dotnet=\"`StartTime`\" pulumi-lang-go=\"`startTime`\" pulumi-lang-python=\"`start_time`\" pulumi-lang-yaml=\"`startTime`\" pulumi-lang-java=\"`startTime`\" pulumi-lang-hcl=\"`start_time`\"\u003e`startTime`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`endTime`\" pulumi-lang-dotnet=\"`EndTime`\" pulumi-lang-go=\"`endTime`\" pulumi-lang-python=\"`end_time`\" pulumi-lang-yaml=\"`endTime`\" pulumi-lang-java=\"`endTime`\" pulumi-lang-hcl=\"`end_time`\"\u003e`endTime`\u003c/span\u003e are HH:MM 24-hour format strings.\n"
                     },
                     "description": {
                         "type": "string",
-                        "description": "The description of the schedule\n"
+                        "description": "The description of the schedule.\n"
                     },
                     "includeShadowsInSlackNotifications": {
                         "type": "boolean",
-                        "description": "Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false\n"
+                        "description": "Whether shadow users are included in Slack notifications and user group syncing. Value must be one of true or false.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the schedule\n"
+                        "description": "The name of the schedule.\n"
                     },
                     "ownerGroupIds": {
                         "type": "array",
@@ -19636,7 +19693,7 @@
                     },
                     "shiftReportEnabled": {
                         "type": "boolean",
-                        "description": "Whether the weekly shift summary report is sent. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                        "description": "Whether the weekly shift summary report is sent. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false.\n"
                     },
                     "shiftReportTimeOfDay": {
                         "type": "string",
@@ -19648,29 +19705,23 @@
                     },
                     "shiftStartNotificationsEnabled": {
                         "type": "boolean",
-                        "description": "Whether to send a Slack message every time a new shift begins. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                        "description": "Whether to send a Slack message every time a new shift begins. Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false.\n"
                     },
                     "shiftUpdateNotificationsEnabled": {
                         "type": "boolean",
-                        "description": "Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false\n"
+                        "description": "Whether to send a Slack message whenever a shift is updated (overrides, removed users, rotation changes, etc.). Requires \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e to be set. Value must be one of true or false.\n"
                     },
                     "slackChannel": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Synced slack channel of the schedule\n"
+                        "$ref": "#/types/rootly:index/ScheduleSlackChannel:ScheduleSlackChannel",
+                        "description": "Synced slack channel of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.\n"
                     },
                     "slackUserGroup": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Synced slack group of the schedule\n"
+                        "$ref": "#/types/rootly:index/ScheduleSlackUserGroup:ScheduleSlackUserGroup",
+                        "description": "Synced slack group of the schedule. To set, specify all nested attributes. To remove, set the attribute to an empty object `{}`.\n"
                     },
                     "syncLinearEnabled": {
                         "type": "boolean",
-                        "description": "Whether the schedule is synced with Linear. Value must be one of true or false\n"
+                        "description": "Whether the schedule is synced with Linear. Value must be one of true or false.\n"
                     },
                     "timeZone": {
                         "type": "string",
@@ -20101,7 +20152,7 @@
             "properties": {
                 "alertBroadcastChannel": {
                     "$ref": "#/types/rootly:index/ServiceAlertBroadcastChannel:ServiceAlertBroadcastChannel",
-                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to\n"
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to. To clear, supply an empty block \u003cspan pulumi-lang-nodejs=\"`alertBroadcastChannel \" pulumi-lang-dotnet=\"`AlertBroadcastChannel \" pulumi-lang-go=\"`alertBroadcastChannel \" pulumi-lang-python=\"`alert_broadcast_channel \" pulumi-lang-yaml=\"`alertBroadcastChannel \" pulumi-lang-java=\"`alertBroadcastChannel \" pulumi-lang-hcl=\"`alert_broadcast_channel \"\u003e`alertBroadcastChannel \u003c/span\u003e{}`.\n"
                 },
                 "alertBroadcastEnabled": {
                     "type": "boolean",
@@ -20290,7 +20341,7 @@
             "inputProperties": {
                 "alertBroadcastChannel": {
                     "$ref": "#/types/rootly:index/ServiceAlertBroadcastChannel:ServiceAlertBroadcastChannel",
-                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to\n"
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to. To clear, supply an empty block \u003cspan pulumi-lang-nodejs=\"`alertBroadcastChannel \" pulumi-lang-dotnet=\"`AlertBroadcastChannel \" pulumi-lang-go=\"`alertBroadcastChannel \" pulumi-lang-python=\"`alert_broadcast_channel \" pulumi-lang-yaml=\"`alertBroadcastChannel \" pulumi-lang-java=\"`alertBroadcastChannel \" pulumi-lang-hcl=\"`alert_broadcast_channel \"\u003e`alertBroadcastChannel \u003c/span\u003e{}`.\n"
                 },
                 "alertBroadcastEnabled": {
                     "type": "boolean",
@@ -20451,7 +20502,7 @@
                 "properties": {
                     "alertBroadcastChannel": {
                         "$ref": "#/types/rootly:index/ServiceAlertBroadcastChannel:ServiceAlertBroadcastChannel",
-                        "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to\n"
+                        "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to. To clear, supply an empty block \u003cspan pulumi-lang-nodejs=\"`alertBroadcastChannel \" pulumi-lang-dotnet=\"`AlertBroadcastChannel \" pulumi-lang-go=\"`alertBroadcastChannel \" pulumi-lang-python=\"`alert_broadcast_channel \" pulumi-lang-yaml=\"`alertBroadcastChannel \" pulumi-lang-java=\"`alertBroadcastChannel \" pulumi-lang-hcl=\"`alert_broadcast_channel \"\u003e`alertBroadcastChannel \u003c/span\u003e{}`.\n"
                     },
                     "alertBroadcastEnabled": {
                         "type": "boolean",
@@ -22020,7 +22071,7 @@
                 },
                 "alertBroadcastChannel": {
                     "$ref": "#/types/rootly:index/TeamAlertBroadcastChannel:TeamAlertBroadcastChannel",
-                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to\n"
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to. To clear, supply an empty block \u003cspan pulumi-lang-nodejs=\"`alertBroadcastChannel \" pulumi-lang-dotnet=\"`AlertBroadcastChannel \" pulumi-lang-go=\"`alertBroadcastChannel \" pulumi-lang-python=\"`alert_broadcast_channel \" pulumi-lang-yaml=\"`alertBroadcastChannel \" pulumi-lang-java=\"`alertBroadcastChannel \" pulumi-lang-hcl=\"`alert_broadcast_channel \"\u003e`alertBroadcastChannel \u003c/span\u003e{}`.\n"
                 },
                 "alertBroadcastEnabled": {
                     "type": "boolean",
@@ -22168,7 +22219,7 @@
                 },
                 "alertBroadcastChannel": {
                     "$ref": "#/types/rootly:index/TeamAlertBroadcastChannel:TeamAlertBroadcastChannel",
-                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to\n"
+                    "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to. To clear, supply an empty block \u003cspan pulumi-lang-nodejs=\"`alertBroadcastChannel \" pulumi-lang-dotnet=\"`AlertBroadcastChannel \" pulumi-lang-go=\"`alertBroadcastChannel \" pulumi-lang-python=\"`alert_broadcast_channel \" pulumi-lang-yaml=\"`alertBroadcastChannel \" pulumi-lang-java=\"`alertBroadcastChannel \" pulumi-lang-hcl=\"`alert_broadcast_channel \"\u003e`alertBroadcastChannel \u003c/span\u003e{}`.\n"
                 },
                 "alertBroadcastEnabled": {
                     "type": "boolean",
@@ -22294,7 +22345,7 @@
                     },
                     "alertBroadcastChannel": {
                         "$ref": "#/types/rootly:index/TeamAlertBroadcastChannel:TeamAlertBroadcastChannel",
-                        "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to\n"
+                        "description": "Map must contain two fields, \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e. Slack channel to broadcast alerts to. To clear, supply an empty block \u003cspan pulumi-lang-nodejs=\"`alertBroadcastChannel \" pulumi-lang-dotnet=\"`AlertBroadcastChannel \" pulumi-lang-go=\"`alertBroadcastChannel \" pulumi-lang-python=\"`alert_broadcast_channel \" pulumi-lang-yaml=\"`alertBroadcastChannel \" pulumi-lang-java=\"`alertBroadcastChannel \" pulumi-lang-hcl=\"`alert_broadcast_channel \"\u003e`alertBroadcastChannel \u003c/span\u003e{}`.\n"
                     },
                     "alertBroadcastEnabled": {
                         "type": "boolean",

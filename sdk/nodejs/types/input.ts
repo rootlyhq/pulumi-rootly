@@ -1006,6 +1006,21 @@ export interface RetrospectiveProcessRetrospectiveProcessMatchingCriteria {
     severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
+export interface ScheduleBusinessHours {
+    /**
+     * End time in HH:MM 24-hour format.
+     */
+    endTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to include weekends.
+     */
+    includeWeekends?: pulumi.Input<boolean | undefined>;
+    /**
+     * Start time in HH:MM 24-hour format.
+     */
+    startTime?: pulumi.Input<string | undefined>;
+}
+
 export interface ScheduleRotationActiveDayActiveTimeAttribute {
     /**
      * End time for schedule rotation active time
@@ -1060,6 +1075,28 @@ export interface ScheduleRotationScheduleRotationableAttributes {
      * Shift length unit for custom rotation. Value must be one of `hours`, `days`, `weeks`.
      */
     shiftLengthUnit?: pulumi.Input<string | undefined>;
+}
+
+export interface ScheduleSlackChannel {
+    /**
+     * Slack channel ID.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Slack channel name.
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface ScheduleSlackUserGroup {
+    /**
+     * Slack user group ID.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Slack user group name.
+     */
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface ServiceAlertBroadcastChannel {

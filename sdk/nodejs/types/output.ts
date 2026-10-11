@@ -1349,6 +1349,21 @@ export interface RetrospectiveProcessRetrospectiveProcessMatchingCriteria {
     severityIds?: string[];
 }
 
+export interface ScheduleBusinessHours {
+    /**
+     * End time in HH:MM 24-hour format.
+     */
+    endTime?: string;
+    /**
+     * Whether to include weekends.
+     */
+    includeWeekends?: boolean;
+    /**
+     * Start time in HH:MM 24-hour format.
+     */
+    startTime?: string;
+}
+
 export interface ScheduleRotationActiveDayActiveTimeAttribute {
     /**
      * End time for schedule rotation active time
@@ -1405,15 +1420,37 @@ export interface ScheduleRotationScheduleRotationableAttributes {
     shiftLengthUnit?: string;
 }
 
+export interface ScheduleSlackChannel {
+    /**
+     * Slack channel ID.
+     */
+    id?: string;
+    /**
+     * Slack channel name.
+     */
+    name?: string;
+}
+
+export interface ScheduleSlackUserGroup {
+    /**
+     * Slack user group ID.
+     */
+    id?: string;
+    /**
+     * Slack user group name.
+     */
+    name?: string;
+}
+
 export interface ServiceAlertBroadcastChannel {
     /**
      * Slack channel ID
      */
-    id: string;
+    id?: string;
     /**
      * Slack channel name
      */
-    name: string;
+    name?: string;
 }
 
 export interface ServiceIncidentBroadcastChannel {
@@ -1540,11 +1577,11 @@ export interface TeamAlertBroadcastChannel {
     /**
      * Slack channel ID
      */
-    id: string;
+    id?: string;
     /**
      * Slack channel name
      */
-    name: string;
+    name?: string;
 }
 
 export interface TeamIncidentBroadcastChannel {

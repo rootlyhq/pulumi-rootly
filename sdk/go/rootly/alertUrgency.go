@@ -46,8 +46,8 @@ type AlertUrgency struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Position of the alert urgency
 	Position pulumi.IntOutput `pulumi:"position"`
-	// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, negative = never.
-	RetriggerTimeoutMinutes pulumi.IntOutput `pulumi:"retriggerTimeoutMinutes"`
+	// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, `10`, `20`, `30`, `40`, `50`, `60`, `90`, `120`, `180`, `240`, `300`, `360`, `720`, `1440`.
+	RetriggerTimeoutMinutes pulumi.IntPtrOutput `pulumi:"retriggerTimeoutMinutes"`
 	// The ID of the team this urgency belongs to
 	TeamId pulumi.IntOutput `pulumi:"teamId"`
 	// The urgency level
@@ -99,7 +99,7 @@ type alertUrgencyState struct {
 	Name *string `pulumi:"name"`
 	// Position of the alert urgency
 	Position *int `pulumi:"position"`
-	// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, negative = never.
+	// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, `10`, `20`, `30`, `40`, `50`, `60`, `90`, `120`, `180`, `240`, `300`, `360`, `720`, `1440`.
 	RetriggerTimeoutMinutes *int `pulumi:"retriggerTimeoutMinutes"`
 	// The ID of the team this urgency belongs to
 	TeamId *int `pulumi:"teamId"`
@@ -120,7 +120,7 @@ type AlertUrgencyState struct {
 	Name pulumi.StringPtrInput
 	// Position of the alert urgency
 	Position pulumi.IntPtrInput
-	// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, negative = never.
+	// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, `10`, `20`, `30`, `40`, `50`, `60`, `90`, `120`, `180`, `240`, `300`, `360`, `720`, `1440`.
 	RetriggerTimeoutMinutes pulumi.IntPtrInput
 	// The ID of the team this urgency belongs to
 	TeamId pulumi.IntPtrInput
@@ -145,7 +145,7 @@ type alertUrgencyArgs struct {
 	Name *string `pulumi:"name"`
 	// Position of the alert urgency
 	Position *int `pulumi:"position"`
-	// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, negative = never.
+	// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, `10`, `20`, `30`, `40`, `50`, `60`, `90`, `120`, `180`, `240`, `300`, `360`, `720`, `1440`.
 	RetriggerTimeoutMinutes *int `pulumi:"retriggerTimeoutMinutes"`
 	// The ID of the team this urgency belongs to
 	TeamId *int `pulumi:"teamId"`
@@ -167,7 +167,7 @@ type AlertUrgencyArgs struct {
 	Name pulumi.StringPtrInput
 	// Position of the alert urgency
 	Position pulumi.IntPtrInput
-	// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, negative = never.
+	// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, `10`, `20`, `30`, `40`, `50`, `60`, `90`, `120`, `180`, `240`, `300`, `360`, `720`, `1440`.
 	RetriggerTimeoutMinutes pulumi.IntPtrInput
 	// The ID of the team this urgency belongs to
 	TeamId pulumi.IntPtrInput
@@ -292,9 +292,9 @@ func (o AlertUrgencyOutput) Position() pulumi.IntOutput {
 	return o.ApplyT(func(v *AlertUrgency) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
 }
 
-// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, negative = never.
-func (o AlertUrgencyOutput) RetriggerTimeoutMinutes() pulumi.IntOutput {
-	return o.ApplyT(func(v *AlertUrgency) pulumi.IntOutput { return v.RetriggerTimeoutMinutes }).(pulumi.IntOutput)
+// Re-trigger acknowledged alerts of this urgency after N minutes; null inherits the workspace default, -1 = never.. Value must be one of `-1`, `10`, `20`, `30`, `40`, `50`, `60`, `90`, `120`, `180`, `240`, `300`, `360`, `720`, `1440`.
+func (o AlertUrgencyOutput) RetriggerTimeoutMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertUrgency) pulumi.IntPtrOutput { return v.RetriggerTimeoutMinutes }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the team this urgency belongs to
