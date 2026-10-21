@@ -44,3 +44,7 @@ updates:
       default-days: 3
     commit-message:
       prefix: "ci"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
