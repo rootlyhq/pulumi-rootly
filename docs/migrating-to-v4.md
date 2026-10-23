@@ -69,7 +69,7 @@ dependencies and requires Go 1.27.1 or later. Provider development uses the same
 The npm package remains `@rootly/pulumi` and requires Node.js 24 or later.
 The generated SDK is built with
 TypeScript 7.0.2 and Node.js 24.13.4 type definitions, with Pulumi 3.262.0.
-Repository builds use Node.js 24.21.0 and Yarn
+Repository builds use Node.js 24.22.1 and Yarn
 1.22.22 and commit the SDK lockfile.
 
 ## Additions and security fixes
