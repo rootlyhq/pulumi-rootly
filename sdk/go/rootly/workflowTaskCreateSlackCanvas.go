@@ -57,7 +57,7 @@ import (
 //					Title:   pulumi.String("Incident {{ incident.sequential_id }}: {{ incident.title }}"),
 //					Content: pulumi.String("# Incident update\n\n**Summary:** {{ incident.summary }}\n"),
 //				},
-//				WorkflowId: canvas.ID().ToIDOutput().ToStringOutput(),
+//				WorkflowId: canvas.ID(),
 //				Name:       pulumi.String("Create incident Canvas"),
 //				Enabled:    pulumi.Bool(false),
 //				Position:   pulumi.Int(1),
