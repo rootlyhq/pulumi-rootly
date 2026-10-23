@@ -14,7 +14,7 @@ no newer direct dependencies within the selected major versions.
 | Pulumi CLI, Go packages, Node.js and Python dependency baselines | 3.262.0 |
 | .NET Pulumi dependency baseline | 3.113.2 |
 | Go | 1.27.1 |
-| Node.js | 24.21.0 |
+| Node.js | 24.22.1 |
 | TypeScript / Node.js types | 7.0.2 / 24.13.4 |
 | Python / .NET SDK | 3.14.7 / 10.0.400 |
 | Yarn Classic | 1.22.22 |
