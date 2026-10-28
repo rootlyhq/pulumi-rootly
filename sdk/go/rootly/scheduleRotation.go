@@ -54,7 +54,7 @@ type ScheduleRotation struct {
 	ScheduleId pulumi.StringOutput `pulumi:"scheduleId"`
 	// Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
 	ScheduleRotationMembers ScheduleRotationScheduleRotationMemberArrayOutput `pulumi:"scheduleRotationMembers"`
-	// handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+	// handoff_time and/or handoffDay may be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
 	ScheduleRotationableAttributes ScheduleRotationScheduleRotationableAttributesOutput `pulumi:"scheduleRotationableAttributes"`
 	// Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
 	ScheduleRotationableType pulumi.StringOutput `pulumi:"scheduleRotationableType"`
@@ -118,7 +118,7 @@ type scheduleRotationState struct {
 	ScheduleId *string `pulumi:"scheduleId"`
 	// Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
 	ScheduleRotationMembers []ScheduleRotationScheduleRotationMember `pulumi:"scheduleRotationMembers"`
-	// handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+	// handoff_time and/or handoffDay may be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
 	ScheduleRotationableAttributes *ScheduleRotationScheduleRotationableAttributes `pulumi:"scheduleRotationableAttributes"`
 	// Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
 	ScheduleRotationableType *string `pulumi:"scheduleRotationableType"`
@@ -147,7 +147,7 @@ type ScheduleRotationState struct {
 	ScheduleId pulumi.StringPtrInput
 	// Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
 	ScheduleRotationMembers ScheduleRotationScheduleRotationMemberArrayInput
-	// handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+	// handoff_time and/or handoffDay may be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
 	ScheduleRotationableAttributes ScheduleRotationScheduleRotationableAttributesPtrInput
 	// Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
 	ScheduleRotationableType pulumi.StringPtrInput
@@ -180,7 +180,7 @@ type scheduleRotationArgs struct {
 	ScheduleId string `pulumi:"scheduleId"`
 	// Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
 	ScheduleRotationMembers []ScheduleRotationScheduleRotationMember `pulumi:"scheduleRotationMembers"`
-	// handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+	// handoff_time and/or handoffDay may be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
 	ScheduleRotationableAttributes ScheduleRotationScheduleRotationableAttributes `pulumi:"scheduleRotationableAttributes"`
 	// Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
 	ScheduleRotationableType *string `pulumi:"scheduleRotationableType"`
@@ -210,7 +210,7 @@ type ScheduleRotationArgs struct {
 	ScheduleId pulumi.StringInput
 	// Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.
 	ScheduleRotationMembers ScheduleRotationScheduleRotationMemberArrayInput
-	// handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+	// handoff_time and/or handoffDay may be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
 	ScheduleRotationableAttributes ScheduleRotationScheduleRotationableAttributesInput
 	// Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.
 	ScheduleRotationableType pulumi.StringPtrInput
@@ -356,7 +356,7 @@ func (o ScheduleRotationOutput) ScheduleRotationMembers() ScheduleRotationSchedu
 	}).(ScheduleRotationScheduleRotationMemberArrayOutput)
 }
 
-// handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+// handoff_time and/or handoffDay may be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
 func (o ScheduleRotationOutput) ScheduleRotationableAttributes() ScheduleRotationScheduleRotationableAttributesOutput {
 	return o.ApplyT(func(v *ScheduleRotation) ScheduleRotationScheduleRotationableAttributesOutput {
 		return v.ScheduleRotationableAttributes

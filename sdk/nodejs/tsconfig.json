@@ -167,6 +167,7 @@
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
+        "userIncidentResponseRole.ts",
         "userOnCallRole.ts",
         "utilities.ts",
         "webhooksEndpoint.ts",

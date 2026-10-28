@@ -282,17 +282,7 @@
                     }
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "conditionableId",
-                        "conditionableType",
-                        "propertyFieldName",
-                        "propertyFieldValue"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "rootly:index/AlertRouteRuleDestination:AlertRouteRuleDestination": {
             "properties": {
@@ -477,14 +467,9 @@
                 }
             },
             "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "alertFieldId",
-                        "templateBody"
-                    ]
-                }
-            }
+            "required": [
+                "alertFieldId"
+            ]
         },
         "rootly:index/AlertsSourceAlertSourceUrgencyRulesAttribute:AlertsSourceAlertSourceUrgencyRulesAttribute": {
             "properties": {
@@ -599,6 +584,7 @@
                     "requiredOutputs": [
                         "identifierJsonPath",
                         "identifierMatchableId",
+                        "identifierMatchableType",
                         "identifierValueRegex"
                     ]
                 }
@@ -2377,6 +2363,14 @@
                     "type": "string",
                     "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
+                "incidentConditionScheduledFor": {
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
+                },
+                "incidentConditionScheduledUntil": {
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
+                },
                 "incidentConditionService": {
                     "type": "string",
                     "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
@@ -2464,6 +2458,8 @@
                         "incidentConditionLabelUseRegexp",
                         "incidentConditionMitigatedAt",
                         "incidentConditionResolvedAt",
+                        "incidentConditionScheduledFor",
+                        "incidentConditionScheduledUntil",
                         "incidentConditionStartedAt",
                         "incidentConditionSummary",
                         "incidentConditionalInactivity",
@@ -2597,17 +2593,25 @@
         },
         "rootly:index/WorkflowAlertTriggerParamsAlertFieldCondition:WorkflowAlertTriggerParamsAlertFieldCondition": {
             "properties": {
-                "id": {
-                    "type": "string"
+                "alertFieldId": {
+                    "type": "string",
+                    "description": "The ID of the alert field.\n"
                 },
-                "name": {
-                    "type": "string"
+                "conditionType": {
+                    "type": "string",
+                    "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "type": "object",
             "required": [
-                "id",
-                "name"
+                "alertFieldId",
+                "conditionType"
             ]
         },
         "rootly:index/WorkflowAlertTriggerParamsAlertPayloadConditions:WorkflowAlertTriggerParamsAlertPayloadConditions": {
@@ -2727,6 +2731,14 @@
                     "type": "string",
                     "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
+                "incidentConditionScheduledFor": {
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
+                },
+                "incidentConditionScheduledUntil": {
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
+                },
                 "incidentConditionService": {
                     "type": "string",
                     "description": "Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.\n"
@@ -2802,7 +2814,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Actions that trigger the workflow. One of custom*fields.\\n\\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created\n"
+                    "description": "Actions that trigger the workflow. One of custom*fields.\\n\\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, scheduled*for*updated, scheduled*until*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created\n"
                 }
             },
             "type": "object",
@@ -2814,6 +2826,8 @@
                         "incidentConditionLabelUseRegexp",
                         "incidentConditionMitigatedAt",
                         "incidentConditionResolvedAt",
+                        "incidentConditionScheduledFor",
+                        "incidentConditionScheduledUntil",
                         "incidentConditionStartedAt",
                         "incidentConditionSummary",
                         "incidentConditionalInactivity",
@@ -2899,6 +2913,14 @@
                     "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
                 "incidentConditionResolvedAt": {
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
+                },
+                "incidentConditionScheduledFor": {
+                    "type": "string",
+                    "description": "Value must be one of `SET`, `UNSET`.\n"
+                },
+                "incidentConditionScheduledUntil": {
                     "type": "string",
                     "description": "Value must be one of `SET`, `UNSET`.\n"
                 },
@@ -3004,6 +3026,8 @@
                         "incidentConditionLabelUseRegexp",
                         "incidentConditionMitigatedAt",
                         "incidentConditionResolvedAt",
+                        "incidentConditionScheduledFor",
+                        "incidentConditionScheduledUntil",
                         "incidentConditionStartedAt",
                         "incidentConditionSummary",
                         "incidentConditionalInactivity",
@@ -11885,6 +11909,10 @@
                     "type": "string",
                     "description": "ID for the default alert urgency assigned to this alert source\n"
                 },
+                "attachOwnerGroupsToAlerts": {
+                    "type": "boolean",
+                    "description": "Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.\n"
+                },
                 "deduplicateAlertsByKey": {
                     "type": "boolean",
                     "description": "Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false\n"
@@ -11946,6 +11974,7 @@
                 "alertSourceFieldsAttributes",
                 "alertTemplateAttributes",
                 "alertUrgencyId",
+                "attachOwnerGroupsToAlerts",
                 "deduplicateAlertsByKey",
                 "deduplicationKeyPath",
                 "deduplicationKeyRegexp",
@@ -11979,6 +12008,10 @@
                 "alertUrgencyId": {
                     "type": "string",
                     "description": "ID for the default alert urgency assigned to this alert source\n"
+                },
+                "attachOwnerGroupsToAlerts": {
+                    "type": "boolean",
+                    "description": "Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.\n"
                 },
                 "deduplicateAlertsByKey": {
                     "type": "boolean",
@@ -12057,6 +12090,10 @@
                     "alertUrgencyId": {
                         "type": "string",
                         "description": "ID for the default alert urgency assigned to this alert source\n"
+                    },
+                    "attachOwnerGroupsToAlerts": {
+                        "type": "boolean",
+                        "description": "Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.\n"
                     },
                     "deduplicateAlertsByKey": {
                         "type": "boolean",
@@ -15644,7 +15681,7 @@
             "properties": {
                 "backstageId": {
                     "type": "string",
-                    "description": "The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name\n"
+                    "description": "The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "color": {
                     "type": "string",
@@ -15652,7 +15689,7 @@
                 },
                 "cortexId": {
                     "type": "string",
-                    "description": "The Cortex group id associated to this functionality\n"
+                    "description": "The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "description": {
                     "type": "string",
@@ -15671,7 +15708,7 @@
                 },
                 "externalId": {
                     "type": "string",
-                    "description": "The external id associated to this functionality\n"
+                    "description": "The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "managedBy": {
                     "type": "string",
@@ -15690,11 +15727,11 @@
                 },
                 "opsgenieId": {
                     "type": "string",
-                    "description": "The Opsgenie service id associated to this functionality\n"
+                    "description": "The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "opsgenieTeamId": {
                     "type": "string",
-                    "description": "The Opsgenie team id associated to this functionality\n"
+                    "description": "The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "ownerGroupIds": {
                     "type": "array",
@@ -15712,7 +15749,7 @@
                 },
                 "pagerdutyId": {
                     "type": "string",
-                    "description": "The PagerDuty service id associated to this functionality\n"
+                    "description": "The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "position": {
                     "type": "integer",
@@ -15784,7 +15821,7 @@
             "inputProperties": {
                 "backstageId": {
                     "type": "string",
-                    "description": "The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name\n"
+                    "description": "The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "color": {
                     "type": "string",
@@ -15792,7 +15829,7 @@
                 },
                 "cortexId": {
                     "type": "string",
-                    "description": "The Cortex group id associated to this functionality\n"
+                    "description": "The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "description": {
                     "type": "string",
@@ -15811,7 +15848,7 @@
                 },
                 "externalId": {
                     "type": "string",
-                    "description": "The external id associated to this functionality\n"
+                    "description": "The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "name": {
                     "type": "string",
@@ -15826,11 +15863,11 @@
                 },
                 "opsgenieId": {
                     "type": "string",
-                    "description": "The Opsgenie service id associated to this functionality\n"
+                    "description": "The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "opsgenieTeamId": {
                     "type": "string",
-                    "description": "The Opsgenie team id associated to this functionality\n"
+                    "description": "The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "ownerGroupIds": {
                     "type": "array",
@@ -15848,7 +15885,7 @@
                 },
                 "pagerdutyId": {
                     "type": "string",
-                    "description": "The PagerDuty service id associated to this functionality\n"
+                    "description": "The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "position": {
                     "type": "integer",
@@ -15901,7 +15938,7 @@
                 "properties": {
                     "backstageId": {
                         "type": "string",
-                        "description": "The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name\n"
+                        "description": "The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.\n"
                     },
                     "color": {
                         "type": "string",
@@ -15909,7 +15946,7 @@
                     },
                     "cortexId": {
                         "type": "string",
-                        "description": "The Cortex group id associated to this functionality\n"
+                        "description": "The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                     },
                     "description": {
                         "type": "string",
@@ -15928,7 +15965,7 @@
                     },
                     "externalId": {
                         "type": "string",
-                        "description": "The external id associated to this functionality\n"
+                        "description": "The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                     },
                     "managedBy": {
                         "type": "string",
@@ -15947,11 +15984,11 @@
                     },
                     "opsgenieId": {
                         "type": "string",
-                        "description": "The Opsgenie service id associated to this functionality\n"
+                        "description": "The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                     },
                     "opsgenieTeamId": {
                         "type": "string",
-                        "description": "The Opsgenie team id associated to this functionality\n"
+                        "description": "The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                     },
                     "ownerGroupIds": {
                         "type": "array",
@@ -15969,7 +16006,7 @@
                     },
                     "pagerdutyId": {
                         "type": "string",
-                        "description": "The PagerDuty service id associated to this functionality\n"
+                        "description": "The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.\n"
                     },
                     "position": {
                         "type": "integer",
@@ -19736,64 +19773,64 @@
             "properties": {
                 "activeAllWeek": {
                     "type": "boolean",
-                    "description": "Schedule rotation active all week?\n"
+                    "description": "Schedule rotation active all week?"
                 },
                 "activeDays": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`."
                 },
                 "activeTimeAttributes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/rootly:index/ScheduleRotationActiveTimeAttribute:ScheduleRotationActiveTimeAttribute"
                     },
-                    "description": "Schedule rotation's active times.\n"
+                    "description": "Schedule rotation's active times."
                 },
                 "activeTimeType": {
                     "type": "string",
-                    "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sameTime`\" pulumi-lang-dotnet=\"`SameTime`\" pulumi-lang-go=\"`sameTime`\" pulumi-lang-python=\"`same_time`\" pulumi-lang-yaml=\"`sameTime`\" pulumi-lang-java=\"`sameTime`\" pulumi-lang-hcl=\"`same_time`\"\u003e`sameTime`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\" pulumi-lang-hcl=\"`custom`\"\u003e`custom`\u003c/span\u003e. The value chosen will override \u003cspan pulumi-lang-nodejs=\"`activeTimeAttributes`\" pulumi-lang-dotnet=\"`ActiveTimeAttributes`\" pulumi-lang-go=\"`activeTimeAttributes`\" pulumi-lang-python=\"`active_time_attributes`\" pulumi-lang-yaml=\"`activeTimeAttributes`\" pulumi-lang-java=\"`activeTimeAttributes`\" pulumi-lang-hcl=\"`active_time_attributes`\"\u003e`activeTimeAttributes`\u003c/span\u003e in any \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-go=\"`ScheduleRotationActiveDay`\" pulumi-lang-python=\"`ScheduleRotationActiveDay`\" pulumi-lang-yaml=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-java=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-hcl=\"`rootly_schedule_rotation_active_day`\"\u003e`rootly.ScheduleRotationActiveDay`\u003c/span\u003e resources linked to this \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotation`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotation`\" pulumi-lang-go=\"`ScheduleRotation`\" pulumi-lang-python=\"`ScheduleRotation`\" pulumi-lang-yaml=\"`rootly.ScheduleRotation`\" pulumi-lang-java=\"`rootly.ScheduleRotation`\" pulumi-lang-hcl=\"`rootly_schedule_rotation`\"\u003e`rootly.ScheduleRotation`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e.\n"
+                    "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sameTime`\" pulumi-lang-dotnet=\"`SameTime`\" pulumi-lang-go=\"`sameTime`\" pulumi-lang-python=\"`same_time`\" pulumi-lang-yaml=\"`sameTime`\" pulumi-lang-java=\"`sameTime`\" pulumi-lang-hcl=\"`same_time`\"\u003e`sameTime`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\" pulumi-lang-hcl=\"`custom`\"\u003e`custom`\u003c/span\u003e. The value chosen will override \u003cspan pulumi-lang-nodejs=\"`activeTimeAttributes`\" pulumi-lang-dotnet=\"`ActiveTimeAttributes`\" pulumi-lang-go=\"`activeTimeAttributes`\" pulumi-lang-python=\"`active_time_attributes`\" pulumi-lang-yaml=\"`activeTimeAttributes`\" pulumi-lang-java=\"`activeTimeAttributes`\" pulumi-lang-hcl=\"`active_time_attributes`\"\u003e`activeTimeAttributes`\u003c/span\u003e in any \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-go=\"`ScheduleRotationActiveDay`\" pulumi-lang-python=\"`ScheduleRotationActiveDay`\" pulumi-lang-yaml=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-java=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-hcl=\"`rootly_schedule_rotation_active_day`\"\u003e`rootly.ScheduleRotationActiveDay`\u003c/span\u003e resources linked to this \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotation`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotation`\" pulumi-lang-go=\"`ScheduleRotation`\" pulumi-lang-python=\"`ScheduleRotation`\" pulumi-lang-yaml=\"`rootly.ScheduleRotation`\" pulumi-lang-java=\"`rootly.ScheduleRotation`\" pulumi-lang-hcl=\"`rootly_schedule_rotation`\"\u003e`rootly.ScheduleRotation`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e."
                 },
                 "endTime": {
                     "type": "string",
-                    "description": "ISO8601 date and time when rotation ends. Shifts will only be created before this time.\n"
+                    "description": "ISO8601 date and time when rotation ends. Shifts will only be created before this time."
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the schedule rotation.\n"
+                    "description": "The name of the schedule rotation."
                 },
                 "position": {
                     "type": "integer",
-                    "description": "Position of the schedule rotation.\n"
+                    "description": "Position of the schedule rotation."
                 },
                 "scheduleId": {
                     "type": "string",
-                    "description": "The ID of parent schedule.\n"
+                    "description": "The ID of parent schedule."
                 },
                 "scheduleRotationMembers": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/rootly:index/ScheduleRotationScheduleRotationMember:ScheduleRotationScheduleRotationMember"
                     },
-                    "description": "Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.\n"
+                    "description": "Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled."
                 },
                 "scheduleRotationableAttributes": {
                     "$ref": "#/types/rootly:index/ScheduleRotationScheduleRotationableAttributes:ScheduleRotationScheduleRotationableAttributes",
-                    "description": "handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes\n"
+                    "description": "handoff_time and/or\u003cspan pulumi-lang-nodejs=\" handoffDay \" pulumi-lang-dotnet=\" HandoffDay \" pulumi-lang-go=\" handoffDay \" pulumi-lang-python=\" handoff_day \" pulumi-lang-yaml=\" handoffDay \" pulumi-lang-java=\" handoffDay \" pulumi-lang-hcl=\" handoff_day \"\u003e handoffDay \u003c/span\u003emay be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes"
                 },
                 "scheduleRotationableType": {
                     "type": "string",
-                    "description": "Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.\n"
+                    "description": "Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`."
                 },
                 "startTime": {
                     "type": "string",
-                    "description": "ISO8601 date and time when rotation starts. Shifts will only be created after this time.\n"
+                    "description": "ISO8601 date and time when rotation starts. Shifts will only be created after this time."
                 },
                 "timeZone": {
                     "type": "string",
-                    "description": "A valid IANA time zone name.\n"
+                    "description": "A valid IANA time zone name."
                 }
             },
             "required": [
@@ -19812,64 +19849,64 @@
             "inputProperties": {
                 "activeAllWeek": {
                     "type": "boolean",
-                    "description": "Schedule rotation active all week?\n"
+                    "description": "Schedule rotation active all week?"
                 },
                 "activeDays": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                    "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`."
                 },
                 "activeTimeAttributes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/rootly:index/ScheduleRotationActiveTimeAttribute:ScheduleRotationActiveTimeAttribute"
                     },
-                    "description": "Schedule rotation's active times.\n"
+                    "description": "Schedule rotation's active times."
                 },
                 "activeTimeType": {
                     "type": "string",
-                    "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sameTime`\" pulumi-lang-dotnet=\"`SameTime`\" pulumi-lang-go=\"`sameTime`\" pulumi-lang-python=\"`same_time`\" pulumi-lang-yaml=\"`sameTime`\" pulumi-lang-java=\"`sameTime`\" pulumi-lang-hcl=\"`same_time`\"\u003e`sameTime`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\" pulumi-lang-hcl=\"`custom`\"\u003e`custom`\u003c/span\u003e. The value chosen will override \u003cspan pulumi-lang-nodejs=\"`activeTimeAttributes`\" pulumi-lang-dotnet=\"`ActiveTimeAttributes`\" pulumi-lang-go=\"`activeTimeAttributes`\" pulumi-lang-python=\"`active_time_attributes`\" pulumi-lang-yaml=\"`activeTimeAttributes`\" pulumi-lang-java=\"`activeTimeAttributes`\" pulumi-lang-hcl=\"`active_time_attributes`\"\u003e`activeTimeAttributes`\u003c/span\u003e in any \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-go=\"`ScheduleRotationActiveDay`\" pulumi-lang-python=\"`ScheduleRotationActiveDay`\" pulumi-lang-yaml=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-java=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-hcl=\"`rootly_schedule_rotation_active_day`\"\u003e`rootly.ScheduleRotationActiveDay`\u003c/span\u003e resources linked to this \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotation`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotation`\" pulumi-lang-go=\"`ScheduleRotation`\" pulumi-lang-python=\"`ScheduleRotation`\" pulumi-lang-yaml=\"`rootly.ScheduleRotation`\" pulumi-lang-java=\"`rootly.ScheduleRotation`\" pulumi-lang-hcl=\"`rootly_schedule_rotation`\"\u003e`rootly.ScheduleRotation`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e.\n"
+                    "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sameTime`\" pulumi-lang-dotnet=\"`SameTime`\" pulumi-lang-go=\"`sameTime`\" pulumi-lang-python=\"`same_time`\" pulumi-lang-yaml=\"`sameTime`\" pulumi-lang-java=\"`sameTime`\" pulumi-lang-hcl=\"`same_time`\"\u003e`sameTime`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\" pulumi-lang-hcl=\"`custom`\"\u003e`custom`\u003c/span\u003e. The value chosen will override \u003cspan pulumi-lang-nodejs=\"`activeTimeAttributes`\" pulumi-lang-dotnet=\"`ActiveTimeAttributes`\" pulumi-lang-go=\"`activeTimeAttributes`\" pulumi-lang-python=\"`active_time_attributes`\" pulumi-lang-yaml=\"`activeTimeAttributes`\" pulumi-lang-java=\"`activeTimeAttributes`\" pulumi-lang-hcl=\"`active_time_attributes`\"\u003e`activeTimeAttributes`\u003c/span\u003e in any \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-go=\"`ScheduleRotationActiveDay`\" pulumi-lang-python=\"`ScheduleRotationActiveDay`\" pulumi-lang-yaml=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-java=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-hcl=\"`rootly_schedule_rotation_active_day`\"\u003e`rootly.ScheduleRotationActiveDay`\u003c/span\u003e resources linked to this \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotation`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotation`\" pulumi-lang-go=\"`ScheduleRotation`\" pulumi-lang-python=\"`ScheduleRotation`\" pulumi-lang-yaml=\"`rootly.ScheduleRotation`\" pulumi-lang-java=\"`rootly.ScheduleRotation`\" pulumi-lang-hcl=\"`rootly_schedule_rotation`\"\u003e`rootly.ScheduleRotation`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e."
                 },
                 "endTime": {
                     "type": "string",
-                    "description": "ISO8601 date and time when rotation ends. Shifts will only be created before this time.\n"
+                    "description": "ISO8601 date and time when rotation ends. Shifts will only be created before this time."
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the schedule rotation.\n"
+                    "description": "The name of the schedule rotation."
                 },
                 "position": {
                     "type": "integer",
-                    "description": "Position of the schedule rotation.\n"
+                    "description": "Position of the schedule rotation."
                 },
                 "scheduleId": {
                     "type": "string",
-                    "description": "The ID of parent schedule.\n"
+                    "description": "The ID of parent schedule."
                 },
                 "scheduleRotationMembers": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/rootly:index/ScheduleRotationScheduleRotationMember:ScheduleRotationScheduleRotationMember"
                     },
-                    "description": "Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.\n"
+                    "description": "Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled."
                 },
                 "scheduleRotationableAttributes": {
                     "$ref": "#/types/rootly:index/ScheduleRotationScheduleRotationableAttributes:ScheduleRotationScheduleRotationableAttributes",
-                    "description": "handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes\n"
+                    "description": "handoff_time and/or\u003cspan pulumi-lang-nodejs=\" handoffDay \" pulumi-lang-dotnet=\" HandoffDay \" pulumi-lang-go=\" handoffDay \" pulumi-lang-python=\" handoff_day \" pulumi-lang-yaml=\" handoffDay \" pulumi-lang-java=\" handoffDay \" pulumi-lang-hcl=\" handoff_day \"\u003e handoffDay \u003c/span\u003emay be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes"
                 },
                 "scheduleRotationableType": {
                     "type": "string",
-                    "description": "Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.\n"
+                    "description": "Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`."
                 },
                 "startTime": {
                     "type": "string",
-                    "description": "ISO8601 date and time when rotation starts. Shifts will only be created after this time.\n"
+                    "description": "ISO8601 date and time when rotation starts. Shifts will only be created after this time."
                 },
                 "timeZone": {
                     "type": "string",
-                    "description": "A valid IANA time zone name.\n"
+                    "description": "A valid IANA time zone name."
                 }
             },
             "requiredInputs": [
@@ -19881,64 +19918,64 @@
                 "properties": {
                     "activeAllWeek": {
                         "type": "boolean",
-                        "description": "Schedule rotation active all week?\n"
+                        "description": "Schedule rotation active all week?"
                     },
                     "activeDays": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                        "description": "Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`."
                     },
                     "activeTimeAttributes": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/rootly:index/ScheduleRotationActiveTimeAttribute:ScheduleRotationActiveTimeAttribute"
                         },
-                        "description": "Schedule rotation's active times.\n"
+                        "description": "Schedule rotation's active times."
                     },
                     "activeTimeType": {
                         "type": "string",
-                        "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sameTime`\" pulumi-lang-dotnet=\"`SameTime`\" pulumi-lang-go=\"`sameTime`\" pulumi-lang-python=\"`same_time`\" pulumi-lang-yaml=\"`sameTime`\" pulumi-lang-java=\"`sameTime`\" pulumi-lang-hcl=\"`same_time`\"\u003e`sameTime`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\" pulumi-lang-hcl=\"`custom`\"\u003e`custom`\u003c/span\u003e. The value chosen will override \u003cspan pulumi-lang-nodejs=\"`activeTimeAttributes`\" pulumi-lang-dotnet=\"`ActiveTimeAttributes`\" pulumi-lang-go=\"`activeTimeAttributes`\" pulumi-lang-python=\"`active_time_attributes`\" pulumi-lang-yaml=\"`activeTimeAttributes`\" pulumi-lang-java=\"`activeTimeAttributes`\" pulumi-lang-hcl=\"`active_time_attributes`\"\u003e`activeTimeAttributes`\u003c/span\u003e in any \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-go=\"`ScheduleRotationActiveDay`\" pulumi-lang-python=\"`ScheduleRotationActiveDay`\" pulumi-lang-yaml=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-java=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-hcl=\"`rootly_schedule_rotation_active_day`\"\u003e`rootly.ScheduleRotationActiveDay`\u003c/span\u003e resources linked to this \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotation`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotation`\" pulumi-lang-go=\"`ScheduleRotation`\" pulumi-lang-python=\"`ScheduleRotation`\" pulumi-lang-yaml=\"`rootly.ScheduleRotation`\" pulumi-lang-java=\"`rootly.ScheduleRotation`\" pulumi-lang-hcl=\"`rootly_schedule_rotation`\"\u003e`rootly.ScheduleRotation`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e.\n"
+                        "description": "Value must be one of \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sameTime`\" pulumi-lang-dotnet=\"`SameTime`\" pulumi-lang-go=\"`sameTime`\" pulumi-lang-python=\"`same_time`\" pulumi-lang-yaml=\"`sameTime`\" pulumi-lang-java=\"`sameTime`\" pulumi-lang-hcl=\"`same_time`\"\u003e`sameTime`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\" pulumi-lang-hcl=\"`custom`\"\u003e`custom`\u003c/span\u003e. The value chosen will override \u003cspan pulumi-lang-nodejs=\"`activeTimeAttributes`\" pulumi-lang-dotnet=\"`ActiveTimeAttributes`\" pulumi-lang-go=\"`activeTimeAttributes`\" pulumi-lang-python=\"`active_time_attributes`\" pulumi-lang-yaml=\"`activeTimeAttributes`\" pulumi-lang-java=\"`activeTimeAttributes`\" pulumi-lang-hcl=\"`active_time_attributes`\"\u003e`activeTimeAttributes`\u003c/span\u003e in any \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-go=\"`ScheduleRotationActiveDay`\" pulumi-lang-python=\"`ScheduleRotationActiveDay`\" pulumi-lang-yaml=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-java=\"`rootly.ScheduleRotationActiveDay`\" pulumi-lang-hcl=\"`rootly_schedule_rotation_active_day`\"\u003e`rootly.ScheduleRotationActiveDay`\u003c/span\u003e resources linked to this \u003cspan pulumi-lang-nodejs=\"`rootly.ScheduleRotation`\" pulumi-lang-dotnet=\"`rootly.ScheduleRotation`\" pulumi-lang-go=\"`ScheduleRotation`\" pulumi-lang-python=\"`ScheduleRotation`\" pulumi-lang-yaml=\"`rootly.ScheduleRotation`\" pulumi-lang-java=\"`rootly.ScheduleRotation`\" pulumi-lang-hcl=\"`rootly_schedule_rotation`\"\u003e`rootly.ScheduleRotation`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`allDay`\" pulumi-lang-dotnet=\"`AllDay`\" pulumi-lang-go=\"`allDay`\" pulumi-lang-python=\"`all_day`\" pulumi-lang-yaml=\"`allDay`\" pulumi-lang-java=\"`allDay`\" pulumi-lang-hcl=\"`all_day`\"\u003e`allDay`\u003c/span\u003e."
                     },
                     "endTime": {
                         "type": "string",
-                        "description": "ISO8601 date and time when rotation ends. Shifts will only be created before this time.\n"
+                        "description": "ISO8601 date and time when rotation ends. Shifts will only be created before this time."
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the schedule rotation.\n"
+                        "description": "The name of the schedule rotation."
                     },
                     "position": {
                         "type": "integer",
-                        "description": "Position of the schedule rotation.\n"
+                        "description": "Position of the schedule rotation."
                     },
                     "scheduleId": {
                         "type": "string",
-                        "description": "The ID of parent schedule.\n"
+                        "description": "The ID of parent schedule."
                     },
                     "scheduleRotationMembers": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/rootly:index/ScheduleRotationScheduleRotationMember:ScheduleRotationScheduleRotationMember"
                         },
-                        "description": "Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled.\n"
+                        "description": "Schedule rotation members. You can only add schedule rotation members if your account has schedule nesting feature enabled."
                     },
                     "scheduleRotationableAttributes": {
                         "$ref": "#/types/rootly:index/ScheduleRotationScheduleRotationableAttributes:ScheduleRotationScheduleRotationableAttributes",
-                        "description": "handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes\n"
+                        "description": "handoff_time and/or\u003cspan pulumi-lang-nodejs=\" handoffDay \" pulumi-lang-dotnet=\" HandoffDay \" pulumi-lang-go=\" handoffDay \" pulumi-lang-python=\" handoff_day \" pulumi-lang-yaml=\" handoffDay \" pulumi-lang-java=\" handoffDay \" pulumi-lang-hcl=\" handoff_day \"\u003e handoffDay \u003c/span\u003emay be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes"
                     },
                     "scheduleRotationableType": {
                         "type": "string",
-                        "description": "Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`.\n"
+                        "description": "Schedule rotation type. Value must be one of `ScheduleDailyRotation`, `ScheduleWeeklyRotation`, `ScheduleBiweeklyRotation`, `ScheduleMonthlyRotation`, `ScheduleCustomRotation`."
                     },
                     "startTime": {
                         "type": "string",
-                        "description": "ISO8601 date and time when rotation starts. Shifts will only be created after this time.\n"
+                        "description": "ISO8601 date and time when rotation starts. Shifts will only be created after this time."
                     },
                     "timeZone": {
                         "type": "string",
-                        "description": "A valid IANA time zone name.\n"
+                        "description": "A valid IANA time zone name."
                     }
                 },
                 "type": "object"
@@ -20172,7 +20209,7 @@
                 },
                 "backstageId": {
                     "type": "string",
-                    "description": "The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name\n"
+                    "description": "The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "color": {
                     "type": "string",
@@ -20180,7 +20217,7 @@
                 },
                 "cortexId": {
                     "type": "string",
-                    "description": "The Cortex group id associated to this service\n"
+                    "description": "The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "description": {
                     "type": "string",
@@ -20199,7 +20236,7 @@
                 },
                 "externalId": {
                     "type": "string",
-                    "description": "The external id associated to this service\n"
+                    "description": "The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "githubRepositoryBranch": {
                     "type": "string",
@@ -20246,7 +20283,7 @@
                 },
                 "opsgenieId": {
                     "type": "string",
-                    "description": "The Opsgenie service id associated to this service\n"
+                    "description": "The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "ownerGroupIds": {
                     "type": "array",
@@ -20264,7 +20301,7 @@
                 },
                 "pagerdutyId": {
                     "type": "string",
-                    "description": "The PagerDuty service id associated to this service\n"
+                    "description": "The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "position": {
                     "type": "integer",
@@ -20318,10 +20355,13 @@
                 "alertUrgencyId",
                 "alertsEmailAddress",
                 "alertsEmailEnabled",
+                "backstageId",
                 "color",
+                "cortexId",
                 "description",
                 "environmentIds",
                 "escalationPolicyId",
+                "externalId",
                 "githubRepositoryBranch",
                 "githubRepositoryName",
                 "gitlabRepositoryBranch",
@@ -20331,8 +20371,10 @@
                 "kubernetesDeploymentName",
                 "managedBy",
                 "name",
+                "opsgenieId",
                 "ownerGroupIds",
                 "ownerUserIds",
+                "pagerdutyId",
                 "position",
                 "publicDescription",
                 "serviceIds",
@@ -20361,7 +20403,7 @@
                 },
                 "backstageId": {
                     "type": "string",
-                    "description": "The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name\n"
+                    "description": "The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "color": {
                     "type": "string",
@@ -20369,7 +20411,7 @@
                 },
                 "cortexId": {
                     "type": "string",
-                    "description": "The Cortex group id associated to this service\n"
+                    "description": "The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "description": {
                     "type": "string",
@@ -20388,7 +20430,7 @@
                 },
                 "externalId": {
                     "type": "string",
-                    "description": "The external id associated to this service\n"
+                    "description": "The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "githubRepositoryBranch": {
                     "type": "string",
@@ -20431,7 +20473,7 @@
                 },
                 "opsgenieId": {
                     "type": "string",
-                    "description": "The Opsgenie service id associated to this service\n"
+                    "description": "The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "ownerGroupIds": {
                     "type": "array",
@@ -20449,7 +20491,7 @@
                 },
                 "pagerdutyId": {
                     "type": "string",
-                    "description": "The PagerDuty service id associated to this service\n"
+                    "description": "The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                 },
                 "position": {
                     "type": "integer",
@@ -20522,7 +20564,7 @@
                     },
                     "backstageId": {
                         "type": "string",
-                        "description": "The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name\n"
+                        "description": "The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.\n"
                     },
                     "color": {
                         "type": "string",
@@ -20530,7 +20572,7 @@
                     },
                     "cortexId": {
                         "type": "string",
-                        "description": "The Cortex group id associated to this service\n"
+                        "description": "The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                     },
                     "description": {
                         "type": "string",
@@ -20549,7 +20591,7 @@
                     },
                     "externalId": {
                         "type": "string",
-                        "description": "The external id associated to this service\n"
+                        "description": "The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                     },
                     "githubRepositoryBranch": {
                         "type": "string",
@@ -20596,7 +20638,7 @@
                     },
                     "opsgenieId": {
                         "type": "string",
-                        "description": "The Opsgenie service id associated to this service\n"
+                        "description": "The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                     },
                     "ownerGroupIds": {
                         "type": "array",
@@ -20614,7 +20656,7 @@
                     },
                     "pagerdutyId": {
                         "type": "string",
-                        "description": "The PagerDuty service id associated to this service\n"
+                        "description": "The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.\n"
                     },
                     "position": {
                         "type": "integer",
@@ -22462,6 +22504,51 @@
                 "type": "object"
             }
         },
+        "rootly:index/userIncidentResponseRole:UserIncidentResponseRole": {
+            "description": "Manages a user's incident response role assignment.\n\n## Example Usage\n\n```shell\ndata \"rootly_user\" \"john\" {\n  email = \"john@acme.com\"\n}\n\ndata \"rootly_role\" \"user\" {\n  slug = \"user\"\n}\n\nresource \"rootly_user_incident_response_role\" \"john\" {\n  user_id = data.rootly_user.john.id\n  role_id = data.rootly_role.user.id\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.UserIncidentResponseRole \" pulumi-lang-dotnet=\"\nrootly.UserIncidentResponseRole \" pulumi-lang-go=\"\nUserIncidentResponseRole \" pulumi-lang-python=\"\nUserIncidentResponseRole \" pulumi-lang-yaml=\"\nrootly.UserIncidentResponseRole \" pulumi-lang-java=\"\nrootly.UserIncidentResponseRole \" pulumi-lang-hcl=\"\nrootly_user_incident_response_role \"\u003e\nrootly.UserIncidentResponseRole \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/userIncidentResponseRole:UserIncidentResponseRole primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "roleId": {
+                    "type": "string",
+                    "description": "The ID of the incident response role to assign to the user. Role IDs can be found using data source \u003cspan pulumi-lang-nodejs=\"`rootly.Role`\" pulumi-lang-dotnet=\"`rootly.Role`\" pulumi-lang-go=\"`Role`\" pulumi-lang-python=\"`Role`\" pulumi-lang-yaml=\"`rootly.Role`\" pulumi-lang-java=\"`rootly.Role`\" pulumi-lang-hcl=\"`rootly_role`\"\u003e`rootly.Role`\u003c/span\u003e.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user.\n"
+                }
+            },
+            "required": [
+                "roleId",
+                "userId"
+            ],
+            "inputProperties": {
+                "roleId": {
+                    "type": "string",
+                    "description": "The ID of the incident response role to assign to the user. Role IDs can be found using data source \u003cspan pulumi-lang-nodejs=\"`rootly.Role`\" pulumi-lang-dotnet=\"`rootly.Role`\" pulumi-lang-go=\"`Role`\" pulumi-lang-python=\"`Role`\" pulumi-lang-yaml=\"`rootly.Role`\" pulumi-lang-java=\"`rootly.Role`\" pulumi-lang-hcl=\"`rootly_role`\"\u003e`rootly.Role`\u003c/span\u003e.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the user.\n"
+                }
+            },
+            "requiredInputs": [
+                "roleId",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserIncidentResponseRole resources.\n",
+                "properties": {
+                    "roleId": {
+                        "type": "string",
+                        "description": "The ID of the incident response role to assign to the user. Role IDs can be found using data source \u003cspan pulumi-lang-nodejs=\"`rootly.Role`\" pulumi-lang-dotnet=\"`rootly.Role`\" pulumi-lang-go=\"`Role`\" pulumi-lang-python=\"`Role`\" pulumi-lang-yaml=\"`rootly.Role`\" pulumi-lang-java=\"`rootly.Role`\" pulumi-lang-hcl=\"`rootly_role`\"\u003e`rootly.Role`\u003c/span\u003e.\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The ID of the user.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "rootly:index/userOnCallRole:UserOnCallRole": {
             "description": "Manages the on-call role assigned to a Rootly user. The resource id is the user id. Destroying it stops managing the assignment but leaves the user's on-call role unchanged.\n\n## Example Usage\n\n```shell\ndata \"rootly_user\" \"john\" {\n  email = \"john@acme.com\"\n}\n\nresource \"rootly_user_on_call_role\" \"john\" {\n  user_id         = data.rootly_user.john.id\n  on_call_role_id = \"54725583-b47a-4397-aa50-c6b1db3c1da0\"\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.UserOnCallRole \" pulumi-lang-dotnet=\"\nrootly.UserOnCallRole \" pulumi-lang-go=\"\nUserOnCallRole \" pulumi-lang-python=\"\nUserOnCallRole \" pulumi-lang-yaml=\"\nrootly.UserOnCallRole \" pulumi-lang-java=\"\nrootly.UserOnCallRole \" pulumi-lang-hcl=\"\nrootly_user_on_call_role \"\u003e\nrootly.UserOnCallRole \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/userOnCallRole:UserOnCallRole primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
@@ -22684,6 +22771,13 @@
                         "type": "string"
                     }
                 },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                },
                 "groupIds": {
                     "type": "array",
                     "items": {
@@ -22733,6 +22827,10 @@
                     },
                     "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
+                "runOncePerResource": {
+                    "type": "boolean",
+                    "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
+                },
                 "serviceIds": {
                     "type": "array",
                     "items": {
@@ -22778,6 +22876,7 @@
                 "failureNotificationChannels",
                 "failureNotificationMode",
                 "functionalityIds",
+                "groupAssignmentIds",
                 "groupIds",
                 "incidentRoleIds",
                 "incidentTypeIds",
@@ -22788,6 +22887,7 @@
                 "repeatConditionNumberOfRepeats",
                 "repeatEveryDuration",
                 "repeatOns",
+                "runOncePerResource",
                 "serviceIds",
                 "severityIds",
                 "slug",
@@ -22845,6 +22945,13 @@
                         "type": "string"
                     }
                 },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                },
                 "groupIds": {
                     "type": "array",
                     "items": {
@@ -22893,6 +23000,10 @@
                         "type": "string"
                     },
                     "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                },
+                "runOncePerResource": {
+                    "type": "boolean",
+                    "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -22980,6 +23091,13 @@
                             "type": "string"
                         }
                     },
+                    "groupAssignmentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                    },
                     "groupIds": {
                         "type": "array",
                         "items": {
@@ -23028,6 +23146,10 @@
                             "type": "string"
                         },
                         "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                    },
+                    "runOncePerResource": {
+                        "type": "boolean",
+                        "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
                     },
                     "serviceIds": {
                         "type": "array",
@@ -24199,6 +24321,13 @@
                         "type": "string"
                     }
                 },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                },
                 "groupIds": {
                     "type": "array",
                     "items": {
@@ -24248,6 +24377,10 @@
                     },
                     "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
+                "runOncePerResource": {
+                    "type": "boolean",
+                    "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
+                },
                 "serviceIds": {
                     "type": "array",
                     "items": {
@@ -24293,6 +24426,7 @@
                 "failureNotificationChannels",
                 "failureNotificationMode",
                 "functionalityIds",
+                "groupAssignmentIds",
                 "groupIds",
                 "incidentRoleIds",
                 "incidentTypeIds",
@@ -24303,6 +24437,7 @@
                 "repeatConditionNumberOfRepeats",
                 "repeatEveryDuration",
                 "repeatOns",
+                "runOncePerResource",
                 "serviceIds",
                 "severityIds",
                 "slug",
@@ -24360,6 +24495,13 @@
                         "type": "string"
                     }
                 },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                },
                 "groupIds": {
                     "type": "array",
                     "items": {
@@ -24408,6 +24550,10 @@
                         "type": "string"
                     },
                     "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                },
+                "runOncePerResource": {
+                    "type": "boolean",
+                    "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -24495,6 +24641,13 @@
                             "type": "string"
                         }
                     },
+                    "groupAssignmentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                    },
                     "groupIds": {
                         "type": "array",
                         "items": {
@@ -24543,6 +24696,10 @@
                             "type": "string"
                         },
                         "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                    },
+                    "runOncePerResource": {
+                        "type": "boolean",
+                        "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
                     },
                     "serviceIds": {
                         "type": "array",
@@ -24633,6 +24790,13 @@
                         "type": "string"
                     }
                 },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                },
                 "groupIds": {
                     "type": "array",
                     "items": {
@@ -24682,6 +24846,10 @@
                     },
                     "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
+                "runOncePerResource": {
+                    "type": "boolean",
+                    "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
+                },
                 "serviceIds": {
                     "type": "array",
                     "items": {
@@ -24727,6 +24895,7 @@
                 "failureNotificationChannels",
                 "failureNotificationMode",
                 "functionalityIds",
+                "groupAssignmentIds",
                 "groupIds",
                 "incidentRoleIds",
                 "incidentTypeIds",
@@ -24737,6 +24906,7 @@
                 "repeatConditionNumberOfRepeats",
                 "repeatEveryDuration",
                 "repeatOns",
+                "runOncePerResource",
                 "serviceIds",
                 "severityIds",
                 "slug",
@@ -24794,6 +24964,13 @@
                         "type": "string"
                     }
                 },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                },
                 "groupIds": {
                     "type": "array",
                     "items": {
@@ -24842,6 +25019,10 @@
                         "type": "string"
                     },
                     "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                },
+                "runOncePerResource": {
+                    "type": "boolean",
+                    "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -24929,6 +25110,13 @@
                             "type": "string"
                         }
                     },
+                    "groupAssignmentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                    },
                     "groupIds": {
                         "type": "array",
                         "items": {
@@ -24977,6 +25165,10 @@
                             "type": "string"
                         },
                         "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                    },
+                    "runOncePerResource": {
+                        "type": "boolean",
+                        "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
                     },
                     "serviceIds": {
                         "type": "array",
@@ -25067,6 +25259,13 @@
                         "type": "string"
                     }
                 },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                },
                 "groupIds": {
                     "type": "array",
                     "items": {
@@ -25116,6 +25315,10 @@
                     },
                     "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
+                "runOncePerResource": {
+                    "type": "boolean",
+                    "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
+                },
                 "serviceIds": {
                     "type": "array",
                     "items": {
@@ -25161,6 +25364,7 @@
                 "failureNotificationChannels",
                 "failureNotificationMode",
                 "functionalityIds",
+                "groupAssignmentIds",
                 "groupIds",
                 "incidentRoleIds",
                 "incidentTypeIds",
@@ -25171,6 +25375,7 @@
                 "repeatConditionNumberOfRepeats",
                 "repeatEveryDuration",
                 "repeatOns",
+                "runOncePerResource",
                 "serviceIds",
                 "severityIds",
                 "slug",
@@ -25228,6 +25433,13 @@
                         "type": "string"
                     }
                 },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                },
                 "groupIds": {
                     "type": "array",
                     "items": {
@@ -25276,6 +25488,10 @@
                         "type": "string"
                     },
                     "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                },
+                "runOncePerResource": {
+                    "type": "boolean",
+                    "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -25363,6 +25579,13 @@
                             "type": "string"
                         }
                     },
+                    "groupAssignmentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                    },
                     "groupIds": {
                         "type": "array",
                         "items": {
@@ -25411,6 +25634,10 @@
                             "type": "string"
                         },
                         "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                    },
+                    "runOncePerResource": {
+                        "type": "boolean",
+                        "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
                     },
                     "serviceIds": {
                         "type": "array",
@@ -25501,6 +25728,13 @@
                         "type": "string"
                     }
                 },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                },
                 "groupIds": {
                     "type": "array",
                     "items": {
@@ -25550,6 +25784,10 @@
                     },
                     "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
                 },
+                "runOncePerResource": {
+                    "type": "boolean",
+                    "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
+                },
                 "serviceIds": {
                     "type": "array",
                     "items": {
@@ -25595,6 +25833,7 @@
                 "failureNotificationChannels",
                 "failureNotificationMode",
                 "functionalityIds",
+                "groupAssignmentIds",
                 "groupIds",
                 "incidentRoleIds",
                 "incidentTypeIds",
@@ -25605,6 +25844,7 @@
                 "repeatConditionNumberOfRepeats",
                 "repeatEveryDuration",
                 "repeatOns",
+                "runOncePerResource",
                 "serviceIds",
                 "severityIds",
                 "slug",
@@ -25662,6 +25902,13 @@
                         "type": "string"
                     }
                 },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                },
                 "groupIds": {
                     "type": "array",
                     "items": {
@@ -25710,6 +25957,10 @@
                         "type": "string"
                     },
                     "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                },
+                "runOncePerResource": {
+                    "type": "boolean",
+                    "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
                 },
                 "serviceIds": {
                     "type": "array",
@@ -25797,6 +26048,13 @@
                             "type": "string"
                         }
                     },
+                    "groupAssignmentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                    },
                     "groupIds": {
                         "type": "array",
                         "items": {
@@ -25845,6 +26103,10 @@
                             "type": "string"
                         },
                         "description": "Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.\n"
+                    },
+                    "runOncePerResource": {
+                        "type": "boolean",
+                        "description": "When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false\n"
                     },
                     "serviceIds": {
                         "type": "array",
@@ -43200,7 +43462,7 @@
             }
         },
         "rootly:index/getRole:getRole": {
-            "description": "## Example Usage\n\n```shell\ndata \"rootly_role\" \"my-role\" {\n  slug = \"my-role\"\n}\n```\n",
+            "description": "Retrieves information about a Rootly role. Rootly provides the following built-in roles:\n\n| Name | Slug |\n|------|------|\n| owner | owner |\n| admin | admin |\n| user | user |\n| observer | observer |\n| None |\u003cspan pulumi-lang-nodejs=\" noAccess \" pulumi-lang-dotnet=\" NoAccess \" pulumi-lang-go=\" noAccess \" pulumi-lang-python=\" no_access \" pulumi-lang-yaml=\" noAccess \" pulumi-lang-java=\" noAccess \" pulumi-lang-hcl=\" no_access \"\u003e noAccess \u003c/span\u003e|\n\n## Example Usage\n\n```shell\n# Built-in roles examples\ndata \"rootly_role\" \"owner\" {\n  slug = \"owner\"\n}\n\ndata \"rootly_role\" \"admin\" {\n  slug = \"admin\"\n}\n\ndata \"rootly_role\" \"user\" {\n  slug = \"user\"\n}\n\ndata \"rootly_role\" \"observer\" {\n  slug = \"observer\"\n}\n\n# This is the \"None\" role in the UI\ndata \"rootly_role\" \"no_access\" {\n  slug = \"no_access\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRole.\n",
                 "properties": {

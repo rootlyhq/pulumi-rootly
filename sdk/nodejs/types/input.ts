@@ -245,7 +245,7 @@ export interface AlertsSourceAlertSourceFieldsAttribute {
     /**
      * The ID of the alert field
      */
-    alertFieldId?: pulumi.Input<string | undefined>;
+    alertFieldId: pulumi.Input<string>;
     /**
      * Liquid expression to extract a specific value from the alert's payload for evaluation
      */
@@ -1388,6 +1388,14 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentConditionResolvedAt?: pulumi.Input<string | undefined>;
     /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledFor?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledUntil?: pulumi.Input<string | undefined>;
+    /**
      * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: pulumi.Input<string | undefined>;
@@ -1506,8 +1514,15 @@ export interface WorkflowAlertTriggerParams {
 }
 
 export interface WorkflowAlertTriggerParamsAlertFieldCondition {
-    id: pulumi.Input<string>;
-    name: pulumi.Input<string>;
+    /**
+     * The ID of the alert field.
+     */
+    alertFieldId: pulumi.Input<string>;
+    /**
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    conditionType: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface WorkflowAlertTriggerParamsAlertPayloadConditions {
@@ -1600,6 +1615,14 @@ export interface WorkflowIncidentTriggerParams {
      */
     incidentConditionResolvedAt?: pulumi.Input<string | undefined>;
     /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledFor?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledUntil?: pulumi.Input<string | undefined>;
+    /**
      * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: pulumi.Input<string | undefined>;
@@ -1654,7 +1677,7 @@ export interface WorkflowIncidentTriggerParams {
      */
     triggerType?: pulumi.Input<string | undefined>;
     /**
-     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, scheduled*for*updated, scheduled*until*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
      */
     triggers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -1727,6 +1750,14 @@ export interface WorkflowPostMortemTriggerParams {
      * Value must be one of `SET`, `UNSET`.
      */
     incidentConditionResolvedAt?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledFor?: pulumi.Input<string | undefined>;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledUntil?: pulumi.Input<string | undefined>;
     /**
      * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */

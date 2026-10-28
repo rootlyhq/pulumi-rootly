@@ -94,7 +94,7 @@ export class ScheduleRotation extends pulumi.CustomResource {
      */
     declare public readonly scheduleRotationMembers: pulumi.Output<outputs.ScheduleRotationScheduleRotationMember[] | undefined>;
     /**
-     * handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+     * handoff_time and/or handoffDay may be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
      */
     declare public readonly scheduleRotationableAttributes: pulumi.Output<outputs.ScheduleRotationScheduleRotationableAttributes>;
     /**
@@ -204,7 +204,7 @@ export interface ScheduleRotationState {
      */
     scheduleRotationMembers?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationScheduleRotationMember>[] | undefined>;
     /**
-     * handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+     * handoff_time and/or handoffDay may be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
      */
     scheduleRotationableAttributes?: pulumi.Input<inputs.ScheduleRotationScheduleRotationableAttributes | undefined>;
     /**
@@ -262,7 +262,7 @@ export interface ScheduleRotationArgs {
      */
     scheduleRotationMembers?: pulumi.Input<pulumi.Input<inputs.ScheduleRotationScheduleRotationMember>[] | undefined>;
     /**
-     * handoff*time and/or handoff*day may be required, depending on schedule*rotationable*type. Please see API docs for options based on schedule*rotationable*type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
+     * handoff_time and/or handoffDay may be required, depending on schedule_rotationable_type. Please see API docs for options based on schedule_rotationable_type: https://docs.rootly.com/api-reference/schedulerotations/creates-a-schedule-rotation#response-data-attributes-schedule-rotationable-attributes
      */
     scheduleRotationableAttributes: pulumi.Input<inputs.ScheduleRotationScheduleRotationableAttributes>;
     /**

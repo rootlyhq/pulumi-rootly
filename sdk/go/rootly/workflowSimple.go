@@ -47,9 +47,11 @@ type WorkflowSimple struct {
 	// Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
 	FailureNotificationMode pulumi.StringOutput      `pulumi:"failureNotificationMode"`
 	FunctionalityIds        pulumi.StringArrayOutput `pulumi:"functionalityIds"`
-	GroupIds                pulumi.StringArrayOutput `pulumi:"groupIds"`
-	IncidentRoleIds         pulumi.StringArrayOutput `pulumi:"incidentRoleIds"`
-	IncidentTypeIds         pulumi.StringArrayOutput `pulumi:"incidentTypeIds"`
+	// Owning team IDs. Requires team-scoped workflows.
+	GroupAssignmentIds pulumi.StringArrayOutput `pulumi:"groupAssignmentIds"`
+	GroupIds           pulumi.StringArrayOutput `pulumi:"groupIds"`
+	IncidentRoleIds    pulumi.StringArrayOutput `pulumi:"incidentRoleIds"`
+	IncidentTypeIds    pulumi.StringArrayOutput `pulumi:"incidentTypeIds"`
 	// Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// The title of the workflow
@@ -63,9 +65,11 @@ type WorkflowSimple struct {
 	// Repeat workflow every duration
 	RepeatEveryDuration pulumi.StringOutput `pulumi:"repeatEveryDuration"`
 	// Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
-	RepeatOns   pulumi.StringArrayOutput `pulumi:"repeatOns"`
-	ServiceIds  pulumi.StringArrayOutput `pulumi:"serviceIds"`
-	SeverityIds pulumi.StringArrayOutput `pulumi:"severityIds"`
+	RepeatOns pulumi.StringArrayOutput `pulumi:"repeatOns"`
+	// When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false
+	RunOncePerResource pulumi.BoolOutput        `pulumi:"runOncePerResource"`
+	ServiceIds         pulumi.StringArrayOutput `pulumi:"serviceIds"`
+	SeverityIds        pulumi.StringArrayOutput `pulumi:"severityIds"`
 	// The slug of the workflow
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -124,9 +128,11 @@ type workflowSimpleState struct {
 	// Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
 	FailureNotificationMode *string  `pulumi:"failureNotificationMode"`
 	FunctionalityIds        []string `pulumi:"functionalityIds"`
-	GroupIds                []string `pulumi:"groupIds"`
-	IncidentRoleIds         []string `pulumi:"incidentRoleIds"`
-	IncidentTypeIds         []string `pulumi:"incidentTypeIds"`
+	// Owning team IDs. Requires team-scoped workflows.
+	GroupAssignmentIds []string `pulumi:"groupAssignmentIds"`
+	GroupIds           []string `pulumi:"groupIds"`
+	IncidentRoleIds    []string `pulumi:"incidentRoleIds"`
+	IncidentTypeIds    []string `pulumi:"incidentTypeIds"`
 	// Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
 	Locked *bool `pulumi:"locked"`
 	// The title of the workflow
@@ -140,9 +146,11 @@ type workflowSimpleState struct {
 	// Repeat workflow every duration
 	RepeatEveryDuration *string `pulumi:"repeatEveryDuration"`
 	// Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
-	RepeatOns   []string `pulumi:"repeatOns"`
-	ServiceIds  []string `pulumi:"serviceIds"`
-	SeverityIds []string `pulumi:"severityIds"`
+	RepeatOns []string `pulumi:"repeatOns"`
+	// When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false
+	RunOncePerResource *bool    `pulumi:"runOncePerResource"`
+	ServiceIds         []string `pulumi:"serviceIds"`
+	SeverityIds        []string `pulumi:"severityIds"`
 	// The slug of the workflow
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -172,9 +180,11 @@ type WorkflowSimpleState struct {
 	// Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
 	FailureNotificationMode pulumi.StringPtrInput
 	FunctionalityIds        pulumi.StringArrayInput
-	GroupIds                pulumi.StringArrayInput
-	IncidentRoleIds         pulumi.StringArrayInput
-	IncidentTypeIds         pulumi.StringArrayInput
+	// Owning team IDs. Requires team-scoped workflows.
+	GroupAssignmentIds pulumi.StringArrayInput
+	GroupIds           pulumi.StringArrayInput
+	IncidentRoleIds    pulumi.StringArrayInput
+	IncidentTypeIds    pulumi.StringArrayInput
 	// Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
 	Locked pulumi.BoolPtrInput
 	// The title of the workflow
@@ -188,9 +198,11 @@ type WorkflowSimpleState struct {
 	// Repeat workflow every duration
 	RepeatEveryDuration pulumi.StringPtrInput
 	// Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
-	RepeatOns   pulumi.StringArrayInput
-	ServiceIds  pulumi.StringArrayInput
-	SeverityIds pulumi.StringArrayInput
+	RepeatOns pulumi.StringArrayInput
+	// When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false
+	RunOncePerResource pulumi.BoolPtrInput
+	ServiceIds         pulumi.StringArrayInput
+	SeverityIds        pulumi.StringArrayInput
 	// The slug of the workflow
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -224,9 +236,11 @@ type workflowSimpleArgs struct {
 	// Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
 	FailureNotificationMode *string  `pulumi:"failureNotificationMode"`
 	FunctionalityIds        []string `pulumi:"functionalityIds"`
-	GroupIds                []string `pulumi:"groupIds"`
-	IncidentRoleIds         []string `pulumi:"incidentRoleIds"`
-	IncidentTypeIds         []string `pulumi:"incidentTypeIds"`
+	// Owning team IDs. Requires team-scoped workflows.
+	GroupAssignmentIds []string `pulumi:"groupAssignmentIds"`
+	GroupIds           []string `pulumi:"groupIds"`
+	IncidentRoleIds    []string `pulumi:"incidentRoleIds"`
+	IncidentTypeIds    []string `pulumi:"incidentTypeIds"`
 	// Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
 	Locked *bool `pulumi:"locked"`
 	// The title of the workflow
@@ -240,9 +254,11 @@ type workflowSimpleArgs struct {
 	// Repeat workflow every duration
 	RepeatEveryDuration *string `pulumi:"repeatEveryDuration"`
 	// Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
-	RepeatOns   []string `pulumi:"repeatOns"`
-	ServiceIds  []string `pulumi:"serviceIds"`
-	SeverityIds []string `pulumi:"severityIds"`
+	RepeatOns []string `pulumi:"repeatOns"`
+	// When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false
+	RunOncePerResource *bool    `pulumi:"runOncePerResource"`
+	ServiceIds         []string `pulumi:"serviceIds"`
+	SeverityIds        []string `pulumi:"severityIds"`
 	// The slug of the workflow
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -273,9 +289,11 @@ type WorkflowSimpleArgs struct {
 	// Where failure notifications for this workflow are sent. `inherit` uses the account default channel, `custom` uses `failureNotificationChannels`, `off` suppresses them. Value must be one of `inherit`, `custom`, `off`.
 	FailureNotificationMode pulumi.StringPtrInput
 	FunctionalityIds        pulumi.StringArrayInput
-	GroupIds                pulumi.StringArrayInput
-	IncidentRoleIds         pulumi.StringArrayInput
-	IncidentTypeIds         pulumi.StringArrayInput
+	// Owning team IDs. Requires team-scoped workflows.
+	GroupAssignmentIds pulumi.StringArrayInput
+	GroupIds           pulumi.StringArrayInput
+	IncidentRoleIds    pulumi.StringArrayInput
+	IncidentTypeIds    pulumi.StringArrayInput
 	// Restricts workflow edits to admins when turned on. Only admins can set this field. Value must be one of true or false
 	Locked pulumi.BoolPtrInput
 	// The title of the workflow
@@ -289,9 +307,11 @@ type WorkflowSimpleArgs struct {
 	// Repeat workflow every duration
 	RepeatEveryDuration pulumi.StringPtrInput
 	// Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
-	RepeatOns   pulumi.StringArrayInput
-	ServiceIds  pulumi.StringArrayInput
-	SeverityIds pulumi.StringArrayInput
+	RepeatOns pulumi.StringArrayInput
+	// When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false
+	RunOncePerResource pulumi.BoolPtrInput
+	ServiceIds         pulumi.StringArrayInput
+	SeverityIds        pulumi.StringArrayInput
 	// The slug of the workflow
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -439,6 +459,11 @@ func (o WorkflowSimpleOutput) FunctionalityIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowSimple) pulumi.StringArrayOutput { return v.FunctionalityIds }).(pulumi.StringArrayOutput)
 }
 
+// Owning team IDs. Requires team-scoped workflows.
+func (o WorkflowSimpleOutput) GroupAssignmentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowSimple) pulumi.StringArrayOutput { return v.GroupAssignmentIds }).(pulumi.StringArrayOutput)
+}
+
 func (o WorkflowSimpleOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowSimple) pulumi.StringArrayOutput { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
@@ -484,6 +509,11 @@ func (o WorkflowSimpleOutput) RepeatEveryDuration() pulumi.StringOutput {
 // Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
 func (o WorkflowSimpleOutput) RepeatOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowSimple) pulumi.StringArrayOutput { return v.RepeatOns }).(pulumi.StringArrayOutput)
+}
+
+// When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false
+func (o WorkflowSimpleOutput) RunOncePerResource() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkflowSimple) pulumi.BoolOutput { return v.RunOncePerResource }).(pulumi.BoolOutput)
 }
 
 func (o WorkflowSimpleOutput) ServiceIds() pulumi.StringArrayOutput {

@@ -81,6 +81,10 @@ export class WorkflowSimple extends pulumi.CustomResource {
      */
     declare public readonly failureNotificationMode: pulumi.Output<string>;
     declare public readonly functionalityIds: pulumi.Output<string[]>;
+    /**
+     * Owning team IDs. Requires team-scoped workflows.
+     */
+    declare public readonly groupAssignmentIds: pulumi.Output<string[]>;
     declare public readonly groupIds: pulumi.Output<string[]>;
     declare public readonly incidentRoleIds: pulumi.Output<string[]>;
     declare public readonly incidentTypeIds: pulumi.Output<string[]>;
@@ -112,6 +116,10 @@ export class WorkflowSimple extends pulumi.CustomResource {
      * Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
     declare public readonly repeatOns: pulumi.Output<string[]>;
+    /**
+     * When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false
+     */
+    declare public readonly runOncePerResource: pulumi.Output<boolean>;
     declare public readonly serviceIds: pulumi.Output<string[]>;
     declare public readonly severityIds: pulumi.Output<string[]>;
     /**
@@ -154,6 +162,7 @@ export class WorkflowSimple extends pulumi.CustomResource {
             resourceInputs["failureNotificationChannels"] = state?.failureNotificationChannels;
             resourceInputs["failureNotificationMode"] = state?.failureNotificationMode;
             resourceInputs["functionalityIds"] = state?.functionalityIds;
+            resourceInputs["groupAssignmentIds"] = state?.groupAssignmentIds;
             resourceInputs["groupIds"] = state?.groupIds;
             resourceInputs["incidentRoleIds"] = state?.incidentRoleIds;
             resourceInputs["incidentTypeIds"] = state?.incidentTypeIds;
@@ -164,6 +173,7 @@ export class WorkflowSimple extends pulumi.CustomResource {
             resourceInputs["repeatConditionNumberOfRepeats"] = state?.repeatConditionNumberOfRepeats;
             resourceInputs["repeatEveryDuration"] = state?.repeatEveryDuration;
             resourceInputs["repeatOns"] = state?.repeatOns;
+            resourceInputs["runOncePerResource"] = state?.runOncePerResource;
             resourceInputs["serviceIds"] = state?.serviceIds;
             resourceInputs["severityIds"] = state?.severityIds;
             resourceInputs["slug"] = state?.slug;
@@ -183,6 +193,7 @@ export class WorkflowSimple extends pulumi.CustomResource {
             resourceInputs["failureNotificationChannels"] = args?.failureNotificationChannels;
             resourceInputs["failureNotificationMode"] = args?.failureNotificationMode;
             resourceInputs["functionalityIds"] = args?.functionalityIds;
+            resourceInputs["groupAssignmentIds"] = args?.groupAssignmentIds;
             resourceInputs["groupIds"] = args?.groupIds;
             resourceInputs["incidentRoleIds"] = args?.incidentRoleIds;
             resourceInputs["incidentTypeIds"] = args?.incidentTypeIds;
@@ -193,6 +204,7 @@ export class WorkflowSimple extends pulumi.CustomResource {
             resourceInputs["repeatConditionNumberOfRepeats"] = args?.repeatConditionNumberOfRepeats;
             resourceInputs["repeatEveryDuration"] = args?.repeatEveryDuration;
             resourceInputs["repeatOns"] = args?.repeatOns;
+            resourceInputs["runOncePerResource"] = args?.runOncePerResource;
             resourceInputs["serviceIds"] = args?.serviceIds;
             resourceInputs["severityIds"] = args?.severityIds;
             resourceInputs["slug"] = args?.slug;
@@ -238,6 +250,10 @@ export interface WorkflowSimpleState {
      */
     failureNotificationMode?: pulumi.Input<string | undefined>;
     functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Owning team IDs. Requires team-scoped workflows.
+     */
+    groupAssignmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentRoleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -269,6 +285,10 @@ export interface WorkflowSimpleState {
      * Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
     repeatOns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false
+     */
+    runOncePerResource?: pulumi.Input<boolean | undefined>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -321,6 +341,10 @@ export interface WorkflowSimpleArgs {
      */
     failureNotificationMode?: pulumi.Input<string | undefined>;
     functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Owning team IDs. Requires team-scoped workflows.
+     */
+    groupAssignmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentRoleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -352,6 +376,10 @@ export interface WorkflowSimpleArgs {
      * Repeat on weekdays. Value must be one of `S`, `M`, `T`, `W`, `R`, `F`, `U`.
      */
     repeatOns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * When true, the workflow runs at most once per incident. Later triggers on the same incident create a canceled run instead. Manual runs and repeats are not affected. Only applies to incident workflows. Value must be one of true or false
+     */
+    runOncePerResource?: pulumi.Input<boolean | undefined>;
     serviceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     severityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

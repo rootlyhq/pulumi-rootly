@@ -713,6 +713,11 @@ export type Team = import("./team").Team;
 export const Team: typeof import("./team").Team = null as any;
 utilities.lazyLoad(exports, ["Team"], () => require("./team"));
 
+export { UserIncidentResponseRoleArgs, UserIncidentResponseRoleState } from "./userIncidentResponseRole";
+export type UserIncidentResponseRole = import("./userIncidentResponseRole").UserIncidentResponseRole;
+export const UserIncidentResponseRole: typeof import("./userIncidentResponseRole").UserIncidentResponseRole = null as any;
+utilities.lazyLoad(exports, ["UserIncidentResponseRole"], () => require("./userIncidentResponseRole"));
+
 export { UserOnCallRoleArgs, UserOnCallRoleState } from "./userOnCallRole";
 export type UserOnCallRole = import("./userOnCallRole").UserOnCallRole;
 export const UserOnCallRole: typeof import("./userOnCallRole").UserOnCallRole = null as any;
@@ -1681,6 +1686,8 @@ const _module = {
                 return new SubStatus(name, <any>undefined, { urn })
             case "rootly:index/team:Team":
                 return new Team(name, <any>undefined, { urn })
+            case "rootly:index/userIncidentResponseRole:UserIncidentResponseRole":
+                return new UserIncidentResponseRole(name, <any>undefined, { urn })
             case "rootly:index/userOnCallRole:UserOnCallRole":
                 return new UserOnCallRole(name, <any>undefined, { urn })
             case "rootly:index/webhooksEndpoint:WebhooksEndpoint":
@@ -2082,6 +2089,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/statusPageComponentGroup"
 pulumi.runtime.registerResourceModule("rootly", "index/statusPageTemplate", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/subStatus", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/team", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/userIncidentResponseRole", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/userOnCallRole", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/webhooksEndpoint", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/workflowActionItem", _module)

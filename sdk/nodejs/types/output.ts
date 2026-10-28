@@ -106,11 +106,11 @@ export interface AlertRouteRuleConditionGroupCondition {
     /**
      * The ID of the conditionable
      */
-    conditionableId: string;
+    conditionableId?: string;
     /**
      * The type of the conditionable. Value must be one of `AlertField`.
      */
-    conditionableType: string;
+    conditionableType?: string;
     /**
      * Value must be one of `isOneOf`, `isNotOneOf`, `contains`, `doesNotContain`, `startsWith`, `endsWith`, `matchesRegex`, `isEmpty`.
      */
@@ -118,7 +118,7 @@ export interface AlertRouteRuleConditionGroupCondition {
     /**
      * The name of the property field
      */
-    propertyFieldName: string;
+    propertyFieldName?: string;
     /**
      * Value must be one of `attribute`, `payload`, `alertField`.
      */
@@ -126,7 +126,7 @@ export interface AlertRouteRuleConditionGroupCondition {
     /**
      * The value of the property field
      */
-    propertyFieldValue: string;
+    propertyFieldValue?: string;
     propertyFieldValues?: string[];
 }
 
@@ -249,7 +249,7 @@ export interface AlertsSourceAlertSourceFieldsAttribute {
     /**
      * Liquid expression to extract a specific value from the alert's payload for evaluation
      */
-    templateBody: string;
+    templateBody?: string;
 }
 
 export interface AlertsSourceAlertSourceUrgencyRulesAttribute {
@@ -319,7 +319,7 @@ export interface AlertsSourceResolutionRuleAttributes {
     /**
      * The type of the identifier matchable. Value must be one of `AlertField`.
      */
-    identifierMatchableType?: string;
+    identifierMatchableType: string;
     /**
      * The kind of the identifier reference. Value must be one of `payload`, `alertField`.
      */
@@ -1731,6 +1731,14 @@ export interface WorkflowActionItemTriggerParams {
      */
     incidentConditionResolvedAt: string;
     /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledFor: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledUntil: string;
+    /**
      * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: string;
@@ -1849,8 +1857,15 @@ export interface WorkflowAlertTriggerParams {
 }
 
 export interface WorkflowAlertTriggerParamsAlertFieldCondition {
-    id: string;
-    name: string;
+    /**
+     * The ID of the alert field.
+     */
+    alertFieldId: string;
+    /**
+     * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+     */
+    conditionType: string;
+    values?: string[];
 }
 
 export interface WorkflowAlertTriggerParamsAlertPayloadConditions {
@@ -1943,6 +1958,14 @@ export interface WorkflowIncidentTriggerParams {
      */
     incidentConditionResolvedAt: string;
     /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledFor: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledUntil: string;
+    /**
      * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */
     incidentConditionService?: string;
@@ -1997,7 +2020,7 @@ export interface WorkflowIncidentTriggerParams {
      */
     triggerType?: string;
     /**
-     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
+     * Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, scheduled*for*updated, scheduled*until*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
      */
     triggers: string[];
 }
@@ -2070,6 +2093,14 @@ export interface WorkflowPostMortemTriggerParams {
      * Value must be one of `SET`, `UNSET`.
      */
     incidentConditionResolvedAt: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledFor: string;
+    /**
+     * Value must be one of `SET`, `UNSET`.
+     */
+    incidentConditionScheduledUntil: string;
     /**
      * Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
      */

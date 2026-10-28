@@ -1054,6 +1054,10 @@
                     }
                 }
             },
+            "rootly_user_incident_response_role": {
+                "current": "rootly:index/userIncidentResponseRole:UserIncidentResponseRole",
+                "majorVersion": 4
+            },
             "rootly_user_on_call_role": {
                 "current": "rootly:index/userOnCallRole:UserOnCallRole",
                 "majorVersion": 4
@@ -1084,6 +1088,9 @@
                         "maxItemsOne": false
                     },
                     "functionality_ids": {
+                        "maxItemsOne": false
+                    },
+                    "group_assignment_ids": {
                         "maxItemsOne": false
                     },
                     "group_ids": {
@@ -1218,7 +1225,14 @@
                         "elem": {
                             "fields": {
                                 "alert_field_conditions": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "alert_labels": {
                                     "maxItemsOne": false
@@ -1328,6 +1342,9 @@
                     "functionality_ids": {
                         "maxItemsOne": false
                     },
+                    "group_assignment_ids": {
+                        "maxItemsOne": false
+                    },
                     "group_ids": {
                         "maxItemsOne": false
                     },
@@ -1387,6 +1404,9 @@
                         "maxItemsOne": false
                     },
                     "functionality_ids": {
+                        "maxItemsOne": false
+                    },
+                    "group_assignment_ids": {
                         "maxItemsOne": false
                     },
                     "group_ids": {
@@ -1453,6 +1473,9 @@
                     "functionality_ids": {
                         "maxItemsOne": false
                     },
+                    "group_assignment_ids": {
+                        "maxItemsOne": false
+                    },
                     "group_ids": {
                         "maxItemsOne": false
                     },
@@ -1509,6 +1532,9 @@
                         "maxItemsOne": false
                     },
                     "functionality_ids": {
+                        "maxItemsOne": false
+                    },
+                    "group_assignment_ids": {
                         "maxItemsOne": false
                     },
                     "group_ids": {
@@ -3963,7 +3989,12 @@
     "default-resource-schema-fixups": {
         "resources": {
             "rootly_schedule": {},
-            "rootly_schedule_rotation": {}
+            "rootly_schedule_rotation": {},
+            "rootly_user_incident_response_role": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            }
         }
     },
     "mux": {
@@ -4040,6 +4071,7 @@
             "rootly:index/statusPageTemplate:StatusPageTemplate": 0,
             "rootly:index/subStatus:SubStatus": 0,
             "rootly:index/team:Team": 0,
+            "rootly:index/userIncidentResponseRole:UserIncidentResponseRole": 1,
             "rootly:index/userOnCallRole:UserOnCallRole": 0,
             "rootly:index/webhooksEndpoint:WebhooksEndpoint": 0,
             "rootly:index/workflowActionItem:WorkflowActionItem": 0,
