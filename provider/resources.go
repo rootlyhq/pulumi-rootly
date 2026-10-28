@@ -111,7 +111,8 @@ func Provider() tfbridge.ProviderInfo {
 		//
 		//nolint:lll
 		P: pfbridge.MuxShimWithDisjointgPF(context.Background(),
-			shimv2.NewProvider(rootly.New(version.Version)()), rootlyshim.New(version.Version)),
+			shimv2.NewProvider(rootly.New(version.Version)()),
+			adaptScheduleRotation(rootlyshim.New(version.Version))),
 
 		Name:    "rootly",
 		Version: version.Version,

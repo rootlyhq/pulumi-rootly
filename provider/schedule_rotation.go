@@ -26,8 +26,8 @@ func upgradeScheduleRotationState(_ context.Context, state resource.PropertyMap)
 	attrs := value.ObjectValue().Copy()
 	changed := false
 	for oldKey, newKey := range map[resource.PropertyKey]resource.PropertyKey{
-		"handoff_time": "handoffTime", "handoff_day": "handoffDay",
-		"shift_length": "shiftLength", "shift_length_unit": "shiftLengthUnit",
+		rotationHandoffTime: "handoffTime", rotationHandoffDay: "handoffDay",
+		rotationShiftLength: "shiftLength", rotationShiftLengthUnit: "shiftLengthUnit",
 	} {
 		if v, exists := attrs[oldKey]; exists {
 			if _, exists := attrs[newKey]; !exists {
