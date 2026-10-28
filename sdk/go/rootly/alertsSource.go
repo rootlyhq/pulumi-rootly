@@ -52,6 +52,8 @@ type AlertsSource struct {
 	AlertTemplateAttributes AlertsSourceAlertTemplateAttributesOutput `pulumi:"alertTemplateAttributes"`
 	// ID for the default alert urgency assigned to this alert source
 	AlertUrgencyId pulumi.StringOutput `pulumi:"alertUrgencyId"`
+	// Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.
+	AttachOwnerGroupsToAlerts pulumi.BoolOutput `pulumi:"attachOwnerGroupsToAlerts"`
 	// Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false
 	DeduplicateAlertsByKey pulumi.BoolOutput `pulumi:"deduplicateAlertsByKey"`
 	// Kind of deduplication key.. Value must be one of `payload`.
@@ -122,6 +124,8 @@ type alertsSourceState struct {
 	AlertTemplateAttributes *AlertsSourceAlertTemplateAttributes `pulumi:"alertTemplateAttributes"`
 	// ID for the default alert urgency assigned to this alert source
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
+	// Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.
+	AttachOwnerGroupsToAlerts *bool `pulumi:"attachOwnerGroupsToAlerts"`
 	// Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false
 	DeduplicateAlertsByKey *bool `pulumi:"deduplicateAlertsByKey"`
 	// Kind of deduplication key.. Value must be one of `payload`.
@@ -159,6 +163,8 @@ type AlertsSourceState struct {
 	AlertTemplateAttributes AlertsSourceAlertTemplateAttributesPtrInput
 	// ID for the default alert urgency assigned to this alert source
 	AlertUrgencyId pulumi.StringPtrInput
+	// Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.
+	AttachOwnerGroupsToAlerts pulumi.BoolPtrInput
 	// Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false
 	DeduplicateAlertsByKey pulumi.BoolPtrInput
 	// Kind of deduplication key.. Value must be one of `payload`.
@@ -200,6 +206,8 @@ type alertsSourceArgs struct {
 	AlertTemplateAttributes *AlertsSourceAlertTemplateAttributes `pulumi:"alertTemplateAttributes"`
 	// ID for the default alert urgency assigned to this alert source
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
+	// Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.
+	AttachOwnerGroupsToAlerts *bool `pulumi:"attachOwnerGroupsToAlerts"`
 	// Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false
 	DeduplicateAlertsByKey *bool `pulumi:"deduplicateAlertsByKey"`
 	// Kind of deduplication key.. Value must be one of `payload`.
@@ -236,6 +244,8 @@ type AlertsSourceArgs struct {
 	AlertTemplateAttributes AlertsSourceAlertTemplateAttributesPtrInput
 	// ID for the default alert urgency assigned to this alert source
 	AlertUrgencyId pulumi.StringPtrInput
+	// Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.
+	AttachOwnerGroupsToAlerts pulumi.BoolPtrInput
 	// Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false
 	DeduplicateAlertsByKey pulumi.BoolPtrInput
 	// Kind of deduplication key.. Value must be one of `payload`.
@@ -371,6 +381,11 @@ func (o AlertsSourceOutput) AlertTemplateAttributes() AlertsSourceAlertTemplateA
 // ID for the default alert urgency assigned to this alert source
 func (o AlertsSourceOutput) AlertUrgencyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertsSource) pulumi.StringOutput { return v.AlertUrgencyId }).(pulumi.StringOutput)
+}
+
+// Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.
+func (o AlertsSourceOutput) AttachOwnerGroupsToAlerts() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AlertsSource) pulumi.BoolOutput { return v.AttachOwnerGroupsToAlerts }).(pulumi.BoolOutput)
 }
 
 // Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false

@@ -11,6 +11,16 @@ import (
 	"github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly/internal"
 )
 
+// Retrieves information about a Rootly role. Rootly provides the following built-in roles:
+//
+// | Name | Slug |
+// |------|------|
+// | owner | owner |
+// | admin | admin |
+// | user | user |
+// | observer | observer |
+// | None | noAccess |
+//
 // ## Example Usage
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

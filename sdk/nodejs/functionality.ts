@@ -56,7 +56,7 @@ export class Functionality extends pulumi.CustomResource {
     }
 
     /**
-     * The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name
+     * The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
      */
     declare public readonly backstageId: pulumi.Output<string>;
     /**
@@ -64,7 +64,7 @@ export class Functionality extends pulumi.CustomResource {
      */
     declare public readonly color: pulumi.Output<string>;
     /**
-     * The Cortex group id associated to this functionality
+     * The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     declare public readonly cortexId: pulumi.Output<string>;
     /**
@@ -80,7 +80,7 @@ export class Functionality extends pulumi.CustomResource {
      */
     declare public readonly escalationPolicyId: pulumi.Output<string>;
     /**
-     * The external id associated to this functionality
+     * The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     declare public readonly externalId: pulumi.Output<string>;
     /**
@@ -96,11 +96,11 @@ export class Functionality extends pulumi.CustomResource {
      */
     declare public readonly notifyEmails: pulumi.Output<string[] | undefined>;
     /**
-     * The Opsgenie service id associated to this functionality
+     * The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     declare public readonly opsgenieId: pulumi.Output<string>;
     /**
-     * The Opsgenie team id associated to this functionality
+     * The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     declare public readonly opsgenieTeamId: pulumi.Output<string>;
     /**
@@ -112,7 +112,7 @@ export class Functionality extends pulumi.CustomResource {
      */
     declare public readonly ownerUserIds: pulumi.Output<number[]>;
     /**
-     * The PagerDuty service id associated to this functionality
+     * The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     declare public readonly pagerdutyId: pulumi.Output<string>;
     /**
@@ -222,7 +222,7 @@ export class Functionality extends pulumi.CustomResource {
  */
 export interface FunctionalityState {
     /**
-     * The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name
+     * The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
      */
     backstageId?: pulumi.Input<string | undefined>;
     /**
@@ -230,7 +230,7 @@ export interface FunctionalityState {
      */
     color?: pulumi.Input<string | undefined>;
     /**
-     * The Cortex group id associated to this functionality
+     * The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     cortexId?: pulumi.Input<string | undefined>;
     /**
@@ -246,7 +246,7 @@ export interface FunctionalityState {
      */
     escalationPolicyId?: pulumi.Input<string | undefined>;
     /**
-     * The external id associated to this functionality
+     * The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     externalId?: pulumi.Input<string | undefined>;
     /**
@@ -262,11 +262,11 @@ export interface FunctionalityState {
      */
     notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Opsgenie service id associated to this functionality
+     * The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     opsgenieId?: pulumi.Input<string | undefined>;
     /**
-     * The Opsgenie team id associated to this functionality
+     * The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     opsgenieTeamId?: pulumi.Input<string | undefined>;
     /**
@@ -278,7 +278,7 @@ export interface FunctionalityState {
      */
     ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * The PagerDuty service id associated to this functionality
+     * The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     pagerdutyId?: pulumi.Input<string | undefined>;
     /**
@@ -322,7 +322,7 @@ export interface FunctionalityState {
  */
 export interface FunctionalityArgs {
     /**
-     * The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name
+     * The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
      */
     backstageId?: pulumi.Input<string | undefined>;
     /**
@@ -330,7 +330,7 @@ export interface FunctionalityArgs {
      */
     color?: pulumi.Input<string | undefined>;
     /**
-     * The Cortex group id associated to this functionality
+     * The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     cortexId?: pulumi.Input<string | undefined>;
     /**
@@ -346,7 +346,7 @@ export interface FunctionalityArgs {
      */
     escalationPolicyId?: pulumi.Input<string | undefined>;
     /**
-     * The external id associated to this functionality
+     * The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     externalId?: pulumi.Input<string | undefined>;
     /**
@@ -358,11 +358,11 @@ export interface FunctionalityArgs {
      */
     notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Opsgenie service id associated to this functionality
+     * The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     opsgenieId?: pulumi.Input<string | undefined>;
     /**
-     * The Opsgenie team id associated to this functionality
+     * The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     opsgenieTeamId?: pulumi.Input<string | undefined>;
     /**
@@ -374,7 +374,7 @@ export interface FunctionalityArgs {
      */
     ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * The PagerDuty service id associated to this functionality
+     * The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
      */
     pagerdutyId?: pulumi.Input<string | undefined>;
     /**

@@ -33,11 +33,11 @@ import (
 type Functionality struct {
 	pulumi.CustomResourceState
 
-	// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name
+	// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
 	BackstageId pulumi.StringOutput `pulumi:"backstageId"`
 	// The hex color of the functionality
 	Color pulumi.StringOutput `pulumi:"color"`
-	// The Cortex group id associated to this functionality
+	// The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	CortexId pulumi.StringOutput `pulumi:"cortexId"`
 	// The description of the functionality
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -45,7 +45,7 @@ type Functionality struct {
 	EnvironmentIds pulumi.StringArrayOutput `pulumi:"environmentIds"`
 	// The escalation policy id of the functionality
 	EscalationPolicyId pulumi.StringOutput `pulumi:"escalationPolicyId"`
-	// The external id associated to this functionality
+	// The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	ExternalId pulumi.StringOutput `pulumi:"externalId"`
 	// How this functionality is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
 	ManagedBy pulumi.StringOutput `pulumi:"managedBy"`
@@ -53,15 +53,15 @@ type Functionality struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Emails attached to the functionality
 	NotifyEmails pulumi.StringArrayOutput `pulumi:"notifyEmails"`
-	// The Opsgenie service id associated to this functionality
+	// The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieId pulumi.StringOutput `pulumi:"opsgenieId"`
-	// The Opsgenie team id associated to this functionality
+	// The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieTeamId pulumi.StringOutput `pulumi:"opsgenieTeamId"`
 	// Owner Teams associated with this functionality
 	OwnerGroupIds pulumi.StringArrayOutput `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this functionality
 	OwnerUserIds pulumi.IntArrayOutput `pulumi:"ownerUserIds"`
-	// The PagerDuty service id associated to this functionality
+	// The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	PagerdutyId pulumi.StringOutput `pulumi:"pagerdutyId"`
 	// Position of the functionality
 	Position pulumi.IntOutput `pulumi:"position"`
@@ -113,11 +113,11 @@ func GetFunctionality(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Functionality resources.
 type functionalityState struct {
-	// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name
+	// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
 	BackstageId *string `pulumi:"backstageId"`
 	// The hex color of the functionality
 	Color *string `pulumi:"color"`
-	// The Cortex group id associated to this functionality
+	// The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	CortexId *string `pulumi:"cortexId"`
 	// The description of the functionality
 	Description *string `pulumi:"description"`
@@ -125,7 +125,7 @@ type functionalityState struct {
 	EnvironmentIds []string `pulumi:"environmentIds"`
 	// The escalation policy id of the functionality
 	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
-	// The external id associated to this functionality
+	// The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	ExternalId *string `pulumi:"externalId"`
 	// How this functionality is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
 	ManagedBy *string `pulumi:"managedBy"`
@@ -133,15 +133,15 @@ type functionalityState struct {
 	Name *string `pulumi:"name"`
 	// Emails attached to the functionality
 	NotifyEmails []string `pulumi:"notifyEmails"`
-	// The Opsgenie service id associated to this functionality
+	// The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieId *string `pulumi:"opsgenieId"`
-	// The Opsgenie team id associated to this functionality
+	// The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieTeamId *string `pulumi:"opsgenieTeamId"`
 	// Owner Teams associated with this functionality
 	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this functionality
 	OwnerUserIds []int `pulumi:"ownerUserIds"`
-	// The PagerDuty service id associated to this functionality
+	// The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	PagerdutyId *string `pulumi:"pagerdutyId"`
 	// Position of the functionality
 	Position *int `pulumi:"position"`
@@ -164,11 +164,11 @@ type functionalityState struct {
 }
 
 type FunctionalityState struct {
-	// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name
+	// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
 	BackstageId pulumi.StringPtrInput
 	// The hex color of the functionality
 	Color pulumi.StringPtrInput
-	// The Cortex group id associated to this functionality
+	// The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	CortexId pulumi.StringPtrInput
 	// The description of the functionality
 	Description pulumi.StringPtrInput
@@ -176,7 +176,7 @@ type FunctionalityState struct {
 	EnvironmentIds pulumi.StringArrayInput
 	// The escalation policy id of the functionality
 	EscalationPolicyId pulumi.StringPtrInput
-	// The external id associated to this functionality
+	// The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	ExternalId pulumi.StringPtrInput
 	// How this functionality is managed (provenance): web, api, terraform, etc. Read-only.. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
 	ManagedBy pulumi.StringPtrInput
@@ -184,15 +184,15 @@ type FunctionalityState struct {
 	Name pulumi.StringPtrInput
 	// Emails attached to the functionality
 	NotifyEmails pulumi.StringArrayInput
-	// The Opsgenie service id associated to this functionality
+	// The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieId pulumi.StringPtrInput
-	// The Opsgenie team id associated to this functionality
+	// The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieTeamId pulumi.StringPtrInput
 	// Owner Teams associated with this functionality
 	OwnerGroupIds pulumi.StringArrayInput
 	// Owner Users associated with this functionality
 	OwnerUserIds pulumi.IntArrayInput
-	// The PagerDuty service id associated to this functionality
+	// The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	PagerdutyId pulumi.StringPtrInput
 	// Position of the functionality
 	Position pulumi.IntPtrInput
@@ -219,11 +219,11 @@ func (FunctionalityState) ElementType() reflect.Type {
 }
 
 type functionalityArgs struct {
-	// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name
+	// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
 	BackstageId *string `pulumi:"backstageId"`
 	// The hex color of the functionality
 	Color *string `pulumi:"color"`
-	// The Cortex group id associated to this functionality
+	// The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	CortexId *string `pulumi:"cortexId"`
 	// The description of the functionality
 	Description *string `pulumi:"description"`
@@ -231,21 +231,21 @@ type functionalityArgs struct {
 	EnvironmentIds []string `pulumi:"environmentIds"`
 	// The escalation policy id of the functionality
 	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
-	// The external id associated to this functionality
+	// The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	ExternalId *string `pulumi:"externalId"`
 	// The name of the functionality
 	Name *string `pulumi:"name"`
 	// Emails attached to the functionality
 	NotifyEmails []string `pulumi:"notifyEmails"`
-	// The Opsgenie service id associated to this functionality
+	// The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieId *string `pulumi:"opsgenieId"`
-	// The Opsgenie team id associated to this functionality
+	// The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieTeamId *string `pulumi:"opsgenieTeamId"`
 	// Owner Teams associated with this functionality
 	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this functionality
 	OwnerUserIds []int `pulumi:"ownerUserIds"`
-	// The PagerDuty service id associated to this functionality
+	// The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	PagerdutyId *string `pulumi:"pagerdutyId"`
 	// Position of the functionality
 	Position *int `pulumi:"position"`
@@ -269,11 +269,11 @@ type functionalityArgs struct {
 
 // The set of arguments for constructing a Functionality resource.
 type FunctionalityArgs struct {
-	// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name
+	// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
 	BackstageId pulumi.StringPtrInput
 	// The hex color of the functionality
 	Color pulumi.StringPtrInput
-	// The Cortex group id associated to this functionality
+	// The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	CortexId pulumi.StringPtrInput
 	// The description of the functionality
 	Description pulumi.StringPtrInput
@@ -281,21 +281,21 @@ type FunctionalityArgs struct {
 	EnvironmentIds pulumi.StringArrayInput
 	// The escalation policy id of the functionality
 	EscalationPolicyId pulumi.StringPtrInput
-	// The external id associated to this functionality
+	// The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	ExternalId pulumi.StringPtrInput
 	// The name of the functionality
 	Name pulumi.StringPtrInput
 	// Emails attached to the functionality
 	NotifyEmails pulumi.StringArrayInput
-	// The Opsgenie service id associated to this functionality
+	// The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieId pulumi.StringPtrInput
-	// The Opsgenie team id associated to this functionality
+	// The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieTeamId pulumi.StringPtrInput
 	// Owner Teams associated with this functionality
 	OwnerGroupIds pulumi.StringArrayInput
 	// Owner Users associated with this functionality
 	OwnerUserIds pulumi.IntArrayInput
-	// The PagerDuty service id associated to this functionality
+	// The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 	PagerdutyId pulumi.StringPtrInput
 	// Position of the functionality
 	Position pulumi.IntPtrInput
@@ -404,7 +404,7 @@ func (o FunctionalityOutput) ToFunctionalityOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name
+// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
 func (o FunctionalityOutput) BackstageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.BackstageId }).(pulumi.StringOutput)
 }
@@ -414,7 +414,7 @@ func (o FunctionalityOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
 }
 
-// The Cortex group id associated to this functionality
+// The Cortex group id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 func (o FunctionalityOutput) CortexId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.CortexId }).(pulumi.StringOutput)
 }
@@ -434,7 +434,7 @@ func (o FunctionalityOutput) EscalationPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.EscalationPolicyId }).(pulumi.StringOutput)
 }
 
-// The external id associated to this functionality
+// The external id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 func (o FunctionalityOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
 }
@@ -454,12 +454,12 @@ func (o FunctionalityOutput) NotifyEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringArrayOutput { return v.NotifyEmails }).(pulumi.StringArrayOutput)
 }
 
-// The Opsgenie service id associated to this functionality
+// The Opsgenie service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 func (o FunctionalityOutput) OpsgenieId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.OpsgenieId }).(pulumi.StringOutput)
 }
 
-// The Opsgenie team id associated to this functionality
+// The Opsgenie team id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 func (o FunctionalityOutput) OpsgenieTeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.OpsgenieTeamId }).(pulumi.StringOutput)
 }
@@ -474,7 +474,7 @@ func (o FunctionalityOutput) OwnerUserIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.IntArrayOutput { return v.OwnerUserIds }).(pulumi.IntArrayOutput)
 }
 
-// The PagerDuty service id associated to this functionality
+// The PagerDuty service id associated to this functionality. Omit to preserve an existing value; set to an empty string to clear it.
 func (o FunctionalityOutput) PagerdutyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.PagerdutyId }).(pulumi.StringOutput)
 }

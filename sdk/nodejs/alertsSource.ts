@@ -83,6 +83,10 @@ export class AlertsSource extends pulumi.CustomResource {
      */
     declare public readonly alertUrgencyId: pulumi.Output<string>;
     /**
+     * Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.
+     */
+    declare public readonly attachOwnerGroupsToAlerts: pulumi.Output<boolean>;
+    /**
      * Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false
      */
     declare public readonly deduplicateAlertsByKey: pulumi.Output<boolean>;
@@ -152,6 +156,7 @@ export class AlertsSource extends pulumi.CustomResource {
             resourceInputs["alertSourceUrgencyRulesAttributes"] = state?.alertSourceUrgencyRulesAttributes;
             resourceInputs["alertTemplateAttributes"] = state?.alertTemplateAttributes;
             resourceInputs["alertUrgencyId"] = state?.alertUrgencyId;
+            resourceInputs["attachOwnerGroupsToAlerts"] = state?.attachOwnerGroupsToAlerts;
             resourceInputs["deduplicateAlertsByKey"] = state?.deduplicateAlertsByKey;
             resourceInputs["deduplicationKeyKind"] = state?.deduplicationKeyKind;
             resourceInputs["deduplicationKeyPath"] = state?.deduplicationKeyPath;
@@ -171,6 +176,7 @@ export class AlertsSource extends pulumi.CustomResource {
             resourceInputs["alertSourceUrgencyRulesAttributes"] = args?.alertSourceUrgencyRulesAttributes;
             resourceInputs["alertTemplateAttributes"] = args?.alertTemplateAttributes;
             resourceInputs["alertUrgencyId"] = args?.alertUrgencyId;
+            resourceInputs["attachOwnerGroupsToAlerts"] = args?.attachOwnerGroupsToAlerts;
             resourceInputs["deduplicateAlertsByKey"] = args?.deduplicateAlertsByKey;
             resourceInputs["deduplicationKeyKind"] = args?.deduplicationKeyKind;
             resourceInputs["deduplicationKeyPath"] = args?.deduplicationKeyPath;
@@ -212,6 +218,10 @@ export interface AlertsSourceState {
      * ID for the default alert urgency assigned to this alert source
      */
     alertUrgencyId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.
+     */
+    attachOwnerGroupsToAlerts?: pulumi.Input<boolean | undefined>;
     /**
      * Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false
      */
@@ -286,6 +296,10 @@ export interface AlertsSourceArgs {
      * ID for the default alert urgency assigned to this alert source
      */
     alertUrgencyId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to attach the alert source's owning teams to its alerts. Attached teams are not paged.
+     */
+    attachOwnerGroupsToAlerts?: pulumi.Input<boolean | undefined>;
     /**
      * Toggle alert deduplication using deduplication key. If enabled, deduplication*key*kind and deduplication*key*path are required.. Value must be one of true or false
      */

@@ -43,20 +43,20 @@ type Service struct {
 	AlertsEmailAddress pulumi.StringOutput `pulumi:"alertsEmailAddress"`
 	// Enable alerts through email. Value must be one of true or false
 	AlertsEmailEnabled pulumi.BoolOutput `pulumi:"alertsEmailEnabled"`
-	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
-	BackstageId pulumi.StringPtrOutput `pulumi:"backstageId"`
+	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
+	BackstageId pulumi.StringOutput `pulumi:"backstageId"`
 	// The hex color of the service
 	Color pulumi.StringOutput `pulumi:"color"`
-	// The Cortex group id associated to this service
-	CortexId pulumi.StringPtrOutput `pulumi:"cortexId"`
+	// The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
+	CortexId pulumi.StringOutput `pulumi:"cortexId"`
 	// The description of the service
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Environments associated with this service
 	EnvironmentIds pulumi.StringArrayOutput `pulumi:"environmentIds"`
 	// The escalation policy id of the service
 	EscalationPolicyId pulumi.StringOutput `pulumi:"escalationPolicyId"`
-	// The external id associated to this service
-	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
+	// The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
+	ExternalId pulumi.StringOutput `pulumi:"externalId"`
 	// The GitHub repository branch associated to this service. eg: main
 	GithubRepositoryBranch pulumi.StringOutput `pulumi:"githubRepositoryBranch"`
 	// The GitHub repository name associated to this service. eg: rootlyhq/my-service
@@ -77,14 +77,14 @@ type Service struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Emails attached to the service
 	NotifyEmails pulumi.StringArrayOutput `pulumi:"notifyEmails"`
-	// The Opsgenie service id associated to this service
-	OpsgenieId pulumi.StringPtrOutput `pulumi:"opsgenieId"`
+	// The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
+	OpsgenieId pulumi.StringOutput `pulumi:"opsgenieId"`
 	// Owner Teams associated with this service
 	OwnerGroupIds pulumi.StringArrayOutput `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this service
 	OwnerUserIds pulumi.IntArrayOutput `pulumi:"ownerUserIds"`
-	// The PagerDuty service id associated to this service
-	PagerdutyId pulumi.StringPtrOutput `pulumi:"pagerdutyId"`
+	// The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
+	PagerdutyId pulumi.StringOutput `pulumi:"pagerdutyId"`
 	// Position of the service
 	Position pulumi.IntOutput `pulumi:"position"`
 	// Array of property values for this service.
@@ -145,11 +145,11 @@ type serviceState struct {
 	AlertsEmailAddress *string `pulumi:"alertsEmailAddress"`
 	// Enable alerts through email. Value must be one of true or false
 	AlertsEmailEnabled *bool `pulumi:"alertsEmailEnabled"`
-	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
+	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
 	BackstageId *string `pulumi:"backstageId"`
 	// The hex color of the service
 	Color *string `pulumi:"color"`
-	// The Cortex group id associated to this service
+	// The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	CortexId *string `pulumi:"cortexId"`
 	// The description of the service
 	Description *string `pulumi:"description"`
@@ -157,7 +157,7 @@ type serviceState struct {
 	EnvironmentIds []string `pulumi:"environmentIds"`
 	// The escalation policy id of the service
 	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
-	// The external id associated to this service
+	// The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	ExternalId *string `pulumi:"externalId"`
 	// The GitHub repository branch associated to this service. eg: main
 	GithubRepositoryBranch *string `pulumi:"githubRepositoryBranch"`
@@ -179,13 +179,13 @@ type serviceState struct {
 	Name *string `pulumi:"name"`
 	// Emails attached to the service
 	NotifyEmails []string `pulumi:"notifyEmails"`
-	// The Opsgenie service id associated to this service
+	// The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieId *string `pulumi:"opsgenieId"`
 	// Owner Teams associated with this service
 	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this service
 	OwnerUserIds []int `pulumi:"ownerUserIds"`
-	// The PagerDuty service id associated to this service
+	// The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	PagerdutyId *string `pulumi:"pagerdutyId"`
 	// Position of the service
 	Position *int `pulumi:"position"`
@@ -218,11 +218,11 @@ type ServiceState struct {
 	AlertsEmailAddress pulumi.StringPtrInput
 	// Enable alerts through email. Value must be one of true or false
 	AlertsEmailEnabled pulumi.BoolPtrInput
-	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
+	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
 	BackstageId pulumi.StringPtrInput
 	// The hex color of the service
 	Color pulumi.StringPtrInput
-	// The Cortex group id associated to this service
+	// The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	CortexId pulumi.StringPtrInput
 	// The description of the service
 	Description pulumi.StringPtrInput
@@ -230,7 +230,7 @@ type ServiceState struct {
 	EnvironmentIds pulumi.StringArrayInput
 	// The escalation policy id of the service
 	EscalationPolicyId pulumi.StringPtrInput
-	// The external id associated to this service
+	// The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	ExternalId pulumi.StringPtrInput
 	// The GitHub repository branch associated to this service. eg: main
 	GithubRepositoryBranch pulumi.StringPtrInput
@@ -252,13 +252,13 @@ type ServiceState struct {
 	Name pulumi.StringPtrInput
 	// Emails attached to the service
 	NotifyEmails pulumi.StringArrayInput
-	// The Opsgenie service id associated to this service
+	// The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieId pulumi.StringPtrInput
 	// Owner Teams associated with this service
 	OwnerGroupIds pulumi.StringArrayInput
 	// Owner Users associated with this service
 	OwnerUserIds pulumi.IntArrayInput
-	// The PagerDuty service id associated to this service
+	// The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	PagerdutyId pulumi.StringPtrInput
 	// Position of the service
 	Position pulumi.IntPtrInput
@@ -295,11 +295,11 @@ type serviceArgs struct {
 	AlertsEmailAddress *string `pulumi:"alertsEmailAddress"`
 	// Enable alerts through email. Value must be one of true or false
 	AlertsEmailEnabled *bool `pulumi:"alertsEmailEnabled"`
-	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
+	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
 	BackstageId *string `pulumi:"backstageId"`
 	// The hex color of the service
 	Color *string `pulumi:"color"`
-	// The Cortex group id associated to this service
+	// The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	CortexId *string `pulumi:"cortexId"`
 	// The description of the service
 	Description *string `pulumi:"description"`
@@ -307,7 +307,7 @@ type serviceArgs struct {
 	EnvironmentIds []string `pulumi:"environmentIds"`
 	// The escalation policy id of the service
 	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
-	// The external id associated to this service
+	// The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	ExternalId *string `pulumi:"externalId"`
 	// The GitHub repository branch associated to this service. eg: main
 	GithubRepositoryBranch *string `pulumi:"githubRepositoryBranch"`
@@ -327,13 +327,13 @@ type serviceArgs struct {
 	Name *string `pulumi:"name"`
 	// Emails attached to the service
 	NotifyEmails []string `pulumi:"notifyEmails"`
-	// The Opsgenie service id associated to this service
+	// The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieId *string `pulumi:"opsgenieId"`
 	// Owner Teams associated with this service
 	OwnerGroupIds []string `pulumi:"ownerGroupIds"`
 	// Owner Users associated with this service
 	OwnerUserIds []int `pulumi:"ownerUserIds"`
-	// The PagerDuty service id associated to this service
+	// The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	PagerdutyId *string `pulumi:"pagerdutyId"`
 	// Position of the service
 	Position *int `pulumi:"position"`
@@ -367,11 +367,11 @@ type ServiceArgs struct {
 	AlertsEmailAddress pulumi.StringPtrInput
 	// Enable alerts through email. Value must be one of true or false
 	AlertsEmailEnabled pulumi.BoolPtrInput
-	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
+	// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
 	BackstageId pulumi.StringPtrInput
 	// The hex color of the service
 	Color pulumi.StringPtrInput
-	// The Cortex group id associated to this service
+	// The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	CortexId pulumi.StringPtrInput
 	// The description of the service
 	Description pulumi.StringPtrInput
@@ -379,7 +379,7 @@ type ServiceArgs struct {
 	EnvironmentIds pulumi.StringArrayInput
 	// The escalation policy id of the service
 	EscalationPolicyId pulumi.StringPtrInput
-	// The external id associated to this service
+	// The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	ExternalId pulumi.StringPtrInput
 	// The GitHub repository branch associated to this service. eg: main
 	GithubRepositoryBranch pulumi.StringPtrInput
@@ -399,13 +399,13 @@ type ServiceArgs struct {
 	Name pulumi.StringPtrInput
 	// Emails attached to the service
 	NotifyEmails pulumi.StringArrayInput
-	// The Opsgenie service id associated to this service
+	// The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	OpsgenieId pulumi.StringPtrInput
 	// Owner Teams associated with this service
 	OwnerGroupIds pulumi.StringArrayInput
 	// Owner Users associated with this service
 	OwnerUserIds pulumi.IntArrayInput
-	// The PagerDuty service id associated to this service
+	// The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
 	PagerdutyId pulumi.StringPtrInput
 	// Position of the service
 	Position pulumi.IntPtrInput
@@ -539,9 +539,9 @@ func (o ServiceOutput) AlertsEmailEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.AlertsEmailEnabled }).(pulumi.BoolOutput)
 }
 
-// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
-func (o ServiceOutput) BackstageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.BackstageId }).(pulumi.StringPtrOutput)
+// The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
+func (o ServiceOutput) BackstageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.BackstageId }).(pulumi.StringOutput)
 }
 
 // The hex color of the service
@@ -549,9 +549,9 @@ func (o ServiceOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Color }).(pulumi.StringOutput)
 }
 
-// The Cortex group id associated to this service
-func (o ServiceOutput) CortexId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.CortexId }).(pulumi.StringPtrOutput)
+// The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
+func (o ServiceOutput) CortexId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.CortexId }).(pulumi.StringOutput)
 }
 
 // The description of the service
@@ -569,9 +569,9 @@ func (o ServiceOutput) EscalationPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.EscalationPolicyId }).(pulumi.StringOutput)
 }
 
-// The external id associated to this service
-func (o ServiceOutput) ExternalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.ExternalId }).(pulumi.StringPtrOutput)
+// The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
+func (o ServiceOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
 }
 
 // The GitHub repository branch associated to this service. eg: main
@@ -624,9 +624,9 @@ func (o ServiceOutput) NotifyEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.NotifyEmails }).(pulumi.StringArrayOutput)
 }
 
-// The Opsgenie service id associated to this service
-func (o ServiceOutput) OpsgenieId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.OpsgenieId }).(pulumi.StringPtrOutput)
+// The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
+func (o ServiceOutput) OpsgenieId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.OpsgenieId }).(pulumi.StringOutput)
 }
 
 // Owner Teams associated with this service
@@ -639,9 +639,9 @@ func (o ServiceOutput) OwnerUserIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.IntArrayOutput { return v.OwnerUserIds }).(pulumi.IntArrayOutput)
 }
 
-// The PagerDuty service id associated to this service
-func (o ServiceOutput) PagerdutyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.PagerdutyId }).(pulumi.StringPtrOutput)
+// The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
+func (o ServiceOutput) PagerdutyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.PagerdutyId }).(pulumi.StringOutput)
 }
 
 // Position of the service

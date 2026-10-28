@@ -1586,7 +1586,7 @@ func (o AlertRoutingRuleDestinationPtrOutput) TargetType() pulumi.StringPtrOutpu
 
 type AlertsSourceAlertSourceFieldsAttribute struct {
 	// The ID of the alert field
-	AlertFieldId *string `pulumi:"alertFieldId"`
+	AlertFieldId string `pulumi:"alertFieldId"`
 	// Liquid expression to extract a specific value from the alert's payload for evaluation
 	TemplateBody *string `pulumi:"templateBody"`
 }
@@ -1604,7 +1604,7 @@ type AlertsSourceAlertSourceFieldsAttributeInput interface {
 
 type AlertsSourceAlertSourceFieldsAttributeArgs struct {
 	// The ID of the alert field
-	AlertFieldId pulumi.StringPtrInput `pulumi:"alertFieldId"`
+	AlertFieldId pulumi.StringInput `pulumi:"alertFieldId"`
 	// Liquid expression to extract a specific value from the alert's payload for evaluation
 	TemplateBody pulumi.StringPtrInput `pulumi:"templateBody"`
 }
@@ -1661,8 +1661,8 @@ func (o AlertsSourceAlertSourceFieldsAttributeOutput) ToAlertsSourceAlertSourceF
 }
 
 // The ID of the alert field
-func (o AlertsSourceAlertSourceFieldsAttributeOutput) AlertFieldId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AlertsSourceAlertSourceFieldsAttribute) *string { return v.AlertFieldId }).(pulumi.StringPtrOutput)
+func (o AlertsSourceAlertSourceFieldsAttributeOutput) AlertFieldId() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertsSourceAlertSourceFieldsAttribute) string { return v.AlertFieldId }).(pulumi.StringOutput)
 }
 
 // Liquid expression to extract a specific value from the alert's payload for evaluation
@@ -10791,6 +10791,10 @@ type WorkflowActionItemTriggerParams struct {
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionResolvedAt *string `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledFor *string `pulumi:"incidentConditionScheduledFor"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledUntil *string `pulumi:"incidentConditionScheduledUntil"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService *string `pulumi:"incidentConditionService"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
@@ -10876,6 +10880,10 @@ type WorkflowActionItemTriggerParamsArgs struct {
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionResolvedAt pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledFor pulumi.StringPtrInput `pulumi:"incidentConditionScheduledFor"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledUntil pulumi.StringPtrInput `pulumi:"incidentConditionScheduledUntil"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService pulumi.StringPtrInput `pulumi:"incidentConditionService"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
@@ -11090,6 +11098,16 @@ func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionMitigatedAt() pu
 // Value must be one of `SET`, `UNSET`.
 func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionResolvedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionResolvedAt }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionScheduledFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionScheduledFor }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowActionItemTriggerParamsOutput) IncidentConditionScheduledUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowActionItemTriggerParams) *string { return v.IncidentConditionScheduledUntil }).(pulumi.StringPtrOutput)
 }
 
 // Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
@@ -11405,6 +11423,26 @@ func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionResolvedAt() 
 			return nil
 		}
 		return v.IncidentConditionResolvedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionScheduledFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionScheduledFor
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowActionItemTriggerParamsPtrOutput) IncidentConditionScheduledUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowActionItemTriggerParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionScheduledUntil
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12031,8 +12069,11 @@ func (o WorkflowAlertTriggerParamsPtrOutput) Triggers() pulumi.StringArrayOutput
 }
 
 type WorkflowAlertTriggerParamsAlertFieldCondition struct {
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
+	// The ID of the alert field.
+	AlertFieldId string `pulumi:"alertFieldId"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	ConditionType string   `pulumi:"conditionType"`
+	Values        []string `pulumi:"values"`
 }
 
 // WorkflowAlertTriggerParamsAlertFieldConditionInput is an input type that accepts WorkflowAlertTriggerParamsAlertFieldConditionArgs and WorkflowAlertTriggerParamsAlertFieldConditionOutput values.
@@ -12047,8 +12088,11 @@ type WorkflowAlertTriggerParamsAlertFieldConditionInput interface {
 }
 
 type WorkflowAlertTriggerParamsAlertFieldConditionArgs struct {
-	Id   pulumi.StringInput `pulumi:"id"`
-	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the alert field.
+	AlertFieldId pulumi.StringInput `pulumi:"alertFieldId"`
+	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+	ConditionType pulumi.StringInput      `pulumi:"conditionType"`
+	Values        pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (WorkflowAlertTriggerParamsAlertFieldConditionArgs) ElementType() reflect.Type {
@@ -12102,12 +12146,18 @@ func (o WorkflowAlertTriggerParamsAlertFieldConditionOutput) ToWorkflowAlertTrig
 	return o
 }
 
-func (o WorkflowAlertTriggerParamsAlertFieldConditionOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertFieldCondition) string { return v.Id }).(pulumi.StringOutput)
+// The ID of the alert field.
+func (o WorkflowAlertTriggerParamsAlertFieldConditionOutput) AlertFieldId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertFieldCondition) string { return v.AlertFieldId }).(pulumi.StringOutput)
 }
 
-func (o WorkflowAlertTriggerParamsAlertFieldConditionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertFieldCondition) string { return v.Name }).(pulumi.StringOutput)
+// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
+func (o WorkflowAlertTriggerParamsAlertFieldConditionOutput) ConditionType() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertFieldCondition) string { return v.ConditionType }).(pulumi.StringOutput)
+}
+
+func (o WorkflowAlertTriggerParamsAlertFieldConditionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowAlertTriggerParamsAlertFieldCondition) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 type WorkflowAlertTriggerParamsAlertFieldConditionArrayOutput struct{ *pulumi.OutputState }
@@ -12537,6 +12587,10 @@ type WorkflowIncidentTriggerParams struct {
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionResolvedAt *string `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledFor *string `pulumi:"incidentConditionScheduledFor"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledUntil *string `pulumi:"incidentConditionScheduledUntil"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService *string `pulumi:"incidentConditionService"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
@@ -12565,7 +12619,7 @@ type WorkflowIncidentTriggerParams struct {
 	IncidentVisibilities []bool   `pulumi:"incidentVisibilities"`
 	// Value must be one of `incident`.
 	TriggerType *string `pulumi:"triggerType"`
-	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
+	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, scheduled*for*updated, scheduled*until*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
 	Triggers []string `pulumi:"triggers"`
 }
 
@@ -12609,6 +12663,10 @@ type WorkflowIncidentTriggerParamsArgs struct {
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionResolvedAt pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledFor pulumi.StringPtrInput `pulumi:"incidentConditionScheduledFor"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledUntil pulumi.StringPtrInput `pulumi:"incidentConditionScheduledUntil"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService pulumi.StringPtrInput `pulumi:"incidentConditionService"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
@@ -12637,7 +12695,7 @@ type WorkflowIncidentTriggerParamsArgs struct {
 	IncidentVisibilities pulumi.BoolArrayInput   `pulumi:"incidentVisibilities"`
 	// Value must be one of `incident`.
 	TriggerType pulumi.StringPtrInput `pulumi:"triggerType"`
-	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
+	// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, scheduled*for*updated, scheduled*until*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
 	Triggers pulumi.StringArrayInput `pulumi:"triggers"`
 }
 
@@ -12788,6 +12846,16 @@ func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionResolvedAt() pulum
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionResolvedAt }).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionScheduledFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionScheduledFor }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionScheduledUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionScheduledUntil }).(pulumi.StringPtrOutput)
+}
+
 // Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.IncidentConditionService }).(pulumi.StringPtrOutput)
@@ -12861,7 +12929,7 @@ func (o WorkflowIncidentTriggerParamsOutput) TriggerType() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) *string { return v.TriggerType }).(pulumi.StringPtrOutput)
 }
 
-// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
+// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, scheduled*for*updated, scheduled*until*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
 func (o WorkflowIncidentTriggerParamsOutput) Triggers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkflowIncidentTriggerParams) []string { return v.Triggers }).(pulumi.StringArrayOutput)
 }
@@ -13030,6 +13098,26 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionResolvedAt() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionScheduledFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionScheduledFor
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionScheduledUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionScheduledUntil
+	}).(pulumi.StringPtrOutput)
+}
+
 // Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 func (o WorkflowIncidentTriggerParamsPtrOutput) IncidentConditionService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) *string {
@@ -13178,7 +13266,7 @@ func (o WorkflowIncidentTriggerParamsPtrOutput) TriggerType() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
+// Actions that trigger the workflow. One of custom*fields.\n\n.updated, incident*in*triage, incident*created, incident*started, incident*updated, title*updated, summary*updated, status*updated, severity*updated, notify*emails*updated, scheduled*for*updated, scheduled*until*updated, environments*added, environments*removed, environments*updated, incident*types*added, incident*types*removed, incident*types*updated, services*added, services*removed, services*updated, visibility*updated, functionalities*added, functionalities*removed, functionalities*updated, teams*added, teams*removed, teams*updated, causes*added, causes*removed, causes*updated, timeline*updated, status*page*timeline*updated, role*assignments*updated, role*assignments*added, role*assignments*removed, slack*command, slack*channel*created, slack*channel*converted, microsoft*teams*channel*created, microsoft*teams*chat*created, google*chat*space*created, subscribers*updated, subscribers*added, subscribers*removed, user*joined*slack*channel, user*left*slack*channel, meeting*summary_created
 func (o WorkflowIncidentTriggerParamsPtrOutput) Triggers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowIncidentTriggerParams) []string {
 		if v == nil {
@@ -13323,6 +13411,10 @@ type WorkflowPostMortemTriggerParams struct {
 	IncidentConditionMitigatedAt *string `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionResolvedAt *string `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledFor *string `pulumi:"incidentConditionScheduledFor"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledUntil *string `pulumi:"incidentConditionScheduledUntil"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService *string `pulumi:"incidentConditionService"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
@@ -13401,6 +13493,10 @@ type WorkflowPostMortemTriggerParamsArgs struct {
 	IncidentConditionMitigatedAt pulumi.StringPtrInput `pulumi:"incidentConditionMitigatedAt"`
 	// Value must be one of `SET`, `UNSET`.
 	IncidentConditionResolvedAt pulumi.StringPtrInput `pulumi:"incidentConditionResolvedAt"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledFor pulumi.StringPtrInput `pulumi:"incidentConditionScheduledFor"`
+	// Value must be one of `SET`, `UNSET`.
+	IncidentConditionScheduledUntil pulumi.StringPtrInput `pulumi:"incidentConditionScheduledUntil"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	IncidentConditionService pulumi.StringPtrInput `pulumi:"incidentConditionService"`
 	// Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
@@ -13584,6 +13680,16 @@ func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionMitigatedAt() pu
 // Value must be one of `SET`, `UNSET`.
 func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionResolvedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionResolvedAt }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionScheduledFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionScheduledFor }).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowPostMortemTriggerParamsOutput) IncidentConditionScheduledUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowPostMortemTriggerParams) *string { return v.IncidentConditionScheduledUntil }).(pulumi.StringPtrOutput)
 }
 
 // Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
@@ -13840,6 +13946,26 @@ func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionResolvedAt() 
 			return nil
 		}
 		return v.IncidentConditionResolvedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionScheduledFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionScheduledFor
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value must be one of `SET`, `UNSET`.
+func (o WorkflowPostMortemTriggerParamsPtrOutput) IncidentConditionScheduledUntil() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowPostMortemTriggerParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentConditionScheduledUntil
 	}).(pulumi.StringPtrOutput)
 }
 

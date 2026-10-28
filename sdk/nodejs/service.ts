@@ -76,17 +76,17 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly alertsEmailEnabled: pulumi.Output<boolean>;
     /**
-     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
+     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
      */
-    declare public readonly backstageId: pulumi.Output<string | undefined>;
+    declare public readonly backstageId: pulumi.Output<string>;
     /**
      * The hex color of the service
      */
     declare public readonly color: pulumi.Output<string>;
     /**
-     * The Cortex group id associated to this service
+     * The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
-    declare public readonly cortexId: pulumi.Output<string | undefined>;
+    declare public readonly cortexId: pulumi.Output<string>;
     /**
      * The description of the service
      */
@@ -100,9 +100,9 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly escalationPolicyId: pulumi.Output<string>;
     /**
-     * The external id associated to this service
+     * The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
-    declare public readonly externalId: pulumi.Output<string | undefined>;
+    declare public readonly externalId: pulumi.Output<string>;
     /**
      * The GitHub repository branch associated to this service. eg: main
      */
@@ -144,9 +144,9 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly notifyEmails: pulumi.Output<string[] | undefined>;
     /**
-     * The Opsgenie service id associated to this service
+     * The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
-    declare public readonly opsgenieId: pulumi.Output<string | undefined>;
+    declare public readonly opsgenieId: pulumi.Output<string>;
     /**
      * Owner Teams associated with this service
      */
@@ -156,9 +156,9 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly ownerUserIds: pulumi.Output<number[]>;
     /**
-     * The PagerDuty service id associated to this service
+     * The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
-    declare public readonly pagerdutyId: pulumi.Output<string | undefined>;
+    declare public readonly pagerdutyId: pulumi.Output<string>;
     /**
      * Position of the service
      */
@@ -308,7 +308,7 @@ export interface ServiceState {
      */
     alertsEmailEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
+     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
      */
     backstageId?: pulumi.Input<string | undefined>;
     /**
@@ -316,7 +316,7 @@ export interface ServiceState {
      */
     color?: pulumi.Input<string | undefined>;
     /**
-     * The Cortex group id associated to this service
+     * The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
     cortexId?: pulumi.Input<string | undefined>;
     /**
@@ -332,7 +332,7 @@ export interface ServiceState {
      */
     escalationPolicyId?: pulumi.Input<string | undefined>;
     /**
-     * The external id associated to this service
+     * The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
     externalId?: pulumi.Input<string | undefined>;
     /**
@@ -376,7 +376,7 @@ export interface ServiceState {
      */
     notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Opsgenie service id associated to this service
+     * The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
     opsgenieId?: pulumi.Input<string | undefined>;
     /**
@@ -388,7 +388,7 @@ export interface ServiceState {
      */
     ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * The PagerDuty service id associated to this service
+     * The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
     pagerdutyId?: pulumi.Input<string | undefined>;
     /**
@@ -452,7 +452,7 @@ export interface ServiceArgs {
      */
     alertsEmailEnabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name
+     * The Backstage entity id associated to this service. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
      */
     backstageId?: pulumi.Input<string | undefined>;
     /**
@@ -460,7 +460,7 @@ export interface ServiceArgs {
      */
     color?: pulumi.Input<string | undefined>;
     /**
-     * The Cortex group id associated to this service
+     * The Cortex group id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
     cortexId?: pulumi.Input<string | undefined>;
     /**
@@ -476,7 +476,7 @@ export interface ServiceArgs {
      */
     escalationPolicyId?: pulumi.Input<string | undefined>;
     /**
-     * The external id associated to this service
+     * The external id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
     externalId?: pulumi.Input<string | undefined>;
     /**
@@ -516,7 +516,7 @@ export interface ServiceArgs {
      */
     notifyEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The Opsgenie service id associated to this service
+     * The Opsgenie service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
     opsgenieId?: pulumi.Input<string | undefined>;
     /**
@@ -528,7 +528,7 @@ export interface ServiceArgs {
      */
     ownerUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * The PagerDuty service id associated to this service
+     * The PagerDuty service id associated to this service. Omit to preserve an existing value; set to an empty string to clear it.
      */
     pagerdutyId?: pulumi.Input<string | undefined>;
     /**

@@ -165,6 +165,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SubStatus{}
 	case "rootly:index/team:Team":
 		r = &Team{}
+	case "rootly:index/userIncidentResponseRole:UserIncidentResponseRole":
+		r = &UserIncidentResponseRole{}
 	case "rootly:index/userOnCallRole:UserOnCallRole":
 		r = &UserOnCallRole{}
 	case "rootly:index/webhooksEndpoint:WebhooksEndpoint":
@@ -878,6 +880,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/team",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/userIncidentResponseRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

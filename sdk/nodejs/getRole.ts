@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Retrieves information about a Rootly role. Rootly provides the following built-in roles:
+ *
+ * | Name | Slug |
+ * |------|------|
+ * | owner | owner |
+ * | admin | admin |
+ * | user | user |
+ * | observer | observer |
+ * | None | noAccess |
+ *
  * ## Example Usage
  */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
@@ -45,6 +55,16 @@ export interface GetRoleResult {
     readonly slug: string;
 }
 /**
+ * Retrieves information about a Rootly role. Rootly provides the following built-in roles:
+ *
+ * | Name | Slug |
+ * |------|------|
+ * | owner | owner |
+ * | admin | admin |
+ * | user | user |
+ * | observer | observer |
+ * | None | noAccess |
+ *
  * ## Example Usage
  */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleResult> {
