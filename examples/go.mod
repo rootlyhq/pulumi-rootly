@@ -1,6 +1,6 @@
 module github.com/rootlyhq/pulumi-rootly/examples
 
-go 1.27.3
+go 1.27.4
 
 require github.com/pulumi/pulumi/pkg/v3 v3.272.0
 
