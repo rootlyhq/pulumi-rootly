@@ -69,7 +69,7 @@ jobs:
     - name: Install Pulumi CLI
       uses: pulumi/actions@96c7761824268174e0d2a4e8c7d75671eebd24a7 # v7.1.0
       with:
-        pulumi-version: 3.272.0
+        pulumi-version: 3.274.1
     - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
       with:
         node-version: '24.22.3'
