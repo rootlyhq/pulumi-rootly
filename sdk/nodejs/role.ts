@@ -60,6 +60,14 @@ export class Role extends pulumi.CustomResource {
     }
 
     /**
+     * Value must be one of `read`, `manage`.
+     */
+    declare public readonly aiAutomationsPermissions: pulumi.Output<string[]>;
+    /**
+     * Value must be one of `read`, `manage`.
+     */
+    declare public readonly aiSkillsPermissions: pulumi.Output<string[]>;
+    /**
      * Value must be one of `create`, `read`.
      */
     declare public readonly alertsPermissions: pulumi.Output<string[]>;
@@ -235,6 +243,8 @@ export class Role extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
+            resourceInputs["aiAutomationsPermissions"] = state?.aiAutomationsPermissions;
+            resourceInputs["aiSkillsPermissions"] = state?.aiSkillsPermissions;
             resourceInputs["alertsPermissions"] = state?.alertsPermissions;
             resourceInputs["apiKeysPermissions"] = state?.apiKeysPermissions;
             resourceInputs["auditsPermissions"] = state?.auditsPermissions;
@@ -277,6 +287,8 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["workflowsPermissions"] = state?.workflowsPermissions;
         } else {
             const args = argsOrState as RoleArgs | undefined;
+            resourceInputs["aiAutomationsPermissions"] = args?.aiAutomationsPermissions;
+            resourceInputs["aiSkillsPermissions"] = args?.aiSkillsPermissions;
             resourceInputs["alertsPermissions"] = args?.alertsPermissions;
             resourceInputs["apiKeysPermissions"] = args?.apiKeysPermissions;
             resourceInputs["auditsPermissions"] = args?.auditsPermissions;
@@ -327,6 +339,14 @@ export class Role extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Role resources.
  */
 export interface RoleState {
+    /**
+     * Value must be one of `read`, `manage`.
+     */
+    aiAutomationsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `read`, `manage`.
+     */
+    aiSkillsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`.
      */
@@ -495,6 +515,14 @@ export interface RoleState {
  * The set of arguments for constructing a Role resource.
  */
 export interface RoleArgs {
+    /**
+     * Value must be one of `read`, `manage`.
+     */
+    aiAutomationsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value must be one of `read`, `manage`.
+     */
+    aiSkillsPermissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Value must be one of `create`, `read`.
      */

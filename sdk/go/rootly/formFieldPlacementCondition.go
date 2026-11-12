@@ -34,6 +34,8 @@ type FormFieldPlacementCondition struct {
 
 	// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 	Comparison pulumi.StringPtrOutput `pulumi:"comparison"`
+	// The condition group this condition belongs to.
+	ConditionGroupId pulumi.StringOutput `pulumi:"conditionGroupId"`
 	// The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
 	Conditioned pulumi.StringPtrOutput `pulumi:"conditioned"`
 	// The condition field.
@@ -87,6 +89,8 @@ func GetFormFieldPlacementCondition(ctx *pulumi.Context,
 type formFieldPlacementConditionState struct {
 	// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 	Comparison *string `pulumi:"comparison"`
+	// The condition group this condition belongs to.
+	ConditionGroupId *string `pulumi:"conditionGroupId"`
 	// The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
 	Conditioned *string `pulumi:"conditioned"`
 	// The condition field.
@@ -102,6 +106,8 @@ type formFieldPlacementConditionState struct {
 type FormFieldPlacementConditionState struct {
 	// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 	Comparison pulumi.StringPtrInput
+	// The condition group this condition belongs to.
+	ConditionGroupId pulumi.StringPtrInput
 	// The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
 	Conditioned pulumi.StringPtrInput
 	// The condition field.
@@ -121,6 +127,8 @@ func (FormFieldPlacementConditionState) ElementType() reflect.Type {
 type formFieldPlacementConditionArgs struct {
 	// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 	Comparison *string `pulumi:"comparison"`
+	// The condition group this condition belongs to.
+	ConditionGroupId *string `pulumi:"conditionGroupId"`
 	// The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
 	Conditioned *string `pulumi:"conditioned"`
 	// The condition field.
@@ -137,6 +145,8 @@ type formFieldPlacementConditionArgs struct {
 type FormFieldPlacementConditionArgs struct {
 	// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 	Comparison pulumi.StringPtrInput
+	// The condition group this condition belongs to.
+	ConditionGroupId pulumi.StringPtrInput
 	// The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
 	Conditioned pulumi.StringPtrInput
 	// The condition field.
@@ -239,6 +249,11 @@ func (o FormFieldPlacementConditionOutput) ToFormFieldPlacementConditionOutputWi
 // The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 func (o FormFieldPlacementConditionOutput) Comparison() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FormFieldPlacementCondition) pulumi.StringPtrOutput { return v.Comparison }).(pulumi.StringPtrOutput)
+}
+
+// The condition group this condition belongs to.
+func (o FormFieldPlacementConditionOutput) ConditionGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FormFieldPlacementCondition) pulumi.StringOutput { return v.ConditionGroupId }).(pulumi.StringOutput)
 }
 
 // The resource or attribute the condition applies.. Value must be one of `placement`, `required`.

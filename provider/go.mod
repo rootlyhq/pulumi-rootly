@@ -11,7 +11,7 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.141.0
 	github.com/pulumi/pulumi/pkg/v3 v3.272.0
 	github.com/pulumi/pulumi/sdk/v3 v3.272.0
-	github.com/rootlyhq/terraform-provider-rootly/v5 v5.23.5
+	github.com/rootlyhq/terraform-provider-rootly/v5 v5.25.2
 	github.com/rootlyhq/terraform-provider-rootly/v5/pulumi-shim v0.0.0
 	github.com/stretchr/testify v1.12.1
 	google.golang.org/protobuf v1.36.12

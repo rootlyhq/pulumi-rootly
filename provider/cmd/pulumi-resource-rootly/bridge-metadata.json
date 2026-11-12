@@ -76,7 +76,14 @@
                                     }
                                 },
                                 "destinations": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "match_keys": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -687,6 +694,9 @@
                 "current": "rootly:index/playbook:Playbook",
                 "majorVersion": 4,
                 "fields": {
+                    "cause_ids": {
+                        "maxItemsOne": false
+                    },
                     "environment_ids": {
                         "maxItemsOne": false
                     },
@@ -768,6 +778,12 @@
                 "current": "rootly:index/role:Role",
                 "majorVersion": 4,
                 "fields": {
+                    "ai_automations_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "ai_skills_permissions": {
+                        "maxItemsOne": false
+                    },
                     "alerts_permissions": {
                         "maxItemsOne": false
                     },
@@ -2364,7 +2380,26 @@
                 "majorVersion": 4,
                 "fields": {
                     "task_params": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "environment_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "functionality_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "group_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "incident_type_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "service_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },

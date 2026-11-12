@@ -34,6 +34,10 @@ import (
 type Playbook struct {
 	pulumi.CustomResourceState
 
+	// The Cause IDs to attach to the incident
+	CauseIds pulumi.StringArrayOutput `pulumi:"causeIds"`
+	// Sanitized HTML instructions. Still returned when `kind` is `externalUrl`, where the body may be stale — branch on `kind`, not on `content` being present.
+	Content pulumi.StringOutput `pulumi:"content"`
 	// The Environment IDs to attach to the incident
 	EnvironmentIds pulumi.StringArrayOutput `pulumi:"environmentIds"`
 	// The external url of the playbook
@@ -44,6 +48,8 @@ type Playbook struct {
 	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
 	// The Incident Type IDs to attach to the incident
 	IncidentTypeIds pulumi.StringArrayOutput `pulumi:"incidentTypeIds"`
+	// Whether the playbook body lives in Rootly (`internalDocument`) or at an external link (`externalUrl`).. Value must be one of `internalDocument`, `externalUrl`.
+	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The Service IDs to attach to the incident
 	ServiceIds pulumi.StringArrayOutput `pulumi:"serviceIds"`
 	// The Severity IDs to attach to the incident
@@ -87,6 +93,10 @@ func GetPlaybook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Playbook resources.
 type playbookState struct {
+	// The Cause IDs to attach to the incident
+	CauseIds []string `pulumi:"causeIds"`
+	// Sanitized HTML instructions. Still returned when `kind` is `externalUrl`, where the body may be stale — branch on `kind`, not on `content` being present.
+	Content *string `pulumi:"content"`
 	// The Environment IDs to attach to the incident
 	EnvironmentIds []string `pulumi:"environmentIds"`
 	// The external url of the playbook
@@ -97,6 +107,8 @@ type playbookState struct {
 	GroupIds []string `pulumi:"groupIds"`
 	// The Incident Type IDs to attach to the incident
 	IncidentTypeIds []string `pulumi:"incidentTypeIds"`
+	// Whether the playbook body lives in Rootly (`internalDocument`) or at an external link (`externalUrl`).. Value must be one of `internalDocument`, `externalUrl`.
+	Kind *string `pulumi:"kind"`
 	// The Service IDs to attach to the incident
 	ServiceIds []string `pulumi:"serviceIds"`
 	// The Severity IDs to attach to the incident
@@ -108,6 +120,10 @@ type playbookState struct {
 }
 
 type PlaybookState struct {
+	// The Cause IDs to attach to the incident
+	CauseIds pulumi.StringArrayInput
+	// Sanitized HTML instructions. Still returned when `kind` is `externalUrl`, where the body may be stale — branch on `kind`, not on `content` being present.
+	Content pulumi.StringPtrInput
 	// The Environment IDs to attach to the incident
 	EnvironmentIds pulumi.StringArrayInput
 	// The external url of the playbook
@@ -118,6 +134,8 @@ type PlaybookState struct {
 	GroupIds pulumi.StringArrayInput
 	// The Incident Type IDs to attach to the incident
 	IncidentTypeIds pulumi.StringArrayInput
+	// Whether the playbook body lives in Rootly (`internalDocument`) or at an external link (`externalUrl`).. Value must be one of `internalDocument`, `externalUrl`.
+	Kind pulumi.StringPtrInput
 	// The Service IDs to attach to the incident
 	ServiceIds pulumi.StringArrayInput
 	// The Severity IDs to attach to the incident
@@ -133,6 +151,10 @@ func (PlaybookState) ElementType() reflect.Type {
 }
 
 type playbookArgs struct {
+	// The Cause IDs to attach to the incident
+	CauseIds []string `pulumi:"causeIds"`
+	// Sanitized HTML instructions. Still returned when `kind` is `externalUrl`, where the body may be stale — branch on `kind`, not on `content` being present.
+	Content *string `pulumi:"content"`
 	// The Environment IDs to attach to the incident
 	EnvironmentIds []string `pulumi:"environmentIds"`
 	// The external url of the playbook
@@ -143,6 +165,8 @@ type playbookArgs struct {
 	GroupIds []string `pulumi:"groupIds"`
 	// The Incident Type IDs to attach to the incident
 	IncidentTypeIds []string `pulumi:"incidentTypeIds"`
+	// Whether the playbook body lives in Rootly (`internalDocument`) or at an external link (`externalUrl`).. Value must be one of `internalDocument`, `externalUrl`.
+	Kind *string `pulumi:"kind"`
 	// The Service IDs to attach to the incident
 	ServiceIds []string `pulumi:"serviceIds"`
 	// The Severity IDs to attach to the incident
@@ -155,6 +179,10 @@ type playbookArgs struct {
 
 // The set of arguments for constructing a Playbook resource.
 type PlaybookArgs struct {
+	// The Cause IDs to attach to the incident
+	CauseIds pulumi.StringArrayInput
+	// Sanitized HTML instructions. Still returned when `kind` is `externalUrl`, where the body may be stale — branch on `kind`, not on `content` being present.
+	Content pulumi.StringPtrInput
 	// The Environment IDs to attach to the incident
 	EnvironmentIds pulumi.StringArrayInput
 	// The external url of the playbook
@@ -165,6 +193,8 @@ type PlaybookArgs struct {
 	GroupIds pulumi.StringArrayInput
 	// The Incident Type IDs to attach to the incident
 	IncidentTypeIds pulumi.StringArrayInput
+	// Whether the playbook body lives in Rootly (`internalDocument`) or at an external link (`externalUrl`).. Value must be one of `internalDocument`, `externalUrl`.
+	Kind pulumi.StringPtrInput
 	// The Service IDs to attach to the incident
 	ServiceIds pulumi.StringArrayInput
 	// The Severity IDs to attach to the incident
@@ -262,6 +292,16 @@ func (o PlaybookOutput) ToPlaybookOutputWithContext(ctx context.Context) Playboo
 	return o
 }
 
+// The Cause IDs to attach to the incident
+func (o PlaybookOutput) CauseIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Playbook) pulumi.StringArrayOutput { return v.CauseIds }).(pulumi.StringArrayOutput)
+}
+
+// Sanitized HTML instructions. Still returned when `kind` is `externalUrl`, where the body may be stale — branch on `kind`, not on `content` being present.
+func (o PlaybookOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v *Playbook) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
+}
+
 // The Environment IDs to attach to the incident
 func (o PlaybookOutput) EnvironmentIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Playbook) pulumi.StringArrayOutput { return v.EnvironmentIds }).(pulumi.StringArrayOutput)
@@ -285,6 +325,11 @@ func (o PlaybookOutput) GroupIds() pulumi.StringArrayOutput {
 // The Incident Type IDs to attach to the incident
 func (o PlaybookOutput) IncidentTypeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Playbook) pulumi.StringArrayOutput { return v.IncidentTypeIds }).(pulumi.StringArrayOutput)
+}
+
+// Whether the playbook body lives in Rootly (`internalDocument`) or at an external link (`externalUrl`).. Value must be one of `internalDocument`, `externalUrl`.
+func (o PlaybookOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Playbook) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The Service IDs to attach to the incident

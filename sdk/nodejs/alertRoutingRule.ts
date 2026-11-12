@@ -58,6 +58,10 @@ export class AlertRoutingRule extends pulumi.CustomResource {
     }
 
     /**
+     * AI SRE provider that investigates alerts matching this rule. Null disables AI SRE for the rule. Omit to preserve an existing value; set to an empty string to disable AI SRE. Value must be one of `rootly`, `devin`.
+     */
+    declare public readonly aiSreProvider: pulumi.Output<string>;
+    /**
      * The ID of the alerts source
      */
     declare public readonly alertsSourceId: pulumi.Output<string>;
@@ -100,6 +104,7 @@ export class AlertRoutingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertRoutingRuleState | undefined;
+            resourceInputs["aiSreProvider"] = state?.aiSreProvider;
             resourceInputs["alertsSourceId"] = state?.alertsSourceId;
             resourceInputs["conditionGroups"] = state?.conditionGroups;
             resourceInputs["conditionType"] = state?.conditionType;
@@ -116,6 +121,7 @@ export class AlertRoutingRule extends pulumi.CustomResource {
             if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
+            resourceInputs["aiSreProvider"] = args?.aiSreProvider;
             resourceInputs["alertsSourceId"] = args?.alertsSourceId;
             resourceInputs["conditionGroups"] = args?.conditionGroups;
             resourceInputs["conditionType"] = args?.conditionType;
@@ -134,6 +140,10 @@ export class AlertRoutingRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlertRoutingRule resources.
  */
 export interface AlertRoutingRuleState {
+    /**
+     * AI SRE provider that investigates alerts matching this rule. Null disables AI SRE for the rule. Omit to preserve an existing value; set to an empty string to disable AI SRE. Value must be one of `rootly`, `devin`.
+     */
+    aiSreProvider?: pulumi.Input<string | undefined>;
     /**
      * The ID of the alerts source
      */
@@ -169,6 +179,10 @@ export interface AlertRoutingRuleState {
  * The set of arguments for constructing a AlertRoutingRule resource.
  */
 export interface AlertRoutingRuleArgs {
+    /**
+     * AI SRE provider that investigates alerts matching this rule. Null disables AI SRE for the rule. Omit to preserve an existing value; set to an empty string to disable AI SRE. Value must be one of `rootly`, `devin`.
+     */
+    aiSreProvider?: pulumi.Input<string | undefined>;
     /**
      * The ID of the alerts source
      */

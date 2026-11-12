@@ -15,6 +15,7 @@ export function getFormField(args?: GetFormFieldArgs, opts?: pulumi.InvokeOption
         "enabled": args.enabled,
         "kind": args.kind,
         "name": args.name,
+        "resourceType": args.resourceType,
         "slug": args.slug,
     }, opts);
 }
@@ -30,6 +31,7 @@ export interface GetFormFieldArgs {
     enabled?: boolean;
     kind?: string;
     name?: string;
+    resourceType?: string;
     slug?: string;
 }
 
@@ -48,6 +50,7 @@ export interface GetFormFieldResult {
     readonly id: string;
     readonly kind: string;
     readonly name: string;
+    readonly resourceType: string;
     readonly slug: string;
 }
 /**
@@ -61,6 +64,7 @@ export function getFormFieldOutput(args?: GetFormFieldOutputArgs, opts?: pulumi.
         "enabled": args.enabled,
         "kind": args.kind,
         "name": args.name,
+        "resourceType": args.resourceType,
         "slug": args.slug,
     }, opts);
 }
@@ -76,5 +80,6 @@ export interface GetFormFieldOutputArgs {
     enabled?: pulumi.Input<boolean | undefined>;
     kind?: pulumi.Input<string | undefined>;
     name?: pulumi.Input<string | undefined>;
+    resourceType?: pulumi.Input<string | undefined>;
     slug?: pulumi.Input<string | undefined>;
 }

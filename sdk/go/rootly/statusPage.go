@@ -111,6 +111,13 @@ func NewStatusPage(ctx *pulumi.Context,
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
+	if args.AuthenticationPassword != nil {
+		args.AuthenticationPassword = pulumi.ToSecret(args.AuthenticationPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"authenticationPassword",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StatusPage
 	err := ctx.RegisterResource("rootly:index/statusPage:StatusPage", name, args, &resource, opts...)

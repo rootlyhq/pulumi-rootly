@@ -62,7 +62,7 @@ export class StatusPageComponent extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * Name of the component (derived from the source for catalog-backed components)
+     * Name of the component. Returns the component's own name when set, otherwise the source's public name, otherwise the source's name
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -136,7 +136,7 @@ export interface StatusPageComponentState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Name of the component (derived from the source for catalog-backed components)
+     * Name of the component. Returns the component's own name when set, otherwise the source's public name, otherwise the source's name
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -171,7 +171,7 @@ export interface StatusPageComponentArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Name of the component (derived from the source for catalog-backed components)
+     * Name of the component. Returns the component's own name when set, otherwise the source's public name, otherwise the source's name
      */
     name?: pulumi.Input<string | undefined>;
     /**

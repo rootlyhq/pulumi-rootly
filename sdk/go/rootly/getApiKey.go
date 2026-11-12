@@ -27,6 +27,7 @@ type LookupApiKeyArgs struct {
 	CreatedAt map[string]string `pulumi:"createdAt"`
 	// Filter by date range using 'lt' and 'gt'.
 	ExpiresAt map[string]string `pulumi:"expiresAt"`
+	GroupId   *string           `pulumi:"groupId"`
 	Kind      *string           `pulumi:"kind"`
 	// Filter by date range using 'lt' and 'gt'.
 	LastUsedAt map[string]string `pulumi:"lastUsedAt"`
@@ -40,6 +41,7 @@ type LookupApiKeyResult struct {
 	CreatedAt map[string]string `pulumi:"createdAt"`
 	// Filter by date range using 'lt' and 'gt'.
 	ExpiresAt map[string]string `pulumi:"expiresAt"`
+	GroupId   string            `pulumi:"groupId"`
 	// The ID of this resource.
 	Id   string `pulumi:"id"`
 	Kind string `pulumi:"kind"`
@@ -60,6 +62,7 @@ type LookupApiKeyOutputArgs struct {
 	CreatedAt pulumi.StringMapInput `pulumi:"createdAt"`
 	// Filter by date range using 'lt' and 'gt'.
 	ExpiresAt pulumi.StringMapInput `pulumi:"expiresAt"`
+	GroupId   pulumi.StringPtrInput `pulumi:"groupId"`
 	Kind      pulumi.StringPtrInput `pulumi:"kind"`
 	// Filter by date range using 'lt' and 'gt'.
 	LastUsedAt pulumi.StringMapInput `pulumi:"lastUsedAt"`
@@ -94,6 +97,10 @@ func (o LookupApiKeyResultOutput) CreatedAt() pulumi.StringMapOutput {
 // Filter by date range using 'lt' and 'gt'.
 func (o LookupApiKeyResultOutput) ExpiresAt() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApiKeyResult) map[string]string { return v.ExpiresAt }).(pulumi.StringMapOutput)
+}
+
+func (o LookupApiKeyResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiKeyResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // The ID of this resource.

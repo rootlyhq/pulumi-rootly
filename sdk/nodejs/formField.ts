@@ -68,7 +68,7 @@ export class FormField extends pulumi.CustomResource {
      */
     declare public readonly inputKind: pulumi.Output<string | undefined>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`, `priority`, `scope`, `exitCriteria`, `impactSoFar`, `rootCause`, `resolution`, `approvedBy`, `reasonAndAcceptedRisk`, `reReviewDate`, `cancellationReason`, `problemServices`, `problemEnvironments`, `problemFunctionalities`, `problemTeams`, `problemTitle`, `problemDescription`, `problemIncidents`, `problemDueDate`, `owner`.
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
@@ -79,7 +79,7 @@ export class FormField extends pulumi.CustomResource {
     /**
      * The resource type this field belongs to. Value must be one of `incident`, `problem`.
      */
-    declare public /*out*/ readonly resourceType: pulumi.Output<string>;
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * Whether the form field is shown on the incident details panel. Value must be one of true or false
      */
@@ -137,12 +137,12 @@ export class FormField extends pulumi.CustomResource {
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
             resourceInputs["requireds"] = args?.requireds;
+            resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["showOnIncidentDetails"] = args?.showOnIncidentDetails;
             resourceInputs["showns"] = args?.showns;
             resourceInputs["slug"] = args?.slug;
             resourceInputs["valueKind"] = args?.valueKind;
             resourceInputs["valueKindCatalogId"] = args?.valueKindCatalogId;
-            resourceInputs["resourceType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FormField.__pulumiType, name, resourceInputs, opts);
@@ -168,7 +168,7 @@ export interface FormFieldState {
      */
     inputKind?: pulumi.Input<string | undefined>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`, `priority`, `scope`, `exitCriteria`, `impactSoFar`, `rootCause`, `resolution`, `approvedBy`, `reasonAndAcceptedRisk`, `reReviewDate`, `cancellationReason`, `problemServices`, `problemEnvironments`, `problemFunctionalities`, `problemTeams`, `problemTitle`, `problemDescription`, `problemIncidents`, `problemDueDate`, `owner`.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
@@ -220,7 +220,7 @@ export interface FormFieldArgs {
      */
     inputKind?: pulumi.Input<string | undefined>;
     /**
-     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+     * The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`, `priority`, `scope`, `exitCriteria`, `impactSoFar`, `rootCause`, `resolution`, `approvedBy`, `reasonAndAcceptedRisk`, `reReviewDate`, `cancellationReason`, `problemServices`, `problemEnvironments`, `problemFunctionalities`, `problemTeams`, `problemTitle`, `problemDescription`, `problemIncidents`, `problemDueDate`, `owner`.
      */
     kind?: pulumi.Input<string | undefined>;
     /**
@@ -228,6 +228,10 @@ export interface FormFieldArgs {
      */
     name?: pulumi.Input<string | undefined>;
     requireds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The resource type this field belongs to. Value must be one of `incident`, `problem`.
+     */
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * Whether the form field is shown on the incident details panel. Value must be one of true or false
      */

@@ -47,6 +47,8 @@ type IncidentType struct {
 	Properties IncidentTypePropertyArrayOutput `pulumi:"properties"`
 	// The status page description of the incident type
 	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
+	// The public name of the incident type shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringOutput `pulumi:"publicName"`
 	// Slack Aliases associated with this incident type
 	SlackAliases IncidentTypeSlackAliasArrayOutput `pulumi:"slackAliases"`
 	// Slack Channels associated with this incident type
@@ -101,6 +103,8 @@ type incidentTypeState struct {
 	Properties []IncidentTypeProperty `pulumi:"properties"`
 	// The status page description of the incident type
 	PublicDescription *string `pulumi:"publicDescription"`
+	// The public name of the incident type shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName *string `pulumi:"publicName"`
 	// Slack Aliases associated with this incident type
 	SlackAliases []IncidentTypeSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this incident type
@@ -126,6 +130,8 @@ type IncidentTypeState struct {
 	Properties IncidentTypePropertyArrayInput
 	// The status page description of the incident type
 	PublicDescription pulumi.StringPtrInput
+	// The public name of the incident type shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringPtrInput
 	// Slack Aliases associated with this incident type
 	SlackAliases IncidentTypeSlackAliasArrayInput
 	// Slack Channels associated with this incident type
@@ -155,6 +161,8 @@ type incidentTypeArgs struct {
 	Properties []IncidentTypeProperty `pulumi:"properties"`
 	// The status page description of the incident type
 	PublicDescription *string `pulumi:"publicDescription"`
+	// The public name of the incident type shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName *string `pulumi:"publicName"`
 	// Slack Aliases associated with this incident type
 	SlackAliases []IncidentTypeSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this incident type
@@ -181,6 +189,8 @@ type IncidentTypeArgs struct {
 	Properties IncidentTypePropertyArrayInput
 	// The status page description of the incident type
 	PublicDescription pulumi.StringPtrInput
+	// The public name of the incident type shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringPtrInput
 	// Slack Aliases associated with this incident type
 	SlackAliases IncidentTypeSlackAliasArrayInput
 	// Slack Channels associated with this incident type
@@ -311,6 +321,11 @@ func (o IncidentTypeOutput) Properties() IncidentTypePropertyArrayOutput {
 // The status page description of the incident type
 func (o IncidentTypeOutput) PublicDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *IncidentType) pulumi.StringOutput { return v.PublicDescription }).(pulumi.StringOutput)
+}
+
+// The public name of the incident type shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+func (o IncidentTypeOutput) PublicName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IncidentType) pulumi.StringOutput { return v.PublicName }).(pulumi.StringOutput)
 }
 
 // Slack Aliases associated with this incident type

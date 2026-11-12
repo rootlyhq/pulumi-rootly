@@ -39,6 +39,8 @@ type CatalogEntity struct {
 	// The ID of the parent catalog
 	CatalogId   pulumi.StringOutput `pulumi:"catalogId"`
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The escalation policy id of the catalog entity
+	EscalationPolicyId pulumi.StringOutput `pulumi:"escalationPolicyId"`
 	// An external identifier for this catalog entity. Must be unique within the catalog.
 	ExternalId pulumi.StringOutput `pulumi:"externalId"`
 	// Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
@@ -50,6 +52,8 @@ type CatalogEntity struct {
 	Properties CatalogEntityPropertyArrayOutput `pulumi:"properties"`
 	// The status page description of the catalog entity
 	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
+	// The public name of the catalog entity shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringOutput `pulumi:"publicName"`
 	// The slug of the catalog entity. Derived from `name`.
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -94,6 +98,8 @@ type catalogEntityState struct {
 	// The ID of the parent catalog
 	CatalogId   *string `pulumi:"catalogId"`
 	Description *string `pulumi:"description"`
+	// The escalation policy id of the catalog entity
+	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
 	// An external identifier for this catalog entity. Must be unique within the catalog.
 	ExternalId *string `pulumi:"externalId"`
 	// Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
@@ -105,6 +111,8 @@ type catalogEntityState struct {
 	Properties []CatalogEntityProperty `pulumi:"properties"`
 	// The status page description of the catalog entity
 	PublicDescription *string `pulumi:"publicDescription"`
+	// The public name of the catalog entity shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName *string `pulumi:"publicName"`
 	// The slug of the catalog entity. Derived from `name`.
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -117,6 +125,8 @@ type CatalogEntityState struct {
 	// The ID of the parent catalog
 	CatalogId   pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
+	// The escalation policy id of the catalog entity
+	EscalationPolicyId pulumi.StringPtrInput
 	// An external identifier for this catalog entity. Must be unique within the catalog.
 	ExternalId pulumi.StringPtrInput
 	// Which source manages this resource (read-only).. Value must be one of `web`, `adminWeb`, `api`, `terraform`, `pulumi`, `backstage`, `catalogSync`.
@@ -128,6 +138,8 @@ type CatalogEntityState struct {
 	Properties CatalogEntityPropertyArrayInput
 	// The status page description of the catalog entity
 	PublicDescription pulumi.StringPtrInput
+	// The public name of the catalog entity shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringPtrInput
 	// The slug of the catalog entity. Derived from `name`.
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -144,6 +156,8 @@ type catalogEntityArgs struct {
 	// The ID of the parent catalog
 	CatalogId   string  `pulumi:"catalogId"`
 	Description *string `pulumi:"description"`
+	// The escalation policy id of the catalog entity
+	EscalationPolicyId *string `pulumi:"escalationPolicyId"`
 	// An external identifier for this catalog entity. Must be unique within the catalog.
 	ExternalId *string `pulumi:"externalId"`
 	Name       *string `pulumi:"name"`
@@ -153,6 +167,8 @@ type catalogEntityArgs struct {
 	Properties []CatalogEntityProperty `pulumi:"properties"`
 	// The status page description of the catalog entity
 	PublicDescription *string `pulumi:"publicDescription"`
+	// The public name of the catalog entity shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName *string `pulumi:"publicName"`
 	// The slug of the catalog entity. Derived from `name`.
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -166,6 +182,8 @@ type CatalogEntityArgs struct {
 	// The ID of the parent catalog
 	CatalogId   pulumi.StringInput
 	Description pulumi.StringPtrInput
+	// The escalation policy id of the catalog entity
+	EscalationPolicyId pulumi.StringPtrInput
 	// An external identifier for this catalog entity. Must be unique within the catalog.
 	ExternalId pulumi.StringPtrInput
 	Name       pulumi.StringPtrInput
@@ -175,6 +193,8 @@ type CatalogEntityArgs struct {
 	Properties CatalogEntityPropertyArrayInput
 	// The status page description of the catalog entity
 	PublicDescription pulumi.StringPtrInput
+	// The public name of the catalog entity shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringPtrInput
 	// The slug of the catalog entity. Derived from `name`.
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -282,6 +302,11 @@ func (o CatalogEntityOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *CatalogEntity) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// The escalation policy id of the catalog entity
+func (o CatalogEntityOutput) EscalationPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogEntity) pulumi.StringOutput { return v.EscalationPolicyId }).(pulumi.StringOutput)
+}
+
 // An external identifier for this catalog entity. Must be unique within the catalog.
 func (o CatalogEntityOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CatalogEntity) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
@@ -309,6 +334,11 @@ func (o CatalogEntityOutput) Properties() CatalogEntityPropertyArrayOutput {
 // The status page description of the catalog entity
 func (o CatalogEntityOutput) PublicDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *CatalogEntity) pulumi.StringOutput { return v.PublicDescription }).(pulumi.StringOutput)
+}
+
+// The public name of the catalog entity shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+func (o CatalogEntityOutput) PublicName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogEntity) pulumi.StringOutput { return v.PublicName }).(pulumi.StringOutput)
 }
 
 // The slug of the catalog entity. Derived from `name`.

@@ -496,6 +496,8 @@ type AlertRouteRule struct {
 	FallbackRule *bool `pulumi:"fallbackRule"`
 	// The name of the alert routing rule
 	Name *string `pulumi:"name"`
+	// Whether alerts matching this rule are left unpaged. A non-paging rule takes no destinations. Only available when dynamic alert routing is enabled for the organization.
+	NonPaging *bool `pulumi:"nonPaging"`
 	// The position of the alert routing rule for ordering evaluation
 	Position *int `pulumi:"position"`
 }
@@ -519,6 +521,8 @@ type AlertRouteRuleArgs struct {
 	FallbackRule pulumi.BoolPtrInput `pulumi:"fallbackRule"`
 	// The name of the alert routing rule
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Whether alerts matching this rule are left unpaged. A non-paging rule takes no destinations. Only available when dynamic alert routing is enabled for the organization.
+	NonPaging pulumi.BoolPtrInput `pulumi:"nonPaging"`
 	// The position of the alert routing rule for ordering evaluation
 	Position pulumi.IntPtrInput `pulumi:"position"`
 }
@@ -591,6 +595,11 @@ func (o AlertRouteRuleOutput) FallbackRule() pulumi.BoolPtrOutput {
 // The name of the alert routing rule
 func (o AlertRouteRuleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertRouteRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether alerts matching this rule are left unpaged. A non-paging rule takes no destinations. Only available when dynamic alert routing is enabled for the organization.
+func (o AlertRouteRuleOutput) NonPaging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlertRouteRule) *bool { return v.NonPaging }).(pulumi.BoolPtrOutput)
 }
 
 // The position of the alert routing rule for ordering evaluation
@@ -879,9 +888,15 @@ func (o AlertRouteRuleConditionGroupConditionArrayOutput) Index(i pulumi.IntInpu
 }
 
 type AlertRouteRuleDestination struct {
-	// The ID of the target
+	// Dynamic destinations only. The custom catalog's ID when `catalogType` is `CatalogEntity`.
+	CatalogId *string `pulumi:"catalogId"`
+	// Dynamic destinations only. The catalog the matched entity belongs to: `CatalogEntity` for a custom catalog. Value must be one of `Service`, `Group`, `Functionality`, `CatalogEntity`.
+	CatalogType *string `pulumi:"catalogType"`
+	// Dynamic destinations only. How an alert value is matched to a catalog entity property.
+	MatchKeys *AlertRouteRuleDestinationMatchKeys `pulumi:"matchKeys"`
+	// The ID of the target. Required for every `targetType` except `dynamic`.
 	TargetId *string `pulumi:"targetId"`
-	// The type of the target. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
+	// The type of the target. `CatalogEntity` pages the escalation policy of a custom catalog entity. `dynamic` pages the escalation policy of the catalog entity matched from the alert and takes `catalogType`, `catalogId` and `matchKeys` instead of `targetId`. `CatalogEntity` and `dynamic` are only available when dynamic alert routing is enabled for the organization. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`, `CatalogEntity`, `dynamic`.
 	TargetType *string `pulumi:"targetType"`
 }
 
@@ -897,9 +912,15 @@ type AlertRouteRuleDestinationInput interface {
 }
 
 type AlertRouteRuleDestinationArgs struct {
-	// The ID of the target
+	// Dynamic destinations only. The custom catalog's ID when `catalogType` is `CatalogEntity`.
+	CatalogId pulumi.StringPtrInput `pulumi:"catalogId"`
+	// Dynamic destinations only. The catalog the matched entity belongs to: `CatalogEntity` for a custom catalog. Value must be one of `Service`, `Group`, `Functionality`, `CatalogEntity`.
+	CatalogType pulumi.StringPtrInput `pulumi:"catalogType"`
+	// Dynamic destinations only. How an alert value is matched to a catalog entity property.
+	MatchKeys AlertRouteRuleDestinationMatchKeysPtrInput `pulumi:"matchKeys"`
+	// The ID of the target. Required for every `targetType` except `dynamic`.
 	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
-	// The type of the target. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
+	// The type of the target. `CatalogEntity` pages the escalation policy of a custom catalog entity. `dynamic` pages the escalation policy of the catalog entity matched from the alert and takes `catalogType`, `catalogId` and `matchKeys` instead of `targetId`. `CatalogEntity` and `dynamic` are only available when dynamic alert routing is enabled for the organization. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`, `CatalogEntity`, `dynamic`.
 	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
 }
 
@@ -954,12 +975,27 @@ func (o AlertRouteRuleDestinationOutput) ToAlertRouteRuleDestinationOutputWithCo
 	return o
 }
 
-// The ID of the target
+// Dynamic destinations only. The custom catalog's ID when `catalogType` is `CatalogEntity`.
+func (o AlertRouteRuleDestinationOutput) CatalogId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleDestination) *string { return v.CatalogId }).(pulumi.StringPtrOutput)
+}
+
+// Dynamic destinations only. The catalog the matched entity belongs to: `CatalogEntity` for a custom catalog. Value must be one of `Service`, `Group`, `Functionality`, `CatalogEntity`.
+func (o AlertRouteRuleDestinationOutput) CatalogType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleDestination) *string { return v.CatalogType }).(pulumi.StringPtrOutput)
+}
+
+// Dynamic destinations only. How an alert value is matched to a catalog entity property.
+func (o AlertRouteRuleDestinationOutput) MatchKeys() AlertRouteRuleDestinationMatchKeysPtrOutput {
+	return o.ApplyT(func(v AlertRouteRuleDestination) *AlertRouteRuleDestinationMatchKeys { return v.MatchKeys }).(AlertRouteRuleDestinationMatchKeysPtrOutput)
+}
+
+// The ID of the target. Required for every `targetType` except `dynamic`.
 func (o AlertRouteRuleDestinationOutput) TargetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertRouteRuleDestination) *string { return v.TargetId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the target. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
+// The type of the target. `CatalogEntity` pages the escalation policy of a custom catalog entity. `dynamic` pages the escalation policy of the catalog entity matched from the alert and takes `catalogType`, `catalogId` and `matchKeys` instead of `targetId`. `CatalogEntity` and `dynamic` are only available when dynamic alert routing is enabled for the organization. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`, `CatalogEntity`, `dynamic`.
 func (o AlertRouteRuleDestinationOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertRouteRuleDestination) *string { return v.TargetType }).(pulumi.StringPtrOutput)
 }
@@ -982,6 +1018,181 @@ func (o AlertRouteRuleDestinationArrayOutput) Index(i pulumi.IntInput) AlertRout
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertRouteRuleDestination {
 		return vs[0].([]AlertRouteRuleDestination)[vs[1].(int)]
 	}).(AlertRouteRuleDestinationOutput)
+}
+
+type AlertRouteRuleDestinationMatchKeys struct {
+	// The catalog property to match: `builtin:<name>` (for example `builtin:name` or `builtin:external_id`) or the ID of a text catalog field.
+	PropertyRef string `pulumi:"propertyRef"`
+	// Where the alert value comes from. Value must be one of `payload`, `attribute`, `alertField`.
+	SourceKind string `pulumi:"sourceKind"`
+	// A JSONPath into the payload for `payload`, an alert attribute name for `attribute`, or an alert field ID for `alertField`.
+	SourceRef string `pulumi:"sourceRef"`
+}
+
+// AlertRouteRuleDestinationMatchKeysInput is an input type that accepts AlertRouteRuleDestinationMatchKeysArgs and AlertRouteRuleDestinationMatchKeysOutput values.
+// You can construct a concrete instance of `AlertRouteRuleDestinationMatchKeysInput` via:
+//
+//	AlertRouteRuleDestinationMatchKeysArgs{...}
+type AlertRouteRuleDestinationMatchKeysInput interface {
+	pulumi.Input
+
+	ToAlertRouteRuleDestinationMatchKeysOutput() AlertRouteRuleDestinationMatchKeysOutput
+	ToAlertRouteRuleDestinationMatchKeysOutputWithContext(context.Context) AlertRouteRuleDestinationMatchKeysOutput
+}
+
+type AlertRouteRuleDestinationMatchKeysArgs struct {
+	// The catalog property to match: `builtin:<name>` (for example `builtin:name` or `builtin:external_id`) or the ID of a text catalog field.
+	PropertyRef pulumi.StringInput `pulumi:"propertyRef"`
+	// Where the alert value comes from. Value must be one of `payload`, `attribute`, `alertField`.
+	SourceKind pulumi.StringInput `pulumi:"sourceKind"`
+	// A JSONPath into the payload for `payload`, an alert attribute name for `attribute`, or an alert field ID for `alertField`.
+	SourceRef pulumi.StringInput `pulumi:"sourceRef"`
+}
+
+func (AlertRouteRuleDestinationMatchKeysArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRouteRuleDestinationMatchKeys)(nil)).Elem()
+}
+
+func (i AlertRouteRuleDestinationMatchKeysArgs) ToAlertRouteRuleDestinationMatchKeysOutput() AlertRouteRuleDestinationMatchKeysOutput {
+	return i.ToAlertRouteRuleDestinationMatchKeysOutputWithContext(context.Background())
+}
+
+func (i AlertRouteRuleDestinationMatchKeysArgs) ToAlertRouteRuleDestinationMatchKeysOutputWithContext(ctx context.Context) AlertRouteRuleDestinationMatchKeysOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRouteRuleDestinationMatchKeysOutput)
+}
+
+func (i AlertRouteRuleDestinationMatchKeysArgs) ToAlertRouteRuleDestinationMatchKeysPtrOutput() AlertRouteRuleDestinationMatchKeysPtrOutput {
+	return i.ToAlertRouteRuleDestinationMatchKeysPtrOutputWithContext(context.Background())
+}
+
+func (i AlertRouteRuleDestinationMatchKeysArgs) ToAlertRouteRuleDestinationMatchKeysPtrOutputWithContext(ctx context.Context) AlertRouteRuleDestinationMatchKeysPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRouteRuleDestinationMatchKeysOutput).ToAlertRouteRuleDestinationMatchKeysPtrOutputWithContext(ctx)
+}
+
+// AlertRouteRuleDestinationMatchKeysPtrInput is an input type that accepts AlertRouteRuleDestinationMatchKeysArgs, AlertRouteRuleDestinationMatchKeysPtr and AlertRouteRuleDestinationMatchKeysPtrOutput values.
+// You can construct a concrete instance of `AlertRouteRuleDestinationMatchKeysPtrInput` via:
+//
+//	        AlertRouteRuleDestinationMatchKeysArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertRouteRuleDestinationMatchKeysPtrInput interface {
+	pulumi.Input
+
+	ToAlertRouteRuleDestinationMatchKeysPtrOutput() AlertRouteRuleDestinationMatchKeysPtrOutput
+	ToAlertRouteRuleDestinationMatchKeysPtrOutputWithContext(context.Context) AlertRouteRuleDestinationMatchKeysPtrOutput
+}
+
+type alertRouteRuleDestinationMatchKeysPtrType AlertRouteRuleDestinationMatchKeysArgs
+
+func AlertRouteRuleDestinationMatchKeysPtr(v *AlertRouteRuleDestinationMatchKeysArgs) AlertRouteRuleDestinationMatchKeysPtrInput {
+	return (*alertRouteRuleDestinationMatchKeysPtrType)(v)
+}
+
+func (*alertRouteRuleDestinationMatchKeysPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRouteRuleDestinationMatchKeys)(nil)).Elem()
+}
+
+func (i *alertRouteRuleDestinationMatchKeysPtrType) ToAlertRouteRuleDestinationMatchKeysPtrOutput() AlertRouteRuleDestinationMatchKeysPtrOutput {
+	return i.ToAlertRouteRuleDestinationMatchKeysPtrOutputWithContext(context.Background())
+}
+
+func (i *alertRouteRuleDestinationMatchKeysPtrType) ToAlertRouteRuleDestinationMatchKeysPtrOutputWithContext(ctx context.Context) AlertRouteRuleDestinationMatchKeysPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertRouteRuleDestinationMatchKeysPtrOutput)
+}
+
+type AlertRouteRuleDestinationMatchKeysOutput struct{ *pulumi.OutputState }
+
+func (AlertRouteRuleDestinationMatchKeysOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertRouteRuleDestinationMatchKeys)(nil)).Elem()
+}
+
+func (o AlertRouteRuleDestinationMatchKeysOutput) ToAlertRouteRuleDestinationMatchKeysOutput() AlertRouteRuleDestinationMatchKeysOutput {
+	return o
+}
+
+func (o AlertRouteRuleDestinationMatchKeysOutput) ToAlertRouteRuleDestinationMatchKeysOutputWithContext(ctx context.Context) AlertRouteRuleDestinationMatchKeysOutput {
+	return o
+}
+
+func (o AlertRouteRuleDestinationMatchKeysOutput) ToAlertRouteRuleDestinationMatchKeysPtrOutput() AlertRouteRuleDestinationMatchKeysPtrOutput {
+	return o.ToAlertRouteRuleDestinationMatchKeysPtrOutputWithContext(context.Background())
+}
+
+func (o AlertRouteRuleDestinationMatchKeysOutput) ToAlertRouteRuleDestinationMatchKeysPtrOutputWithContext(ctx context.Context) AlertRouteRuleDestinationMatchKeysPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertRouteRuleDestinationMatchKeys) *AlertRouteRuleDestinationMatchKeys {
+		return &v
+	}).(AlertRouteRuleDestinationMatchKeysPtrOutput)
+}
+
+// The catalog property to match: `builtin:<name>` (for example `builtin:name` or `builtin:external_id`) or the ID of a text catalog field.
+func (o AlertRouteRuleDestinationMatchKeysOutput) PropertyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertRouteRuleDestinationMatchKeys) string { return v.PropertyRef }).(pulumi.StringOutput)
+}
+
+// Where the alert value comes from. Value must be one of `payload`, `attribute`, `alertField`.
+func (o AlertRouteRuleDestinationMatchKeysOutput) SourceKind() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertRouteRuleDestinationMatchKeys) string { return v.SourceKind }).(pulumi.StringOutput)
+}
+
+// A JSONPath into the payload for `payload`, an alert attribute name for `attribute`, or an alert field ID for `alertField`.
+func (o AlertRouteRuleDestinationMatchKeysOutput) SourceRef() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertRouteRuleDestinationMatchKeys) string { return v.SourceRef }).(pulumi.StringOutput)
+}
+
+type AlertRouteRuleDestinationMatchKeysPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertRouteRuleDestinationMatchKeysPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertRouteRuleDestinationMatchKeys)(nil)).Elem()
+}
+
+func (o AlertRouteRuleDestinationMatchKeysPtrOutput) ToAlertRouteRuleDestinationMatchKeysPtrOutput() AlertRouteRuleDestinationMatchKeysPtrOutput {
+	return o
+}
+
+func (o AlertRouteRuleDestinationMatchKeysPtrOutput) ToAlertRouteRuleDestinationMatchKeysPtrOutputWithContext(ctx context.Context) AlertRouteRuleDestinationMatchKeysPtrOutput {
+	return o
+}
+
+func (o AlertRouteRuleDestinationMatchKeysPtrOutput) Elem() AlertRouteRuleDestinationMatchKeysOutput {
+	return o.ApplyT(func(v *AlertRouteRuleDestinationMatchKeys) AlertRouteRuleDestinationMatchKeys {
+		if v != nil {
+			return *v
+		}
+		var ret AlertRouteRuleDestinationMatchKeys
+		return ret
+	}).(AlertRouteRuleDestinationMatchKeysOutput)
+}
+
+// The catalog property to match: `builtin:<name>` (for example `builtin:name` or `builtin:external_id`) or the ID of a text catalog field.
+func (o AlertRouteRuleDestinationMatchKeysPtrOutput) PropertyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRouteRuleDestinationMatchKeys) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PropertyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Where the alert value comes from. Value must be one of `payload`, `attribute`, `alertField`.
+func (o AlertRouteRuleDestinationMatchKeysPtrOutput) SourceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRouteRuleDestinationMatchKeys) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// A JSONPath into the payload for `payload`, an alert attribute name for `attribute`, or an alert field ID for `alertField`.
+func (o AlertRouteRuleDestinationMatchKeysPtrOutput) SourceRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertRouteRuleDestinationMatchKeys) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceRef
+	}).(pulumi.StringPtrOutput)
 }
 
 type AlertRoutingRuleCondition struct {
@@ -1431,7 +1642,7 @@ func (o AlertRoutingRuleConditionGroupConditionArrayOutput) Index(i pulumi.IntIn
 type AlertRoutingRuleDestination struct {
 	// The ID of the target
 	TargetId string `pulumi:"targetId"`
-	// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
+	// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`, `CatalogEntity`.
 	TargetType *string `pulumi:"targetType"`
 }
 
@@ -1449,7 +1660,7 @@ type AlertRoutingRuleDestinationInput interface {
 type AlertRoutingRuleDestinationArgs struct {
 	// The ID of the target
 	TargetId pulumi.StringInput `pulumi:"targetId"`
-	// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
+	// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`, `CatalogEntity`.
 	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
 }
 
@@ -1535,7 +1746,7 @@ func (o AlertRoutingRuleDestinationOutput) TargetId() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertRoutingRuleDestination) string { return v.TargetId }).(pulumi.StringOutput)
 }
 
-// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
+// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`, `CatalogEntity`.
 func (o AlertRoutingRuleDestinationOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertRoutingRuleDestination) *string { return v.TargetType }).(pulumi.StringPtrOutput)
 }
@@ -1574,7 +1785,7 @@ func (o AlertRoutingRuleDestinationPtrOutput) TargetId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
+// The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`, `CatalogEntity`.
 func (o AlertRoutingRuleDestinationPtrOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertRoutingRuleDestination) *string {
 		if v == nil {
@@ -3922,7 +4133,7 @@ type DashboardPanelParams struct {
 	Datalabels  *DashboardPanelParamsDatalabels `pulumi:"datalabels"`
 	Datasets    []DashboardPanelParamsDataset   `pulumi:"datasets"`
 	Description *string                         `pulumi:"description"`
-	// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `table`, `aggregateValue`.
+	// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `breakdownTable`, `table`, `aggregateValue`.
 	Display     *string                     `pulumi:"display"`
 	Legend      *DashboardPanelParamsLegend `pulumi:"legend"`
 	TableFields []string                    `pulumi:"tableFields"`
@@ -3943,7 +4154,7 @@ type DashboardPanelParamsArgs struct {
 	Datalabels  DashboardPanelParamsDatalabelsPtrInput `pulumi:"datalabels"`
 	Datasets    DashboardPanelParamsDatasetArrayInput  `pulumi:"datasets"`
 	Description pulumi.StringPtrInput                  `pulumi:"description"`
-	// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `table`, `aggregateValue`.
+	// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `breakdownTable`, `table`, `aggregateValue`.
 	Display     pulumi.StringPtrInput              `pulumi:"display"`
 	Legend      DashboardPanelParamsLegendPtrInput `pulumi:"legend"`
 	TableFields pulumi.StringArrayInput            `pulumi:"tableFields"`
@@ -4038,7 +4249,7 @@ func (o DashboardPanelParamsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardPanelParams) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `table`, `aggregateValue`.
+// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `breakdownTable`, `table`, `aggregateValue`.
 func (o DashboardPanelParamsOutput) Display() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardPanelParams) *string { return v.Display }).(pulumi.StringPtrOutput)
 }
@@ -4102,7 +4313,7 @@ func (o DashboardPanelParamsPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `table`, `aggregateValue`.
+// Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `breakdownTable`, `table`, `aggregateValue`.
 func (o DashboardPanelParamsPtrOutput) Display() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DashboardPanelParams) *string {
 		if v == nil {
@@ -23788,6 +23999,8 @@ func (o WorkflowTaskCreateGoogleChatSpaceTaskParamsPtrOutput) Title() pulumi.Str
 type WorkflowTaskCreateGoogleDocsPageTaskParams struct {
 	// The page content
 	Content *string `pulumi:"content"`
+	// Page setup for the Google Doc. pageless makes the doc pageless; pages leaves the page setup unchanged unless the Google Doc template is pageless. Value must be one of `pages`, `pageless`.
+	DocumentMode *string `pulumi:"documentMode"`
 	// Map must contain two fields, `id` and `name`.
 	Drive map[string]string `pulumi:"drive"`
 	// Value must be one of true or false
@@ -23825,6 +24038,8 @@ type WorkflowTaskCreateGoogleDocsPageTaskParamsInput interface {
 type WorkflowTaskCreateGoogleDocsPageTaskParamsArgs struct {
 	// The page content
 	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Page setup for the Google Doc. pageless makes the doc pageless; pages leaves the page setup unchanged unless the Google Doc template is pageless. Value must be one of `pages`, `pageless`.
+	DocumentMode pulumi.StringPtrInput `pulumi:"documentMode"`
 	// Map must contain two fields, `id` and `name`.
 	Drive pulumi.StringMapInput `pulumi:"drive"`
 	// Value must be one of true or false
@@ -23930,6 +24145,11 @@ func (o WorkflowTaskCreateGoogleDocsPageTaskParamsOutput) Content() pulumi.Strin
 	return o.ApplyT(func(v WorkflowTaskCreateGoogleDocsPageTaskParams) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// Page setup for the Google Doc. pageless makes the doc pageless; pages leaves the page setup unchanged unless the Google Doc template is pageless. Value must be one of `pages`, `pageless`.
+func (o WorkflowTaskCreateGoogleDocsPageTaskParamsOutput) DocumentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleDocsPageTaskParams) *string { return v.DocumentMode }).(pulumi.StringPtrOutput)
+}
+
 // Map must contain two fields, `id` and `name`.
 func (o WorkflowTaskCreateGoogleDocsPageTaskParamsOutput) Drive() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateGoogleDocsPageTaskParams) map[string]string { return v.Drive }).(pulumi.StringMapOutput)
@@ -24015,6 +24235,16 @@ func (o WorkflowTaskCreateGoogleDocsPageTaskParamsPtrOutput) Content() pulumi.St
 			return nil
 		}
 		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// Page setup for the Google Doc. pageless makes the doc pageless; pages leaves the page setup unchanged unless the Google Doc template is pageless. Value must be one of `pages`, `pageless`.
+func (o WorkflowTaskCreateGoogleDocsPageTaskParamsPtrOutput) DocumentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleDocsPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DocumentMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24531,6 +24761,8 @@ type WorkflowTaskCreateGoogleMeetingTaskParams struct {
 	ConferenceSolutionKey *string `pulumi:"conferenceSolutionKey"`
 	// [DEPRECATED] The meeting description
 	Description string `pulumi:"description"`
+	// Invite the signed-in Rootly bot to the meeting so it joins without waiting to be admitted. Only takes effect when the Google Meet integration's auto-join setting is on and the integration has calendar event access; setting it to false turns auto-join off for this task. Value must be one of true or false
+	EnableGoogleMeetBotAutoJoin *bool `pulumi:"enableGoogleMeetBotAutoJoin"`
 	// Value must be one of true or false
 	PostToIncidentTimeline *bool                                                         `pulumi:"postToIncidentTimeline"`
 	PostToSlackChannels    []WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannel `pulumi:"postToSlackChannels"`
@@ -24563,6 +24795,8 @@ type WorkflowTaskCreateGoogleMeetingTaskParamsArgs struct {
 	ConferenceSolutionKey pulumi.StringPtrInput `pulumi:"conferenceSolutionKey"`
 	// [DEPRECATED] The meeting description
 	Description pulumi.StringInput `pulumi:"description"`
+	// Invite the signed-in Rootly bot to the meeting so it joins without waiting to be admitted. Only takes effect when the Google Meet integration's auto-join setting is on and the integration has calendar event access; setting it to false turns auto-join off for this task. Value must be one of true or false
+	EnableGoogleMeetBotAutoJoin pulumi.BoolPtrInput `pulumi:"enableGoogleMeetBotAutoJoin"`
 	// Value must be one of true or false
 	PostToIncidentTimeline pulumi.BoolPtrInput                                                   `pulumi:"postToIncidentTimeline"`
 	PostToSlackChannels    WorkflowTaskCreateGoogleMeetingTaskParamsPostToSlackChannelArrayInput `pulumi:"postToSlackChannels"`
@@ -24666,6 +24900,11 @@ func (o WorkflowTaskCreateGoogleMeetingTaskParamsOutput) Description() pulumi.St
 	return o.ApplyT(func(v WorkflowTaskCreateGoogleMeetingTaskParams) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Invite the signed-in Rootly bot to the meeting so it joins without waiting to be admitted. Only takes effect when the Google Meet integration's auto-join setting is on and the integration has calendar event access; setting it to false turns auto-join off for this task. Value must be one of true or false
+func (o WorkflowTaskCreateGoogleMeetingTaskParamsOutput) EnableGoogleMeetBotAutoJoin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateGoogleMeetingTaskParams) *bool { return v.EnableGoogleMeetBotAutoJoin }).(pulumi.BoolPtrOutput)
+}
+
 // Value must be one of true or false
 func (o WorkflowTaskCreateGoogleMeetingTaskParamsOutput) PostToIncidentTimeline() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateGoogleMeetingTaskParams) *bool { return v.PostToIncidentTimeline }).(pulumi.BoolPtrOutput)
@@ -24748,6 +24987,16 @@ func (o WorkflowTaskCreateGoogleMeetingTaskParamsPtrOutput) Description() pulumi
 		}
 		return &v.Description
 	}).(pulumi.StringPtrOutput)
+}
+
+// Invite the signed-in Rootly bot to the meeting so it joins without waiting to be admitted. Only takes effect when the Google Meet integration's auto-join setting is on and the integration has calendar event access; setting it to false turns auto-join off for this task. Value must be one of true or false
+func (o WorkflowTaskCreateGoogleMeetingTaskParamsPtrOutput) EnableGoogleMeetBotAutoJoin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateGoogleMeetingTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGoogleMeetBotAutoJoin
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Value must be one of true or false
@@ -33695,6 +33944,20 @@ func (o WorkflowTaskCreateSlackChannelTaskParamsPtrOutput) Workspace() pulumi.St
 }
 
 type WorkflowTaskCreateSubIncidentTaskParams struct {
+	// Array of environment UUIDs. Inherited from the parent incident when blank
+	EnvironmentIds []string `pulumi:"environmentIds"`
+	// Array of functionality UUIDs. Inherited from the parent incident when blank
+	FunctionalityIds []string `pulumi:"functionalityIds"`
+	// Array of group/team UUIDs. Inherited from the parent incident when blank
+	GroupIds []string `pulumi:"groupIds"`
+	// Array of incident type UUIDs. Inherited from the parent incident when blank
+	IncidentTypeIds []string `pulumi:"incidentTypeIds"`
+	// Make the sub incident private. Cannot make it public when the parent incident is private. Value must be one of true or false
+	Private *bool `pulumi:"private"`
+	// Array of service UUIDs. Inherited from the parent incident when blank
+	ServiceIds []string `pulumi:"serviceIds"`
+	// Inherited from the parent incident when blank
+	SeverityId *string `pulumi:"severityId"`
 	// The sub incident summary
 	Summary  *string `pulumi:"summary"`
 	TaskType *string `pulumi:"taskType"`
@@ -33714,6 +33977,20 @@ type WorkflowTaskCreateSubIncidentTaskParamsInput interface {
 }
 
 type WorkflowTaskCreateSubIncidentTaskParamsArgs struct {
+	// Array of environment UUIDs. Inherited from the parent incident when blank
+	EnvironmentIds pulumi.StringArrayInput `pulumi:"environmentIds"`
+	// Array of functionality UUIDs. Inherited from the parent incident when blank
+	FunctionalityIds pulumi.StringArrayInput `pulumi:"functionalityIds"`
+	// Array of group/team UUIDs. Inherited from the parent incident when blank
+	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
+	// Array of incident type UUIDs. Inherited from the parent incident when blank
+	IncidentTypeIds pulumi.StringArrayInput `pulumi:"incidentTypeIds"`
+	// Make the sub incident private. Cannot make it public when the parent incident is private. Value must be one of true or false
+	Private pulumi.BoolPtrInput `pulumi:"private"`
+	// Array of service UUIDs. Inherited from the parent incident when blank
+	ServiceIds pulumi.StringArrayInput `pulumi:"serviceIds"`
+	// Inherited from the parent incident when blank
+	SeverityId pulumi.StringPtrInput `pulumi:"severityId"`
 	// The sub incident summary
 	Summary  pulumi.StringPtrInput `pulumi:"summary"`
 	TaskType pulumi.StringPtrInput `pulumi:"taskType"`
@@ -33798,6 +34075,41 @@ func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) ToWorkflowTaskCreateSubIn
 	}).(WorkflowTaskCreateSubIncidentTaskParamsPtrOutput)
 }
 
+// Array of environment UUIDs. Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) EnvironmentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSubIncidentTaskParams) []string { return v.EnvironmentIds }).(pulumi.StringArrayOutput)
+}
+
+// Array of functionality UUIDs. Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) FunctionalityIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSubIncidentTaskParams) []string { return v.FunctionalityIds }).(pulumi.StringArrayOutput)
+}
+
+// Array of group/team UUIDs. Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSubIncidentTaskParams) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Array of incident type UUIDs. Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) IncidentTypeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSubIncidentTaskParams) []string { return v.IncidentTypeIds }).(pulumi.StringArrayOutput)
+}
+
+// Make the sub incident private. Cannot make it public when the parent incident is private. Value must be one of true or false
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) Private() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSubIncidentTaskParams) *bool { return v.Private }).(pulumi.BoolPtrOutput)
+}
+
+// Array of service UUIDs. Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) ServiceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSubIncidentTaskParams) []string { return v.ServiceIds }).(pulumi.StringArrayOutput)
+}
+
+// Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) SeverityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskCreateSubIncidentTaskParams) *string { return v.SeverityId }).(pulumi.StringPtrOutput)
+}
+
 // The sub incident summary
 func (o WorkflowTaskCreateSubIncidentTaskParamsOutput) Summary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskCreateSubIncidentTaskParams) *string { return v.Summary }).(pulumi.StringPtrOutput)
@@ -33834,6 +34146,76 @@ func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) Elem() WorkflowTaskCre
 		var ret WorkflowTaskCreateSubIncidentTaskParams
 		return ret
 	}).(WorkflowTaskCreateSubIncidentTaskParamsOutput)
+}
+
+// Array of environment UUIDs. Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) EnvironmentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSubIncidentTaskParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Array of functionality UUIDs. Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) FunctionalityIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSubIncidentTaskParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FunctionalityIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Array of group/team UUIDs. Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSubIncidentTaskParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Array of incident type UUIDs. Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) IncidentTypeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSubIncidentTaskParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentTypeIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Make the sub incident private. Cannot make it public when the parent incident is private. Value must be one of true or false
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) Private() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSubIncidentTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Private
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Array of service UUIDs. Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) ServiceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSubIncidentTaskParams) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Inherited from the parent incident when blank
+func (o WorkflowTaskCreateSubIncidentTaskParamsPtrOutput) SeverityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskCreateSubIncidentTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SeverityId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The sub incident summary
@@ -42220,7 +42602,11 @@ type WorkflowTaskPublishIncidentTaskParams struct {
 	StatusPageIds []string `pulumi:"statusPageIds"`
 	// Map must contain two fields, `id` and `name`.
 	StatusPageTemplate map[string]string `pulumi:"statusPageTemplate"`
-	TaskType           *string           `pulumi:"taskType"`
+	// When true, every run also publishes the incident's tagged services and functionalities that are components on the target page. Defaults to true when selected*component*keys is empty. This field is in Early Access and is not generally available; contact Rootly Support to request access. Value must be one of true or false
+	SyncIncidentComponents *bool `pulumi:"syncIncidentComponents"`
+	// Default impact status for components synced from the incident. The default only applies to newly synced components and to ones with no earlier status on the incident's updates on a page. A synced component with an earlier status keeps its most recent status there. Defaults to degraded*performance. A component also listed in selected*component*keys keeps its selected*component_statuses entry. Value must be one of `operational`, `degradedPerformance`, `partialOutage`, `majorOutage`.
+	SyncedComponentStatus *string `pulumi:"syncedComponentStatus"`
+	TaskType              *string `pulumi:"taskType"`
 }
 
 // WorkflowTaskPublishIncidentTaskParamsInput is an input type that accepts WorkflowTaskPublishIncidentTaskParamsArgs and WorkflowTaskPublishIncidentTaskParamsOutput values.
@@ -42257,7 +42643,11 @@ type WorkflowTaskPublishIncidentTaskParamsArgs struct {
 	StatusPageIds pulumi.StringArrayInput `pulumi:"statusPageIds"`
 	// Map must contain two fields, `id` and `name`.
 	StatusPageTemplate pulumi.StringMapInput `pulumi:"statusPageTemplate"`
-	TaskType           pulumi.StringPtrInput `pulumi:"taskType"`
+	// When true, every run also publishes the incident's tagged services and functionalities that are components on the target page. Defaults to true when selected*component*keys is empty. This field is in Early Access and is not generally available; contact Rootly Support to request access. Value must be one of true or false
+	SyncIncidentComponents pulumi.BoolPtrInput `pulumi:"syncIncidentComponents"`
+	// Default impact status for components synced from the incident. The default only applies to newly synced components and to ones with no earlier status on the incident's updates on a page. A synced component with an earlier status keeps its most recent status there. Defaults to degraded*performance. A component also listed in selected*component*keys keeps its selected*component_statuses entry. Value must be one of `operational`, `degradedPerformance`, `partialOutage`, `majorOutage`.
+	SyncedComponentStatus pulumi.StringPtrInput `pulumi:"syncedComponentStatus"`
+	TaskType              pulumi.StringPtrInput `pulumi:"taskType"`
 }
 
 func (WorkflowTaskPublishIncidentTaskParamsArgs) ElementType() reflect.Type {
@@ -42393,6 +42783,16 @@ func (o WorkflowTaskPublishIncidentTaskParamsOutput) StatusPageIds() pulumi.Stri
 // Map must contain two fields, `id` and `name`.
 func (o WorkflowTaskPublishIncidentTaskParamsOutput) StatusPageTemplate() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkflowTaskPublishIncidentTaskParams) map[string]string { return v.StatusPageTemplate }).(pulumi.StringMapOutput)
+}
+
+// When true, every run also publishes the incident's tagged services and functionalities that are components on the target page. Defaults to true when selected*component*keys is empty. This field is in Early Access and is not generally available; contact Rootly Support to request access. Value must be one of true or false
+func (o WorkflowTaskPublishIncidentTaskParamsOutput) SyncIncidentComponents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskPublishIncidentTaskParams) *bool { return v.SyncIncidentComponents }).(pulumi.BoolPtrOutput)
+}
+
+// Default impact status for components synced from the incident. The default only applies to newly synced components and to ones with no earlier status on the incident's updates on a page. A synced component with an earlier status keeps its most recent status there. Defaults to degraded*performance. A component also listed in selected*component*keys keeps its selected*component_statuses entry. Value must be one of `operational`, `degradedPerformance`, `partialOutage`, `majorOutage`.
+func (o WorkflowTaskPublishIncidentTaskParamsOutput) SyncedComponentStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskPublishIncidentTaskParams) *string { return v.SyncedComponentStatus }).(pulumi.StringPtrOutput)
 }
 
 func (o WorkflowTaskPublishIncidentTaskParamsOutput) TaskType() pulumi.StringPtrOutput {
@@ -42539,6 +42939,26 @@ func (o WorkflowTaskPublishIncidentTaskParamsPtrOutput) StatusPageTemplate() pul
 		}
 		return v.StatusPageTemplate
 	}).(pulumi.StringMapOutput)
+}
+
+// When true, every run also publishes the incident's tagged services and functionalities that are components on the target page. Defaults to true when selected*component*keys is empty. This field is in Early Access and is not generally available; contact Rootly Support to request access. Value must be one of true or false
+func (o WorkflowTaskPublishIncidentTaskParamsPtrOutput) SyncIncidentComponents() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskPublishIncidentTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SyncIncidentComponents
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Default impact status for components synced from the incident. The default only applies to newly synced components and to ones with no earlier status on the incident's updates on a page. A synced component with an earlier status keeps its most recent status there. Defaults to degraded*performance. A component also listed in selected*component*keys keeps its selected*component_statuses entry. Value must be one of `operational`, `degradedPerformance`, `partialOutage`, `majorOutage`.
+func (o WorkflowTaskPublishIncidentTaskParamsPtrOutput) SyncedComponentStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskPublishIncidentTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncedComponentStatus
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o WorkflowTaskPublishIncidentTaskParamsPtrOutput) TaskType() pulumi.StringPtrOutput {
@@ -53216,6 +53636,8 @@ func (o WorkflowTaskUpdateGoogleChatSpaceDescriptionTaskParamsPtrOutput) TaskTyp
 type WorkflowTaskUpdateGoogleDocsPageTaskParams struct {
 	// The Google Doc content
 	Content *string `pulumi:"content"`
+	// Page setup for the Google Doc. pageless makes the doc pageless; pages leaves the page setup unchanged unless the Google Doc template is pageless. Value must be one of `pages`, `pageless`.
+	DocumentMode *string `pulumi:"documentMode"`
 	// The Google Doc file ID
 	FileId string `pulumi:"fileId"`
 	// Value must be one of true or false
@@ -53247,6 +53669,8 @@ type WorkflowTaskUpdateGoogleDocsPageTaskParamsInput interface {
 type WorkflowTaskUpdateGoogleDocsPageTaskParamsArgs struct {
 	// The Google Doc content
 	Content pulumi.StringPtrInput `pulumi:"content"`
+	// Page setup for the Google Doc. pageless makes the doc pageless; pages leaves the page setup unchanged unless the Google Doc template is pageless. Value must be one of `pages`, `pageless`.
+	DocumentMode pulumi.StringPtrInput `pulumi:"documentMode"`
 	// The Google Doc file ID
 	FileId pulumi.StringInput `pulumi:"fileId"`
 	// Value must be one of true or false
@@ -53346,6 +53770,11 @@ func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsOutput) Content() pulumi.Strin
 	return o.ApplyT(func(v WorkflowTaskUpdateGoogleDocsPageTaskParams) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// Page setup for the Google Doc. pageless makes the doc pageless; pages leaves the page setup unchanged unless the Google Doc template is pageless. Value must be one of `pages`, `pageless`.
+func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsOutput) DocumentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateGoogleDocsPageTaskParams) *string { return v.DocumentMode }).(pulumi.StringPtrOutput)
+}
+
 // The Google Doc file ID
 func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsOutput) FileId() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateGoogleDocsPageTaskParams) string { return v.FileId }).(pulumi.StringOutput)
@@ -53416,6 +53845,16 @@ func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsPtrOutput) Content() pulumi.St
 			return nil
 		}
 		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// Page setup for the Google Doc. pageless makes the doc pageless; pages leaves the page setup unchanged unless the Google Doc template is pageless. Value must be one of `pages`, `pageless`.
+func (o WorkflowTaskUpdateGoogleDocsPageTaskParamsPtrOutput) DocumentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateGoogleDocsPageTaskParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DocumentMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -53857,6 +54296,8 @@ func (o WorkflowTaskUpdateIncidentStatusTimestampTaskParamsPtrOutput) TaskType()
 
 type WorkflowTaskUpdateIncidentTaskParams struct {
 	AcknowledgedAt *string `pulumi:"acknowledgedAt"`
+	// When true, the configured services, functionalities, environments, groups and incident types are added to the incident's existing ones instead of replacing them. Value must be one of true or false
+	AppendAssociations *bool `pulumi:"appendAssociations"`
 	// Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `motionTaskId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `gitlabIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
 	AttributeToQueryBy *string `pulumi:"attributeToQueryBy"`
 	// Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
@@ -53899,6 +54340,8 @@ type WorkflowTaskUpdateIncidentTaskParamsInput interface {
 
 type WorkflowTaskUpdateIncidentTaskParamsArgs struct {
 	AcknowledgedAt pulumi.StringPtrInput `pulumi:"acknowledgedAt"`
+	// When true, the configured services, functionalities, environments, groups and incident types are added to the incident's existing ones instead of replacing them. Value must be one of true or false
+	AppendAssociations pulumi.BoolPtrInput `pulumi:"appendAssociations"`
 	// Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `motionTaskId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `gitlabIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
 	AttributeToQueryBy pulumi.StringPtrInput `pulumi:"attributeToQueryBy"`
 	// Custom field mappings. Can contain liquid markup and need to be valid JSON. Use 'services', 'functionalities', or 'groups' keys with arrays of names/slugs for name/slug lookup
@@ -54007,6 +54450,11 @@ func (o WorkflowTaskUpdateIncidentTaskParamsOutput) ToWorkflowTaskUpdateIncident
 
 func (o WorkflowTaskUpdateIncidentTaskParamsOutput) AcknowledgedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTaskUpdateIncidentTaskParams) *string { return v.AcknowledgedAt }).(pulumi.StringPtrOutput)
+}
+
+// When true, the configured services, functionalities, environments, groups and incident types are added to the incident's existing ones instead of replacing them. Value must be one of true or false
+func (o WorkflowTaskUpdateIncidentTaskParamsOutput) AppendAssociations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkflowTaskUpdateIncidentTaskParams) *bool { return v.AppendAssociations }).(pulumi.BoolPtrOutput)
 }
 
 // Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `motionTaskId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `gitlabIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
@@ -54121,6 +54569,16 @@ func (o WorkflowTaskUpdateIncidentTaskParamsPtrOutput) AcknowledgedAt() pulumi.S
 		}
 		return v.AcknowledgedAt
 	}).(pulumi.StringPtrOutput)
+}
+
+// When true, the configured services, functionalities, environments, groups and incident types are added to the incident's existing ones instead of replacing them. Value must be one of true or false
+func (o WorkflowTaskUpdateIncidentTaskParamsPtrOutput) AppendAssociations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkflowTaskUpdateIncidentTaskParams) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AppendAssociations
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `motionTaskId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `gitlabIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
@@ -62256,6 +62714,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleConditionGroupConditionArrayInput)(nil)).Elem(), AlertRouteRuleConditionGroupConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleDestinationInput)(nil)).Elem(), AlertRouteRuleDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleDestinationArrayInput)(nil)).Elem(), AlertRouteRuleDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleDestinationMatchKeysInput)(nil)).Elem(), AlertRouteRuleDestinationMatchKeysArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertRouteRuleDestinationMatchKeysPtrInput)(nil)).Elem(), AlertRouteRuleDestinationMatchKeysArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertRoutingRuleConditionInput)(nil)).Elem(), AlertRoutingRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertRoutingRuleConditionArrayInput)(nil)).Elem(), AlertRoutingRuleConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertRoutingRuleConditionGroupInput)(nil)).Elem(), AlertRoutingRuleConditionGroupArgs{})
@@ -62938,6 +63398,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertRouteRuleConditionGroupConditionArrayOutput{})
 	pulumi.RegisterOutputType(AlertRouteRuleDestinationOutput{})
 	pulumi.RegisterOutputType(AlertRouteRuleDestinationArrayOutput{})
+	pulumi.RegisterOutputType(AlertRouteRuleDestinationMatchKeysOutput{})
+	pulumi.RegisterOutputType(AlertRouteRuleDestinationMatchKeysPtrOutput{})
 	pulumi.RegisterOutputType(AlertRoutingRuleConditionOutput{})
 	pulumi.RegisterOutputType(AlertRoutingRuleConditionArrayOutput{})
 	pulumi.RegisterOutputType(AlertRoutingRuleConditionGroupOutput{})

@@ -44,7 +44,7 @@ type StatusPageTemplate struct {
 	StatusPageId            pulumi.StringOutput `pulumi:"statusPageId"`
 	// Title of the template
 	Title pulumi.StringOutput `pulumi:"title"`
-	// Status of the event the template will populate
+	// Status of the event the template will populate. Allowed values depend on the team's feature flags. Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`, `cancelled`.
 	UpdateStatus pulumi.StringOutput `pulumi:"updateStatus"`
 	// Title that will be used for the status page update
 	UpdateTitle pulumi.StringOutput `pulumi:"updateTitle"`
@@ -101,7 +101,7 @@ type statusPageTemplateState struct {
 	StatusPageId            *string `pulumi:"statusPageId"`
 	// Title of the template
 	Title *string `pulumi:"title"`
-	// Status of the event the template will populate
+	// Status of the event the template will populate. Allowed values depend on the team's feature flags. Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`, `cancelled`.
 	UpdateStatus *string `pulumi:"updateStatus"`
 	// Title that will be used for the status page update
 	UpdateTitle *string `pulumi:"updateTitle"`
@@ -120,7 +120,7 @@ type StatusPageTemplateState struct {
 	StatusPageId            pulumi.StringPtrInput
 	// Title of the template
 	Title pulumi.StringPtrInput
-	// Status of the event the template will populate
+	// Status of the event the template will populate. Allowed values depend on the team's feature flags. Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`, `cancelled`.
 	UpdateStatus pulumi.StringPtrInput
 	// Title that will be used for the status page update
 	UpdateTitle pulumi.StringPtrInput
@@ -143,7 +143,7 @@ type statusPageTemplateArgs struct {
 	StatusPageId            string `pulumi:"statusPageId"`
 	// Title of the template
 	Title string `pulumi:"title"`
-	// Status of the event the template will populate
+	// Status of the event the template will populate. Allowed values depend on the team's feature flags. Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`, `cancelled`.
 	UpdateStatus *string `pulumi:"updateStatus"`
 	// Title that will be used for the status page update
 	UpdateTitle *string `pulumi:"updateTitle"`
@@ -163,7 +163,7 @@ type StatusPageTemplateArgs struct {
 	StatusPageId            pulumi.StringInput
 	// Title of the template
 	Title pulumi.StringInput
-	// Status of the event the template will populate
+	// Status of the event the template will populate. Allowed values depend on the team's feature flags. Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`, `cancelled`.
 	UpdateStatus pulumi.StringPtrInput
 	// Title that will be used for the status page update
 	UpdateTitle pulumi.StringPtrInput
@@ -289,7 +289,7 @@ func (o StatusPageTemplateOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatusPageTemplate) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
-// Status of the event the template will populate
+// Status of the event the template will populate. Allowed values depend on the team's feature flags. Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`, `cancelled`.
 func (o StatusPageTemplateOutput) UpdateStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatusPageTemplate) pulumi.StringOutput { return v.UpdateStatus }).(pulumi.StringOutput)
 }

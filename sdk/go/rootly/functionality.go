@@ -69,6 +69,8 @@ type Functionality struct {
 	Properties FunctionalityPropertyArrayOutput `pulumi:"properties"`
 	// The status page description of the functionality
 	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
+	// The public name of the functionality shown on status pages instead of its name
+	PublicName pulumi.StringOutput `pulumi:"publicName"`
 	// Services associated with this functionality
 	ServiceIds pulumi.StringArrayOutput `pulumi:"serviceIds"`
 	// The Service Now CI sys id associated to this functionality
@@ -149,6 +151,8 @@ type functionalityState struct {
 	Properties []FunctionalityProperty `pulumi:"properties"`
 	// The status page description of the functionality
 	PublicDescription *string `pulumi:"publicDescription"`
+	// The public name of the functionality shown on status pages instead of its name
+	PublicName *string `pulumi:"publicName"`
 	// Services associated with this functionality
 	ServiceIds []string `pulumi:"serviceIds"`
 	// The Service Now CI sys id associated to this functionality
@@ -200,6 +204,8 @@ type FunctionalityState struct {
 	Properties FunctionalityPropertyArrayInput
 	// The status page description of the functionality
 	PublicDescription pulumi.StringPtrInput
+	// The public name of the functionality shown on status pages instead of its name
+	PublicName pulumi.StringPtrInput
 	// Services associated with this functionality
 	ServiceIds pulumi.StringArrayInput
 	// The Service Now CI sys id associated to this functionality
@@ -253,6 +259,8 @@ type functionalityArgs struct {
 	Properties []FunctionalityProperty `pulumi:"properties"`
 	// The status page description of the functionality
 	PublicDescription *string `pulumi:"publicDescription"`
+	// The public name of the functionality shown on status pages instead of its name
+	PublicName *string `pulumi:"publicName"`
 	// Services associated with this functionality
 	ServiceIds []string `pulumi:"serviceIds"`
 	// The Service Now CI sys id associated to this functionality
@@ -303,6 +311,8 @@ type FunctionalityArgs struct {
 	Properties FunctionalityPropertyArrayInput
 	// The status page description of the functionality
 	PublicDescription pulumi.StringPtrInput
+	// The public name of the functionality shown on status pages instead of its name
+	PublicName pulumi.StringPtrInput
 	// Services associated with this functionality
 	ServiceIds pulumi.StringArrayInput
 	// The Service Now CI sys id associated to this functionality
@@ -492,6 +502,11 @@ func (o FunctionalityOutput) Properties() FunctionalityPropertyArrayOutput {
 // The status page description of the functionality
 func (o FunctionalityOutput) PublicDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.PublicDescription }).(pulumi.StringOutput)
+}
+
+// The public name of the functionality shown on status pages instead of its name
+func (o FunctionalityOutput) PublicName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Functionality) pulumi.StringOutput { return v.PublicName }).(pulumi.StringOutput)
 }
 
 // Services associated with this functionality

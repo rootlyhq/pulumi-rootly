@@ -51,6 +51,8 @@ type Environment struct {
 	Properties EnvironmentPropertyArrayOutput `pulumi:"properties"`
 	// The status page description of the environment
 	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
+	// The public name of the environment shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringOutput `pulumi:"publicName"`
 	// Slack Aliases associated with this environment
 	SlackAliases EnvironmentSlackAliasArrayOutput `pulumi:"slackAliases"`
 	// Slack Channels associated with this environment
@@ -109,6 +111,8 @@ type environmentState struct {
 	Properties []EnvironmentProperty `pulumi:"properties"`
 	// The status page description of the environment
 	PublicDescription *string `pulumi:"publicDescription"`
+	// The public name of the environment shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName *string `pulumi:"publicName"`
 	// Slack Aliases associated with this environment
 	SlackAliases []EnvironmentSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this environment
@@ -138,6 +142,8 @@ type EnvironmentState struct {
 	Properties EnvironmentPropertyArrayInput
 	// The status page description of the environment
 	PublicDescription pulumi.StringPtrInput
+	// The public name of the environment shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringPtrInput
 	// Slack Aliases associated with this environment
 	SlackAliases EnvironmentSlackAliasArrayInput
 	// Slack Channels associated with this environment
@@ -169,6 +175,8 @@ type environmentArgs struct {
 	Properties []EnvironmentProperty `pulumi:"properties"`
 	// The status page description of the environment
 	PublicDescription *string `pulumi:"publicDescription"`
+	// The public name of the environment shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName *string `pulumi:"publicName"`
 	// Slack Aliases associated with this environment
 	SlackAliases []EnvironmentSlackAlias `pulumi:"slackAliases"`
 	// Slack Channels associated with this environment
@@ -197,6 +205,8 @@ type EnvironmentArgs struct {
 	Properties EnvironmentPropertyArrayInput
 	// The status page description of the environment
 	PublicDescription pulumi.StringPtrInput
+	// The public name of the environment shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringPtrInput
 	// Slack Aliases associated with this environment
 	SlackAliases EnvironmentSlackAliasArrayInput
 	// Slack Channels associated with this environment
@@ -337,6 +347,11 @@ func (o EnvironmentOutput) Properties() EnvironmentPropertyArrayOutput {
 // The status page description of the environment
 func (o EnvironmentOutput) PublicDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.PublicDescription }).(pulumi.StringOutput)
+}
+
+// The public name of the environment shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+func (o EnvironmentOutput) PublicName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.PublicName }).(pulumi.StringOutput)
 }
 
 // Slack Aliases associated with this environment

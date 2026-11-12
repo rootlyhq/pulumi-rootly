@@ -85,6 +85,10 @@ export interface AlertRouteRule {
      */
     name: string;
     /**
+     * Whether alerts matching this rule are left unpaged. A non-paging rule takes no destinations. Only available when dynamic alert routing is enabled for the organization.
+     */
+    nonPaging?: boolean;
+    /**
      * The position of the alert routing rule for ordering evaluation
      */
     position: number;
@@ -132,13 +136,40 @@ export interface AlertRouteRuleConditionGroupCondition {
 
 export interface AlertRouteRuleDestination {
     /**
-     * The ID of the target
+     * Dynamic destinations only. The custom catalog's ID when `catalogType` is `CatalogEntity`.
      */
-    targetId: string;
+    catalogId?: string;
     /**
-     * The type of the target. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
+     * Dynamic destinations only. The catalog the matched entity belongs to: `CatalogEntity` for a custom catalog. Value must be one of `Service`, `Group`, `Functionality`, `CatalogEntity`.
+     */
+    catalogType?: string;
+    /**
+     * Dynamic destinations only. How an alert value is matched to a catalog entity property.
+     */
+    matchKeys?: outputs.AlertRouteRuleDestinationMatchKeys;
+    /**
+     * The ID of the target. Required for every `targetType` except `dynamic`.
+     */
+    targetId?: string;
+    /**
+     * The type of the target. `CatalogEntity` pages the escalation policy of a custom catalog entity. `dynamic` pages the escalation policy of the catalog entity matched from the alert and takes `catalogType`, `catalogId` and `matchKeys` instead of `targetId`. `CatalogEntity` and `dynamic` are only available when dynamic alert routing is enabled for the organization. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`, `CatalogEntity`, `dynamic`.
      */
     targetType?: string;
+}
+
+export interface AlertRouteRuleDestinationMatchKeys {
+    /**
+     * The catalog property to match: `builtin:<name>` (for example `builtin:name` or `builtin:external_id`) or the ID of a text catalog field.
+     */
+    propertyRef: string;
+    /**
+     * Where the alert value comes from. Value must be one of `payload`, `attribute`, `alertField`.
+     */
+    sourceKind: string;
+    /**
+     * A JSONPath into the payload for `payload`, an alert attribute name for `attribute`, or an alert field ID for `alertField`.
+     */
+    sourceRef: string;
 }
 
 export interface AlertRoutingRuleCondition {
@@ -236,7 +267,7 @@ export interface AlertRoutingRuleDestination {
      */
     targetId: string;
     /**
-     * The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`.
+     * The type of the target. Please contact support if you encounter issues using `Functionality` as a target type.. Value must be one of `Service`, `Group`, `Functionality`, `EscalationPolicy`, `CatalogEntity`.
      */
     targetType?: string;
 }
@@ -535,7 +566,7 @@ export interface DashboardPanelParams {
     datasets?: outputs.DashboardPanelParamsDataset[];
     description?: string;
     /**
-     * Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `table`, `aggregateValue`.
+     * Value must be one of `lineChart`, `lineSteppedChart`, `columnChart`, `stackedColumnChart`, `monitoringChart`, `pieChart`, `breakdownTable`, `table`, `aggregateValue`.
      */
     display?: string;
     legend: outputs.DashboardPanelParamsLegend;
@@ -3000,7 +3031,7 @@ export interface WorkflowTaskCreateGoToMeetingTaskParams {
     /**
      * Value must be one of true or false
      */
-    passwordRequired?: boolean;
+    passwordRequired: boolean;
     /**
      * Value must be one of true or false
      */
@@ -3101,6 +3132,10 @@ export interface WorkflowTaskCreateGoogleDocsPageTaskParams {
      */
     content?: string;
     /**
+     * Page setup for the Google Doc. pageless makes the doc pageless; pages leaves the page setup unchanged unless the Google Doc template is pageless. Value must be one of `pages`, `pageless`.
+     */
+    documentMode?: string;
+    /**
      * Map must contain two fields, `id` and `name`.
      */
     drive?: {[key: string]: string};
@@ -3188,6 +3223,10 @@ export interface WorkflowTaskCreateGoogleMeetingTaskParams {
      * [DEPRECATED] The meeting description
      */
     description: string;
+    /**
+     * Invite the signed-in Rootly bot to the meeting so it joins without waiting to be admitted. Only takes effect when the Google Meet integration's auto-join setting is on and the integration has calendar event access; setting it to false turns auto-join off for this task. Value must be one of true or false
+     */
+    enableGoogleMeetBotAutoJoin?: boolean;
     /**
      * Value must be one of true or false
      */
@@ -4114,6 +4153,34 @@ export interface WorkflowTaskCreateSlackChannelTaskParams {
 
 export interface WorkflowTaskCreateSubIncidentTaskParams {
     /**
+     * Array of environment UUIDs. Inherited from the parent incident when blank
+     */
+    environmentIds?: string[];
+    /**
+     * Array of functionality UUIDs. Inherited from the parent incident when blank
+     */
+    functionalityIds?: string[];
+    /**
+     * Array of group/team UUIDs. Inherited from the parent incident when blank
+     */
+    groupIds?: string[];
+    /**
+     * Array of incident type UUIDs. Inherited from the parent incident when blank
+     */
+    incidentTypeIds?: string[];
+    /**
+     * Make the sub incident private. Cannot make it public when the parent incident is private. Value must be one of true or false
+     */
+    private?: boolean;
+    /**
+     * Array of service UUIDs. Inherited from the parent incident when blank
+     */
+    serviceIds?: string[];
+    /**
+     * Inherited from the parent incident when blank
+     */
+    severityId?: string;
+    /**
      * The sub incident summary
      */
     summary?: string;
@@ -4866,6 +4933,14 @@ export interface WorkflowTaskPublishIncidentTaskParams {
      * Map must contain two fields, `id` and `name`.
      */
     statusPageTemplate?: {[key: string]: string};
+    /**
+     * When true, every run also publishes the incident's tagged services and functionalities that are components on the target page. Defaults to true when selected*component*keys is empty. This field is in Early Access and is not generally available; contact Rootly Support to request access. Value must be one of true or false
+     */
+    syncIncidentComponents: boolean;
+    /**
+     * Default impact status for components synced from the incident. The default only applies to newly synced components and to ones with no earlier status on the incident's updates on a page. A synced component with an earlier status keeps its most recent status there. Defaults to degraded*performance. A component also listed in selected*component*keys keeps its selected*component_statuses entry. Value must be one of `operational`, `degradedPerformance`, `partialOutage`, `majorOutage`.
+     */
+    syncedComponentStatus: string;
     taskType?: string;
 }
 
@@ -5792,6 +5867,10 @@ export interface WorkflowTaskUpdateGoogleDocsPageTaskParams {
      */
     content?: string;
     /**
+     * Page setup for the Google Doc. pageless makes the doc pageless; pages leaves the page setup unchanged unless the Google Doc template is pageless. Value must be one of `pages`, `pageless`.
+     */
+    documentMode?: string;
+    /**
      * The Google Doc file ID
      */
     fileId: string;
@@ -5849,6 +5928,10 @@ export interface WorkflowTaskUpdateIncidentStatusTimestampTaskParams {
 
 export interface WorkflowTaskUpdateIncidentTaskParams {
     acknowledgedAt?: string;
+    /**
+     * When true, the configured services, functionalities, environments, groups and incident types are added to the incident's existing ones instead of replacing them. Value must be one of true or false
+     */
+    appendAssociations?: boolean;
     /**
      * Value must be one of `id`, `slug`, `sequentialId`, `pagerdutyIncidentId`, `opsgenieIncidentId`, `victorOpsIncidentId`, `jiraIssueId`, `asanaTaskId`, `shortcutTaskId`, `linearIssueId`, `zendeskTicketId`, `motionTaskId`, `trelloCardId`, `airtableRecordId`, `shortcutStoryId`, `githubIssueId`, `gitlabIssueId`, `freshserviceTicketId`, `freshserviceTaskId`, `clickupTaskId`.
      */

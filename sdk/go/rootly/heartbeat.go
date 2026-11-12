@@ -40,6 +40,8 @@ type Heartbeat struct {
 	AlertSummary pulumi.StringOutput `pulumi:"alertSummary"`
 	// Urgency of alerts triggered when heartbeat expires.
 	AlertUrgencyId pulumi.StringOutput `pulumi:"alertUrgencyId"`
+	// Whether to attach this heartbeat's owning teams to the alerts it creates. Attached teams are not paged.. Value must be one of true or false
+	AttachOwnerGroupsToAlerts pulumi.BoolOutput `pulumi:"attachOwnerGroupsToAlerts"`
 	// The description of the heartbeat
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Email address to receive heartbeat pings.
@@ -83,6 +85,11 @@ func NewHeartbeat(ctx *pulumi.Context,
 	if args.NotificationTargetId == nil {
 		return nil, errors.New("invalid value for required argument 'NotificationTargetId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"pingUrl",
+		"secret",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Heartbeat
 	err := ctx.RegisterResource("rootly:index/heartbeat:Heartbeat", name, args, &resource, opts...)
@@ -112,6 +119,8 @@ type heartbeatState struct {
 	AlertSummary *string `pulumi:"alertSummary"`
 	// Urgency of alerts triggered when heartbeat expires.
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
+	// Whether to attach this heartbeat's owning teams to the alerts it creates. Attached teams are not paged.. Value must be one of true or false
+	AttachOwnerGroupsToAlerts *bool `pulumi:"attachOwnerGroupsToAlerts"`
 	// The description of the heartbeat
 	Description *string `pulumi:"description"`
 	// Email address to receive heartbeat pings.
@@ -146,6 +155,8 @@ type HeartbeatState struct {
 	AlertSummary pulumi.StringPtrInput
 	// Urgency of alerts triggered when heartbeat expires.
 	AlertUrgencyId pulumi.StringPtrInput
+	// Whether to attach this heartbeat's owning teams to the alerts it creates. Attached teams are not paged.. Value must be one of true or false
+	AttachOwnerGroupsToAlerts pulumi.BoolPtrInput
 	// The description of the heartbeat
 	Description pulumi.StringPtrInput
 	// Email address to receive heartbeat pings.
@@ -184,6 +195,8 @@ type heartbeatArgs struct {
 	AlertSummary string `pulumi:"alertSummary"`
 	// Urgency of alerts triggered when heartbeat expires.
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`
+	// Whether to attach this heartbeat's owning teams to the alerts it creates. Attached teams are not paged.. Value must be one of true or false
+	AttachOwnerGroupsToAlerts *bool `pulumi:"attachOwnerGroupsToAlerts"`
 	// The description of the heartbeat
 	Description *string `pulumi:"description"`
 	// Email address to receive heartbeat pings.
@@ -215,6 +228,8 @@ type HeartbeatArgs struct {
 	AlertSummary pulumi.StringInput
 	// Urgency of alerts triggered when heartbeat expires.
 	AlertUrgencyId pulumi.StringPtrInput
+	// Whether to attach this heartbeat's owning teams to the alerts it creates. Attached teams are not paged.. Value must be one of true or false
+	AttachOwnerGroupsToAlerts pulumi.BoolPtrInput
 	// The description of the heartbeat
 	Description pulumi.StringPtrInput
 	// Email address to receive heartbeat pings.
@@ -338,6 +353,11 @@ func (o HeartbeatOutput) AlertSummary() pulumi.StringOutput {
 // Urgency of alerts triggered when heartbeat expires.
 func (o HeartbeatOutput) AlertUrgencyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Heartbeat) pulumi.StringOutput { return v.AlertUrgencyId }).(pulumi.StringOutput)
+}
+
+// Whether to attach this heartbeat's owning teams to the alerts it creates. Attached teams are not paged.. Value must be one of true or false
+func (o HeartbeatOutput) AttachOwnerGroupsToAlerts() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Heartbeat) pulumi.BoolOutput { return v.AttachOwnerGroupsToAlerts }).(pulumi.BoolOutput)
 }
 
 // The description of the heartbeat

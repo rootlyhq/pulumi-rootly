@@ -76,6 +76,10 @@ export class Cause extends pulumi.CustomResource {
      */
     declare public readonly publicDescription: pulumi.Output<string>;
     /**
+     * The public name of the cause shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+     */
+    declare public readonly publicName: pulumi.Output<string>;
+    /**
      * The slug of the cause
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -100,6 +104,7 @@ export class Cause extends pulumi.CustomResource {
             resourceInputs["position"] = state?.position;
             resourceInputs["properties"] = state?.properties;
             resourceInputs["publicDescription"] = state?.publicDescription;
+            resourceInputs["publicName"] = state?.publicName;
             resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as CauseArgs | undefined;
@@ -108,6 +113,7 @@ export class Cause extends pulumi.CustomResource {
             resourceInputs["position"] = args?.position;
             resourceInputs["properties"] = args?.properties;
             resourceInputs["publicDescription"] = args?.publicDescription;
+            resourceInputs["publicName"] = args?.publicName;
             resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -140,6 +146,10 @@ export interface CauseState {
      */
     publicDescription?: pulumi.Input<string | undefined>;
     /**
+     * The public name of the cause shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+     */
+    publicName?: pulumi.Input<string | undefined>;
+    /**
      * The slug of the cause
      *
      * @deprecated Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -171,6 +181,10 @@ export interface CauseArgs {
      * The status page description of the cause
      */
     publicDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The public name of the cause shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+     */
+    publicName?: pulumi.Input<string | undefined>;
     /**
      * The slug of the cause
      *

@@ -43,6 +43,8 @@ type Cause struct {
 	Properties CausePropertyArrayOutput `pulumi:"properties"`
 	// The status page description of the cause
 	PublicDescription pulumi.StringOutput `pulumi:"publicDescription"`
+	// The public name of the cause shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringOutput `pulumi:"publicName"`
 	// The slug of the cause
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -89,6 +91,8 @@ type causeState struct {
 	Properties []CauseProperty `pulumi:"properties"`
 	// The status page description of the cause
 	PublicDescription *string `pulumi:"publicDescription"`
+	// The public name of the cause shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName *string `pulumi:"publicName"`
 	// The slug of the cause
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -106,6 +110,8 @@ type CauseState struct {
 	Properties CausePropertyArrayInput
 	// The status page description of the cause
 	PublicDescription pulumi.StringPtrInput
+	// The public name of the cause shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringPtrInput
 	// The slug of the cause
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -127,6 +133,8 @@ type causeArgs struct {
 	Properties []CauseProperty `pulumi:"properties"`
 	// The status page description of the cause
 	PublicDescription *string `pulumi:"publicDescription"`
+	// The public name of the cause shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName *string `pulumi:"publicName"`
 	// The slug of the cause
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -145,6 +153,8 @@ type CauseArgs struct {
 	Properties CausePropertyArrayInput
 	// The status page description of the cause
 	PublicDescription pulumi.StringPtrInput
+	// The public name of the cause shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+	PublicName pulumi.StringPtrInput
 	// The slug of the cause
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -261,6 +271,11 @@ func (o CauseOutput) Properties() CausePropertyArrayOutput {
 // The status page description of the cause
 func (o CauseOutput) PublicDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cause) pulumi.StringOutput { return v.PublicDescription }).(pulumi.StringOutput)
+}
+
+// The public name of the cause shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+func (o CauseOutput) PublicName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cause) pulumi.StringOutput { return v.PublicName }).(pulumi.StringOutput)
 }
 
 // The slug of the cause

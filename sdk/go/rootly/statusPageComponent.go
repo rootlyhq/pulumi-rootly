@@ -40,7 +40,7 @@ type StatusPageComponent struct {
 
 	// Description of the component (derived from the source for catalog-backed components)
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Name of the component (derived from the source for catalog-backed components)
+	// Name of the component. Returns the component's own name when set, otherwise the source's public name, otherwise the source's name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Position of the component
 	Position pulumi.IntOutput `pulumi:"position"`
@@ -90,7 +90,7 @@ func GetStatusPageComponent(ctx *pulumi.Context,
 type statusPageComponentState struct {
 	// Description of the component (derived from the source for catalog-backed components)
 	Description *string `pulumi:"description"`
-	// Name of the component (derived from the source for catalog-backed components)
+	// Name of the component. Returns the component's own name when set, otherwise the source's public name, otherwise the source's name
 	Name *string `pulumi:"name"`
 	// Position of the component
 	Position *int `pulumi:"position"`
@@ -108,7 +108,7 @@ type statusPageComponentState struct {
 type StatusPageComponentState struct {
 	// Description of the component (derived from the source for catalog-backed components)
 	Description pulumi.StringPtrInput
-	// Name of the component (derived from the source for catalog-backed components)
+	// Name of the component. Returns the component's own name when set, otherwise the source's public name, otherwise the source's name
 	Name pulumi.StringPtrInput
 	// Position of the component
 	Position pulumi.IntPtrInput
@@ -130,7 +130,7 @@ func (StatusPageComponentState) ElementType() reflect.Type {
 type statusPageComponentArgs struct {
 	// Description of the component (derived from the source for catalog-backed components)
 	Description *string `pulumi:"description"`
-	// Name of the component (derived from the source for catalog-backed components)
+	// Name of the component. Returns the component's own name when set, otherwise the source's public name, otherwise the source's name
 	Name *string `pulumi:"name"`
 	// Position of the component
 	Position *int `pulumi:"position"`
@@ -149,7 +149,7 @@ type statusPageComponentArgs struct {
 type StatusPageComponentArgs struct {
 	// Description of the component (derived from the source for catalog-backed components)
 	Description pulumi.StringPtrInput
-	// Name of the component (derived from the source for catalog-backed components)
+	// Name of the component. Returns the component's own name when set, otherwise the source's public name, otherwise the source's name
 	Name pulumi.StringPtrInput
 	// Position of the component
 	Position pulumi.IntPtrInput
@@ -256,7 +256,7 @@ func (o StatusPageComponentOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatusPageComponent) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Name of the component (derived from the source for catalog-backed components)
+// Name of the component. Returns the component's own name when set, otherwise the source's public name, otherwise the source's name
 func (o StatusPageComponentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StatusPageComponent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
