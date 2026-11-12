@@ -64,12 +64,12 @@ outputs are now optional in the generated SDK and callers must handle absent val
 
 Update Go imports from `github.com/rootlyhq/pulumi-rootly/sdk/v3/go/rootly` to
 `github.com/rootlyhq/pulumi-rootly/sdk/v4/go/rootly`. The Go SDK now declares its
-dependencies and requires Go 1.27.1 or later. Provider development uses the same version.
+dependencies and requires Go 1.27.4 or later. Provider development uses the same version.
 
 The npm package remains `@rootly/pulumi` and requires Node.js 24 or later.
 The generated SDK is built with
-TypeScript 7.0.2 and Node.js 24.13.4 type definitions, with Pulumi 3.262.0.
-Repository builds use Node.js 24.22.1 and Yarn
+TypeScript 7.0.2 and Node.js 24.13.4 type definitions, with Pulumi 3.274.1 or later.
+Repository builds use Node.js 24.22.3 and Yarn
 1.22.22 and commit the SDK lockfile.
 
 ## Additions and security fixes

@@ -159,7 +159,7 @@ func Provider() tfbridge.ProviderInfo {
 			PackageName: "@rootly/pulumi",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^3.262.0",
+				"@pulumi/pulumi": "^3.274.1",
 			},
 			DevDependencies: map[string]string{
 				"@types/node": "^24.13.4",
