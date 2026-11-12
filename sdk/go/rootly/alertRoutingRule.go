@@ -36,6 +36,8 @@ import (
 type AlertRoutingRule struct {
 	pulumi.CustomResourceState
 
+	// AI SRE provider that investigates alerts matching this rule. Null disables AI SRE for the rule. Omit to preserve an existing value; set to an empty string to disable AI SRE. Value must be one of `rootly`, `devin`.
+	AiSreProvider pulumi.StringOutput `pulumi:"aiSreProvider"`
 	// The ID of the alerts source
 	AlertsSourceId pulumi.StringOutput `pulumi:"alertsSourceId"`
 	// The condition groups for the alert routing rule
@@ -89,6 +91,8 @@ func GetAlertRoutingRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlertRoutingRule resources.
 type alertRoutingRuleState struct {
+	// AI SRE provider that investigates alerts matching this rule. Null disables AI SRE for the rule. Omit to preserve an existing value; set to an empty string to disable AI SRE. Value must be one of `rootly`, `devin`.
+	AiSreProvider *string `pulumi:"aiSreProvider"`
 	// The ID of the alerts source
 	AlertsSourceId *string `pulumi:"alertsSourceId"`
 	// The condition groups for the alert routing rule
@@ -107,6 +111,8 @@ type alertRoutingRuleState struct {
 }
 
 type AlertRoutingRuleState struct {
+	// AI SRE provider that investigates alerts matching this rule. Null disables AI SRE for the rule. Omit to preserve an existing value; set to an empty string to disable AI SRE. Value must be one of `rootly`, `devin`.
+	AiSreProvider pulumi.StringPtrInput
 	// The ID of the alerts source
 	AlertsSourceId pulumi.StringPtrInput
 	// The condition groups for the alert routing rule
@@ -129,6 +135,8 @@ func (AlertRoutingRuleState) ElementType() reflect.Type {
 }
 
 type alertRoutingRuleArgs struct {
+	// AI SRE provider that investigates alerts matching this rule. Null disables AI SRE for the rule. Omit to preserve an existing value; set to an empty string to disable AI SRE. Value must be one of `rootly`, `devin`.
+	AiSreProvider *string `pulumi:"aiSreProvider"`
 	// The ID of the alerts source
 	AlertsSourceId string `pulumi:"alertsSourceId"`
 	// The condition groups for the alert routing rule
@@ -148,6 +156,8 @@ type alertRoutingRuleArgs struct {
 
 // The set of arguments for constructing a AlertRoutingRule resource.
 type AlertRoutingRuleArgs struct {
+	// AI SRE provider that investigates alerts matching this rule. Null disables AI SRE for the rule. Omit to preserve an existing value; set to an empty string to disable AI SRE. Value must be one of `rootly`, `devin`.
+	AiSreProvider pulumi.StringPtrInput
 	// The ID of the alerts source
 	AlertsSourceId pulumi.StringInput
 	// The condition groups for the alert routing rule
@@ -250,6 +260,11 @@ func (o AlertRoutingRuleOutput) ToAlertRoutingRuleOutput() AlertRoutingRuleOutpu
 
 func (o AlertRoutingRuleOutput) ToAlertRoutingRuleOutputWithContext(ctx context.Context) AlertRoutingRuleOutput {
 	return o
+}
+
+// AI SRE provider that investigates alerts matching this rule. Null disables AI SRE for the rule. Omit to preserve an existing value; set to an empty string to disable AI SRE. Value must be one of `rootly`, `devin`.
+func (o AlertRoutingRuleOutput) AiSreProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertRoutingRule) pulumi.StringOutput { return v.AiSreProvider }).(pulumi.StringOutput)
 }
 
 // The ID of the alerts source

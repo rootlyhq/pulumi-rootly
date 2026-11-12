@@ -54,6 +54,14 @@ export class Playbook extends pulumi.CustomResource {
     }
 
     /**
+     * The Cause IDs to attach to the incident
+     */
+    declare public readonly causeIds: pulumi.Output<string[]>;
+    /**
+     * Sanitized HTML instructions. Still returned when `kind` is `externalUrl`, where the body may be stale — branch on `kind`, not on `content` being present.
+     */
+    declare public readonly content: pulumi.Output<string>;
+    /**
      * The Environment IDs to attach to the incident
      */
     declare public readonly environmentIds: pulumi.Output<string[]>;
@@ -73,6 +81,10 @@ export class Playbook extends pulumi.CustomResource {
      * The Incident Type IDs to attach to the incident
      */
     declare public readonly incidentTypeIds: pulumi.Output<string[]>;
+    /**
+     * Whether the playbook body lives in Rootly (`internalDocument`) or at an external link (`externalUrl`).. Value must be one of `internalDocument`, `externalUrl`.
+     */
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * The Service IDs to attach to the incident
      */
@@ -103,11 +115,14 @@ export class Playbook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PlaybookState | undefined;
+            resourceInputs["causeIds"] = state?.causeIds;
+            resourceInputs["content"] = state?.content;
             resourceInputs["environmentIds"] = state?.environmentIds;
             resourceInputs["externalUrl"] = state?.externalUrl;
             resourceInputs["functionalityIds"] = state?.functionalityIds;
             resourceInputs["groupIds"] = state?.groupIds;
             resourceInputs["incidentTypeIds"] = state?.incidentTypeIds;
+            resourceInputs["kind"] = state?.kind;
             resourceInputs["serviceIds"] = state?.serviceIds;
             resourceInputs["severityIds"] = state?.severityIds;
             resourceInputs["summary"] = state?.summary;
@@ -117,11 +132,14 @@ export class Playbook extends pulumi.CustomResource {
             if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
+            resourceInputs["causeIds"] = args?.causeIds;
+            resourceInputs["content"] = args?.content;
             resourceInputs["environmentIds"] = args?.environmentIds;
             resourceInputs["externalUrl"] = args?.externalUrl;
             resourceInputs["functionalityIds"] = args?.functionalityIds;
             resourceInputs["groupIds"] = args?.groupIds;
             resourceInputs["incidentTypeIds"] = args?.incidentTypeIds;
+            resourceInputs["kind"] = args?.kind;
             resourceInputs["serviceIds"] = args?.serviceIds;
             resourceInputs["severityIds"] = args?.severityIds;
             resourceInputs["summary"] = args?.summary;
@@ -136,6 +154,14 @@ export class Playbook extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Playbook resources.
  */
 export interface PlaybookState {
+    /**
+     * The Cause IDs to attach to the incident
+     */
+    causeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sanitized HTML instructions. Still returned when `kind` is `externalUrl`, where the body may be stale — branch on `kind`, not on `content` being present.
+     */
+    content?: pulumi.Input<string | undefined>;
     /**
      * The Environment IDs to attach to the incident
      */
@@ -156,6 +182,10 @@ export interface PlaybookState {
      * The Incident Type IDs to attach to the incident
      */
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether the playbook body lives in Rootly (`internalDocument`) or at an external link (`externalUrl`).. Value must be one of `internalDocument`, `externalUrl`.
+     */
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The Service IDs to attach to the incident
      */
@@ -179,6 +209,14 @@ export interface PlaybookState {
  */
 export interface PlaybookArgs {
     /**
+     * The Cause IDs to attach to the incident
+     */
+    causeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sanitized HTML instructions. Still returned when `kind` is `externalUrl`, where the body may be stale — branch on `kind`, not on `content` being present.
+     */
+    content?: pulumi.Input<string | undefined>;
+    /**
      * The Environment IDs to attach to the incident
      */
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -198,6 +236,10 @@ export interface PlaybookArgs {
      * The Incident Type IDs to attach to the incident
      */
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether the playbook body lives in Rootly (`internalDocument`) or at an external link (`externalUrl`).. Value must be one of `internalDocument`, `externalUrl`.
+     */
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The Service IDs to attach to the incident
      */

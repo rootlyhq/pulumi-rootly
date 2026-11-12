@@ -39,6 +39,10 @@ import (
 type Role struct {
 	pulumi.CustomResourceState
 
+	// Value must be one of `read`, `manage`.
+	AiAutomationsPermissions pulumi.StringArrayOutput `pulumi:"aiAutomationsPermissions"`
+	// Value must be one of `read`, `manage`.
+	AiSkillsPermissions pulumi.StringArrayOutput `pulumi:"aiSkillsPermissions"`
 	// Value must be one of `create`, `read`.
 	AlertsPermissions pulumi.StringArrayOutput `pulumi:"alertsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -153,6 +157,10 @@ func GetRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
+	// Value must be one of `read`, `manage`.
+	AiAutomationsPermissions []string `pulumi:"aiAutomationsPermissions"`
+	// Value must be one of `read`, `manage`.
+	AiSkillsPermissions []string `pulumi:"aiSkillsPermissions"`
 	// Value must be one of `create`, `read`.
 	AlertsPermissions []string `pulumi:"alertsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -238,6 +246,10 @@ type roleState struct {
 }
 
 type RoleState struct {
+	// Value must be one of `read`, `manage`.
+	AiAutomationsPermissions pulumi.StringArrayInput
+	// Value must be one of `read`, `manage`.
+	AiSkillsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`.
 	AlertsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -327,6 +339,10 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
+	// Value must be one of `read`, `manage`.
+	AiAutomationsPermissions []string `pulumi:"aiAutomationsPermissions"`
+	// Value must be one of `read`, `manage`.
+	AiSkillsPermissions []string `pulumi:"aiSkillsPermissions"`
 	// Value must be one of `create`, `read`.
 	AlertsPermissions []string `pulumi:"alertsPermissions"`
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -413,6 +429,10 @@ type roleArgs struct {
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
+	// Value must be one of `read`, `manage`.
+	AiAutomationsPermissions pulumi.StringArrayInput
+	// Value must be one of `read`, `manage`.
+	AiSkillsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`.
 	AlertsPermissions pulumi.StringArrayInput
 	// Value must be one of `create`, `read`, `update`, `delete`.
@@ -582,6 +602,16 @@ func (o RoleOutput) ToRoleOutput() RoleOutput {
 
 func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
+}
+
+// Value must be one of `read`, `manage`.
+func (o RoleOutput) AiAutomationsPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.AiAutomationsPermissions }).(pulumi.StringArrayOutput)
+}
+
+// Value must be one of `read`, `manage`.
+func (o RoleOutput) AiSkillsPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.AiSkillsPermissions }).(pulumi.StringArrayOutput)
 }
 
 // Value must be one of `create`, `read`.

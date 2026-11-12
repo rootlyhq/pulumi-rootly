@@ -66,6 +66,10 @@ export class Heartbeat extends pulumi.CustomResource {
      */
     declare public readonly alertUrgencyId: pulumi.Output<string>;
     /**
+     * Whether to attach this heartbeat's owning teams to the alerts it creates. Attached teams are not paged.. Value must be one of true or false
+     */
+    declare public readonly attachOwnerGroupsToAlerts: pulumi.Output<boolean>;
+    /**
      * The description of the heartbeat
      */
     declare public readonly description: pulumi.Output<string>;
@@ -129,6 +133,7 @@ export class Heartbeat extends pulumi.CustomResource {
             resourceInputs["alertDescription"] = state?.alertDescription;
             resourceInputs["alertSummary"] = state?.alertSummary;
             resourceInputs["alertUrgencyId"] = state?.alertUrgencyId;
+            resourceInputs["attachOwnerGroupsToAlerts"] = state?.attachOwnerGroupsToAlerts;
             resourceInputs["description"] = state?.description;
             resourceInputs["emailAddress"] = state?.emailAddress;
             resourceInputs["enabled"] = state?.enabled;
@@ -157,6 +162,7 @@ export class Heartbeat extends pulumi.CustomResource {
             resourceInputs["alertDescription"] = args?.alertDescription;
             resourceInputs["alertSummary"] = args?.alertSummary;
             resourceInputs["alertUrgencyId"] = args?.alertUrgencyId;
+            resourceInputs["attachOwnerGroupsToAlerts"] = args?.attachOwnerGroupsToAlerts;
             resourceInputs["description"] = args?.description;
             resourceInputs["emailAddress"] = args?.emailAddress;
             resourceInputs["enabled"] = args?.enabled;
@@ -173,6 +179,8 @@ export class Heartbeat extends pulumi.CustomResource {
             resourceInputs["secret"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["pingUrl", "secret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Heartbeat.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -193,6 +201,10 @@ export interface HeartbeatState {
      * Urgency of alerts triggered when heartbeat expires.
      */
     alertUrgencyId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to attach this heartbeat's owning teams to the alerts it creates. Attached teams are not paged.. Value must be one of true or false
+     */
+    attachOwnerGroupsToAlerts?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the heartbeat
      */
@@ -258,6 +270,10 @@ export interface HeartbeatArgs {
      * Urgency of alerts triggered when heartbeat expires.
      */
     alertUrgencyId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to attach this heartbeat's owning teams to the alerts it creates. Attached teams are not paged.. Value must be one of true or false
+     */
+    attachOwnerGroupsToAlerts?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the heartbeat
      */

@@ -10,6 +10,7 @@ export function getApiKey(args?: GetApiKeyArgs, opts?: pulumi.InvokeOptions): Pr
     return pulumi.runtime.invoke("rootly:index/getApiKey:getApiKey", {
         "createdAt": args.createdAt,
         "expiresAt": args.expiresAt,
+        "groupId": args.groupId,
         "kind": args.kind,
         "lastUsedAt": args.lastUsedAt,
         "name": args.name,
@@ -29,6 +30,7 @@ export interface GetApiKeyArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     expiresAt?: {[key: string]: string};
+    groupId?: string;
     kind?: string;
     /**
      * Filter by date range using 'lt' and 'gt'.
@@ -50,6 +52,7 @@ export interface GetApiKeyResult {
      * Filter by date range using 'lt' and 'gt'.
      */
     readonly expiresAt?: {[key: string]: string};
+    readonly groupId: string;
     /**
      * The ID of this resource.
      */
@@ -68,6 +71,7 @@ export function getApiKeyOutput(args?: GetApiKeyOutputArgs, opts?: pulumi.Invoke
     return pulumi.runtime.invokeOutput("rootly:index/getApiKey:getApiKey", {
         "createdAt": args.createdAt,
         "expiresAt": args.expiresAt,
+        "groupId": args.groupId,
         "kind": args.kind,
         "lastUsedAt": args.lastUsedAt,
         "name": args.name,
@@ -87,6 +91,7 @@ export interface GetApiKeyOutputArgs {
      * Filter by date range using 'lt' and 'gt'.
      */
     expiresAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    groupId?: pulumi.Input<string | undefined>;
     kind?: pulumi.Input<string | undefined>;
     /**
      * Filter by date range using 'lt' and 'gt'.

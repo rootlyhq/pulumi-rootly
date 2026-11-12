@@ -74,7 +74,7 @@ export class StatusPageTemplate extends pulumi.CustomResource {
      */
     declare public readonly title: pulumi.Output<string>;
     /**
-     * Status of the event the template will populate
+     * Status of the event the template will populate. Allowed values depend on the team's feature flags. Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`, `cancelled`.
      */
     declare public readonly updateStatus: pulumi.Output<string>;
     /**
@@ -157,7 +157,7 @@ export interface StatusPageTemplateState {
      */
     title?: pulumi.Input<string | undefined>;
     /**
-     * Status of the event the template will populate
+     * Status of the event the template will populate. Allowed values depend on the team's feature flags. Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`, `cancelled`.
      */
     updateStatus?: pulumi.Input<string | undefined>;
     /**
@@ -193,7 +193,7 @@ export interface StatusPageTemplateArgs {
      */
     title: pulumi.Input<string>;
     /**
-     * Status of the event the template will populate
+     * Status of the event the template will populate. Allowed values depend on the team's feature flags. Value must be one of `investigating`, `identified`, `monitoring`, `resolved`, `planning`, `scheduled`, `inProgress`, `verifying`, `completed`, `cancelled`.
      */
     updateStatus?: pulumi.Input<string | undefined>;
     /**

@@ -24,9 +24,10 @@ func LookupFormSet(ctx *pulumi.Context, args *LookupFormSetArgs, opts ...pulumi.
 // A collection of arguments for invoking getFormSet.
 type LookupFormSetArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt map[string]string `pulumi:"createdAt"`
-	IsDefault *bool             `pulumi:"isDefault"`
-	Slug      *string           `pulumi:"slug"`
+	CreatedAt    map[string]string `pulumi:"createdAt"`
+	IsDefault    *bool             `pulumi:"isDefault"`
+	ResourceType *string           `pulumi:"resourceType"`
+	Slug         *string           `pulumi:"slug"`
 }
 
 // A collection of values returned by getFormSet.
@@ -34,9 +35,10 @@ type LookupFormSetResult struct {
 	// Filter by date range using 'lt' and 'gt'.
 	CreatedAt map[string]string `pulumi:"createdAt"`
 	// The ID of this resource.
-	Id        string `pulumi:"id"`
-	IsDefault bool   `pulumi:"isDefault"`
-	Slug      string `pulumi:"slug"`
+	Id           string `pulumi:"id"`
+	IsDefault    bool   `pulumi:"isDefault"`
+	ResourceType string `pulumi:"resourceType"`
+	Slug         string `pulumi:"slug"`
 }
 
 func LookupFormSetOutput(ctx *pulumi.Context, args LookupFormSetOutputArgs, opts ...pulumi.InvokeOption) LookupFormSetResultOutput {
@@ -47,9 +49,10 @@ func LookupFormSetOutput(ctx *pulumi.Context, args LookupFormSetOutputArgs, opts
 // A collection of arguments for invoking getFormSet.
 type LookupFormSetOutputArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt pulumi.StringMapInput `pulumi:"createdAt"`
-	IsDefault pulumi.BoolPtrInput   `pulumi:"isDefault"`
-	Slug      pulumi.StringPtrInput `pulumi:"slug"`
+	CreatedAt    pulumi.StringMapInput `pulumi:"createdAt"`
+	IsDefault    pulumi.BoolPtrInput   `pulumi:"isDefault"`
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+	Slug         pulumi.StringPtrInput `pulumi:"slug"`
 }
 
 func (LookupFormSetOutputArgs) ElementType() reflect.Type {
@@ -83,6 +86,10 @@ func (o LookupFormSetResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupFormSetResultOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFormSetResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+func (o LookupFormSetResultOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFormSetResult) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
 func (o LookupFormSetResultOutput) Slug() pulumi.StringOutput {

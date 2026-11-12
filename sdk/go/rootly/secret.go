@@ -52,6 +52,13 @@ func NewSecret(ctx *pulumi.Context,
 		args = &SecretArgs{}
 	}
 
+	if args.Secret != nil {
+		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Secret
 	err := ctx.RegisterResource("rootly:index/secret:Secret", name, args, &resource, opts...)

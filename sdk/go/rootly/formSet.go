@@ -32,12 +32,14 @@ import (
 type FormSet struct {
 	pulumi.CustomResourceState
 
-	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `microsoftTeamsNewIncidentForm`
+	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `googleChatIncidentMitigationForm`, `googleChatIncidentResolutionForm`, `googleChatIncidentCancellationForm`, `googleChatScheduledIncidentForm`, `microsoftTeamsNewIncidentForm`. A `problem` form set accepts only problem forms: `webNewProblemForm`, `webUpdateProblemForm`, `webProblemInProgressForm`, `webProblemDeferredForm`, `webProblemCompletedForm`, `webProblemCancelledForm`
 	Forms pulumi.StringArrayOutput `pulumi:"forms"`
 	// Whether the form set is default. Value must be one of true or false
 	IsDefault pulumi.BoolOutput `pulumi:"isDefault"`
 	// The name of the form set
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The area the form set applies to. `problem` form sets are only returned when Problem Management is enabled.. Value must be one of `incident`, `problem`.
+	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// The slug of the form set
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -77,12 +79,14 @@ func GetFormSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FormSet resources.
 type formSetState struct {
-	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `microsoftTeamsNewIncidentForm`
+	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `googleChatIncidentMitigationForm`, `googleChatIncidentResolutionForm`, `googleChatIncidentCancellationForm`, `googleChatScheduledIncidentForm`, `microsoftTeamsNewIncidentForm`. A `problem` form set accepts only problem forms: `webNewProblemForm`, `webUpdateProblemForm`, `webProblemInProgressForm`, `webProblemDeferredForm`, `webProblemCompletedForm`, `webProblemCancelledForm`
 	Forms []string `pulumi:"forms"`
 	// Whether the form set is default. Value must be one of true or false
 	IsDefault *bool `pulumi:"isDefault"`
 	// The name of the form set
 	Name *string `pulumi:"name"`
+	// The area the form set applies to. `problem` form sets are only returned when Problem Management is enabled.. Value must be one of `incident`, `problem`.
+	ResourceType *string `pulumi:"resourceType"`
 	// The slug of the form set
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -90,12 +94,14 @@ type formSetState struct {
 }
 
 type FormSetState struct {
-	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `microsoftTeamsNewIncidentForm`
+	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `googleChatIncidentMitigationForm`, `googleChatIncidentResolutionForm`, `googleChatIncidentCancellationForm`, `googleChatScheduledIncidentForm`, `microsoftTeamsNewIncidentForm`. A `problem` form set accepts only problem forms: `webNewProblemForm`, `webUpdateProblemForm`, `webProblemInProgressForm`, `webProblemDeferredForm`, `webProblemCompletedForm`, `webProblemCancelledForm`
 	Forms pulumi.StringArrayInput
 	// Whether the form set is default. Value must be one of true or false
 	IsDefault pulumi.BoolPtrInput
 	// The name of the form set
 	Name pulumi.StringPtrInput
+	// The area the form set applies to. `problem` form sets are only returned when Problem Management is enabled.. Value must be one of `incident`, `problem`.
+	ResourceType pulumi.StringPtrInput
 	// The slug of the form set
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -107,12 +113,14 @@ func (FormSetState) ElementType() reflect.Type {
 }
 
 type formSetArgs struct {
-	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `microsoftTeamsNewIncidentForm`
+	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `googleChatIncidentMitigationForm`, `googleChatIncidentResolutionForm`, `googleChatIncidentCancellationForm`, `googleChatScheduledIncidentForm`, `microsoftTeamsNewIncidentForm`. A `problem` form set accepts only problem forms: `webNewProblemForm`, `webUpdateProblemForm`, `webProblemInProgressForm`, `webProblemDeferredForm`, `webProblemCompletedForm`, `webProblemCancelledForm`
 	Forms []string `pulumi:"forms"`
 	// Whether the form set is default. Value must be one of true or false
 	IsDefault *bool `pulumi:"isDefault"`
 	// The name of the form set
 	Name *string `pulumi:"name"`
+	// The area the form set applies to. `problem` form sets are only returned when Problem Management is enabled.. Value must be one of `incident`, `problem`.
+	ResourceType *string `pulumi:"resourceType"`
 	// The slug of the form set
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -121,12 +129,14 @@ type formSetArgs struct {
 
 // The set of arguments for constructing a FormSet resource.
 type FormSetArgs struct {
-	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `microsoftTeamsNewIncidentForm`
+	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `googleChatIncidentMitigationForm`, `googleChatIncidentResolutionForm`, `googleChatIncidentCancellationForm`, `googleChatScheduledIncidentForm`, `microsoftTeamsNewIncidentForm`. A `problem` form set accepts only problem forms: `webNewProblemForm`, `webUpdateProblemForm`, `webProblemInProgressForm`, `webProblemDeferredForm`, `webProblemCompletedForm`, `webProblemCancelledForm`
 	Forms pulumi.StringArrayInput
 	// Whether the form set is default. Value must be one of true or false
 	IsDefault pulumi.BoolPtrInput
 	// The name of the form set
 	Name pulumi.StringPtrInput
+	// The area the form set applies to. `problem` form sets are only returned when Problem Management is enabled.. Value must be one of `incident`, `problem`.
+	ResourceType pulumi.StringPtrInput
 	// The slug of the form set
 	//
 	// Deprecated: Deprecated. `slug` is derived from `name`; any submitted value is ignored. This property will be removed from the request schema in a future version.
@@ -220,7 +230,7 @@ func (o FormSetOutput) ToFormSetOutputWithContext(ctx context.Context) FormSetOu
 	return o
 }
 
-// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `microsoftTeamsNewIncidentForm`
+// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `googleChatIncidentMitigationForm`, `googleChatIncidentResolutionForm`, `googleChatIncidentCancellationForm`, `googleChatScheduledIncidentForm`, `microsoftTeamsNewIncidentForm`. A `problem` form set accepts only problem forms: `webNewProblemForm`, `webUpdateProblemForm`, `webProblemInProgressForm`, `webProblemDeferredForm`, `webProblemCompletedForm`, `webProblemCancelledForm`
 func (o FormSetOutput) Forms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FormSet) pulumi.StringArrayOutput { return v.Forms }).(pulumi.StringArrayOutput)
 }
@@ -233,6 +243,11 @@ func (o FormSetOutput) IsDefault() pulumi.BoolOutput {
 // The name of the form set
 func (o FormSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FormSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The area the form set applies to. `problem` form sets are only returned when Problem Management is enabled.. Value must be one of `incident`, `problem`.
+func (o FormSetOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FormSet) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }
 
 // The slug of the form set

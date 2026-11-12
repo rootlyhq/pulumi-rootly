@@ -98,9 +98,11 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["hashicorpVaultPath"] = args?.hashicorpVaultPath;
             resourceInputs["hashicorpVaultVersion"] = args?.hashicorpVaultVersion;
             resourceInputs["name"] = args?.name;
-            resourceInputs["secret"] = args?.secret;
+            resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Secret.__pulumiType, name, resourceInputs, opts);
     }
 }

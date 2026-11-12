@@ -56,6 +56,10 @@ export class FormFieldPlacementCondition extends pulumi.CustomResource {
      */
     declare public readonly comparison: pulumi.Output<string | undefined>;
     /**
+     * The condition group this condition belongs to.
+     */
+    declare public readonly conditionGroupId: pulumi.Output<string>;
+    /**
      * The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
      */
     declare public readonly conditioned: pulumi.Output<string | undefined>;
@@ -90,6 +94,7 @@ export class FormFieldPlacementCondition extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FormFieldPlacementConditionState | undefined;
             resourceInputs["comparison"] = state?.comparison;
+            resourceInputs["conditionGroupId"] = state?.conditionGroupId;
             resourceInputs["conditioned"] = state?.conditioned;
             resourceInputs["formFieldId"] = state?.formFieldId;
             resourceInputs["formFieldPlacementId"] = state?.formFieldPlacementId;
@@ -107,6 +112,7 @@ export class FormFieldPlacementCondition extends pulumi.CustomResource {
                 throw new Error("Missing required property 'values'");
             }
             resourceInputs["comparison"] = args?.comparison;
+            resourceInputs["conditionGroupId"] = args?.conditionGroupId;
             resourceInputs["conditioned"] = args?.conditioned;
             resourceInputs["formFieldId"] = args?.formFieldId;
             resourceInputs["formFieldPlacementId"] = args?.formFieldPlacementId;
@@ -126,6 +132,10 @@ export interface FormFieldPlacementConditionState {
      * The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
      */
     comparison?: pulumi.Input<string | undefined>;
+    /**
+     * The condition group this condition belongs to.
+     */
+    conditionGroupId?: pulumi.Input<string | undefined>;
     /**
      * The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
      */
@@ -156,6 +166,10 @@ export interface FormFieldPlacementConditionArgs {
      * The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
      */
     comparison?: pulumi.Input<string | undefined>;
+    /**
+     * The condition group this condition belongs to.
+     */
+    conditionGroupId?: pulumi.Input<string | undefined>;
     /**
      * The resource or attribute the condition applies.. Value must be one of `placement`, `required`.
      */

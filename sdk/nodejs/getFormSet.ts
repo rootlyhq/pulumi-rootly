@@ -10,6 +10,7 @@ export function getFormSet(args?: GetFormSetArgs, opts?: pulumi.InvokeOptions): 
     return pulumi.runtime.invoke("rootly:index/getFormSet:getFormSet", {
         "createdAt": args.createdAt,
         "isDefault": args.isDefault,
+        "resourceType": args.resourceType,
         "slug": args.slug,
     }, opts);
 }
@@ -23,6 +24,7 @@ export interface GetFormSetArgs {
      */
     createdAt?: {[key: string]: string};
     isDefault?: boolean;
+    resourceType?: string;
     slug?: string;
 }
 
@@ -39,6 +41,7 @@ export interface GetFormSetResult {
      */
     readonly id: string;
     readonly isDefault: boolean;
+    readonly resourceType: string;
     readonly slug: string;
 }
 export function getFormSetOutput(args?: GetFormSetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFormSetResult> {
@@ -47,6 +50,7 @@ export function getFormSetOutput(args?: GetFormSetOutputArgs, opts?: pulumi.Invo
     return pulumi.runtime.invokeOutput("rootly:index/getFormSet:getFormSet", {
         "createdAt": args.createdAt,
         "isDefault": args.isDefault,
+        "resourceType": args.resourceType,
         "slug": args.slug,
     }, opts);
 }
@@ -60,5 +64,6 @@ export interface GetFormSetOutputArgs {
      */
     createdAt?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     isDefault?: pulumi.Input<boolean | undefined>;
+    resourceType?: pulumi.Input<string | undefined>;
     slug?: pulumi.Input<string | undefined>;
 }

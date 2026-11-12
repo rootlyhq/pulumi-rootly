@@ -84,6 +84,10 @@ export class IncidentType extends pulumi.CustomResource {
      */
     declare public readonly publicDescription: pulumi.Output<string>;
     /**
+     * The public name of the incident type shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+     */
+    declare public readonly publicName: pulumi.Output<string>;
+    /**
      * Slack Aliases associated with this incident type
      */
     declare public readonly slackAliases: pulumi.Output<outputs.IncidentTypeSlackAlias[] | undefined>;
@@ -118,6 +122,7 @@ export class IncidentType extends pulumi.CustomResource {
             resourceInputs["position"] = state?.position;
             resourceInputs["properties"] = state?.properties;
             resourceInputs["publicDescription"] = state?.publicDescription;
+            resourceInputs["publicName"] = state?.publicName;
             resourceInputs["slackAliases"] = state?.slackAliases;
             resourceInputs["slackChannels"] = state?.slackChannels;
             resourceInputs["slug"] = state?.slug;
@@ -130,6 +135,7 @@ export class IncidentType extends pulumi.CustomResource {
             resourceInputs["position"] = args?.position;
             resourceInputs["properties"] = args?.properties;
             resourceInputs["publicDescription"] = args?.publicDescription;
+            resourceInputs["publicName"] = args?.publicName;
             resourceInputs["slackAliases"] = args?.slackAliases;
             resourceInputs["slackChannels"] = args?.slackChannels;
             resourceInputs["slug"] = args?.slug;
@@ -171,6 +177,10 @@ export interface IncidentTypeState {
      * The status page description of the incident type
      */
     publicDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The public name of the incident type shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+     */
+    publicName?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this incident type
      */
@@ -219,6 +229,10 @@ export interface IncidentTypeArgs {
      * The status page description of the incident type
      */
     publicDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The public name of the incident type shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+     */
+    publicName?: pulumi.Input<string | undefined>;
     /**
      * Slack Aliases associated with this incident type
      */

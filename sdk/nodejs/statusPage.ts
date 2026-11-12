@@ -234,7 +234,7 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["allowSearchEngineIndex"] = args?.allowSearchEngineIndex;
             resourceInputs["authenticationEnabled"] = args?.authenticationEnabled;
             resourceInputs["authenticationMethod"] = args?.authenticationMethod;
-            resourceInputs["authenticationPassword"] = args?.authenticationPassword;
+            resourceInputs["authenticationPassword"] = args?.authenticationPassword ? pulumi.secret(args.authenticationPassword) : undefined;
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["externalDomainNames"] = args?.externalDomainNames;
@@ -265,6 +265,8 @@ export class StatusPage extends pulumi.CustomResource {
             resourceInputs["cnameRecords"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["authenticationPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(StatusPage.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -128,6 +128,10 @@ export class Functionality extends pulumi.CustomResource {
      */
     declare public readonly publicDescription: pulumi.Output<string>;
     /**
+     * The public name of the functionality shown on status pages instead of its name
+     */
+    declare public readonly publicName: pulumi.Output<string>;
+    /**
      * Services associated with this functionality
      */
     declare public readonly serviceIds: pulumi.Output<string[]>;
@@ -181,6 +185,7 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["position"] = state?.position;
             resourceInputs["properties"] = state?.properties;
             resourceInputs["publicDescription"] = state?.publicDescription;
+            resourceInputs["publicName"] = state?.publicName;
             resourceInputs["serviceIds"] = state?.serviceIds;
             resourceInputs["serviceNowCiSysId"] = state?.serviceNowCiSysId;
             resourceInputs["slackAliases"] = state?.slackAliases;
@@ -205,6 +210,7 @@ export class Functionality extends pulumi.CustomResource {
             resourceInputs["position"] = args?.position;
             resourceInputs["properties"] = args?.properties;
             resourceInputs["publicDescription"] = args?.publicDescription;
+            resourceInputs["publicName"] = args?.publicName;
             resourceInputs["serviceIds"] = args?.serviceIds;
             resourceInputs["serviceNowCiSysId"] = args?.serviceNowCiSysId;
             resourceInputs["slackAliases"] = args?.slackAliases;
@@ -293,6 +299,10 @@ export interface FunctionalityState {
      * The status page description of the functionality
      */
     publicDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The public name of the functionality shown on status pages instead of its name
+     */
+    publicName?: pulumi.Input<string | undefined>;
     /**
      * Services associated with this functionality
      */
@@ -389,6 +399,10 @@ export interface FunctionalityArgs {
      * The status page description of the functionality
      */
     publicDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The public name of the functionality shown on status pages instead of its name
+     */
+    publicName?: pulumi.Input<string | undefined>;
     /**
      * Services associated with this functionality
      */

@@ -25,11 +25,12 @@ func LookupFormField(ctx *pulumi.Context, args *LookupFormFieldArgs, opts ...pul
 // A collection of arguments for invoking getFormField.
 type LookupFormFieldArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt map[string]string `pulumi:"createdAt"`
-	Enabled   *bool             `pulumi:"enabled"`
-	Kind      *string           `pulumi:"kind"`
-	Name      *string           `pulumi:"name"`
-	Slug      *string           `pulumi:"slug"`
+	CreatedAt    map[string]string `pulumi:"createdAt"`
+	Enabled      *bool             `pulumi:"enabled"`
+	Kind         *string           `pulumi:"kind"`
+	Name         *string           `pulumi:"name"`
+	ResourceType *string           `pulumi:"resourceType"`
+	Slug         *string           `pulumi:"slug"`
 }
 
 // A collection of values returned by getFormField.
@@ -38,10 +39,11 @@ type LookupFormFieldResult struct {
 	CreatedAt map[string]string `pulumi:"createdAt"`
 	Enabled   *bool             `pulumi:"enabled"`
 	// The ID of this resource.
-	Id   string `pulumi:"id"`
-	Kind string `pulumi:"kind"`
-	Name string `pulumi:"name"`
-	Slug string `pulumi:"slug"`
+	Id           string `pulumi:"id"`
+	Kind         string `pulumi:"kind"`
+	Name         string `pulumi:"name"`
+	ResourceType string `pulumi:"resourceType"`
+	Slug         string `pulumi:"slug"`
 }
 
 func LookupFormFieldOutput(ctx *pulumi.Context, args LookupFormFieldOutputArgs, opts ...pulumi.InvokeOption) LookupFormFieldResultOutput {
@@ -52,11 +54,12 @@ func LookupFormFieldOutput(ctx *pulumi.Context, args LookupFormFieldOutputArgs, 
 // A collection of arguments for invoking getFormField.
 type LookupFormFieldOutputArgs struct {
 	// Filter by date range using 'lt' and 'gt'.
-	CreatedAt pulumi.StringMapInput `pulumi:"createdAt"`
-	Enabled   pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Kind      pulumi.StringPtrInput `pulumi:"kind"`
-	Name      pulumi.StringPtrInput `pulumi:"name"`
-	Slug      pulumi.StringPtrInput `pulumi:"slug"`
+	CreatedAt    pulumi.StringMapInput `pulumi:"createdAt"`
+	Enabled      pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Kind         pulumi.StringPtrInput `pulumi:"kind"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+	Slug         pulumi.StringPtrInput `pulumi:"slug"`
 }
 
 func (LookupFormFieldOutputArgs) ElementType() reflect.Type {
@@ -98,6 +101,10 @@ func (o LookupFormFieldResultOutput) Kind() pulumi.StringOutput {
 
 func (o LookupFormFieldResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormFieldResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupFormFieldResultOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFormFieldResult) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
 func (o LookupFormFieldResultOutput) Slug() pulumi.StringOutput {

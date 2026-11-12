@@ -41,7 +41,7 @@ type FormField struct {
 	Enabled     pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
 	InputKind pulumi.StringPtrOutput `pulumi:"inputKind"`
-	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`, `priority`, `scope`, `exitCriteria`, `impactSoFar`, `rootCause`, `resolution`, `approvedBy`, `reasonAndAcceptedRisk`, `reReviewDate`, `cancellationReason`, `problemServices`, `problemEnvironments`, `problemFunctionalities`, `problemTeams`, `problemTitle`, `problemDescription`, `problemIncidents`, `problemDueDate`, `owner`.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The name of the form field
 	Name      pulumi.StringOutput      `pulumi:"name"`
@@ -99,7 +99,7 @@ type formFieldState struct {
 	Enabled     *bool   `pulumi:"enabled"`
 	// The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
 	InputKind *string `pulumi:"inputKind"`
-	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`, `priority`, `scope`, `exitCriteria`, `impactSoFar`, `rootCause`, `resolution`, `approvedBy`, `reasonAndAcceptedRisk`, `reReviewDate`, `cancellationReason`, `problemServices`, `problemEnvironments`, `problemFunctionalities`, `problemTeams`, `problemTitle`, `problemDescription`, `problemIncidents`, `problemDueDate`, `owner`.
 	Kind *string `pulumi:"kind"`
 	// The name of the form field
 	Name      *string  `pulumi:"name"`
@@ -128,7 +128,7 @@ type FormFieldState struct {
 	Enabled     pulumi.BoolPtrInput
 	// The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
 	InputKind pulumi.StringPtrInput
-	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`, `priority`, `scope`, `exitCriteria`, `impactSoFar`, `rootCause`, `resolution`, `approvedBy`, `reasonAndAcceptedRisk`, `reReviewDate`, `cancellationReason`, `problemServices`, `problemEnvironments`, `problemFunctionalities`, `problemTeams`, `problemTitle`, `problemDescription`, `problemIncidents`, `problemDueDate`, `owner`.
 	Kind pulumi.StringPtrInput
 	// The name of the form field
 	Name      pulumi.StringPtrInput
@@ -161,11 +161,13 @@ type formFieldArgs struct {
 	Enabled     *bool   `pulumi:"enabled"`
 	// The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
 	InputKind *string `pulumi:"inputKind"`
-	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`, `priority`, `scope`, `exitCriteria`, `impactSoFar`, `rootCause`, `resolution`, `approvedBy`, `reasonAndAcceptedRisk`, `reReviewDate`, `cancellationReason`, `problemServices`, `problemEnvironments`, `problemFunctionalities`, `problemTeams`, `problemTitle`, `problemDescription`, `problemIncidents`, `problemDueDate`, `owner`.
 	Kind *string `pulumi:"kind"`
 	// The name of the form field
 	Name      *string  `pulumi:"name"`
 	Requireds []string `pulumi:"requireds"`
+	// The resource type this field belongs to. Value must be one of `incident`, `problem`.
+	ResourceType *string `pulumi:"resourceType"`
 	// Whether the form field is shown on the incident details panel. Value must be one of true or false
 	ShowOnIncidentDetails *bool    `pulumi:"showOnIncidentDetails"`
 	Showns                []string `pulumi:"showns"`
@@ -189,11 +191,13 @@ type FormFieldArgs struct {
 	Enabled     pulumi.BoolPtrInput
 	// The input kind of the form field. Value must be one of `text`, `textarea`, `select`, `multiSelect`, `date`, `datetime`, `number`, `checkbox`, `tags`, `richText`.
 	InputKind pulumi.StringPtrInput
-	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+	// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`, `priority`, `scope`, `exitCriteria`, `impactSoFar`, `rootCause`, `resolution`, `approvedBy`, `reasonAndAcceptedRisk`, `reReviewDate`, `cancellationReason`, `problemServices`, `problemEnvironments`, `problemFunctionalities`, `problemTeams`, `problemTitle`, `problemDescription`, `problemIncidents`, `problemDueDate`, `owner`.
 	Kind pulumi.StringPtrInput
 	// The name of the form field
 	Name      pulumi.StringPtrInput
 	Requireds pulumi.StringArrayInput
+	// The resource type this field belongs to. Value must be one of `incident`, `problem`.
+	ResourceType pulumi.StringPtrInput
 	// Whether the form field is shown on the incident details panel. Value must be one of true or false
 	ShowOnIncidentDetails pulumi.BoolPtrInput
 	Showns                pulumi.StringArrayInput
@@ -317,7 +321,7 @@ func (o FormFieldOutput) InputKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FormField) pulumi.StringPtrOutput { return v.InputKind }).(pulumi.StringPtrOutput)
 }
 
-// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`.
+// The kind of the form field. Value must be one of `custom`, `title`, `summary`, `mitigationMessage`, `resolutionMessage`, `cancellationMessage`, `severity`, `environments`, `types`, `services`, `causes`, `functionalities`, `teams`, `status`, `visibility`, `markAsTest`, `markAsBackfilled`, `labels`, `notifyEmails`, `triggerManualWorkflows`, `showOngoingIncidents`, `attachAlerts`, `markAsInTriage`, `inTriageAt`, `startedAt`, `detectedAt`, `acknowledgedAt`, `mitigatedAt`, `resolvedAt`, `closedAt`, `customSubStatus`, `manualStartingDatetimeField`, `priority`, `scope`, `exitCriteria`, `impactSoFar`, `rootCause`, `resolution`, `approvedBy`, `reasonAndAcceptedRisk`, `reReviewDate`, `cancellationReason`, `problemServices`, `problemEnvironments`, `problemFunctionalities`, `problemTeams`, `problemTitle`, `problemDescription`, `problemIncidents`, `problemDueDate`, `owner`.
 func (o FormFieldOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FormField) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }

@@ -52,7 +52,7 @@ export class FormSet extends pulumi.CustomResource {
     }
 
     /**
-     * The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `microsoftTeamsNewIncidentForm`
+     * The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `googleChatIncidentMitigationForm`, `googleChatIncidentResolutionForm`, `googleChatIncidentCancellationForm`, `googleChatScheduledIncidentForm`, `microsoftTeamsNewIncidentForm`. A `problem` form set accepts only problem forms: `webNewProblemForm`, `webUpdateProblemForm`, `webProblemInProgressForm`, `webProblemDeferredForm`, `webProblemCompletedForm`, `webProblemCancelledForm`
      */
     declare public readonly forms: pulumi.Output<string[]>;
     /**
@@ -63,6 +63,10 @@ export class FormSet extends pulumi.CustomResource {
      * The name of the form set
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The area the form set applies to. `problem` form sets are only returned when Problem Management is enabled.. Value must be one of `incident`, `problem`.
+     */
+    declare public readonly resourceType: pulumi.Output<string>;
     /**
      * The slug of the form set
      *
@@ -86,6 +90,7 @@ export class FormSet extends pulumi.CustomResource {
             resourceInputs["forms"] = state?.forms;
             resourceInputs["isDefault"] = state?.isDefault;
             resourceInputs["name"] = state?.name;
+            resourceInputs["resourceType"] = state?.resourceType;
             resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as FormSetArgs | undefined;
@@ -95,6 +100,7 @@ export class FormSet extends pulumi.CustomResource {
             resourceInputs["forms"] = args?.forms;
             resourceInputs["isDefault"] = args?.isDefault;
             resourceInputs["name"] = args?.name;
+            resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["slug"] = args?.slug;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -107,7 +113,7 @@ export class FormSet extends pulumi.CustomResource {
  */
 export interface FormSetState {
     /**
-     * The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `microsoftTeamsNewIncidentForm`
+     * The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `googleChatIncidentMitigationForm`, `googleChatIncidentResolutionForm`, `googleChatIncidentCancellationForm`, `googleChatScheduledIncidentForm`, `microsoftTeamsNewIncidentForm`. A `problem` form set accepts only problem forms: `webNewProblemForm`, `webUpdateProblemForm`, `webProblemInProgressForm`, `webProblemDeferredForm`, `webProblemCompletedForm`, `webProblemCancelledForm`
      */
     forms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -118,6 +124,10 @@ export interface FormSetState {
      * The name of the form set
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The area the form set applies to. `problem` form sets are only returned when Problem Management is enabled.. Value must be one of `incident`, `problem`.
+     */
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The slug of the form set
      *
@@ -131,7 +141,7 @@ export interface FormSetState {
  */
 export interface FormSetArgs {
     /**
-     * The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `microsoftTeamsNewIncidentForm`
+     * The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `googleChatIncidentMitigationForm`, `googleChatIncidentResolutionForm`, `googleChatIncidentCancellationForm`, `googleChatScheduledIncidentForm`, `microsoftTeamsNewIncidentForm`. A `problem` form set accepts only problem forms: `webNewProblemForm`, `webUpdateProblemForm`, `webProblemInProgressForm`, `webProblemDeferredForm`, `webProblemCompletedForm`, `webProblemCancelledForm`
      */
     forms: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -142,6 +152,10 @@ export interface FormSetArgs {
      * The name of the form set
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The area the form set applies to. `problem` form sets are only returned when Problem Management is enabled.. Value must be one of `incident`, `problem`.
+     */
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The slug of the form set
      *

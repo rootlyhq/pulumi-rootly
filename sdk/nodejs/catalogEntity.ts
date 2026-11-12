@@ -65,6 +65,10 @@ export class CatalogEntity extends pulumi.CustomResource {
     declare public readonly catalogId: pulumi.Output<string>;
     declare public readonly description: pulumi.Output<string>;
     /**
+     * The escalation policy id of the catalog entity
+     */
+    declare public readonly escalationPolicyId: pulumi.Output<string>;
+    /**
      * An external identifier for this catalog entity. Must be unique within the catalog.
      */
     declare public readonly externalId: pulumi.Output<string>;
@@ -85,6 +89,10 @@ export class CatalogEntity extends pulumi.CustomResource {
      * The status page description of the catalog entity
      */
     declare public readonly publicDescription: pulumi.Output<string>;
+    /**
+     * The public name of the catalog entity shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+     */
+    declare public readonly publicName: pulumi.Output<string>;
     /**
      * The slug of the catalog entity. Derived from `name`.
      *
@@ -108,12 +116,14 @@ export class CatalogEntity extends pulumi.CustomResource {
             resourceInputs["backstageId"] = state?.backstageId;
             resourceInputs["catalogId"] = state?.catalogId;
             resourceInputs["description"] = state?.description;
+            resourceInputs["escalationPolicyId"] = state?.escalationPolicyId;
             resourceInputs["externalId"] = state?.externalId;
             resourceInputs["managedBy"] = state?.managedBy;
             resourceInputs["name"] = state?.name;
             resourceInputs["position"] = state?.position;
             resourceInputs["properties"] = state?.properties;
             resourceInputs["publicDescription"] = state?.publicDescription;
+            resourceInputs["publicName"] = state?.publicName;
             resourceInputs["slug"] = state?.slug;
         } else {
             const args = argsOrState as CatalogEntityArgs | undefined;
@@ -123,11 +133,13 @@ export class CatalogEntity extends pulumi.CustomResource {
             resourceInputs["backstageId"] = args?.backstageId;
             resourceInputs["catalogId"] = args?.catalogId;
             resourceInputs["description"] = args?.description;
+            resourceInputs["escalationPolicyId"] = args?.escalationPolicyId;
             resourceInputs["externalId"] = args?.externalId;
             resourceInputs["name"] = args?.name;
             resourceInputs["position"] = args?.position;
             resourceInputs["properties"] = args?.properties;
             resourceInputs["publicDescription"] = args?.publicDescription;
+            resourceInputs["publicName"] = args?.publicName;
             resourceInputs["slug"] = args?.slug;
             resourceInputs["managedBy"] = undefined /*out*/;
         }
@@ -150,6 +162,10 @@ export interface CatalogEntityState {
     catalogId?: pulumi.Input<string | undefined>;
     description?: pulumi.Input<string | undefined>;
     /**
+     * The escalation policy id of the catalog entity
+     */
+    escalationPolicyId?: pulumi.Input<string | undefined>;
+    /**
      * An external identifier for this catalog entity. Must be unique within the catalog.
      */
     externalId?: pulumi.Input<string | undefined>;
@@ -170,6 +186,10 @@ export interface CatalogEntityState {
      * The status page description of the catalog entity
      */
     publicDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The public name of the catalog entity shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+     */
+    publicName?: pulumi.Input<string | undefined>;
     /**
      * The slug of the catalog entity. Derived from `name`.
      *
@@ -192,6 +212,10 @@ export interface CatalogEntityArgs {
     catalogId: pulumi.Input<string>;
     description?: pulumi.Input<string | undefined>;
     /**
+     * The escalation policy id of the catalog entity
+     */
+    escalationPolicyId?: pulumi.Input<string | undefined>;
+    /**
      * An external identifier for this catalog entity. Must be unique within the catalog.
      */
     externalId?: pulumi.Input<string | undefined>;
@@ -208,6 +232,10 @@ export interface CatalogEntityArgs {
      * The status page description of the catalog entity
      */
     publicDescription?: pulumi.Input<string | undefined>;
+    /**
+     * The public name of the catalog entity shown on status pages instead of its name. Only used and returned when `status-page-v3-phase-1` is enabled
+     */
+    publicName?: pulumi.Input<string | undefined>;
     /**
      * The slug of the catalog entity. Derived from `name`.
      *
