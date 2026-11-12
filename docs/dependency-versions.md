@@ -11,9 +11,11 @@ no newer direct dependencies within the selected major versions.
 | --- | --- |
 | Terraform Rootly provider | 5.21.1 |
 | Pulumi Terraform bridge | 3.139.0 |
-| Pulumi CLI, Go packages, Node.js and Python dependency baselines | 3.262.0 |
+| Pulumi CLI, Go and Python dependency baselines | 3.262.0 |
+| Node.js SDK Pulumi dependency minimum | 3.274.1 |
+| Go JOSE dependency minimum | 4.1.6 |
 | .NET Pulumi dependency baseline | 3.113.2 |
-| Go | 1.27.1 |
+| Go | 1.27.4 |
 | Node.js | 24.22.3 |
 | TypeScript / Node.js types | 7.0.2 / 24.13.4 |
 | Python / .NET SDK | 3.14.7 / 10.0.400 |
