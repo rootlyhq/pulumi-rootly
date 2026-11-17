@@ -4,7 +4,7 @@ go 1.27.4
 
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.19.0
-	github.com/rootlyhq/terraform-provider-rootly/v5 v5.25.2
+	github.com/rootlyhq/terraform-provider-rootly/v5 v5.27.0
 )
 
 require (
@@ -28,7 +28,6 @@ require (
 	github.com/fatih/color v1.19.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
-	github.com/google/jsonapi v1.0.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/hashicorp/cli v1.1.7 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
@@ -63,7 +62,7 @@ require (
 	github.com/oapi-codegen/runtime v1.7.0 // indirect
 	github.com/orange-cloudavenue/terraform-plugin-framework-supertypes v1.2.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
-	github.com/rootlyhq/jsonapi v0.0.0-20260818145503-f499cfb9d78f // indirect
+	github.com/rootlyhq/jsonapi v0.0.0-20261109170034-45a3b024d895 // indirect
 	github.com/samber/lo v1.53.0 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/spf13/cast v1.10.0 // indirect
