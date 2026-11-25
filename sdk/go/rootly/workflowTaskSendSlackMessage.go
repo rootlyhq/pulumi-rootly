@@ -119,6 +119,12 @@ func (WorkflowTaskSendSlackMessageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskSendSlackMessageState)(nil)).Elem()
 }
 
+// WorkflowTaskSendSlackMessageExists checks whether an existing WorkflowTaskSendSlackMessage resource with the given ID exists.
+func WorkflowTaskSendSlackMessageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSendSlackMessageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSendSlackMessage:WorkflowTaskSendSlackMessage", id, state, "", opts...)
+}
+
 type workflowTaskSendSlackMessageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

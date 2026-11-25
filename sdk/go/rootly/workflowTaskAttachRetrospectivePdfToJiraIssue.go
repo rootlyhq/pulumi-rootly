@@ -117,6 +117,12 @@ func (WorkflowTaskAttachRetrospectivePdfToJiraIssueState) ElementType() reflect.
 	return reflect.TypeOf((*workflowTaskAttachRetrospectivePdfToJiraIssueState)(nil)).Elem()
 }
 
+// WorkflowTaskAttachRetrospectivePdfToJiraIssueExists checks whether an existing WorkflowTaskAttachRetrospectivePdfToJiraIssue resource with the given ID exists.
+func WorkflowTaskAttachRetrospectivePdfToJiraIssueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskAttachRetrospectivePdfToJiraIssueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskAttachRetrospectivePdfToJiraIssue:WorkflowTaskAttachRetrospectivePdfToJiraIssue", id, state, "", opts...)
+}
+
 type workflowTaskAttachRetrospectivePdfToJiraIssueArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

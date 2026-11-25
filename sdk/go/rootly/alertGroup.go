@@ -161,6 +161,12 @@ func (AlertGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertGroupState)(nil)).Elem()
 }
 
+// AlertGroupExists checks whether an existing AlertGroup resource with the given ID exists.
+func AlertGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/alertGroup:AlertGroup", id, state, "", opts...)
+}
+
 type alertGroupArgs struct {
 	// This field is deprecated. Please use the `conditions` field instead, `attributes` will be removed in the future.
 	Attributes []AlertGroupAttribute `pulumi:"attributes"`

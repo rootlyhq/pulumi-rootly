@@ -117,6 +117,12 @@ func (WorkflowTaskCreateIncidentPostmortemState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateIncidentPostmortemState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateIncidentPostmortemExists checks whether an existing WorkflowTaskCreateIncidentPostmortem resource with the given ID exists.
+func WorkflowTaskCreateIncidentPostmortemExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateIncidentPostmortemState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateIncidentPostmortem:WorkflowTaskCreateIncidentPostmortem", id, state, "", opts...)
+}
+
 type workflowTaskCreateIncidentPostmortemArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

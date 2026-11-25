@@ -26,6 +26,7 @@
         "alertUrgency.ts",
         "alertsSource.ts",
         "apiKey.ts",
+        "apiKeyRotation.ts",
         "authorization.ts",
         "catalog.ts",
         "catalogChecklistTemplate.ts",

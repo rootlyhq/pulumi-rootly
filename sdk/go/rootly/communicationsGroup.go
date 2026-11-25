@@ -150,6 +150,12 @@ func (CommunicationsGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*communicationsGroupState)(nil)).Elem()
 }
 
+// CommunicationsGroupExists checks whether an existing CommunicationsGroup resource with the given ID exists.
+func CommunicationsGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CommunicationsGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/communicationsGroup:CommunicationsGroup", id, state, "", opts...)
+}
+
 type communicationsGroupArgs struct {
 	// External group members
 	CommunicationExternalGroupMembers []CommunicationsGroupCommunicationExternalGroupMember `pulumi:"communicationExternalGroupMembers"`

@@ -107,6 +107,12 @@ func (CustomFieldOptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customFieldOptionState)(nil)).Elem()
 }
 
+// CustomFieldOptionExists checks whether an existing CustomFieldOption resource with the given ID exists.
+func CustomFieldOptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomFieldOptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/customFieldOption:CustomFieldOption", id, state, "", opts...)
+}
+
 type customFieldOptionArgs struct {
 	// The hex color of the custom*field*option
 	Color *string `pulumi:"color"`

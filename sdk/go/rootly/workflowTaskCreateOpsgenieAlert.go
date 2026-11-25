@@ -117,6 +117,12 @@ func (WorkflowTaskCreateOpsgenieAlertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateOpsgenieAlertState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateOpsgenieAlertExists checks whether an existing WorkflowTaskCreateOpsgenieAlert resource with the given ID exists.
+func WorkflowTaskCreateOpsgenieAlertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateOpsgenieAlertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateOpsgenieAlert:WorkflowTaskCreateOpsgenieAlert", id, state, "", opts...)
+}
+
 type workflowTaskCreateOpsgenieAlertArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

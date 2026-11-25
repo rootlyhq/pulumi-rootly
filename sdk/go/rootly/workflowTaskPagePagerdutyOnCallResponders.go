@@ -119,6 +119,12 @@ func (WorkflowTaskPagePagerdutyOnCallRespondersState) ElementType() reflect.Type
 	return reflect.TypeOf((*workflowTaskPagePagerdutyOnCallRespondersState)(nil)).Elem()
 }
 
+// WorkflowTaskPagePagerdutyOnCallRespondersExists checks whether an existing WorkflowTaskPagePagerdutyOnCallResponders resource with the given ID exists.
+func WorkflowTaskPagePagerdutyOnCallRespondersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskPagePagerdutyOnCallRespondersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskPagePagerdutyOnCallResponders:WorkflowTaskPagePagerdutyOnCallResponders", id, state, "", opts...)
+}
+
 type workflowTaskPagePagerdutyOnCallRespondersArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

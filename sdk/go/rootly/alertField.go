@@ -104,6 +104,12 @@ func (AlertFieldState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertFieldState)(nil)).Elem()
 }
 
+// AlertFieldExists checks whether an existing AlertField resource with the given ID exists.
+func AlertFieldExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertFieldState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/alertField:AlertField", id, state, "", opts...)
+}
+
 type alertFieldArgs struct {
 	// The kind of alert field
 	Kind *string `pulumi:"kind"`

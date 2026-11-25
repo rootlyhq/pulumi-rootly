@@ -280,6 +280,12 @@ func (StatusPageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*statusPageState)(nil)).Elem()
 }
 
+// StatusPageExists checks whether an existing StatusPage resource with the given ID exists.
+func StatusPageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StatusPageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/statusPage:StatusPage", id, state, "", opts...)
+}
+
 type statusPageArgs struct {
 	// Allow search engines to include your public status page in search results. Value must be one of true or false
 	AllowSearchEngineIndex *bool `pulumi:"allowSearchEngineIndex"`

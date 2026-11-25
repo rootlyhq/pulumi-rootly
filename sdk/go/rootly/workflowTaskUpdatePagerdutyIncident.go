@@ -117,6 +117,12 @@ func (WorkflowTaskUpdatePagerdutyIncidentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdatePagerdutyIncidentState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdatePagerdutyIncidentExists checks whether an existing WorkflowTaskUpdatePagerdutyIncident resource with the given ID exists.
+func WorkflowTaskUpdatePagerdutyIncidentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdatePagerdutyIncidentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdatePagerdutyIncident:WorkflowTaskUpdatePagerdutyIncident", id, state, "", opts...)
+}
+
 type workflowTaskUpdatePagerdutyIncidentArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

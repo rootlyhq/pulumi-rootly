@@ -133,6 +133,12 @@ func (EdgeConnectorActionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgeConnectorActionState)(nil)).Elem()
 }
 
+// EdgeConnectorActionExists checks whether an existing EdgeConnectorAction resource with the given ID exists.
+func EdgeConnectorActionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EdgeConnectorActionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/edgeConnectorAction:EdgeConnectorAction", id, state, "", opts...)
+}
+
 type edgeConnectorActionArgs struct {
 	// Action type. Value must be one of `script`, `http`.
 	ActionType *string `pulumi:"actionType"`

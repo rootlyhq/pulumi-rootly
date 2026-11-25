@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlertsSource{}
 	case "rootly:index/apiKey:ApiKey":
 		r = &ApiKey{}
+	case "rootly:index/apiKeyRotation:ApiKeyRotation":
+		r = &ApiKeyRotation{}
 	case "rootly:index/authorization:Authorization":
 		r = &Authorization{}
 	case "rootly:index/catalog:Catalog":
@@ -555,6 +557,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rootly",
 		"index/apiKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rootly",
+		"index/apiKeyRotation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

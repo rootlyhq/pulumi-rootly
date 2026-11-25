@@ -117,6 +117,12 @@ func (WorkflowTaskPageRootlyOnCallRespondersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskPageRootlyOnCallRespondersState)(nil)).Elem()
 }
 
+// WorkflowTaskPageRootlyOnCallRespondersExists checks whether an existing WorkflowTaskPageRootlyOnCallResponders resource with the given ID exists.
+func WorkflowTaskPageRootlyOnCallRespondersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskPageRootlyOnCallRespondersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskPageRootlyOnCallResponders:WorkflowTaskPageRootlyOnCallResponders", id, state, "", opts...)
+}
+
 type workflowTaskPageRootlyOnCallRespondersArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

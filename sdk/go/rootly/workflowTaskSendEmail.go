@@ -119,6 +119,12 @@ func (WorkflowTaskSendEmailState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskSendEmailState)(nil)).Elem()
 }
 
+// WorkflowTaskSendEmailExists checks whether an existing WorkflowTaskSendEmail resource with the given ID exists.
+func WorkflowTaskSendEmailExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSendEmailState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSendEmail:WorkflowTaskSendEmail", id, state, "", opts...)
+}
+
 type workflowTaskSendEmailArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

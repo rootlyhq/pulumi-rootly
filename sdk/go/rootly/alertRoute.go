@@ -96,6 +96,12 @@ func (AlertRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertRouteState)(nil)).Elem()
 }
 
+// AlertRouteExists checks whether an existing AlertRoute resource with the given ID exists.
+func AlertRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/alertRoute:AlertRoute", id, state, "", opts...)
+}
+
 type alertRouteArgs struct {
 	AlertsSourceIds []string `pulumi:"alertsSourceIds"`
 	Enabled         *bool    `pulumi:"enabled"`

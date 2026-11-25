@@ -117,6 +117,12 @@ func (WorkflowTaskUpdateGoogleCalendarEventState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdateGoogleCalendarEventState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdateGoogleCalendarEventExists checks whether an existing WorkflowTaskUpdateGoogleCalendarEvent resource with the given ID exists.
+func WorkflowTaskUpdateGoogleCalendarEventExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdateGoogleCalendarEventState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdateGoogleCalendarEvent:WorkflowTaskUpdateGoogleCalendarEvent", id, state, "", opts...)
+}
+
 type workflowTaskUpdateGoogleCalendarEventArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

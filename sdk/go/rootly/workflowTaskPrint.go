@@ -117,6 +117,12 @@ func (WorkflowTaskPrintState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskPrintState)(nil)).Elem()
 }
 
+// WorkflowTaskPrintExists checks whether an existing WorkflowTaskPrint resource with the given ID exists.
+func WorkflowTaskPrintExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskPrintState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskPrint:WorkflowTaskPrint", id, state, "", opts...)
+}
+
 type workflowTaskPrintArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

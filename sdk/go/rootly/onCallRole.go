@@ -236,6 +236,12 @@ func (OnCallRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*onCallRoleState)(nil)).Elem()
 }
 
+// OnCallRoleExists checks whether an existing OnCallRole resource with the given ID exists.
+func OnCallRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OnCallRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/onCallRole:OnCallRole", id, state, "", opts...)
+}
+
 type onCallRoleArgs struct {
 	// Value must be one of `create`, `read`, `update`, `delete`.
 	AlertFieldsPermissions []string `pulumi:"alertFieldsPermissions"`

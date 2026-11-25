@@ -117,6 +117,12 @@ func (WorkflowTaskAutoAssignRolePagerdutyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskAutoAssignRolePagerdutyState)(nil)).Elem()
 }
 
+// WorkflowTaskAutoAssignRolePagerdutyExists checks whether an existing WorkflowTaskAutoAssignRolePagerduty resource with the given ID exists.
+func WorkflowTaskAutoAssignRolePagerdutyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskAutoAssignRolePagerdutyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskAutoAssignRolePagerduty:WorkflowTaskAutoAssignRolePagerduty", id, state, "", opts...)
+}
+
 type workflowTaskAutoAssignRolePagerdutyArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

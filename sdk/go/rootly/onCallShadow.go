@@ -126,6 +126,12 @@ func (OnCallShadowState) ElementType() reflect.Type {
 	return reflect.TypeOf((*onCallShadowState)(nil)).Elem()
 }
 
+// OnCallShadowExists checks whether an existing OnCallShadow resource with the given ID exists.
+func OnCallShadowExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OnCallShadowState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/onCallShadow:OnCallShadow", id, state, "", opts...)
+}
+
 type onCallShadowArgs struct {
 	// End datetime for shadow shift
 	EndsAt string `pulumi:"endsAt"`

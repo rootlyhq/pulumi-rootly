@@ -117,6 +117,12 @@ func (WorkflowTaskCreateSharepointPageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateSharepointPageState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateSharepointPageExists checks whether an existing WorkflowTaskCreateSharepointPage resource with the given ID exists.
+func WorkflowTaskCreateSharepointPageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateSharepointPageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateSharepointPage:WorkflowTaskCreateSharepointPage", id, state, "", opts...)
+}
+
 type workflowTaskCreateSharepointPageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

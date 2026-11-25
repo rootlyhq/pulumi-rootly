@@ -117,6 +117,12 @@ func (WorkflowTaskSendWhatsappMessageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskSendWhatsappMessageState)(nil)).Elem()
 }
 
+// WorkflowTaskSendWhatsappMessageExists checks whether an existing WorkflowTaskSendWhatsappMessage resource with the given ID exists.
+func WorkflowTaskSendWhatsappMessageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSendWhatsappMessageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSendWhatsappMessage:WorkflowTaskSendWhatsappMessage", id, state, "", opts...)
+}
+
 type workflowTaskSendWhatsappMessageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

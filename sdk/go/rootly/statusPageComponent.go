@@ -127,6 +127,12 @@ func (StatusPageComponentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*statusPageComponentState)(nil)).Elem()
 }
 
+// StatusPageComponentExists checks whether an existing StatusPageComponent resource with the given ID exists.
+func StatusPageComponentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StatusPageComponentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/statusPageComponent:StatusPageComponent", id, state, "", opts...)
+}
+
 type statusPageComponentArgs struct {
 	// Description of the component (derived from the source for catalog-backed components)
 	Description *string `pulumi:"description"`

@@ -219,6 +219,12 @@ func (WorkflowSimpleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowSimpleState)(nil)).Elem()
 }
 
+// WorkflowSimpleExists checks whether an existing WorkflowSimple resource with the given ID exists.
+func WorkflowSimpleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowSimpleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowSimple:WorkflowSimple", id, state, "", opts...)
+}
+
 type workflowSimpleArgs struct {
 	CauseIds []string `pulumi:"causeIds"`
 	// Workflow command

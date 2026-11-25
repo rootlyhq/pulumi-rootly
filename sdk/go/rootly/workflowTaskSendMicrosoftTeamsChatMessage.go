@@ -117,6 +117,12 @@ func (WorkflowTaskSendMicrosoftTeamsChatMessageState) ElementType() reflect.Type
 	return reflect.TypeOf((*workflowTaskSendMicrosoftTeamsChatMessageState)(nil)).Elem()
 }
 
+// WorkflowTaskSendMicrosoftTeamsChatMessageExists checks whether an existing WorkflowTaskSendMicrosoftTeamsChatMessage resource with the given ID exists.
+func WorkflowTaskSendMicrosoftTeamsChatMessageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSendMicrosoftTeamsChatMessageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSendMicrosoftTeamsChatMessage:WorkflowTaskSendMicrosoftTeamsChatMessage", id, state, "", opts...)
+}
+
 type workflowTaskSendMicrosoftTeamsChatMessageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

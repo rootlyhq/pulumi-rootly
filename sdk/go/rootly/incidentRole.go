@@ -125,6 +125,12 @@ func (IncidentRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*incidentRoleState)(nil)).Elem()
 }
 
+// IncidentRoleExists checks whether an existing IncidentRole resource with the given ID exists.
+func IncidentRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IncidentRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/incidentRole:IncidentRole", id, state, "", opts...)
+}
+
 type incidentRoleArgs struct {
 	// Value must be one of true or false
 	AllowMultiUserAssignment *bool `pulumi:"allowMultiUserAssignment"`

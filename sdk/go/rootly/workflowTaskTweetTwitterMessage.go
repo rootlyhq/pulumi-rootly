@@ -117,6 +117,12 @@ func (WorkflowTaskTweetTwitterMessageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskTweetTwitterMessageState)(nil)).Elem()
 }
 
+// WorkflowTaskTweetTwitterMessageExists checks whether an existing WorkflowTaskTweetTwitterMessage resource with the given ID exists.
+func WorkflowTaskTweetTwitterMessageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskTweetTwitterMessageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskTweetTwitterMessage:WorkflowTaskTweetTwitterMessage", id, state, "", opts...)
+}
+
 type workflowTaskTweetTwitterMessageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

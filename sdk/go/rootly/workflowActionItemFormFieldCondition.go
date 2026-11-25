@@ -127,6 +127,12 @@ func (WorkflowActionItemFormFieldConditionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowActionItemFormFieldConditionState)(nil)).Elem()
 }
 
+// WorkflowActionItemFormFieldConditionExists checks whether an existing WorkflowActionItemFormFieldCondition resource with the given ID exists.
+func WorkflowActionItemFormFieldConditionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowActionItemFormFieldConditionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowActionItemFormFieldCondition:WorkflowActionItemFormFieldCondition", id, state, "", opts...)
+}
+
 type workflowActionItemFormFieldConditionArgs struct {
 	// The trigger condition. Value must be one of `IS`, `IS NOT`, `ANY`, `CONTAINS`, `CONTAINS_ALL`, `CONTAINS_NONE`, `NONE`, `SET`, `UNSET`.
 	ActionItemCondition *string `pulumi:"actionItemCondition"`

@@ -1255,7 +1255,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the notification target. Value must be one of \u003cspan pulumi-lang-nodejs=\"`team`\" pulumi-lang-dotnet=\"`Team`\" pulumi-lang-go=\"`team`\" pulumi-lang-python=\"`team`\" pulumi-lang-yaml=\"`team`\" pulumi-lang-java=\"`team`\" pulumi-lang-hcl=\"`team`\"\u003e`team`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\" pulumi-lang-hcl=\"`user`\"\u003e`user`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`schedule`\" pulumi-lang-dotnet=\"`Schedule`\" pulumi-lang-go=\"`schedule`\" pulumi-lang-python=\"`schedule`\" pulumi-lang-yaml=\"`schedule`\" pulumi-lang-java=\"`schedule`\" pulumi-lang-hcl=\"`schedule`\"\u003e`schedule`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`microsoftTeamsChannel`\" pulumi-lang-dotnet=\"`MicrosoftTeamsChannel`\" pulumi-lang-go=\"`microsoftTeamsChannel`\" pulumi-lang-python=\"`microsoft_teams_channel`\" pulumi-lang-yaml=\"`microsoftTeamsChannel`\" pulumi-lang-java=\"`microsoftTeamsChannel`\" pulumi-lang-hcl=\"`microsoft_teams_channel`\"\u003e`microsoftTeamsChannel`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`service`\" pulumi-lang-dotnet=\"`Service`\" pulumi-lang-go=\"`service`\" pulumi-lang-python=\"`service`\" pulumi-lang-yaml=\"`service`\" pulumi-lang-java=\"`service`\" pulumi-lang-hcl=\"`service`\"\u003e`service`\u003c/span\u003e.\n"
+                    "description": "The type of the notification target. Value must be one of \u003cspan pulumi-lang-nodejs=\"`team`\" pulumi-lang-dotnet=\"`Team`\" pulumi-lang-go=\"`team`\" pulumi-lang-python=\"`team`\" pulumi-lang-yaml=\"`team`\" pulumi-lang-java=\"`team`\" pulumi-lang-hcl=\"`team`\"\u003e`team`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\" pulumi-lang-hcl=\"`user`\"\u003e`user`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`schedule`\" pulumi-lang-dotnet=\"`Schedule`\" pulumi-lang-go=\"`schedule`\" pulumi-lang-python=\"`schedule`\" pulumi-lang-yaml=\"`schedule`\" pulumi-lang-java=\"`schedule`\" pulumi-lang-hcl=\"`schedule`\"\u003e`schedule`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slackChannel`\" pulumi-lang-dotnet=\"`SlackChannel`\" pulumi-lang-go=\"`slackChannel`\" pulumi-lang-python=\"`slack_channel`\" pulumi-lang-yaml=\"`slackChannel`\" pulumi-lang-java=\"`slackChannel`\" pulumi-lang-hcl=\"`slack_channel`\"\u003e`slackChannel`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`microsoftTeamsChannel`\" pulumi-lang-dotnet=\"`MicrosoftTeamsChannel`\" pulumi-lang-go=\"`microsoftTeamsChannel`\" pulumi-lang-python=\"`microsoft_teams_channel`\" pulumi-lang-yaml=\"`microsoftTeamsChannel`\" pulumi-lang-java=\"`microsoftTeamsChannel`\" pulumi-lang-hcl=\"`microsoft_teams_channel`\"\u003e`microsoftTeamsChannel`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`service`\" pulumi-lang-dotnet=\"`Service`\" pulumi-lang-go=\"`service`\" pulumi-lang-python=\"`service`\" pulumi-lang-yaml=\"`service`\" pulumi-lang-java=\"`service`\" pulumi-lang-hcl=\"`service`\"\u003e`service`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`aiSre`\" pulumi-lang-dotnet=\"`AiSre`\" pulumi-lang-go=\"`aiSre`\" pulumi-lang-python=\"`ai_sre`\" pulumi-lang-yaml=\"`aiSre`\" pulumi-lang-java=\"`aiSre`\" pulumi-lang-hcl=\"`ai_sre`\"\u003e`aiSre`\u003c/span\u003e. For \u003cspan pulumi-lang-nodejs=\"`aiSre`\" pulumi-lang-dotnet=\"`AiSre`\" pulumi-lang-go=\"`aiSre`\" pulumi-lang-python=\"`ai_sre`\" pulumi-lang-yaml=\"`aiSre`\" pulumi-lang-java=\"`aiSre`\" pulumi-lang-hcl=\"`ai_sre`\"\u003e`aiSre`\u003c/span\u003e, set \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e to the AI SRE provider (e.g. \u003cspan pulumi-lang-nodejs=\"`rootly`\" pulumi-lang-dotnet=\"`Rootly`\" pulumi-lang-go=\"`rootly`\" pulumi-lang-python=\"`rootly`\" pulumi-lang-yaml=\"`rootly`\" pulumi-lang-java=\"`rootly`\" pulumi-lang-hcl=\"`rootly`\"\u003e`rootly`\u003c/span\u003e) to start an AI SRE investigation when this level is reached; the level must also have at least one other target. AI SRE is only available to organizations that have the feature enabled; contact your Customer Success Manager if you are interested.\n"
                 }
             },
             "type": "object",
@@ -12292,7 +12292,7 @@
             }
         },
         "rootly:index/apiKey:ApiKey": {
-            "description": "## Example Usage\n\n```shell\nresource \"rootly_api_key\" \"ci_pipeline\" {\n  name       = \"CI Pipeline\"\n  expires_at = \"2027-01-01T00:00:00Z\"\n}\n\nresource \"rootly_team\" \"payments\" {\n  name = \"Payments\"\n}\n\nresource \"rootly_api_key\" \"payments_team\" {\n  name       = \"Payments Team\"\n  expires_at = \"2027-01-01T00:00:00Z\"\n  kind       = \"team\"\n  group_id   = rootly_team.payments.id\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.ApiKey \" pulumi-lang-dotnet=\"\nrootly.ApiKey \" pulumi-lang-go=\"\nApiKey \" pulumi-lang-python=\"\nApiKey \" pulumi-lang-yaml=\"\nrootly.ApiKey \" pulumi-lang-java=\"\nrootly.ApiKey \" pulumi-lang-hcl=\"\nrootly_api_key \"\u003e\nrootly.ApiKey \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/apiKey:ApiKey primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\nresource \"rootly_api_key\" \"ci_pipeline\" {\n  name       = \"CI Pipeline\"\n  expires_at = \"2027-01-01T00:00:00Z\"\n}\n\nresource \"rootly_team\" \"payments\" {\n  name = \"Payments\"\n}\n\nresource \"rootly_api_key\" \"payments_team\" {\n  name       = \"Payments Team\"\n  expires_at = \"2027-01-01T00:00:00Z\"\n  kind       = \"team\"\n  group_id   = rootly_team.payments.id\n}\n```\n\n\n## Token\n\n\u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\" pulumi-lang-hcl=\"`token`\"\u003e`token`\u003c/span\u003e holds the API key secret. The Rootly API returns it only in the create response, so:\n\n- It is stored in Terraform state in plain text. Protect your state (encrypted remote backend, restricted access).\n- It is empty for keys brought in with `pulumi import`.\n- If the key is rotated outside Terraform (for example through the rotate API endpoint or the web app), the stored \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\" pulumi-lang-hcl=\"`token`\"\u003e`token`\u003c/span\u003e is stale and Terraform does not detect it. Recreate the resource (e.g. `pulumi up -replace=rootly_api_key.example`) to get a fresh token in state.\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.ApiKey \" pulumi-lang-dotnet=\"\nrootly.ApiKey \" pulumi-lang-go=\"\nApiKey \" pulumi-lang-python=\"\nApiKey \" pulumi-lang-yaml=\"\nrootly.ApiKey \" pulumi-lang-java=\"\nrootly.ApiKey \" pulumi-lang-hcl=\"\nrootly_api_key \"\u003e\nrootly.ApiKey \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/apiKey:ApiKey primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -12329,6 +12329,11 @@
                 "roleId": {
                     "type": "string",
                     "description": "The role ID\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The API key token. Returned only when the key is created or rotated; omitted from list, show, update and delete responses.\n",
+                    "secret": true
                 }
             },
             "required": [
@@ -12339,7 +12344,8 @@
                 "lastUsedAt",
                 "name",
                 "onCallRoleId",
-                "roleId"
+                "roleId",
+                "token"
             ],
             "inputProperties": {
                 "description": {
@@ -12422,6 +12428,117 @@
                     "roleId": {
                         "type": "string",
                         "description": "The role ID\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The API key token. Returned only when the key is created or rotated; omitted from list, show, update and delete responses.\n",
+                        "secret": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "rootly:index/apiKeyRotation:ApiKeyRotation": {
+            "description": "Rotates the token of the API key that the provider is authenticated with, and exposes the new token as the sensitive \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\" pulumi-lang-hcl=\"`token`\"\u003e`token`\u003c/span\u003e attribute.\n\nA rotation happens when the resource is created, and again whenever any argument changes (for example \u003cspan pulumi-lang-nodejs=\"`triggers`\" pulumi-lang-dotnet=\"`Triggers`\" pulumi-lang-go=\"`triggers`\" pulumi-lang-python=\"`triggers`\" pulumi-lang-yaml=\"`triggers`\" pulumi-lang-java=\"`triggers`\" pulumi-lang-hcl=\"`triggers`\"\u003e`triggers`\u003c/span\u003e). The new token is only returned once, at rotation time, so store it securely (for example in a secret manager) and then update the provider configuration to use it.\n\nImportant notes:\n\n- **The API key must be the one the provider is authenticated with.** The Rootly API only lets a key rotate itself. Rotating any other key returns an error.\n- **Use one \u003cspan pulumi-lang-nodejs=\"`rootly.ApiKeyRotation`\" pulumi-lang-dotnet=\"`rootly.ApiKeyRotation`\" pulumi-lang-go=\"`ApiKeyRotation`\" pulumi-lang-python=\"`ApiKeyRotation`\" pulumi-lang-yaml=\"`rootly.ApiKeyRotation`\" pulumi-lang-java=\"`rootly.ApiKeyRotation`\" pulumi-lang-hcl=\"`rootly_api_key_rotation`\"\u003e`rootly.ApiKeyRotation`\u003c/span\u003e per provider configuration.** Every instance rotates the same key. If two instances share a provider configuration, the second rotation invalidates the first one's token. Terraform can't detect this at plan time, so keep it to one instance (no \u003cspan pulumi-lang-nodejs=\"`count`\" pulumi-lang-dotnet=\"`Count`\" pulumi-lang-go=\"`count`\" pulumi-lang-python=\"`count`\" pulumi-lang-yaml=\"`count`\" pulumi-lang-java=\"`count`\" pulumi-lang-hcl=\"`count`\"\u003e`count`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`forEach`\" pulumi-lang-dotnet=\"`ForEach`\" pulumi-lang-go=\"`forEach`\" pulumi-lang-python=\"`for_each`\" pulumi-lang-yaml=\"`forEach`\" pulumi-lang-java=\"`forEach`\" pulumi-lang-hcl=\"`for_each`\"\u003e`forEach`\u003c/span\u003e) per provider configuration.\n- **The provider keeps using the old token for the rest of the apply.** It doesn't switch to the new token mid-run. If \u003cspan pulumi-lang-nodejs=\"`gracePeriodMinutes`\" pulumi-lang-dotnet=\"`GracePeriodMinutes`\" pulumi-lang-go=\"`gracePeriodMinutes`\" pulumi-lang-python=\"`grace_period_minutes`\" pulumi-lang-yaml=\"`gracePeriodMinutes`\" pulumi-lang-java=\"`gracePeriodMinutes`\" pulumi-lang-hcl=\"`grace_period_minutes`\"\u003e`gracePeriodMinutes`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e, or the grace period feature isn't enabled for your organization, the old token stops working immediately, and every later API call in the same run fails. That includes refreshes of other resources. Keep the default grace period, and switch the provider to the new token before it ends.\n- **Switch the provider to the new token before the next rotation.** The grace period only covers the token that was just replaced. If the provider is still configured with an older token when the key is rotated again, that older token stops working immediately.\n- **Destroying this resource doesn't revoke or change any token.** It only removes the resource from the Terraform state.\n\n## Example Usage\n\n```shell\n# Rotate the API key the provider is authenticated with every 30 days.\nresource \"time_rotating\" \"rootly_api_key\" {\n  rotation_days = 30\n}\n\nresource \"rootly_api_key_rotation\" \"this\" {\n  # Must be the ID of the API key the provider is authenticated with.\n  api_key_id = \"00000000-0000-0000-0000-000000000000\"\n\n  # Keep the previous token valid for an hour, so the new token can be rolled out.\n  grace_period_minutes = 60\n\n  triggers = {\n    rotation = time_rotating.rootly_api_key.id\n  }\n}\n\n# Store the new token, then point the provider at it.\nresource \"aws_secretsmanager_secret_version\" \"rootly_api_token\" {\n  secret_id     = \"rootly-api-token\"\n  secret_string = rootly_api_key_rotation.this.token\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.ApiKeyRotation \" pulumi-lang-dotnet=\"\nrootly.ApiKeyRotation \" pulumi-lang-go=\"\nApiKeyRotation \" pulumi-lang-python=\"\nApiKeyRotation \" pulumi-lang-yaml=\"\nrootly.ApiKeyRotation \" pulumi-lang-java=\"\nrootly.ApiKeyRotation \" pulumi-lang-hcl=\"\nrootly_api_key_rotation \"\u003e\nrootly.ApiKeyRotation \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/apiKeyRotation:ApiKeyRotation primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "properties": {
+                "apiKeyId": {
+                    "type": "string",
+                    "description": "The ID of the API key to rotate. This must be the API key the provider is authenticated with.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "The expiration date of the new token, in RFC 3339 format (for example `2027-01-01T00:00:00Z`), up to 5 years in the future. Defaults to 90 days after rotation if omitted. Changing this value rotates the API key again. The actual expiration date is exported as \u003cspan pulumi-lang-nodejs=\"`tokenExpiresAt`\" pulumi-lang-dotnet=\"`TokenExpiresAt`\" pulumi-lang-go=\"`tokenExpiresAt`\" pulumi-lang-python=\"`token_expires_at`\" pulumi-lang-yaml=\"`tokenExpiresAt`\" pulumi-lang-java=\"`tokenExpiresAt`\" pulumi-lang-hcl=\"`token_expires_at`\"\u003e`tokenExpiresAt`\u003c/span\u003e.\n"
+                },
+                "gracePeriodEndsAt": {
+                    "type": "string",
+                    "description": "The time when the previous token stops working. Null if the grace period feature isn't enabled for your organization.\n"
+                },
+                "gracePeriodMinutes": {
+                    "type": "integer",
+                    "description": "How many minutes the previous token stays valid after rotation, from 0 to 1440. Defaults to \u003cspan pulumi-lang-nodejs=\"`30`\" pulumi-lang-dotnet=\"`30`\" pulumi-lang-go=\"`30`\" pulumi-lang-python=\"`30`\" pulumi-lang-yaml=\"`30`\" pulumi-lang-java=\"`30`\" pulumi-lang-hcl=\"`30`\"\u003e`30`\u003c/span\u003e. Only applies when the grace period feature is enabled for your organization. Setting it to \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e invalidates the previous token immediately, which breaks the rest of the current apply because the provider is still authenticated with the previous token. Changing this value rotates the API key again.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The new API key token issued by the rotation.\n",
+                    "secret": true
+                },
+                "tokenExpiresAt": {
+                    "type": "string",
+                    "description": "The expiration date of the new token.\n"
+                },
+                "triggers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Arbitrary map of values. Changing any of them rotates the API key again. Use it, for example, with \u003cspan pulumi-lang-nodejs=\"`timeRotating`\" pulumi-lang-dotnet=\"`TimeRotating`\" pulumi-lang-go=\"`timeRotating`\" pulumi-lang-python=\"`time_rotating`\" pulumi-lang-yaml=\"`timeRotating`\" pulumi-lang-java=\"`timeRotating`\" pulumi-lang-hcl=\"`time_rotating`\"\u003e`timeRotating`\u003c/span\u003e from the `hashicorp/time` provider to rotate on a schedule.\n"
+                }
+            },
+            "required": [
+                "apiKeyId",
+                "gracePeriodEndsAt",
+                "gracePeriodMinutes",
+                "token",
+                "tokenExpiresAt"
+            ],
+            "inputProperties": {
+                "apiKeyId": {
+                    "type": "string",
+                    "description": "The ID of the API key to rotate. This must be the API key the provider is authenticated with.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "The expiration date of the new token, in RFC 3339 format (for example `2027-01-01T00:00:00Z`), up to 5 years in the future. Defaults to 90 days after rotation if omitted. Changing this value rotates the API key again. The actual expiration date is exported as \u003cspan pulumi-lang-nodejs=\"`tokenExpiresAt`\" pulumi-lang-dotnet=\"`TokenExpiresAt`\" pulumi-lang-go=\"`tokenExpiresAt`\" pulumi-lang-python=\"`token_expires_at`\" pulumi-lang-yaml=\"`tokenExpiresAt`\" pulumi-lang-java=\"`tokenExpiresAt`\" pulumi-lang-hcl=\"`token_expires_at`\"\u003e`tokenExpiresAt`\u003c/span\u003e.\n"
+                },
+                "gracePeriodMinutes": {
+                    "type": "integer",
+                    "description": "How many minutes the previous token stays valid after rotation, from 0 to 1440. Defaults to \u003cspan pulumi-lang-nodejs=\"`30`\" pulumi-lang-dotnet=\"`30`\" pulumi-lang-go=\"`30`\" pulumi-lang-python=\"`30`\" pulumi-lang-yaml=\"`30`\" pulumi-lang-java=\"`30`\" pulumi-lang-hcl=\"`30`\"\u003e`30`\u003c/span\u003e. Only applies when the grace period feature is enabled for your organization. Setting it to \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e invalidates the previous token immediately, which breaks the rest of the current apply because the provider is still authenticated with the previous token. Changing this value rotates the API key again.\n"
+                },
+                "triggers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Arbitrary map of values. Changing any of them rotates the API key again. Use it, for example, with \u003cspan pulumi-lang-nodejs=\"`timeRotating`\" pulumi-lang-dotnet=\"`TimeRotating`\" pulumi-lang-go=\"`timeRotating`\" pulumi-lang-python=\"`time_rotating`\" pulumi-lang-yaml=\"`timeRotating`\" pulumi-lang-java=\"`timeRotating`\" pulumi-lang-hcl=\"`time_rotating`\"\u003e`timeRotating`\u003c/span\u003e from the `hashicorp/time` provider to rotate on a schedule.\n"
+                }
+            },
+            "requiredInputs": [
+                "apiKeyId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApiKeyRotation resources.\n",
+                "properties": {
+                    "apiKeyId": {
+                        "type": "string",
+                        "description": "The ID of the API key to rotate. This must be the API key the provider is authenticated with.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "The expiration date of the new token, in RFC 3339 format (for example `2027-01-01T00:00:00Z`), up to 5 years in the future. Defaults to 90 days after rotation if omitted. Changing this value rotates the API key again. The actual expiration date is exported as \u003cspan pulumi-lang-nodejs=\"`tokenExpiresAt`\" pulumi-lang-dotnet=\"`TokenExpiresAt`\" pulumi-lang-go=\"`tokenExpiresAt`\" pulumi-lang-python=\"`token_expires_at`\" pulumi-lang-yaml=\"`tokenExpiresAt`\" pulumi-lang-java=\"`tokenExpiresAt`\" pulumi-lang-hcl=\"`token_expires_at`\"\u003e`tokenExpiresAt`\u003c/span\u003e.\n"
+                    },
+                    "gracePeriodEndsAt": {
+                        "type": "string",
+                        "description": "The time when the previous token stops working. Null if the grace period feature isn't enabled for your organization.\n"
+                    },
+                    "gracePeriodMinutes": {
+                        "type": "integer",
+                        "description": "How many minutes the previous token stays valid after rotation, from 0 to 1440. Defaults to \u003cspan pulumi-lang-nodejs=\"`30`\" pulumi-lang-dotnet=\"`30`\" pulumi-lang-go=\"`30`\" pulumi-lang-python=\"`30`\" pulumi-lang-yaml=\"`30`\" pulumi-lang-java=\"`30`\" pulumi-lang-hcl=\"`30`\"\u003e`30`\u003c/span\u003e. Only applies when the grace period feature is enabled for your organization. Setting it to \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e invalidates the previous token immediately, which breaks the rest of the current apply because the provider is still authenticated with the previous token. Changing this value rotates the API key again.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The new API key token issued by the rotation.\n",
+                        "secret": true
+                    },
+                    "tokenExpiresAt": {
+                        "type": "string",
+                        "description": "The expiration date of the new token.\n"
+                    },
+                    "triggers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Arbitrary map of values. Changing any of them rotates the API key again. Use it, for example, with \u003cspan pulumi-lang-nodejs=\"`timeRotating`\" pulumi-lang-dotnet=\"`TimeRotating`\" pulumi-lang-go=\"`timeRotating`\" pulumi-lang-python=\"`time_rotating`\" pulumi-lang-yaml=\"`timeRotating`\" pulumi-lang-java=\"`timeRotating`\" pulumi-lang-hcl=\"`time_rotating`\"\u003e`timeRotating`\u003c/span\u003e from the `hashicorp/time` provider to rotate on a schedule.\n"
                     }
                 },
                 "type": "object"
@@ -14529,7 +14646,7 @@
             }
         },
         "rootly:index/escalationLevel:EscalationLevel": {
-            "description": "## Example Usage\n\n```shell\ndata \"rootly_user\" \"john\" {\n  email = \"demo@rootly.com\"\n}\n\ndata \"rootly_user\" \"jane\" {\n  email = \"demo1@rootly.com\"\n}\n\ndata \"rootly_alert_urgency\" \"low\" {\n  name = \"Low\"\n}\n\nresource \"rootly_team\" \"sre\" {\n  name     = \"SREs On-Call\"\n  user_ids = [data.rootly_user.john.id, data.rootly_user.jane.id]\n}\n\nresource \"rootly_schedule\" \"primary\" {\n  name              = \"Primary On-Call Schedule\"\n  owner_user_id     = data.rootly_user.john.id\n  all_time_coverage = false\n}\n\nresource \"rootly_schedule_rotation\" \"weekdays\" {\n  schedule_id     = rootly_schedule.primary.id\n  name            = \"weekdays\"\n  active_all_week = false\n  active_days = [\n    \"M\",\n    \"T\",\n    \"W\",\n    \"R\",\n    \"F\",\n  ]\n  active_time_type = \"custom\"\n  position         = 1\n  schedule_rotationable_attributes = {\n    handoff_time = \"10:00\"\n  }\n  schedule_rotationable_type = \"ScheduleDailyRotation\"\n  time_zone                  = \"America/Toronto\"\n}\n\n# Define active days for the weekday rotation\n# Monday\nresource \"rootly_schedule_rotation_active_day\" \"m1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"M\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Tuesday\nresource \"rootly_schedule_rotation_active_day\" \"t1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"T\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Wednesday\nresource \"rootly_schedule_rotation_active_day\" \"w1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"W\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Thursday\nresource \"rootly_schedule_rotation_active_day\" \"th1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"R\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Friday\nresource \"rootly_schedule_rotation_active_day\" \"f1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"F\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n\nresource \"rootly_schedule_rotation_user\" \"john\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 1\n  user_id              = data.rootly_user.john.id\n}\n\nresource \"rootly_schedule_rotation_user\" \"jane\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 2\n  user_id              = data.rootly_user.jane.id\n}\n\nresource \"rootly_escalation_policy\" \"primary\" {\n  name      = \"Primary\"\n  group_ids = [rootly_team.sre.id]\n}\n\nresource \"rootly_escalation_path\" \"default\" {\n  name                 = \"Default\"\n  default              = true\n  escalation_policy_id = rootly_escalation_policy.primary.id\n}\n\nresource \"rootly_escalation_path\" \"ignore\" {\n  name                 = \"Ignore\"\n  default              = false\n  escalation_policy_id = rootly_escalation_policy.primary.id\n  rules {\n    rule_type   = \"alert_urgency\"\n    urgency_ids = [data.rootly_alert_urgency.low.id]\n  }\n}\n\nresource \"rootly_escalation_level\" \"first\" {\n  escalation_policy_path_id = rootly_escalation_path.default.id\n  escalation_policy_id      = rootly_escalation_policy.primary.id\n  position                  = 1\n  notification_target_params {\n    team_members = \"all\"\n    type         = \"slack_channel\"\n    id           = \"C06D4QHLAUE\"\n  }\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n\n# Page a Microsoft Teams channel — supply the external Teams channel ID\n# (e.g. from the channel link: https://teams.microsoft.com/l/channel/\u003cid\u003e/...).\nresource \"rootly_escalation_level\" \"teams_channel\" {\n  escalation_policy_path_id = rootly_escalation_path.default.id\n  escalation_policy_id      = rootly_escalation_policy.primary.id\n  position                  = 4\n  delay                     = 5\n  notification_target_params {\n    type = \"microsoft_teams_channel\"\n    id   = \"19:49a01245b7d04e57b314b55986f771e4@thread.tacv2\"\n  }\n}\n\n# cycle-based round-robin everyone on the schedule\nresource \"rootly_escalation_level\" \"second\" {\n  escalation_policy_path_id                       = rootly_escalation_path.default.id\n  escalation_policy_id                            = rootly_escalation_policy.primary.id\n  position                                        = 2\n  delay                                           = 5\n  paging_strategy_configuration_strategy          = \"cycle\"\n  paging_strategy_configuration_schedule_strategy = \"everyone\"\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n\n# cycle-based round-robin: page 3 users at a time from the active rotation\nresource \"rootly_escalation_level\" \"third\" {\n  escalation_policy_path_id                       = rootly_escalation_path.default.id\n  escalation_policy_id                            = rootly_escalation_policy.primary.id\n  position                                        = 3\n  delay                                           = 5\n  paging_strategy_configuration_strategy          = \"cycle\"\n  paging_strategy_configuration_schedule_strategy = \"everyone\"\n  paging_strategy_configuration_repeats_mode      = \"users\"\n  paging_strategy_configuration_repeats           = 3\n  paging_strategy_configuration_rotation_scope    = \"active_rotation\"\n  paging_strategy_configuration_page_users_count  = 2\n  notification_target_params {\n    type = \"schedule\"\n    id   = rootly_schedule.primary.id\n  }\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.EscalationLevel \" pulumi-lang-dotnet=\"\nrootly.EscalationLevel \" pulumi-lang-go=\"\nEscalationLevel \" pulumi-lang-python=\"\nEscalationLevel \" pulumi-lang-yaml=\"\nrootly.EscalationLevel \" pulumi-lang-java=\"\nrootly.EscalationLevel \" pulumi-lang-hcl=\"\nrootly_escalation_level \"\u003e\nrootly.EscalationLevel \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/escalationLevel:EscalationLevel primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
+            "description": "## Example Usage\n\n```shell\ndata \"rootly_user\" \"john\" {\n  email = \"demo@rootly.com\"\n}\n\ndata \"rootly_user\" \"jane\" {\n  email = \"demo1@rootly.com\"\n}\n\ndata \"rootly_alert_urgency\" \"low\" {\n  name = \"Low\"\n}\n\nresource \"rootly_team\" \"sre\" {\n  name     = \"SREs On-Call\"\n  user_ids = [data.rootly_user.john.id, data.rootly_user.jane.id]\n}\n\nresource \"rootly_schedule\" \"primary\" {\n  name              = \"Primary On-Call Schedule\"\n  owner_user_id     = data.rootly_user.john.id\n  all_time_coverage = false\n}\n\nresource \"rootly_schedule_rotation\" \"weekdays\" {\n  schedule_id     = rootly_schedule.primary.id\n  name            = \"weekdays\"\n  active_all_week = false\n  active_days = [\n    \"M\",\n    \"T\",\n    \"W\",\n    \"R\",\n    \"F\",\n  ]\n  active_time_type = \"custom\"\n  position         = 1\n  schedule_rotationable_attributes = {\n    handoff_time = \"10:00\"\n  }\n  schedule_rotationable_type = \"ScheduleDailyRotation\"\n  time_zone                  = \"America/Toronto\"\n}\n\n# Define active days for the weekday rotation\n# Monday\nresource \"rootly_schedule_rotation_active_day\" \"m1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"M\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Tuesday\nresource \"rootly_schedule_rotation_active_day\" \"t1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"T\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Wednesday\nresource \"rootly_schedule_rotation_active_day\" \"w1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"W\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Thursday\nresource \"rootly_schedule_rotation_active_day\" \"th1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"R\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n# Friday\nresource \"rootly_schedule_rotation_active_day\" \"f1-weekday\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  day_name             = \"F\"\n  active_time_attributes {\n    start_time = \"10:00\"\n    end_time   = \"18:00\"\n  }\n}\n\nresource \"rootly_schedule_rotation_user\" \"john\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 1\n  user_id              = data.rootly_user.john.id\n}\n\nresource \"rootly_schedule_rotation_user\" \"jane\" {\n  schedule_rotation_id = rootly_schedule_rotation.weekdays.id\n  position             = 2\n  user_id              = data.rootly_user.jane.id\n}\n\nresource \"rootly_escalation_policy\" \"primary\" {\n  name      = \"Primary\"\n  group_ids = [rootly_team.sre.id]\n}\n\nresource \"rootly_escalation_path\" \"default\" {\n  name                 = \"Default\"\n  default              = true\n  escalation_policy_id = rootly_escalation_policy.primary.id\n}\n\nresource \"rootly_escalation_path\" \"ignore\" {\n  name                 = \"Ignore\"\n  default              = false\n  escalation_policy_id = rootly_escalation_policy.primary.id\n  rules {\n    rule_type   = \"alert_urgency\"\n    urgency_ids = [data.rootly_alert_urgency.low.id]\n  }\n}\n\nresource \"rootly_escalation_level\" \"first\" {\n  escalation_policy_path_id = rootly_escalation_path.default.id\n  escalation_policy_id      = rootly_escalation_policy.primary.id\n  position                  = 1\n  notification_target_params {\n    team_members = \"all\"\n    type         = \"slack_channel\"\n    id           = \"C06D4QHLAUE\"\n  }\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n\n# Page a Microsoft Teams channel — supply the external Teams channel ID\n# (e.g. from the channel link: https://teams.microsoft.com/l/channel/\u003cid\u003e/...).\nresource \"rootly_escalation_level\" \"teams_channel\" {\n  escalation_policy_path_id = rootly_escalation_path.default.id\n  escalation_policy_id      = rootly_escalation_policy.primary.id\n  position                  = 4\n  delay                     = 5\n  notification_target_params {\n    type = \"microsoft_teams_channel\"\n    id   = \"19:49a01245b7d04e57b314b55986f771e4@thread.tacv2\"\n  }\n}\n\n# cycle-based round-robin everyone on the schedule\nresource \"rootly_escalation_level\" \"second\" {\n  escalation_policy_path_id                       = rootly_escalation_path.default.id\n  escalation_policy_id                            = rootly_escalation_policy.primary.id\n  position                                        = 2\n  delay                                           = 5\n  paging_strategy_configuration_strategy          = \"cycle\"\n  paging_strategy_configuration_schedule_strategy = \"everyone\"\n  notification_target_params {\n    type         = \"schedule\"\n    id           = rootly_schedule.primary.id\n    team_members = \"all\"\n  }\n}\n\n# cycle-based round-robin: page 3 users at a time from the active rotation\nresource \"rootly_escalation_level\" \"third\" {\n  escalation_policy_path_id                       = rootly_escalation_path.default.id\n  escalation_policy_id                            = rootly_escalation_policy.primary.id\n  position                                        = 3\n  delay                                           = 5\n  paging_strategy_configuration_strategy          = \"cycle\"\n  paging_strategy_configuration_schedule_strategy = \"everyone\"\n  paging_strategy_configuration_repeats_mode      = \"users\"\n  paging_strategy_configuration_repeats           = 3\n  paging_strategy_configuration_rotation_scope    = \"active_rotation\"\n  paging_strategy_configuration_page_users_count  = 2\n  notification_target_params {\n    type = \"schedule\"\n    id   = rootly_schedule.primary.id\n  }\n}\n# Start a Rootly AI SRE investigation when this level is reached.\n# An ai_sre target needs at least one other target on the same level.\nresource \"rootly_escalation_level\" \"ai_sre\" {\n  escalation_policy_path_id = rootly_escalation_path.default.id\n  escalation_policy_id      = rootly_escalation_policy.primary.id\n  position                  = 5\n  delay                     = 5\n  notification_target_params {\n    type = \"ai_sre\"\n    id   = \"rootly\"\n  }\n  notification_target_params {\n    type = \"schedule\"\n    id   = rootly_schedule.primary.id\n  }\n}\n```\n\n## Import\n\u003cspan pulumi-lang-nodejs=\"\nrootly.EscalationLevel \" pulumi-lang-dotnet=\"\nrootly.EscalationLevel \" pulumi-lang-go=\"\nEscalationLevel \" pulumi-lang-python=\"\nEscalationLevel \" pulumi-lang-yaml=\"\nrootly.EscalationLevel \" pulumi-lang-java=\"\nrootly.EscalationLevel \" pulumi-lang-hcl=\"\nrootly_escalation_level \"\u003e\nrootly.EscalationLevel \u003c/span\u003ecan be imported using the \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e command.\n\n```sh\n$ pulumi import rootly:index/escalationLevel:EscalationLevel primary a816421c-6ceb-481a-87c4-585e47451f24\n```\n\nOr using an \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\" pulumi-lang-hcl=\"`import`\"\u003e`import`\u003c/span\u003e block.\n\n\nLocate the resource id in the web app, or retrieve it by listing resources through the API if it's not visible in the web app.\n\nHCL can be generated from the import block using the `-generate-config-out` flag.\n\n```sh\npulumi preview -generate-config-out=generated.tf\n```\n\n",
             "properties": {
                 "delay": {
                     "type": "integer",
@@ -16540,7 +16657,7 @@
             "properties": {
                 "description": {
                     "type": "string",
-                    "description": "The incident permission set description.\n"
+                    "description": "A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.\n"
                 },
                 "name": {
                     "type": "string",
@@ -16576,7 +16693,7 @@
             "inputProperties": {
                 "description": {
                     "type": "string",
-                    "description": "The incident permission set description.\n"
+                    "description": "A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.\n"
                 },
                 "name": {
                     "type": "string",
@@ -16607,7 +16724,7 @@
                 "properties": {
                     "description": {
                         "type": "string",
-                        "description": "The incident permission set description.\n"
+                        "description": "A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.\n"
                     },
                     "name": {
                         "type": "string",
@@ -23831,6 +23948,13 @@
                         "type": "string"
                     }
                 },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
+                },
                 "groupIds": {
                     "type": "array",
                     "items": {
@@ -23923,6 +24047,7 @@
                 "description",
                 "environmentIds",
                 "functionalityIds",
+                "groupAssignmentIds",
                 "groupIds",
                 "incidentRoleIds",
                 "incidentTypeIds",
@@ -23978,6 +24103,13 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "groupAssignmentIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Owning team IDs. Requires team-scoped workflows.\n"
                 },
                 "groupIds": {
                     "type": "array",
@@ -24102,6 +24234,13 @@
                         "items": {
                             "type": "string"
                         }
+                    },
+                    "groupAssignmentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Owning team IDs. Requires team-scoped workflows.\n"
                     },
                     "groupIds": {
                         "type": "array",

@@ -112,6 +112,12 @@ func (AuthorizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authorizationState)(nil)).Elem()
 }
 
+// AuthorizationExists checks whether an existing Authorization resource with the given ID exists.
+func AuthorizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthorizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/authorization:Authorization", id, state, "", opts...)
+}
+
 type authorizationArgs struct {
 	// The id of the resource being accessed.
 	AuthorizableId string `pulumi:"authorizableId"`

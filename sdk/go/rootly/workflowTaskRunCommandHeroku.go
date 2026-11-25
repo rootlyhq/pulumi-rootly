@@ -117,6 +117,12 @@ func (WorkflowTaskRunCommandHerokuState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskRunCommandHerokuState)(nil)).Elem()
 }
 
+// WorkflowTaskRunCommandHerokuExists checks whether an existing WorkflowTaskRunCommandHeroku resource with the given ID exists.
+func WorkflowTaskRunCommandHerokuExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskRunCommandHerokuState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskRunCommandHeroku:WorkflowTaskRunCommandHeroku", id, state, "", opts...)
+}
+
 type workflowTaskRunCommandHerokuArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

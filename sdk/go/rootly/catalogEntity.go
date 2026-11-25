@@ -150,6 +150,12 @@ func (CatalogEntityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogEntityState)(nil)).Elem()
 }
 
+// CatalogEntityExists checks whether an existing CatalogEntity resource with the given ID exists.
+func CatalogEntityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CatalogEntityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/catalogEntity:CatalogEntity", id, state, "", opts...)
+}
+
 type catalogEntityArgs struct {
 	// The Backstage entity ID this catalog entity is linked to.
 	BackstageId *string `pulumi:"backstageId"`

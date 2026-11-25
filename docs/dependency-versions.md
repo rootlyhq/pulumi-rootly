@@ -7,7 +7,7 @@ generation changes.
 
 | Component | Version |
 | --- | --- |
-| Terraform Rootly provider and shim | 5.25.2 |
+| Terraform Rootly provider and shim | 5.27.0 |
 | Pulumi Terraform bridge | 3.143.0 |
 | Pulumi CLI and Go packages | 3.274.1 |
 | Node.js SDK Pulumi dependency minimum | 3.274.1 |

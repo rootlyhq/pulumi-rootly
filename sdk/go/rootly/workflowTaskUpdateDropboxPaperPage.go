@@ -117,6 +117,12 @@ func (WorkflowTaskUpdateDropboxPaperPageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdateDropboxPaperPageState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdateDropboxPaperPageExists checks whether an existing WorkflowTaskUpdateDropboxPaperPage resource with the given ID exists.
+func WorkflowTaskUpdateDropboxPaperPageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdateDropboxPaperPageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdateDropboxPaperPage:WorkflowTaskUpdateDropboxPaperPage", id, state, "", opts...)
+}
+
 type workflowTaskUpdateDropboxPaperPageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

@@ -134,6 +134,12 @@ func (SeverityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*severityState)(nil)).Elem()
 }
 
+// SeverityExists checks whether an existing Severity resource with the given ID exists.
+func SeverityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SeverityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/severity:Severity", id, state, "", opts...)
+}
+
 type severityArgs struct {
 	// The hex color of the severity
 	Color *string `pulumi:"color"`

@@ -117,6 +117,12 @@ func (WorkflowTaskCreateGoogleChatSpaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateGoogleChatSpaceState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateGoogleChatSpaceExists checks whether an existing WorkflowTaskCreateGoogleChatSpace resource with the given ID exists.
+func WorkflowTaskCreateGoogleChatSpaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateGoogleChatSpaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateGoogleChatSpace:WorkflowTaskCreateGoogleChatSpace", id, state, "", opts...)
+}
+
 type workflowTaskCreateGoogleChatSpaceArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

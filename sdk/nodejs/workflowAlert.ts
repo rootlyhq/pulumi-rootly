@@ -41,6 +41,17 @@ export class WorkflowAlert extends pulumi.CustomResource {
         return new WorkflowAlert(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing WorkflowAlert resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: WorkflowAlertState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("rootly:index/workflowAlert:WorkflowAlert", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'rootly:index/workflowAlert:WorkflowAlert';
 
@@ -75,6 +86,10 @@ export class WorkflowAlert extends pulumi.CustomResource {
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     declare public readonly environmentIds: pulumi.Output<string[]>;
     declare public readonly functionalityIds: pulumi.Output<string[]>;
+    /**
+     * Owning team IDs. Requires team-scoped workflows.
+     */
+    declare public readonly groupAssignmentIds: pulumi.Output<string[]>;
     declare public readonly groupIds: pulumi.Output<string[]>;
     declare public readonly incidentRoleIds: pulumi.Output<string[]>;
     declare public readonly incidentTypeIds: pulumi.Output<string[]>;
@@ -146,6 +161,7 @@ export class WorkflowAlert extends pulumi.CustomResource {
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["environmentIds"] = state?.environmentIds;
             resourceInputs["functionalityIds"] = state?.functionalityIds;
+            resourceInputs["groupAssignmentIds"] = state?.groupAssignmentIds;
             resourceInputs["groupIds"] = state?.groupIds;
             resourceInputs["incidentRoleIds"] = state?.incidentRoleIds;
             resourceInputs["incidentTypeIds"] = state?.incidentTypeIds;
@@ -173,6 +189,7 @@ export class WorkflowAlert extends pulumi.CustomResource {
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["environmentIds"] = args?.environmentIds;
             resourceInputs["functionalityIds"] = args?.functionalityIds;
+            resourceInputs["groupAssignmentIds"] = args?.groupAssignmentIds;
             resourceInputs["groupIds"] = args?.groupIds;
             resourceInputs["incidentRoleIds"] = args?.incidentRoleIds;
             resourceInputs["incidentTypeIds"] = args?.incidentTypeIds;
@@ -220,6 +237,10 @@ export interface WorkflowAlertState {
     enabled?: pulumi.Input<boolean | undefined>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Owning team IDs. Requires team-scoped workflows.
+     */
+    groupAssignmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentRoleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -295,6 +316,10 @@ export interface WorkflowAlertArgs {
     enabled?: pulumi.Input<boolean | undefined>;
     environmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     functionalityIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Owning team IDs. Requires team-scoped workflows.
+     */
+    groupAssignmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentRoleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     incidentTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;

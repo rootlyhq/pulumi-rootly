@@ -117,6 +117,12 @@ func (WorkflowTaskCreateTrelloCardState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateTrelloCardState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateTrelloCardExists checks whether an existing WorkflowTaskCreateTrelloCard resource with the given ID exists.
+func WorkflowTaskCreateTrelloCardExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateTrelloCardState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateTrelloCard:WorkflowTaskCreateTrelloCard", id, state, "", opts...)
+}
+
 type workflowTaskCreateTrelloCardArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

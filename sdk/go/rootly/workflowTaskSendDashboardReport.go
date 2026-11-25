@@ -117,6 +117,12 @@ func (WorkflowTaskSendDashboardReportState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskSendDashboardReportState)(nil)).Elem()
 }
 
+// WorkflowTaskSendDashboardReportExists checks whether an existing WorkflowTaskSendDashboardReport resource with the given ID exists.
+func WorkflowTaskSendDashboardReportExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSendDashboardReportState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSendDashboardReport:WorkflowTaskSendDashboardReport", id, state, "", opts...)
+}
+
 type workflowTaskSendDashboardReportArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

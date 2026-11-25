@@ -94,6 +94,12 @@ func (IncidentPermissionSetBooleanState) ElementType() reflect.Type {
 	return reflect.TypeOf((*incidentPermissionSetBooleanState)(nil)).Elem()
 }
 
+// IncidentPermissionSetBooleanExists checks whether an existing IncidentPermissionSetBoolean resource with the given ID exists.
+func IncidentPermissionSetBooleanExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IncidentPermissionSetBooleanState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/incidentPermissionSetBoolean:IncidentPermissionSetBoolean", id, state, "", opts...)
+}
+
 type incidentPermissionSetBooleanArgs struct {
 	Enabled                 *bool  `pulumi:"enabled"`
 	IncidentPermissionSetId string `pulumi:"incidentPermissionSetId"`

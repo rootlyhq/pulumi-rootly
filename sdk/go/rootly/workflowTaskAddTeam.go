@@ -117,6 +117,12 @@ func (WorkflowTaskAddTeamState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskAddTeamState)(nil)).Elem()
 }
 
+// WorkflowTaskAddTeamExists checks whether an existing WorkflowTaskAddTeam resource with the given ID exists.
+func WorkflowTaskAddTeamExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskAddTeamState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskAddTeam:WorkflowTaskAddTeam", id, state, "", opts...)
+}
+
 type workflowTaskAddTeamArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

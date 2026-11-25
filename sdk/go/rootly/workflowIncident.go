@@ -221,6 +221,12 @@ func (WorkflowIncidentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowIncidentState)(nil)).Elem()
 }
 
+// WorkflowIncidentExists checks whether an existing WorkflowIncident resource with the given ID exists.
+func WorkflowIncidentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowIncidentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowIncident:WorkflowIncident", id, state, "", opts...)
+}
+
 type workflowIncidentArgs struct {
 	CauseIds []string `pulumi:"causeIds"`
 	// Workflow command

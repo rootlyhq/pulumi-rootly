@@ -95,6 +95,12 @@ func (SubStatusState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subStatusState)(nil)).Elem()
 }
 
+// SubStatusExists checks whether an existing SubStatus resource with the given ID exists.
+func SubStatusExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubStatusState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/subStatus:SubStatus", id, state, "", opts...)
+}
+
 type subStatusArgs struct {
 	Description *string `pulumi:"description"`
 	Name        *string `pulumi:"name"`

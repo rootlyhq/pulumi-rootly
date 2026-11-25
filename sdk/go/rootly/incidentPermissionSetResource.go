@@ -97,6 +97,12 @@ func (IncidentPermissionSetResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*incidentPermissionSetResourceState)(nil)).Elem()
 }
 
+// IncidentPermissionSetResourceExists checks whether an existing IncidentPermissionSetResource resource with the given ID exists.
+func IncidentPermissionSetResourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IncidentPermissionSetResourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/incidentPermissionSetResource:IncidentPermissionSetResource", id, state, "", opts...)
+}
+
 type incidentPermissionSetResourceArgs struct {
 	IncidentPermissionSetId string `pulumi:"incidentPermissionSetId"`
 	// Value must be one of `severities`, `incidentTypes`, `statuses`, `subStatuses`.

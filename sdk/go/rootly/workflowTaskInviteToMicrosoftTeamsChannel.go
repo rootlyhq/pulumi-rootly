@@ -117,6 +117,12 @@ func (WorkflowTaskInviteToMicrosoftTeamsChannelState) ElementType() reflect.Type
 	return reflect.TypeOf((*workflowTaskInviteToMicrosoftTeamsChannelState)(nil)).Elem()
 }
 
+// WorkflowTaskInviteToMicrosoftTeamsChannelExists checks whether an existing WorkflowTaskInviteToMicrosoftTeamsChannel resource with the given ID exists.
+func WorkflowTaskInviteToMicrosoftTeamsChannelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskInviteToMicrosoftTeamsChannelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskInviteToMicrosoftTeamsChannel:WorkflowTaskInviteToMicrosoftTeamsChannel", id, state, "", opts...)
+}
+
 type workflowTaskInviteToMicrosoftTeamsChannelArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

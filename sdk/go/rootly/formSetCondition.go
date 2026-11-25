@@ -106,6 +106,12 @@ func (FormSetConditionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*formSetConditionState)(nil)).Elem()
 }
 
+// FormSetConditionExists checks whether an existing FormSetCondition resource with the given ID exists.
+func FormSetConditionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FormSetConditionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/formSetCondition:FormSetCondition", id, state, "", opts...)
+}
+
 type formSetConditionArgs struct {
 	// The condition comparison.. Value must be one of `equal`.
 	Comparison *string `pulumi:"comparison"`

@@ -117,6 +117,12 @@ func (WorkflowTaskAddToTimelineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskAddToTimelineState)(nil)).Elem()
 }
 
+// WorkflowTaskAddToTimelineExists checks whether an existing WorkflowTaskAddToTimeline resource with the given ID exists.
+func WorkflowTaskAddToTimelineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskAddToTimelineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskAddToTimeline:WorkflowTaskAddToTimeline", id, state, "", opts...)
+}
+
 type workflowTaskAddToTimelineArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

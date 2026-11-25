@@ -117,6 +117,12 @@ func (WorkflowTaskCreateGoogleMeetingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateGoogleMeetingState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateGoogleMeetingExists checks whether an existing WorkflowTaskCreateGoogleMeeting resource with the given ID exists.
+func WorkflowTaskCreateGoogleMeetingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateGoogleMeetingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateGoogleMeeting:WorkflowTaskCreateGoogleMeeting", id, state, "", opts...)
+}
+
 type workflowTaskCreateGoogleMeetingArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

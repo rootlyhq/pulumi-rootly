@@ -117,6 +117,12 @@ func (WorkflowTaskRedisClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskRedisClientState)(nil)).Elem()
 }
 
+// WorkflowTaskRedisClientExists checks whether an existing WorkflowTaskRedisClient resource with the given ID exists.
+func WorkflowTaskRedisClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskRedisClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskRedisClient:WorkflowTaskRedisClient", id, state, "", opts...)
+}
+
 type workflowTaskRedisClientArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

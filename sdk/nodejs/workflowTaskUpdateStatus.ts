@@ -43,6 +43,17 @@ export class WorkflowTaskUpdateStatus extends pulumi.CustomResource {
         return new WorkflowTaskUpdateStatus(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing WorkflowTaskUpdateStatus resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: WorkflowTaskUpdateStatusState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("rootly:index/workflowTaskUpdateStatus:WorkflowTaskUpdateStatus", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'rootly:index/workflowTaskUpdateStatus:WorkflowTaskUpdateStatus';
 

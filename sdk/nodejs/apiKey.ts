@@ -7,6 +7,14 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ## Token
+ *
+ * `token` holds the API key secret. The Rootly API returns it only in the create response, so:
+ *
+ * - It is stored in Terraform state in plain text. Protect your state (encrypted remote backend, restricted access).
+ * - It is empty for keys brought in with `pulumi import`.
+ * - If the key is rotated outside Terraform (for example through the rotate API endpoint or the web app), the stored `token` is stale and Terraform does not detect it. Recreate the resource (e.g. `pulumi up -replace=rootly_api_key.example`) to get a fresh token in state.
+ *
  * ## Import
  *
  * rootly.ApiKey can be imported using the `import` command.
@@ -37,6 +45,17 @@ export class ApiKey extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApiKeyState, opts?: pulumi.CustomResourceOptions): ApiKey {
         return new ApiKey(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing ApiKey resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ApiKeyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("rootly:index/apiKey:ApiKey", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -89,6 +108,10 @@ export class ApiKey extends pulumi.CustomResource {
      * The role ID
      */
     declare public readonly roleId: pulumi.Output<string>;
+    /**
+     * The API key token. Returned only when the key is created or rotated; omitted from list, show, update and delete responses.
+     */
+    declare public /*out*/ readonly token: pulumi.Output<string>;
 
     /**
      * Create a ApiKey resource with the given unique name, arguments, and options.
@@ -112,6 +135,7 @@ export class ApiKey extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["onCallRoleId"] = state?.onCallRoleId;
             resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as ApiKeyArgs | undefined;
             if (args?.expiresAt === undefined && !opts.urn) {
@@ -126,8 +150,11 @@ export class ApiKey extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["onCallRoleId"] = args?.onCallRoleId;
             resourceInputs["roleId"] = args?.roleId;
+            resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ApiKey.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -172,6 +199,10 @@ export interface ApiKeyState {
      * The role ID
      */
     roleId?: pulumi.Input<string | undefined>;
+    /**
+     * The API key token. Returned only when the key is created or rotated; omitted from list, show, update and delete responses.
+     */
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**

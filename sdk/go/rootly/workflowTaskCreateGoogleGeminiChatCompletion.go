@@ -117,6 +117,12 @@ func (WorkflowTaskCreateGoogleGeminiChatCompletionState) ElementType() reflect.T
 	return reflect.TypeOf((*workflowTaskCreateGoogleGeminiChatCompletionState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateGoogleGeminiChatCompletionExists checks whether an existing WorkflowTaskCreateGoogleGeminiChatCompletion resource with the given ID exists.
+func WorkflowTaskCreateGoogleGeminiChatCompletionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateGoogleGeminiChatCompletionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateGoogleGeminiChatCompletion:WorkflowTaskCreateGoogleGeminiChatCompletion", id, state, "", opts...)
+}
+
 type workflowTaskCreateGoogleGeminiChatCompletionArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

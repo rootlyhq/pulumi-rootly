@@ -37,6 +37,17 @@ export class RetrospectiveProcessGroup extends pulumi.CustomResource {
         return new RetrospectiveProcessGroup(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing RetrospectiveProcessGroup resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: RetrospectiveProcessGroupState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("rootly:index/retrospectiveProcessGroup:RetrospectiveProcessGroup", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'rootly:index/retrospectiveProcessGroup:RetrospectiveProcessGroup';
 

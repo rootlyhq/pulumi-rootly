@@ -95,6 +95,12 @@ func (UserIncidentResponseRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userIncidentResponseRoleState)(nil)).Elem()
 }
 
+// UserIncidentResponseRoleExists checks whether an existing UserIncidentResponseRole resource with the given ID exists.
+func UserIncidentResponseRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserIncidentResponseRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/userIncidentResponseRole:UserIncidentResponseRole", id, state, "", opts...)
+}
+
 type userIncidentResponseRoleArgs struct {
 	// The ID of the incident response role to assign to the user. Role IDs can be found using data source `Role`.
 	RoleId string `pulumi:"roleId"`

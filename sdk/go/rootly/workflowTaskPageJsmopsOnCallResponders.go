@@ -117,6 +117,12 @@ func (WorkflowTaskPageJsmopsOnCallRespondersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskPageJsmopsOnCallRespondersState)(nil)).Elem()
 }
 
+// WorkflowTaskPageJsmopsOnCallRespondersExists checks whether an existing WorkflowTaskPageJsmopsOnCallResponders resource with the given ID exists.
+func WorkflowTaskPageJsmopsOnCallRespondersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskPageJsmopsOnCallRespondersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskPageJsmopsOnCallResponders:WorkflowTaskPageJsmopsOnCallResponders", id, state, "", opts...)
+}
+
 type workflowTaskPageJsmopsOnCallRespondersArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

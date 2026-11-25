@@ -117,6 +117,12 @@ func (WorkflowTaskUpdateCodaPageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdateCodaPageState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdateCodaPageExists checks whether an existing WorkflowTaskUpdateCodaPage resource with the given ID exists.
+func WorkflowTaskUpdateCodaPageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdateCodaPageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdateCodaPage:WorkflowTaskUpdateCodaPage", id, state, "", opts...)
+}
+
 type workflowTaskUpdateCodaPageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

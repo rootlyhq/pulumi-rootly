@@ -117,6 +117,12 @@ func (WorkflowTaskCreateAirtableTableRecordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateAirtableTableRecordState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateAirtableTableRecordExists checks whether an existing WorkflowTaskCreateAirtableTableRecord resource with the given ID exists.
+func WorkflowTaskCreateAirtableTableRecordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateAirtableTableRecordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateAirtableTableRecord:WorkflowTaskCreateAirtableTableRecord", id, state, "", opts...)
+}
+
 type workflowTaskCreateAirtableTableRecordArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

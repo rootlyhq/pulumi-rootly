@@ -122,6 +122,12 @@ func (CauseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*causeState)(nil)).Elem()
 }
 
+// CauseExists checks whether an existing Cause resource with the given ID exists.
+func CauseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CauseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/cause:Cause", id, state, "", opts...)
+}
+
 type causeArgs struct {
 	// The description of the cause
 	Description *string `pulumi:"description"`

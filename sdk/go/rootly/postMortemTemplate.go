@@ -98,6 +98,12 @@ func (PostMortemTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postMortemTemplateState)(nil)).Elem()
 }
 
+// PostMortemTemplateExists checks whether an existing PostMortemTemplate resource with the given ID exists.
+func PostMortemTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostMortemTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/postMortemTemplate:PostMortemTemplate", id, state, "", opts...)
+}
+
 type postMortemTemplateArgs struct {
 	// The postmortem template. Liquid syntax and markdown are supported
 	Content *string `pulumi:"content"`

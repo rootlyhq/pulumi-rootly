@@ -117,6 +117,12 @@ func (WorkflowTaskCreateWebexMeetingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateWebexMeetingState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateWebexMeetingExists checks whether an existing WorkflowTaskCreateWebexMeeting resource with the given ID exists.
+func WorkflowTaskCreateWebexMeetingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateWebexMeetingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateWebexMeeting:WorkflowTaskCreateWebexMeeting", id, state, "", opts...)
+}
+
 type workflowTaskCreateWebexMeetingArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

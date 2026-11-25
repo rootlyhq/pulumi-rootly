@@ -117,6 +117,12 @@ func (WorkflowTaskSendMicrosoftTeamsBlocksState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskSendMicrosoftTeamsBlocksState)(nil)).Elem()
 }
 
+// WorkflowTaskSendMicrosoftTeamsBlocksExists checks whether an existing WorkflowTaskSendMicrosoftTeamsBlocks resource with the given ID exists.
+func WorkflowTaskSendMicrosoftTeamsBlocksExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSendMicrosoftTeamsBlocksState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSendMicrosoftTeamsBlocks:WorkflowTaskSendMicrosoftTeamsBlocks", id, state, "", opts...)
+}
+
 type workflowTaskSendMicrosoftTeamsBlocksArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

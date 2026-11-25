@@ -40,6 +40,11 @@ export type ApiKey = import("./apiKey").ApiKey;
 export const ApiKey: typeof import("./apiKey").ApiKey = null as any;
 utilities.lazyLoad(exports, ["ApiKey"], () => require("./apiKey"));
 
+export { ApiKeyRotationArgs, ApiKeyRotationState } from "./apiKeyRotation";
+export type ApiKeyRotation = import("./apiKeyRotation").ApiKeyRotation;
+export const ApiKeyRotation: typeof import("./apiKeyRotation").ApiKeyRotation = null as any;
+utilities.lazyLoad(exports, ["ApiKeyRotation"], () => require("./apiKeyRotation"));
+
 export { AuthorizationArgs, AuthorizationState } from "./authorization";
 export type Authorization = import("./authorization").Authorization;
 export const Authorization: typeof import("./authorization").Authorization = null as any;
@@ -1556,6 +1561,8 @@ const _module = {
                 return new AlertsSource(name, <any>undefined, { urn })
             case "rootly:index/apiKey:ApiKey":
                 return new ApiKey(name, <any>undefined, { urn })
+            case "rootly:index/apiKeyRotation:ApiKeyRotation":
+                return new ApiKeyRotation(name, <any>undefined, { urn })
             case "rootly:index/authorization:Authorization":
                 return new Authorization(name, <any>undefined, { urn })
             case "rootly:index/catalog:Catalog":
@@ -2024,6 +2031,7 @@ pulumi.runtime.registerResourceModule("rootly", "index/alertRoutingRule", _modul
 pulumi.runtime.registerResourceModule("rootly", "index/alertUrgency", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/alertsSource", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/apiKey", _module)
+pulumi.runtime.registerResourceModule("rootly", "index/apiKeyRotation", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/authorization", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("rootly", "index/catalogChecklistTemplate", _module)

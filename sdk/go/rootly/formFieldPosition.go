@@ -97,6 +97,12 @@ func (FormFieldPositionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*formFieldPositionState)(nil)).Elem()
 }
 
+// FormFieldPositionExists checks whether an existing FormFieldPosition resource with the given ID exists.
+func FormFieldPositionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FormFieldPositionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/formFieldPosition:FormFieldPosition", id, state, "", opts...)
+}
+
 type formFieldPositionArgs struct {
 	// The form for the position. Value must be one of `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `incidentPostMortem`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `webActionItemForm`, `slackActionItemForm`, `googleChatActionItemForm`, `webTaskForm`, `slackTaskForm`, `googleChatTaskForm`.
 	Form *string `pulumi:"form"`

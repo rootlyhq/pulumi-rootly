@@ -117,6 +117,12 @@ func (WorkflowTaskGetGitlabCommitsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskGetGitlabCommitsState)(nil)).Elem()
 }
 
+// WorkflowTaskGetGitlabCommitsExists checks whether an existing WorkflowTaskGetGitlabCommits resource with the given ID exists.
+func WorkflowTaskGetGitlabCommitsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskGetGitlabCommitsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskGetGitlabCommits:WorkflowTaskGetGitlabCommits", id, state, "", opts...)
+}
+
 type workflowTaskGetGitlabCommitsArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

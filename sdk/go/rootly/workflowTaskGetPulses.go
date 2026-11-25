@@ -117,6 +117,12 @@ func (WorkflowTaskGetPulsesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskGetPulsesState)(nil)).Elem()
 }
 
+// WorkflowTaskGetPulsesExists checks whether an existing WorkflowTaskGetPulses resource with the given ID exists.
+func WorkflowTaskGetPulsesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskGetPulsesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskGetPulses:WorkflowTaskGetPulses", id, state, "", opts...)
+}
+
 type workflowTaskGetPulsesArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

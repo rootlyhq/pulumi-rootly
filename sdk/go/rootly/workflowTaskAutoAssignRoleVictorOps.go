@@ -117,6 +117,12 @@ func (WorkflowTaskAutoAssignRoleVictorOpsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskAutoAssignRoleVictorOpsState)(nil)).Elem()
 }
 
+// WorkflowTaskAutoAssignRoleVictorOpsExists checks whether an existing WorkflowTaskAutoAssignRoleVictorOps resource with the given ID exists.
+func WorkflowTaskAutoAssignRoleVictorOpsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskAutoAssignRoleVictorOpsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskAutoAssignRoleVictorOps:WorkflowTaskAutoAssignRoleVictorOps", id, state, "", opts...)
+}
+
 type workflowTaskAutoAssignRoleVictorOpsArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

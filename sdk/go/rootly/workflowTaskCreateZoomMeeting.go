@@ -117,6 +117,12 @@ func (WorkflowTaskCreateZoomMeetingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateZoomMeetingState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateZoomMeetingExists checks whether an existing WorkflowTaskCreateZoomMeeting resource with the given ID exists.
+func WorkflowTaskCreateZoomMeetingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateZoomMeetingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateZoomMeeting:WorkflowTaskCreateZoomMeeting", id, state, "", opts...)
+}
+
 type workflowTaskCreateZoomMeetingArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

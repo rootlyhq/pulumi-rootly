@@ -221,6 +221,12 @@ func (WorkflowPulseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowPulseState)(nil)).Elem()
 }
 
+// WorkflowPulseExists checks whether an existing WorkflowPulse resource with the given ID exists.
+func WorkflowPulseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowPulseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowPulse:WorkflowPulse", id, state, "", opts...)
+}
+
 type workflowPulseArgs struct {
 	CauseIds []string `pulumi:"causeIds"`
 	// Workflow command

@@ -117,6 +117,12 @@ func (WorkflowTaskChangeSlackChannelPrivacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskChangeSlackChannelPrivacyState)(nil)).Elem()
 }
 
+// WorkflowTaskChangeSlackChannelPrivacyExists checks whether an existing WorkflowTaskChangeSlackChannelPrivacy resource with the given ID exists.
+func WorkflowTaskChangeSlackChannelPrivacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskChangeSlackChannelPrivacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskChangeSlackChannelPrivacy:WorkflowTaskChangeSlackChannelPrivacy", id, state, "", opts...)
+}
+
 type workflowTaskChangeSlackChannelPrivacyArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

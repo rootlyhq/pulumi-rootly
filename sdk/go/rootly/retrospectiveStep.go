@@ -127,6 +127,12 @@ func (RetrospectiveStepState) ElementType() reflect.Type {
 	return reflect.TypeOf((*retrospectiveStepState)(nil)).Elem()
 }
 
+// RetrospectiveStepExists checks whether an existing RetrospectiveStep resource with the given ID exists.
+func RetrospectiveStepExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RetrospectiveStepState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/retrospectiveStep:RetrospectiveStep", id, state, "", opts...)
+}
+
 type retrospectiveStepArgs struct {
 	// The description of the step
 	Description *string `pulumi:"description"`
