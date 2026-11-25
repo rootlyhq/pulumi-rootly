@@ -119,6 +119,12 @@ func (EscalationPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*escalationPolicyState)(nil)).Elem()
 }
 
+// EscalationPolicyExists checks whether an existing EscalationPolicy resource with the given ID exists.
+func EscalationPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EscalationPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/escalationPolicy:EscalationPolicy", id, state, "", opts...)
+}
+
 type escalationPolicyArgs struct {
 	BusinessHours *EscalationPolicyBusinessHours `pulumi:"businessHours"`
 	// User who created the escalation policy

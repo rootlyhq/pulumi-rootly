@@ -117,6 +117,12 @@ func (WorkflowTaskSnapshotLookerLookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskSnapshotLookerLookState)(nil)).Elem()
 }
 
+// WorkflowTaskSnapshotLookerLookExists checks whether an existing WorkflowTaskSnapshotLookerLook resource with the given ID exists.
+func WorkflowTaskSnapshotLookerLookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSnapshotLookerLookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSnapshotLookerLook:WorkflowTaskSnapshotLookerLook", id, state, "", opts...)
+}
+
 type workflowTaskSnapshotLookerLookArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

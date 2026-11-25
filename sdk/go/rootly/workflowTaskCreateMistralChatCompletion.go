@@ -117,6 +117,12 @@ func (WorkflowTaskCreateMistralChatCompletionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateMistralChatCompletionState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateMistralChatCompletionExists checks whether an existing WorkflowTaskCreateMistralChatCompletion resource with the given ID exists.
+func WorkflowTaskCreateMistralChatCompletionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateMistralChatCompletionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateMistralChatCompletion:WorkflowTaskCreateMistralChatCompletion", id, state, "", opts...)
+}
+
 type workflowTaskCreateMistralChatCompletionArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

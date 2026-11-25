@@ -117,6 +117,12 @@ func (WorkflowTaskCreateJsmopsAlertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateJsmopsAlertState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateJsmopsAlertExists checks whether an existing WorkflowTaskCreateJsmopsAlert resource with the given ID exists.
+func WorkflowTaskCreateJsmopsAlertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateJsmopsAlertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateJsmopsAlert:WorkflowTaskCreateJsmopsAlert", id, state, "", opts...)
+}
+
 type workflowTaskCreateJsmopsAlertArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

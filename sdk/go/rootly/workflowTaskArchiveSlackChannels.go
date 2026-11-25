@@ -119,6 +119,12 @@ func (WorkflowTaskArchiveSlackChannelsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskArchiveSlackChannelsState)(nil)).Elem()
 }
 
+// WorkflowTaskArchiveSlackChannelsExists checks whether an existing WorkflowTaskArchiveSlackChannels resource with the given ID exists.
+func WorkflowTaskArchiveSlackChannelsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskArchiveSlackChannelsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskArchiveSlackChannels:WorkflowTaskArchiveSlackChannels", id, state, "", opts...)
+}
+
 type workflowTaskArchiveSlackChannelsArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

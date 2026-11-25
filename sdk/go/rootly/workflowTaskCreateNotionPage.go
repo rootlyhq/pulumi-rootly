@@ -117,6 +117,12 @@ func (WorkflowTaskCreateNotionPageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateNotionPageState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateNotionPageExists checks whether an existing WorkflowTaskCreateNotionPage resource with the given ID exists.
+func WorkflowTaskCreateNotionPageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateNotionPageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateNotionPage:WorkflowTaskCreateNotionPage", id, state, "", opts...)
+}
+
 type workflowTaskCreateNotionPageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

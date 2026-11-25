@@ -132,6 +132,12 @@ func (AlertUrgencyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertUrgencyState)(nil)).Elem()
 }
 
+// AlertUrgencyExists checks whether an existing AlertUrgency resource with the given ID exists.
+func AlertUrgencyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertUrgencyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/alertUrgency:AlertUrgency", id, state, "", opts...)
+}
+
 type alertUrgencyArgs struct {
 	// Unique ID of the alert urgency
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`

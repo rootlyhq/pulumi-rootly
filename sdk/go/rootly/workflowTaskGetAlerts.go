@@ -117,6 +117,12 @@ func (WorkflowTaskGetAlertsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskGetAlertsState)(nil)).Elem()
 }
 
+// WorkflowTaskGetAlertsExists checks whether an existing WorkflowTaskGetAlerts resource with the given ID exists.
+func WorkflowTaskGetAlertsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskGetAlertsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskGetAlerts:WorkflowTaskGetAlerts", id, state, "", opts...)
+}
+
 type workflowTaskGetAlertsArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

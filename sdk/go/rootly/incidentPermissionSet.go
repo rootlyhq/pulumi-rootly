@@ -31,7 +31,7 @@ import (
 type IncidentPermissionSet struct {
 	pulumi.CustomResourceState
 
-	// The incident permission set description.
+	// A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The incident permission set name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -75,7 +75,7 @@ func GetIncidentPermissionSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IncidentPermissionSet resources.
 type incidentPermissionSetState struct {
-	// The incident permission set description.
+	// A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.
 	Description *string `pulumi:"description"`
 	// The incident permission set name.
 	Name *string `pulumi:"name"`
@@ -90,7 +90,7 @@ type incidentPermissionSetState struct {
 }
 
 type IncidentPermissionSetState struct {
-	// The incident permission set description.
+	// A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.
 	Description pulumi.StringPtrInput
 	// The incident permission set name.
 	Name pulumi.StringPtrInput
@@ -108,8 +108,14 @@ func (IncidentPermissionSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*incidentPermissionSetState)(nil)).Elem()
 }
 
+// IncidentPermissionSetExists checks whether an existing IncidentPermissionSet resource with the given ID exists.
+func IncidentPermissionSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IncidentPermissionSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/incidentPermissionSet:IncidentPermissionSet", id, state, "", opts...)
+}
+
 type incidentPermissionSetArgs struct {
-	// The incident permission set description.
+	// A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.
 	Description *string `pulumi:"description"`
 	// The incident permission set name.
 	Name *string `pulumi:"name"`
@@ -125,7 +131,7 @@ type incidentPermissionSetArgs struct {
 
 // The set of arguments for constructing a IncidentPermissionSet resource.
 type IncidentPermissionSetArgs struct {
-	// The incident permission set description.
+	// A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.
 	Description pulumi.StringPtrInput
 	// The incident permission set name.
 	Name pulumi.StringPtrInput
@@ -226,7 +232,7 @@ func (o IncidentPermissionSetOutput) ToIncidentPermissionSetOutputWithContext(ct
 	return o
 }
 
-// The incident permission set description.
+// A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.
 func (o IncidentPermissionSetOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *IncidentPermissionSet) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }

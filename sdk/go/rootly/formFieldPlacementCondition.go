@@ -124,6 +124,12 @@ func (FormFieldPlacementConditionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*formFieldPlacementConditionState)(nil)).Elem()
 }
 
+// FormFieldPlacementConditionExists checks whether an existing FormFieldPlacementCondition resource with the given ID exists.
+func FormFieldPlacementConditionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FormFieldPlacementConditionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/formFieldPlacementCondition:FormFieldPlacementCondition", id, state, "", opts...)
+}
+
 type formFieldPlacementConditionArgs struct {
 	// The condition comparison.. Value must be one of `equal`, `notEqual`, `isSet`, `isNotSet`.
 	Comparison *string `pulumi:"comparison"`

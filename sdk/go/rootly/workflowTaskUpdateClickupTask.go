@@ -117,6 +117,12 @@ func (WorkflowTaskUpdateClickupTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdateClickupTaskState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdateClickupTaskExists checks whether an existing WorkflowTaskUpdateClickupTask resource with the given ID exists.
+func WorkflowTaskUpdateClickupTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdateClickupTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdateClickupTask:WorkflowTaskUpdateClickupTask", id, state, "", opts...)
+}
+
 type workflowTaskUpdateClickupTaskArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

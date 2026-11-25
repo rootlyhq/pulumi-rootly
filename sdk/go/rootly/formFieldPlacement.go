@@ -130,6 +130,12 @@ func (FormFieldPlacementState) ElementType() reflect.Type {
 	return reflect.TypeOf((*formFieldPlacementState)(nil)).Elem()
 }
 
+// FormFieldPlacementExists checks whether an existing FormFieldPlacement resource with the given ID exists.
+func FormFieldPlacementExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FormFieldPlacementState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/formFieldPlacement:FormFieldPlacement", id, state, "", opts...)
+}
+
 type formFieldPlacementArgs struct {
 	// The form this field is placed on.
 	Form string `pulumi:"form"`

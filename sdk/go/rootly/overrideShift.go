@@ -112,6 +112,12 @@ func (OverrideShiftState) ElementType() reflect.Type {
 	return reflect.TypeOf((*overrideShiftState)(nil)).Elem()
 }
 
+// OverrideShiftExists checks whether an existing OverrideShift resource with the given ID exists.
+func OverrideShiftExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OverrideShiftState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/overrideShift:OverrideShift", id, state, "", opts...)
+}
+
 type overrideShiftArgs struct {
 	// End datetime of shift
 	EndsAt string `pulumi:"endsAt"`

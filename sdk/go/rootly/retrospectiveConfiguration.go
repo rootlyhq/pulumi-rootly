@@ -96,6 +96,12 @@ func (RetrospectiveConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*retrospectiveConfigurationState)(nil)).Elem()
 }
 
+// RetrospectiveConfigurationExists checks whether an existing RetrospectiveConfiguration resource with the given ID exists.
+func RetrospectiveConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RetrospectiveConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/retrospectiveConfiguration:RetrospectiveConfiguration", id, state, "", opts...)
+}
+
 type retrospectiveConfigurationArgs struct {
 	// Teams associated with the retrospective configuration.
 	GroupIds []string `pulumi:"groupIds"`

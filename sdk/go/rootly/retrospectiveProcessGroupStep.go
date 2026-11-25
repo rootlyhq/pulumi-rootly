@@ -88,6 +88,12 @@ func (RetrospectiveProcessGroupStepState) ElementType() reflect.Type {
 	return reflect.TypeOf((*retrospectiveProcessGroupStepState)(nil)).Elem()
 }
 
+// RetrospectiveProcessGroupStepExists checks whether an existing RetrospectiveProcessGroupStep resource with the given ID exists.
+func RetrospectiveProcessGroupStepExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RetrospectiveProcessGroupStepState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/retrospectiveProcessGroupStep:RetrospectiveProcessGroupStep", id, state, "", opts...)
+}
+
 type retrospectiveProcessGroupStepArgs struct {
 	Position                    *int   `pulumi:"position"`
 	RetrospectiveProcessGroupId string `pulumi:"retrospectiveProcessGroupId"`

@@ -219,6 +219,12 @@ func (WorkflowPostMortemState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowPostMortemState)(nil)).Elem()
 }
 
+// WorkflowPostMortemExists checks whether an existing WorkflowPostMortem resource with the given ID exists.
+func WorkflowPostMortemExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowPostMortemState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowPostMortem:WorkflowPostMortem", id, state, "", opts...)
+}
+
 type workflowPostMortemArgs struct {
 	CauseIds []string `pulumi:"causeIds"`
 	// Workflow command

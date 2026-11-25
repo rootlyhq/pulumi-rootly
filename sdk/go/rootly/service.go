@@ -284,6 +284,12 @@ func (ServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceState)(nil)).Elem()
 }
 
+// ServiceExists checks whether an existing Service resource with the given ID exists.
+func ServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/service:Service", id, state, "", opts...)
+}
+
 type serviceArgs struct {
 	// Map must contain two fields, `id` and `name`. Slack channel to broadcast alerts to. To clear, supply an empty block `alertBroadcastChannel {}`.
 	AlertBroadcastChannel *ServiceAlertBroadcastChannel `pulumi:"alertBroadcastChannel"`

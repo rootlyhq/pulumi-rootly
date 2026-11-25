@@ -117,6 +117,12 @@ func (WorkflowTaskAttachDatadogDashboardsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskAttachDatadogDashboardsState)(nil)).Elem()
 }
 
+// WorkflowTaskAttachDatadogDashboardsExists checks whether an existing WorkflowTaskAttachDatadogDashboards resource with the given ID exists.
+func WorkflowTaskAttachDatadogDashboardsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskAttachDatadogDashboardsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskAttachDatadogDashboards:WorkflowTaskAttachDatadogDashboards", id, state, "", opts...)
+}
+
 type workflowTaskAttachDatadogDashboardsArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

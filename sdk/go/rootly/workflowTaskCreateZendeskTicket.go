@@ -117,6 +117,12 @@ func (WorkflowTaskCreateZendeskTicketState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateZendeskTicketState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateZendeskTicketExists checks whether an existing WorkflowTaskCreateZendeskTicket resource with the given ID exists.
+func WorkflowTaskCreateZendeskTicketExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateZendeskTicketState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateZendeskTicket:WorkflowTaskCreateZendeskTicket", id, state, "", opts...)
+}
+
 type workflowTaskCreateZendeskTicketArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

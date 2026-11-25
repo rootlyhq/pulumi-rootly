@@ -117,6 +117,12 @@ func (WorkflowTaskCreateSubIncidentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateSubIncidentState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateSubIncidentExists checks whether an existing WorkflowTaskCreateSubIncident resource with the given ID exists.
+func WorkflowTaskCreateSubIncidentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateSubIncidentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateSubIncident:WorkflowTaskCreateSubIncident", id, state, "", opts...)
+}
+
 type workflowTaskCreateSubIncidentArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

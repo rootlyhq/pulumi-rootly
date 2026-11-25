@@ -117,6 +117,12 @@ func (WorkflowTaskCreateConfluencePageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateConfluencePageState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateConfluencePageExists checks whether an existing WorkflowTaskCreateConfluencePage resource with the given ID exists.
+func WorkflowTaskCreateConfluencePageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateConfluencePageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateConfluencePage:WorkflowTaskCreateConfluencePage", id, state, "", opts...)
+}
+
 type workflowTaskCreateConfluencePageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

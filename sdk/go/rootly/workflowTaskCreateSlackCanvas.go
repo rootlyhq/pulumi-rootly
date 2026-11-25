@@ -164,6 +164,12 @@ func (WorkflowTaskCreateSlackCanvasState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateSlackCanvasState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateSlackCanvasExists checks whether an existing WorkflowTaskCreateSlackCanvas resource with the given ID exists.
+func WorkflowTaskCreateSlackCanvasExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateSlackCanvasState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateSlackCanvas:WorkflowTaskCreateSlackCanvas", id, state, "", opts...)
+}
+
 type workflowTaskCreateSlackCanvasArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

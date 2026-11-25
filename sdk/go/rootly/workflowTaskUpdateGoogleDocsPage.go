@@ -117,6 +117,12 @@ func (WorkflowTaskUpdateGoogleDocsPageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdateGoogleDocsPageState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdateGoogleDocsPageExists checks whether an existing WorkflowTaskUpdateGoogleDocsPage resource with the given ID exists.
+func WorkflowTaskUpdateGoogleDocsPageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdateGoogleDocsPageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdateGoogleDocsPage:WorkflowTaskUpdateGoogleDocsPage", id, state, "", opts...)
+}
+
 type workflowTaskUpdateGoogleDocsPageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

@@ -95,6 +95,12 @@ func (UserOnCallRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userOnCallRoleState)(nil)).Elem()
 }
 
+// UserOnCallRoleExists checks whether an existing UserOnCallRole resource with the given ID exists.
+func UserOnCallRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserOnCallRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/userOnCallRole:UserOnCallRole", id, state, "", opts...)
+}
+
 type userOnCallRoleArgs struct {
 	// The id of the on-call role to assign.
 	OnCallRoleId string `pulumi:"onCallRoleId"`

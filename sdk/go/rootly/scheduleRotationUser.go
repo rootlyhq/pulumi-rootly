@@ -93,6 +93,12 @@ func (ScheduleRotationUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduleRotationUserState)(nil)).Elem()
 }
 
+// ScheduleRotationUserExists checks whether an existing ScheduleRotationUser resource with the given ID exists.
+func ScheduleRotationUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScheduleRotationUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/scheduleRotationUser:ScheduleRotationUser", id, state, "", opts...)
+}
+
 type scheduleRotationUserArgs struct {
 	// Position of the user inside rotation
 	Position           *int    `pulumi:"position"`

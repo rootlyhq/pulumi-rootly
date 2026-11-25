@@ -117,6 +117,12 @@ func (WorkflowTaskChangeGoogleChatSpacePrivacyState) ElementType() reflect.Type 
 	return reflect.TypeOf((*workflowTaskChangeGoogleChatSpacePrivacyState)(nil)).Elem()
 }
 
+// WorkflowTaskChangeGoogleChatSpacePrivacyExists checks whether an existing WorkflowTaskChangeGoogleChatSpacePrivacy resource with the given ID exists.
+func WorkflowTaskChangeGoogleChatSpacePrivacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskChangeGoogleChatSpacePrivacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskChangeGoogleChatSpacePrivacy:WorkflowTaskChangeGoogleChatSpacePrivacy", id, state, "", opts...)
+}
+
 type workflowTaskChangeGoogleChatSpacePrivacyArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

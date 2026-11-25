@@ -41,6 +41,17 @@ export class WorkflowTaskUpdateServiceNowIncident extends pulumi.CustomResource 
         return new WorkflowTaskUpdateServiceNowIncident(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing WorkflowTaskUpdateServiceNowIncident resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: WorkflowTaskUpdateServiceNowIncidentState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("rootly:index/workflowTaskUpdateServiceNowIncident:WorkflowTaskUpdateServiceNowIncident", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'rootly:index/workflowTaskUpdateServiceNowIncident:WorkflowTaskUpdateServiceNowIncident';
 

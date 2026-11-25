@@ -130,6 +130,12 @@ func (StatusPageTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*statusPageTemplateState)(nil)).Elem()
 }
 
+// StatusPageTemplateExists checks whether an existing StatusPageTemplate resource with the given ID exists.
+func StatusPageTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StatusPageTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/statusPageTemplate:StatusPageTemplate", id, state, "", opts...)
+}
+
 type statusPageTemplateArgs struct {
 	// Description of the event the template will populate
 	Body    string `pulumi:"body"`

@@ -128,6 +128,12 @@ func (CatalogChecklistTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogChecklistTemplateState)(nil)).Elem()
 }
 
+// CatalogChecklistTemplateExists checks whether an existing CatalogChecklistTemplate resource with the given ID exists.
+func CatalogChecklistTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CatalogChecklistTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/catalogChecklistTemplate:CatalogChecklistTemplate", id, state, "", opts...)
+}
+
 type catalogChecklistTemplateArgs struct {
 	// The catalog type. Value must be one of `Service`, `Functionality`, `Environment`, `Group`, `Cause`, `IncidentType`, `Catalog`.
 	CatalogType *string `pulumi:"catalogType"`

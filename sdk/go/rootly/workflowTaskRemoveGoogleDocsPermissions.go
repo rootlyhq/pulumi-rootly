@@ -117,6 +117,12 @@ func (WorkflowTaskRemoveGoogleDocsPermissionsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskRemoveGoogleDocsPermissionsState)(nil)).Elem()
 }
 
+// WorkflowTaskRemoveGoogleDocsPermissionsExists checks whether an existing WorkflowTaskRemoveGoogleDocsPermissions resource with the given ID exists.
+func WorkflowTaskRemoveGoogleDocsPermissionsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskRemoveGoogleDocsPermissionsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskRemoveGoogleDocsPermissions:WorkflowTaskRemoveGoogleDocsPermissions", id, state, "", opts...)
+}
+
 type workflowTaskRemoveGoogleDocsPermissionsArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

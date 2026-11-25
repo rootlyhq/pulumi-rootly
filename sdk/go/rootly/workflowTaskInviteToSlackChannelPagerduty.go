@@ -117,6 +117,12 @@ func (WorkflowTaskInviteToSlackChannelPagerdutyState) ElementType() reflect.Type
 	return reflect.TypeOf((*workflowTaskInviteToSlackChannelPagerdutyState)(nil)).Elem()
 }
 
+// WorkflowTaskInviteToSlackChannelPagerdutyExists checks whether an existing WorkflowTaskInviteToSlackChannelPagerduty resource with the given ID exists.
+func WorkflowTaskInviteToSlackChannelPagerdutyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskInviteToSlackChannelPagerdutyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskInviteToSlackChannelPagerduty:WorkflowTaskInviteToSlackChannelPagerduty", id, state, "", opts...)
+}
+
 type workflowTaskInviteToSlackChannelPagerdutyArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

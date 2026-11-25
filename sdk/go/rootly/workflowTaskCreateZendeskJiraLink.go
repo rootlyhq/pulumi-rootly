@@ -117,6 +117,12 @@ func (WorkflowTaskCreateZendeskJiraLinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateZendeskJiraLinkState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateZendeskJiraLinkExists checks whether an existing WorkflowTaskCreateZendeskJiraLink resource with the given ID exists.
+func WorkflowTaskCreateZendeskJiraLinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateZendeskJiraLinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateZendeskJiraLink:WorkflowTaskCreateZendeskJiraLink", id, state, "", opts...)
+}
+
 type workflowTaskCreateZendeskJiraLinkArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

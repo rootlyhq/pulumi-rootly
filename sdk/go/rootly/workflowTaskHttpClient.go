@@ -117,6 +117,12 @@ func (WorkflowTaskHttpClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskHttpClientState)(nil)).Elem()
 }
 
+// WorkflowTaskHttpClientExists checks whether an existing WorkflowTaskHttpClient resource with the given ID exists.
+func WorkflowTaskHttpClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskHttpClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskHttpClient:WorkflowTaskHttpClient", id, state, "", opts...)
+}
+
 type workflowTaskHttpClientArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

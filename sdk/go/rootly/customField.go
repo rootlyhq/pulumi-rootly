@@ -131,6 +131,12 @@ func (CustomFieldState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customFieldState)(nil)).Elem()
 }
 
+// CustomFieldExists checks whether an existing CustomField resource with the given ID exists.
+func CustomFieldExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomFieldState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/customField:CustomField", id, state, "", opts...)
+}
+
 type customFieldArgs struct {
 	// The default value for text field kinds.
 	Default *string `pulumi:"default"`

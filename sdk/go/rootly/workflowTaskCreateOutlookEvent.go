@@ -117,6 +117,12 @@ func (WorkflowTaskCreateOutlookEventState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateOutlookEventState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateOutlookEventExists checks whether an existing WorkflowTaskCreateOutlookEvent resource with the given ID exists.
+func WorkflowTaskCreateOutlookEventExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateOutlookEventState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateOutlookEvent:WorkflowTaskCreateOutlookEvent", id, state, "", opts...)
+}
+
 type workflowTaskCreateOutlookEventArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

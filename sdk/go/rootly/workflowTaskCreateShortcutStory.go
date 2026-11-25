@@ -117,6 +117,12 @@ func (WorkflowTaskCreateShortcutStoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateShortcutStoryState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateShortcutStoryExists checks whether an existing WorkflowTaskCreateShortcutStory resource with the given ID exists.
+func WorkflowTaskCreateShortcutStoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateShortcutStoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateShortcutStory:WorkflowTaskCreateShortcutStory", id, state, "", opts...)
+}
+
 type workflowTaskCreateShortcutStoryArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

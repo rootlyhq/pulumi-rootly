@@ -117,6 +117,12 @@ func (WorkflowTaskCreateMicrosoftTeamsChatState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateMicrosoftTeamsChatState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateMicrosoftTeamsChatExists checks whether an existing WorkflowTaskCreateMicrosoftTeamsChat resource with the given ID exists.
+func WorkflowTaskCreateMicrosoftTeamsChatExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateMicrosoftTeamsChatState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateMicrosoftTeamsChat:WorkflowTaskCreateMicrosoftTeamsChat", id, state, "", opts...)
+}
+
 type workflowTaskCreateMicrosoftTeamsChatArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

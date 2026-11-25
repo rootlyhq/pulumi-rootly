@@ -117,6 +117,12 @@ func (WorkflowTaskUpdateDatadogNotebookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdateDatadogNotebookState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdateDatadogNotebookExists checks whether an existing WorkflowTaskUpdateDatadogNotebook resource with the given ID exists.
+func WorkflowTaskUpdateDatadogNotebookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdateDatadogNotebookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdateDatadogNotebook:WorkflowTaskUpdateDatadogNotebook", id, state, "", opts...)
+}
+
 type workflowTaskUpdateDatadogNotebookArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

@@ -184,6 +184,12 @@ func (LiveCallRouterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*liveCallRouterState)(nil)).Elem()
 }
 
+// LiveCallRouterExists checks whether an existing LiveCallRouter resource with the given ID exists.
+func LiveCallRouterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LiveCallRouterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/liveCallRouter:LiveCallRouter", id, state, "", opts...)
+}
+
 type liveCallRouterArgs struct {
 	// This is used in escalation paths to determine who to page
 	AlertUrgencyId *string `pulumi:"alertUrgencyId"`

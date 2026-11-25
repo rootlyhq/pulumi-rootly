@@ -197,6 +197,12 @@ func (AlertsSourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertsSourceState)(nil)).Elem()
 }
 
+// AlertsSourceExists checks whether an existing AlertsSource resource with the given ID exists.
+func AlertsSourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertsSourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/alertsSource:AlertsSource", id, state, "", opts...)
+}
+
 type alertsSourceArgs struct {
 	// List of alert fields to be added to the alert source. Note: This attribute requires the alert field feature to be enabled on your account. Contact Rootly customer support if you need assistance with this feature.
 	AlertSourceFieldsAttributes []AlertsSourceAlertSourceFieldsAttribute `pulumi:"alertSourceFieldsAttributes"`

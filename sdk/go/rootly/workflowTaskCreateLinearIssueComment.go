@@ -117,6 +117,12 @@ func (WorkflowTaskCreateLinearIssueCommentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateLinearIssueCommentState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateLinearIssueCommentExists checks whether an existing WorkflowTaskCreateLinearIssueComment resource with the given ID exists.
+func WorkflowTaskCreateLinearIssueCommentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateLinearIssueCommentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateLinearIssueComment:WorkflowTaskCreateLinearIssueComment", id, state, "", opts...)
+}
+
 type workflowTaskCreateLinearIssueCommentArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

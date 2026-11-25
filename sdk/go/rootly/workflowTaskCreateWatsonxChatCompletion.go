@@ -117,6 +117,12 @@ func (WorkflowTaskCreateWatsonxChatCompletionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateWatsonxChatCompletionState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateWatsonxChatCompletionExists checks whether an existing WorkflowTaskCreateWatsonxChatCompletion resource with the given ID exists.
+func WorkflowTaskCreateWatsonxChatCompletionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateWatsonxChatCompletionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateWatsonxChatCompletion:WorkflowTaskCreateWatsonxChatCompletion", id, state, "", opts...)
+}
+
 type workflowTaskCreateWatsonxChatCompletionArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

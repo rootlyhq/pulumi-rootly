@@ -106,6 +106,12 @@ func (CustomFormState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customFormState)(nil)).Elem()
 }
 
+// CustomFormExists checks whether an existing CustomForm resource with the given ID exists.
+func CustomFormExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomFormState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/customForm:CustomForm", id, state, "", opts...)
+}
+
 type customFormArgs struct {
 	// The Slack command used to trigger this form.
 	Command     string  `pulumi:"command"`

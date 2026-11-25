@@ -99,6 +99,12 @@ func (IncidentSubStatusState) ElementType() reflect.Type {
 	return reflect.TypeOf((*incidentSubStatusState)(nil)).Elem()
 }
 
+// IncidentSubStatusExists checks whether an existing IncidentSubStatus resource with the given ID exists.
+func IncidentSubStatusExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IncidentSubStatusState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/incidentSubStatus:IncidentSubStatus", id, state, "", opts...)
+}
+
 type incidentSubStatusArgs struct {
 	AssignedAt       string `pulumi:"assignedAt"`
 	AssignedByUserId *int   `pulumi:"assignedByUserId"`

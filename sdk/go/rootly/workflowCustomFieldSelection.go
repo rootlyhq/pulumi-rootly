@@ -103,6 +103,12 @@ func (WorkflowCustomFieldSelectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowCustomFieldSelectionState)(nil)).Elem()
 }
 
+// WorkflowCustomFieldSelectionExists checks whether an existing WorkflowCustomFieldSelection resource with the given ID exists.
+func WorkflowCustomFieldSelectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowCustomFieldSelectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowCustomFieldSelection:WorkflowCustomFieldSelection", id, state, "", opts...)
+}
+
 type workflowCustomFieldSelectionArgs struct {
 	// The custom field for this selection
 	CustomFieldId int `pulumi:"customFieldId"`

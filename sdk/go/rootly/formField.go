@@ -152,6 +152,12 @@ func (FormFieldState) ElementType() reflect.Type {
 	return reflect.TypeOf((*formFieldState)(nil)).Elem()
 }
 
+// FormFieldExists checks whether an existing FormField resource with the given ID exists.
+func FormFieldExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FormFieldState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/formField:FormField", id, state, "", opts...)
+}
+
 type formFieldArgs struct {
 	// Catalog property ID to auto-set this form field. Only reference-kind catalog properties are supported.
 	AutoSetByCatalogPropertyId *string  `pulumi:"autoSetByCatalogPropertyId"`

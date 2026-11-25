@@ -119,6 +119,12 @@ func (WorkflowTaskTriggerWorkflowState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskTriggerWorkflowState)(nil)).Elem()
 }
 
+// WorkflowTaskTriggerWorkflowExists checks whether an existing WorkflowTaskTriggerWorkflow resource with the given ID exists.
+func WorkflowTaskTriggerWorkflowExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskTriggerWorkflowState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskTriggerWorkflow:WorkflowTaskTriggerWorkflow", id, state, "", opts...)
+}
+
 type workflowTaskTriggerWorkflowArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

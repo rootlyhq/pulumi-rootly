@@ -99,6 +99,12 @@ func (DashboardPanelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dashboardPanelState)(nil)).Elem()
 }
 
+// DashboardPanelExists checks whether an existing DashboardPanel resource with the given ID exists.
+func DashboardPanelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DashboardPanelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/dashboardPanel:DashboardPanel", id, state, "", opts...)
+}
+
 type dashboardPanelArgs struct {
 	// The panel dashboard
 	DashboardId string `pulumi:"dashboardId"`

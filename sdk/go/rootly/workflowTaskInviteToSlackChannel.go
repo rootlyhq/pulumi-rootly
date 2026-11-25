@@ -119,6 +119,12 @@ func (WorkflowTaskInviteToSlackChannelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskInviteToSlackChannelState)(nil)).Elem()
 }
 
+// WorkflowTaskInviteToSlackChannelExists checks whether an existing WorkflowTaskInviteToSlackChannel resource with the given ID exists.
+func WorkflowTaskInviteToSlackChannelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskInviteToSlackChannelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskInviteToSlackChannel:WorkflowTaskInviteToSlackChannel", id, state, "", opts...)
+}
+
 type workflowTaskInviteToSlackChannelArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

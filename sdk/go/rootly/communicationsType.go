@@ -114,6 +114,12 @@ func (CommunicationsTypeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*communicationsTypeState)(nil)).Elem()
 }
 
+// CommunicationsTypeExists checks whether an existing CommunicationsType resource with the given ID exists.
+func CommunicationsTypeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CommunicationsTypeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/communicationsType:CommunicationsType", id, state, "", opts...)
+}
+
 type communicationsTypeArgs struct {
 	// The color of the communications type
 	Color string `pulumi:"color"`

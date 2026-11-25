@@ -103,6 +103,12 @@ func (RetrospectiveProcessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*retrospectiveProcessState)(nil)).Elem()
 }
 
+// RetrospectiveProcessExists checks whether an existing RetrospectiveProcess resource with the given ID exists.
+func RetrospectiveProcessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RetrospectiveProcessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/retrospectiveProcess:RetrospectiveProcess", id, state, "", opts...)
+}
+
 type retrospectiveProcessArgs struct {
 	// Retrospective process ID from which retrospective steps have to be copied. To use starter template for retrospective steps provide value: 'starter_template'
 	CopyFrom *string `pulumi:"copyFrom"`

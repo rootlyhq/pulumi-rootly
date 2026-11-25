@@ -126,6 +126,12 @@ func (CommunicationsTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*communicationsTemplateState)(nil)).Elem()
 }
 
+// CommunicationsTemplateExists checks whether an existing CommunicationsTemplate resource with the given ID exists.
+func CommunicationsTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CommunicationsTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/communicationsTemplate:CommunicationsTemplate", id, state, "", opts...)
+}
+
 type communicationsTemplateArgs struct {
 	// Communication template stages
 	CommunicationTemplateStages []CommunicationsTemplateCommunicationTemplateStage `pulumi:"communicationTemplateStages"`
