@@ -8,8 +8,8 @@ generation changes.
 | Component | Version |
 | --- | --- |
 | Terraform Rootly provider and shim | 5.25.2 |
-| Pulumi Terraform bridge | 3.143.0 |
-| Pulumi CLI and Go packages | 3.274.1 |
+| Pulumi Terraform bridge | v3.143.1-0.20261119164743-5b598a3ef53c |
+| Pulumi CLI and Go packages | 3.277.0 |
 | Node.js SDK Pulumi dependency minimum | 3.274.1 |
 | Python SDK Pulumi dependency minimum | 3.262.0 |
 | Go JOSE dependency minimum | 4.1.6 |
@@ -25,6 +25,9 @@ generation changes.
 
 ## Compatibility constraints
 
+- Pulumi 3.277.0 requires the bridge's CheckConfig2 support. The bridge is
+  pinned to the upstream commit that adds it until a tagged release includes
+  the fix. See [pulumi-terraform-bridge#3709](https://github.com/pulumi/pulumi-terraform-bridge/pull/3709).
 - Keep the Terraform SDK replacement aligned with Pulumi's bridge:
   `github.com/pulumi/terraform-plugin-sdk/v2` at
   `v2.0.0-20260318212141-5525259d096b`.

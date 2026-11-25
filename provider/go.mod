@@ -8,7 +8,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.19.0
 	github.com/hashicorp/terraform-plugin-go v0.31.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.1-0.20261119164743-5b598a3ef53c
 	github.com/pulumi/pulumi/pkg/v3 v3.277.0
 	github.com/pulumi/pulumi/sdk/v3 v3.277.0
 	github.com/rootlyhq/terraform-provider-rootly/v5 v5.25.2
@@ -250,7 +250,6 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/crypto v0.59.0 // indirect
-	golang.org/x/crypto/openpgp v0.1.0-deprecated // indirect
 	golang.org/x/exp v0.0.0-20261014143641-f0251eb4aa3e // indirect
 	golang.org/x/mod v0.42.0 // indirect
 	golang.org/x/net v0.62.0 // indirect
