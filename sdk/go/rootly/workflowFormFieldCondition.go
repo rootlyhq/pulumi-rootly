@@ -127,6 +127,12 @@ func (WorkflowFormFieldConditionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowFormFieldConditionState)(nil)).Elem()
 }
 
+// WorkflowFormFieldConditionExists checks whether an existing WorkflowFormFieldCondition resource with the given ID exists.
+func WorkflowFormFieldConditionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowFormFieldConditionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowFormFieldCondition:WorkflowFormFieldCondition", id, state, "", opts...)
+}
+
 type workflowFormFieldConditionArgs struct {
 	// The custom field for this condition
 	FormFieldId string `pulumi:"formFieldId"`

@@ -117,6 +117,12 @@ func (WorkflowTaskRenameMicrosoftTeamsChannelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskRenameMicrosoftTeamsChannelState)(nil)).Elem()
 }
 
+// WorkflowTaskRenameMicrosoftTeamsChannelExists checks whether an existing WorkflowTaskRenameMicrosoftTeamsChannel resource with the given ID exists.
+func WorkflowTaskRenameMicrosoftTeamsChannelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskRenameMicrosoftTeamsChannelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskRenameMicrosoftTeamsChannel:WorkflowTaskRenameMicrosoftTeamsChannel", id, state, "", opts...)
+}
+
 type workflowTaskRenameMicrosoftTeamsChannelArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

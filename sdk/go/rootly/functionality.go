@@ -224,6 +224,12 @@ func (FunctionalityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionalityState)(nil)).Elem()
 }
 
+// FunctionalityExists checks whether an existing Functionality resource with the given ID exists.
+func FunctionalityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FunctionalityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/functionality:Functionality", id, state, "", opts...)
+}
+
 type functionalityArgs struct {
 	// The Backstage entity id associated to this functionality. eg: :namespace/:kind/:entity_name. Omit to preserve an existing value; set to an empty string to clear it.
 	BackstageId *string `pulumi:"backstageId"`

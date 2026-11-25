@@ -117,6 +117,12 @@ func (WorkflowTaskSnapshotDatadogGraphState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskSnapshotDatadogGraphState)(nil)).Elem()
 }
 
+// WorkflowTaskSnapshotDatadogGraphExists checks whether an existing WorkflowTaskSnapshotDatadogGraph resource with the given ID exists.
+func WorkflowTaskSnapshotDatadogGraphExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSnapshotDatadogGraphState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSnapshotDatadogGraph:WorkflowTaskSnapshotDatadogGraph", id, state, "", opts...)
+}
+
 type workflowTaskSnapshotDatadogGraphArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

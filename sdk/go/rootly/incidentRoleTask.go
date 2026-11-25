@@ -102,6 +102,12 @@ func (IncidentRoleTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*incidentRoleTaskState)(nil)).Elem()
 }
 
+// IncidentRoleTaskExists checks whether an existing IncidentRoleTask resource with the given ID exists.
+func IncidentRoleTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IncidentRoleTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/incidentRoleTask:IncidentRoleTask", id, state, "", opts...)
+}
+
 type incidentRoleTaskArgs struct {
 	// The description of incident task
 	Description    *string `pulumi:"description"`

@@ -119,6 +119,12 @@ func (WorkflowTaskCreateJiraIssueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateJiraIssueState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateJiraIssueExists checks whether an existing WorkflowTaskCreateJiraIssue resource with the given ID exists.
+func WorkflowTaskCreateJiraIssueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateJiraIssueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateJiraIssue:WorkflowTaskCreateJiraIssue", id, state, "", opts...)
+}
+
 type workflowTaskCreateJiraIssueArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

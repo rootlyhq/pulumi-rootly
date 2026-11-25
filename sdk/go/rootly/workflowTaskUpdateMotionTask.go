@@ -117,6 +117,12 @@ func (WorkflowTaskUpdateMotionTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdateMotionTaskState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdateMotionTaskExists checks whether an existing WorkflowTaskUpdateMotionTask resource with the given ID exists.
+func WorkflowTaskUpdateMotionTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdateMotionTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdateMotionTask:WorkflowTaskUpdateMotionTask", id, state, "", opts...)
+}
+
 type workflowTaskUpdateMotionTaskArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

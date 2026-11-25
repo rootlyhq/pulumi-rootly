@@ -117,6 +117,12 @@ func (WorkflowTaskUpdateLinearIssueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdateLinearIssueState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdateLinearIssueExists checks whether an existing WorkflowTaskUpdateLinearIssue resource with the given ID exists.
+func WorkflowTaskUpdateLinearIssueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdateLinearIssueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdateLinearIssue:WorkflowTaskUpdateLinearIssue", id, state, "", opts...)
+}
+
 type workflowTaskUpdateLinearIssueArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

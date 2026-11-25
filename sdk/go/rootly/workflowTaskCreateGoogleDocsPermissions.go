@@ -117,6 +117,12 @@ func (WorkflowTaskCreateGoogleDocsPermissionsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateGoogleDocsPermissionsState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateGoogleDocsPermissionsExists checks whether an existing WorkflowTaskCreateGoogleDocsPermissions resource with the given ID exists.
+func WorkflowTaskCreateGoogleDocsPermissionsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateGoogleDocsPermissionsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateGoogleDocsPermissions:WorkflowTaskCreateGoogleDocsPermissions", id, state, "", opts...)
+}
+
 type workflowTaskCreateGoogleDocsPermissionsArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

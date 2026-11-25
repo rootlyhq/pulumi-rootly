@@ -110,6 +110,12 @@ func (EdgeConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgeConnectorState)(nil)).Elem()
 }
 
+// EdgeConnectorExists checks whether an existing EdgeConnector resource with the given ID exists.
+func EdgeConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EdgeConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/edgeConnector:EdgeConnector", id, state, "", opts...)
+}
+
 type edgeConnectorArgs struct {
 	// Connector description
 	Description *string `pulumi:"description"`

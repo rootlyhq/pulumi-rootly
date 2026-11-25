@@ -96,6 +96,12 @@ func (ScheduleRotationActiveDayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduleRotationActiveDayState)(nil)).Elem()
 }
 
+// ScheduleRotationActiveDayExists checks whether an existing ScheduleRotationActiveDay resource with the given ID exists.
+func ScheduleRotationActiveDayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScheduleRotationActiveDayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/scheduleRotationActiveDay:ScheduleRotationActiveDay", id, state, "", opts...)
+}
+
 type scheduleRotationActiveDayArgs struct {
 	// Schedule rotation active times per day
 	ActiveTimeAttributes []ScheduleRotationActiveDayActiveTimeAttribute `pulumi:"activeTimeAttributes"`

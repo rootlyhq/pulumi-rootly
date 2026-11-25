@@ -11,7 +11,7 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.0
 	github.com/pulumi/pulumi/pkg/v3 v3.274.1
 	github.com/pulumi/pulumi/sdk/v3 v3.274.1
-	github.com/rootlyhq/terraform-provider-rootly/v5 v5.25.2
+	github.com/rootlyhq/terraform-provider-rootly/v5 v5.27.0
 	github.com/rootlyhq/terraform-provider-rootly/v5/pulumi-shim v0.0.0
 	github.com/stretchr/testify v1.12.1
 	google.golang.org/protobuf v1.36.12
@@ -106,7 +106,6 @@ require (
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-tpm v0.9.8 // indirect
-	github.com/google/jsonapi v1.0.0 // indirect
 	github.com/google/s2a-go v0.1.9 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/google/uuid v1.6.0 // indirect
@@ -196,7 +195,7 @@ require (
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.16.0 // indirect
-	github.com/rootlyhq/jsonapi v0.0.0-20260818145503-f499cfb9d78f // indirect
+	github.com/rootlyhq/jsonapi v0.0.0-20261109170034-45a3b024d895 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect
 	github.com/samber/lo v1.53.0 // indirect

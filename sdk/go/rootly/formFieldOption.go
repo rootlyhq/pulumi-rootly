@@ -117,6 +117,12 @@ func (FormFieldOptionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*formFieldOptionState)(nil)).Elem()
 }
 
+// FormFieldOptionExists checks whether an existing FormFieldOption resource with the given ID exists.
+func FormFieldOptionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FormFieldOptionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/formFieldOption:FormFieldOption", id, state, "", opts...)
+}
+
 type formFieldOptionArgs struct {
 	// The hex color of the form field option
 	Color *string `pulumi:"color"`

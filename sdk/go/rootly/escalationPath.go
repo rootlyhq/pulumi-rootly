@@ -182,6 +182,12 @@ func (EscalationPathState) ElementType() reflect.Type {
 	return reflect.TypeOf((*escalationPathState)(nil)).Elem()
 }
 
+// EscalationPathExists checks whether an existing EscalationPath resource with the given ID exists.
+func EscalationPathExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EscalationPathState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/escalationPath:EscalationPath", id, state, "", opts...)
+}
+
 type escalationPathArgs struct {
 	// What happens after a deferral path finishes. Required for deferral paths.. Value must be one of `reEvaluate`, `executePath`.
 	AfterDeferralBehavior *string `pulumi:"afterDeferralBehavior"`

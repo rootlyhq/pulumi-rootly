@@ -117,6 +117,12 @@ func (WorkflowTaskSnapshotNewRelicGraphState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskSnapshotNewRelicGraphState)(nil)).Elem()
 }
 
+// WorkflowTaskSnapshotNewRelicGraphExists checks whether an existing WorkflowTaskSnapshotNewRelicGraph resource with the given ID exists.
+func WorkflowTaskSnapshotNewRelicGraphExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSnapshotNewRelicGraphState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSnapshotNewRelicGraph:WorkflowTaskSnapshotNewRelicGraph", id, state, "", opts...)
+}
+
 type workflowTaskSnapshotNewRelicGraphArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

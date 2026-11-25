@@ -172,6 +172,10 @@
                 "current": "rootly:index/apiKey:ApiKey",
                 "majorVersion": 4
             },
+            "rootly_api_key_rotation": {
+                "current": "rootly:index/apiKeyRotation:ApiKeyRotation",
+                "majorVersion": 4
+            },
             "rootly_authorization": {
                 "current": "rootly:index/authorization:Authorization",
                 "majorVersion": 4,
@@ -1213,6 +1217,9 @@
                         "maxItemsOne": false
                     },
                     "functionality_ids": {
+                        "maxItemsOne": false
+                    },
+                    "group_assignment_ids": {
                         "maxItemsOne": false
                     },
                     "group_ids": {
@@ -4023,6 +4030,11 @@
     "auto-settings": {},
     "default-resource-schema-fixups": {
         "resources": {
+            "rootly_api_key_rotation": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "rootly_schedule": {},
             "rootly_schedule_rotation": {},
             "rootly_user_incident_response_role": {
@@ -4041,6 +4053,7 @@
             "rootly:index/alertUrgency:AlertUrgency": 0,
             "rootly:index/alertsSource:AlertsSource": 0,
             "rootly:index/apiKey:ApiKey": 0,
+            "rootly:index/apiKeyRotation:ApiKeyRotation": 1,
             "rootly:index/authorization:Authorization": 0,
             "rootly:index/catalog:Catalog": 0,
             "rootly:index/catalogChecklistTemplate:CatalogChecklistTemplate": 0,

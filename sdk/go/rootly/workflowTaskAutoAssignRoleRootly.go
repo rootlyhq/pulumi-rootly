@@ -117,6 +117,12 @@ func (WorkflowTaskAutoAssignRoleRootlyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskAutoAssignRoleRootlyState)(nil)).Elem()
 }
 
+// WorkflowTaskAutoAssignRoleRootlyExists checks whether an existing WorkflowTaskAutoAssignRoleRootly resource with the given ID exists.
+func WorkflowTaskAutoAssignRoleRootlyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskAutoAssignRoleRootlyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskAutoAssignRoleRootly:WorkflowTaskAutoAssignRoleRootly", id, state, "", opts...)
+}
+
 type workflowTaskAutoAssignRoleRootlyArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

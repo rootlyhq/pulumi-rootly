@@ -150,6 +150,12 @@ func (PlaybookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*playbookState)(nil)).Elem()
 }
 
+// PlaybookExists checks whether an existing Playbook resource with the given ID exists.
+func PlaybookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PlaybookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/playbook:Playbook", id, state, "", opts...)
+}
+
 type playbookArgs struct {
 	// The Cause IDs to attach to the incident
 	CauseIds []string `pulumi:"causeIds"`

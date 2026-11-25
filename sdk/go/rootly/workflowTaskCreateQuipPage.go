@@ -117,6 +117,12 @@ func (WorkflowTaskCreateQuipPageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateQuipPageState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateQuipPageExists checks whether an existing WorkflowTaskCreateQuipPage resource with the given ID exists.
+func WorkflowTaskCreateQuipPageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateQuipPageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateQuipPage:WorkflowTaskCreateQuipPage", id, state, "", opts...)
+}
+
 type workflowTaskCreateQuipPageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

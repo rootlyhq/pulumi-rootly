@@ -150,6 +150,12 @@ func (EscalationLevelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*escalationLevelState)(nil)).Elem()
 }
 
+// EscalationLevelExists checks whether an existing EscalationLevel resource with the given ID exists.
+func EscalationLevelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EscalationLevelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/escalationLevel:EscalationLevel", id, state, "", opts...)
+}
+
 type escalationLevelArgs struct {
 	// Delay before notifying targets in the next Escalation Level.
 	Delay *int `pulumi:"delay"`

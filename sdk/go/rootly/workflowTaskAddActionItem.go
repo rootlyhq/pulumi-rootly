@@ -117,6 +117,12 @@ func (WorkflowTaskAddActionItemState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskAddActionItemState)(nil)).Elem()
 }
 
+// WorkflowTaskAddActionItemExists checks whether an existing WorkflowTaskAddActionItem resource with the given ID exists.
+func WorkflowTaskAddActionItemExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskAddActionItemState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskAddActionItem:WorkflowTaskAddActionItem", id, state, "", opts...)
+}
+
 type workflowTaskAddActionItemArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

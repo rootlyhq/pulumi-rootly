@@ -117,6 +117,12 @@ func (WorkflowTaskSnapshotGrafanaDashboardState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskSnapshotGrafanaDashboardState)(nil)).Elem()
 }
 
+// WorkflowTaskSnapshotGrafanaDashboardExists checks whether an existing WorkflowTaskSnapshotGrafanaDashboard resource with the given ID exists.
+func WorkflowTaskSnapshotGrafanaDashboardExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSnapshotGrafanaDashboardState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSnapshotGrafanaDashboard:WorkflowTaskSnapshotGrafanaDashboard", id, state, "", opts...)
+}
+
 type workflowTaskSnapshotGrafanaDashboardArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

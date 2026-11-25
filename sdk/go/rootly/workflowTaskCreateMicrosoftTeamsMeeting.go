@@ -117,6 +117,12 @@ func (WorkflowTaskCreateMicrosoftTeamsMeetingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateMicrosoftTeamsMeetingState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateMicrosoftTeamsMeetingExists checks whether an existing WorkflowTaskCreateMicrosoftTeamsMeeting resource with the given ID exists.
+func WorkflowTaskCreateMicrosoftTeamsMeetingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateMicrosoftTeamsMeetingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateMicrosoftTeamsMeeting:WorkflowTaskCreateMicrosoftTeamsMeeting", id, state, "", opts...)
+}
+
 type workflowTaskCreateMicrosoftTeamsMeetingArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

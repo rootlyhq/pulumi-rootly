@@ -117,6 +117,12 @@ func (WorkflowTaskCreateLinearSubtaskIssueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateLinearSubtaskIssueState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateLinearSubtaskIssueExists checks whether an existing WorkflowTaskCreateLinearSubtaskIssue resource with the given ID exists.
+func WorkflowTaskCreateLinearSubtaskIssueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateLinearSubtaskIssueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateLinearSubtaskIssue:WorkflowTaskCreateLinearSubtaskIssue", id, state, "", opts...)
+}
+
 type workflowTaskCreateLinearSubtaskIssueArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

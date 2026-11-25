@@ -117,6 +117,12 @@ func (WorkflowTaskUpdateAsanaTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdateAsanaTaskState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdateAsanaTaskExists checks whether an existing WorkflowTaskUpdateAsanaTask resource with the given ID exists.
+func WorkflowTaskUpdateAsanaTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdateAsanaTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdateAsanaTask:WorkflowTaskUpdateAsanaTask", id, state, "", opts...)
+}
+
 type workflowTaskUpdateAsanaTaskArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

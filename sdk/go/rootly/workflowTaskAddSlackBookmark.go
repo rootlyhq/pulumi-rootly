@@ -117,6 +117,12 @@ func (WorkflowTaskAddSlackBookmarkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskAddSlackBookmarkState)(nil)).Elem()
 }
 
+// WorkflowTaskAddSlackBookmarkExists checks whether an existing WorkflowTaskAddSlackBookmark resource with the given ID exists.
+func WorkflowTaskAddSlackBookmarkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskAddSlackBookmarkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskAddSlackBookmark:WorkflowTaskAddSlackBookmark", id, state, "", opts...)
+}
+
 type workflowTaskAddSlackBookmarkArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

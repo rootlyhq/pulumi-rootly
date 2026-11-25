@@ -687,7 +687,7 @@ export interface EscalationLevelNotificationTargetParam {
      */
     teamMembers: string;
     /**
-     * The type of the notification target. Value must be one of `team`, `user`, `schedule`, `slackChannel`, `microsoftTeamsChannel`, `service`.
+     * The type of the notification target. Value must be one of `team`, `user`, `schedule`, `slackChannel`, `microsoftTeamsChannel`, `service`, `aiSre`. For `aiSre`, set `id` to the AI SRE provider (e.g. `rootly`) to start an AI SRE investigation when this level is reached; the level must also have at least one other target. AI SRE is only available to organizations that have the feature enabled; contact your Customer Success Manager if you are interested.
      */
     type?: string;
 }

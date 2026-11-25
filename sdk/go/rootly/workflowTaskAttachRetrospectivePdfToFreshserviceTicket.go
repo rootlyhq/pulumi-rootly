@@ -117,6 +117,12 @@ func (WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketState) ElementType()
 	return reflect.TypeOf((*workflowTaskAttachRetrospectivePdfToFreshserviceTicketState)(nil)).Elem()
 }
 
+// WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketExists checks whether an existing WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket resource with the given ID exists.
+func WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskAttachRetrospectivePdfToFreshserviceTicketState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskAttachRetrospectivePdfToFreshserviceTicket:WorkflowTaskAttachRetrospectivePdfToFreshserviceTicket", id, state, "", opts...)
+}
+
 type workflowTaskAttachRetrospectivePdfToFreshserviceTicketArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

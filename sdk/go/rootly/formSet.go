@@ -112,6 +112,12 @@ func (FormSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*formSetState)(nil)).Elem()
 }
 
+// FormSetExists checks whether an existing FormSet resource with the given ID exists.
+func FormSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FormSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/formSet:FormSet", id, state, "", opts...)
+}
+
 type formSetArgs struct {
 	// The forms included in the form set. Add custom forms using the custom form's `slug` field. Or choose a built-in form: `webNewIncidentForm`, `webUpdateIncidentForm`, `webIncidentPostMortemForm`, `webIncidentMitigationForm`, `webIncidentResolutionForm`, `webIncidentCancellationForm`, `webScheduledIncidentForm`, `webUpdateScheduledIncidentForm`, `slackNewIncidentForm`, `slackUpdateIncidentForm`, `slackUpdateIncidentStatusForm`, `slackIncidentMitigationForm`, `slackIncidentResolutionForm`, `slackIncidentCancellationForm`, `slackScheduledIncidentForm`, `slackUpdateScheduledIncidentForm`, `googleChatNewIncidentForm`, `googleChatUpdateIncidentForm`, `googleChatIncidentMitigationForm`, `googleChatIncidentResolutionForm`, `googleChatIncidentCancellationForm`, `googleChatScheduledIncidentForm`, `microsoftTeamsNewIncidentForm`. A `problem` form set accepts only problem forms: `webNewProblemForm`, `webUpdateProblemForm`, `webProblemInProgressForm`, `webProblemDeferredForm`, `webProblemCompletedForm`, `webProblemCancelledForm`
 	Forms []string `pulumi:"forms"`

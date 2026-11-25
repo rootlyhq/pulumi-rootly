@@ -119,6 +119,12 @@ func (WorkflowTaskSendSlackBlocksState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskSendSlackBlocksState)(nil)).Elem()
 }
 
+// WorkflowTaskSendSlackBlocksExists checks whether an existing WorkflowTaskSendSlackBlocks resource with the given ID exists.
+func WorkflowTaskSendSlackBlocksExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSendSlackBlocksState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSendSlackBlocks:WorkflowTaskSendSlackBlocks", id, state, "", opts...)
+}
+
 type workflowTaskSendSlackBlocksArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

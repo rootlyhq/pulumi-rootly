@@ -102,6 +102,12 @@ func (PlaybookTaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*playbookTaskState)(nil)).Elem()
 }
 
+// PlaybookTaskExists checks whether an existing PlaybookTask resource with the given ID exists.
+func PlaybookTaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PlaybookTaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/playbookTask:PlaybookTask", id, state, "", opts...)
+}
+
 type playbookTaskArgs struct {
 	// The description of task
 	Description *string `pulumi:"description"`

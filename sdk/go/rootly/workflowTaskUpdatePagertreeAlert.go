@@ -117,6 +117,12 @@ func (WorkflowTaskUpdatePagertreeAlertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdatePagertreeAlertState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdatePagertreeAlertExists checks whether an existing WorkflowTaskUpdatePagertreeAlert resource with the given ID exists.
+func WorkflowTaskUpdatePagertreeAlertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdatePagertreeAlertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdatePagertreeAlert:WorkflowTaskUpdatePagertreeAlert", id, state, "", opts...)
+}
+
 type workflowTaskUpdatePagertreeAlertArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

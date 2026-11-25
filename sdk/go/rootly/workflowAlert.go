@@ -45,9 +45,11 @@ type WorkflowAlert struct {
 	Enabled          pulumi.BoolPtrOutput     `pulumi:"enabled"`
 	EnvironmentIds   pulumi.StringArrayOutput `pulumi:"environmentIds"`
 	FunctionalityIds pulumi.StringArrayOutput `pulumi:"functionalityIds"`
-	GroupIds         pulumi.StringArrayOutput `pulumi:"groupIds"`
-	IncidentRoleIds  pulumi.StringArrayOutput `pulumi:"incidentRoleIds"`
-	IncidentTypeIds  pulumi.StringArrayOutput `pulumi:"incidentTypeIds"`
+	// Owning team IDs. Requires team-scoped workflows.
+	GroupAssignmentIds pulumi.StringArrayOutput `pulumi:"groupAssignmentIds"`
+	GroupIds           pulumi.StringArrayOutput `pulumi:"groupIds"`
+	IncidentRoleIds    pulumi.StringArrayOutput `pulumi:"incidentRoleIds"`
+	IncidentTypeIds    pulumi.StringArrayOutput `pulumi:"incidentTypeIds"`
 	// Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// The title of the workflow
@@ -118,9 +120,11 @@ type workflowAlertState struct {
 	Enabled          *bool    `pulumi:"enabled"`
 	EnvironmentIds   []string `pulumi:"environmentIds"`
 	FunctionalityIds []string `pulumi:"functionalityIds"`
-	GroupIds         []string `pulumi:"groupIds"`
-	IncidentRoleIds  []string `pulumi:"incidentRoleIds"`
-	IncidentTypeIds  []string `pulumi:"incidentTypeIds"`
+	// Owning team IDs. Requires team-scoped workflows.
+	GroupAssignmentIds []string `pulumi:"groupAssignmentIds"`
+	GroupIds           []string `pulumi:"groupIds"`
+	IncidentRoleIds    []string `pulumi:"incidentRoleIds"`
+	IncidentTypeIds    []string `pulumi:"incidentTypeIds"`
 	// Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
 	Locked *bool `pulumi:"locked"`
 	// The title of the workflow
@@ -162,9 +166,11 @@ type WorkflowAlertState struct {
 	Enabled          pulumi.BoolPtrInput
 	EnvironmentIds   pulumi.StringArrayInput
 	FunctionalityIds pulumi.StringArrayInput
-	GroupIds         pulumi.StringArrayInput
-	IncidentRoleIds  pulumi.StringArrayInput
-	IncidentTypeIds  pulumi.StringArrayInput
+	// Owning team IDs. Requires team-scoped workflows.
+	GroupAssignmentIds pulumi.StringArrayInput
+	GroupIds           pulumi.StringArrayInput
+	IncidentRoleIds    pulumi.StringArrayInput
+	IncidentTypeIds    pulumi.StringArrayInput
 	// Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
 	Locked pulumi.BoolPtrInput
 	// The title of the workflow
@@ -197,6 +203,12 @@ func (WorkflowAlertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowAlertState)(nil)).Elem()
 }
 
+// WorkflowAlertExists checks whether an existing WorkflowAlert resource with the given ID exists.
+func WorkflowAlertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowAlertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowAlert:WorkflowAlert", id, state, "", opts...)
+}
+
 type workflowAlertArgs struct {
 	CauseIds []string `pulumi:"causeIds"`
 	// Workflow command
@@ -210,9 +222,11 @@ type workflowAlertArgs struct {
 	Enabled          *bool    `pulumi:"enabled"`
 	EnvironmentIds   []string `pulumi:"environmentIds"`
 	FunctionalityIds []string `pulumi:"functionalityIds"`
-	GroupIds         []string `pulumi:"groupIds"`
-	IncidentRoleIds  []string `pulumi:"incidentRoleIds"`
-	IncidentTypeIds  []string `pulumi:"incidentTypeIds"`
+	// Owning team IDs. Requires team-scoped workflows.
+	GroupAssignmentIds []string `pulumi:"groupAssignmentIds"`
+	GroupIds           []string `pulumi:"groupIds"`
+	IncidentRoleIds    []string `pulumi:"incidentRoleIds"`
+	IncidentTypeIds    []string `pulumi:"incidentTypeIds"`
 	// Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
 	Locked *bool `pulumi:"locked"`
 	// The title of the workflow
@@ -255,9 +269,11 @@ type WorkflowAlertArgs struct {
 	Enabled          pulumi.BoolPtrInput
 	EnvironmentIds   pulumi.StringArrayInput
 	FunctionalityIds pulumi.StringArrayInput
-	GroupIds         pulumi.StringArrayInput
-	IncidentRoleIds  pulumi.StringArrayInput
-	IncidentTypeIds  pulumi.StringArrayInput
+	// Owning team IDs. Requires team-scoped workflows.
+	GroupAssignmentIds pulumi.StringArrayInput
+	GroupIds           pulumi.StringArrayInput
+	IncidentRoleIds    pulumi.StringArrayInput
+	IncidentTypeIds    pulumi.StringArrayInput
 	// Restricts workflow edits to admins when turned on. Only admins can set this field.. Value must be one of true or false
 	Locked pulumi.BoolPtrInput
 	// The title of the workflow
@@ -407,6 +423,11 @@ func (o WorkflowAlertOutput) EnvironmentIds() pulumi.StringArrayOutput {
 
 func (o WorkflowAlertOutput) FunctionalityIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkflowAlert) pulumi.StringArrayOutput { return v.FunctionalityIds }).(pulumi.StringArrayOutput)
+}
+
+// Owning team IDs. Requires team-scoped workflows.
+func (o WorkflowAlertOutput) GroupAssignmentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkflowAlert) pulumi.StringArrayOutput { return v.GroupAssignmentIds }).(pulumi.StringArrayOutput)
 }
 
 func (o WorkflowAlertOutput) GroupIds() pulumi.StringArrayOutput {

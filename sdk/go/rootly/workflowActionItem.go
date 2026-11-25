@@ -219,6 +219,12 @@ func (WorkflowActionItemState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowActionItemState)(nil)).Elem()
 }
 
+// WorkflowActionItemExists checks whether an existing WorkflowActionItem resource with the given ID exists.
+func WorkflowActionItemExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowActionItemState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowActionItem:WorkflowActionItem", id, state, "", opts...)
+}
+
 type workflowActionItemArgs struct {
 	CauseIds []string `pulumi:"causeIds"`
 	// Workflow command

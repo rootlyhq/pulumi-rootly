@@ -201,6 +201,12 @@ func (SlaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*slaState)(nil)).Elem()
 }
 
+// SlaExists checks whether an existing Sla resource with the given ID exists.
+func SlaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SlaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/sla:Sla", id, state, "", opts...)
+}
+
 type slaArgs struct {
 	// Number of days for the assignment deadline
 	AssignmentDeadlineDays int `pulumi:"assignmentDeadlineDays"`

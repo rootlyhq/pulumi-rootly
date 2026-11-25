@@ -117,6 +117,12 @@ func (WorkflowTaskUpdateVictorOpsIncidentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskUpdateVictorOpsIncidentState)(nil)).Elem()
 }
 
+// WorkflowTaskUpdateVictorOpsIncidentExists checks whether an existing WorkflowTaskUpdateVictorOpsIncident resource with the given ID exists.
+func WorkflowTaskUpdateVictorOpsIncidentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskUpdateVictorOpsIncidentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskUpdateVictorOpsIncident:WorkflowTaskUpdateVictorOpsIncident", id, state, "", opts...)
+}
+
 type workflowTaskUpdateVictorOpsIncidentArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

@@ -117,6 +117,12 @@ func (WorkflowTaskCreateJiraSubtaskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateJiraSubtaskState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateJiraSubtaskExists checks whether an existing WorkflowTaskCreateJiraSubtask resource with the given ID exists.
+func WorkflowTaskCreateJiraSubtaskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateJiraSubtaskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateJiraSubtask:WorkflowTaskCreateJiraSubtask", id, state, "", opts...)
+}
+
 type workflowTaskCreateJiraSubtaskArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

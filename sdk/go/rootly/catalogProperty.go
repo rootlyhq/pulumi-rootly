@@ -116,6 +116,12 @@ func (CatalogPropertyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogPropertyState)(nil)).Elem()
 }
 
+// CatalogPropertyExists checks whether an existing CatalogProperty resource with the given ID exists.
+func CatalogPropertyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CatalogPropertyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/catalogProperty:CatalogProperty", id, state, "", opts...)
+}
+
 type catalogPropertyArgs struct {
 	CatalogId *string `pulumi:"catalogId"`
 	// The type of catalog the property belongs to.. Value must be one of `catalog`, `cause`, `environment`, `functionality`, `incidentType`, `service`, `team`.

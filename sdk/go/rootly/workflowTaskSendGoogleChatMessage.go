@@ -117,6 +117,12 @@ func (WorkflowTaskSendGoogleChatMessageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskSendGoogleChatMessageState)(nil)).Elem()
 }
 
+// WorkflowTaskSendGoogleChatMessageExists checks whether an existing WorkflowTaskSendGoogleChatMessage resource with the given ID exists.
+func WorkflowTaskSendGoogleChatMessageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskSendGoogleChatMessageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskSendGoogleChatMessage:WorkflowTaskSendGoogleChatMessage", id, state, "", opts...)
+}
+
 type workflowTaskSendGoogleChatMessageArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

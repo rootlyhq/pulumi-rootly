@@ -117,6 +117,12 @@ func (WorkflowTaskCreateGithubIssueState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCreateGithubIssueState)(nil)).Elem()
 }
 
+// WorkflowTaskCreateGithubIssueExists checks whether an existing WorkflowTaskCreateGithubIssue resource with the given ID exists.
+func WorkflowTaskCreateGithubIssueExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCreateGithubIssueState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCreateGithubIssue:WorkflowTaskCreateGithubIssue", id, state, "", opts...)
+}
+
 type workflowTaskCreateGithubIssueArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

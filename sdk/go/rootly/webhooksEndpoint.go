@@ -130,6 +130,12 @@ func (WebhooksEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*webhooksEndpointState)(nil)).Elem()
 }
 
+// WebhooksEndpointExists checks whether an existing WebhooksEndpoint resource with the given ID exists.
+func WebhooksEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WebhooksEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/webhooksEndpoint:WebhooksEndpoint", id, state, "", opts...)
+}
+
 type webhooksEndpointArgs struct {
 	// Custom HTTP headers sent with each delivery. Max 10. Reserved names (Content-Type, X-Rootly-Signature, Host, etc.) are rejected.
 	CustomHeaders []WebhooksEndpointCustomHeader `pulumi:"customHeaders"`

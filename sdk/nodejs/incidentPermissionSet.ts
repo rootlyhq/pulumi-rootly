@@ -37,6 +37,17 @@ export class IncidentPermissionSet extends pulumi.CustomResource {
         return new IncidentPermissionSet(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing IncidentPermissionSet resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: IncidentPermissionSetState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("rootly:index/incidentPermissionSet:IncidentPermissionSet", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'rootly:index/incidentPermissionSet:IncidentPermissionSet';
 
@@ -52,7 +63,7 @@ export class IncidentPermissionSet extends pulumi.CustomResource {
     }
 
     /**
-     * The incident permission set description.
+     * A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
@@ -110,7 +121,7 @@ export class IncidentPermissionSet extends pulumi.CustomResource {
  */
 export interface IncidentPermissionSetState {
     /**
-     * The incident permission set description.
+     * A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -138,7 +149,7 @@ export interface IncidentPermissionSetState {
  */
 export interface IncidentPermissionSetArgs {
     /**
-     * The incident permission set description.
+     * A description of the incident permission set. Required when severity-based incident permissions are enabled for your organization.
      */
     description?: pulumi.Input<string | undefined>;
     /**

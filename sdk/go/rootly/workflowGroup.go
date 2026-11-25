@@ -120,6 +120,12 @@ func (WorkflowGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowGroupState)(nil)).Elem()
 }
 
+// WorkflowGroupExists checks whether an existing WorkflowGroup resource with the given ID exists.
+func WorkflowGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowGroup:WorkflowGroup", id, state, "", opts...)
+}
+
 type workflowGroupArgs struct {
 	// A description of the workflow group.
 	Description *string `pulumi:"description"`

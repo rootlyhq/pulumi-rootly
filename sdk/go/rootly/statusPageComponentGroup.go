@@ -109,6 +109,12 @@ func (StatusPageComponentGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*statusPageComponentGroupState)(nil)).Elem()
 }
 
+// StatusPageComponentGroupExists checks whether an existing StatusPageComponentGroup resource with the given ID exists.
+func StatusPageComponentGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StatusPageComponentGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/statusPageComponentGroup:StatusPageComponentGroup", id, state, "", opts...)
+}
+
 type statusPageComponentGroupArgs struct {
 	// Whether the group renders collapsed on the public page. Value must be one of true or false
 	CollapsedByDefault *bool `pulumi:"collapsedByDefault"`

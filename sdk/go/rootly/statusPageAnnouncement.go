@@ -118,6 +118,12 @@ func (StatusPageAnnouncementState) ElementType() reflect.Type {
 	return reflect.TypeOf((*statusPageAnnouncementState)(nil)).Elem()
 }
 
+// StatusPageAnnouncementExists checks whether an existing StatusPageAnnouncement resource with the given ID exists.
+func StatusPageAnnouncementExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StatusPageAnnouncementState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/statusPageAnnouncement:StatusPageAnnouncement", id, state, "", opts...)
+}
+
 type statusPageAnnouncementArgs struct {
 	// Body of the announcement
 	Body string `pulumi:"body"`

@@ -117,6 +117,12 @@ func (WorkflowTaskAddRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskAddRoleState)(nil)).Elem()
 }
 
+// WorkflowTaskAddRoleExists checks whether an existing WorkflowTaskAddRole resource with the given ID exists.
+func WorkflowTaskAddRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskAddRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskAddRole:WorkflowTaskAddRole", id, state, "", opts...)
+}
+
 type workflowTaskAddRoleArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`

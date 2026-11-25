@@ -14,6 +14,14 @@ import (
 
 // ## Example Usage
 //
+// ## Token
+//
+// `token` holds the API key secret. The Rootly API returns it only in the create response, so:
+//
+// - It is stored in Terraform state in plain text. Protect your state (encrypted remote backend, restricted access).
+// - It is empty for keys brought in with `pulumi import`.
+// - If the key is rotated outside Terraform (for example through the rotate API endpoint or the web app), the stored `token` is stale and Terraform does not detect it. Recreate the resource (e.g. `pulumi up -replace=rootly_api_key.example`) to get a fresh token in state.
+//
 // ## Import
 //
 // ApiKey can be imported using the `import` command.
@@ -52,6 +60,8 @@ type ApiKey struct {
 	OnCallRoleId pulumi.StringOutput `pulumi:"onCallRoleId"`
 	// The role ID
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
+	// The API key token. Returned only when the key is created or rotated; omitted from list, show, update and delete responses.
+	Token pulumi.StringOutput `pulumi:"token"`
 }
 
 // NewApiKey registers a new resource with the given unique name, arguments, and options.
@@ -64,6 +74,10 @@ func NewApiKey(ctx *pulumi.Context,
 	if args.ExpiresAt == nil {
 		return nil, errors.New("invalid value for required argument 'ExpiresAt'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiKey
 	err := ctx.RegisterResource("rootly:index/apiKey:ApiKey", name, args, &resource, opts...)
@@ -105,6 +119,8 @@ type apiKeyState struct {
 	OnCallRoleId *string `pulumi:"onCallRoleId"`
 	// The role ID
 	RoleId *string `pulumi:"roleId"`
+	// The API key token. Returned only when the key is created or rotated; omitted from list, show, update and delete responses.
+	Token *string `pulumi:"token"`
 }
 
 type ApiKeyState struct {
@@ -126,10 +142,18 @@ type ApiKeyState struct {
 	OnCallRoleId pulumi.StringPtrInput
 	// The role ID
 	RoleId pulumi.StringPtrInput
+	// The API key token. Returned only when the key is created or rotated; omitted from list, show, update and delete responses.
+	Token pulumi.StringPtrInput
 }
 
 func (ApiKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiKeyState)(nil)).Elem()
+}
+
+// ApiKeyExists checks whether an existing ApiKey resource with the given ID exists.
+func ApiKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApiKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/apiKey:ApiKey", id, state, "", opts...)
 }
 
 type apiKeyArgs struct {
@@ -305,6 +329,11 @@ func (o ApiKeyOutput) OnCallRoleId() pulumi.StringOutput {
 // The role ID
 func (o ApiKeyOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
+}
+
+// The API key token. Returned only when the key is created or rotated; omitted from list, show, update and delete responses.
+func (o ApiKeyOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }
 
 type ApiKeyArrayOutput struct{ *pulumi.OutputState }

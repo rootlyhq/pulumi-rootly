@@ -134,6 +134,12 @@ func (AlertRoutingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertRoutingRuleState)(nil)).Elem()
 }
 
+// AlertRoutingRuleExists checks whether an existing AlertRoutingRule resource with the given ID exists.
+func AlertRoutingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertRoutingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/alertRoutingRule:AlertRoutingRule", id, state, "", opts...)
+}
+
 type alertRoutingRuleArgs struct {
 	// AI SRE provider that investigates alerts matching this rule. Null disables AI SRE for the rule. Omit to preserve an existing value; set to an empty string to disable AI SRE. Value must be one of `rootly`, `devin`.
 	AiSreProvider *string `pulumi:"aiSreProvider"`

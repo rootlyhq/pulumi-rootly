@@ -5749,7 +5749,7 @@ type EscalationLevelNotificationTargetParam struct {
 	Id *string `pulumi:"id"`
 	// For targets with type=team, controls whether to notify admins, all team members, or escalate to team EP.. Value must be one of `all`, `admins`, `escalate`.
 	TeamMembers *string `pulumi:"teamMembers"`
-	// The type of the notification target. Value must be one of `team`, `user`, `schedule`, `slackChannel`, `microsoftTeamsChannel`, `service`.
+	// The type of the notification target. Value must be one of `team`, `user`, `schedule`, `slackChannel`, `microsoftTeamsChannel`, `service`, `aiSre`. For `aiSre`, set `id` to the AI SRE provider (e.g. `rootly`) to start an AI SRE investigation when this level is reached; the level must also have at least one other target. AI SRE is only available to organizations that have the feature enabled; contact your Customer Success Manager if you are interested.
 	Type *string `pulumi:"type"`
 }
 
@@ -5769,7 +5769,7 @@ type EscalationLevelNotificationTargetParamArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// For targets with type=team, controls whether to notify admins, all team members, or escalate to team EP.. Value must be one of `all`, `admins`, `escalate`.
 	TeamMembers pulumi.StringPtrInput `pulumi:"teamMembers"`
-	// The type of the notification target. Value must be one of `team`, `user`, `schedule`, `slackChannel`, `microsoftTeamsChannel`, `service`.
+	// The type of the notification target. Value must be one of `team`, `user`, `schedule`, `slackChannel`, `microsoftTeamsChannel`, `service`, `aiSre`. For `aiSre`, set `id` to the AI SRE provider (e.g. `rootly`) to start an AI SRE investigation when this level is reached; the level must also have at least one other target. AI SRE is only available to organizations that have the feature enabled; contact your Customer Success Manager if you are interested.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -5834,7 +5834,7 @@ func (o EscalationLevelNotificationTargetParamOutput) TeamMembers() pulumi.Strin
 	return o.ApplyT(func(v EscalationLevelNotificationTargetParam) *string { return v.TeamMembers }).(pulumi.StringPtrOutput)
 }
 
-// The type of the notification target. Value must be one of `team`, `user`, `schedule`, `slackChannel`, `microsoftTeamsChannel`, `service`.
+// The type of the notification target. Value must be one of `team`, `user`, `schedule`, `slackChannel`, `microsoftTeamsChannel`, `service`, `aiSre`. For `aiSre`, set `id` to the AI SRE provider (e.g. `rootly`) to start an AI SRE investigation when this level is reached; the level must also have at least one other target. AI SRE is only available to organizations that have the feature enabled; contact your Customer Success Manager if you are interested.
 func (o EscalationLevelNotificationTargetParamOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EscalationLevelNotificationTargetParam) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

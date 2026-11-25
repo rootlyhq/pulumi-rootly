@@ -104,6 +104,12 @@ func (CommunicationsStageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*communicationsStageState)(nil)).Elem()
 }
 
+// CommunicationsStageExists checks whether an existing CommunicationsStage resource with the given ID exists.
+func CommunicationsStageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CommunicationsStageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/communicationsStage:CommunicationsStage", id, state, "", opts...)
+}
+
 type communicationsStageArgs struct {
 	// The description of the communications stage
 	Description *string `pulumi:"description"`

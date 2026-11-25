@@ -119,6 +119,12 @@ func (WorkflowTaskCallPeopleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*workflowTaskCallPeopleState)(nil)).Elem()
 }
 
+// WorkflowTaskCallPeopleExists checks whether an existing WorkflowTaskCallPeople resource with the given ID exists.
+func WorkflowTaskCallPeopleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WorkflowTaskCallPeopleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rootly:index/workflowTaskCallPeople:WorkflowTaskCallPeople", id, state, "", opts...)
+}
+
 type workflowTaskCallPeopleArgs struct {
 	// Enable/disable this workflow task
 	Enabled *bool `pulumi:"enabled"`
